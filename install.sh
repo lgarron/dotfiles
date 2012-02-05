@@ -3,10 +3,18 @@
 cd "`dirname $0`"
 DIR=`pwd`
 
-ln -s "${DIR}/home/bash_profile" "${HOME}/.bash_profile"
-ln -s "${DIR}/home/tarsnaprc" "${HOME}/.tarsnaprc"
+# zsh
+ln -s "${DIR}/home/zshrc" "${HOME}/.zshrc"
+
+# git
 ln -s "${DIR}/home/gitconfig" "${HOME}/.gitconfig"
 ln -s "${DIR}/home/gitignore" "${HOME}/.gitignore"
+
+# cron
 ln -s "${DIR}/home/lgcrontab" "${HOME}/.lgcrontab"
+
+# .Xmodmap settings, for OSX-like keybindings in X11 (e.g. Cmd-C copies like Ctrl-C would.)
 ln -s "${DIR}/home/Xmodmap" "${HOME}/.Xmodmap"
-ln -s "${DIR}/home/zshrc" "${HOME}/.zshrc"
+
+# tarsnap (backup)
+ln -s "${DIR}/home/tarsnaprc" "${HOME}/.tarsnaprc"

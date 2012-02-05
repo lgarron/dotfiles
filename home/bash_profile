@@ -1,0 +1,69 @@
+# .bash_profile
+# Lucas Garron, 2011
+
+# Prompt
+export PS1="It's \t \w/"
+
+# Shortcuts
+
+## Editors
+export EDITOR="subl -w"
+alias e='emacs'
+alias s='subl'
+
+## Hashes
+alias md5='openssl md5'
+alias sha='openssl sha'
+
+alias battery='ioreg -rc AppleSmartBattery'
+
+## Search
+alias f='find . -iname'
+alias o='open .' # Open pwd in Finder.
+
+## Git shortcuts
+alias g="git"
+alias gs="git status"
+alias gl="git log"
+alias glp="git log --oneline --decorate=full --graph --remotes" # git log pretty, from http://www.xerxesb.com/2010/command-line-replacement-for-gitk/
+alias gd="git diff"
+alias gdi="git difftool -t fmdiff"
+function gst {
+	git stage "$@"
+	gs
+}
+alias gc="git commit -m"
+alias gco="git checkout"
+alias gca="git commit --amend"
+alias gb="git branch"
+alias gh="github"
+
+# Random password generator
+function makepass() { head /dev/random | uuencode -m - | sed -n 2p | cut -c1-${1:-20}; }
+alias word='sed `perl -e "print int rand(99999)"`"q;d" /usr/share/dict/words | tr -d "\\n"'
+function makewords() {
+  word
+  echo -n "-"
+  word
+  echo -n "-"
+  word
+  echo -n "-"
+  word
+  echo ""
+}
+
+# ${PATH} additions
+export PATH="~/Documents/Code/executable/bin/:$PATH"
+
+## Color STDERR
+function rse()
+{
+	# We need to wrap each phrase of the command in quotes to preserve arguments that contain whitespace
+	# Execute the command, swap STDOUT and STDERR, colour STDOUT, swap back
+	((eval $(for phrase in "$@"; do echo -n "'$phrase' "; done)) 3>&1 1>&2 2>&3 | sed -e "s/^\(.*\)$/$(echo -en \\033)[31;1m\1$(echo -en \\033)[0m/") 3>&1 1>&2 2>&3
+}
+
+# Echonest Remix API.
+export ECHO_NEST_API_KEY="EJ7ZVMPNXWVFXS1KE"
+
+

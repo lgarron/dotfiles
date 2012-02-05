@@ -75,6 +75,10 @@ alias gca="git commit --amend"
 alias gb="git branch"
 alias gh="github"
 
+# Server from the current directory.
+# From http://apple.stackexchange.com/questions/5435/got-any-tips-or-tricks-for-terminal-in-mac-os-x
+serve() { open "http://localhost:${1:-8080}/" &&  python -m SimpleHTTPServer ${1:-8080}; }
+
 # Random password generator
 function makepass() { head /dev/random | uuencode -m - | sed -n 2p | cut -c1-${1:-20}; }
 alias word='sed `perl -e "print int rand(99999)"`"q;d" /usr/share/dict/words | tr -d "\\n"'

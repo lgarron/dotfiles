@@ -79,6 +79,8 @@ alias gh="github"
 # From http://apple.stackexchange.com/questions/5435/got-any-tips-or-tricks-for-terminal-in-mac-os-x
 serve() { open "http://localhost:${1:-8080}/" &&  python -m SimpleHTTPServer ${1:-8080}; }
 
+alias screensaver_desktop="/System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine -background"
+
 # Random password generator
 function makepass() { head /dev/random | uuencode -m - | sed -n 2p | cut -c1-${1:-20}; }
 alias word='sed `perl -e "print int rand(99999)"`"q;d" /usr/share/dict/words | tr -d "\\n"'

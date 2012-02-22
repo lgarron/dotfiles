@@ -18,3 +18,6 @@ ln -s "${DIR}/home/Xmodmap" "${HOME}/.Xmodmap"
 
 # tarsnap (backup)
 ln -s "${DIR}/home/tarsnaprc" "${HOME}/.tarsnaprc"
+
+# Atea
+ln -s "${DIR}/home/atea" "${HOME}/.atea"

@@ -65,10 +65,11 @@ alias gl="git log"
 alias glp="git log --oneline --decorate=full --graph --remotes" # git log pretty, from http://www.xerxesb.com/2010/command-line-replacement-for-gitk/
 alias gd="git diff"
 alias gdi="git difftool -t fmdiff"
-function gst {
-  git stage "$@"
-  gs
-}
+#function gst {
+#  git stage "$@"
+#  gs
+#}
+alias gst="git stage"
 alias gc="git commit -m"
 alias gco="git checkout"
 alias gca="git commit --amend"
@@ -90,6 +91,7 @@ function makewords() {
 
 # ${PATH} additions
 export PATH="~/Documents/Code/executable/bin/:$PATH"
+path=(~/Documents/Code/executable/bin/ ${path}) #zsh
 
 # Remote host shortcuts
 LUS="lusaka.dreamhost.com"

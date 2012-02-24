@@ -66,9 +66,6 @@ function makewords() {
 export PATH="~/Documents/Code/executable/bin/:$PATH"
 path=(~/Documents/Code/executable/bin/ ${path}) #zsh
 
-# Remote host shortcuts
-LUS="lusaka.dreamhost.com"
-
 # Echonest Remix API.
 export ECHO_NEST_API_KEY="EJ7ZVMPNXWVFXS1KE"
 

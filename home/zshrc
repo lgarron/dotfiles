@@ -70,3 +70,6 @@ path=(~/Documents/Code/executable/bin/ ${path}) #zsh
 export ECHO_NEST_API_KEY="EJ7ZVMPNXWVFXS1KE"
 
 
+# Application aliases
+alias audacity="open -a /Applications/Tools/Audacity.app/"
+alias gimp="open -a /Applications/Tools/Gimp.app"

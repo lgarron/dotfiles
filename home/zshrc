@@ -69,6 +69,9 @@ path=(~/Documents/Code/executable/bin/ ${path}) #zsh
 # Echonest Remix API.
 export ECHO_NEST_API_KEY="EJ7ZVMPNXWVFXS1KE"
 
+# Convenience for getting the current public IP.
+alias ip="curl whatismyip.org"
+
 
 # Application aliases
 alias audacity="open -a /Applications/Tools/Audacity.app/"

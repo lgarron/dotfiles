@@ -13,7 +13,7 @@ source $ZSH/oh-my-zsh.sh
 # Shortcuts
 
 ## Editors
-alias subl="/Applications/Tools/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl"
+alias subl="/Applications/Editors/Sublime\ Text\ 2.app/Contents/SharedSupport/bin/subl"
 export EDITOR="subl -w"
 alias e='emacs'
 alias s='subl'
@@ -27,11 +27,20 @@ alias sha='openssl sha'
 alias battery='ioreg -rc AppleSmartBattery'
 
 ## Search
-alias f='find . -iname'
 alias o='open .' # Open pwd in Finder.
+alias fx='find . -iname' # find exact
+# Quick find - Is there a way to define this using alias?
+function f() {
+  find . -iname "*${1}*"
+}
+# Quick grep
+function g() {
+  grep -r "${1}" .
+}
+
 
 ## Git shortcuts
-alias g="git"
+#alias g="git"
 alias gs="git status"
 alias gl="git log"
 alias glp="git log --oneline --decorate=full --graph --remotes" # git log pretty, from http://www.xerxesb.com/2010/command-line-replacement-for-gitk/
@@ -63,8 +72,9 @@ function makewords() {
 }
 
 # ${PATH} additions
-export PATH="~/Documents/Code/executable/bin/:$PATH"
-path=(~/Documents/Code/executable/bin/ ${path}) #zsh
+# /usr/local/sbin is for homebrew (specifically, nginx)
+export PATH="~/Documents/Code/executable/bin:/usr/local/sbin:$PATH"
+path=(~/Documents/Code/executable/bin /usr/local/sbin ${path}) #zsh
 
 # Echonest Remix API.
 export ECHO_NEST_API_KEY="EJ7ZVMPNXWVFXS1KE"
@@ -76,3 +86,77 @@ alias ip="curl whatismyip.org"
 # Application aliases
 alias audacity="open -a /Applications/Tools/Audacity.app/"
 alias gimp="open -a /Applications/Tools/Gimp.app"
+
+
+
+
+
+
+# From https://github.com/aaronharnly/dotfiles-public/blob/master/.bash-functions.sh
+
+#
+# Usage: left_half <separator> <string>
+#
+#  returns the left half of <string>, up to & not including <separator>,
+#    e.g. left_half . filename.txt   returns filename
+function left_half()
+{
+  local separator="$1"
+  local name=${2##*/}
+  local name0="${name%${separator}*}"
+  echo "${name0:-$name}"
+}
+
+#
+# Usage: right_half_with_sep <separator> <string>
+#
+#  returns the right half of <string>, from <separator> forward,
+#    including <separator>
+#  e.g. right_half_with_sep . filename.txt returns .txt
+#
+function right_half_with_sep()
+{
+  local separator="$1"
+  local name=${2##*/}
+  local name0="${name%${separator}*}"
+  local ext=${name0:+${name#$name0}}
+  echo "${ext:-${separator}}"
+}
+
+#
+# Usage: right_half <separator> <string>
+#
+#   returns the right half of <string>, from <separator> forward
+#      (not including <separator>)
+#   e.g. right_half . filename.txt   returns txt
+function right_half() 
+{
+  local separator="$1"
+  local name=${2##*/}
+  local name0="${name%${separator}*}"
+  local ext=${name0:+${name#$name0}}
+  local ext=${ext#${separator}}
+  echo "${ext}"
+}
+
+function namename() # get the name without the file extension
+{
+  echo $(left_half . "$1")
+}
+
+function ext() # get the file extension, including '.'
+{
+  echo $(right_half_with_sep . "$1")
+}
+
+function extonly() # get the file extension, without '.'
+{
+  echo $(right_half . "$1")
+}
+
+function dirname()
+{
+  local dir="${1%${1##*/}}"
+  [ "${dir:=./}" != "/" ] && dir="${dir%?}"
+  echo "$dir"
+}

@@ -1,8 +1,0 @@
-[user]
-	name = Lucas Garron
-	email = lucasg@gmx.de
-[core]
-	excludesfile = /Users/lgarron/.gitignore
-[diff]
-[color]
-	ui = true

@@ -1,0 +1,17 @@
+[user]
+	name = Lucas Garron
+	email = lucasg@gmx.de
+[core]
+	excludesfile = /Users/lgarron/.gitignore
+[diff]
+[color]
+	ui = true
+[credential]
+	helper = osxkeychain
+[push]
+	default = upstream
+[github]
+	user = lgarron
+[ghi]
+# Keep secret!
+	token = 1b0ab4fc7ad31db5a74fdd48686554c972a7c805

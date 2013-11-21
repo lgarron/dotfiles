@@ -1,3 +1,0 @@
-#min	hour	mday	month	wday	command
-*	*	*	*	*	~/Documents/Code/executable/misc/uptime/monitor_uptime
-*/30	*	*	*	*	~/Documents/Code/executable/misc/timelog/timelog_remind

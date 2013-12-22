@@ -6,7 +6,8 @@
     SUBLIME_TEXT_PATH="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
     STDERRRED_PATH="${HOME}/local/dylib/libstderred.dylib"
     INSTALLED_FILE_PATH="${HOME}/local/config/installed.txt"
-    MATHEMATICA_SCRIPT_PATH="/Applications/Wolfram/Mathematica.app/Contents/MacOS/MathematicaScript"
+    MATHEMATICA_SCRIPT_PATH="/Applications/Mathematica.app/Contents/MacOS/MathematicaScript"
+    COMPUTER_NAME="$(scutil --get ComputerName)"
 
 
 ## oh-my-zsh and shell
@@ -30,7 +31,7 @@
 ## Shell
 
     # Set the $PATH
-    path=(${path} "${HOME}/local/bin") #zsh
+    path=(${path} "${HOME}/local/bin/scripts" "${HOME}/local/bin/misc" "${HOME}/local/bin/dance-hacking") #zsh
 
     # Output stderr in red.
     if [ -f "${STDERRRED_PATH}" ]
@@ -53,11 +54,11 @@
     # Contains a node_modules folder symlinked to ~/.node_modules
     NPM_PATH="${HOME}/local/node"
 
-    function bi   { brew install                       $@ && echo "[$(date "+%Y-%m-%d")][brew install]"      $@ >> "${INSTALLED_FILE_PATH}" && rehash }
-    function bci  { brew cask install                  $@ && echo "[$(date "+%Y-%m-%d")][brew cask install]" $@ >> "${INSTALLED_FILE_PATH}" && rehash }
-    function pipi { pip install                        $@ && echo "[$(date "+%Y-%m-%d")][pip install]"       $@ >> "${INSTALLED_FILE_PATH}" && rehash }
-    function cabi { cabal install                      $@ && echo "[$(date "+%Y-%m-%d")][cabal install]"     $@ >> "${INSTALLED_FILE_PATH}" && rehash }
-    function npmi { npm install --prefix="${NPM_PATH}" $@ && echo "[$(date "+%Y-%m-%d")][npm install]"       $@ >> "${INSTALLED_FILE_PATH}" && rehash }
+    function bi   { brew install                       $@ && echo "[$(date "+%Y-%m-%d")][${COMPUTER_NAME}][brew install]"      $@ >> "${INSTALLED_FILE_PATH}" && rehash }
+    function bci  { brew cask install                  $@ && echo "[$(date "+%Y-%m-%d")][${COMPUTER_NAME}][brew cask install]" $@ >> "${INSTALLED_FILE_PATH}" && rehash }
+    function pipi { pip install                        $@ && echo "[$(date "+%Y-%m-%d")][${COMPUTER_NAME}][pip install]"       $@ >> "${INSTALLED_FILE_PATH}" && rehash }
+    function cabi { cabal install                      $@ && echo "[$(date "+%Y-%m-%d")][${COMPUTER_NAME}][cabal install]"     $@ >> "${INSTALLED_FILE_PATH}" && rehash }
+    function npmi { npm install --prefix="${NPM_PATH}" $@ && echo "[$(date "+%Y-%m-%d")][${COMPUTER_NAME}][npm install]"       $@ >> "${INSTALLED_FILE_PATH}" && rehash }
     alias bs="brew search"
     alias bcs="brew cask search"
     alias pips="pip search"
@@ -119,6 +120,8 @@
 ## Git
 
     alias g="git"
+
+    alias git-dir="git rev-parse --git-dir"
 
     alias gs="git status"
     alias gl="git log"

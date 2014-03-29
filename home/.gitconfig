@@ -1,6 +1,7 @@
 [user]
 	name = Lucas Garron
-	email = lucasg@gmx.de
+	email = code@garron.net
+	signingkey = 3880CAE7
 [core]
 	excludesfile = /Users/lgarron/.gitignore
 [diff]
@@ -12,6 +13,3 @@
 	default = upstream
 [github]
 	user = lgarron
-[ghi]
-# Keep secret!
-	token = 1b0ab4fc7ad31db5a74fdd48686554c972a7c805

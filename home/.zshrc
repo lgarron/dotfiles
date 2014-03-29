@@ -3,7 +3,7 @@
 ## File Paths
 
     ZSH_PATH="${HOME}/local/config/oh-my-zsh/"
-    SUBLIME_TEXT_PATH="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
+    SUBLIME_TEXT_PATH="${HOME}/local/bin/misc/subl"
     STDERRRED_PATH="${HOME}/local/dylib/libstderred.dylib"
     INSTALLED_FILE_PATH="${HOME}/local/config/installed.txt"
     MATHEMATICA_SCRIPT_PATH="/Applications/Mathematica.app/Contents/MacOS/MathematicaScript"
@@ -31,7 +31,16 @@
 ## Shell
 
     # Set the $PATH
-    path=(${path} "${HOME}/local/bin/scripts" "${HOME}/local/bin/misc" "${HOME}/local/bin/dance-hacking") #zsh
+    path=(${path}
+      "${HOME}/local/bin/scripts"
+      "${HOME}/local/bin/misc"
+      "${HOME}/local/bin/dance-hacking"
+      "${HOME}/.cabal/bin/"
+      "${HOME}/Dropbox/Code/non-VCS/emsdk_portable"
+      "${HOME}/Dropbox/Code/non-VCS/emsdk_portable/clang/3.2_64bit/bin"
+      "${HOME}/Dropbox/Code/non-VCS/emsdk_portable/node/0.10.18_64bit/bin"
+      "${HOME}/Dropbox/Code/non-VCS/emsdk_portable/emscripten/1.7.8"
+    ) #zsh
 
     # Output stderr in red.
     if [ -f "${STDERRRED_PATH}" ]
@@ -59,11 +68,13 @@
     function pipi { pip install                        $@ && echo "[$(date "+%Y-%m-%d")][${COMPUTER_NAME}][pip install]"       $@ >> "${INSTALLED_FILE_PATH}" && rehash }
     function cabi { cabal install                      $@ && echo "[$(date "+%Y-%m-%d")][${COMPUTER_NAME}][cabal install]"     $@ >> "${INSTALLED_FILE_PATH}" && rehash }
     function npmi { npm install --prefix="${NPM_PATH}" $@ && echo "[$(date "+%Y-%m-%d")][${COMPUTER_NAME}][npm install]"       $@ >> "${INSTALLED_FILE_PATH}" && rehash }
+    function gemi { sudo gem install                   $@ && echo "[$(date "+%Y-%m-%d")][${COMPUTER_NAME}][gem install]"       $@ >> "${INSTALLED_FILE_PATH}" && rehash }
     alias bs="brew search"
     alias bcs="brew cask search"
     alias pips="pip search"
     alias cabs="cabal search"
     alias npms="npm search"
+    alias gems="gem search"
 
 
 ## Shortcuts
@@ -165,7 +176,7 @@
 
     alias gx="gitx --all"
 
-## OSX Applications, $BROWSER
+## OSX Applications
 
     alias audacity="open -a Audacity"
     alias gimp="open -a GIMP"
@@ -174,10 +185,6 @@
 
     ## Open Quicksilver in the current directory.
     alias q="qs ."
-
-## Echonest Remix API.
-
-    export ECHO_NEST_API_KEY="EJ7ZVMPNXWVFXS1KE"
 
 ## Network
 
@@ -194,6 +201,9 @@
     # Haskell
     alias hs=runghc
 
+    # Julia
+    alias jl=julia
+
     # Mathematica
     function ms {
       REALPATH=$(realpath "${1}")
@@ -205,6 +215,8 @@
     function ext {
       echo "${1##*.}" | awk '{print tolower($0)}'
     }
+
+    alias kb="keybase"
 
 ## Tools
 
@@ -223,3 +235,18 @@
     #   watch ls
     #   watch "make test" --patterns "*.py;*.txt"
     alias watch="watchmedo shell-command . --ignore-patterns=\"*/.DS_Store\" --patterns=\"*\" --recursive --command"
+
+
+    # alias vsh="cd ${HOME}/Virtual\ Machines/docker/ && vagrant up && vagrant ssh"
+
+    alias gpg="gpg2"
+
+    alias ...="awk '{fflush(); printf \".\"}' && echo \"\""
+
+    function 7zf() {
+      7z a "${1}.7z" "${1}"
+    }
+
+## Run private settings (API keys, etc.)
+
+    source "${HOME}/.zshrc-private"

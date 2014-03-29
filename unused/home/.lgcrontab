@@ -1,5 +1,0 @@
-#min	hour	mday	month	wday	command
-* * * * * ~/Documents/Code/executable/misc/uptime/monitor_uptime
-#*/15 * * * * ~/Documents/Code/executable/misc/screenshot_cron
-#*/10 * * * * ~/Documents/Code/executable/misc/query_load_cron/monitor_loads
-#*/30	*	*	*	*	~/Documents/Code/executable/misc/timelog/timelog_remind

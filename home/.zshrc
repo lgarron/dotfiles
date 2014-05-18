@@ -82,7 +82,7 @@
 ### Shell
 
     # Reload .zshrc file
-    alias re="echo \"Reloading .zshrc file.\" && source ~/.zshrc"
+    alias rc="echo \"Reloading .zshrc file.\" && source ~/.zshrc"
 
     # Copy stdout to clipboard (after command has finished)
     alias t="tee >(pbcopy)"

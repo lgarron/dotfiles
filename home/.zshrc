@@ -49,7 +49,7 @@
     fi
 
     # Open man page in Chrome
-    export MANPAGER="man2html > /tmp/man-page.html && open /tmp/man-page.html"
+    # export MANPAGER="man2html > /tmp/man-page.html && open /tmp/man-page.html"
 
 
 ## Homebrew and homebrew-cask

@@ -11,6 +11,11 @@
       <productid>0x00db</productid>
     </deviceproductdef>
 
+    <deviceproductdef>
+      <productname>MICROSOFT_WIRELESS</productname>
+      <productid>0x07a5</productid>
+    </deviceproductdef>
+
     <item>
       <name>lgarron</name>
 
@@ -57,6 +62,25 @@
         <autogen>__KeyToKey__ KeyCode::COMMAND_L, KeyCode::OPTION_L</autogen>
         <autogen>__KeyToKey__ KeyCode::COMMAND_R, KeyCode::OPTION_R</autogen>
         <device_only>DeviceVendor::MICROSOFT, DeviceProduct::NATURAL_KEYBOARD_4000</device_only>
+      </item>
+
+      <item>
+        <!-- Keyboard-conditional version of builtin remapping. -->
+        <name>Application Key to Option_R (right option key) (Wireless External Keyboard Only)</name>
+        <identifier>remap.lgarron_pc_application2optionR_wireless</identifier>
+        <autogen>__KeyToKey__ KeyCode::PC_APPLICATION, KeyCode::OPTION_R</autogen>
+        <device_only>DeviceVendor::MICROSOFT, DeviceProduct::MICROSOFT_WIRELESS</device_only>
+      </item>
+
+      <item>
+        <!-- Keyboard-conditional version of builtin remapping. -->
+        <name>Swap Start (aka Command) and Alt keys on Windows keyboard (Wireless External Keyboard Only)</name>
+        <identifier>remap.lgarron_windows4mac_wireless</identifier>
+        <autogen>__KeyToKey__ KeyCode::OPTION_L, KeyCode::COMMAND_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::OPTION_R, KeyCode::COMMAND_R</autogen>
+        <autogen>__KeyToKey__ KeyCode::COMMAND_L, KeyCode::OPTION_L</autogen>
+        <autogen>__KeyToKey__ KeyCode::COMMAND_R, KeyCode::OPTION_R</autogen>
+        <device_only>DeviceVendor::MICROSOFT, DeviceProduct::MICROSOFT_WIRELESS</device_only>
       </item>
     </item>
 </root>

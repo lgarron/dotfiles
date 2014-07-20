@@ -166,6 +166,38 @@
 
     alias gr="git rebase"
 
+    function gpp() {
+      git diff HEAD
+      echo "----------------"
+      echo "Commit message was:"
+      git log HEAD -1 | t
+      echo "----------------"
+      read -q "REPLY?Go ahead? (y/n) "
+      echo "]n"
+      echo "----------------"
+      if [[ "$REPLY" == "y" ]]
+      then
+        PREVIOUS_HEAD=$(ghash)
+        BRANCH=$(git rev-parse --abbrev-ref HEAD)
+        echo "Previous HEAD of ${BRANCH}: ${PREVIOUS_HEAD}"
+        git commit --all --amend --no-edit && git push -f
+        export PREVIOUS_HEAD="${PREVIOUS_HEAD}"
+      fi
+    }
+
+    function gppundo() {
+      CURRENT_HEAD=$(ghash)
+      echo "Resetting from ${CURRENT_HEAD} to ${PREVIOUS_HEAD} (but keeping changes)."
+      git reset --hard "${PREVIOUS_HEAD}"
+      gco "${CURRENT_HEAD}" -- $(git rev-parse --show-toplevel)
+    }
+
+    function gpb() {
+        # Push current branch, creating and tracking on the origin if necessary.
+        BRANCH=$(git rev-parse --abbrev-ref HEAD)
+        git push -u origin "${BRANCH}"
+    }
+
     # Copy hash of latest commit to clipboard
     function glc {
       LATEST=$(ghash)

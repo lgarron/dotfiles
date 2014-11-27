@@ -42,6 +42,10 @@
       "${HOME}/Dropbox/Code/non-VCS/emsdk_portable/emscripten/1.7.8"
     ) #zsh
 
+    # For Cairo. Urgh.
+    # https://github.com/Homebrew/homebrew/issues/14123
+    export PKG_CONFIG_PATH=/opt/X11/lib/pkgconfig
+
     # Output stderr in red.
     if [ -f "${STDERRRED_PATH}" ]
     then

@@ -2,7 +2,7 @@
 
 ## File Paths
 
-    ZSH_PATH="${HOME}/local/config/oh-my-zsh/"
+    ZSH_PATH="${HOME}/.oh-my-zsh/"
     SUBLIME_TEXT_PATH="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
     STDERRRED_PATH="${HOME}/local/dylib/libstderred.dylib"
     INSTALLED_FILE_PATH="${HOME}/local/config/installed.txt"

@@ -3,7 +3,7 @@
 ## File Paths
 
     ZSH_PATH="${HOME}/local/config/oh-my-zsh/"
-    SUBLIME_TEXT_PATH="${HOME}/local/bin/misc/subl"
+    SUBLIME_TEXT_PATH="/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl"
     STDERRRED_PATH="${HOME}/local/dylib/libstderred.dylib"
     INSTALLED_FILE_PATH="${HOME}/local/config/installed.txt"
     MATHEMATICA_SCRIPT_PATH="/Applications/Mathematica.app/Contents/MacOS/MathematicaScript"

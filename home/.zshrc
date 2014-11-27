@@ -286,3 +286,30 @@
 ## Run private settings (API keys, etc.)
 
     source "${HOME}/.zshrc-private"
+
+## Welcome Message
+
+    HOSTNAME=$(hostname)
+    if [ "${HOSTNAME}" = "Galois" ]
+    then
+        # Based on ANSI Shadow with the shadow removed:
+        # http://patorjk.com/software/taag/#p=display&v=1&f=ANSI%20Shadow&t=Galois%0AGALOIS
+        echo ""
+        echo " ██████     █████    ██         ██████    ██   ███████ "
+        echo "██         ██   ██   ██        ██    ██   ██   ██      "
+        echo "██   ███   ███████   ██        ██    ██   ██   ███████ "
+        echo "██    ██   ██   ██   ██        ██    ██   ██        ██ "
+        echo " ██████    ██   ██   ███████    ██████    ██   ███████ "
+        echo ""
+    elif [ "${HOSTNAME}" = "Noether" ]
+    then
+        # Based on ANSI Shadow with the shadow removed:
+        # http://patorjk.com/software/taag/#p=display&v=1&f=ANSI%20Shadow&t=Galois%0AGALOIS
+        echo ""
+        echo "███    ██  ██████  ███████ ████████ ██   ██ ███████ ██████ "
+        echo "████   ██ ██    ██ ██         ██    ██   ██ ██      ██   ██"
+        echo "██ ██  ██ ██    ██ █████      ██    ███████ █████   ██████ "
+        echo "██  ██ ██ ██    ██ ██         ██    ██   ██ ██      ██   ██"
+        echo "██   ████  ██████  ███████    ██    ██   ██ ███████ ██   ██"
+        echo ""
+    fi

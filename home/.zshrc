@@ -262,10 +262,6 @@
 
     alias screensaver_desktop="/System/Library/Frameworks/ScreenSaver.framework/Resources/ScreenSaverEngine.app/Contents/MacOS/ScreenSaverEngine -background"
 
-    # Random password generation
-    function makerandom() { head /dev/random | uuencode -m - | sed -n 2p | cut -c1-${1:-20}; }
-    function makepass() { echo "`word`-`word`-`word`-`word`" }
-
     # Watch the current directory tree and run a command after any change.
     # Usage:
     #   watch ls

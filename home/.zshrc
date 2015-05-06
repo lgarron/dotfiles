@@ -148,6 +148,7 @@
     alias gdcw="git diff --color-words"
     alias gd="gdcw"
     alias gdc="gdcw --cached"
+    alias gdno="git diff --name-only"
     #alias gdi="git difftool -t fmdiff" # Doesn't work right now.
 
     alias gst="git stage"

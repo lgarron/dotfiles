@@ -260,6 +260,9 @@
     # Sigh. https://github.com/Homebrew/homebrew/issues/36426#issuecomment-72631663
     export MACOSX_DEPLOYMENT_TARGET=10.10
 
+    # Colored cat (syntax highlighting). Require pip install pygmentize
+    alias ccat="pygmentize -g"
+
 ## Tools
 
     # Server from the current directory.

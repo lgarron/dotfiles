@@ -30,6 +30,8 @@
 
 ## Shell
 
+    export GOPATH="${HOME}/.go"
+
     # Set the $PATH
     path=(${path}
       "${HOME}/local/bin/scripts"
@@ -40,6 +42,7 @@
       "${HOME}/Dropbox/Code/non-VCS/emsdk_portable/clang/3.2_64bit/bin"
       "${HOME}/Dropbox/Code/non-VCS/emsdk_portable/node/0.10.18_64bit/bin"
       "${HOME}/Dropbox/Code/non-VCS/emsdk_portable/emscripten/1.7.8"
+      "${GOPATH}/bin"
     ) #zsh
 
     # For Cairo. Urgh.

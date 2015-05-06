@@ -257,6 +257,9 @@
 
     alias kb="keybase"
 
+    # Sigh. https://github.com/Homebrew/homebrew/issues/36426#issuecomment-72631663
+    export MACOSX_DEPLOYMENT_TARGET=10.10
+
 ## Tools
 
     # Server from the current directory.

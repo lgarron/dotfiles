@@ -1,5 +1,7 @@
 # Chrome
 
+## Directories
+
     abbr -a src      "$HOME/chromium/src/"
     abbr -a webkit   "$HOME/chromium/src/third_party/WebKit/"
     abbr -a wk       "$HOME/chromium/src/third_party/WebKit/"
@@ -7,6 +9,8 @@
     abbr -a dt       "$HOME/chromium/src/third_party/WebKit/Source/devtools/"
 
 ## Development
+
+    set PATH $HOME/Code/depot_tools $PATH
 
 ### Goma
 
@@ -23,6 +27,12 @@
 ### Building
 
     set -x NINJA_SETTINGS -j 100 -l 10
+
+    set -x NINJA_PATH (which ninja)
+    function ninja
+      echo "Invoking wrapped ninja."
+      env DYLD_INSERT_LIBRARIES='' $NINJA_PATH $argv
+    end
 
     function chromium-release
       "./out/Release/Chromium.app/Contents/MacOS/Chromium" --enable-logging=stderr $argv

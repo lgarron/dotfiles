@@ -25,8 +25,10 @@
     abbr -a gp    "git push"
     abbr -a pr    "git fetch origin pull/ID/head:newBranchName"
 
+    set -x GITX_PATH (which gitx)
     function gitx
-      env DYLD_INSERT_LIBRARIES='' /usr/local/bin/gitx $argv
+      echo "Invoking wrapped gitx."
+      env DYLD_INSERT_LIBRARIES='' $GITX_PATH $argv
     end
     abbr -a gx    "gitx --256 &"
 

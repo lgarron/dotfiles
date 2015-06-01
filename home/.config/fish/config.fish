@@ -2,7 +2,7 @@
 
 # Path
 
-    set PATH $HOME/Code/depot_tools $PATH
+    # set PATH $HOME/dir $PATH
 
 # MOTD
 

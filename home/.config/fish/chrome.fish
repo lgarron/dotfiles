@@ -126,10 +126,21 @@
       end tell'
     end
 
+    abbr -r gx
+    function gx
+      if git remote -v | grep chromium.googlesource.com > /dev/null
+        echo "Invoking wrapped (+ truncated history) gitx."
+        gitx --256 & 
+      else
+        echo "Invoking wrapped gitx."
+        gitx $argv
+      end
+    end
+
     # Overwrite github function for issues
     functions -e github
     function github
-      if not git remote -v | grep github > /dev/null
+      if git remote -v | grep chromium.googlesource.com > /dev/null
         switch-chrome-user "chromium"
         echo "Opening on https://codereview.chromium.org/"
         git cl web &

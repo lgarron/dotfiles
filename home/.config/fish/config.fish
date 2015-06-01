@@ -78,6 +78,6 @@
 
     . $HOME/.config/fish/git.fish
 
-    if [ (hostname) = "Noether" ]
+    if [ (hostname) != "Galois" ]
         . $HOME/.config/fish/chrome.fish
     end

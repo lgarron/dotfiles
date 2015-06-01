@@ -31,7 +31,7 @@
     set -x NINJA_PATH (which ninja)
     function ninja
       echo "Invoking wrapped ninja."
-      env DYLD_INSERT_LIBRARIES='' $NINJA_PATH $argv
+      env DYLD_INSERT_LIBRARIES='' $NINJA_PATH $NINJA_SETTINGS $argv
     end
 
     function chromium-release
@@ -43,14 +43,14 @@
 
     function chrome-release-build
         date
-        env DYLD_INSERT_LIBRARIES='' ninja -C out/Release $NINJA_SETTINGS chrome
+        ninja -C out/Release chrome
         and date
         and chromium-release $argv
     end
 
     function chrome-debug-build
         date
-        env DYLD_INSERT_LIBRARIES='' ninja -C out/Debug $NINJA_SETTINGS chrome
+        ninja -C out/Debug chrome
         and date
         and chromium-debug $argv
     end
@@ -64,13 +64,13 @@
 
     function chrome-build-unit-tests-release
       date
-      env DYLD_INSERT_LIBRARIES='' ninja -C out/Release $NINJA_SETTINGS browser_tests
+      ninja -C out/Release browser_tests
       date
     end
 
     function chrome-build-browser-tests-release
       date
-      env DYLD_INSERT_LIBRARIES='' ninja -C out/Release $NINJA_SETTINGS browser_tests
+      ninja -C out/Release browser_tests
       date
     end
 
@@ -127,6 +127,7 @@
     end
 
     # Overwrite github function for issues
+    functions -e github
     function github
       if not git remote -v | grep github > /dev/null
         switch-chrome-user "chromium"

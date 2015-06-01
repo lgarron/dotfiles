@@ -80,13 +80,13 @@
 ### Chrome Versions
 
     function chrome-stable
-      "/Applications/Google Chrome Stable.app/Contents/MacOS/Google Chrome Stable" $argv
+      "/Applications/Google Chrome Stable.app/Contents/MacOS/Google Chrome" $argv
     end
     function chrome-beta
-      "/Applications/Google Chrome Beta.app/Contents/MacOS/Google Chrome Beta" $argv
+      "/Applications/Google Chrome Beta.app/Contents/MacOS/Google Chrome" $argv
     end
     function chrome-dev
-      "/Applications/Google Chrome Dev.app/Contents/MacOS/Google Chrome Dev" $argv
+      "/Applications/Google Chrome Dev.app/Contents/MacOS/Google Chrome" $argv
     end
     function chrome-canary
       "/Applications/Google Chrome Canary.app/Contents/MacOS/Google Chrome Canary" $argv

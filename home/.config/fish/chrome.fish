@@ -15,7 +15,7 @@
 ### Goma
 
     function goma
-      "$HOME/goma/goma_ctl.py" $argv
+      ~/goma/goma_ctl.py $argv
     end
 
     abbr -a goma-start "goma ensure_start"

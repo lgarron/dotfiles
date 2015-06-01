@@ -2,7 +2,7 @@
 
 # Path
 
-    set PATH /Users/lgarron/Code/depot_tools $PATH
+    set PATH $HOME/Code/depot_tools $PATH
 
 # MOTD
 
@@ -38,7 +38,7 @@
 
 ## Shell
 
-    abbr -a rc ". /Users/lgarron/.config/fish/config.fish"
+    abbr -a rc ". $HOME/.config/fish/config.fish"
 
 ### Editors
 
@@ -71,13 +71,13 @@
 
     abbr -a xs "xargs subl"
 
-    export DYLD_INSERT_LIBRARIES="/Users/lgarron/local/dylib/libstderred.dylib"
+    export DYLD_INSERT_LIBRARIES="$HOME/local/dylib/libstderred.dylib"
 
 
 # Includes
 
-    . /Users/lgarron/.config/fish/git.fish
+    . $HOME/.config/fish/git.fish
 
     if [ (hostname) = "Noether" ]
-        . /Users/lgarron/.config/fish/chrome.fish
+        . $HOME/.config/fish/chrome.fish
     end

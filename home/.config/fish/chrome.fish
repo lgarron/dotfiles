@@ -1,17 +1,17 @@
 # Chrome
 
-    abbr -a src      "/Users/lgarron/chromium/src/"
-    abbr -a webkit   "/Users/lgarron/chromium/src/third_party/WebKit/"
-    abbr -a wk       "/Users/lgarron/chromium/src/third_party/WebKit/"
-    abbr -a devtools "/Users/lgarron/chromium/src/third_party/WebKit/Source/devtools/"
-    abbr -a dt       "/Users/lgarron/chromium/src/third_party/WebKit/Source/devtools/"
+    abbr -a src      "$HOME/chromium/src/"
+    abbr -a webkit   "$HOME/chromium/src/third_party/WebKit/"
+    abbr -a wk       "$HOME/chromium/src/third_party/WebKit/"
+    abbr -a devtools "$HOME/chromium/src/third_party/WebKit/Source/devtools/"
+    abbr -a dt       "$HOME/chromium/src/third_party/WebKit/Source/devtools/"
 
 ## Development
 
 ### Goma
 
     function goma
-      "/Users/lgarron/goma/goma_ctl.py" $argv
+      "$HOME/goma/goma_ctl.py" $argv
     end
 
     abbr -a goma-start "goma ensure_start"

@@ -2,7 +2,7 @@
 
     abbr -a src      "/Users/lgarron/chromium/src/"
     abbr -a webkit   "/Users/lgarron/chromium/src/third_party/WebKit/"
-    abbr -a wk   "/Users/lgarron/chromium/src/third_party/WebKit/"
+    abbr -a wk       "/Users/lgarron/chromium/src/third_party/WebKit/"
     abbr -a devtools "/Users/lgarron/chromium/src/third_party/WebKit/Source/devtools/"
     abbr -a dt       "/Users/lgarron/chromium/src/third_party/WebKit/Source/devtools/"
 
@@ -53,15 +53,15 @@
 ### Chrome Tests
 
     function chrome-build-unit-tests-release
-      date                           
+      date
       env DYLD_INSERT_LIBRARIES='' ninja -C out/Release $NINJA_SETTINGS browser_tests
-      date                           
+      date
     end
 
     function chrome-build-browser-tests-release
-      date                           
+      date
       env DYLD_INSERT_LIBRARIES='' ninja -C out/Release $NINJA_SETTINGS browser_tests
-      date                           
+      date
     end
 
     abbr -a ut="chrome-unit-tests-release-build"
@@ -102,4 +102,29 @@
     end
     function canary-temp
       chrome-canary --user-data-dir=/tmp/(date "+%Y-%m-%d | %H-%M-%S") $argv
+    end
+
+### "GitHub"
+
+    function switch-chrome-user
+      set -x USER $argv[1]
+      osascript -e '
+        tell application "System Events"
+          tell process "Google Chrome"
+            click menu item "'"$USER"'" of menu "People" of menu bar 1
+        end tell
+      end tell'
+    end
+
+    # Overwrite github function for issues
+    function github
+      if not git remote -v | grep github > /dev/null
+        switch-chrome-user "chromium"
+        echo "Opening on https://codereview.chromium.org/"
+        git cl web &
+      else
+        switch-chrome-user "creasepattern"
+        echo "Opening on GitHub.com"
+        hub browse &
+      end
     end

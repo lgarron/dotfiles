@@ -30,26 +30,7 @@
     end
     abbr -a gx    "gitx --256 &"
 
-    function switch-chrome-user
-      set -x USER $argv[1]
-      osascript -e '
-        tell application "System Events"
-          tell process "Google Chrome"
-            click menu item "'"$USER"'" of menu "People" of menu bar 1
-        end tell
-      end tell'
-    end
-
     function github
-      if not git remote -v | grep github > /dev/null
-        switch-chrome-user "chromium"
-        echo "Opening on https://codereview.chromium.org/"
-        git cl web &
-      else
-        switch-chrome-user "creasepattern"
-        echo "Opening on GitHub.com"
         hub browse &
-      end
     end
-
     abbr -a gh github

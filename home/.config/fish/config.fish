@@ -7,15 +7,31 @@
 # MOTD
 
     function fish_greeting
-      # Based on ANSI Shadow with the shadow removed:
-      # http://patorjk.com/software/taag/#p=display&v=1&f=ANSI%20Shadow&t=NOETHER
-      echo ""
-      echo "███    ██  ██████  ███████ ████████ ██   ██ ███████ ██████ "
-      echo "████   ██ ██    ██ ██         ██    ██   ██ ██      ██   ██"
-      echo "██ ██  ██ ██    ██ █████      ██    ███████ █████   ██████ "
-      echo "██  ██ ██ ██    ██ ██         ██    ██   ██ ██      ██   ██"
-      echo "██   ████  ██████  ███████    ██    ██   ██ ███████ ██   ██"
-      echo ""
+
+      if [ (hostname) = "Galois" ]
+        # Based on ANSI Shadow with the shadow removed:
+        # http://patorjk.com/software/taag/#p=display&v=1&f=ANSI%20Shadow&t=Galois%0AGALOIS
+        echo ""
+        echo " ██████     █████    ██         ██████    ██   ███████ "
+        echo "██         ██   ██   ██        ██    ██   ██   ██      "
+        echo "██   ███   ███████   ██        ██    ██   ██   ███████ "
+        echo "██    ██   ██   ██   ██        ██    ██   ██        ██ "
+        echo " ██████    ██   ██   ███████    ██████    ██   ███████ "
+        echo ""
+      end
+
+      if [ (hostname) = "Noether" ]
+        # Based on ANSI Shadow with the shadow removed:
+        # http://patorjk.com/software/taag/#p=display&v=1&f=ANSI%20Shadow&t=NOETHER
+        echo ""
+        echo "███    ██  ██████  ███████ ████████ ██   ██ ███████ ██████ "
+        echo "████   ██ ██    ██ ██         ██    ██   ██ ██      ██   ██"
+        echo "██ ██  ██ ██    ██ █████      ██    ███████ █████   ██████ "
+        echo "██  ██ ██ ██    ██ ██         ██    ██   ██ ██      ██   ██"
+        echo "██   ████  ██████  ███████    ██    ██   ██ ███████ ██   ██"
+        echo ""
+      end
+
     end
 
 # Shortcuts
@@ -45,7 +61,14 @@
     # abbr -a t "tee >(pbcopy)"
     abbr -a t "cat > /tmp/pbcopy.txt; and cat /tmp/pbcopy.txt ; and cat /tmp/pbcopy.txt | pbcopy; and rm /tmp/pbcopy.txt"
 
-    abbr -a o "open"
+    function o
+        if [ (count $argv) = 0 ]
+            open .
+        else
+            open $argv
+        end
+    end
+
     abbr -a xs "xargs subl"
 
     export DYLD_INSERT_LIBRARIES="/Users/lgarron/local/dylib/libstderred.dylib"
@@ -54,4 +77,7 @@
 # Includes
 
     . /Users/lgarron/.config/fish/git.fish
-    . /Users/lgarron/.config/fish/chrome.fish
+
+    if [ (hostname) = "Noether" ]
+        . /Users/lgarron/.config/fish/chrome.fish
+    end

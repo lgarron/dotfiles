@@ -1,0 +1,28 @@
+{
+	"bold_folder_labels": true,
+	"caret_style": "phase",
+	"color_scheme": "Packages/User/Solarized (dark) (SL).tmTheme",
+	"detect_slow_plugins": true,
+	"font_face": "Source Code Pro",
+	"font_size": 17,
+	"highlight_line": true,
+	"highlight_modified_tabs": true,
+	"ignored_packages":
+	[
+		"Python Flake8 Lint",
+		"Vintage",
+		"MarkdownEditing",
+		"Markdown"
+	],
+	"open_files_in_new_window": false,
+	"overlay_scroll_bars": "enabled",
+	"rulers":
+	[
+		80
+	],
+	"scroll_past_end": true,
+	"show_full_path": true,
+	"tab_size": 2,
+	"translate_tabs_to_spaces": true,
+	"use_tab_stops": true
+}

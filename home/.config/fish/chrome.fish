@@ -63,20 +63,20 @@
 
 ### Chrome Tests
 
-    function chrome-build-unit-tests-release
+    function chrome-release-build-unit-tests
       date
       ninja -C out/Release browser_tests
       date
     end
 
-    function chrome-build-browser-tests-release
+    function chrome-release-build-browser-tests
       date
       ninja -C out/Release browser_tests
       date
     end
 
-    abbr -a ut="chrome-unit-tests-release-build"
-    abbr -a bt="chrome-browser-tests-release-build"
+    abbr -a ut="chrome-release-build-unit-tests"
+    abbr -a bt="chrome-release-build-browser-tests"
 
 ### Chrome Versions
 

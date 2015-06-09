@@ -151,3 +151,5 @@
         hub browse &
       end
     end
+
+    abbr -a gcu "git cl upload"

@@ -19,6 +19,7 @@
     abbr -a gdno  "git diff --name-only"
 
     abbr -a grh   "git reset HEAD"
+    abbr -a ghard "git reset --hard"
     abbr -a gr    "git rebase"
     abbr -a glast "git show HEAD"
 

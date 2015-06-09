@@ -30,6 +30,7 @@
 
     set -x NINJA_PATH (which ninja)
     function ninja
+      goma status | grep "proxy status"
       echo "Invoking wrapped ninja."
       env DYLD_INSERT_LIBRARIES='' $NINJA_PATH $NINJA_SETTINGS $argv
     end

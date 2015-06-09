@@ -26,7 +26,7 @@
 
 ### Building
 
-    set -x NINJA_SETTINGS -j 100 -l 10
+    set -x NINJA_SETTINGS -j 100 -l 75
 
     set -x NINJA_PATH (which ninja)
     function ninja

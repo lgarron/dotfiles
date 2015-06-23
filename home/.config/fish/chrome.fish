@@ -56,7 +56,7 @@
         and chromium-debug $argv
     end
 
-    abbr -a r "chrome-release-build"
+    abbr -a r "chrome-release-build badssl.com"
     abbr -a d "chrome-debug-build"
 
 ## Testing
@@ -65,14 +65,16 @@
 
     function chrome-release-build-unit-tests
       date
-      ninja -C out/Release browser_tests
+      ninja -C out/Release unit_tests
       date
+      ./out/Release/unit_tests $argv
     end
 
     function chrome-release-build-browser-tests
       date
       ninja -C out/Release browser_tests
       date
+      ./out/Release/browser_tests $argv
     end
 
     abbr -a ut="chrome-release-build-unit-tests"

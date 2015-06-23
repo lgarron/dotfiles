@@ -81,3 +81,5 @@
     if [ (hostname) != "Galois" ]
         . $HOME/.config/fish/chrome.fish
     end
+
+source /usr/local/google/home/lgarron/.iterm2_shell_integration.fish

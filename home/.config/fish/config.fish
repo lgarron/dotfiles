@@ -2,13 +2,17 @@
 
 # Path
 
-    # set PATH $HOME/dir $PATH
+    set PATH \
+      $PATH \
+      "$HOME/local/bin/scripts" \
+      "$HOME/local/bin/misc" \
+      "$HOME/local/bin/dance-hacking"
 
 # MOTD
 
     function fish_greeting
 
-      if [ (hostname) = "Galois" ]
+      if [ (hostname) = "Galois" or (hostname) = "Galois.local" ]
         # Based on ANSI Shadow with the shadow removed:
         # http://patorjk.com/software/taag/#p=display&v=1&f=ANSI%20Shadow&t=Galois%0AGALOIS
         echo ""

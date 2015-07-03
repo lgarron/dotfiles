@@ -59,6 +59,8 @@
     abbr -a r "chrome-release-build badssl.com"
     abbr -a d "chrome-debug-build"
 
+    abbr -a rdt "chrome-release-build --remote-debugging-port=9222 --no-first-run --user-data-dir=/tmp/devtools-test-profile http://localhost:9222\#http://localhost:8000/front_end/inspector.html\?experiments=true badssl.com"
+
 ## Testing
 
 ### Chrome Tests

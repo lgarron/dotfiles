@@ -8,11 +8,14 @@
       "$HOME/local/bin/misc" \
       "$HOME/local/bin/dance-hacking"
 
+set GALOIS = Galois Galois.local
+set NOETHER = Noether lgarron-macbookpro
+
 # MOTD
 
     function fish_greeting
 
-      if [ (hostname) = "Galois" or (hostname) = "Galois.local" ]
+      if contains (hostname) $GALOIS
         # Based on ANSI Shadow with the shadow removed:
         # http://patorjk.com/software/taag/#p=display&v=1&f=ANSI%20Shadow&t=Galois%0AGALOIS
         echo ""
@@ -22,9 +25,7 @@
         echo "██    ██   ██   ██   ██        ██    ██   ██        ██ "
         echo " ██████    ██   ██   ███████    ██████    ██   ███████ "
         echo ""
-      end
-
-      if [ (hostname) = "Noether" ]
+      else if contains (hostname) $NOETHER
         # Based on ANSI Shadow with the shadow removed:
         # http://patorjk.com/software/taag/#p=display&v=1&f=ANSI%20Shadow&t=NOETHER
         echo ""
@@ -34,6 +35,8 @@
         echo "██  ██ ██ ██    ██ ██         ██    ██   ██ ██      ██   ██"
         echo "██   ████  ██████  ███████    ██    ██   ██ ███████ ██   ██"
         echo ""
+      else
+        echo "Welcome to "(hostname)
       end
 
     end
@@ -82,7 +85,7 @@
 
     . $HOME/.config/fish/git.fish
 
-    if [ (hostname) != "Galois" ]
+    if not contains (hostname) $GALOIS
         . $HOME/.config/fish/chrome.fish
     end
 

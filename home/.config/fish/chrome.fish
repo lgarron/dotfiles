@@ -1,5 +1,7 @@
 # Chrome
 
+    echo "Loading chrome.fish"
+
 ## Directories
 
     abbr -a src      "$HOME/chromium/src/"

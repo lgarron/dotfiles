@@ -81,8 +81,16 @@
       ./out/Release/browser_tests $argv
     end
 
+    function chrome-release-build-content-browser-tests
+      date
+      ninja -C out/Release content_browsertests
+      date
+      ./out/Release/content_browsertests $argv
+    end
+
     abbr -a ut="chrome-release-build-unit-tests"
     abbr -a bt="chrome-release-build-browser-tests"
+    abbr -a cbt="chrome-release-build-content-browser-tests"
 
 ### Chrome Versions
 

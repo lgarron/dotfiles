@@ -1,0 +1,6 @@
+{
+  'GYP_DEFINES':
+    'use_goma=1 '
+    'fastbuild=1 '
+    'debug_devtools=1 '
+}

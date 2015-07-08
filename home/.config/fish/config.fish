@@ -15,7 +15,7 @@ set NOETHER = Noether lgarron-macbookpro
 
     function fish_greeting
 
-      if contains (hostname) $GALOIS
+      if contains (hostname -s) $GALOIS
         # Based on ANSI Shadow with the shadow removed:
         # http://patorjk.com/software/taag/#p=display&v=1&f=ANSI%20Shadow&t=Galois%0AGALOIS
         echo ""
@@ -25,7 +25,7 @@ set NOETHER = Noether lgarron-macbookpro
         echo "██    ██   ██   ██   ██        ██    ██   ██        ██ "
         echo " ██████    ██   ██   ███████    ██████    ██   ███████ "
         echo ""
-      else if contains (hostname) $NOETHER
+      else if contains (hostname -s) $NOETHER
         # Based on ANSI Shadow with the shadow removed:
         # http://patorjk.com/software/taag/#p=display&v=1&f=ANSI%20Shadow&t=NOETHER
         echo ""
@@ -36,7 +36,7 @@ set NOETHER = Noether lgarron-macbookpro
         echo "██   ████  ██████  ███████    ██    ██   ██ ███████ ██   ██"
         echo ""
       else
-        echo "Welcome to "(hostname)
+        echo "Welcome to "(hostname -s)
       end
 
     end
@@ -85,7 +85,7 @@ set NOETHER = Noether lgarron-macbookpro
 
     . $HOME/.config/fish/git.fish
 
-    if not contains (hostname) $GALOIS
+    if not contains (hostname -s) $GALOIS
         . $HOME/.config/fish/chrome.fish
     end
 

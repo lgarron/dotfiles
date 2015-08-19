@@ -66,7 +66,12 @@ set NOETHER = Noether lgarron-macbookpro
 
 
     # abbr -a t "tee >(pbcopy)"
-    abbr -a t "cat > /tmp/pbcopy.txt; and cat /tmp/pbcopy.txt ; and cat /tmp/pbcopy.txt | pbcopy; and rm /tmp/pbcopy.txt"
+    function t
+        cat > /tmp/pbcopy.txt
+        cat /tmp/pbcopy.txt 
+        cat /tmp/pbcopy.txt | pbcopy
+        rm /tmp/pbcopy.txt
+    end
 
     function o
         if [ (count $argv) = 0 ]

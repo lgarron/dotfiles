@@ -26,6 +26,8 @@
     abbr -a gp    "git push"
     abbr -a pr    "git fetch origin pull/ID/head:newBranchName"
 
+    abbr -a ghash "git rev-parse HEAD"
+
     set -x GITX_PATH (which gitx)
     function gitx
       echo "Invoking wrapped gitx."

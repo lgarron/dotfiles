@@ -85,6 +85,8 @@ set NOETHER = Noether lgarron-macbookpro
 
     export DYLD_INSERT_LIBRARIES="$HOME/local/dylib/libstderred.dylib"
 
+    abbr -a serve "python -m SimpleHTTPServer"
+
 
 # Includes
 

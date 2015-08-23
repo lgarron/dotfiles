@@ -87,6 +87,9 @@ set NOETHER = Noether lgarron-macbookpro
 
     abbr -a serve "python -m SimpleHTTPServer"
 
+    # Technically a private API token, but not critically secret.
+    set -x "ECHO_NEST_API_KEY" "EJ7ZVMPNXWVFXS1KE"
+
 
 # Includes
 

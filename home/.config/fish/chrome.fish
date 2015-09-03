@@ -38,10 +38,18 @@
     end
 
     function chromium-release
-      "./out/Release/Chromium.app/Contents/MacOS/Chromium" --enable-logging=stderr $argv
+      if test -e "./out/Release/Chromium.app/Contents/MacOS/Chromium"
+        "./out/Release/Chromium.app/Contents/MacOS/Chromium" --enable-logging=stderr $argv
+      else if test -e "./out/Release/chrome"
+        "./out/Release/chrome" --enable-logging=stderr $argv
+      end
     end
     function chromium-debug
-      "./out/Debug/Chromium.app/Contents/MacOS/Chromium" --enable-logging=stderr $argv
+      if test -e "./out/Debug/Chromium.app/Contents/MacOS/Chromium"
+        "./out/Debug/Chromium.app/Contents/MacOS/Chromium" --enable-logging=stderr $argv
+      else if test -e "./out/Debug/chrome"
+        "./out/Debug/chrome" --enable-logging=stderr $argv
+      end
     end
 
     function chrome-release-build
@@ -105,6 +113,10 @@
     end
     function chrome-canary
       "/Applications/Google Chrome Canary.app/Contents/MacOS/Google Chrome Canary" $argv
+    end
+
+    if test -e "/Users/lgarron/Google Drive/Graphics/Chrome OSX Icons/set-chrome-icons.sh"
+      "/Users/lgarron/Google Drive/Graphics/Chrome OSX Icons/set-chrome-icons.sh" &
     end
 
 #### Abbreviations

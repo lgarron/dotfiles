@@ -20,11 +20,16 @@
       ~/goma/goma_ctl.py $argv
     end
 
-    abbr -a goma-start "goma ensure_start"
+    set GOMA_START_COMMAND "goma ensure_start"
+    set GYP_COMMAND "env GYP_GENERATORS=ninja ./build/gyp_chromium -D use_goma=1"
+
+    abbr -a goma-start "$GOMA_START_COMMAND"
     abbr -a goma-page  "pen http://localhost:8088/"
     abbr -a goma-check "goma status | grep \"proxy status\""
     abbr -a goma-setup "env GYP_GENERATORS=ninja ./build/gyp_chromium -D use_goma=1"
-    abbr -a gyp "env GYP_GENERATORS=ninja ./build/gyp_chromium -D use_goma=1"
+    abbr -a gyp "$GYP_COMMAND"
+
+    abbr -a gggg "$GOMA_START_COMMAND ; git pull ; gclient sync ; $GYP_COMMAND"
 
 ### Building
 

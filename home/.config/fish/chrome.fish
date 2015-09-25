@@ -42,14 +42,14 @@
       env DYLD_INSERT_LIBRARIES='' $NINJA_PATH $NINJA_SETTINGS $argv
     end
 
-    function chromium-release
+    function chromium-release-run
       if test -e "./out/Release/Chromium.app/Contents/MacOS/Chromium"
         "./out/Release/Chromium.app/Contents/MacOS/Chromium" --enable-logging=stderr $argv
       else if test -e "./out/Release/chrome"
         "./out/Release/chrome" --enable-logging=stderr $argv
       end
     end
-    function chromium-debug
+    function chromium-debug-run
       if test -e "./out/Debug/Chromium.app/Contents/MacOS/Chromium"
         "./out/Debug/Chromium.app/Contents/MacOS/Chromium" --enable-logging=stderr $argv
       else if test -e "./out/Debug/chrome"
@@ -57,22 +57,22 @@
       end
     end
 
-    function chrome-release-build
+    function chrome-release
         date
         ninja -C out/Release chrome
         and date
-        and chromium-release $argv
+        and chromium-release-run $argv
     end
 
-    function chrome-debug-build
+    function chrome-debug
         date
         ninja -C out/Debug chrome
         and date
-        and chromium-debug $argv
+        and chromium-debug-run $argv
     end
 
-    abbr -a r "chrome-release-build badssl.com"
-    abbr -a d "chrome-debug-build"
+    abbr -a r "chrome-release badssl.com"
+    abbr -a d "chrome-debug"
 
     abbr -a rdt "chrome-release-build --remote-debugging-port=9222 --no-first-run --user-data-dir=/tmp/devtools-test-profile http://localhost:9222\#http://localhost:8000/front_end/inspector.html\?experiments=true badssl.com"
 

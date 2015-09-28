@@ -31,6 +31,33 @@
 
     abbr -a gggg "$GOMA_START_COMMAND ; git pull ; gclient sync ; $GYP_COMMAND"
 
+
+### XCode Selection
+
+    function xcode6
+      if [ (uname) = Darwin ]
+        set xcode_path (xcode-select -p)
+        if [ "$xcode_path" != "/Applications/Xcode.app/Contents/Developer" ]
+          echo "Selecting XCode 6"
+          sudo xcode-select -s "/Applications/Xcode.app/Contents/Developer"
+        end
+      else
+        echo "Skipping XCode version selection."
+      end
+    end
+
+    function xcode7
+      if [ (uname) = Darwin ]
+        set xcode_path (xcode-select -p)
+        if [ "$xcode_path" != "/Applications/Xcode7.app/Contents/Developer" ]
+          echo "Selecting XCode 7"
+          sudo xcode-select -s "/Applications/Xcode7.app/Contents/Developer"
+        end
+      else
+        echo "Skipping XCode version selection."
+      end
+    end
+
 ### Building
 
     set -x NINJA_SETTINGS -j 100 -l 75
@@ -58,6 +85,7 @@
     end
 
     function chrome-release
+        xcode6
         date
         ninja -C out/Release chrome
         and date
@@ -65,6 +93,7 @@
     end
 
     function chrome-debug
+        xcode6
         date
         ninja -C out/Debug chrome
         and date
@@ -75,6 +104,16 @@
     abbr -a d "chrome-debug"
 
     abbr -a rdt "chrome-release-build --remote-debugging-port=9222 --no-first-run --user-data-dir=/tmp/devtools-test-profile http://localhost:9222\#http://localhost:8000/front_end/inspector.html\?experiments=true badssl.com"
+
+## iOS
+
+    function ios-debug-build
+        xcode7
+        date
+        ninja -C out/Debug-iphonesimulator chrome
+    end
+
+    abbr -a i "ios-debug-build"
 
 ## Testing
 

@@ -69,14 +69,14 @@
       env DYLD_INSERT_LIBRARIES='' $NINJA_PATH $NINJA_SETTINGS $argv
     end
 
-    function chromium-release-run
+    function chrome-release-run
       if test -e "./out/Release/Chromium.app/Contents/MacOS/Chromium"
         "./out/Release/Chromium.app/Contents/MacOS/Chromium" --enable-logging=stderr $argv
       else if test -e "./out/Release/chrome"
         "./out/Release/chrome" --enable-logging=stderr $argv
       end
     end
-    function chromium-debug-run
+    function chrome-debug-run
       if test -e "./out/Debug/Chromium.app/Contents/MacOS/Chromium"
         "./out/Debug/Chromium.app/Contents/MacOS/Chromium" --enable-logging=stderr $argv
       else if test -e "./out/Debug/chrome"
@@ -87,17 +87,17 @@
     function chrome-release
         xcode6
         date
-        ninja -C out/Release chrome
-        and date
-        and chromium-release-run $argv
+        ninja -C out/Release chrome; \
+          and date; \
+          and chrome-release-run $argv
     end
 
     function chrome-debug
         xcode6
         date
-        ninja -C out/Debug chrome
-        and date
-        and chromium-debug-run $argv
+        ninja -C out/Debug chrome; \
+          and date; \
+          and chrome-debug-run $argv
     end
 
     abbr -a r "chrome-release badssl.com"

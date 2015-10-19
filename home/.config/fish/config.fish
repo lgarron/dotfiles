@@ -104,4 +104,6 @@ set NOETHER = Noether lgarron-macbookpro
         . $HOME/.config/fish/chrome.fish
     end
 
-    source "$HOME/.iterm2_shell_integration.fish"
+    if not functions -q iterm_fish_prompt
+        source "$HOME/.iterm2_shell_integration.fish"
+    end

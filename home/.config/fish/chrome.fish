@@ -144,6 +144,8 @@
     abbr -a bt="chrome-release-build-browser-tests"
     abbr -a cbt="chrome-release-build-content-browser-tests"
 
+    abbr -a pre="git cl presubmit --upload --force"
+
 ### Chrome Versions
 
     function chrome-stable

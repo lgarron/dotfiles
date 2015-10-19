@@ -110,7 +110,8 @@
     function ios-debug-build
         xcode7
         date
-        ninja -C out/Debug-iphonesimulator chrome
+        ninja -C out/Debug-iphonesimulator chrome; \
+          and ./out/Debug-iphonesimulator/iossim out/Debug-iphonesimulator/Chromium.app/
     end
 
     abbr -a i "ios-debug-build"

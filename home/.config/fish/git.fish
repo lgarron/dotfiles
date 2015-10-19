@@ -18,6 +18,8 @@
     abbr -a gcp   "git cherry-pick"
     abbr -a gdno  "git diff --name-only"
 
+    abbr -a gcfd  "git clean --force -d"
+
     abbr -a grh   "git reset HEAD"
     abbr -a ghard "git reset --hard"
     abbr -a gr    "git rebase"

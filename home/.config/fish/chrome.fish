@@ -121,16 +121,16 @@
 
     function chrome-release-build-unit-tests
       date
-      ninja -C out/Release unit_tests
-      date
-      ./out/Release/unit_tests $argv
+      ninja -C out/Release unit_tests; \
+        and date; \
+        and ./out/Release/unit_tests $argv
     end
 
     function chrome-release-build-browser-tests
       date
-      ninja -C out/Release browser_tests
-      date
-      ./out/Release/browser_tests $argv
+      ninja -C out/Release browser_tests; \
+        and date; \
+        and ./out/Release/browser_tests $argv
     end
 
     function chrome-release-build-content-browser-tests

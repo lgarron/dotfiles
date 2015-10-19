@@ -32,32 +32,6 @@
     abbr -a gggg "$GOMA_START_COMMAND ; git pull ; gclient sync ; $GYP_COMMAND"
 
 
-### XCode Selection
-
-    function xcode6
-      if [ (uname) = Darwin ]
-        set xcode_path (xcode-select -p)
-        if [ "$xcode_path" != "/Applications/Xcode.app/Contents/Developer" ]
-          echo "Selecting XCode 6"
-          sudo xcode-select -s "/Applications/Xcode.app/Contents/Developer"
-        end
-      else
-        echo "Skipping XCode version selection."
-      end
-    end
-
-    function xcode7
-      if [ (uname) = Darwin ]
-        set xcode_path (xcode-select -p)
-        if [ "$xcode_path" != "/Applications/Xcode7.app/Contents/Developer" ]
-          echo "Selecting XCode 7"
-          sudo xcode-select -s "/Applications/Xcode7.app/Contents/Developer"
-        end
-      else
-        echo "Skipping XCode version selection."
-      end
-    end
-
 ### Building
 
     set -x NINJA_SETTINGS -j 100 -l 75
@@ -85,7 +59,6 @@
     end
 
     function chrome-release
-        xcode6
         date
         ninja -C out/Release chrome; \
           and date; \
@@ -93,7 +66,6 @@
     end
 
     function chrome-debug
-        xcode6
         date
         ninja -C out/Debug chrome; \
           and date; \
@@ -108,7 +80,6 @@
 ## iOS
 
     function ios-debug-build
-        xcode7
         date
         ninja -C out/Debug-iphonesimulator chrome; \
           and ./out/Debug-iphonesimulator/iossim out/Debug-iphonesimulator/Chromium.app/
@@ -182,7 +153,7 @@
       chrome-beta --user-data-dir=/tmp/(date "+%Y-%m-%d | %H-%M-%S") $argv
     end
     function dev-temp
-      chrome-dev --user-data-dir=/tmp/(date "+%Y-%m-%d | %H-%M-%S") $argv
+      chrome-dev --user-data-dir=/tjmp/(date "+%Y-%m-%d | %H-%M-%S") $argv
     end
     function canary-temp
       chrome-canary --user-data-dir=/tmp/(date "+%Y-%m-%d | %H-%M-%S") $argv

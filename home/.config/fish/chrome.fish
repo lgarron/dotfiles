@@ -147,16 +147,22 @@
 ### Temp Profiles
 
     function stable-temp
-      chrome-stable --user-data-dir=/tmp/(date "+%Y-%m-%d | %H-%M-%S") $argv
+      set TEMP_FOLDER /tmp/(date "+Chrome Stable Temp Profile | %Y-%m-%d | %H-%M-%S")
+      echo chrome-stable "--user-data-dir=\"$TEMP_FOLDER\"" $argv
+      chrome-stable --user-data-dir="$TEMP_FOLDER" $argv
     end
     function beta-temp
-      chrome-beta --user-data-dir=/tmp/(date "+%Y-%m-%d | %H-%M-%S") $argv
+      set TEMP_FOLDER /tmp/(date "+Chrome Beta Temp Profile | %Y-%m-%d | %H-%M-%S")
+      echo chrome-beta "--user-data-dir=\"$TEMP_FOLDER\"" $argv
+      chrome-beta --user-data-dir="$TEMP_FOLDER" $argv
     end
     function dev-temp
-      chrome-dev --user-data-dir=/tjmp/(date "+%Y-%m-%d | %H-%M-%S") $argv
+      chrome-dev --user-data-dir=/tjmp/(date "+Chrome Dev Temp Profile | %Y-%m-%d | %H-%M-%S") $argv
     end
     function canary-temp
-      chrome-canary --user-data-dir=/tmp/(date "+%Y-%m-%d | %H-%M-%S") $argv
+      set TEMP_FOLDER /tmp/(date "+Chrome Canary Temp Profile | %Y-%m-%d | %H-%M-%S")
+      echo chrome-canary "--user-data-dir=\"$TEMP_FOLDER\"" $argv
+      chrome-canary --user-data-dir="$TEMP_FOLDER" $argv
     end
 
 ### "GitHub"

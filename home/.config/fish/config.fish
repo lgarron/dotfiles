@@ -46,6 +46,7 @@ set NOETHER = Noether lgarron-macbookpro
 ## Shell
 
     abbr -a rc ". $HOME/.config/fish/config.fish"
+    abbr -a unset "set -e"
 
 ### Editors
 

@@ -1,6 +1,6 @@
 # Chrome
 
-    echo "Loading chrome.fish"
+    echo "[lgarron/dotfiles] Loading chrome.fish"
 
 ## Directories
 

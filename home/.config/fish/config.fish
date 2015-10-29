@@ -97,6 +97,15 @@ set NOETHER = Noether lgarron-macbookpro
     abbr -a "sha512" "openssl dgst -sha512"
 
 
+## Web
+
+    function https
+        http --default-scheme https $argv
+    end
+
+    abbr -a "hs" "https -ph"
+
+
 # Includes
 
     . $HOME/.config/fish/git.fish

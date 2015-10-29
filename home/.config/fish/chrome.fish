@@ -29,7 +29,7 @@
     abbr -a goma-setup "env GYP_GENERATORS=ninja ./build/gyp_chromium -D use_goma=1"
     abbr -a gyp "$GYP_COMMAND"
 
-    abbr -a gggg "$GOMA_START_COMMAND ; git pull ; gclient sync ; $GYP_COMMAND"
+    abbr -a gggg "$GOMA_START_COMMAND ; git pull origin master ; gclient sync ; $GYP_COMMAND"
 
 
 ### Building

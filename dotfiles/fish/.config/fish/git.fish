@@ -28,6 +28,9 @@
     abbr -a gp    "git push"
     abbr -a pr    "git fetch origin pull/ID/head:newBranchName"
 
+    # "git push branch" to a remote that doesn't know about the branch yet.
+    abbr -a gpb   "git push -u origin (git rev-parse --abbrev-ref HEAD)"
+
     abbr -a ghash "git rev-parse HEAD"
 
     set -x GITX_PATH (which gitx)

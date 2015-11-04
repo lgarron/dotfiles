@@ -44,6 +44,7 @@
     end
 
     function chrome-release-run
+      cd (git rev-parse --show-toplevel)
       if test -e "./out/Release/Chromium.app/Contents/MacOS/Chromium"
         "./out/Release/Chromium.app/Contents/MacOS/Chromium" --enable-logging=stderr $argv
       else if test -e "./out/Release/chrome"
@@ -51,6 +52,7 @@
       end
     end
     function chrome-debug-run
+      cd (git rev-parse --show-toplevel)
       if test -e "./out/Debug/Chromium.app/Contents/MacOS/Chromium"
         "./out/Debug/Chromium.app/Contents/MacOS/Chromium" --enable-logging=stderr $argv
       else if test -e "./out/Debug/chrome"
@@ -59,6 +61,7 @@
     end
 
     function chrome-release
+      cd (git rev-parse --show-toplevel)
         date
         ninja -C out/Release chrome; \
           and date; \
@@ -66,6 +69,7 @@
     end
 
     function chrome-debug
+      cd (git rev-parse --show-toplevel)
         date
         ninja -C out/Debug chrome; \
           and date; \
@@ -80,6 +84,7 @@
 ## iOS
 
     function ios-debug-build
+      cd (git rev-parse --show-toplevel)
         date
         ninja -C out/Debug-iphonesimulator chrome; \
           and ./out/Debug-iphonesimulator/iossim out/Debug-iphonesimulator/Chromium.app/
@@ -92,6 +97,7 @@
 ### Chrome Tests
 
     function chrome-release-build-unit-tests
+      cd (git rev-parse --show-toplevel)
       date
       ninja -C out/Release unit_tests; \
         and date; \
@@ -99,6 +105,7 @@
     end
 
     function chrome-release-build-browser-tests
+      cd (git rev-parse --show-toplevel)
       date
       ninja -C out/Release browser_tests; \
         and date; \
@@ -106,6 +113,7 @@
     end
 
     function chrome-release-build-content-browser-tests
+      cd (git rev-parse --show-toplevel)
       date
       ninja -C out/Release content_browsertests
       date

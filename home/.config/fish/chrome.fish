@@ -175,7 +175,7 @@
       chrome-beta --user-data-dir="$TEMP_FOLDER" $argv
     end
     function dev-temp
-      chrome-dev --user-data-dir=/tjmp/(date "+Chrome Dev Temp Profile | %Y-%m-%d | %H-%M-%S") $argv
+      chrome-dev --user-data-dir=/tmp/(date "+Chrome Dev Temp Profile | %Y-%m-%d | %H-%M-%S") $argv
     end
     function canary-temp
       set TEMP_FOLDER /tmp/(date "+Chrome Canary Temp Profile | %Y-%m-%d | %H-%M-%S")

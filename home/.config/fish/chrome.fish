@@ -120,9 +120,19 @@
       ./out/Release/content_browsertests $argv
     end
 
+    # Webkit Tests and Layout Tests
+    function chrome-release-build-webkit-tests
+      cd (git rev-parse --show-toplevel)
+      date
+      ninja -C out/Release content_shell
+      date
+      python third_party/WebKit/Tools/Scripts/run-webkit-tests $argv
+    end
+
     abbr -a ut="chrome-release-build-unit-tests"
     abbr -a bt="chrome-release-build-browser-tests"
     abbr -a cbt="chrome-release-build-content-browser-tests"
+    abbr -a layout="chrome-release-build-webkit-tests"
 
     abbr -a pre="git cl presubmit --upload --force"
 

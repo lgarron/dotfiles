@@ -62,18 +62,18 @@
 
     function chrome-release
       cd (git rev-parse --show-toplevel)
-        date
-        ninja -C out/Release chrome; \
-          and date; \
-          and chrome-release-run $argv
+      date
+      ninja -C out/Release chrome; \
+        and date; \
+        and chrome-release-run $argv
     end
 
     function chrome-debug
       cd (git rev-parse --show-toplevel)
-        date
-        ninja -C out/Debug chrome; \
-          and date; \
-          and chrome-debug-run $argv
+      date
+      ninja -C out/Debug chrome; \
+        and date; \
+        and chrome-debug-run $argv
     end
 
     abbr -a r "chrome-release badssl.com"
@@ -85,9 +85,9 @@
 
     function ios-debug-build
       cd (git rev-parse --show-toplevel)
-        date
-        ninja -C out/Debug-iphonesimulator chrome; \
-          and ./out/Debug-iphonesimulator/iossim out/Debug-iphonesimulator/Chromium.app/
+      date
+      ninja -C out/Debug-iphonesimulator chrome; \
+        and ./out/Debug-iphonesimulator/iossim out/Debug-iphonesimulator/Chromium.app/
     end
 
     abbr -a i "ios-debug-build"
@@ -115,18 +115,18 @@
     function chrome-release-build-content-browser-tests
       cd (git rev-parse --show-toplevel)
       date
-      ninja -C out/Release content_browsertests
-      date
-      ./out/Release/content_browsertests $argv
+      ninja -C out/Release content_browsertests; /
+        and date; /
+        and ./out/Release/content_browsertests $argv
     end
 
     # Webkit Tests and Layout Tests
     function chrome-release-build-webkit-tests
       cd (git rev-parse --show-toplevel)
       date
-      ninja -C out/Release content_shell
-      date
-      python third_party/WebKit/Tools/Scripts/run-webkit-tests $argv
+      ninja -C out/Release content_shell; \
+        and date; \
+        and python third_party/WebKit/Tools/Scripts/run-webkit-tests $argv
     end
 
     abbr -a ut="chrome-release-build-unit-tests"

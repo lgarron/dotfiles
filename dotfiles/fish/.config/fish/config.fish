@@ -18,7 +18,6 @@ set NOETHER = Noether lgarron-macbookpro
       if contains (hostname -s) $GALOIS
         # Based on ANSI Shadow with the shadow removed:
         # http://patorjk.com/software/taag/#p=display&v=1&f=ANSI%20Shadow&t=Galois%0AGALOIS
-        echo ""
         echo " ██████     █████    ██         ██████    ██   ███████ "
         echo "██         ██   ██   ██        ██    ██   ██   ██      "
         echo "██   ███   ███████   ██        ██    ██   ██   ███████ "
@@ -28,7 +27,6 @@ set NOETHER = Noether lgarron-macbookpro
       else if contains (hostname -s) $NOETHER
         # Based on ANSI Shadow with the shadow removed:
         # http://patorjk.com/software/taag/#p=display&v=1&f=ANSI%20Shadow&t=NOETHER
-        echo ""
         echo "███    ██  ██████  ███████ ████████ ██   ██ ███████ ██████ "
         echo "████   ██ ██    ██ ██         ██    ██   ██ ██      ██   ██"
         echo "██ ██  ██ ██    ██ █████      ██    ███████ █████   ██████ "

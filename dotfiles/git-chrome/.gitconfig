@@ -1,0 +1,33 @@
+[user]
+	name = Lucas Garron
+	email = lgarron@chromium.org
+	signingkey = 3880CAE7
+[core]
+	excludesfile = /Users/lgarron/.gitignore
+	autocrlf = false
+	filemode = false
+[diff]
+[color]
+	ui = true
+[credential]
+	helper = osxkeychain
+[push]
+	default = upstream
+[github]
+	user = lgarron
+[branch]
+	autosetuprebase = always
+[http]
+	cookiefile = /Users/lgarron/.gitcookies
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /opt/homebrew-cask/Caskroom/sourcetree/2.0.5.2/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true
+[google]
+	lastUpdateCheck = 20150918000000
+[filter "lfs"]
+	clean = git-lfs clean %f
+	smudge = git-lfs smudge %f
+	required = true

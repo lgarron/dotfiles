@@ -110,7 +110,7 @@ set NOETHER = Noether lgarron-macbookpro
 
     . $HOME/.config/fish/git.fish
 
-    if not contains (hostname -s) $GALOIS
+    if test -f $HOME/.config/fish/chrome.fish
         . $HOME/.config/fish/chrome.fish
     end
 

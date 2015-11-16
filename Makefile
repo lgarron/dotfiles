@@ -4,7 +4,7 @@ all:
 ########
 
 .PHONY: noether
-noether: chrome fish git-chrome gce-ssh osx 
+noether: chrome fish git-chrome gce-ssh osx
 
 .PHONY: galois
 galois: fish git-lgarron osx osx-languages

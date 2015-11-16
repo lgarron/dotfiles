@@ -113,5 +113,10 @@ set NOETHER = Noether lgarron-macbookpro
     end
 
     if not functions -q iterm_fish_prompt
-        source "$HOME/.iterm2_shell_integration.fish"
+        if [ $SSH_TTY ]
+            source "$HOME/.iterm2_shell_integration.fish"
+            function subl
+                rmate $argv
+            end
+        end
     end

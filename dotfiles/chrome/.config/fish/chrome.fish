@@ -155,33 +155,33 @@
       "/Users/lgarron/Google Drive/Graphics/Chrome OSX Icons/set-chrome-icons.sh" &
     end
 
-#### Abbreviations
-
-    abbr -a stable chrome-stable
-    abbr -a beta chrome-beta
-    abbr -a dev chrome-dev
-    abbr -a canary chrome-canary
-
 ### Temp Profiles
 
-    function stable-temp
+    function chrome-stable-temp
       set TEMP_FOLDER /tmp/(date "+Chrome Stable Temp Profile | %Y-%m-%d | %H-%M-%S")
       echo chrome-stable "--user-data-dir=\"$TEMP_FOLDER\"" $argv
       chrome-stable --user-data-dir="$TEMP_FOLDER" $argv
     end
-    function beta-temp
+    function chrome-beta-temp
       set TEMP_FOLDER /tmp/(date "+Chrome Beta Temp Profile | %Y-%m-%d | %H-%M-%S")
       echo chrome-beta "--user-data-dir=\"$TEMP_FOLDER\"" $argv
       chrome-beta --user-data-dir="$TEMP_FOLDER" $argv
     end
-    function dev-temp
+    function chrome-dev-temp
       chrome-dev --user-data-dir=/tmp/(date "+Chrome Dev Temp Profile | %Y-%m-%d | %H-%M-%S") $argv
     end
-    function canary-temp
+    function chrome-canary-temp
       set TEMP_FOLDER /tmp/(date "+Chrome Canary Temp Profile | %Y-%m-%d | %H-%M-%S")
       echo chrome-canary "--user-data-dir=\"$TEMP_FOLDER\"" $argv
       chrome-canary --user-data-dir="$TEMP_FOLDER" $argv
     end
+
+#### Abbreviations
+
+    abbr -a stable chrome-stable-temp
+    abbr -a beta chrome-beta-temp
+    abbr -a dev chrome-dev-temp
+    abbr -a canary chrome-canary-temp
 
 ### "GitHub"
 

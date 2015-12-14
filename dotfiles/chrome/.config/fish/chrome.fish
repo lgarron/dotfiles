@@ -36,6 +36,10 @@
 
     set -x NINJA_SETTINGS -j 100 -l 75
 
+    # Linux sandbox
+    set -x CHROME_DEVEL_SANDBOX /usr/local/sbin/chrome-devel-sandbox
+    abbr -a sandbox "env BUILDTYPE=Release ./build/update-linux-sandbox.sh"
+
     set -x NINJA_PATH (which ninja)
     function ninja
       goma status | grep "proxy status"

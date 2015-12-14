@@ -23,7 +23,8 @@
     abbr -a grh   "git reset HEAD"
     abbr -a ghard "git reset --hard"
     abbr -a gr    "git rebase"
-    abbr -a glast "git show HEAD"
+    abbr -a glast "echo \"Use `gsh`\""
+    abbr -a gsh   "git show HEAD"
 
     abbr -a gp    "git push"
     abbr -a pr    "git fetch origin pull/ID/head:newBranchName"

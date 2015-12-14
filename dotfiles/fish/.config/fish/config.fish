@@ -118,5 +118,6 @@ set NOETHER = Noether lgarron-macbookpro
             function subl
                 rmate $argv
             end
+            set -x "DISPLAY" ":20"
         end
     end

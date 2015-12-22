@@ -21,7 +21,7 @@
     end
 
     set GOMA_START_COMMAND "goma ensure_start"
-    set GYP_COMMAND "env GYP_GENERATORS=ninja ./build/gyp_chromium -D use_goma=1"
+    set GYP_COMMAND "env GYP_GENERATORS=ninja ./build/gyp_chromium"
 
     abbr -a goma-start "$GOMA_START_COMMAND"
     abbr -a goma-page  "pen http://localhost:8088/"

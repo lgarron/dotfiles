@@ -67,7 +67,7 @@ set NOETHER = Noether lgarron-macbookpro
     # abbr -a t "tee >(pbcopy)"
     function t
         cat > /tmp/pbcopy.txt
-        cat /tmp/pbcopy.txt 
+        cat /tmp/pbcopy.txt
         cat /tmp/pbcopy.txt | pbcopy
         rm /tmp/pbcopy.txt
     end

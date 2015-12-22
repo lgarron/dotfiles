@@ -10,6 +10,6 @@
 [credential]
 	helper = osxkeychain
 [push]
-	default = upstream
+	default = simple
 [github]
 	user = lgarron

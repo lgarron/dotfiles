@@ -48,7 +48,7 @@ set NOETHER = Noether lgarron-macbookpro
 
 ### Editors
 
-    export EDITOR="subl -w"
+    set -x "EDITOR" "subl -w"
     abbr -a s "subl"
 
 ## Search
@@ -119,6 +119,7 @@ set NOETHER = Noether lgarron-macbookpro
             function subl
                 rmate $argv
             end
+            set -x "EDITOR" "rmate"
             set -x "DISPLAY" ":20"
         end
     end

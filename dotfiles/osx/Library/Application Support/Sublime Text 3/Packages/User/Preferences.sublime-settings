@@ -10,9 +10,9 @@
 	"ignored_packages":
 	[
 		"Markdown",
-		"Vintage",
+		"MarkdownEditing",
 		"Python Flake8 Lint",
-		"MarkdownEditing"
+		"Vintage"
 	],
 	"open_files_in_new_window": false,
 	"overlay_scroll_bars": "enabled",

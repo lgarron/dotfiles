@@ -1,5 +1,7 @@
 # `config.fish`
 
+    echo -n "."
+
 # Path
 
     set PATH \
@@ -128,3 +130,5 @@ set NOETHER = Noether lgarron-macbookpro
             set -x "DISPLAY" ":20"
         end
     end
+
+    echo -ne "\r"

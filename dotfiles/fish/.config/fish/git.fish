@@ -1,7 +1,5 @@
 ## Git
 
-    echo -n "."
-
     abbr -a gs    "git status"
     abbr -a gl    "git log"
     abbr -a glp   "git log --oneline --decorate=full --graph --remotes" # git log pretty, from http://www.xerxesb.com/2010/command-line-replacement-for-gitk/

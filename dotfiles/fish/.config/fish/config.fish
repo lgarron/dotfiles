@@ -1,6 +1,6 @@
 # `config.fish`
 
-    echo -n "."
+    echo -n "." # Loading indicator
 
 # Path
 
@@ -114,9 +114,12 @@ set NOETHER = Noether lgarron-macbookpro
 
 # Includes
 
+
+    echo -n "." # Loading indicator
     . $HOME/.config/fish/git.fish
 
     if test -f $HOME/.config/fish/chrome.fish
+        echo -n "." # Loading indicator
         . $HOME/.config/fish/chrome.fish
     end
 
@@ -131,4 +134,4 @@ set NOETHER = Noether lgarron-macbookpro
         end
     end
 
-    echo -ne "\r"
+    echo -ne "\r" # Clear loading indicators.

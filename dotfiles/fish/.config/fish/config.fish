@@ -103,6 +103,11 @@ set NOETHER = Noether lgarron-macbookpro
 
     set -x "DANCE_HACKING_MUSIC_FOLDER" "$HOME/lgarron/Temporary/Music/"
 
+    if contains (hostname -s) $NOETHER
+        set -x "GOPATH" "$HOME/Code/gopath"
+        set -x PATH $PATH "$HOME/Code/go_appengine"
+    end
+
 ## Web
 
     function https

@@ -200,11 +200,10 @@
     function switch-chrome-user
       set -x USER $argv[1]
       osascript -e '
-        tell application "System Events"
-          tell process "Google Chrome"
-            click menu item "'"$USER"'" of menu "People" of menu bar 1
-        end tell
-      end tell'
+        tell application "Google Chrome Dev" to activate
+        tell application "System Events" to tell process "Google Chrome"
+          click menu item "'"$USER"'" of menu "People" of menu bar item "People" of menu bar 1
+        end tell'
     end
 
     abbr -r gx

@@ -206,7 +206,7 @@
         end tell'
     end
 
-    abbr -r gx
+    abbr -e gx
     function gx
       if git remote -v | grep chromium.googlesource.com > /dev/null
         echo "Invoking wrapped (+ truncated history) gitx."

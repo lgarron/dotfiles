@@ -188,12 +188,50 @@
       chrome-canary --user-data-dir="$TEMP_FOLDER" $argv
     end
 
+## Old Chromes
+
+    function old-chrome
+      set CHROME_VERSION "$argv[1]"
+
+      if [ (count $argv) -gt 1 ]
+        set argv $argv[2..-1]
+      else
+        set -e argv
+      end
+      set OLD_CHROME_PATH "/Applications/Google Chrome Old Versions/Google Chrome $CHROME_VERSION.app/Contents/MacOS/Google Chrome"
+
+      if not test -e $OLD_CHROME_PATH
+        echo "Chrome version not available: $CHROME_VERSION"
+        return 1
+      end
+
+      set EXPECTED_MAJOR_VERSION (echo "Google Chrome $CHROME_VERSION")
+      set ACTUAL_MAJOR_VERSION (eval "\"$OLD_CHROME_PATH\"" --version | awk -F. '{$0=$1}1')
+
+      if [ "$EXPECTED_MAJOR_VERSION" != "$ACTUAL_MAJOR_VERSION" ]
+        echo "Chrome binary does not match expected version."
+        echo "Expected: $EXPECTED_MAJOR_VERSION"
+        echo "Actual: $ACTUAL_MAJOR_VERSION"
+        return 2
+      end
+
+      echo "$OLD_CHROME_PATH" $argv
+      eval "\"$OLD_CHROME_PATH\"" $argv
+    end
+
+    function old-chrome-temp
+      set TEMP_FOLDER /tmp/(date "+Chrome Canary Temp Profile | %Y-%m-%d | %H-%M-%S")
+      old-chrome $argv --user-data-dir="\"$TEMP_FOLDER\""
+    end
+
 #### Abbreviations
 
     abbr -a stable chrome-stable-temp
     abbr -a beta chrome-beta-temp
     abbr -a dev chrome-dev-temp
     abbr -a canary chrome-canary-temp
+
+    abbr -a old old-chrome-temp
 
     function ksadmin
       env DYLD_INSERT_LIBRARIES='' "/Library/Google/GoogleSoftwareUpdate/GoogleSoftwareUpdate.bundle/Contents/MacOS/ksadmin" $argv

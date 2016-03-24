@@ -105,7 +105,11 @@ set NOETHER = Noether lgarron-macbookpro
 
     if contains (hostname -s) $NOETHER
         set -x "GOPATH" "$HOME/Code/gopath"
-        set -x PATH $PATH "$HOME/Code/go_appengine"
+        set -x PATH \
+            $PATH \
+            "$HOME/Code/gopath/bin/" \
+            "/Users/lgarron/Code/go_appengine/" \
+            "$HOME/Code/google-cloud-sdk/bin/"
     end
 
 ## Web

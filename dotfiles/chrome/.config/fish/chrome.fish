@@ -195,6 +195,10 @@
     abbr -a dev chrome-dev-temp
     abbr -a canary chrome-canary-temp
 
+    function ksadmin
+      env DYLD_INSERT_LIBRARIES='' "/Library/Google/GoogleSoftwareUpdate/GoogleSoftwareUpdate.bundle/Contents/MacOS/ksadmin" $argv
+    end
+
 ### "GitHub"
 
     function switch-chrome-user

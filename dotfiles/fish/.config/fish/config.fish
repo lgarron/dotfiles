@@ -103,6 +103,12 @@ set NOETHER = Noether lgarron-macbookpro
 
     set -x "DANCE_HACKING_MUSIC_FOLDER" "$HOME/lgarron/Temporary/Music/"
 
+    set -x AEDEPLOY_PATH (which aedeploy)
+    function aedeploy
+      echo "Invoking wrapped aedeploy."
+      env DYLD_INSERT_LIBRARIES='' $AEDEPLOY_PATH $argv
+    end
+
     if contains (hostname -s) $NOETHER
         set -x "GOPATH" "$HOME/Code/gopath"
         set -x PATH \

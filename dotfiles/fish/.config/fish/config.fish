@@ -113,9 +113,9 @@ set NOETHER = Noether lgarron-macbookpro
         set -x "GOPATH" "$HOME/Code/gopath"
         set -x PATH \
             $PATH \
-            "$HOME/Code/gopath/bin/" \
-            "/Users/lgarron/Code/go_appengine/" \
-            "$HOME/Code/google-cloud-sdk/bin/"
+            "$HOME/Code/gopath/bin" \
+            "/Users/lgarron/Code/go_appengine" \
+            "$HOME/Code/google-cloud-sdk/bin"
     end
 
 ## Web

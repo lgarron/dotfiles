@@ -6,6 +6,7 @@
 
     set PATH \
       $PATH \
+      "/usr/local/go/bin" \
       "$HOME/local/bin/scripts" \
       "$HOME/local/bin/misc" \
       "$HOME/local/bin/dance-hacking"

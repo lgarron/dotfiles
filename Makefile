@@ -4,13 +4,13 @@ all:
 ########
 
 .PHONY: noether
-noether: chrome fish gce-ssh gitconfig-google gitignore-osx osx
+noether: chrome fish gce-ssh gitconfig-google gitignore-osx golang osx
 
 .PHONY: galois
 galois: fish gitconfig-personal gitignore-osx osx osx-languages
 
 .PHONY: lgarron1
-lgarron1: chrome fish gitconfig-google
+lgarron1: chrome fish gitconfig-google golang
 
 ########
 
@@ -37,6 +37,10 @@ gitconfig-google:
 .PHONY: gitignore-osx
 gitignore-osx:
 	ln -fs $(CURDIR)/dotfiles/gitignore-osx/.gitignore ~
+
+.PHONY: golang
+golang:
+	cd dotfiles && stow --no-folding --ignore=.DS_Store -t ~/ golang
 
 .PHONY: osx
 osx:

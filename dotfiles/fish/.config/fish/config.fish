@@ -113,10 +113,8 @@ set NOETHER = Noether lgarron-macbookpro
     end
 
     if contains (hostname -s) $NOETHER
-        set -x "GOPATH" "$HOME/Code/gopath"
         set -x PATH \
             $PATH \
-            "$HOME/Code/gopath/bin" \
             "/Users/lgarron/Code/go_appengine" \
             "$HOME/Code/google-cloud-sdk/bin"
     end
@@ -135,6 +133,11 @@ set NOETHER = Noether lgarron-macbookpro
 
     echo -n "." # Loading indicator
     . $HOME/.config/fish/git.fish
+
+    if test -f $HOME/.config/fish/go.fish
+        echo -n "." # Loading indicator
+        . $HOME/.config/fish/go.fish
+    end
 
     if test -f $HOME/.config/fish/chrome.fish
         echo -n "." # Loading indicator

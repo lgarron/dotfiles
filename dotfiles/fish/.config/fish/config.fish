@@ -91,6 +91,8 @@ set NOETHER = Noether lgarron-macbookpro
     abbr -a xs "xargs subl"
 
     export DYLD_INSERT_LIBRARIES="$HOME/local/dylib/libstderred.dylib"
+    # I can't get STDERRED_BLACKLIST to work, so let's make it easy to unset DYLD_INSERT_LIBRARIES
+    abbr -a "dy" "set -e DYLD_INSERT_LIBRARIES"
 
     abbr -a serve "python -m SimpleHTTPServer"
 

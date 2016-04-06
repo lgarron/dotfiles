@@ -28,6 +28,7 @@
     abbr -a gsh   "git show HEAD"
 
     abbr -a gp    "git push"
+    abbr -a grv   "git remote --verbose"
     abbr -a pr    "git fetch origin pull/ID/head:newBranchName"
 
     # "git push branch" to a remote that doesn't know about the branch yet.

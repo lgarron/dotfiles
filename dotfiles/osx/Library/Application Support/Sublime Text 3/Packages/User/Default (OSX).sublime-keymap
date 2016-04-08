@@ -1,0 +1,4 @@
+[
+  { "keys": ["ctrl+w"], "command": "wrap_lines" },
+  { "keys": ["super+alt+q"], "command": "noop" },
+]

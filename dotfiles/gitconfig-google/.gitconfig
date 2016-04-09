@@ -2,6 +2,7 @@
 	name = Lucas Garron
 	email = lgarron@chromium.org
 	signingkey = 3880CAE7
+	useconfigonly = true
 [core]
 	excludesfile = /Users/lgarron/.gitignore
 	autocrlf = false

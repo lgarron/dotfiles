@@ -288,3 +288,4 @@
   abbr -a hsts-gen "cd $HOME/chromium/src/net/http ; go run $HOME/Code/transport-security-state-generate/transport_security_state_static_generate.go $HOME/chromium/src/net/http/transport_security_state_static.json $HOME/chromium/src/net/http/transport_security_state_static.certs"
 
   abbr -a hsts "hstspreload checkdomain"
+  complete -c hstspreload -x -a "checkdomain checkheader"

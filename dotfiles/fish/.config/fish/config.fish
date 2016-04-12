@@ -2,6 +2,21 @@
 
     echo -n "." # Loading indicator
 
+# Setup
+
+    # Unless the config file is manually reloaded (e.g. using `rc`), shim out
+    # `abbr` and leave the existing abbrevation definitions.
+    #
+    # Instead of temporarily cloberring `abbr`, we could also write a
+    # `custom_abbr` function and dynamically set its action to either pass thwe
+    # call onto `abbr` or do nothing. But I'd rather leave `abbr` strewn about
+    # in my config files, so that any part of it can be understood and
+    # copied/pasted in isolation.
+    if [ "$CONFIG_FISH_LOADED" != "true" ]
+        function abbr
+        end
+    end
+
 # Path
 
     set PATH \
@@ -46,7 +61,13 @@ set NOETHER = Noether lgarron-macbookpro
 
 ## Shell
 
+    # Reloads the fish config file. `rc` is chosen because the config file for
+    # other shells is often known as the `rc` file, and `rc` is easy to type.
+    #
+    # For this config file, `rc` will also force redefining abbreviations. See
+    # the "Setup" section above.
     abbr -a rc ". $HOME/.config/fish/config.fish"
+
     abbr -a unset "set -e"
 
     function mkcd
@@ -156,3 +177,10 @@ set NOETHER = Noether lgarron-macbookpro
     end
 
     echo -ne "\r" # Clear loading indicators.
+
+# Cleanup
+
+    if [ "$CONFIG_FISH_LOADED" != "true" ]
+        functions -e abbr
+    end
+    set CONFIG_FISH_LOADED true

@@ -116,6 +116,14 @@
         and ./out/Release/content_unittests $argv
     end
 
+    function chrome-release-build-net-unit-tests
+      cd (git rev-parse --show-toplevel)
+      date
+      ninja -C out/Release net_unittests; \
+        and date; \
+        and ./out/Release/net_unittests $argv
+    end
+
     function chrome-release-build-browser-tests
       cd (git rev-parse --show-toplevel)
       date

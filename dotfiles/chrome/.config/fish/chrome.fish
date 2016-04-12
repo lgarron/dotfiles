@@ -200,12 +200,8 @@
 
     function old-chrome
       set CHROME_VERSION "$argv[1]"
+      set -e argv[1]
 
-      if [ (count $argv) -gt 1 ]
-        set argv $argv[2..-1]
-      else
-        set -e argv
-      end
       set OLD_CHROME_PATH "/Applications/Google Chrome Old Versions/Google Chrome $CHROME_VERSION.app/Contents/MacOS/Google Chrome"
 
       if not test -e $OLD_CHROME_PATH

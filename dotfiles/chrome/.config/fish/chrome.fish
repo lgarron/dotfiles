@@ -4,11 +4,13 @@
 
 ## Directories
 
-    abbr -a src      "$HOME/chromium/src/"
-    abbr -a webkit   "$HOME/chromium/src/third_party/WebKit/"
-    abbr -a wk       "$HOME/chromium/src/third_party/WebKit/"
-    abbr -a devtools "$HOME/chromium/src/third_party/WebKit/Source/devtools/"
-    abbr -a dt       "$HOME/chromium/src/third_party/WebKit/Source/devtools/"
+    set CHROMIUM_SRC "$HOME/chromium/src"
+
+    abbr -a src      "$CHROMIUM_SRC/"
+    abbr -a webkit   "$CHROMIUM_SRC/third_party/WebKit/"
+    abbr -a wk       "$CHROMIUM_SRC/third_party/WebKit/"
+    abbr -a devtools "$CHROMIUM_SRC/third_party/WebKit/Source/devtools/"
+    abbr -a dt       "$CHROMIUM_SRC/third_party/WebKit/Source/devtools/"
 
 ## Development
 
@@ -239,6 +241,27 @@
 
     function ksadmin
       env DYLD_INSERT_LIBRARIES='' "/Library/Google/GoogleSoftwareUpdate/GoogleSoftwareUpdate.bundle/Contents/MacOS/ksadmin" $argv
+    end
+
+
+## Git
+
+    function __fish_git_tags
+      if [ "$CHROMIUM_SRC" = (git rev-parse --show-toplevel) ]
+        # Ignore thousands of release tags.
+        git tag | grep -v "^\d\+\.\d\+\.\d\+\.\d\+\$"
+      else
+        git tag
+      end
+    end
+
+    function __fish_git_branches
+      if [ "$CHROMIUM_SRC" = (git rev-parse --show-toplevel) ]
+        # Ignore a whole bunch of release branches.
+        git branch --list | cut -c 3-
+      else
+        git branch --list
+      end
     end
 
 ### "GitHub"

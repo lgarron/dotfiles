@@ -24,7 +24,8 @@
       "/usr/local/go/bin" \
       "$HOME/local/bin/scripts" \
       "$HOME/local/bin/misc" \
-      "$HOME/local/bin/dance-hacking"
+      "$HOME/local/bin/dance-hacking" \
+      "$HOME/Code/Work/google-cloud-sdk/bin"
 
 set GALOIS = Galois Galois.local
 set NOETHER = Noether lgarron-macbookpro

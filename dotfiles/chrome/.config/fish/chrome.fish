@@ -249,18 +249,18 @@
     function __fish_git_tags
       if [ "$CHROMIUM_SRC" = (git rev-parse --show-toplevel) ]
         # Ignore thousands of release tags.
-        git tag | grep -v "^\d\+\.\d\+\.\d\+\.\d\+\$"
+        command git tag | grep -v "^\d\+\.\d\+\.\d\+\.\d\+\$"
       else
-        git tag
+        command git tag
       end
     end
 
     function __fish_git_branches
       if [ "$CHROMIUM_SRC" = (git rev-parse --show-toplevel) ]
         # Ignore a whole bunch of release branches.
-        git branch --list | cut -c 3-
+        command git branch --no-color ^/dev/null | sgrep -v ' -> ' | sed -e 's/^..//' -e 's/^remotes\///'
       else
-        git branch --list
+        command git branch --no-color -a ^/dev/null | sgrep -v ' -> ' | sed -e 's/^..//' -e 's/^remotes\///'
       end
     end
 

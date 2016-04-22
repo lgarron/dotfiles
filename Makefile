@@ -7,7 +7,7 @@ all:
 noether: chrome fish gce-ssh gitconfig-google gitignore-osx golang osx
 
 .PHONY: galois
-galois: fish gitconfig-personal gitignore-osx osx osx-languages
+galois: fish gitconfig-personal gitignore-osx osx osx-languages golang-dropbox
 
 .PHONY: lgarron1
 lgarron1: chrome fish gitconfig-google golang
@@ -41,6 +41,10 @@ gitignore-osx:
 .PHONY: golang
 golang:
 	cd dotfiles && stow --no-folding --ignore=.DS_Store -t ~/ golang
+
+.PHONY: golang-dropbox
+golang-dropbox:
+	cd dotfiles && stow --no-folding --ignore=.DS_Store -t ~/ golang-dropbox
 
 .PHONY: osx
 osx:

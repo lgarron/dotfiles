@@ -37,10 +37,9 @@
 
     abbr -a ghash "git rev-parse HEAD"
 
-    set -x GITX_PATH (which gitx)
     function gitx
       echo "Invoking wrapped gitx."
-      env DYLD_INSERT_LIBRARIES='' $GITX_PATH $argv
+      env DYLD_INSERT_LIBRARIES='' command gitx $argv
     end
     abbr -a gx    "gitx --256 &"
 

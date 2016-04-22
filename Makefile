@@ -4,10 +4,10 @@ all:
 ########
 
 .PHONY: noether
-noether: chrome fish gce-ssh gitconfig-google gitignore-osx golang osx
+noether: chrome fish gce-ssh gitconfig-google gitignore-osx golang osx iTerm
 
 .PHONY: galois
-galois: fish gitconfig-personal gitignore-osx osx osx-languages golang-dropbox
+galois: fish gitconfig-personal gitignore-osx osx osx-languages golang-dropbox iTerm
 
 .PHONY: lgarron1
 lgarron1: chrome fish gitconfig-google golang
@@ -45,6 +45,11 @@ golang:
 .PHONY: golang-dropbox
 golang-dropbox:
 	cd dotfiles && stow --no-folding --ignore=.DS_Store -t ~/ golang-dropbox
+
+.PHONY: iTerm
+iTerm:
+	cd dotfiles && stow --no-folding --ignore=.DS_Store -t ~/ iTerm
+	@echo "Remember to configure iTerm to sync to the right folder."
 
 .PHONY: osx
 osx:

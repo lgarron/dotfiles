@@ -1,0 +1,14 @@
+[user]
+	name = Lucas Garron
+	email = lgarron@chromium.org
+	signingkey = 3880CAE7
+	useconfigonly = true
+[diff]
+[color]
+	ui = true
+[push]
+	default = upstream
+[github]
+	user = lgarron
+[branch]
+	autosetuprebase = always

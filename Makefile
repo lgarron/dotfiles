@@ -4,13 +4,13 @@ all:
 ########
 
 .PHONY: noether
-noether: chrome fish gce-ssh gitconfig-google gitignore-osx golang osx iTerm
+noether: chrome fish gce-ssh gitconfig-noether gitignore-osx golang osx iTerm
 
 .PHONY: galois
-galois: fish gitconfig-personal gitignore-osx osx osx-languages golang-dropbox iTerm
+galois: fish gitconfig-galois gitignore-osx osx osx-languages golang-dropbox iTerm
 
 .PHONY: lgarron1
-lgarron1: chrome fish gitconfig-google golang
+lgarron1: chrome fish gitconfig-lgarron1 golang
 
 ########
 
@@ -26,13 +26,17 @@ fish:
 gce-ssh:
 	cd dotfiles && stow --no-folding --ignore=.DS_Store -t ~/ gce-ssh
 
-.PHONY: gitconfig-personal
-gitconfig-personal:
-	cd dotfiles && stow --no-folding --ignore=.DS_Store -t ~/ gitconfig-personal
+.PHONY: gitconfig-galois
+gitconfig-galois:
+	cd dotfiles && stow --no-folding --ignore=.DS_Store -t ~/ gitconfig-galois
 
-.PHONY: gitconfig-google
-gitconfig-google:
-	cd dotfiles && stow --no-folding --ignore=.DS_Store -t ~/ gitconfig-google
+.PHONY: gitconfig-noether
+gitconfig-noether:
+	cd dotfiles && stow --no-folding --ignore=.DS_Store -t ~/ gitconfig-noether
+
+.PHONY: gitconfig-lgarron1
+gitconfig-lgarron1:
+	cd dotfiles && stow --no-folding --ignore=.DS_Store -t ~/ gitconfig-lgarron1
 
 .PHONY: gitignore-osx
 gitignore-osx:

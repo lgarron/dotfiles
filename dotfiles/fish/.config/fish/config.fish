@@ -171,7 +171,7 @@ set NOETHER = Noether lgarron-macbookpro
             function subl
                 rmate $argv
             end
-            set -x "EDITOR" "rmate"
+            set -x "EDITOR" "rmate -w"
             set -x "DISPLAY" ":20"
         end
     end

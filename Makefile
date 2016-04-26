@@ -40,7 +40,7 @@ gitconfig-lgarron1:
 
 .PHONY: gitignore-osx
 gitignore-osx:
-	ln -fs $(CURDIR)/dotfiles/gitignore-osx/.gitignore ~
+	cd dotfiles && stow --no-folding --ignore=.DS_Store -t ~/ gitignore-osx
 
 .PHONY: golang
 golang:

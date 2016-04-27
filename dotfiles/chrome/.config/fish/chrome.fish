@@ -27,7 +27,7 @@
 
     abbr -a goma-start "$GOMA_START_COMMAND"
     abbr -a goma-page  "pen http://localhost:8088/"
-    abbr -a goma-check "goma status | grep \"proxy status\""
+    abbr -a goma-check "goma status | grep \"status\""
     abbr -a goma-setup "env GYP_GENERATORS=ninja ./build/gyp_chromium -D use_goma=1"
     abbr -a gyp "$GYP_COMMAND"
 
@@ -43,7 +43,7 @@
     abbr -a sandbox "env BUILDTYPE=Release ./build/update-linux-sandbox.sh"
 
     function ninja
-      goma status | grep "proxy status"
+      goma status | grep "status"
       echo "Invoking wrapped ninja."
       env DYLD_INSERT_LIBRARIES='' command ninja $NINJA_SETTINGS $argv
     end

@@ -1,21 +1,22 @@
 # `config.fish`
 
-    echo -n "." # Loading indicator
-
 # Setup
 
-    # Unless the config file is manually reloaded (e.g. using `rc`), shim out
-    # `abbr` and leave the existing abbrevation definitions.
-    #
-    # Instead of temporarily cloberring `abbr`, we could also write a
-    # `custom_abbr` function and dynamically set its action to either pass thwe
-    # call onto `abbr` or do nothing. But I'd rather leave `abbr` strewn about
-    # in my config files, so that any part of it can be understood and
-    # copied/pasted in isolation.
-    if [ "$CONFIG_FISH_LOADED" != "true" ]
-        function abbr
-        end
+    # If the file is manually reloaded...
+    if [ "$CONFIG_FISH_LOADED" = "true" ]
+      # Clear all abbreviations and let the .fish files
+      # set them from scratch.
+      echo "[Reloading .fish files with new abbrevations]"
+      for a in (abbr --list)
+        abbr -e $a
+      end
+    else
+      # Ignore the abbreviations in the .fish files.
+      function abbr
+      end
     end
+
+    echo -n "." # Loading indicator
 
 # Path
 

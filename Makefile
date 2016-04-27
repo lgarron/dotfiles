@@ -14,51 +14,33 @@ lgarron1: chrome fish gitconfig-lgarron1 golang
 
 ########
 
-.PHONY: chrome
-chrome:
-	cd dotfiles && stow --no-folding --ignore=.DS_Store -t ~/ chrome
+PACKAGES  =
+PACKAGES += chrome
+PACKAGES += fish
+PACKAGES += gce-ssh
+PACKAGES += gitconfig-galois
+PACKAGES += gitconfig-noether
+PACKAGES += gitconfig-lgarron1
+PACKAGES += gitignore-osx
+PACKAGES += golang
+PACKAGES += golang-dropbox
+# PACKAGES += iTerm # special handling
+PACKAGES += osx
+PACKAGES += osx-languages
 
-.PHONY: fish
-fish:
-	cd dotfiles && stow --no-folding --ignore=.DS_Store -t ~/ fish
+.PHONY: $(PACKAGES)
+$(PACKAGES):
+	cd dotfiles && stow --no-folding --ignore=.DS_Store -t ~/ $@
 
-.PHONY: gce-ssh
-gce-ssh:
-	cd dotfiles && stow --no-folding --ignore=.DS_Store -t ~/ gce-ssh
+########
 
-.PHONY: gitconfig-galois
-gitconfig-galois:
-	cd dotfiles && stow --no-folding --ignore=.DS_Store -t ~/ gitconfig-galois
-
-.PHONY: gitconfig-noether
-gitconfig-noether:
-	cd dotfiles && stow --no-folding --ignore=.DS_Store -t ~/ gitconfig-noether
-
-.PHONY: gitconfig-lgarron1
-gitconfig-lgarron1:
-	cd dotfiles && stow --no-folding --ignore=.DS_Store -t ~/ gitconfig-lgarron1
-
-.PHONY: gitignore-osx
-gitignore-osx:
-	cd dotfiles && stow --no-folding --ignore=.DS_Store -t ~/ gitignore-osx
-
-.PHONY: golang
-golang:
-	cd dotfiles && stow --no-folding --ignore=.DS_Store -t ~/ golang
-
-.PHONY: golang-dropbox
-golang-dropbox:
-	cd dotfiles && stow --no-folding --ignore=.DS_Store -t ~/ golang-dropbox
+MAKEFILE_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
+ITERM_DIR := ${MAKEFILE_DIR}/iTerm
+ITERM_DEFAULTS_COMMAND = defaults write ~/Library/Preferences/com.googlecode.iterm2.plist
 
 .PHONY: iTerm
 iTerm:
-	cd dotfiles && stow --no-folding --ignore=.DS_Store -t ~/ iTerm
-	@echo "Remember to configure iTerm to sync to the right folder."
-
-.PHONY: osx
-osx:
-	cd dotfiles && stow --no-folding --ignore=.DS_Store -t ~/ osx
-
-.PHONY: osx-languages
-povray:
-	cd dotfiles && stow --no-folding --ignore=.DS_Store -t ~/ osx-languages
+	@echo "Setting up iTerm to sync preferences with ${ITERM_DIR}"
+	${ITERM_DEFAULTS_COMMAND} NoSyncNeverRemindPrefsChangesLostForFile_selection -int 0
+	${ITERM_DEFAULTS_COMMAND} LoadPrefsFromCustomFolder -bool YES
+	${ITERM_DEFAULTS_COMMAND} PrefsCustomFolder -string ${ITERM_DIR}

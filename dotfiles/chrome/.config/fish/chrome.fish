@@ -42,11 +42,10 @@
     set -x CHROME_DEVEL_SANDBOX /usr/local/sbin/chrome-devel-sandbox
     abbr -a sandbox "env BUILDTYPE=Release ./build/update-linux-sandbox.sh"
 
-    set -x NINJA_PATH (which ninja)
     function ninja
       goma status | grep "proxy status"
       echo "Invoking wrapped ninja."
-      env DYLD_INSERT_LIBRARIES='' $NINJA_PATH $NINJA_SETTINGS $argv
+      env DYLD_INSERT_LIBRARIES='' command ninja $NINJA_SETTINGS $argv
     end
 
     function chrome-release-run

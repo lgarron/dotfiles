@@ -69,6 +69,12 @@ set NOETHER = Noether lgarron-macbookpro
     # the "Setup" section above.
     abbr -a rc ". $HOME/.config/fish/config.fish"
 
+    set DOTFILES_REPO ( \
+        python -c 'import os, sys; print os.path.realpath(sys.argv[1])' \
+            ~/.config/fish/config.fish \
+            | sed 's#dotfiles/fish/\.config/fish/config\.fish$##')
+    abbr -a df "$DOTFILES_REPO"
+
     abbr -a unset "set -e"
 
     function mkcd

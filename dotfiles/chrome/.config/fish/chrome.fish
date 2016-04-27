@@ -309,6 +309,7 @@ transport_security_state_static_generate \
 transport_security_state_static.json \
 transport_security_state_static.certs"
 
-  abbr -a hp "hstspreload"
-  abbr -a ghp "go run $GOPATH/src/github.com/chromium/hstspreload/cmd/hstspreload/*.go"
+  abbr -a hs "hstspreload"
+  abbr -a hsd "hstspreload +d"
+  abbr -a ghs "go run $GOPATH/src/github.com/chromium/hstspreload/cmd/hstspreload/*.go"
   complete -c hstspreload -x -a "checkdomain checkheader"

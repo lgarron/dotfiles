@@ -146,7 +146,7 @@ set NOETHER = Noether lgarron-macbookpro
         http --default-scheme https $argv
     end
 
-    abbr -a "hs" "https -ph"
+    abbr -a "ht" "https -ph"
 
 
 # Includes

@@ -40,8 +40,11 @@
       "$HOME/local/bin/dance-hacking" \
       "$HOME/Code/Work/google-cloud-sdk/bin"
 
-set GALOIS = Galois Galois.local
-set NOETHER = Noether lgarron-macbookpro
+# Machines
+
+    set GALOIS = Galois Galois.local
+    set NOETHER = Noether lgarron-macbookpro
+    set LGARRON1 = lgarron1
 
 # MOTD
 
@@ -160,6 +163,24 @@ set NOETHER = Noether lgarron-macbookpro
 
     abbr -a "ht" "https -ph"
 
+# SSH configs
+
+    if contains (hostname -s) $LGARRON1
+      if [ $SSH_TTY ]
+
+        if not functions -q iterm_fish_prompt
+          source "$HOME/.iterm2_shell_integration.fish"
+        end
+
+        function subl
+            rmate $argv
+        end
+        set -x "EDITOR" "rmate -w"
+
+        set -x "DISPLAY" ":20"
+
+      end
+    end
 
 # Includes
 
@@ -174,17 +195,6 @@ set NOETHER = Noether lgarron-macbookpro
     load_config git
     load_config go
     load_config chrome
-
-    if not functions -q iterm_fish_prompt
-        if [ $SSH_TTY ]
-            source "$HOME/.iterm2_shell_integration.fish"
-            function subl
-                rmate $argv
-            end
-            set -x "EDITOR" "rmate -w"
-            set -x "DISPLAY" ":20"
-        end
-    end
 
     echo -ne "\r" # Clear loading indicators.
 

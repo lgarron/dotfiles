@@ -163,14 +163,38 @@
 
     abbr -a "ht" "https -ph"
 
+## iTerm
+
+    # In case we need to set this on on a machine from scratch.
+    function install_iterm_shell_integration
+      curl -L "https://iterm2.com/misc/install_shell_integration.sh" | bash
+    end
+
+    function source_iterm_shell_integration
+      if not functions -q iterm_fish_prompt
+        set file "$HOME/.iterm2_shell_integration.fish"
+        if test -f "$file"
+          source "$file"
+        else
+          echo "Could not find iTerm shell integration file: $file"
+        end
+      end
+    end
+
+    if [ (uname) = "Darwin" ]
+      source_iterm_shell_integration
+    else 
+      if [ $SSH_TTY ]
+        source_iterm_shell_integration
+      end
+    end
+
+    functions -e source_iterm_shell_integration
+
 # SSH configs
 
     if contains (hostname -s) $LGARRON1
       if [ $SSH_TTY ]
-
-        if not functions -q iterm_fish_prompt
-          source "$HOME/.iterm2_shell_integration.fish"
-        end
 
         function subl
             rmate $argv

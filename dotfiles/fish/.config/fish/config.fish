@@ -2,21 +2,33 @@
 
 # Setup
 
-    # If the file is manually reloaded...
-    if [ "$CONFIG_FISH_LOADED" = "true" ]
-      # Clear all abbreviations and let the .fish files
-      # set them from scratch.
-      echo "[Reloading .fish files with new abbrevations]"
+    if [ "$MANUAL_RELOAD" = "true" ]
+      echo "[Reloading .fish files, including abbrevations defined from scratch]"
       for a in (abbr --list)
         abbr -e $a
       end
     else
-      # Ignore the abbreviations in the .fish files.
+      # Don't try to load any abbreviations (much faster).
       function abbr
       end
     end
 
-    echo -n "." # Loading indicator
+    # Reloads the fish config file. `rc` is chosen because the config file for
+    # other shells is often known as the `rc` file, and `rc` is easy to type.
+    #
+    # For this config file, `rc` will also force redefining abbreviations. See
+    # the "Setup" section above.
+    abbr -a rc ". $HOME/.config/fish/config.fish"
+
+# Loading
+
+    function loading_indicator
+      if [ "$MANUAL_RELOAD" = "true" ]
+        echo -n "$argv[1]..."
+      end
+    end
+
+    loading_indicator "config"
 
 # Path
 
@@ -62,13 +74,6 @@ set NOETHER = Noether lgarron-macbookpro
 # Shortcuts
 
 ## Shell
-
-    # Reloads the fish config file. `rc` is chosen because the config file for
-    # other shells is often known as the `rc` file, and `rc` is easy to type.
-    #
-    # For this config file, `rc` will also force redefining abbreviations. See
-    # the "Setup" section above.
-    abbr -a rc ". $HOME/.config/fish/config.fish"
 
     set DOTFILES_REPO ( \
         python -c 'import os, sys; print os.path.realpath(sys.argv[1])' \
@@ -158,19 +163,17 @@ set NOETHER = Noether lgarron-macbookpro
 
 # Includes
 
-
-    echo -n "." # Loading indicator
-    . $HOME/.config/fish/git.fish
-
-    if test -f $HOME/.config/fish/go.fish
-        echo -n "." # Loading indicator
-        . $HOME/.config/fish/go.fish
+    function load_config
+      loading_indicator "$argv[1]"
+      set fish_file "$HOME/.config/fish/$argv[1].fish"
+      if test -f "$fish_file"
+        . "$fish_file"
+      end
     end
 
-    if test -f $HOME/.config/fish/chrome.fish
-        echo -n "." # Loading indicator
-        . $HOME/.config/fish/chrome.fish
-    end
+    load_config git
+    load_config go
+    load_config chrome
 
     if not functions -q iterm_fish_prompt
         if [ $SSH_TTY ]
@@ -187,7 +190,8 @@ set NOETHER = Noether lgarron-macbookpro
 
 # Cleanup
 
-    if [ "$CONFIG_FISH_LOADED" != "true" ]
+    if [ "$MANUAL_RELOAD" != "true" ]
         functions -e abbr
     end
-    set CONFIG_FISH_LOADED true
+    # From now on, reloads of this file considered "manual".
+    set MANUAL_RELOAD true

@@ -78,11 +78,11 @@
 
 ## Shell
 
-    set DOTFILES_REPO ( \
+    set DOTFILES_FOLDER ( \
         python -c 'import os, sys; print os.path.realpath(sys.argv[1])' \
             ~/.config/fish/config.fish \
             | sed 's#dotfiles/fish/\.config/fish/config\.fish$##')
-    abbr -a df "$DOTFILES_REPO"
+    abbr -a dff "$DOTFILES_FOLDER"
 
     abbr -a unset "set -e"
 

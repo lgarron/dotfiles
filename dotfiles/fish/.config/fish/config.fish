@@ -208,17 +208,20 @@
 
 # Includes
 
-    function load_config
-      loading_indicator "$argv[1]"
-      set fish_file "$HOME/.config/fish/$argv[1].fish"
-      if test -f "$fish_file"
-        . "$fish_file"
-      end
+    loading_indicator "git"
+    if test -f "$HOME/.config/fish/git.fish"
+      source "$HOME/.config/fish/git.fish"
     end
 
-    load_config git
-    load_config go
-    load_config chrome
+    loading_indicator "go"
+    if test -f "$HOME/.config/fish/go.fish"
+      source "$HOME/.config/fish/go.fish"
+    end
+
+    loading_indicator "chrome"
+    if test -f "$HOME/.config/fish/chrome.fish"
+      source "$HOME/.config/fish/chrome.fish"
+    end
 
     echo -ne "\r" # Clear loading indicators.
 

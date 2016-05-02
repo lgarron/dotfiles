@@ -45,7 +45,11 @@
     function ninja
       goma status | grep "status"
       echo "Invoking wrapped ninja."
-      env DYLD_INSERT_LIBRARIES='' command ninja $NINJA_SETTINGS $argv
+      if [ (uname) = "Darwin" ]
+        env DYLD_INSERT_LIBRARIES='' command ninja $NINJA_SETTINGS $argv
+      else
+        ninja $NINJA_SETTINGS $argv
+      end
     end
 
     function chrome-release-run

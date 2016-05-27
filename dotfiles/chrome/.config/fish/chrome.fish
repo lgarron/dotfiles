@@ -48,7 +48,7 @@
       if [ (uname) = "Darwin" ]
         env DYLD_INSERT_LIBRARIES='' command ninja $NINJA_SETTINGS $argv
       else
-        ninja $NINJA_SETTINGS $argv
+        command ninja $NINJA_SETTINGS $argv
       end
     end
 

@@ -26,13 +26,44 @@
     set GYP_COMMAND "env GYP_GENERATORS=ninja ./build/gyp_chromium"
 
     abbr -a goma-start "$GOMA_START_COMMAND"
-    abbr -a goma-page  "pen http://localhost:8088/"
+    abbr -a goma-page  "open http://localhost:8088/"
     abbr -a goma-check "goma status | grep \"status\""
     abbr -a goma-setup "env GYP_GENERATORS=ninja ./build/gyp_chromium -D use_goma=1"
     abbr -a gyp "$GYP_COMMAND"
 
-    abbr -a gggg "$GOMA_START_COMMAND ; git pull origin master ; gclient sync ; $GYP_COMMAND"
+    abbr -a ggg "$GOMA_START_COMMAND ; git pull origin master ; gclient sync"
 
+### gn
+
+    set -x GYP_CHROMIUM_NO_ACTION 1
+
+    function gnTemplate
+      echo "# Debug/Release
+is_debug = $argv[1]
+
+# Faster Builds
+enable_nacl = false
+is_component_build = true
+symbol_level = 1
+use_goma = true
+
+# DevTools
+debug_devtools = true
+
+# See \"gn args <out_dir> --list\" for available build arguments."
+    end
+
+    function gn-gen-debug
+      mkdir -p out/gnDebug
+      gnTemplate "true" > out/gnDebug/args.gn
+      gn gen out/gnDebug
+    end
+
+    function gn-gen-release
+      mkdir -p out/gnRelease
+      gnTemplate "false" > out/gnRelease/args.gn
+      gn gen out/gnRelease
+    end
 
 ### Building
 
@@ -44,7 +75,7 @@
 
     function ninja
       goma status | grep "status"
-      echo "Invoking wrapped ninja."
+      # echo "Invoking wrapped ninja."
       if [ (uname) = "Darwin" ]
         env DYLD_INSERT_LIBRARIES='' command ninja $NINJA_SETTINGS $argv
       else
@@ -54,25 +85,25 @@
 
     function chrome-release-run
       cd (git rev-parse --show-toplevel)
-      if test -e "./out/Release/Chromium.app/Contents/MacOS/Chromium"
-        "./out/Release/Chromium.app/Contents/MacOS/Chromium" --enable-logging=stderr $argv
-      else if test -e "./out/Release/chrome"
-        "./out/Release/chrome" --enable-logging=stderr $argv
+      if test -e "./out/gnRelease/Chromium.app/Contents/MacOS/Chromium"
+        "./out/gnRelease/Chromium.app/Contents/MacOS/Chromium" --enable-logging=stderr $argv
+      else if test -e "./out/gnRelease/chrome"
+        "./out/gnRelease/chrome" --enable-logging=stderr $argv
       end
     end
     function chrome-debug-run
       cd (git rev-parse --show-toplevel)
-      if test -e "./out/Debug/Chromium.app/Contents/MacOS/Chromium"
-        "./out/Debug/Chromium.app/Contents/MacOS/Chromium" --enable-logging=stderr $argv
-      else if test -e "./out/Debug/chrome"
-        "./out/Debug/chrome" --enable-logging=stderr $argv
+      if test -e "./out/gnDebug/Chromium.app/Contents/MacOS/Chromium"
+        "./out/gnDebug/Chromium.app/Contents/MacOS/Chromium" --enable-logging=stderr $argv
+      else if test -e "./out/gnDebug/chrome"
+        "./out/gnDebug/chrome" --enable-logging=stderr $argv
       end
     end
 
     function chrome-release
       cd (git rev-parse --show-toplevel)
       date
-      ninja -C out/Release chrome; \
+      ninja -C out/gnRelease chrome; \
         and date; \
         and chrome-release-run $argv
     end
@@ -80,7 +111,7 @@
     function chrome-debug
       cd (git rev-parse --show-toplevel)
       date
-      ninja -C out/Debug chrome; \
+      ninja -C out/gnDebug chrome; \
         and date; \
         and chrome-debug-run $argv
     end
@@ -95,8 +126,8 @@
     function ios-debug-build
       cd (git rev-parse --show-toplevel)
       date
-      ninja -C out/Debug-iphonesimulator chrome; \
-        and ./out/Debug-iphonesimulator/iossim out/Debug-iphonesimulator/Chromium.app/
+      ninja -C out/gnDebug-iphonesimulator chrome; \
+        and ./out/gnDebug-iphonesimulator/iossim out/gnDebug-iphonesimulator/Chromium.app/
     end
 
     abbr -a i "ios-debug-build"
@@ -108,48 +139,48 @@
     function chrome-release-build-unit-tests
       cd (git rev-parse --show-toplevel)
       date
-      ninja -C out/Release unit_tests; \
+      ninja -C out/gnRelease unit_tests; \
         and date; \
-        and ./out/Release/unit_tests $argv
+        and ./out/gnRelease/unit_tests $argv
     end
 
     function chrome-release-build-content-unit-tests
       cd (git rev-parse --show-toplevel)
       date
-      ninja -C out/Release content_unittests; \
+      ninja -C out/gnRelease content_unittests; \
         and date; \
-        and ./out/Release/content_unittests $argv
+        and ./out/gnRelease/content_unittests $argv
     end
 
     function chrome-release-build-net-unit-tests
       cd (git rev-parse --show-toplevel)
       date
-      ninja -C out/Release net_unittests; \
+      ninja -C out/gnRelease net_unittests; \
         and date; \
-        and ./out/Release/net_unittests $argv
+        and ./out/gnRelease/net_unittests $argv
     end
 
     function chrome-release-build-browser-tests
       cd (git rev-parse --show-toplevel)
       date
-      ninja -C out/Release browser_tests; \
+      ninja -C out/gnRelease browser_tests; \
         and date; \
-        and ./out/Release/browser_tests $argv
+        and ./out/gnRelease/browser_tests $argv
     end
 
     function chrome-release-build-content-browser-tests
       cd (git rev-parse --show-toplevel)
       date
-      ninja -C out/Release content_browsertests; /
+      ninja -C out/gnRelease content_browsertests; /
         and date; /
-        and ./out/Release/content_browsertests $argv
+        and ./out/gnRelease/content_browsertests $argv
     end
 
     # Webkit Tests and Layout Tests
     function chrome-release-build-webkit-tests
       cd (git rev-parse --show-toplevel)
       date
-      ninja -C out/Release content_shell; \
+      ninja -C out/gnRelease content_shell; \
         and date; \
         and python third_party/WebKit/Tools/Scripts/run-webkit-tests $argv
     end

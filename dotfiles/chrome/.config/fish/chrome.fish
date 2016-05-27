@@ -314,5 +314,6 @@ transport_security_state_static.certs"
 
   abbr -a hs "hstspreload"
   abbr -a hsd "hstspreload +d"
+  abbr -a hss "hstspreload status"
   abbr -a ghs "go run $GOPATH/src/github.com/chromium/hstspreload/cmd/hstspreload/*.go"
   complete -c hstspreload -x -a "checkdomain checkheader"

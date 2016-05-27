@@ -1,4 +1,4 @@
 [
-  { "keys": ["ctrl+w"], "command": "wrap_lines" },
+  { "keys": ["ctrl+w"], "command": "wrap_lines_plus", "args": {"width": 80}},
   { "keys": ["super+alt+q"], "command": "noop" },
 ]

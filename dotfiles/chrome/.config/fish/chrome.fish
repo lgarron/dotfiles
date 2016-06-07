@@ -31,8 +31,6 @@
     abbr -a goma-setup "env GYP_GENERATORS=ninja ./build/gyp_chromium -D use_goma=1"
     abbr -a gyp "$GYP_COMMAND"
 
-    abbr -a ggg "$GOMA_START_COMMAND ; git pull origin master ; gclient sync"
-
 ### gn
 
     set -x GYP_CHROMIUM_NO_ACTION 1
@@ -83,60 +81,63 @@ debug_devtools = true
       end
     end
 
-    function chrome-release-run
-      cd (git rev-parse --show-toplevel)
-      if test -e "./out/gnRelease/Chromium.app/Contents/MacOS/Chromium"
-        "./out/gnRelease/Chromium.app/Contents/MacOS/Chromium" --enable-logging=stderr $argv
-      else if test -e "./out/gnRelease/chrome"
-        "./out/gnRelease/chrome" --enable-logging=stderr $argv
-      end
-    end
-    function chrome-debug-run
-      cd (git rev-parse --show-toplevel)
-      if test -e "./out/gnDebug/Chromium.app/Contents/MacOS/Chromium"
-        "./out/gnDebug/Chromium.app/Contents/MacOS/Chromium" --enable-logging=stderr $argv
-      else if test -e "./out/gnDebug/chrome"
-        "./out/gnDebug/chrome" --enable-logging=stderr $argv
+    function run-if-exists
+      set BINARY_PATH $argv[1]
+      set -e argv[1]
+      if test -e "$BINARY_PATH"
+          eval "$BINARY_PATH" --enable-logging=stderr (string escape -- $argv)
       end
     end
 
-    function chrome-release
+
+### Chromium
+
+    abbr -a ggggg "$GOMA_START_COMMAND ; git pull origin master ; gclient sync; gn-gen-debug; gn-gen-release"
+
+    function chromium-run
+      set FOLDER $argv[1]
+      set -e argv[1]
       cd (git rev-parse --show-toplevel)
-      date
-      ninja -C out/gnRelease chrome; \
-        and date; \
-        and chrome-release-run $argv
+      run-if-exists "$FOLDER/Chromium.app/Contents/MacOS/Chromium" $argv
+      run-if-exists "$FOLDER/chrome" $argv
     end
 
-    function chrome-debug
+    function chromium-build-run
+      set FOLDER $argv[1]
       cd (git rev-parse --show-toplevel)
       date
-      ninja -C out/gnDebug chrome; \
+      ninja -C "$FOLDER" chrome; \
         and date; \
-        and chrome-debug-run $argv
+        and chromium-run $argv
     end
 
-    abbr -a r "chrome-release badssl.com"
-    abbr -a d "chrome-debug"
+    function release
+      chromium-build-run "out/gnRelease" $argv
+    end
 
-    abbr -a rdt "chrome-release-build --remote-debugging-port=9222 --no-first-run --user-data-dir=/tmp/devtools-test-profile http://localhost:9222\#http://localhost:8000/front_end/inspector.html\?experiments=true badssl.com"
+    function debug
+      chromium-build-run "out/gnDebug" $argv
+    end
+
+    abbr -a r "release badssl.com"
+    abbr -a d "debug"
 
 ## iOS
 
-    function ios-debug-build
+    function ios-debug
       cd (git rev-parse --show-toplevel)
       date
       ninja -C out/gnDebug-iphonesimulator chrome; \
         and ./out/gnDebug-iphonesimulator/iossim out/gnDebug-iphonesimulator/Chromium.app/
     end
 
-    abbr -a i "ios-debug-build"
+    abbr -a i "ios-debug"
 
 ## Testing
 
 ### Chrome Tests
 
-    function chrome-release-build-unit-tests
+    function unit-tests
       cd (git rev-parse --show-toplevel)
       date
       ninja -C out/gnRelease unit_tests; \
@@ -144,7 +145,7 @@ debug_devtools = true
         and ./out/gnRelease/unit_tests $argv
     end
 
-    function chrome-release-build-content-unit-tests
+    function content-unit-tests
       cd (git rev-parse --show-toplevel)
       date
       ninja -C out/gnRelease content_unittests; \
@@ -152,7 +153,7 @@ debug_devtools = true
         and ./out/gnRelease/content_unittests $argv
     end
 
-    function chrome-release-build-net-unit-tests
+    function net-unit-tests
       cd (git rev-parse --show-toplevel)
       date
       ninja -C out/gnRelease net_unittests; \
@@ -160,7 +161,7 @@ debug_devtools = true
         and ./out/gnRelease/net_unittests $argv
     end
 
-    function chrome-release-build-browser-tests
+    function browser-tests
       cd (git rev-parse --show-toplevel)
       date
       ninja -C out/gnRelease browser_tests; \
@@ -168,7 +169,7 @@ debug_devtools = true
         and ./out/gnRelease/browser_tests $argv
     end
 
-    function chrome-release-build-content-browser-tests
+    function content-browser-tests
       cd (git rev-parse --show-toplevel)
       date
       ninja -C out/gnRelease content_browsertests; /
@@ -177,18 +178,15 @@ debug_devtools = true
     end
 
     # Webkit Tests and Layout Tests
-    function chrome-release-build-webkit-tests
+    function webkit-tests
       cd (git rev-parse --show-toplevel)
       date
-      ninja -C out/gnRelease content_shell; \
+      ninja -C out/gnRelease blink_tests; \
         and date; \
-        and python third_party/WebKit/Tools/Scripts/run-webkit-tests $argv
+        and python third_party/WebKit/Tools/Scripts/run-webkit-tests -t gnRelease $argv
     end
 
-    abbr -a ut="chrome-release-build-unit-tests"
-    abbr -a bt="chrome-release-build-browser-tests"
-    abbr -a cbt="chrome-release-build-content-browser-tests"
-    abbr -a layout="chrome-release-build-webkit-tests"
+    abbr -a layout="webkit-tests"
 
     abbr -a pre="git cl presubmit --upload --force"
 
@@ -256,7 +254,7 @@ debug_devtools = true
       end
 
       echo "$OLD_CHROME_PATH" $argv
-      eval "\"$OLD_CHROME_PATH\"" $argv
+      eval "\"$OLD_CHROME_PATH\"" (string escape -- $argv)
     end
 
     function old-chrome-temp
@@ -347,4 +345,4 @@ transport_security_state_static.certs"
   abbr -a hsd "hstspreload +d"
   abbr -a hss "hstspreload status"
   abbr -a ghs "go run $GOPATH/src/github.com/chromium/hstspreload/cmd/hstspreload/*.go"
-  complete -c hstspreload -x -a "checkdomain checkheader"
+  complete -c hstspreload -x -a "+d -d +h -h preloadabledomain removabledomain preloadableheader removableheader status batch"

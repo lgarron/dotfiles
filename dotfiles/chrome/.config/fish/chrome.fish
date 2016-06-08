@@ -145,7 +145,7 @@ debug_devtools = true
         and ./out/gnRelease/unit_tests $argv
     end
 
-    function content-unit-tests
+    function content-unittests
       cd (git rev-parse --show-toplevel)
       date
       ninja -C out/gnRelease content_unittests; \
@@ -153,7 +153,7 @@ debug_devtools = true
         and ./out/gnRelease/content_unittests $argv
     end
 
-    function net-unit-tests
+    function net-unittests
       cd (git rev-parse --show-toplevel)
       date
       ninja -C out/gnRelease net_unittests; \
@@ -169,7 +169,7 @@ debug_devtools = true
         and ./out/gnRelease/browser_tests $argv
     end
 
-    function content-browser-tests
+    function content-browsertests
       cd (git rev-parse --show-toplevel)
       date
       ninja -C out/gnRelease content_browsertests; /

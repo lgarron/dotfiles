@@ -137,44 +137,34 @@ debug_devtools = true
 
 ### Chrome Tests
 
-    function unit-tests
+    function tests-build-run
+      set BINARY $argv[1]
+      set -e argv[1]
+
       cd (git rev-parse --show-toplevel)
       date
-      ninja -C out/gnRelease unit_tests; \
+      ninja -C "out/gnRelease" "$BINARY"; \
         and date; \
-        and ./out/gnRelease/unit_tests $argv
+        and eval "out/gnRelease/$BINARY" (string escape -- $argv)
     end
 
+    function unit-tests
+      tests-build-run unit_tests $argv
+    end
     function content-unittests
-      cd (git rev-parse --show-toplevel)
-      date
-      ninja -C out/gnRelease content_unittests; \
-        and date; \
-        and ./out/gnRelease/content_unittests $argv
+      tests-build-run content_unittests $argv
     end
 
     function net-unittests
-      cd (git rev-parse --show-toplevel)
-      date
-      ninja -C out/gnRelease net_unittests; \
-        and date; \
-        and ./out/gnRelease/net_unittests $argv
+      tests-build-run net_unittests $argv
     end
 
     function browser-tests
-      cd (git rev-parse --show-toplevel)
-      date
-      ninja -C out/gnRelease browser_tests; \
-        and date; \
-        and ./out/gnRelease/browser_tests $argv
+      tests-build-run browser_tests $argv
     end
 
     function content-browsertests
-      cd (git rev-parse --show-toplevel)
-      date
-      ninja -C out/gnRelease content_browsertests; /
-        and date; /
-        and ./out/gnRelease/content_browsertests $argv
+      tests-build-run content_browsertests $argv
     end
 
     # Webkit (Layout) Tests
@@ -185,10 +175,6 @@ debug_devtools = true
         and date; \
         and python third_party/WebKit/Tools/Scripts/run-webkit-tests -t gnRelease $argv
     end
-
-    abbr -a layout="layout-tests"
-
-    abbr -a pre="git cl presubmit --upload --force"
 
 ### Chrome Versions
 
@@ -270,6 +256,8 @@ debug_devtools = true
     abbr -a canary chrome-canary-temp
 
     abbr -a old old-chrome-temp
+
+    abbr -a pre="git cl presubmit --upload --force"
 
     function ksadmin
       env DYLD_INSERT_LIBRARIES='' "/Library/Google/GoogleSoftwareUpdate/GoogleSoftwareUpdate.bundle/Contents/MacOS/ksadmin" $argv

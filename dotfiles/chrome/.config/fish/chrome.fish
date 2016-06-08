@@ -177,8 +177,8 @@ debug_devtools = true
         and ./out/gnRelease/content_browsertests $argv
     end
 
-    # Webkit Tests and Layout Tests
-    function webkit-tests
+    # Webkit (Layout) Tests
+    function layout-tests
       cd (git rev-parse --show-toplevel)
       date
       ninja -C out/gnRelease blink_tests; \
@@ -186,7 +186,7 @@ debug_devtools = true
         and python third_party/WebKit/Tools/Scripts/run-webkit-tests -t gnRelease $argv
     end
 
-    abbr -a layout="webkit-tests"
+    abbr -a layout="layout-tests"
 
     abbr -a pre="git cl presubmit --upload --force"
 

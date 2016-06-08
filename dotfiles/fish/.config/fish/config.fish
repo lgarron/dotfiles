@@ -30,21 +30,29 @@
 
     loading_indicator "config"
 
-# Path
-
-    set PATH \
-      $PATH \
-      "/usr/local/go/bin" \
-      "$HOME/local/bin/scripts" \
-      "$HOME/local/bin/misc" \
-      "$HOME/local/bin/dance-hacking" \
-      "$HOME/Code/Work/google-cloud-sdk/bin"
-
 # Machines
 
     set GALOIS = Galois Galois.local
     set NOETHER = Noether lgarron-macbookpro
     set LGARRON1 = lgarron1
+
+# Path
+
+    if contains (hostname -s) $GALOIS
+        set PATH \
+            $PATH \
+            "$HOME/local/bin/misc"
+            "$HOME/local/bin/scripts" \
+            "$HOME/local/bin/dance-hacking"
+    end
+
+    if contains (hostname -s) $NOETHER
+        set PATH \
+            $PATH \
+            "$HOME/local/bin/misc" \
+            "$HOME/Code/Work/go_appengine" \
+            "$HOME/Code/Work/google-cloud-sdk/bin"
+    end
 
 # MOTD
 
@@ -146,13 +154,6 @@
     function aedeploy
       echo "Invoking wrapped aedeploy."
       env DYLD_INSERT_LIBRARIES='' command aedeploy $argv
-    end
-
-    if contains (hostname -s) $NOETHER
-        set -x PATH \
-            $PATH \
-            "/Users/lgarron/Code/go_appengine" \
-            "$HOME/Code/google-cloud-sdk/bin"
     end
 
 ## Web

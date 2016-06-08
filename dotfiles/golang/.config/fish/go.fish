@@ -1,7 +1,9 @@
 # Go
 
   set -x "GOPATH" "$HOME/Code/gopath"
-  set -x PATH $PATH "$HOME/Code/gopath/bin"
+  set -x PATH $PATH \
+      "/usr/local/go/bin" \
+      "$HOME/Code/gopath/bin"
 
   if [ (uname) = "Darwin" ]
     function go

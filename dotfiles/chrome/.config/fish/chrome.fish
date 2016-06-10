@@ -133,11 +133,9 @@ debug_devtools = true
 
     abbr -a i "ios-debug"
 
-## Testing
+## Building
 
-### Chrome Tests
-
-    function tests-build-run
+    function release-build-run
       set BINARY $argv[1]
       set -e argv[1]
 
@@ -148,23 +146,36 @@ debug_devtools = true
         and eval "out/gnRelease/$BINARY" (string escape -- $argv)
     end
 
-    function unit-tests
-      tests-build-run unit_tests $argv
+### Utilities
+
+    function cert_verify_tool
+      release-build-run cert_verify_tool $argv
     end
+
+
+## Testing
+
+### Chrome Tests
+
+
+    function unit-tests
+      release-build-run unit_tests $argv
+    end
+
     function content-unittests
-      tests-build-run content_unittests $argv
+      release-build-run content_unittests $argv
     end
 
     function net-unittests
-      tests-build-run net_unittests $argv
+      release-build-run net_unittests $argv
     end
 
     function browser-tests
-      tests-build-run browser_tests $argv
+      release-build-run browser_tests $argv
     end
 
     function content-browsertests
-      tests-build-run content_browsertests $argv
+      release-build-run content_browsertests $argv
     end
 
     # Webkit (Layout) Tests

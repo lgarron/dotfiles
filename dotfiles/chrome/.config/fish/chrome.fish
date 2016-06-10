@@ -338,7 +338,7 @@ debug_devtools = true
   abbr -a tsss "cd $HOME/chromium/src/net/http ; \
 transport_security_state_static_generate \
 transport_security_state_static.json \
-transport_security_state_static.certs"
+transport_security_state_static.pins"
 
   abbr -a hs "hstspreload"
   abbr -a hsd "hstspreload +d"

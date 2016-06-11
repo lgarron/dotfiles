@@ -114,6 +114,10 @@
       grep -ir $argv[1] .
     end
 
+    # Until `ag` supports a config file:
+    # https://github.com/ggreer/the_silver_searcher/pull/257
+    abbr -a ag "ag --hidden"
+
 ## General
 
 

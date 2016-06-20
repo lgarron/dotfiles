@@ -166,7 +166,8 @@
         http --default-scheme https $argv
     end
 
-    abbr -a "ht" "https -ph"
+    # *h*ttps *h*eaders
+    abbr -a "hh" "https -ph"
 
 ## iTerm
 

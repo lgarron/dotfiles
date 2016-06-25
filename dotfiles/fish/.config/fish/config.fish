@@ -41,7 +41,7 @@
     if contains (hostname -s) $GALOIS
         set PATH \
             $PATH \
-            "$HOME/local/bin/misc"
+            "$HOME/local/bin/misc" \
             "$HOME/local/bin/scripts" \
             "$HOME/local/bin/dance-hacking"
     end

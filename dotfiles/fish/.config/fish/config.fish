@@ -189,7 +189,7 @@
 
     if [ (uname) = "Darwin" ]
       source_iterm_shell_integration
-    else 
+    else
       if [ $SSH_TTY ]
         source_iterm_shell_integration
       end

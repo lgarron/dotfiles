@@ -277,6 +277,12 @@ debug_devtools = true
 
 ## Git
 
+    # Stub out some slow git completions.
+    function __fish_git_add_files; end
+    function __fish_git_commits; end
+    function __fish_git_modified_files; end
+    function __fish_git_unique_remote_branches; end
+
     function __fish_git_tags
       if [ "$CHROMIUM_SRC" = (git rev-parse --show-toplevel) ]
         # Ignore thousands of release tags.
@@ -289,9 +295,9 @@ debug_devtools = true
     function __fish_git_branches
       if [ "$CHROMIUM_SRC" = (git rev-parse --show-toplevel) ]
         # Ignore a whole bunch of release branches.
-        command git branch --no-color ^/dev/null | sgrep -v ' -> ' | sed -e 's/^..//' -e 's/^remotes\///'
+        command git branch --no-color ^/dev/null | grep -v ' -> ' | sed -e 's/^..//' -e 's/^remotes\///'
       else
-        command git branch --no-color -a ^/dev/null | sgrep -v ' -> ' | sed -e 's/^..//' -e 's/^remotes\///'
+        command git branch --no-color -a ^/dev/null | grep -v ' -> ' | sed -e 's/^..//' -e 's/^remotes\///'
       end
     end
 

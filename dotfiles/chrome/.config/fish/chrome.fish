@@ -123,7 +123,7 @@ debug_devtools = true
       chromium-build-run "out/gnDebug" $argv
     end
 
-    abbr -a r "release badssl.com"
+    abbr -a r "release \"https://permission.site/\""
     abbr -a d "debug"
 
 ## iOS

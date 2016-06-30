@@ -16,6 +16,10 @@
 
     set PATH $HOME/Code/depot_tools $PATH
 
+    set -x GOOGLE_API_KEY no
+    set -x GOOGLE_DEFAULT_CLIENT_ID no
+    set -x GOOGLE_DEFAULT_CLIENT_SECRET no
+
 ### Goma
 
     function goma

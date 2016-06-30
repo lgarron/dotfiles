@@ -48,9 +48,9 @@
 
     if contains (hostname -s) $NOETHER
         set PATH \
+            "$HOME/local/brew/bin" \
             $PATH \
             "$HOME/local/bin/misc" \
-            "$HOME/Code/Work/go_appengine" \
             "$HOME/Code/Work/google-cloud-sdk/bin"
     end
 

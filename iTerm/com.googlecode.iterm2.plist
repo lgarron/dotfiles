@@ -2117,7 +2117,7 @@
 	<key>NSFontPanelPreviewHeight</key>
 	<real>0.0</real>
 	<key>NSNavLastRootDirectory</key>
-	<string>~/Code/dotfiles/dotfiles/iTerm</string>
+	<string>~/.config/iTerm</string>
 	<key>NSNavPanelExpandedSizeForOpenMode</key>
 	<string>{712, 459}</string>
 	<key>NSNavPanelExpandedSizeForSaveMode</key>
@@ -2155,23 +2155,25 @@
 	<key>NSWindow Frame NSColorPanel</key>
 	<string>1510 306 413 1111 1200 240 1920 1177 </string>
 	<key>NSWindow Frame NSFontPanel</key>
-	<string>1297 146 445 306 0 0 1920 1057 </string>
+	<string>595 143 445 172 0 0 1440 877 </string>
 	<key>NSWindow Frame Preferences</key>
-	<string>218 419 606 456 0 0 1440 877 </string>
+	<string>433 421 606 456 0 0 1440 877 </string>
 	<key>NSWindow Frame SUAutomaticUpdateAlert</key>
 	<string>292 1292 616 174 0 0 1200 1897 </string>
 	<key>NSWindow Frame SUStatusFrame</key>
 	<string>758 696 400 129 0 0 1920 1057 </string>
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>290 1128 620 392 0 0 1200 1897 </string>
+	<key>NSWindow Frame SharedPreferences</key>
+	<string>187 171 796 473 0 0 1920 1057 </string>
 	<key>NSWindow Frame UKCrashReporter</key>
 	<string>1202 90 718 877 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 10 1845 1047 0 0 1920 1057 </string>
+	<string>960 44 956 1013 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>332 0 704 877 0 0 1920 1057 </string>
+	<string>-1080 -840 1075 1897 -1080 -840 1080 1897 </string>
 	<key>NSWindow Frame iTerm Window 10</key>
-	<string>0 10 921 1047 0 0 1920 1057 </string>
+	<string>0 58 956 999 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 100</key>
 	<string>892 235 585 452 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 101</key>
@@ -2193,7 +2195,7 @@
 	<key>NSWindow Frame iTerm Window 109</key>
 	<string>1081 28 585 452 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 11</key>
-	<string>0 605 585 452 0 0 1920 1057 </string>
+	<string>960 526 956 531 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 110</key>
 	<string>325 288 1082 690 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 111</key>
@@ -2215,29 +2217,29 @@
 	<key>NSWindow Frame iTerm Window 119</key>
 	<string>1265 385 585 452 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 12</key>
-	<string>0 605 585 452 0 0 1920 1057 </string>
+	<string>960 554 956 503 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 13</key>
-	<string>0 605 585 452 0 0 1920 1057 </string>
+	<string>960 554 956 503 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 14</key>
-	<string>930 605 585 452 0 0 1920 1057 </string>
+	<string>0 44 956 1013 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 15</key>
-	<string>0 605 585 452 0 0 1920 1057 </string>
+	<string>0 44 956 1013 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 16</key>
-	<string>921 605 585 452 0 0 1920 1057 </string>
+	<string>921 580 585 477 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 17</key>
-	<string>0 605 585 452 0 0 1920 1057 </string>
+	<string>0 580 585 477 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 18</key>
-	<string>0 605 585 452 0 0 1920 1057 </string>
+	<string>0 490 585 477 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 19</key>
-	<string>252 101 585 452 0 0 1920 1057 </string>
+	<string>0 515 585 452 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>929 10 928 1047 0 0 1920 1057 </string>
+	<string>120 44 956 826 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 20</key>
-	<string>397 27 585 452 0 0 1920 1057 </string>
+	<string>1140 605 585 452 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 21</key>
-	<string>443 2 585 452 0 0 1920 1057 </string>
+	<string>0 526 956 531 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 22</key>
-	<string>488 0 585 452 0 0 1920 1057 </string>
+	<string>488 44 585 452 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 23</key>
 	<string>534 598 585 452 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 24</key>
@@ -2253,7 +2255,7 @@
 	<key>NSWindow Frame iTerm Window 29</key>
 	<string>158 605 585 452 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
-	<string>925 605 585 452 0 0 1920 1057 </string>
+	<string>192 139 585 452 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 30</key>
 	<string>187 605 585 452 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 31</key>
@@ -2275,7 +2277,7 @@
 	<key>NSWindow Frame iTerm Window 39</key>
 	<string>449 605 585 452 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 4</key>
-	<string>926 9 921 520 0 0 1920 1057 </string>
+	<string>0 605 599 452 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 40</key>
 	<string>28 605 585 452 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 41</key>
@@ -2297,7 +2299,7 @@
 	<key>NSWindow Frame iTerm Window 49</key>
 	<string>454 366 585 452 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 5</key>
-	<string>0 605 585 452 0 0 1920 1057 </string>
+	<string>0 605 599 452 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 50</key>
 	<string>499 356 585 452 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 51</key>
@@ -2319,7 +2321,7 @@
 	<key>NSWindow Frame iTerm Window 59</key>
 	<string>910 268 585 452 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 6</key>
-	<string>-1080 112 1075 945 -1080 -840 1080 1897 </string>
+	<string>960 554 956 503 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 60</key>
 	<string>955 258 585 452 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 61</key>
@@ -2341,7 +2343,7 @@
 	<key>NSWindow Frame iTerm Window 69</key>
 	<string>132 170 585 452 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 7</key>
-	<string>0 605 585 452 0 0 1920 1057 </string>
+	<string>960 48 956 503 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 70</key>
 	<string>178 160 585 452 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 71</key>
@@ -2363,7 +2365,7 @@
 	<key>NSWindow Frame iTerm Window 79</key>
 	<string>0 600 585 452 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 8</key>
-	<string>-1009 117 585 452 -1080 -840 1080 1897 </string>
+	<string>0 48 956 503 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 80</key>
 	<string>472 108 585 452 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 81</key>
@@ -2385,7 +2387,7 @@
 	<key>NSWindow Frame iTerm Window 89</key>
 	<string>661 488 585 452 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 9</key>
-	<string>930 605 585 452 0 0 1920 1057 </string>
+	<string>960 44 956 1013 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 90</key>
 	<string>682 465 585 452 0 0 1920 1057 </string>
 	<key>NSWindow Frame iTerm Window 91</key>
@@ -3405,9 +3407,7 @@
 			</dict>
 			<key>Bound Hosts</key>
 			<array>
-				<string>lgarron1.mtv.corp.google.com</string>
-				<string>lgarron1.mtv</string>
-				<string>lgarron1</string>
+				<string>lgarron1.mtv.*</string>
 			</array>
 			<key>Character Encoding</key>
 			<integer>4</integer>
@@ -3939,7 +3939,7 @@
 			<key>Use Italic Font</key>
 			<true/>
 			<key>Vertical Spacing</key>
-			<real>1</real>
+			<real>1.0026884883283134</real>
 			<key>Visual Bell</key>
 			<true/>
 			<key>Window Type</key>
@@ -3950,12 +3950,24 @@
 	</array>
 	<key>NoSyncCommandHistoryHasEverBeenUsed</key>
 	<true/>
+	<key>NoSyncConfirmBeta</key>
+	<true/>
 	<key>NoSyncDoNotWarnBeforeMultilinePaste</key>
 	<true/>
 	<key>NoSyncDoNotWarnBeforeMultilinePaste_selection</key>
 	<integer>0</integer>
+	<key>NoSyncDoNotWarnBeforePastingOneLineEndingInNewlineAtShellPrompt</key>
+	<true/>
+	<key>NoSyncDoNotWarnBeforePastingOneLineEndingInNewlineAtShellPrompt_selection</key>
+	<integer>0</integer>
+	<key>NoSyncInstallationId</key>
+	<string>87F0F1F7-5EB8-4763-8F46-BD7FF15B32B4</string>
 	<key>NoSyncLastTipTime</key>
 	<real>461614957.79126298</real>
+	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
+	<true/>
+	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
+	<integer>0</integer>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
 	<real>465936817.87309402</real>
 	<key>NoSyncTimeOfLastPromo</key>
@@ -4043,7 +4055,7 @@
 		</dict>
 	</dict>
 	<key>PrefsCustomFolder</key>
-	<string>/Users/lgarron/Code/dotfiles/dotfiles/iTerm</string>
+	<string>/Users/lgarron/Code/dotfiles/iTerm</string>
 	<key>PromptOnQuit</key>
 	<false/>
 	<key>QuitWhenAllWindowsClosed</key>
@@ -4059,17 +4071,17 @@
 	<key>SUFeedAlternateAppNameKey</key>
 	<string>iTerm</string>
 	<key>SUFeedURL</key>
-	<string>https://iterm2.com/appcasts/testing3.xml</string>
+	<string>https://iterm2.com/appcasts/testing.xml?shard=58</string>
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2016-04-22T05:50:07Z</date>
+	<date>2016-08-01T20:40:24Z</date>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>ShowBookmarkName</key>
 	<false/>
 	<key>ShowFullScreenTabBar</key>
-	<false/>
+	<true/>
 	<key>ShowPaneTitles</key>
 	<true/>
 	<key>SmartPlacement</key>
@@ -4113,7 +4125,7 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>2.9.20160313</string>
+	<string>3.0.5</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>

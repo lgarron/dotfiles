@@ -27,17 +27,12 @@
     end
 
     set GOMA_START_COMMAND "goma ensure_start"
-    set GYP_COMMAND "env GYP_GENERATORS=ninja ./build/gyp_chromium"
 
     abbr -a goma-start "$GOMA_START_COMMAND"
     abbr -a goma-page  "open http://localhost:8088/"
     abbr -a goma-check "goma status | grep \"status\""
-    abbr -a goma-setup "env GYP_GENERATORS=ninja ./build/gyp_chromium -D use_goma=1"
-    abbr -a gyp "$GYP_COMMAND"
-
+    
 ### gn
-
-    set -x GYP_CHROMIUM_NO_ACTION 1
 
     function gnTemplate
       echo "# Debug/Release
@@ -56,15 +51,15 @@ debug_devtools = true
     end
 
     function gn-gen-debug
-      mkdir -p out/gnDebug
-      gnTemplate "true" > out/gnDebug/args.gn
-      gn gen out/gnDebug
+      mkdir -p out/Debug
+      gnTemplate "true" > out/Debug/args.gn
+      gn gen out/Debug
     end
 
     function gn-gen-release
-      mkdir -p out/gnRelease
-      gnTemplate "false" > out/gnRelease/args.gn
-      gn gen out/gnRelease
+      mkdir -p out/Release
+      gnTemplate "false" > out/Release/args.gn
+      gn gen out/Release
     end
 
 ### Building
@@ -96,7 +91,7 @@ debug_devtools = true
 
 ### Chromium
 
-    abbr -a ggggg "$GOMA_START_COMMAND ; git pull origin master ; gclient sync; gn-gen-debug; gn-gen-release"
+    abbr -a ggg "$GOMA_START_COMMAND ; git pull origin master ; gclient sync"
 
     function chromium-run
       set FOLDER $argv[1]
@@ -116,11 +111,11 @@ debug_devtools = true
     end
 
     function release
-      chromium-build-run "out/gnRelease" $argv
+      chromium-build-run "out/Release" $argv
     end
 
     function debug
-      chromium-build-run "out/gnDebug" $argv
+      chromium-build-run "out/Debug" $argv
     end
 
     abbr -a r "release \"https://permission.site/\""
@@ -131,8 +126,8 @@ debug_devtools = true
     function ios-debug
       cd (git rev-parse --show-toplevel)
       date
-      ninja -C out/gnDebug-iphonesimulator chrome; \
-        and ./out/gnDebug-iphonesimulator/iossim out/gnDebug-iphonesimulator/Chromium.app/
+      ninja -C out/Debug-iphonesimulator chrome; \
+        and ./out/Debug-iphonesimulator/iossim out/Debug-iphonesimulator/Chromium.app/
     end
 
     abbr -a i "ios-debug"
@@ -145,9 +140,9 @@ debug_devtools = true
 
       cd (git rev-parse --show-toplevel)
       date
-      ninja -C "out/gnRelease" "$BINARY"; \
+      ninja -C "out/Release" "$BINARY"; \
         and date; \
-        and eval "out/gnRelease/$BINARY" (string escape -- $argv)
+        and eval "out/Release/$BINARY" (string escape -- $argv)
     end
 
 ### Utilities
@@ -186,9 +181,9 @@ debug_devtools = true
     function layout-tests
       cd (git rev-parse --show-toplevel)
       date
-      ninja -C out/gnRelease blink_tests; \
+      ninja -C out/Release blink_tests; \
         and date; \
-        and python third_party/WebKit/Tools/Scripts/run-webkit-tests -t gnRelease $argv
+        and python third_party/WebKit/Tools/Scripts/run-webkit-tests -t Release $argv
     end
 
 ### Chrome Versions

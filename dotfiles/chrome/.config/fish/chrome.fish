@@ -276,6 +276,16 @@ debug_devtools = true
 
 ## Git
 
+    function in_chromium_repo
+      if not git rev-parse ^ /dev/null
+        false
+      else if [ (git remote get-url origin) = "https://chromium.googlesource.com/chromium/src.git" ]
+        true
+      else
+        false
+      end
+    end
+
     # Stub out some slow git completions.
     function __fish_git_add_files; end
     function __fish_git_commits; end
@@ -283,7 +293,7 @@ debug_devtools = true
     function __fish_git_unique_remote_branches; end
 
     function __fish_git_tags
-      if [ "$CHROMIUM_SRC" = (git rev-parse --show-toplevel) ]
+      if [ in_chromium_repo ]
         # Ignore thousands of release tags.
         command git tag | grep -v "^\d\+\.\d\+\.\d\+\.\d\+\$"
       else
@@ -292,7 +302,7 @@ debug_devtools = true
     end
 
     function __fish_git_branches
-      if [ "$CHROMIUM_SRC" = (git rev-parse --show-toplevel) ]
+      if [ in_chromium_repo ]
         # Ignore a whole bunch of release branches.
         command git branch --no-color ^/dev/null | grep -v ' -> ' | sed -e 's/^..//' -e 's/^remotes\///'
       else

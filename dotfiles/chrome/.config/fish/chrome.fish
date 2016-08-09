@@ -310,6 +310,14 @@ debug_devtools = true
       end
     end
 
+    function __fish_git_commits
+      if [ in_chromium_repo ]
+      else
+        command git log --pretty=tformat:"%h"\t"%s" --all ^/dev/null \
+        | string replace -r '(.{73}).+' '$1…'
+      end
+    end
+
 ### "GitHub"
 
     function switch-chrome-user

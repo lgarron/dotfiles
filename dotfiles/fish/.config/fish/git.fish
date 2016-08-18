@@ -37,6 +37,12 @@
 
     abbr -a ghash "git rev-parse HEAD"
 
+    function gnuke
+        git reset --hard
+        git checkout .
+        git clean -fd
+    end
+
     function gitx
       echo "Invoking wrapped gitx."
       env DYLD_INSERT_LIBRARIES='' command gitx $argv

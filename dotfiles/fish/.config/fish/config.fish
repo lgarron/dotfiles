@@ -48,6 +48,7 @@
 
     if contains (hostname -s) $NOETHER
         set PATH \
+            "/usr/local/git/current/bin" \
             "$HOME/local/brew/bin" \
             $PATH \
             "$HOME/local/bin/misc" \

@@ -134,6 +134,17 @@ debug_devtools = true
 
 ## Building
 
+    function debug-build-run
+      set BINARY $argv[1]
+      set -e argv[1]
+
+      cd (git rev-parse --show-toplevel)
+      date
+      ninja -C "out/Debug" "$BINARY"; \
+        and date; \
+        and eval "out/Debug/$BINARY" (string escape -- $argv)
+    end
+
     function release-build-run
       set BINARY $argv[1]
       set -e argv[1]

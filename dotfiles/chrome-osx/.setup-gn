@@ -1,0 +1,6 @@
+[goma]
+enabled = true
+install = "/Users/lgarron/goma/"
+
+[xcode]
+jobs = 1000

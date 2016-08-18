@@ -4,7 +4,7 @@ all:
 ########
 
 .PHONY: noether
-noether: ag chrome fish gce-ssh gitconfig-noether gitignore-osx golang osx iTerm
+noether: ag chrome chrome-osx fish gce-ssh gitconfig-noether gitignore-osx golang osx iTerm
 
 .PHONY: galois
 galois: ag fish gitconfig-galois gitignore-osx osx osx-languages golang-dropbox iTerm
@@ -17,6 +17,7 @@ lgarron1: ag chrome fish gitconfig-lgarron1 golang
 PACKAGES  =
 PACKAGES += ag
 PACKAGES += chrome
+PACKAGES += chrome-osx
 PACKAGES += fish
 PACKAGES += gce-ssh
 PACKAGES += gitconfig-galois

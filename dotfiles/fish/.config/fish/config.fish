@@ -2,8 +2,16 @@
 
 # Setup
 
+    # Only print if we're a TTY.
+    # This prevents `protocol error: bad line length character` in git.
+    function _echo
+        if isatty
+            echo $argv
+        end
+    end
+
     if [ "$MANUAL_RELOAD" = "true" ]
-      echo "[Reloading .fish files, including abbrevations defined from scratch]"
+      _echo "[Reloading .fish files, including abbrevations defined from scratch]"
       for a in (abbr --list)
         abbr -e $a
       end
@@ -24,7 +32,7 @@
 
     function loading_indicator
       if [ "$MANUAL_RELOAD" = "true" ]
-        echo -n "$argv[1]..."
+        _echo -n "$argv[1]..."
       end
     end
 
@@ -62,30 +70,30 @@
       if contains (hostname -s) $GALOIS
         # Based on ANSI Shadow with the shadow removed:
         # http://patorjk.com/software/taag/#p=display&v=1&f=ANSI%20Shadow&t=Galois%0AGALOIS
-        echo " ██████     █████    ██         ██████    ██   ███████ "
-        echo "██         ██   ██   ██        ██    ██   ██   ██      "
-        echo "██   ███   ███████   ██        ██    ██   ██   ███████ "
-        echo "██    ██   ██   ██   ██        ██    ██   ██        ██ "
-        echo " ██████    ██   ██   ███████    ██████    ██   ███████ "
-        echo ""
+        _echo " ██████     █████    ██         ██████    ██   ███████ "
+        _echo "██         ██   ██   ██        ██    ██   ██   ██      "
+        _echo "██   ███   ███████   ██        ██    ██   ██   ███████ "
+        _echo "██    ██   ██   ██   ██        ██    ██   ██        ██ "
+        _echo " ██████    ██   ██   ███████    ██████    ██   ███████ "
+        _echo ""
       else if contains (hostname -s) $NOETHER
         # Based on ANSI Shadow with the shadow removed:
         # http://patorjk.com/software/taag/#p=display&v=1&f=ANSI%20Shadow&t=NOETHER
-        echo "███    ██  ██████  ███████ ████████ ██   ██ ███████ ██████ "
-        echo "████   ██ ██    ██ ██         ██    ██   ██ ██      ██   ██"
-        echo "██ ██  ██ ██    ██ █████      ██    ███████ █████   ██████ "
-        echo "██  ██ ██ ██    ██ ██         ██    ██   ██ ██      ██   ██"
-        echo "██   ████  ██████  ███████    ██    ██   ██ ███████ ██   ██"
-        echo ""
+        _echo "███    ██  ██████  ███████ ████████ ██   ██ ███████ ██████ "
+        _echo "████   ██ ██    ██ ██         ██    ██   ██ ██      ██   ██"
+        _echo "██ ██  ██ ██    ██ █████      ██    ███████ █████   ██████ "
+        _echo "██  ██ ██ ██    ██ ██         ██    ██   ██ ██      ██   ██"
+        _echo "██   ████  ██████  ███████    ██    ██   ██ ███████ ██   ██"
+        _echo ""
       else if contains (hostname -s) $LGARRON1
-        echo "██       ██████   █████  ██████  ██████   ██████  ███    ██  ██"
-        echo "██      ██       ██   ██ ██   ██ ██   ██ ██    ██ ████   ██ ███"
-        echo "██      ██   ███ ███████ ██████  ██████  ██    ██ ██ ██  ██  ██"
-        echo "██      ██    ██ ██   ██ ██   ██ ██   ██ ██    ██ ██  ██ ██  ██"
-        echo "███████  ██████  ██   ██ ██   ██ ██   ██  ██████  ██   ████  ██"
-        echo ""
+        _echo "██       ██████   █████  ██████  ██████   ██████  ███    ██  ██"
+        _echo "██      ██       ██   ██ ██   ██ ██   ██ ██    ██ ████   ██ ███"
+        _echo "██      ██   ███ ███████ ██████  ██████  ██    ██ ██ ██  ██  ██"
+        _echo "██      ██    ██ ██   ██ ██   ██ ██   ██ ██    ██ ██  ██ ██  ██"
+        _echo "███████  ██████  ██   ██ ██   ██ ██   ██  ██████  ██   ████  ██"
+        _echo ""
       else
-        echo "Welcome to "(hostname -s)
+        _echo "Welcome to "(hostname -s)
       end
 
     end
@@ -154,7 +162,7 @@
     abbr -a serve "python -m SimpleHTTPServer"
 
     # Technically a private API token, but not critically secret.
-    set -x "ECHO_NEST_API_KEY" "EJ7ZVMPNXWVFXS1KE"
+    set -x "_ECHO_NEST_API_KEY" "EJ7ZVMPNXWVFXS1KE"
 
     abbr -a "md5" "openssl dgst -md5"
     abbr -a "sha1" "openssl dgst -sha1"
@@ -164,7 +172,7 @@
     set -x "DANCE_HACKING_MUSIC_FOLDER" "$HOME/Temporary/Music/"
 
     function aedeploy
-      echo "Invoking wrapped aedeploy."
+      _echo "Invoking wrapped aedeploy."
       env DYLD_INSERT_LIBRARIES='' command aedeploy $argv
     end
 
@@ -190,7 +198,7 @@
         if test -f "$file"
           source "$file"
         else
-          echo "Could not find iTerm shell integration file: $file"
+          _echo "Could not find iTerm shell integration file: $file"
         end
       end
     end
@@ -237,7 +245,7 @@
       source "$HOME/.config/fish/chrome.fish"
     end
 
-    echo -ne "\r" # Clear loading indicators.
+    _echo -ne "\r" # Clear loading indicators.
 
 # Cleanup
 

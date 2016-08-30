@@ -13,7 +13,7 @@ source $__fish_datadir/completions/git.fish
     end
 
     function __fish_git_tags
-      if [ in_chromium_repo ]
+      if in_chromium_repo
         # I currently don't use tags. Save a bunch of extra time by ignoring.
         # Uncomment the line below to list tags but ignore thousands of release tags.
         # command git tag | grep -v "^\d\+\.\d\+\.\d\+\.\d\+\$"
@@ -23,7 +23,7 @@ source $__fish_datadir/completions/git.fish
     end
 
     function __fish_git_modified_files
-      if [ in_chromium_repo ]
+      if in_chromium_repo
         # sloooooow. untracked-cache doesn't seem to work.
       else
         # git diff --name-only hands us filenames relative to the git toplevel
@@ -35,7 +35,7 @@ source $__fish_datadir/completions/git.fish
     end
 
     function __fish_git_branches
-      if [ in_chromium_repo ]
+      if in_chromium_repo
         # Ignore a whole bunch of release branches.
         command git branch --no-color ^/dev/null | grep -v ' -> ' | sed -e 's/^..//' -e 's/^remotes\///'
       else
@@ -44,7 +44,7 @@ source $__fish_datadir/completions/git.fish
     end
 
     function __fish_git_unique_remote_branches
-      if [ in_chromium_repo ]
+      if in_chromium_repo
         # Remote branches are useful sometimes, but let's cut them out for performance.
       else
         command git branch --no-color -a $argv ^/dev/null | string match -r -v ' -> ' | string trim -c "* " | string replace -r "^remotes/[^/]*/" "" | sort | uniq -u
@@ -52,7 +52,7 @@ source $__fish_datadir/completions/git.fish
     end
 
     function __fish_git_commits
-      if [ in_chromium_repo ] 
+      if in_chromium_repo 
         # Performance is atrocious if we list all Chromium commit hashes.
       else
         command git log --pretty=tformat:"%h"\t"%s" --all ^/dev/null \

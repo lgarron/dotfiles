@@ -338,9 +338,23 @@ debug_devtools = true
     function __fish_git_tags
       if [ in_chromium_repo ]
         # Ignore thousands of release tags.
-        command git tag | grep -v "^\d\+\.\d\+\.\d\+\.\d\+\$"
+
+        # I currently don't use tags. Can save a bunch of extra time by ignoring.
+        # command git tag | grep -v "^\d\+\.\d\+\.\d\+\.\d\+\$"
       else
         command git tag
+      end
+    end
+
+    function __fish_git_modified_files
+      if [ in_chromium_repo ]
+        # *sigh*
+      else
+        # git diff --name-only hands us filenames relative to the git toplevel
+        set -l root (command git rev-parse --show-toplevel)
+        # Print files from the current $PWD as-is, prepend all others with ":/" (relative to toplevel in git-speak)
+        # This is a bit simplistic but finding the lowest common directory and then replacing everything else in $PWD with ".." is a bit annoying
+        string replace -- "$PWD/" "" "$root/"(command git diff --name-only ^/dev/null) | string replace "$root/" ":/"
       end
     end
 

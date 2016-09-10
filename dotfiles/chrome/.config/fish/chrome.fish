@@ -11,6 +11,9 @@
     abbr -a wk       "$CHROMIUM_SRC/third_party/WebKit/"
     abbr -a devtools "$CHROMIUM_SRC/third_party/WebKit/Source/devtools/"
     abbr -a dt       "$CHROMIUM_SRC/third_party/WebKit/Source/devtools/"
+    
+    set ALT_CHROMIUM_SRC "$HOME/alt/src"
+    abbr -a alt      "$ALT_CHROMIUM_SRC/"
 
 ## Development
 
@@ -149,6 +152,8 @@ debug_devtools = true
 
     abbr -a r "release \"https://permission.site/\""
     abbr -a d "debug"
+
+    abbr -a v "release --user-data-dir=\"$HOME/Temporary/mac-views\" \"https://permission.site/\""
 
 ## iOS
 

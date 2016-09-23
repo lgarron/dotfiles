@@ -47,6 +47,10 @@ is_component_build = true
 symbol_level = 1
 use_goma = true
 
+# Catchin' Bugs
+# https://groups.google.com/a/chromium.org/forum/#!topic/chromium-dev/0fit7KBlaUY
+dcheck_always_on = true
+
 # DevTools
 debug_devtools = true
 

@@ -14,7 +14,11 @@
 
     abbr -a gb    "git branch"
     abbr -a gco   "git checkout"
-    abbr -a gcb   "git checkout -b"
+    if contains (hostname -s) $NOETHER
+        abbr -a gcb   "git new-branch --upstream-current"
+    else 
+        abbr -a gcb   "git checkout -b"
+    end
     abbr -a gcp   "git cherry-pick"
     abbr -a gdno  "git diff --name-only"
 

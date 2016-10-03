@@ -12,3 +12,5 @@
 	user = lgarron
 [branch]
 	autosetuprebase = always
+[http]
+	cookiefile = /usr/local/google/home/lgarron/.gitcookies

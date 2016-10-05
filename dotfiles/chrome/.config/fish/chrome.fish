@@ -320,6 +320,7 @@ debug_devtools = true
     abbr -a old old-chrome-temp
 
     abbr -a pre="git cl presubmit --upload --force"
+    abbr -a gnb   "git new-branch --upstream-current"
 
     function ksadmin
       env DYLD_INSERT_LIBRARIES='' "/Library/Google/GoogleSoftwareUpdate/GoogleSoftwareUpdate.bundle/Contents/MacOS/ksadmin" $argv

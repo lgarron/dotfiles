@@ -365,6 +365,19 @@ debug_devtools = true
 
     abbr -a gcu "git cl upload"
 
+## Crash reporting
+
+    # Crash reporting takes a long time for Chromium builds
+    function disable-crash-reporting
+      launchctl unload -w /System/Library/LaunchAgents/com.apple.ReportCrash.plist
+      sudo launchctl unload -w /System/Library/LaunchDaemons/com.apple.ReportCrash.Root.plist
+    end
+
+    function enable-crash-reporting
+      launchctl load -w /System/Library/LaunchAgents/com.apple.ReportCrash.plist
+      sudo launchctl load -w /System/Library/LaunchDaemons/com.apple.ReportCrash.Root.plist
+    end
+
 ## HSTS
 
   abbr -a tsss "cd $HOME/chromium/src/net/http ; \

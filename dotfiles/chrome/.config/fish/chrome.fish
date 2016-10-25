@@ -165,8 +165,8 @@ debug_devtools = true
       xcode8
       cd (git rev-parse --show-toplevel)
       date
-      ninja -C out/gn-Debug-iphonesimulator chrome; \
-        and ./out/gn-Debug-iphonesimulator/iossim ./out/gn-Debug-iphonesimulator/Chromium.app/
+      ninja -C out/Debug-iphonesimulator chrome; \
+        and ./out/Debug-iphonesimulator/iossim ./out/Debug-iphonesimulator/Chromium.app/
     end
 
     abbr -a i "ios-debug"
@@ -253,8 +253,8 @@ debug_devtools = true
       "/Applications/Google Chrome Canary.app/Contents/MacOS/Google Chrome Canary" $argv
     end
 
-    if test -e "/Users/lgarron/Google Drive/Graphics/Chrome OSX Icons/set-chrome-icons.sh"
-      "/Users/lgarron/Google Drive/Graphics/Chrome OSX Icons/set-chrome-icons.sh" &
+    if test -e "/Users/lgarron/Google Drive (lgarron@chromium.org)/Graphics/Chromium/Chrome OSX Icons/set-chrome-icons.sh"
+      "/Users/lgarron/Google Drive (lgarron@chromium.org)/Graphics/Chromium/Chrome OSX Icons/set-chrome-icons.sh" &
     end
 
 ### Temp Profiles

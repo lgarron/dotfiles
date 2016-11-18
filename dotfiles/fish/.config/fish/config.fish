@@ -175,9 +175,12 @@
 
     abbr -a xs "xargs subl"
 
-    export DYLD_INSERT_LIBRARIES="$HOME/local/dylib/libstderred.dylib"
-    # I can't get STDERRED_BLACKLIST to work, so let's make it easy to unset DYLD_INSERT_LIBRARIES
-    abbr -a "dy" "set -e DYLD_INSERT_LIBRARIES"
+    set STDERRED_PATH "$HOME/local/dylib/libstderred.dylib"
+    if test -f "$STDERRED_PATH"
+        export DYLD_INSERT_LIBRARIES=""
+        # I can't get STDERRED_BLACKLIST to work, so let's make it easy to unset DYLD_INSERT_LIBRARIES
+        abbr -a "dy" "set -e DYLD_INSERT_LIBRARIES"
+    end
 
     abbr -a serve "python -m SimpleHTTPServer"
 

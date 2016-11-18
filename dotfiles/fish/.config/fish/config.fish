@@ -58,7 +58,7 @@
         set PATH \
             "$HOME/local/bin-front-of-path" \
             "/usr/local/git/current/bin" \
-            "$HOME/local/brew/bin" \
+            "$HOME/local/homebrew/bin" \
             $PATH \
             "$HOME/local/bin/misc" \
             "$HOME/Code/Work/google-cloud-sdk/bin"

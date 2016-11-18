@@ -9,7 +9,6 @@
 	"highlight_modified_tabs": true,
 	"ignored_packages":
 	[
-		"GitGutter",
 		"Markdown",
 		"MarkdownEditing",
 		"Python Flake8 Lint",

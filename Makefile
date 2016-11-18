@@ -6,6 +6,9 @@ all:
 .PHONY: noether
 noether: ag chrome chrome-osx fish gce-ssh gitconfig-noether gitignore-osx golang osx iTerm
 
+.PHONY: hypatia
+hypatia: noether
+
 .PHONY: galois
 galois: ag fish gitconfig-galois gitignore-osx osx osx-languages golang-dropbox iTerm
 

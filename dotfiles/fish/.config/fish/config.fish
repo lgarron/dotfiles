@@ -42,6 +42,7 @@
 
     set GALOIS Galois Galois.local
     set NOETHER Noether lgarron-macbookpro
+    set HYPATIA Hypatia lgarron-macpro
     set LGARRON1 lgarron1
 
 # Path
@@ -62,6 +63,16 @@
             $PATH \
             "$HOME/local/bin/misc" \
             "$HOME/Code/Work/google-cloud-sdk/bin"
+    end
+
+    if contains (hostname -s) $HYPATIA
+        set PATH \
+            # "$HOME/local/bin-front-of-path" \
+            "/usr/local/git/current/bin" \
+            "$HOME/local/homebrew/bin" \
+            $PATH
+            # "$HOME/local/bin/misc" \
+            # "$HOME/Code/Work/google-cloud-sdk/bin"
     end
 
 # MOTD
@@ -86,6 +97,14 @@
         _echo "██  ██ ██ ██    ██ ██         ██    ██   ██ ██      ██   ██"
         _echo "██   ████  ██████  ███████    ██    ██   ██ ███████ ██   ██"
         _echo ""
+      else if contains (hostname -s) $HYPATIA
+        # Based on ANSI Shadow with the shadow removed:
+        # http://patorjk.com/software/taag/#p=display&v=1&f=ANSI%20Shadow&t=HYPATIA
+        _echo "██   ██ ██    ██ ██████   █████  ████████ ██  █████ "
+        _echo "██   ██  ██  ██  ██   ██ ██   ██    ██    ██ ██   ██"
+        _echo "███████   ████   ██████  ███████    ██    ██ ███████"
+        _echo "██   ██    ██    ██      ██   ██    ██    ██ ██   ██"
+        _echo "██   ██    ██    ██      ██   ██    ██    ██ ██   ██"
       else if contains (hostname -s) $LGARRON1
         _echo "██       ██████   █████  ██████  ██████   ██████  ███    ██  ██"
         _echo "██      ██       ██   ██ ██   ██ ██   ██ ██    ██ ████   ██ ███"

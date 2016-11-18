@@ -5,8 +5,10 @@
     "$HOME/Code/gopath/bin"
 
   if not contains (hostname -s) $LGARRON1
-    set -x PATH $PATH \
-      "/usr/local/go/bin"
+    if not contains (hostname -s) $HYPATIA
+      set -x PATH $PATH \
+        "/usr/local/go/bin"
+    end
   end
 
   if [ (uname) = "Darwin" ]

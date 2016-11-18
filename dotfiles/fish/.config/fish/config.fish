@@ -40,9 +40,9 @@
 
 # Machines
 
-    set GALOIS = Galois Galois.local
-    set NOETHER = Noether lgarron-macbookpro
-    set LGARRON1 = lgarron1
+    set GALOIS Galois Galois.local
+    set NOETHER Noether lgarron-macbookpro
+    set LGARRON1 lgarron1
 
 # Path
 

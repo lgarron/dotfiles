@@ -29,6 +29,8 @@
       ~/goma/goma_ctl.py $argv
     end
 
+    set -x "GOMA_OAUTH2_CONFIG_FILE" "$HOME/.goma_oauth2_config"
+
     set GOMA_START_COMMAND "goma ensure_start"
 
     abbr -a goma-start "$GOMA_START_COMMAND"

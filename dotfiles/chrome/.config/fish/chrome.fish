@@ -73,7 +73,11 @@ debug_devtools = true
 
 ### Building
 
-    set -x NINJA_SETTINGS -j 100 -l 75
+    if contains (hostname -s) $HYPATIA
+      set -x NINJA_SETTINGS -j 256 -l 75
+    else
+      set -x NINJA_SETTINGS -j 100 -l 75
+    end
 
     # Linux sandbox
     set -x CHROME_DEVEL_SANDBOX /usr/local/sbin/chrome-devel-sandbox

@@ -70,9 +70,9 @@
             # "$HOME/local/bin-front-of-path" \
             "/usr/local/git/current/bin" \
             "$HOME/local/homebrew/bin" \
-            $PATH
+            $PATH \
             # "$HOME/local/bin/misc" \
-            # "$HOME/Code/Work/google-cloud-sdk/bin"
+            "$HOME/Code/Work/google-cloud-sdk/bin"
     end
 
 # MOTD

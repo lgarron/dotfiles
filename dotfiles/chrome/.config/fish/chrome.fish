@@ -71,33 +71,6 @@ debug_devtools = true
       gn gen out/Release
     end
 
-### XCode Selection
-
-    function xcode7
-      if [ (uname) = Darwin ]
-        set xcode_path (xcode-select -p)
-        if [ "$xcode_path" != "/Applications/Xcode.app/Contents/Developer" ]
-          echo "Selecting XCode 7"
-          sudo xcode-select -s "/Applications/Xcode.app/Contents/Developer"
-        end
-      else
-        echo "Skipping XCode version selection."
-      end
-    end
-
-    function xcode8
-      if [ (uname) = Darwin ]
-        set xcode_path (xcode-select -p)
-        if [ "$xcode_path" != "/Applications/Xcode-beta.app/Contents/Developer" ]
-          echo "Selecting XCode 8 Beta"
-          sudo xcode-select -s "/Applications/Xcode-beta.app/Contents/Developer"
-        end
-      else
-        echo "Skipping XCode version selection."
-      end
-    end
-
-
 ### Building
 
     set -x NINJA_SETTINGS -j 100 -l 75
@@ -130,7 +103,6 @@ debug_devtools = true
     abbr -a ggg "$GOMA_START_COMMAND ; git pull origin master ; gclient sync"
 
     function chromium-run
-      xcode7
       set FOLDER $argv[1]
       set -e argv[1]
       cd (git rev-parse --show-toplevel)
@@ -139,7 +111,6 @@ debug_devtools = true
     end
 
     function chromium-build-run
-      xcode7
       set FOLDER $argv[1]
       cd (git rev-parse --show-toplevel)
       date
@@ -164,7 +135,6 @@ debug_devtools = true
 ## iOS
 
     function ios-debug
-      xcode8
       cd (git rev-parse --show-toplevel)
       date
       ninja -C out/Debug-iphonesimulator chrome; \
@@ -176,7 +146,6 @@ debug_devtools = true
 ## Building
 
     function debug-build-run
-      xcode7
       set BINARY $argv[1]
       set -e argv[1]
 
@@ -188,7 +157,6 @@ debug_devtools = true
     end
 
     function release-build-run
-      xcode7
       set BINARY $argv[1]
       set -e argv[1]
 

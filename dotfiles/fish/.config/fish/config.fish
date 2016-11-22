@@ -40,9 +40,9 @@
 
 # Machines
 
-    set GALOIS Galois Galois.local
-    set NOETHER Noether lgarron-macbookpro
-    set HYPATIA Hypatia lgarron-macpro
+    set GALOIS Galois galois Galois.local
+    set NOETHER Noether noether lgarron-macbookpro
+    set HYPATIA Hypatia hypatia lgarron-macpro
     set LGARRON1 lgarron1
 
 # Path

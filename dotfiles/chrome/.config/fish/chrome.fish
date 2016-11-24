@@ -4,16 +4,14 @@
 
 ## Directories
 
-    set CHROMIUM_SRC "$HOME/chromium/src"
+    set CHROMIUM_SRC     "$HOME/chromium/src"
+    set ALT_CHROMIUM_SRC "$HOME/alt/src"
+    set BLING_SRC        "$HOME/bling/src"
 
     abbr -a src      "$CHROMIUM_SRC/"
-    abbr -a webkit   "$CHROMIUM_SRC/third_party/WebKit/"
-    abbr -a wk       "$CHROMIUM_SRC/third_party/WebKit/"
-    abbr -a devtools "$CHROMIUM_SRC/third_party/WebKit/Source/devtools/"
-    abbr -a dt       "$CHROMIUM_SRC/third_party/WebKit/Source/devtools/"
-    
-    set ALT_CHROMIUM_SRC "$HOME/alt/src"
     abbr -a alt      "$ALT_CHROMIUM_SRC/"
+    abbr -a bling    "$BLING_SRC/"
+
 
 ## Development
 

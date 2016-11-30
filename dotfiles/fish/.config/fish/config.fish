@@ -6,7 +6,16 @@
     # This prevents `protocol error: bad line length character` in git.
     function _echo
         if isatty
-            echo $argv
+            if not [ $SSH_TTY ]
+                echo $argv
+            end
+        end
+    end
+
+    # Only print if we're a TTY that is not an SSH TTY.
+    function __echo
+        if not [ $SSH_TTY ]
+            _echo $argv
         end
     end
 
@@ -82,38 +91,38 @@
       if contains (hostname -s) $GALOIS
         # Based on ANSI Shadow with the shadow removed:
         # http://patorjk.com/software/taag/#p=display&v=1&f=ANSI%20Shadow&t=Galois%0AGALOIS
-        _echo " ██████     █████    ██         ██████    ██   ███████ "
-        _echo "██         ██   ██   ██        ██    ██   ██   ██      "
-        _echo "██   ███   ███████   ██        ██    ██   ██   ███████ "
-        _echo "██    ██   ██   ██   ██        ██    ██   ██        ██ "
-        _echo " ██████    ██   ██   ███████    ██████    ██   ███████ "
-        _echo ""
+        __echo " ██████     █████    ██         ██████    ██   ███████ "
+        __echo "██         ██   ██   ██        ██    ██   ██   ██      "
+        __echo "██   ███   ███████   ██        ██    ██   ██   ███████ "
+        __echo "██    ██   ██   ██   ██        ██    ██   ██        ██ "
+        __echo " ██████    ██   ██   ███████    ██████    ██   ███████ "
+        __echo ""
       else if contains (hostname -s) $NOETHER
         # Based on ANSI Shadow with the shadow removed:
         # http://patorjk.com/software/taag/#p=display&v=1&f=ANSI%20Shadow&t=NOETHER
-        _echo "███    ██  ██████  ███████ ████████ ██   ██ ███████ ██████ "
-        _echo "████   ██ ██    ██ ██         ██    ██   ██ ██      ██   ██"
-        _echo "██ ██  ██ ██    ██ █████      ██    ███████ █████   ██████ "
-        _echo "██  ██ ██ ██    ██ ██         ██    ██   ██ ██      ██   ██"
-        _echo "██   ████  ██████  ███████    ██    ██   ██ ███████ ██   ██"
-        _echo ""
+        __echo "███    ██  ██████  ███████ ████████ ██   ██ ███████ ██████ "
+        __echo "████   ██ ██    ██ ██         ██    ██   ██ ██      ██   ██"
+        __echo "██ ██  ██ ██    ██ █████      ██    ███████ █████   ██████ "
+        __echo "██  ██ ██ ██    ██ ██         ██    ██   ██ ██      ██   ██"
+        __echo "██   ████  ██████  ███████    ██    ██   ██ ███████ ██   ██"
+        __echo ""
       else if contains (hostname -s) $HYPATIA
         # Based on ANSI Shadow with the shadow removed:
         # http://patorjk.com/software/taag/#p=display&v=1&f=ANSI%20Shadow&t=HYPATIA
-        _echo "██   ██ ██    ██ ██████   █████  ████████ ██  █████ "
-        _echo "██   ██  ██  ██  ██   ██ ██   ██    ██    ██ ██   ██"
-        _echo "███████   ████   ██████  ███████    ██    ██ ███████"
-        _echo "██   ██    ██    ██      ██   ██    ██    ██ ██   ██"
-        _echo "██   ██    ██    ██      ██   ██    ██    ██ ██   ██"
+        __echo "██   ██ ██    ██ ██████   █████  ████████ ██  █████ "
+        __echo "██   ██  ██  ██  ██   ██ ██   ██    ██    ██ ██   ██"
+        __echo "███████   ████   ██████  ███████    ██    ██ ███████"
+        __echo "██   ██    ██    ██      ██   ██    ██    ██ ██   ██"
+        __echo "██   ██    ██    ██      ██   ██    ██    ██ ██   ██"
       else if contains (hostname -s) $LGARRON1
-        _echo "██       ██████   █████  ██████  ██████   ██████  ███    ██  ██"
-        _echo "██      ██       ██   ██ ██   ██ ██   ██ ██    ██ ████   ██ ███"
-        _echo "██      ██   ███ ███████ ██████  ██████  ██    ██ ██ ██  ██  ██"
-        _echo "██      ██    ██ ██   ██ ██   ██ ██   ██ ██    ██ ██  ██ ██  ██"
-        _echo "███████  ██████  ██   ██ ██   ██ ██   ██  ██████  ██   ████  ██"
-        _echo ""
+        __echo "██       ██████   █████  ██████  ██████   ██████  ███    ██  ██"
+        __echo "██      ██       ██   ██ ██   ██ ██   ██ ██    ██ ████   ██ ███"
+        __echo "██      ██   ███ ███████ ██████  ██████  ██    ██ ██ ██  ██  ██"
+        __echo "██      ██    ██ ██   ██ ██   ██ ██   ██ ██    ██ ██  ██ ██  ██"
+        __echo "███████  ██████  ██   ██ ██   ██ ██   ██  ██████  ██   ████  ██"
+        __echo ""
       else
-        _echo "Welcome to "(hostname -s)
+        __echo "Welcome to "(hostname -s)
       end
 
     end

@@ -1,0 +1,27 @@
+{
+    "profiles": [
+        {
+            "devices": [
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": false,
+                        "product_id": 610,
+                        "vendor_id": 1452
+                    },
+                    "ignore": true,
+                    "keyboard_type": 0
+                }
+            ],
+            "name": "Default profile",
+            "selected": true,
+            "simple_modifications": {
+                "application": "right_option",
+                "caps_lock": "delete_or_backspace",
+                "left_command": "left_option",
+                "left_option": "left_command",
+                "right_option": "right_command"
+            }
+        }
+    ]
+}

@@ -245,6 +245,28 @@
 
     functions -e source_iterm_shell_integration
 
+## Karabiner
+
+    function karabiner-restart
+        killall karabiner_console_user_server
+        killall Karabiner-Elements
+        open -a Karabiner-Elements
+    end
+
+    set KARABINER_CONFIG "$HOME/.karabiner.d/configuration"
+
+    function karabiner-windows-keyboard
+        rm "$KARABINER_CONFIG/karabiner.json"
+        ln -s "$KARABINER_CONFIG/karabiner-windows-keyboard.json" "$KARABINER_CONFIG/karabiner.json"
+        karabiner-restart
+    end
+
+    function karabiner-mac-builtin
+        rm -f "$KARABINER_CONFIG/karabiner.json"
+        ln -s "$KARABINER_CONFIG/karabiner-mac-builtin.json" "$KARABINER_CONFIG/karabiner.json"
+        karabiner-restart
+    end 
+
 # SSH configs
 
     if contains (hostname -s) $LGARRON1

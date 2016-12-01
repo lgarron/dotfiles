@@ -85,9 +85,9 @@ debug_devtools = true
       goma status | grep "status"
       # echo "Invoking wrapped ninja."
       if [ (uname) = "Darwin" ]
-        env DYLD_INSERT_LIBRARIES='' command ninja $NINJA_SETTINGS $argv
+        env DYLD_INSERT_LIBRARIES='' command ninja $NINJA_SETTINGS (string escape -- $argv)
       else
-        command ninja $NINJA_SETTINGS $argv
+        command ninja $NINJA_SETTINGS (string escape -- $argv)
       end
     end
 

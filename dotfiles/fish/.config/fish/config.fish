@@ -247,7 +247,7 @@
 
 ## Karabiner
 
-    function karabiner-restart
+    function restart-karabiner
         killall karabiner_console_user_server
         killall Karabiner-Elements
         open -a Karabiner-Elements
@@ -258,14 +258,14 @@
     function karabiner-windows-keyboard
         rm "$KARABINER_CONFIG/karabiner.json"
         ln -s "$KARABINER_CONFIG/karabiner-windows-keyboard.json" "$KARABINER_CONFIG/karabiner.json"
-        karabiner-restart
+        restart-karabiner
     end
 
     function karabiner-mac-builtin
         rm -f "$KARABINER_CONFIG/karabiner.json"
         ln -s "$KARABINER_CONFIG/karabiner-mac-builtin.json" "$KARABINER_CONFIG/karabiner.json"
-        karabiner-restart
-    end 
+        restart-karabiner
+    end
 
 # SSH configs
 

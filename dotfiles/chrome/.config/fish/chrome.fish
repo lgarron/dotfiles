@@ -145,6 +145,64 @@ debug_devtools = true
 
     abbr -a i "ios-debug"
 
+    function ios-web-unittests
+      cd (git rev-parse --show-toplevel)
+      date
+      ninja -C out/Debug-iphonesimulator/ ios_web_unittests; \
+        and ./out/Debug-iphonesimulator/iossim ./out/Debug-iphonesimulator/ios_web_unittests.app/
+    end
+
+    function ios-web-unittests-single-arg
+      cd (git rev-parse --show-toplevel)
+      date
+      ninja -C out/Debug-iphonesimulator/ ios_web_unittests; \
+        and ./out/Debug-iphonesimulator/iossim -c $argv[1] ./out/Debug-iphonesimulator/ios_web_unittests.app/
+    end
+
+    function ios-chrome-unittests
+      cd (git rev-parse --show-toplevel)
+      date
+      ninja -C out/Debug-iphonesimulator/ ios_chrome_unittests; \
+        and ./out/Debug-iphonesimulator/iossim ./out/Debug-iphonesimulator/ios_chrome_unittests.app/
+    end
+
+    function ios-chrome-unittests-single-arg
+      cd (git rev-parse --show-toplevel)
+      date
+      ninja -C out/Debug-iphonesimulator/ ios_chrome_unittests; \
+        and ./out/Debug-iphonesimulator/iossim -c $argv[1] ./out/Debug-iphonesimulator/ios_chrome_unittests.app/
+    end
+
+    function ios-chrome-integration-egtests
+      cd (git rev-parse --show-toplevel)
+      date
+      ninja -C out/Debug-iphonesimulator/ ios_internal_chrome_integration_egtests; \
+        and ./out/Debug-iphonesimulator/iossim ./out/Debug-iphonesimulator/ios_internal_chrome_integration_egtests.app/
+    end
+
+    function ios-chrome-integration-egtests-single-arg
+      cd (git rev-parse --show-toplevel)
+      date
+      ninja -C out/Debug-iphonesimulator/ ios_internal_chrome_integration_egtests; \
+        and ./out/Debug-iphonesimulator/iossim -c $argv[1] ./out/Debug-iphonesimulator/ios_internal_chrome_integration_egtests.app/
+    end
+
+    function ios-chrome-external-url-egtests
+      cd (git rev-parse --show-toplevel)
+      date
+      ninja -C out/Debug-iphonesimulator/ ios_internal_chrome_external_url_egtests; \
+        and ./out/Debug-iphonesimulator/iossim ./out/Debug-iphonesimulator/ios_internal_chrome_external_url_egtests.app/
+    end
+
+    function ios-chrome-external-url-egtests-single-arg
+      cd (git rev-parse --show-toplevel)
+      date
+      ninja -C out/Debug-iphonesimulator/ ios_internal_chrome_external_url_egtests; \
+        and ./out/Debug-iphonesimulator/iossim -c $argv[1] ./out/Debug-iphonesimulator/ios_internal_chrome_integration_egtests.app/
+    end
+
+
+
 ## Building
 
     function debug-build-run

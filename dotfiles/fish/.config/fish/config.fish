@@ -253,7 +253,7 @@
         open -a Karabiner-Elements
     end
 
-    set KARABINER_CONFIG "$HOME/.karabiner.d/configuration"
+    set KARABINER_CONFIG "$HOME/.config/karabiner/"
 
     function karabiner-windows-keyboard
         rm "$KARABINER_CONFIG/karabiner.json"

@@ -30,7 +30,9 @@
 
     abbr -a gp    "git push"
     abbr -a grv   "git remote --verbose"
-    abbr -a pr    "git fetch origin pull/ID/head:newBranchName"
+    function pr
+        echo -n "pull/$argv[1]/head"
+    end
 
     # "git push branch" to a remote that doesn't know about the branch yet.
     abbr -a gpb   "git push -u origin (git rev-parse --abbrev-ref HEAD)"

@@ -50,7 +50,8 @@
 # Machines
 
     set GALOIS Galois galois Galois.local
-    set NOETHER Noether noether lgarron-macbookpro
+    set NOETHER Noether noether
+    set AGNESI Agnesi agnesi
     set HYPATIA Hypatia hypatia lgarron-macpro
     set LGARRON1 lgarron1
 
@@ -66,12 +67,16 @@
 
     if contains (hostname -s) $NOETHER
         set PATH \
-            "$HOME/local/bin-front-of-path" \
             "/usr/local/git/current/bin" \
-            "$HOME/local/homebrew/bin" \
-            $PATH \
-            "$HOME/local/bin/misc" \
-            "$HOME/Code/Work/google-cloud-sdk/bin"
+            "$HOME/local/brew/bin" \
+            $PATH 
+    end
+
+    if contains (hostname -s) $AGNESI
+        set PATH \
+            "/usr/local/git/current/bin" \
+            "$HOME/local/brew/bin" \
+            $PATH 
     end
 
     if contains (hostname -s) $HYPATIA
@@ -105,6 +110,15 @@
         __echo "██ ██  ██ ██    ██ █████      ██    ███████ █████   ██████ "
         __echo "██  ██ ██ ██    ██ ██         ██    ██   ██ ██      ██   ██"
         __echo "██   ████  ██████  ███████    ██    ██   ██ ███████ ██   ██"
+        __echo ""
+      else if contains (hostname -s) $AGNESI
+        # Based on ANSI Shadow with the shadow removed:
+        # http://patorjk.com/software/taag/#p=display&v=1&f=ANSI%20Shadow&t=AGNESI
+        __echo " █████   ██████  ███    ██ ███████ ███████ ██"
+        __echo "██   ██ ██       ████   ██ ██      ██      ██"
+        __echo "███████ ██   ███ ██ ██  ██ █████   ███████ ██"
+        __echo "██   ██ ██    ██ ██  ██ ██ ██           ██ ██"
+        __echo "██   ██  ██████  ██   ████ ███████ ███████ ██"
         __echo ""
       else if contains (hostname -s) $HYPATIA
         # Based on ANSI Shadow with the shadow removed:

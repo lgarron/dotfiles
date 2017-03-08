@@ -6,8 +6,10 @@
 
   if not contains (hostname -s) $LGARRON1
     if not contains (hostname -s) $HYPATIA
-      set -x PATH $PATH \
-        "/usr/local/go/bin"
+      if not contains (hostname -s) $AGNESI
+        set -x PATH $PATH \
+          "/usr/local/go/bin"
+      end
     end
   end
 

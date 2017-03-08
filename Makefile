@@ -9,6 +9,9 @@ noether: ag chrome chrome-osx fish gce-ssh gitconfig-noether gitignore-osx golan
 .PHONY: hypatia
 hypatia: noether
 
+.PHONY: agnesi
+agnesi: noether
+
 .PHONY: galois
 galois: ag fish gitconfig-galois gitignore-osx osx osx-languages golang-dropbox iTerm
 

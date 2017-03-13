@@ -132,7 +132,7 @@ debug_devtools = true
     abbr -a r "release \"https://permission.site/\""
     abbr -a d "debug"
 
-    abbr -a v "release --user-data-dir=\"$HOME/Temporary/mac-views\" \"https://permission.site/\""
+    abbr -a v "release --secondary-ui-md \"https://permission.site/\""
 
 ## iOS
 

@@ -351,6 +351,7 @@ debug_devtools = true
 
     abbr -a pre "git cl presubmit --upload --force"
     abbr -a gnb "git new-branch --upstream-current"
+    abbr -a gup "git branch --set-upstream-to"
 
     function ksadmin
       env DYLD_INSERT_LIBRARIES='' "/Library/Google/GoogleSoftwareUpdate/GoogleSoftwareUpdate.bundle/Contents/MacOS/ksadmin" $argv
@@ -394,6 +395,7 @@ debug_devtools = true
     end
 
     abbr -a gcu "git cl upload"
+    abbr -a gmb "git map-branches"
 
 ## Crash reporting
 

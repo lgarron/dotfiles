@@ -4,7 +4,7 @@ all:
 ########
 
 .PHONY: noether
-noether: ag chrome chrome-osx fish gce-ssh gitconfig-noether gitignore-osx golang osx iTerm
+noether: ag chrome chrome-osx fish gce-ssh gitconfig-noether gitignore-osx golang osx iTerm karabiner
 
 .PHONY: hypatia
 hypatia: noether
@@ -44,6 +44,11 @@ $(PACKAGES):
 # defaults write org.hammerspoon.Hammerspoon MJConfigFile "~/.config/hammerspoon/init.lua"
 
 ########
+
+.PHONY: karabiner
+karabiner:
+	mkdir -p ~/.config
+	cd dotfiles && stow --ignore=.DS_Store -t ~/ $@
 
 MAKEFILE_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 ITERM_DIR := ${MAKEFILE_DIR}/iTerm

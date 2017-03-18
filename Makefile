@@ -13,7 +13,7 @@ hypatia: noether
 agnesi: noether
 
 .PHONY: galois
-galois: ag fish gitconfig-galois gitignore-osx osx osx-languages golang-dropbox iTerm
+galois: ag fish gitconfig-galois gitignore-osx osx osx-languages golang-dropbox iTerm karabiner
 
 .PHONY: lgarron1
 lgarron1: ag chrome fish gitconfig-lgarron1 golang

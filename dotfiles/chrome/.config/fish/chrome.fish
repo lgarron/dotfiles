@@ -46,6 +46,7 @@ enable_nacl = false
 is_component_build = true
 symbol_level = 1
 use_goma = true
+$argv[2]
 
 # Catchin' Bugs
 # https://groups.google.com/a/chromium.org/forum/#!topic/chromium-dev/0fit7KBlaUY
@@ -59,14 +60,20 @@ debug_devtools = true
 
     function gn-gen-debug
       mkdir -p out/Debug
-      gnTemplate "true" > out/Debug/args.gn
+      gnTemplate "true" "" > out/Debug/args.gn
       gn gen out/Debug
     end
 
     function gn-gen-release
       mkdir -p out/Release
-      gnTemplate "false" > out/Release/args.gn
+      gnTemplate "false" "" > out/Release/args.gn
       gn gen out/Release
+    end
+
+    function gn-gen-cros
+      mkdir -p out/Release
+      gnTemplate "false" "" > out/cros/args.gn
+      gn gen out/cros
     end
 
 ### XCode Selection
@@ -154,8 +161,13 @@ debug_devtools = true
       chromium-build-run "out/Debug" $argv
     end
 
+    function cros
+      chromium-build-run "out/cros" $argv
+    end
+
     abbr -a r "release \"https://permission.site/\""
     abbr -a d "debug"
+    abbr -a c "cros"
 
     abbr -a v "release --user-data-dir=\"$HOME/Temporary/mac-views\" \"https://permission.site/\""
 

@@ -3,7 +3,6 @@
 	signingkey = 3880CAE7
 	useconfigonly = true
 [core]
-	excludesfile = /Users/lgarron/.gitignore
 	autocrlf = false
 	filemode = false
 [diff]

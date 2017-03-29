@@ -2,8 +2,6 @@
 	name = Lucas Garron
 	email = code@garron.net
 	signingkey = 3880CAE7
-[core]
-	excludesfile = /Users/lgarron/.gitignore
 [diff]
 [color]
 	ui = true

@@ -285,6 +285,9 @@ debug_devtools = true
     function chrome-dev
       "/Applications/Google Chrome Dev.app/Contents/MacOS/Google Chrome" $argv
     end
+    function chrome-dev-german
+      "/Applications/Google Chrome Dev.app/Contents/MacOS/Google Chrome" -AppleLanguages "(de)" $argv &
+    end
     function chrome-canary
       "/Applications/Google Chrome Canary.app/Contents/MacOS/Google Chrome Canary" $argv
     end

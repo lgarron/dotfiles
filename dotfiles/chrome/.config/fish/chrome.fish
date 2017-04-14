@@ -69,6 +69,12 @@ debug_devtools = true
       gn gen out/Release
     end
 
+    function gn-gen-android
+      mkdir -p out/AndroidDebug
+      gn gen --args='target_os="android" use_goma=true' out/AndroidDebug
+      gn gen out/AndroidDebug
+    end
+
 ### Building
 
     if contains (hostname -s) $HYPATIA

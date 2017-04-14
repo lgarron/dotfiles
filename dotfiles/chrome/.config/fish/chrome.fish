@@ -395,7 +395,7 @@ debug_devtools = true
       if git remote -v | grep chromium.googlesource.com > /dev/null
         switch-chrome-user "chromium"
         echo "Opening on https://codereview.chromium.org/"
-        git cl web &
+        git cl web
       else
         switch-chrome-user "creasepattern"
         echo "Opening on GitHub.com"

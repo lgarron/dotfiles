@@ -296,6 +296,26 @@
       end
     end
 
+# Shortcuts
+
+    function osx-add-shortcut
+        if defaults read com.apple.universalaccess "com.apple.custommenu.apps" | grep "\"$argv[1]\""
+        else
+            defaults write com.apple.universalaccess "com.apple.custommenu.apps" -array-add "$argv[1]"
+        end
+        defaults write "$argv[1]" NSUserKeyEquivalents "$argv[2]"
+    end
+
+    function osx-add-shortcut-to-all-chromes
+        osx-add-shortcut "com.google.Chrome"        "$argv[1]"
+        osx-add-shortcut "com.google.Chrome.canary" "$argv[1]"
+        osx-add-shortcut "org.chromium.Chromium"    "$argv[1]"
+    end
+
+    function osx-setup-shortcuts
+        osx-add-shortcut-to-all-chromes "{ 'Extensions' = '\$@e'; }"
+    end
+
 # Includes
 
     loading_indicator "git"

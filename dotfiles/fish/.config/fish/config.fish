@@ -303,17 +303,19 @@
         else
             defaults write com.apple.universalaccess "com.apple.custommenu.apps" -array-add "$argv[1]"
         end
-        defaults write "$argv[1]" NSUserKeyEquivalents "$argv[2]"
+        defaults write "$argv[1]" NSUserKeyEquivalents -dict-add "$argv[2]" -string "$argv[3]"
     end
 
     function osx-add-shortcut-to-all-chromes
-        osx-add-shortcut "com.google.Chrome"        "$argv[1]"
-        osx-add-shortcut "com.google.Chrome.canary" "$argv[1]"
-        osx-add-shortcut "org.chromium.Chromium"    "$argv[1]"
+        osx-add-shortcut "com.google.Chrome"        $argv
+        osx-add-shortcut "com.google.Chrome.canary" $argv
+        osx-add-shortcut "org.chromium.Chromium"    $argv
     end
 
     function osx-setup-shortcuts
-        osx-add-shortcut-to-all-chromes "{ 'Extensions' = '\$@e'; }"
+        osx-add-shortcut-to-all-chromes "Extensions" "\$@e"
+        osx-add-shortcut "com.google.Chrome" "Copy Issue URL" "^c"
+        osx-add-shortcut "com.google.Chrome" "Copy Issue for Snippets" "^s"
     end
 
 # Includes

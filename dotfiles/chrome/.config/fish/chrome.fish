@@ -363,7 +363,7 @@ debug_devtools = true
     abbr -a gup "git branch --set-upstream-to"
 
     function ksadmin
-      env DYLD_INSERT_LIBRARIES='' "/Library/Google/GoogleSoftwareUpdate/GoogleSoftwareUpdate.bundle/Contents/MacOS/ksadmin" $argv
+      env DYLD_INSERT_LIBRARIES='' "$HOME/Library/Google/GoogleSoftwareUpdate/GoogleSoftwareUpdate.bundle/Contents/MacOS/ksadmin" $argv
     end
 
 

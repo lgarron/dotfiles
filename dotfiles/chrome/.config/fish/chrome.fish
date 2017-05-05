@@ -363,7 +363,17 @@ debug_devtools = true
     abbr -a gup "git branch --set-upstream-to"
 
     function ksadmin
-      env DYLD_INSERT_LIBRARIES='' "$HOME/Library/Google/GoogleSoftwareUpdate/GoogleSoftwareUpdate.bundle/Contents/MacOS/ksadmin" $argv
+      set KSADMIN_PATH_SUFFIX "Library/Google/GoogleSoftwareUpdate/GoogleSoftwareUpdate.bundle/Contents/MacOS/ksadmin"
+      if test -f "$HOME/$KSADMIN_PATH_SUFFIX"
+        set KSADMIN_PATH "$HOME/$KSADMIN_PATH_SUFFIX"
+      else if test -f "/$KSADMIN_PATH_SUFFIX"
+        set KSADMIN_PATH "/$KSADMIN_PATH_SUFFIX"
+      else
+        echo "Cannot find `ksadmin` executable."
+        return
+      end
+
+      env DYLD_INSERT_LIBRARIES='' "$KSADMIN_PATH" $argv
     end
 
 

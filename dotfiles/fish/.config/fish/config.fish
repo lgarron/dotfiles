@@ -261,24 +261,18 @@
 
 ## Karabiner
 
-    function restart-karabiner
-        killall karabiner_console_user_server
-        killall Karabiner-Elements
-        open -a Karabiner-Elements
+    # https://developer.apple.com/library/content/technotes/tn2450/_index.html
+    # Caps Lock (0x39) -> Delete Key (0x2A)
+    function remap-keys-caps-lock-to-backspace
+        hidutil property --set '{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x700000039,"HIDKeyboardModifierMappingDst":0x70000002A}]}'
     end
 
-    set KARABINER_CONFIG "$HOME/.config/karabiner/"
-
-    function karabiner-windows-keyboard
-        rm "$KARABINER_CONFIG/karabiner.json"
-        ln -s "$KARABINER_CONFIG/karabiner-windows-keyboard.json" "$KARABINER_CONFIG/karabiner.json"
-        restart-karabiner
+    function remap-keys-reset
+        hidutil property --set '{"UserKeyMapping":[]}'
     end
 
-    function karabiner-mac-builtin
-        rm -f "$KARABINER_CONFIG/karabiner.json"
-        ln -s "$KARABINER_CONFIG/karabiner-mac-builtin.json" "$KARABINER_CONFIG/karabiner.json"
-        restart-karabiner
+    function remap-keys-show
+        hidutil property --get "UserKeyMapping"
     end
 
 # SSH configs

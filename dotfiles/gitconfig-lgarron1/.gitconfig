@@ -1,0 +1,4 @@
+[http]
+	cookiefile = /usr/local/google/home/lgarron/.gitcookies
+[user]
+	email = lgarron@chromium.org

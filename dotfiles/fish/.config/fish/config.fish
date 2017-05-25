@@ -89,6 +89,17 @@
             "$HOME/Code/Work/google-cloud-sdk/bin"
     end
 
+    # https://superuser.com/a/1212305
+    function removepath
+        if set -l index (contains -i $argv[1] $PATH)
+            set --erase --universal fish_user_paths[$index]
+        end
+    end
+
+    if contains (hostname -s) $LGARRON1
+        removepath "/usr/local/buildtools/java/jdk/bin"
+    end
+
 # MOTD
 
     function fish_greeting

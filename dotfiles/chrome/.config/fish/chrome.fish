@@ -7,10 +7,15 @@
     set CHROMIUM_SRC     "$HOME/chromium/src"
     set ALT_CHROMIUM_SRC "$HOME/alt/src"
     set BLING_SRC        "$HOME/bling/src"
+    set CLANK_SRC        "$HOME/clank/src"
 
     abbr -a src      "$CHROMIUM_SRC/"
     abbr -a alt      "$ALT_CHROMIUM_SRC/"
     abbr -a bling    "$BLING_SRC/"
+
+    if contains (hostname -s) $LGARRON1
+      abbr -a clank    "$CLANK_SRC/"
+    fi
 
 
 ## Development

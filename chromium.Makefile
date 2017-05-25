@@ -1,5 +1,10 @@
 # Reminder: Don't put secrets in this file.
 
+######## Tools ########
+
+.PHONY: cr-tools
+cr-tools: cr-depot_tools cr-goma
+
 .PHONY: cr-depot_tools
 cr-depot_tools: ${HOME}/Code/depot_tools
 ${HOME}/Code/depot_tools:
@@ -13,24 +18,47 @@ ${HOME}/goma:
 		curl https://clients5.google.com/cxx-compiler-service/download/goma_ctl.py -o goma_ctl.py && \
 		python goma_ctl.py update
 
-.PHONY: cr-tools
-cr-tools: cr-depot_tools cr-goma
+######## Authentication ########
+
+.PHONY: boto
+boto: ${HOME}/.boto
+${HOME}/.boto:
+	download_from_google_storage --config
+
+.PHONY: gitcookies
+gitcookies: ${HOME}/.gitcookies
+${HOME}/.gitcookies:
+	@echo "Authenticate using @chromium.org: https://chromium-review.googlesource.com/new-password"
+	@echo "Authenticate using @google.com: https://www.googlesource.com/new-password"
+	@echo "Use Ctrl-Z to pause, enter cookies using bash, then resume and press Enter"
+	@read
+
+.PHONY: glogin
+glogin:
+	glogin
+
+######## Building ########
 
 .PHONY: cr-chromium
-cr-chromium: cr-tools ${HOME}/chromium
+cr-chromium: cr-tools boto gitcookies ${HOME}/chromium
 ${HOME}/chromium:
-	download_from_google_storage --config
-	mkdir ${HOME}/chromium && \
-		cd ${HOME}/chromium && \
-		fetch chromium
+	mkdir $@
+	cd $@ && fetch chromium
 
 .PHONY: cr-bling
-cr-bling: cr-tools ${HOME}/bling
+cr-bling: cr-tools boto gitcookies glogin ${HOME}/bling
 ${HOME}/bling:
-	@echo "Authenticate to googlesource.com for both @google.com and @chromium.org; see go/bling"
-	@echo "Press Enter to continue"
-	@read
-	glogin
-	mkdir ${HOME}/bling && \
-		cd ${HOME}/bling && \
-		fetch ios_internal --target_os_only=True
+	mkdir $@
+	cd $@ && fetch ios_internal --target_os_only=True
+
+.PHONY: cr-clank
+cr-clank: cr-tools boto gitcookies ${HOME}/clank
+${HOME}/clank:
+	mkdir $@
+	cd $@ && gclient config --name src/clank \
+		https://chrome-internal.googlesource.com/clank/internal/apps.git\
+		--deps-file=DEPS
+	cd $@ && gclient sync --nohooks
+	cd $@ && git config remote.origin.pushurl "https://chrome-internal-review.googlesource.com/clank/internal/apps.git"
+	cd $@ && cd build && sudo ./install-build-deps-android.sh
+	cd $@ && cd build && sudo ./install-build-deps.sh

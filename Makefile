@@ -60,3 +60,6 @@ iTerm:
 	${ITERM_DEFAULTS_COMMAND} NoSyncNeverRemindPrefsChangesLostForFile_selection -int 0
 	${ITERM_DEFAULTS_COMMAND} LoadPrefsFromCustomFolder -bool YES
 	${ITERM_DEFAULTS_COMMAND} PrefsCustomFolder -string ${ITERM_DIR}
+
+include macOS.Makefile
+include chromium.Makefile

@@ -222,6 +222,11 @@
       env DYLD_INSERT_LIBRARIES='' command aedeploy $argv
     end
 
+    function mac-add-dock-spacer
+      defaults write com.apple.dock persistent-apps -array-add '{"tile-type"="spacer-tile";}'
+      killall Dock
+    end
+
 ## Web
 
     function https
@@ -232,11 +237,6 @@
     abbr -a "hh" "https -ph"
 
 ## iTerm
-
-    # In case we need to set this on on a machine from scratch.
-    function install_iterm_shell_integration
-      curl -L "https://iterm2.com/misc/install_shell_integration.sh" | bash
-    end
 
     function source_iterm_shell_integration
       if not functions -q iterm_fish_prompt
@@ -258,22 +258,6 @@
     end
 
     functions -e source_iterm_shell_integration
-
-## Karabiner
-
-    # https://developer.apple.com/library/content/technotes/tn2450/_index.html
-    # Caps Lock (0x39) -> Delete Key (0x2A)
-    function remap-keys-caps-lock-to-backspace
-        hidutil property --set '{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x700000039,"HIDKeyboardModifierMappingDst":0x70000002A}]}'
-    end
-
-    function remap-keys-reset
-        hidutil property --set '{"UserKeyMapping":[]}'
-    end
-
-    function remap-keys-show
-        hidutil property --get "UserKeyMapping"
-    end
 
 # SSH configs
 

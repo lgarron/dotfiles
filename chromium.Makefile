@@ -59,6 +59,6 @@ ${HOME}/clank:
 		https://chrome-internal.googlesource.com/clank/internal/apps.git\
 		--deps-file=DEPS
 	cd $@ && gclient sync --nohooks
-	cd $@ && git config remote.origin.pushurl "https://chrome-internal-review.googlesource.com/clank/internal/apps.git"
-	cd $@ && cd build && sudo ./install-build-deps-android.sh
-	cd $@ && cd build && sudo ./install-build-deps.sh
+	cd $@ && cd src && git config remote.origin.pushurl "https://chrome-internal-review.googlesource.com/clank/internal/apps.git"
+	cd $@ && cd src/build && sudo ./install-build-deps-android.sh
+	cd $@ && cd src/build && sudo ./install-build-deps.sh

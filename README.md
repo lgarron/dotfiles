@@ -43,10 +43,15 @@ Linked [using GNU `stow`](http://brandon.invergo.net/news/2012-05-26-using-gnu-s
     dff; make cr-bling
 
     # Chromium
-    src
-    gn-gen-release
-    ggg # goma start; git pull; gclient sync
+    src # cd to folder
+    gn-gen-release # Run once
+    ggg # goma ensure_start; git pull; gclient sync
     r # Release build
+
+    # iOS Chrome (Bling)
+    bling # cd to folder
+    ggg # goma ensure_start; git pull; gclient sync
+    i # iOS debug build
 
 # To automate or document
 

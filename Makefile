@@ -5,38 +5,36 @@ all:
 
 .PHONY: mac-common
 mac-common: \
-	ag\
-	chrome-osx\
-	chrome\
-	fish\
-	gce-ssh\
-	gitconfig-noether\
-	gitignore-osx\
-	golang\
-	iTerm\
-	osx\
+	ag \
+	fish \
+	gitignore-osx \
+	iTerm \
+	osx \
 	quicksilver
 
+.PHONY: mac-work
+mac-work: \
+	chrome-osx \
+	chrome \
+	gce-ssh \
+	gitconfig-noether \
+	golang
+
 .PHONY: noether
-noether: mac-common
+noether: mac-common mac-work
 
 .PHONY: hypatia
-hypatia: mac-common
+hypatia: mac-common mac-work
 
 .PHONY: agnesi
 agnesi: mac-common
 
 .PHONY: galois
 galois: \
-	ag \
-	fish \
+	mac-common \
 	gitconfig-galois \
-	gitignore-osx \
-	osx \
 	osx-languages \
-	golang-dropbox \
-	iTerm \
-	quicksilver
+	golang-dropbox
 
 .PHONY: lgarron1
 lgarron1: ag chrome fish gitconfig-lgarron1 golang

@@ -44,6 +44,7 @@
     abbr -a gpb   "git push -u origin (git rev-parse --abbrev-ref HEAD)"
 
     abbr -a ghash "git rev-parse HEAD"
+    abbr -a gmessage "git log -1 --pretty=%B"
 
     function gnuke
         git reset --hard

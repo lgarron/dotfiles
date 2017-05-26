@@ -535,9 +535,6 @@
 						<key>folderTypes</key>
 						<array>
 							<string>public.folder</string>
-							<string>dyn.age80s3dtqq</string>
-							<string>dyn.age80s65kqzw1k</string>
-							<string>dyn.age80s65qrfwgn62</string>
 						</array>
 						<key>parser</key>
 						<string>QSDirectoryParser</string>
@@ -605,13 +602,10 @@
 						<key>excludeFiletypes</key>
 						<array/>
 						<key>folderDepth</key>
-						<integer>4</integer>
+						<integer>3</integer>
 						<key>folderTypes</key>
 						<array>
 							<string>public.folder</string>
-							<string>dyn.age80s3dtqq</string>
-							<string>dyn.age80s65kqzw1k</string>
-							<string>dyn.age80s65qrfwgn62</string>
 						</array>
 						<key>parser</key>
 						<string>QSDirectoryParser</string>

@@ -3,14 +3,28 @@ all:
 
 ########
 
+.PHONY: mac-common
+mac-common: \
+	ag\
+	chrome-osx\
+	chrome\
+	fish\
+	gce-ssh\
+	gitconfig-noether\
+	gitignore-osx\
+	golang\
+	iTerm\
+	osx\
+	quicksilver
+
 .PHONY: noether
-noether: ag chrome chrome-osx fish gce-ssh gitconfig-noether gitignore-osx golang osx iTerm karabiner
+noether: mac-common
 
 .PHONY: hypatia
-hypatia: noether
+hypatia: mac-common
 
 .PHONY: agnesi
-agnesi: noether
+agnesi: mac-common
 
 .PHONY: galois
 galois: ag fish gitconfig-galois gitignore-osx osx osx-languages golang-dropbox iTerm karabiner
@@ -39,6 +53,14 @@ PACKAGES += osx-languages
 .PHONY: $(PACKAGES)
 $(PACKAGES):
 	cd dotfiles && stow --no-folding --ignore=.DS_Store -t ~/ $@
+
+########
+
+.PHONE: quicksilver
+quicksilver:
+	# Link the entire folder for Actions
+	cd dotfiles && stow --ignore=.DS_Store -t ~/ $@
+
 
 ## TODO
 # defaults write org.hammerspoon.Hammerspoon MJConfigFile "~/.config/hammerspoon/init.lua"

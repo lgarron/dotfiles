@@ -231,71 +231,37 @@
 		</dict>
 		<dict>
 			<key>ID</key>
-			<string>8E8049EF-BE51-4D56-B661-10505E774C21</string>
+			<string>69C0D07B-F8C7-4F9B-926A-A6381F988336</string>
 			<key>children</key>
-			<array>
-				<dict>
-					<key>ID</key>
-					<string>B663C22C-79A3-4F2F-89F3-178A61687426</string>
-					<key>children</key>
-					<array/>
-					<key>enabled</key>
-					<true/>
-					<key>name</key>
-					<string>gopath</string>
-					<key>settings</key>
-					<dict>
-						<key>folderDepth</key>
-						<integer>3</integer>
-						<key>folderTypes</key>
-						<array>
-							<string>public.folder</string>
-						</array>
-						<key>parser</key>
-						<string>QSDirectoryParser</string>
-						<key>path</key>
-						<string>~/Code/gopath</string>
-					</dict>
-					<key>source</key>
-					<string>QSFileSystemObjectSource</string>
-				</dict>
-				<dict>
-					<key>ID</key>
-					<string>FFF4AEF6-8334-4A98-B642-8B021A16F54E</string>
-					<key>children</key>
-					<array/>
-					<key>enabled</key>
-					<true/>
-					<key>name</key>
-					<string>Work</string>
-					<key>settings</key>
-					<dict>
-						<key>folderDepth</key>
-						<integer>1</integer>
-						<key>parser</key>
-						<string>QSDirectoryParser</string>
-						<key>path</key>
-						<string>~/Code/Work</string>
-					</dict>
-					<key>source</key>
-					<string>QSFileSystemObjectSource</string>
-				</dict>
-			</array>
+			<array/>
 			<key>enabled</key>
 			<true/>
 			<key>name</key>
-			<string>Golang</string>
+			<string>gopath</string>
+			<key>settings</key>
+			<dict>
+				<key>folderDepth</key>
+				<integer>3</integer>
+				<key>folderTypes</key>
+				<array>
+					<string>public.folder</string>
+				</array>
+				<key>parser</key>
+				<string>QSDirectoryParser</string>
+				<key>path</key>
+				<string>~/Code/gopath</string>
+			</dict>
 			<key>source</key>
-			<string>QSGroupObjectSource</string>
+			<string>QSFileSystemObjectSource</string>
 		</dict>
 		<dict>
 			<key>ID</key>
-			<string>FF73EA37-E2B2-4D00-8D9D-814D1A79A991</string>
+			<string>608B499B-34C5-4973-A5AC-2302679EB90E</string>
 			<key>children</key>
 			<array>
 				<dict>
 					<key>ID</key>
-					<string>71D96AB3-47A2-46CF-9542-302C35CF628A</string>
+					<string>897378E0-363C-4D21-B23E-DB93A47BD94C</string>
 					<key>children</key>
 					<array/>
 					<key>enabled</key>
@@ -310,14 +276,39 @@
 					</array>
 					<key>settings</key>
 					<dict>
+						<key>descendIntoBundles</key>
+						<false/>
 						<key>folderDepth</key>
-						<integer>2</integer>
+						<integer>1</integer>
 						<key>folderTypes</key>
-						<array/>
+						<array>
+							<string>public.folder</string>
+						</array>
 						<key>parser</key>
 						<string>QSDirectoryParser</string>
 						<key>path</key>
 						<string>/Users/lgarron/Code</string>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
+				<dict>
+					<key>ID</key>
+					<string>9C8F3533-3005-416B-A500-9A6BB57B014A</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>name</key>
+					<string>Work</string>
+					<key>settings</key>
+					<dict>
+						<key>folderDepth</key>
+						<integer>1</integer>
+						<key>parser</key>
+						<string>QSDirectoryParser</string>
+						<key>path</key>
+						<string>~/Code/Work</string>
 					</dict>
 					<key>source</key>
 					<string>QSFileSystemObjectSource</string>
@@ -741,6 +732,10 @@
 		<true/>
 		<key>QSPresetAllApplications</key>
 		<false/>
+		<key>QSPresetBashHistory</key>
+		<false/>
+		<key>QSPresetCommandHistory</key>
+		<false/>
 		<key>QSPresetDeveloperFrameworks</key>
 		<false/>
 		<key>QSPresetDeveloperPrivateFrameworks</key>
@@ -752,6 +747,14 @@
 		<key>QSPresetGoogleChromeCanaryBookmarks</key>
 		<false/>
 		<key>QSPresetGoogleChromeCanaryGroup</key>
+		<false/>
+		<key>QSPresetGoogleChromeCanaryHistory</key>
+		<false/>
+		<key>QSPresetGoogleChromeCanarySearchEngines</key>
+		<false/>
+		<key>QSPresetGoogleChromeHistory</key>
+		<false/>
+		<key>QSPresetGoogleChromeSearchEngines</key>
 		<false/>
 		<key>QSPresetInternalMessages</key>
 		<true/>

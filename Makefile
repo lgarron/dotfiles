@@ -45,11 +45,6 @@ $(PACKAGES):
 
 ########
 
-.PHONY: karabiner
-karabiner:
-	mkdir -p ~/.config
-	cd dotfiles && stow --ignore=.DS_Store -t ~/ $@
-
 MAKEFILE_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
 ITERM_DIR := ${MAKEFILE_DIR}/iTerm
 ITERM_DEFAULTS_COMMAND = defaults write ~/Library/Preferences/com.googlecode.iterm2.plist

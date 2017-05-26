@@ -53,6 +53,12 @@ Linked [using GNU `stow`](http://brandon.invergo.net/news/2012-05-26-using-gnu-s
     ggg # goma ensure_start; git pull; gclient sync
     i # iOS debug build
 
+    # Android Chrome (Clank)
+    clank
+    gn-gen-android
+    ggg
+    aaa # android-build; android-install; android-log
+
 # To automate or document
 
 - Batch password actions at the beginning

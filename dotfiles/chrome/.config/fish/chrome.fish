@@ -14,9 +14,8 @@
     abbr -a bling    "$BLING_SRC/"
 
     if contains (hostname -s) $LGARRON1
-      abbr -a clank    "$CLANK_SRC/"
-    fi
-
+      abbr -a clank "$CLANK_SRC/"
+    end
 
 ## Development
 
@@ -39,7 +38,7 @@
     abbr -a goma-start "$GOMA_START_COMMAND"
     abbr -a goma-page  "open http://localhost:8088/"
     abbr -a goma-check "goma status | grep \"status\""
-    
+
 ### gn
 
     function gnTemplate
@@ -76,8 +75,7 @@ debug_devtools = true
 
     function gn-gen-android
       mkdir -p out/AndroidDebug
-      gn gen --args='target_os="android" use_goma=true' out/AndroidDebug
-      gn gen out/AndroidDebug
+      gn gen --args='target_os="android" use_goma=true enable_incremental_javac=true disable_incremental_isolated_processes=true' out/AndroidDebug
     end
 
 ### Building
@@ -212,7 +210,28 @@ debug_devtools = true
         and ./out/Debug-iphonesimulator/iossim -c $argv[1] ./out/Debug-iphonesimulator/ios_internal_chrome_integration_egtests.app/
     end
 
+## Android
 
+    function android-build
+      date
+      ninja -C out/AndroidDebug -j2000 -l20 chrome_public_apk_incremental
+    end
+
+    function android-install
+      adb shell pm uninstall -k org.chromium.chrome
+      adb install -r out/AndroidDebug/apks/ChromePublic_incremental.apk
+    end
+
+    function android-launch
+      # Activity found via https://stackoverflow.com/a/36255727
+      adb shell am start -n org.chromium.chrome/com.google.android.apps.chrome.Main
+    end
+
+    function android-log
+      adb logcat chromium:V \*:S
+    end
+
+    abbr -a aaaa "android-build; and android-install; and android-launch; and android-log"
 
 ## Building
 

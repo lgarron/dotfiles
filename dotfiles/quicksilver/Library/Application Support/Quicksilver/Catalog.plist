@@ -521,7 +521,7 @@
 				</dict>
 				<dict>
 					<key>ID</key>
-					<string>D861DE0F-CBB6-4FF5-9A9C-825DDD7C53DC</string>
+					<string>EADC3A82-3EC0-4E8A-820A-DF692861ECCA</string>
 					<key>children</key>
 					<array/>
 					<key>enabled</key>
@@ -531,7 +531,16 @@
 					<key>settings</key>
 					<dict>
 						<key>folderDepth</key>
-						<integer>-1</integer>
+						<integer>3</integer>
+						<key>folderTypes</key>
+						<array>
+							<string>public.folder</string>
+							<string>dyn.age80s3dtqq</string>
+							<string>dyn.age80s65kqzw1k</string>
+							<string>dyn.age80s65qrfwgn62</string>
+						</array>
+						<key>parser</key>
+						<string>QSDirectoryParser</string>
 						<key>path</key>
 						<string>~/Google Drive (lgarron@chromium.org)</string>
 					</dict>
@@ -596,7 +605,14 @@
 						<key>excludeFiletypes</key>
 						<array/>
 						<key>folderDepth</key>
-						<integer>2</integer>
+						<integer>4</integer>
+						<key>folderTypes</key>
+						<array>
+							<string>public.folder</string>
+							<string>dyn.age80s3dtqq</string>
+							<string>dyn.age80s65kqzw1k</string>
+							<string>dyn.age80s65qrfwgn62</string>
+						</array>
 						<key>parser</key>
 						<string>QSDirectoryParser</string>
 						<key>path</key>

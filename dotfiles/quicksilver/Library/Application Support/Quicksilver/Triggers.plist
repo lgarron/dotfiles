@@ -241,6 +241,23 @@
 			<dict>
 				<key>actionID</key>
 				<string>QSObjCSendMessageAction</string>
+				<key>directArchive</key>
+				<dict>
+					<key>class</key>
+					<string>QSObject</string>
+					<key>data</key>
+					<dict>
+						<key>public.utf8-plain-text</key>
+						<string>QSClipboardShowMessage</string>
+					</dict>
+					<key>properties</key>
+					<dict>
+						<key>QSObjectName</key>
+						<string>QSClipboardShowMessage</string>
+						<key>QSObjectType</key>
+						<string>public.utf8-plain-text</string>
+					</dict>
+				</dict>
 				<key>directID</key>
 				<string>QSClipboardShowMessage</string>
 			</dict>

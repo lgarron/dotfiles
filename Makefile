@@ -27,7 +27,16 @@ hypatia: mac-common
 agnesi: mac-common
 
 .PHONY: galois
-galois: ag fish gitconfig-galois gitignore-osx osx osx-languages golang-dropbox iTerm karabiner
+galois: \
+	ag \
+	fish \
+	gitconfig-galois \
+	gitignore-osx \
+	osx \
+	osx-languages \
+	golang-dropbox \
+	iTerm \
+	quicksilver
 
 .PHONY: lgarron1
 lgarron1: ag chrome fish gitconfig-lgarron1 golang

@@ -15,7 +15,7 @@ mac-defaults:
 	# From https://github.com/mathiasbynens/dotfiles
 	# Keyboard > Shortcuts > Full Keyboard Access > All controls
 	defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
-	 
+
 	# Keyboard > Keyboard > Delay Until Repeat > shortest setting
 	defaults write NSGlobalDomain InitialKeyRepeat -int 10
 

@@ -406,104 +406,15 @@
 				<string>com.blacktree.Quicksilver</string>
 			</array>
 			<key>applicationScopeType</key>
-			<integer>1</integer>
+			<integer>-1</integer>
 			<key>command</key>
 			<dict>
 				<key>actionID</key>
 				<string>[Action]:/Users/lgarron/Library/Application Support/Quicksilver/Actions/Open Folder in Terminal.scpt</string>
-				<key>directArchive</key>
-				<dict>
-					<key>class</key>
-					<string>QSObject</string>
-					<key>data</key>
-					<dict>
-						<key>NSStringPboardType</key>
-						<string>com.blacktree.Quicksilver</string>
-					</dict>
-					<key>properties</key>
-					<dict>
-						<key>QSObjectName</key>
-						<string>com.blacktree.Quicksilver</string>
-						<key>QSObjectType</key>
-						<string>NSStringPboardType</string>
-					</dict>
-				</dict>
 				<key>directID</key>
-				<string>com.blacktree.Quicksilver</string>
-				<key>indirectArchive</key>
-				<dict>
-					<key>class</key>
-					<string>QSObject</string>
-					<key>data</key>
-					<dict>
-						<key>NSFilenamesPboardType</key>
-						<string>/Applications/Sublime Text.app</string>
-						<key>qs.process</key>
-						<dict>
-							<key>Attributes</key>
-							<integer>4096</integer>
-							<key>BundlePath</key>
-							<string>/Applications/Sublime Text.app</string>
-							<key>CFBundleExecutable</key>
-							<string>/Applications/Sublime Text.app/Contents/MacOS/Sublime Text</string>
-							<key>CFBundleIdentifier</key>
-							<string>com.sublimetext.3</string>
-							<key>CFBundleName</key>
-							<string>Sublime Text</string>
-							<key>CFBundleVersion</key>
-							<integer>0</integer>
-							<key>FileCreator</key>
-							<string>subl</string>
-							<key>FileType</key>
-							<string>APPL</string>
-							<key>Flavor</key>
-							<integer>3</integer>
-							<key>IsCheckedInAttr</key>
-							<true/>
-							<key>IsHiddenAttr</key>
-							<false/>
-							<key>LSBackgroundOnly</key>
-							<false/>
-							<key>LSCheckInTime*</key>
-							<date>2013-11-04T00:12:55Z</date>
-							<key>LSLaunchTime</key>
-							<date>2013-11-04T00:12:55Z</date>
-							<key>LSSystemWillDisplayDeathNotification</key>
-							<false/>
-							<key>LSUIElement</key>
-							<false/>
-							<key>LSUIPresentationMode</key>
-							<integer>0</integer>
-							<key>NSApplicationBundleIdentifier</key>
-							<string>com.sublimetext.3</string>
-							<key>NSApplicationName</key>
-							<string>Sublime Text</string>
-							<key>NSApplicationPath</key>
-							<string>/Applications/Sublime Text.app</string>
-							<key>NSApplicationProcessIdentifier</key>
-							<integer>9416</integer>
-							<key>NSApplicationProcessSerialNumberHigh</key>
-							<integer>0</integer>
-							<key>NSApplicationProcessSerialNumberLow</key>
-							<integer>4105194</integer>
-							<key>PSN</key>
-							<integer>4105194</integer>
-							<key>ParentPSN</key>
-							<integer>741557</integer>
-							<key>pid</key>
-							<integer>9416</integer>
-						</dict>
-					</dict>
-					<key>properties</key>
-					<dict>
-						<key>QSObjectName</key>
-						<string>Sublime Text.app</string>
-						<key>QSObjectType</key>
-						<string>NSFilenamesPboardType</string>
-					</dict>
-				</dict>
+				<string>QSGlobalSelectionProxy</string>
 				<key>indirectID</key>
-				<string>/Applications/Sublime Text.app</string>
+				<string>/Users/lgarron/Downloads/danselibre/export-187.jpg</string>
 			</dict>
 			<key>enabled</key>
 			<true/>
@@ -665,50 +576,15 @@
 			<key>applicationScope</key>
 			<array>
 				<string>com.blacktree.Quicksilver</string>
-				<string>com.sublimetext.3</string>
 			</array>
 			<key>applicationScopeType</key>
-			<integer>-1</integer>
+			<integer>1</integer>
 			<key>command</key>
 			<dict>
 				<key>actionID</key>
 				<string>[Action]:/Users/lgarron/Library/Application Support/Quicksilver/Actions/Open Folder in Terminal.scpt</string>
-				<key>directArchive</key>
-				<dict>
-					<key>class</key>
-					<string>QSObject</string>
-					<key>data</key>
-					<dict>
-						<key>NSStringPboardType</key>
-						<string>QSGlobalSelectionProxy</string>
-					</dict>
-					<key>properties</key>
-					<dict>
-						<key>QSObjectName</key>
-						<string>QSGlobalSelectionProxy</string>
-						<key>QSObjectType</key>
-						<string>NSStringPboardType</string>
-					</dict>
-				</dict>
 				<key>directID</key>
-				<string>QSGlobalSelectionProxy</string>
-				<key>indirectArchive</key>
-				<dict>
-					<key>class</key>
-					<string>QSObject</string>
-					<key>data</key>
-					<dict>
-						<key>QSTextProxyType</key>
-						<string></string>
-					</dict>
-					<key>properties</key>
-					<dict>
-						<key>QSObjectName</key>
-						<string></string>
-						<key>QSObjectType</key>
-						<string>QSTextProxyType</string>
-					</dict>
-				</dict>
+				<string>com.blacktree.Quicksilver</string>
 			</dict>
 			<key>enabled</key>
 			<true/>
@@ -719,7 +595,7 @@
 			<key>onPress</key>
 			<true/>
 			<key>showWindow</key>
-			<true/>
+			<false/>
 			<key>type</key>
 			<string>QSHotKeyTrigger</string>
 		</dict>

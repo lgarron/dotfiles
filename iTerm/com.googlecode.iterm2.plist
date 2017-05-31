@@ -2094,6 +2094,8 @@
 	<integer>0</integer>
 	<key>HotkeyCode</key>
 	<integer>0</integer>
+	<key>HotkeyMigratedFromSingleToMulti</key>
+	<true/>
 	<key>HotkeyModifiers</key>
 	<integer>0</integer>
 	<key>IRMemory</key>
@@ -2123,7 +2125,7 @@
 	gAKACoAN0xAJChEVGVdOUy5rZXlzoxITFIADgASABaMWFxiABoAHgAiACVpJZGVudGlm
 	aWVyVVdpZHRoVkhpZGRlblEwI0BowAAAAAAACNIhIiMkWiRjbGFzc25hbWVYJGNsYXNz
 	ZXNcTlNEaWN0aW9uYXJ5oiMlWE5TT2JqZWN00xAJCicrGaMSExSAA4AEgAWjLC0YgAuA
-	DIAIgAlRMSNAczAAAAAAANIhIjM0Xk5TTXV0YWJsZUFycmF5ozM1JVdOU0FycmF5XxAP
+	DIAIgAlRMSNAdCGdsi0OVtIhIjM0Xk5TTXV0YWJsZUFycmF5ozM1JVdOU0FycmF5XxAP
 	TlNLZXllZEFyY2hpdmVy0Tg5VUFycmF5gAEACAARABoAIwAtADIANwBGAEwAUQBcAGMA
 	ZgBoAGoAbABzAHsAfwCBAIMAhQCJAIsAjQCPAJEAnACiAKkAqwC0ALUAugDFAM4A2wDe
 	AOcA7gDyAPQA9gD4APwA/gEAAQIBBAEGAQ8BFAEjAScBLwFBAUQBSgAAAAAAAAIBAAAA
@@ -2139,50 +2141,35 @@
 	</data>
 	<key>NSTableView Supports v2 KeyBingingTable</key>
 	<true/>
-	<key>NSWindow Frame SessionsPreferences</key>
-	<string>269 139 606 456 0 0 1920 1057 </string>
+	<key>NSToolbar Configuration com.apple.NSColorPanel</key>
+	<dict>
+		<key>TB Is Shown</key>
+		<integer>1</integer>
+	</dict>
+	<key>NSWindow Frame SUUpdateAlert</key>
+	<string>490 476 620 392 0 0 1680 1027 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>73 181 796 473 0 0 1920 1057 </string>
+	<string>269 123 796 473 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 537 921 520 0 0 1920 1057 </string>
+	<string>800 0 794 1027 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>0 605 585 452 0 0 1920 1057 </string>
-	<key>NSWindow Frame iTerm Window 10</key>
-	<string>436 532 585 452 0 0 1920 1057 </string>
-	<key>NSWindow Frame iTerm Window 11</key>
-	<string>457 509 585 452 0 0 1920 1057 </string>
-	<key>NSWindow Frame iTerm Window 12</key>
-	<string>478 486 585 452 0 0 1920 1057 </string>
-	<key>NSWindow Frame iTerm Window 13</key>
-	<string>499 463 585 452 0 0 1920 1057 </string>
-	<key>NSWindow Frame iTerm Window 14</key>
-	<string>383 329 585 452 0 0 1920 1057 </string>
-	<key>NSWindow Frame iTerm Window 15</key>
-	<string>0 10 914 1047 0 0 1920 1057 </string>
-	<key>NSWindow Frame iTerm Window 16</key>
-	<string>562 394 585 452 0 0 1920 1057 </string>
-	<key>NSWindow Frame iTerm Window 17</key>
-	<string>920 9 914 520 0 0 1920 1057 </string>
-	<key>NSWindow Frame iTerm Window 18</key>
-	<string>604 348 585 452 0 0 1920 1057 </string>
-	<key>NSWindow Frame iTerm Window 19</key>
-	<string>625 325 585 452 0 0 1920 1057 </string>
+	<string>800 0 794 1027 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>0 605 585 452 0 0 1920 1057 </string>
+	<string>0 575 570 452 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
-	<string>0 537 928 520 0 0 1920 1057 </string>
+	<string>0 575 570 452 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 4</key>
-	<string>0 605 585 452 0 0 1920 1057 </string>
+	<string>226 521 570 452 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 5</key>
-	<string>0 605 585 452 0 0 1920 1057 </string>
+	<string>404 424 570 452 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 6</key>
-	<string>0 9 928 520 0 0 1920 1057 </string>
+	<string>260 477 570 452 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 7</key>
-	<string>0 10 921 1047 0 0 1920 1057 </string>
+	<string>0 575 570 452 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 8</key>
-	<string>923 10 921 1047 0 0 1920 1057 </string>
+	<string>634 76 570 452 0 0 1680 1027 </string>
 	<key>NSWindow Frame iTerm Window 9</key>
-	<string>0 10 921 1047 0 0 1920 1057 </string>
+	<string>380 525 570 452 0 0 1680 1027 </string>
 	<key>NeverWarnAboutShortLivedSessions_211A760B-3D20-4142-A5A1-63B464448826</key>
 	<true/>
 	<key>NeverWarnAboutShortLivedSessions_211A760B-3D20-4142-A5A1-63B464448826_selection</key>
@@ -3726,22 +3713,22 @@
 	</array>
 	<key>NoSyncCommandHistoryHasEverBeenUsed</key>
 	<true/>
-	<key>NoSyncDoNotWarnBeforePastingOneLineEndingInNewlineAtShellPrompt</key>
-	<true/>
-	<key>NoSyncDoNotWarnBeforePastingOneLineEndingInNewlineAtShellPrompt_selection</key>
-	<integer>0</integer>
 	<key>NoSyncHaveWarnedAboutPasteConfirmationChange</key>
 	<true/>
 	<key>NoSyncInstallationId</key>
-	<string>FFDF71AD-0DA6-4708-BC76-F8E41B0CFBB7</string>
+	<string>057D17C6-CC77-4349-A77F-F66C65F3799B</string>
+	<key>NoSyncLastTipTime</key>
+	<real>517890825.06845099</real>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile</key>
 	<true/>
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
 	<integer>0</integer>
 	<key>NoSyncPermissionToShowTip</key>
-	<false/>
+	<true/>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
-	<real>501122810.72862601</real>
+	<real>517398713.71284002</real>
+	<key>NoSyncTipsDisabled</key>
+	<true/>
 	<key>OnlyWhenMoreTabs</key>
 	<false/>
 	<key>OpenArrangementAtStartup</key>
@@ -3808,11 +3795,11 @@
 	<key>SUFeedAlternateAppNameKey</key>
 	<string>iTerm</string>
 	<key>SUFeedURL</key>
-	<string>https://iterm2.com/appcasts/testing.xml?shard=18</string>
+	<string>https://iterm2.com/appcasts/testing.xml?shard=3</string>
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2016-11-22T01:18:07Z</date>
+	<date>2017-05-31T02:33:44Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SavePasteHistory</key>
@@ -3862,7 +3849,7 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.0.12</string>
+	<string>3.1.beta.4</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>

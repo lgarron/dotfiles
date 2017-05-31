@@ -1,5 +1,5 @@
 .PHONY: mac-setup
-mac-setup: mac-defaults mac-backspace mac-apps mac-commandline
+mac-setup: mac-defaults mac-apps mac-commandline
 
 .PHONY: mac-defaults
 mac-defaults:
@@ -25,12 +25,6 @@ mac-defaults:
 	# Dock
 	defaults write com.apple.dock persistent-apps -array "{}"
 	killall Dock
-
-.PHONY: mac-backspace
-mac-backspace:
-	# https://developer.apple.com/library/content/technotes/tn2450/_index.html
-	# Caps Lock (0x39) -> Delete Key (0x2A)
-	hidutil property --set '{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x700000039,"HIDKeyboardModifierMappingDst":0x70000002A}]}'
 
 #TODO: Split apps by machine?
 .PHONY: mac-apps

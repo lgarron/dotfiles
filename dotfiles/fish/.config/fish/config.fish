@@ -238,6 +238,23 @@
       killall Dock
     end
 
+## Keyboard
+
+
+    # https://developer.apple.com/library/content/technotes/tn2450/_index.html
+    # Caps Lock (0x39) -> Delete Key (0x2A)
+    function remap-keys-caps-lock-to-backspace
+        hidutil property --set '{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x700000039,"HIDKeyboardModifierMappingDst":0x70000002A}]}'
+    end
+
+    function remap-keys-reset
+        hidutil property --set '{"UserKeyMapping":[]}'
+    end
+
+    function remap-keys-show
+        hidutil property --get "UserKeyMapping"
+    end
+
 ## Web
 
     function https

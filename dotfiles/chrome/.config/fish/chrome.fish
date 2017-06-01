@@ -20,9 +20,6 @@
 ## Development
 
     set PATH $HOME/Code/depot_tools $PATH
-    if [ -d "$HOME/.nexustools" ]
-      set PATH "$HOME/.nexustools" $PATH
-    end
 
     set -x GOOGLE_API_KEY no
     set -x GOOGLE_DEFAULT_CLIENT_ID no
@@ -216,6 +213,7 @@ debug_devtools = true
 ## Android
 
     function android-build
+      rm out/AndroidDebug/apks/ChromePublic_incremental.apk
       date
       ninja -C out/AndroidDebug -j2000 -l20 chrome_public_apk_incremental
     end
@@ -223,7 +221,7 @@ debug_devtools = true
     function android-install
       # `install_chrome_public_apk_incremental` fails with the `adb` remote bridge.
       # out/AndroidDebug/bin/install_chrome_public_apk_incremental
-      # adb shell pm uninstall -k org.chromium.chrome
+      adb shell pm uninstall -k org.chromium.chrome
       adb install -r out/AndroidDebug/apks/ChromePublic_incremental.apk
     end
 

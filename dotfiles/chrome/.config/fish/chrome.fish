@@ -221,10 +221,10 @@ debug_devtools = true
     end
 
     function android-install
-      # Requires a flashed phoene.
-      out/AndroidDebug/bin/install_chrome_public_apk_incremental
+      # `install_chrome_public_apk_incremental` fails with the `adb` remote bridge.
+      # out/AndroidDebug/bin/install_chrome_public_apk_incremental
       # adb shell pm uninstall -k org.chromium.chrome
-      # adb install -r out/AndroidDebug/apks/ChromePublic_incremental.apk
+      adb install -r out/AndroidDebug/apks/ChromePublic_incremental.apk
     end
 
     function android-launch

@@ -13,7 +13,7 @@
     abbr -a alt      "$ALT_CHROMIUM_SRC/"
     abbr -a bling    "$BLING_SRC/"
 
-    if contains (hostname -s) $LGARRON1
+    if contains (hostname -s) $MACHINE_GROUP_LINUX_WORKSTATION
       abbr -a clank "$CLANK_SRC/"
     end
 

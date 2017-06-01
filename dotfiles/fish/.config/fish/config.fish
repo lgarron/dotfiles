@@ -54,6 +54,9 @@
     set AGNESI Agnesi agnesi
     set HYPATIA Hypatia hypatia lgarron-macpro
     set LGARRON1 lgarron1
+    set LOVELACE lovelace
+
+    set MACHINE_GROUP_LINUX_WORKSTATION $LGARRON1 $LOVELACE
 
 # Path
 
@@ -96,7 +99,7 @@
         end
     end
 
-    if contains (hostname -s) $LGARRON1
+    if contains (hostname -s) $MACHINE_GROUP_LINUX_WORKSTATION
         removepath "/usr/local/buildtools/java/jdk/bin"
     end
 
@@ -145,6 +148,13 @@
         __echo "██      ██   ███ ███████ ██████  ██████  ██    ██ ██ ██  ██  ██"
         __echo "██      ██    ██ ██   ██ ██   ██ ██   ██ ██    ██ ██  ██ ██  ██"
         __echo "███████  ██████  ██   ██ ██   ██ ██   ██  ██████  ██   ████  ██"
+        __echo ""
+      else if contains (hostname -s) $LOVELACE
+        __echo "██       ██████  ██    ██ ███████ ██       █████   ██████ ███████"
+        __echo "██      ██    ██ ██    ██ ██      ██      ██   ██ ██      ██     "
+        __echo "██      ██    ██ ██    ██ █████   ██      ███████ ██      █████  "
+        __echo "██      ██    ██  ██  ██  ██      ██      ██   ██ ██      ██     "
+        __echo "███████  ██████    ████   ███████ ███████ ██   ██  ██████ ███████"
         __echo ""
       else
         __echo "Welcome to "(hostname -s)
@@ -289,7 +299,7 @@
 
 # SSH configs
 
-    if contains (hostname -s) $LGARRON1
+    if contains (hostname -s) $MACHINE_GROUP_LINUX_WORKSTATION
       if [ $SSH_TTY ]
 
         function subl

@@ -20,6 +20,9 @@
 ## Development
 
     set PATH $HOME/Code/depot_tools $PATH
+    if [ -d "$HOME/.nexustools" ]
+      set PATH "$HOME/.nexustools" $PATH
+    end
 
     set -x GOOGLE_API_KEY no
     set -x GOOGLE_DEFAULT_CLIENT_ID no

@@ -101,3 +101,4 @@ Linked [using GNU `stow`](http://brandon.invergo.net/news/2012-05-26-using-gnu-s
 - Auth
   - GitHub
 - install-build-deps[-android].sh
+- `nexustools`

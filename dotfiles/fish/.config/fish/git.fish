@@ -25,6 +25,7 @@
     abbr -a gsoft "git reset --soft"
     abbr -a gr    "git rebase"
     abbr -a gri   "git rebase --interactive"
+    abbr -a grom  "git rebase origin/master"
     abbr -a glast "echo \"Use `gsh`\""
     abbr -a gsh   "git show HEAD"
 

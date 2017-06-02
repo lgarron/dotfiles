@@ -16,7 +16,6 @@ mac-common: \
 mac-work: \
 	chrome-osx \
 	chrome \
-	gce-ssh \
 	gitconfig-noether \
 	golang
 

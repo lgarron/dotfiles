@@ -1,5 +1,5 @@
 .PHONY: mac-setup
-mac-setup: mac-defaults mac-apps mac-commandline
+mac-setup: mac-fish-default-shell mac-defaults mac-apps mac-commandline
 
 .PHONY: mac-defaults
 mac-defaults:
@@ -40,6 +40,7 @@ mac-apps: misc-browsers
 		switchresx \
 		\ # Development (General)
 		hex-fiend \
+		iterm2 \
 		java \
 		rowanj-gitx \
 		sublime-text \
@@ -94,6 +95,7 @@ mac-commandline:
 	brew install \
 		ag \
 		cmake \
+		fish \
 		fpp \
 		git \
 		go \
@@ -108,3 +110,11 @@ mac-commandline:
 .PHONY: mac-right-dock
 mac-right-dock:
 	defaults write com.apple.dock orientation right && killall Dock
+
+FISH_PATH = ${HOME}/local/brew/bin/fish
+.PHONY: mac-fish-default-shell
+mac-fish-default-shell:
+	brew install fish
+	fish -c "source ~/.config/fish/config.fish"
+	cat /etc/shells | grep "${FISH_PATH}" > /dev/null || echo "${FISH_PATH}" | sudo tee -a /etc/shells
+	chsh -s "${HOME}/local/brew/bin/fish"

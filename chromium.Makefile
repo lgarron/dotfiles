@@ -45,6 +45,11 @@ ${HOME}/chromium:
 	mkdir $@
 	cd $@ && fetch chromium
 
+.PHONY: cr-alt
+cr-alt: cr-chromium ${HOME}/alt
+${HOME}/alt:
+	gclient-new-workdir.py ${HOME}/chromium $@
+
 .PHONY: cr-bling
 cr-bling: cr-tools boto gitcookies glogin ${HOME}/bling
 ${HOME}/bling:

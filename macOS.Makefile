@@ -9,6 +9,9 @@ mac-defaults:
 	defaults write com.apple.finder _FXShowPosixPathInTitle YES
 	killall Finder
 
+	# Calendar: start on Monday
+	defaults write com.apple.iCal "first day of week" 1
+
 	# Disable Dashboard
 	defaults write com.apple.dashboard mcx-disabled -boolean YES && killall Dock
 

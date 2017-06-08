@@ -854,6 +854,23 @@
 					<key>source</key>
 					<string>QSFileSystemObjectSource</string>
 				</dict>
+				<dict>
+					<key>ID</key>
+					<string>1BB212FC-ED82-4B47-9B15-181FB902F067</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>name</key>
+					<string>Agnesi Setup (MacBook Pro).gdoc</string>
+					<key>settings</key>
+					<dict>
+						<key>path</key>
+						<string>~/Google Drive (lgarron@chromium.org)/Agnesi Setup (MacBook Pro).gdoc</string>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
 			</array>
 			<key>enabled</key>
 			<true/>

@@ -4,13 +4,9 @@
   set -x PATH $PATH \
     "$HOME/Code/gopath/bin"
 
-  if not contains (hostname -s) $LGARRON1
-    if not contains (hostname -s) $HYPATIA
-      if not contains (hostname -s) $AGNESI
-        set -x PATH $PATH \
-          "/usr/local/go/bin"
-      end
-    end
+  if test -d "/usr/local/go/bin"
+    set -x PATH $PATH \
+      "/usr/local/go/bin"
   end
 
   if [ (uname) = "Darwin" ]

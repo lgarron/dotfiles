@@ -8,6 +8,7 @@ mac-common: \
 	ag \
 	fish \
 	gitignore-osx \
+	hushlogin
 	iTerm \
 	osx \
 	quicksilver
@@ -35,8 +36,22 @@ galois: \
 	osx-languages \
 	golang-dropbox
 
+########
+
+.PHONY: linux-work
+linux-work: \
+	ag \
+	chrome \
+	fish \
+	gitconfig-lgarron1 \
+	golang \
+	hushlogin
+
 .PHONY: lgarron1
-lgarron1: ag chrome fish gitconfig-lgarron1 golang
+lgarron1: linux-work
+
+.PHONY: lovelace
+lovelace: linux-work
 
 ########
 
@@ -52,6 +67,7 @@ PACKAGES += gitconfig-lgarron1
 PACKAGES += gitignore-osx
 PACKAGES += golang
 PACKAGES += golang-dropbox
+PACKAGES += hushlogin
 # PACKAGES += iTerm # special handling
 PACKAGES += osx
 PACKAGES += osx-languages

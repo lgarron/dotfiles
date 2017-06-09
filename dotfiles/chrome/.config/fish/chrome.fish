@@ -75,7 +75,7 @@ debug_devtools = true
 
     function gn-gen-android
       mkdir -p out/AndroidDebug
-      gn gen --args='target_os="android" use_goma=true enable_incremental_javac=true disable_incremental_isolated_processes=true' out/AndroidDebug
+      gn gen --args='target_os="android" is_debug=true use_goma=true enable_nacl=false is_component_build=true dcheck_always_on=true' out/AndroidDebug
     end
 
 ### Building
@@ -213,16 +213,16 @@ debug_devtools = true
 ## Android
 
     function android-build
-      rm out/AndroidDebug/apks/ChromePublic_incremental.apk
+      # rm -f out/AndroidDebug/apks/ChromePublic_incremental.apk
       date
-      ninja -C out/AndroidDebug -j2000 -l20 chrome_public_apk_incremental
+      ninja -C out/AndroidDebug -j2000 -l20 chrome_public_apk
     end
 
     function android-install
       # `install_chrome_public_apk_incremental` fails with the `adb` remote bridge.
       # out/AndroidDebug/bin/install_chrome_public_apk_incremental
       adb shell pm uninstall -k org.chromium.chrome
-      adb install -r out/AndroidDebug/apks/ChromePublic_incremental.apk
+      adb install -r out/AndroidDebug/apks/ChromePublic.apk
     end
 
     function android-launch

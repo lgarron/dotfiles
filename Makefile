@@ -1,5 +1,6 @@
-all:
-	echo "No default"
+.PHONY: auto
+auto:
+	make "$$(hostname -s)"
 
 ########
 
@@ -8,7 +9,7 @@ mac-common: \
 	ag \
 	fish \
 	gitignore-osx \
-	hushlogin
+	hushlogin \
 	iTerm \
 	osx \
 	quicksilver

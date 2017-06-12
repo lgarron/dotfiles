@@ -75,7 +75,7 @@ debug_devtools = true
 
     function gn-gen-android
       mkdir -p out/AndroidDebug
-      gn gen --args='target_os="android" is_debug=true use_goma=true enable_nacl=false is_component_build=true dcheck_always_on=true' out/AndroidDebug
+      gn gen --args='target_os="android" is_debug=true use_goma=true enable_nacl=false dcheck_always_on=true' out/AndroidDebug
     end
 
 ### Building

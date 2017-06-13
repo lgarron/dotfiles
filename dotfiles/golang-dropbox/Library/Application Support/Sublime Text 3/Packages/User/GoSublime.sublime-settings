@@ -1,5 +1,5 @@
 {
-  "fmt_cmd": ["/Users/lgarron/Dropbox/Code/gopath/bin/goimports"],
+  "fmt_cmd": ["goimports"],
   "env": {
     "GOROOT": "/usr/local/Cellar/go/1.8/libexec/"
   }

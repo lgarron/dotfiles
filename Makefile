@@ -9,6 +9,7 @@ mac-common: \
 	ag \
 	fish \
 	gitignore-osx \
+	golang-fish \
 	hushlogin \
 	iTerm \
 	osx \
@@ -19,7 +20,7 @@ mac-work: \
 	chrome-osx \
 	chrome \
 	gitconfig-noether \
-	golang
+	golang-work
 
 .PHONY: noether
 noether: mac-common mac-work
@@ -45,7 +46,8 @@ linux-work: \
 	chrome \
 	fish \
 	gitconfig-lgarron1 \
-	golang \
+	golang-fish \
+	golang-work \
 	hushlogin
 
 .PHONY: lgarron1
@@ -66,8 +68,9 @@ PACKAGES += gitconfig-galois
 PACKAGES += gitconfig-noether
 PACKAGES += gitconfig-lgarron1
 PACKAGES += gitignore-osx
-PACKAGES += golang
 PACKAGES += golang-dropbox
+PACKAGES += golang-fish
+PACKAGES += golang-work
 PACKAGES += hushlogin
 # PACKAGES += iTerm # special handling
 PACKAGES += osx

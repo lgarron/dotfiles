@@ -213,7 +213,7 @@ debug_devtools = true
 ## Android
 
     function android-build
-      # rm -f out/AndroidDebug/apks/ChromePublic_incremental.apk
+      rm -f out/AndroidDebug/apks/ChromePublic.apk
       date
       ninja -C out/AndroidDebug -j2000 -l20 chrome_public_apk
     end

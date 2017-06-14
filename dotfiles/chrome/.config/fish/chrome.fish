@@ -218,10 +218,15 @@ debug_devtools = true
       ninja -C out/AndroidDebug -j2000 -l20 chrome_public_apk
     end
 
+    function android-full-uninstall
+      adb shell pm uninstall org.chromium.chrome
+    end
+
     function android-install
       # `install_chrome_public_apk_incremental` fails with the `adb` remote bridge.
       # out/AndroidDebug/bin/install_chrome_public_apk_incremental
-      adb shell pm uninstall org.chromium.chrome
+      echo "Using soft uninstall. Run `android-full-uninstall` to clear all data."
+      adb shell pm uninstall -k org.chromium.chrome
       adb install -r out/AndroidDebug/apks/ChromePublic.apk
     end
 

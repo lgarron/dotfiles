@@ -239,6 +239,12 @@ debug_devtools = true
       adb logcat chromium:V \*:S
     end
 
+    function android-chrome-junit-tests
+      date
+      ninja -C out/AndroidDebug chrome_junit_tests; \
+        and out/AndroidDebug/bin/run_chrome_junit_tests $argv
+    end
+
     abbr -a aaaa "android-build; and android-install; and android-launch; and android-log"
 
 ## Building

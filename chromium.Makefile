@@ -29,7 +29,7 @@ ${HOME}/.boto:
 gitcookies: ${HOME}/.gitcookies
 ${HOME}/.gitcookies:
 	@echo "Authenticate using @chromium.org: https://chromium-review.googlesource.com/new-password"
-	@echo "Authenticate using @google.com: https://www.googlesource.com/new-password"
+	@echo "Authenticate using @google.com: https://chrome-internal.googlesource.com/new-password"
 	@echo "Use Ctrl-Z to pause, enter cookies using bash, then resume and press Enter"
 	@read
 

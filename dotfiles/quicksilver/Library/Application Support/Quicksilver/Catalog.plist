@@ -231,31 +231,6 @@
 		</dict>
 		<dict>
 			<key>ID</key>
-			<string>69C0D07B-F8C7-4F9B-926A-A6381F988336</string>
-			<key>children</key>
-			<array/>
-			<key>enabled</key>
-			<true/>
-			<key>name</key>
-			<string>gopath</string>
-			<key>settings</key>
-			<dict>
-				<key>folderDepth</key>
-				<integer>3</integer>
-				<key>folderTypes</key>
-				<array>
-					<string>public.folder</string>
-				</array>
-				<key>parser</key>
-				<string>QSDirectoryParser</string>
-				<key>path</key>
-				<string>~/Code/gopath</string>
-			</dict>
-			<key>source</key>
-			<string>QSFileSystemObjectSource</string>
-		</dict>
-		<dict>
-			<key>ID</key>
 			<string>608B499B-34C5-4973-A5AC-2302679EB90E</string>
 			<key>children</key>
 			<array>
@@ -946,6 +921,65 @@
 			<true/>
 			<key>name</key>
 			<string>Dotfiles</string>
+			<key>source</key>
+			<string>QSGroupObjectSource</string>
+		</dict>
+		<dict>
+			<key>ID</key>
+			<string>EC35172F-49B1-470C-AF95-E690F7E177EE</string>
+			<key>children</key>
+			<array>
+				<dict>
+					<key>ID</key>
+					<string>C97C9AAF-16F9-49FF-9B60-8802BF182602</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>name</key>
+					<string>src</string>
+					<key>settings</key>
+					<dict>
+						<key>folderDepth</key>
+						<integer>2</integer>
+						<key>folderTypes</key>
+						<array>
+							<string>public.folder</string>
+						</array>
+						<key>parser</key>
+						<string>QSDirectoryParser</string>
+						<key>path</key>
+						<string>~/Code/gopath/src</string>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
+				<dict>
+					<key>ID</key>
+					<string>31F4728D-30DB-441C-987B-4D6024F23C20</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>name</key>
+					<string>github.com</string>
+					<key>settings</key>
+					<dict>
+						<key>folderDepth</key>
+						<integer>2</integer>
+						<key>parser</key>
+						<string>QSDirectoryParser</string>
+						<key>path</key>
+						<string>~/Code/gopath/src/github.com</string>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
+			</array>
+			<key>enabled</key>
+			<true/>
+			<key>name</key>
+			<string>Golang</string>
 			<key>source</key>
 			<string>QSGroupObjectSource</string>
 		</dict>

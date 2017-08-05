@@ -252,7 +252,7 @@
     abbr -a "sha256" "openssl dgst -sha256"
     abbr -a "sha512" "openssl dgst -sha512"
 
-    set -x "DANCE_HACKING_MUSIC_FOLDER" "$HOME/Temporary/Music/"
+    set -x "DANCE_HACKING_MUSIC_FOLDER" "$HOME/Desktop/Music/"
 
     function aedeploy
       _echo "Invoking wrapped aedeploy."

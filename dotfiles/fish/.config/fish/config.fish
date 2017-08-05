@@ -49,6 +49,7 @@
 
 # Machines
 
+    set EUCLID Euclid euclid Euclid.local
     set GALOIS Galois galois Galois.local
     set NOETHER Noether noether
     set AGNESI Agnesi agnesi
@@ -59,6 +60,15 @@
     set MACHINE_GROUP_LINUX_WORKSTATION $LGARRON1 $LOVELACE
 
 # Path
+
+    if contains (hostname -s) $EUCLID
+        set PATH \
+            $PATH \
+            "$HOME/local/brew/bin" \
+            "$HOME/local/bin/misc" \
+            "$HOME/local/bin/scripts" \
+            "$HOME/local/bin/dance-hacking"
+    end
 
     if contains (hostname -s) $GALOIS
         set PATH \
@@ -156,6 +166,12 @@
         __echo "██      ██    ██  ██  ██  ██      ██      ██   ██ ██      ██     "
         __echo "███████  ██████    ████   ███████ ███████ ██   ██  ██████ ███████"
         __echo ""
+      else if contains (hostname -s) $EUCLID
+        __echo "███████ ██    ██  ██████ ██      ██ ██████ "
+        __echo "██      ██    ██ ██      ██      ██ ██   ██"
+        __echo "█████   ██    ██ ██      ██      ██ ██   ██"
+        __echo "██      ██    ██ ██      ██      ██ ██   ██"
+        __echo "███████  ██████   ██████ ███████ ██ ██████ "
       else
         __echo "Welcome to "(hostname -s)
       end

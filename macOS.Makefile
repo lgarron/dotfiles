@@ -1,5 +1,5 @@
 .PHONY: mac-setup
-mac-setup: mac-fish-default-shell mac-defaults mac-apps mac-commandline
+mac-setup: mac-fish-default-shell mac-defaults mac-apps mac-quicklook mac-commandline
 
 .PHONY: mac-defaults
 mac-defaults:
@@ -7,7 +7,16 @@ mac-defaults:
 	defaults write com.apple.finder AppleShowAllFiles YES
 	defaults write NSGlobalDomain AppleShowAllExtensions YES
 	defaults write com.apple.finder _FXShowPosixPathInTitle YES
+	defaults write com.apple.finder ShowStatusBar -bool true
+	# When performing a search: Search the Current Folder
+	defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 	killall Finder
+
+  # Show ~/Library in Finder
+	chflags nohidden ~/Library
+
+	# Disable the warning when changing a file extension
+	defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 
 	# Calendar: start on Monday
 	defaults write com.apple.iCal "first day of week" 1
@@ -22,8 +31,18 @@ mac-defaults:
 	# Keyboard > Keyboard > Delay Until Repeat > shortest setting
 	defaults write NSGlobalDomain InitialKeyRepeat -int 10
 
+	# Expand save panel by default
+	defaults write -g NSNavPanelExpandedStateForSaveMode -bool true
+
+	# Expand print panel by default
+	defaults write -g PMPrintingExpandedStateForPrint -bool true
+
 	# Applications
 	defaults write org.hammerspoon.Hammerspoon MJConfigFile "~/.config/hammerspoon/init.lua"
+	defaults write com.apple.Safari IncludeDevelopMenu -bool true
+
+	# Password delay for screensaver
+	defaults write com.apple.screensaver askForPasswordDelay -int 5
 
 	# Dock
 	defaults write com.apple.dock persistent-apps -array "{}"
@@ -31,9 +50,8 @@ mac-defaults:
 
 #TODO: Split apps by machine?
 .PHONY: mac-apps
-mac-apps: misc-browsers
+mac-apps:
 	brew cask install \
-		\ # OS Tools
 		bartender \
 		bettertouchtool \
 		caffeine \
@@ -41,24 +59,29 @@ mac-apps: misc-browsers
 		hammerspoon \
 		quicksilver \
 		switchresx \
-		\ # Development (General)
 		hex-fiend \
 		iterm2 \
 		java \
 		rowanj-gitx \
 		sublime-text \
 		transmit \
-		\ # Development (Google)
 		androidtool \
 		google-cloud-sdk \
 		docker \
-		\ # Media and Recording
 		keycastr \
 		obs \
 		vlc \
-		\ # Misc
 		1password \
 		julia
+
+
+.PHONY: mac-quicklook
+mac-quicklook:
+	brew cask install \
+		betterzipql \
+		qlstephen \
+		suspicious-package
+	qlmanage -r
 
 CHROME_VERSIONS_TEMP_FOLDER = /tmp/chrome-versions
 

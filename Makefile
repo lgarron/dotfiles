@@ -35,8 +35,10 @@ agnesi: mac-common
 galois: \
 	mac-common \
 	gitconfig-galois \
-	osx-languages \
-	golang-dropbox
+	osx-languages
+
+.PHONY: euclid
+euclid: galois
 
 ########
 

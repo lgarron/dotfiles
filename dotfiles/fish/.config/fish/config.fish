@@ -346,6 +346,7 @@
 
     function osx-setup-shortcuts
         osx-add-shortcut-to-all-chromes "Extensions" "\$@e"
+        osx-add-shortcut "com.google.Chrome" "Vertical Reviewers" "^v"
         osx-add-shortcut "com.google.Chrome" "Copy Issue URL" "^c"
         osx-add-shortcut "com.google.Chrome" "Copy Issue for Snippets" "^s"
     end

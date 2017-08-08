@@ -48,9 +48,16 @@
     abbr -a gmessage "git log -1 --pretty=%B"
 
     function gnuke
-        git reset --hard
-        git checkout .
-        git clean -fd
+        echo "Use `gclean` instead."
+    end
+
+    function gclean
+        set HASH (git rev-parse HEAD)
+        # TODO: This requires depot_tools
+        git freeze
+        git branch -f last-freeze HEAD
+        git log --pretty=oneline $HASH...HEAD
+        git reset --hard $HASH
     end
 
     function gitx

@@ -138,7 +138,7 @@ debug_devtools = true
       chromium-build-run "out/Debug" $argv
     end
 
-    abbr -a r "release \"https://permission.site/\""
+    abbr -a r "release \"https://badssl.com/\""
     abbr -a d "debug"
 
     abbr -a v "release --secondary-ui-md \"https://permission.site/\""

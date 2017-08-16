@@ -12,6 +12,9 @@ mac-defaults:
 	defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 	killall Finder
 
+	defaults write com.apple.menuextra.clock "DateFormat" "EEE MMM d  H:mm:ss"
+	killall SystemUIServer
+
   # Show ~/Library in Finder
 	chflags nohidden ~/Library
 

@@ -8,6 +8,7 @@ auto:
 mac-common: \
 	ag \
 	fish \
+	gitattributes-mac \
 	gitignore-osx \
 	golang-fish \
 	hushlogin \
@@ -66,6 +67,7 @@ PACKAGES += chrome
 PACKAGES += chrome-osx
 PACKAGES += fish
 PACKAGES += gce-ssh
+PACKAGES += gitattributes-mac
 PACKAGES += gitconfig-euclid
 PACKAGES += gitconfig-noether
 PACKAGES += gitconfig-lgarron1

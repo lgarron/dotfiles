@@ -11,3 +11,5 @@
 	default = simple
 [github]
 	user = lgarron
+[diff "plist"]
+	textconv = plutil -convert xml1 -o -

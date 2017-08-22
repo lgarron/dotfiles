@@ -34,7 +34,7 @@ agnesi: mac-common
 .PHONY: galois
 galois: \
 	mac-common \
-	gitconfig-galois \
+	gitconfig-euclid \
 	osx-languages
 
 .PHONY: euclid
@@ -66,7 +66,7 @@ PACKAGES += chrome
 PACKAGES += chrome-osx
 PACKAGES += fish
 PACKAGES += gce-ssh
-PACKAGES += gitconfig-galois
+PACKAGES += gitconfig-euclid
 PACKAGES += gitconfig-noether
 PACKAGES += gitconfig-lgarron1
 PACKAGES += gitignore-osx

@@ -23,7 +23,7 @@ Linked [using GNU `stow`](http://brandon.invergo.net/news/2012-05-26-using-gnu-s
 
     # Go!
     open -a "iTerm"
-    osx-setup-shortcuts
+    mac-fish-setup
 
 ## Chromium Development
 

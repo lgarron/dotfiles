@@ -178,6 +178,30 @@
 
     end
 
+# Printing
+
+    function echo-alternate-background
+        set set_color_arg "normal"
+        for arg in $argv[1..-1]
+            set_color "$set_color_arg"
+            echo -n $arg
+
+            if [ "$set_color_arg" = "normal" ]
+                set set_color_arg "-r"
+            else
+                set set_color_arg "normal"
+            end
+        end
+        set_color "normal"
+        echo ""
+    end
+
+    function echo-red
+        set_color "red"
+        echo $argv[1]
+        set_color "normal"
+    end
+
 # Shortcuts
 
 ## Shell
@@ -330,25 +354,56 @@
 
 # Shortcuts
 
-    function osx-add-shortcut
-        if defaults read com.apple.universalaccess "com.apple.custommenu.apps" | grep "\"$argv[1]\""
+    function mac-add-shortcut
+        echo-alternate-background \
+            "Setting shortcut for " "$argv[1]" \
+            " > " "$argv[2]" \
+            " to " "$argv[3]"
+
+        if defaults read com.apple.universalaccess "com.apple.custommenu.apps" | grep "\"$argv[1]\"" > /dev/null
         else
             defaults write com.apple.universalaccess "com.apple.custommenu.apps" -array-add "$argv[1]"
         end
         defaults write "$argv[1]" NSUserKeyEquivalents -dict-add "$argv[2]" -string "$argv[3]"
     end
 
-    function osx-add-shortcut-to-all-chromes
-        osx-add-shortcut "com.google.Chrome"        $argv
-        osx-add-shortcut "com.google.Chrome.canary" $argv
-        osx-add-shortcut "org.chromium.Chromium"    $argv
+    function mac-add-shortcut-to-all-chromes
+        mac-add-shortcut "com.google.Chrome"        $argv
+        mac-add-shortcut "com.google.Chrome.canary" $argv
+        mac-add-shortcut "org.chromium.Chromium"    $argv
     end
 
-    function osx-setup-shortcuts
-        osx-add-shortcut-to-all-chromes "Extensions" "\$@e"
-        osx-add-shortcut "com.google.Chrome" "Vertical Reviewers" "^v"
-        osx-add-shortcut "com.google.Chrome" "Copy Issue URL" "^c"
-        osx-add-shortcut "com.google.Chrome" "Copy Issue for Snippets" "^s"
+    function mac-setup-shortcuts-auto
+        mac-add-shortcut-to-all-chromes "Extensions" "\$@e"
+        mac-add-shortcut "com.google.Chrome" "Vertical Reviewers" "^v"
+        mac-add-shortcut "com.google.Chrome" "Copy Issue URL" "^c"
+        mac-add-shortcut "com.google.Chrome" "Copy Issue for Snippets" "^s"
+    end
+
+# Screenshots
+
+    function set-screenshot-dir
+        set DIR $argv[1]
+        echo-alternate-background "Setting screenshot dir to: " "$DIR"
+        defaults write com.apple.screencapture location $argv[1]
+        killall SystemUIServer
+    end
+
+    function set-screenshot-dir-auto
+      set HOSTNAME_SHORT (hostname -s)
+      if contains $HOSTNAME_SHORT $NOETHER
+        set-screenshot-dir "$HOME/Dropbox/Screenshots/Euclid Screenshots/"
+      else
+        echo-red "Could not determine screenshot directory."
+        return 1
+      end
+    end
+
+# Setup
+
+    function mac-fish-setup
+        mac-setup-shortcuts-auto
+        set-screenshot-dir-auto
     end
 
 # Includes

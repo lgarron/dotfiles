@@ -338,9 +338,11 @@
 			<key>ID</key>
 			<string>QSGetGlobalSelectionTrigger</string>
 			<key>applicationScope</key>
-			<array/>
+			<array>
+				<string>com.apple.finder</string>
+			</array>
 			<key>applicationScopeType</key>
-			<integer>0</integer>
+			<integer>1</integer>
 			<key>command</key>
 			<string>QSGetGlobalSelectionCommand</string>
 			<key>enabled</key>

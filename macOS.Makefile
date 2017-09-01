@@ -47,7 +47,8 @@ mac-defaults:
 	# Password delay for screensaver
 	defaults write com.apple.screensaver askForPasswordDelay -int 5
 
-	# Dock
+.PHONY: reset-dock
+reset-dock:
 	defaults write com.apple.dock persistent-apps -array "{}"
 	killall Dock
 

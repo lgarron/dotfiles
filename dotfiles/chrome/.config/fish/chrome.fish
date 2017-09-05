@@ -283,23 +283,23 @@ debug_devtools = true
 ### Chrome Tests
 
 
-    function unit-tests
+    function unit_tests
       release-build-run unit_tests $argv
     end
 
-    function content-unittests
+    function content_unittests
       release-build-run content_unittests $argv
     end
 
-    function net-unittests
+    function net_unittests
       release-build-run net_unittests $argv
     end
 
-    function browser-tests
+    function browser_tests
       release-build-run browser_tests $argv
     end
 
-    function content-browsertests
+    function content_browsertests
       release-build-run content_browsertests $argv
     end
 

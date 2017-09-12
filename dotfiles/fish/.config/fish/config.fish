@@ -224,6 +224,7 @@
     set -x "EDITOR" "subl -w"
     abbr -a s "subl"
 
+    # TODO: Remove if https://github.com/facebook/PathPicker/issues/269 is fixed.
     set -x FPP_DIR "$HOME/.cache/fpp/"
 
 ## Search

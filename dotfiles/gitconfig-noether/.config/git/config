@@ -34,3 +34,5 @@
     prompt = false
 [difftool "opendiff"]
     cmd = /usr/bin/opendiff \"$LOCAL\" \"$REMOTE\" -merge \"$MERGED\" | cat
+[http]
+	cookiefile = /Users/lgarron/.gitcookies

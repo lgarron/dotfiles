@@ -91,10 +91,6 @@ quicksilver:
 	# Link the entire folder for Actions
 	cd dotfiles && stow --ignore=.DS_Store -t ~/ $@
 
-
-## TODO
-# defaults write org.hammerspoon.Hammerspoon MJConfigFile "~/.config/hammerspoon/init.lua"
-
 ########
 
 MAKEFILE_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))

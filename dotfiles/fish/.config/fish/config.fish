@@ -224,6 +224,8 @@
     set -x "EDITOR" "subl -w"
     abbr -a s "subl"
 
+    set -x FPP_DIR "$HOME/.cache/fpp/"
+
 ## Search
 
     function f

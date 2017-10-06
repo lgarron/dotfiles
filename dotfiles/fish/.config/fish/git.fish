@@ -44,6 +44,28 @@
     # "git push branch" to a remote that doesn't know about the branch yet.
     abbr -a gpb   "git push -u origin (git rev-parse --abbrev-ref HEAD)"
 
+    # Distance between branches.
+    function dist
+        set CURRENT (git rev-parse --abbrev-ref HEAD)
+        set OTHER $argv[1]
+
+        git rev-list --left-only --count $CURRENT...$OTHER | tr -d '\n'
+        echo -n " commit(s) on "
+        set_color -o
+        echo "$CURRENT"
+        set_color normal
+
+        git rev-list --right-only --count $CURRENT...$OTHER | tr -d '\n'
+        echo -n " commit(s) on "
+        set_color -o
+        echo "$OTHER"
+        set_color normal
+
+    end
+    complete --no-files \
+        --command dist \
+        --arguments '(__fish_git_branches)'
+
     abbr -a ghash "git rev-parse HEAD"
     abbr -a gmessage "git log -1 --pretty=%B"
 

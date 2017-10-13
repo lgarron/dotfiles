@@ -60,8 +60,8 @@
         set_color -o
         echo "$OTHER"
         set_color normal
-
     end
+
     complete --no-files \
         --command dist \
         --arguments '(__fish_git_branches)'

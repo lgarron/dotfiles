@@ -229,8 +229,13 @@
 
 ## Search
 
-    function f
-      find . -iname "*$argv[1]*"
+    if command -s mdfind > /dev/null
+        # mdfind is much faster on macOS.
+        abbr -a f "mdfind -onlyin (pwd) -name"
+    else
+        function f
+          find . -iname "*$argv[1]*"
+        end
     end
 
     function gre

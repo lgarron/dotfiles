@@ -452,7 +452,7 @@ debug_devtools = true
     end
 
     abbr -a gcu "git cl upload"
-    abbr -a gmb "git map-branches"
+    abbr -a gmb "git map-branches -vv"
 
 ## Crash reporting
 

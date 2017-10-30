@@ -88,10 +88,6 @@
     end
     abbr -a gx    "gitx --256 &"
 
-    if contains (hostname -s) $NOETHER
-        abbr -a gmb "git-map-branches -vv"
-    end
-
     function github
         hub browse &
     end

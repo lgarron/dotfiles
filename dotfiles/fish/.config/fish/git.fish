@@ -77,7 +77,7 @@
         set HASH (git rev-parse HEAD)
         # TODO: This requires depot_tools
         git freeze
-        git branch -f last-freeze HEAD
+        git tag -f last-freeze HEAD
         git log --pretty=oneline $HASH...HEAD
         git reset --hard $HASH
     end

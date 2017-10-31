@@ -44,6 +44,8 @@
     # "git push branch" to a remote that doesn't know about the branch yet.
     abbr -a gpb   "git push -u origin (git rev-parse --abbrev-ref HEAD)"
 
+    abbr -a upstream "git rev-parse --abbrev-ref --symbolic-full-name \"@{upstream}\""
+
     # Distance between branches.
     function dist
         set CURRENT (git rev-parse --abbrev-ref HEAD)

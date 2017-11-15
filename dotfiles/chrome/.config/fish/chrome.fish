@@ -260,6 +260,17 @@ debug_devtools = true
         and eval "out/Debug/$BINARY" (string escape -- $argv)
     end
 
+    function debug-build-lldb
+      set BINARY $argv[1]
+      set -e argv[1]
+
+      cd (git rev-parse --show-toplevel)
+      date
+      ninja -C "out/Debug" "$BINARY"; \
+        and date; \
+        and lldb -o run "out/Debug/$BINARY" -- $argv
+    end
+
     function release-build-run
       set BINARY $argv[1]
       set -e argv[1]
@@ -269,6 +280,17 @@ debug_devtools = true
       ninja -C "out/Release" "$BINARY"; \
         and date; \
         and eval "out/Release/$BINARY" (string escape -- $argv)
+    end
+
+    function release-build-lldb
+      set BINARY $argv[1]
+      set -e argv[1]
+
+      cd (git rev-parse --show-toplevel)
+      date
+      ninja -C "out/Release" "$BINARY"; \
+        and date; \
+        and lldb -o run "out/Release/$BINARY" -- $argv
     end
 
 ### Utilities

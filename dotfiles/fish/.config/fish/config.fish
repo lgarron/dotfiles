@@ -386,6 +386,7 @@
         mac-add-shortcut "com.google.Chrome" "Vertical Reviewers" "^v"
         mac-add-shortcut "com.google.Chrome" "Copy Issue URL" "^c"
         mac-add-shortcut "com.google.Chrome" "Copy Issue for Snippets" "^s"
+        mac-add-shortcut "com.adobe.Lightroom6" "Go to Folder in Library" "@l"
     end
 
 # Screenshots

@@ -8,47 +8,40 @@ mac-defaults:
 	defaults write NSGlobalDomain AppleShowAllExtensions YES
 	defaults write com.apple.finder _FXShowPosixPathInTitle YES
 	defaults write com.apple.finder ShowStatusBar -bool true
+	# Disable the warning when changing a file extension
+	defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 	# When performing a search: Search the Current Folder
 	defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 	killall Finder
-
-	defaults write com.apple.menuextra.clock "DateFormat" "EEE MMM d  H:mm:ss"
-	killall SystemUIServer
-
   # Show ~/Library in Finder
 	chflags nohidden ~/Library
 
-	# Disable the warning when changing a file extension
-	defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
-
+	# Menu clock
+	defaults write com.apple.menuextra.clock "DateFormat" "EEE MMM d  H:mm:ss"
+	killall SystemUIServer
 	# Calendar: start on Monday
 	defaults write com.apple.iCal "first day of week" 1
 
+	# Password delay for screensaver
+	defaults write com.apple.screensaver askForPasswordDelay -int 5
 	# Disable Dashboard
 	defaults write com.apple.dashboard mcx-disabled -boolean YES && killall Dock
 
-	# From https://github.com/mathiasbynens/dotfiles
 	# Keyboard > Shortcuts > Full Keyboard Access > All controls
 	defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
-
 	# Keyboard > Keyboard > Delay Until Repeat > shortest setting
 	defaults write NSGlobalDomain InitialKeyRepeat -int 10
-
 	# Keyboard > Text > Add period with double-space
 	defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
 
 	# Expand save panel by default
 	defaults write -g NSNavPanelExpandedStateForSaveMode -bool true
-
 	# Expand print panel by default
 	defaults write -g PMPrintingExpandedStateForPrint -bool true
 
 	# Applications
 	defaults write org.hammerspoon.Hammerspoon MJConfigFile "~/.config/hammerspoon/init.lua"
 	defaults write com.apple.Safari IncludeDevelopMenu -bool true
-
-	# Password delay for screensaver
-	defaults write com.apple.screensaver askForPasswordDelay -int 5
 
 .PHONY: reset-dock
 reset-dock:

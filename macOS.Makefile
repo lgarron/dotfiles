@@ -143,4 +143,4 @@ mac-fish-default-shell:
 	brew install fish
 	fish -c "source ~/.config/fish/config.fish"
 	cat /etc/shells | grep "${FISH_PATH}" > /dev/null || echo "${FISH_PATH}" | sudo tee -a /etc/shells
-	chsh -s "${HOME}/local/brew/bin/fish"
+	chsh -s "${FISH_PATH}"

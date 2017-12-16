@@ -34,6 +34,9 @@ mac-defaults:
 	# Keyboard > Keyboard > Delay Until Repeat > shortest setting
 	defaults write NSGlobalDomain InitialKeyRepeat -int 10
 
+	# Keyboard > Text > Add period with double-space
+	defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
+
 	# Expand save panel by default
 	defaults write -g NSNavPanelExpandedStateForSaveMode -bool true
 

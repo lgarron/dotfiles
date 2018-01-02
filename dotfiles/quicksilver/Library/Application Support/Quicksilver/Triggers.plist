@@ -73,6 +73,23 @@
 		</dict>
 		<dict>
 			<key>ID</key>
+			<string>QSiTunesLoveTrackTrigger</string>
+			<key>command</key>
+			<string>QSiTunesLoveTrackCommand</string>
+			<key>defaults</key>
+			<dict>
+				<key>type</key>
+				<string>QSHotKeyTrigger</string>
+			</dict>
+			<key>name</key>
+			<string>Love Current Track</string>
+			<key>set</key>
+			<string>iTunes</string>
+			<key>type</key>
+			<string>QSHotKeyTrigger</string>
+		</dict>
+		<dict>
+			<key>ID</key>
 			<string>QSiTunesPlayPauseTrigger</string>
 			<key>command</key>
 			<string>QSiTunesPlayPauseCommand</string>
@@ -342,7 +359,7 @@
 				<string>com.apple.finder</string>
 			</array>
 			<key>applicationScopeType</key>
-			<integer>1</integer>
+			<integer>0</integer>
 			<key>command</key>
 			<string>QSGetGlobalSelectionCommand</string>
 			<key>enabled</key>
@@ -350,7 +367,7 @@
 			<key>keyCode</key>
 			<integer>49</integer>
 			<key>modifiers</key>
-			<integer>1310985</integer>
+			<integer>1573160</integer>
 			<key>onPress</key>
 			<true/>
 			<key>set</key>
@@ -415,6 +432,23 @@
 				<string>[Action]:/Users/lgarron/Library/Application Support/Quicksilver/Actions/Open Folder in Terminal.scpt</string>
 				<key>directID</key>
 				<string>QSGlobalSelectionProxy</string>
+				<key>indirectArchive</key>
+				<dict>
+					<key>class</key>
+					<string>QSObject</string>
+					<key>data</key>
+					<dict>
+						<key>public.utf8-plain-text</key>
+						<string>/Users/lgarron/Downloads/danselibre/export-187.jpg</string>
+					</dict>
+					<key>properties</key>
+					<dict>
+						<key>QSObjectName</key>
+						<string>/Users/lgarron/Downloads/danselibre/export-187.jpg</string>
+						<key>QSObjectType</key>
+						<string>public.utf8-plain-text</string>
+					</dict>
+				</dict>
 				<key>indirectID</key>
 				<string>/Users/lgarron/Downloads/danselibre/export-187.jpg</string>
 			</dict>
@@ -669,6 +703,23 @@
 			<integer>8651009</integer>
 			<key>name</key>
 			<string>Increase Volume</string>
+			<key>set</key>
+			<string>iTunes</string>
+			<key>type</key>
+			<string>QSHotKeyTrigger</string>
+		</dict>
+		<dict>
+			<key>ID</key>
+			<string>QSiTunesLovePlaylistTrigger</string>
+			<key>command</key>
+			<string>QSiTunesLovePlaylistCommand</string>
+			<key>defaults</key>
+			<dict>
+				<key>type</key>
+				<string>QSHotKeyTrigger</string>
+			</dict>
+			<key>name</key>
+			<string>Love Current Playlist</string>
 			<key>set</key>
 			<string>iTunes</string>
 			<key>type</key>

@@ -76,11 +76,6 @@
 			<string>QSiTunesLoveTrackTrigger</string>
 			<key>command</key>
 			<string>QSiTunesLoveTrackCommand</string>
-			<key>defaults</key>
-			<dict>
-				<key>type</key>
-				<string>QSHotKeyTrigger</string>
-			</dict>
 			<key>name</key>
 			<string>Love Current Track</string>
 			<key>set</key>
@@ -713,11 +708,6 @@
 			<string>QSiTunesLovePlaylistTrigger</string>
 			<key>command</key>
 			<string>QSiTunesLovePlaylistCommand</string>
-			<key>defaults</key>
-			<dict>
-				<key>type</key>
-				<string>QSHotKeyTrigger</string>
-			</dict>
 			<key>name</key>
 			<string>Love Current Playlist</string>
 			<key>set</key>

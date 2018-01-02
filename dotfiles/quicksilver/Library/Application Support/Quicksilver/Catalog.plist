@@ -298,57 +298,6 @@
 		</dict>
 		<dict>
 			<key>ID</key>
-			<string>DA0AD35F-B74C-4B89-9418-3085CD8B93A5</string>
-			<key>children</key>
-			<array>
-				<dict>
-					<key>ID</key>
-					<string>490BBB5E-5654-4A88-BEFE-FFB188241DB1</string>
-					<key>children</key>
-					<array/>
-					<key>enabled</key>
-					<true/>
-					<key>name</key>
-					<string>Hypatia Screenshots</string>
-					<key>settings</key>
-					<dict>
-						<key>folderDepth</key>
-						<integer>1</integer>
-						<key>path</key>
-						<string>~/Google Drive/Google Photos/Screenshots/Hypatia Screenshots</string>
-					</dict>
-					<key>source</key>
-					<string>QSFileSystemObjectSource</string>
-				</dict>
-				<dict>
-					<key>ID</key>
-					<string>2265AE85-3FCB-409C-87EA-43B460AA75D4</string>
-					<key>children</key>
-					<array/>
-					<key>enabled</key>
-					<true/>
-					<key>name</key>
-					<string>Noether Screenshots</string>
-					<key>settings</key>
-					<dict>
-						<key>folderDepth</key>
-						<integer>1</integer>
-						<key>path</key>
-						<string>~/Google Drive/Google Photos/Screenshots/Noether Screenshots</string>
-					</dict>
-					<key>source</key>
-					<string>QSFileSystemObjectSource</string>
-				</dict>
-			</array>
-			<key>enabled</key>
-			<true/>
-			<key>name</key>
-			<string>Noether</string>
-			<key>source</key>
-			<string>QSGroupObjectSource</string>
-		</dict>
-		<dict>
-			<key>ID</key>
 			<string>8806A4A6-BA17-4F6E-87EE-7CA63A3F6455</string>
 			<key>children</key>
 			<array>
@@ -611,146 +560,6 @@
 		</dict>
 		<dict>
 			<key>ID</key>
-			<string>CB1D72FD-363E-4960-BF2F-1DC7DC4A5639</string>
-			<key>children</key>
-			<array>
-				<dict>
-					<key>ID</key>
-					<string>A133B5AE-6F0D-46D6-B244-93AB3FAE1554</string>
-					<key>children</key>
-					<array/>
-					<key>enabled</key>
-					<true/>
-					<key>modificationDate</key>
-					<real>438580857.52184898</real>
-					<key>name</key>
-					<string>src</string>
-					<key>path</key>
-					<array>
-						<string>/Users/lgarron/chromium/src</string>
-					</array>
-					<key>settings</key>
-					<dict>
-						<key>path</key>
-						<string>/Users/lgarron/chromium/src</string>
-					</dict>
-					<key>source</key>
-					<string>QSFileSystemObjectSource</string>
-				</dict>
-				<dict>
-					<key>ID</key>
-					<string>49306E37-C7C1-43D6-9788-A7911400B8A6</string>
-					<key>children</key>
-					<array/>
-					<key>enabled</key>
-					<true/>
-					<key>modificationDate</key>
-					<real>469073177.92564601</real>
-					<key>name</key>
-					<string>transport_security_state_static.json</string>
-					<key>path</key>
-					<array>
-						<string>/Users/lgarron/chromium/src/net/http/transport_security_state_static.json</string>
-					</array>
-					<key>settings</key>
-					<dict>
-						<key>path</key>
-						<string>/Users/lgarron/chromium/src/net/http/transport_security_state_static.json</string>
-					</dict>
-					<key>source</key>
-					<string>QSFileSystemObjectSource</string>
-				</dict>
-				<dict>
-					<key>ID</key>
-					<string>B1D402C1-DD2A-4736-B8A6-D14CF3A35BA9</string>
-					<key>children</key>
-					<array/>
-					<key>enabled</key>
-					<true/>
-					<key>modificationDate</key>
-					<real>488140396.32771802</real>
-					<key>name</key>
-					<string>Enamel (go_enamel-folder)</string>
-					<key>path</key>
-					<array>
-						<string>/Users/lgarron/Google Drive/Enamel (go_enamel-folder)</string>
-					</array>
-					<key>settings</key>
-					<dict>
-						<key>folderDepth</key>
-						<integer>3</integer>
-						<key>folderTypes</key>
-						<array>
-							<string>public.folder</string>
-						</array>
-						<key>parser</key>
-						<string>QSDirectoryParser</string>
-						<key>path</key>
-						<string>/Users/lgarron/Google Drive/Enamel (go_enamel-folder)</string>
-					</dict>
-					<key>source</key>
-					<string>QSFileSystemObjectSource</string>
-				</dict>
-				<dict>
-					<key>ID</key>
-					<string>EADC3A82-3EC0-4E8A-820A-DF692861ECCA</string>
-					<key>children</key>
-					<array/>
-					<key>enabled</key>
-					<true/>
-					<key>name</key>
-					<string>Google Drive (lgarron@chromium.org)</string>
-					<key>settings</key>
-					<dict>
-						<key>folderDepth</key>
-						<integer>3</integer>
-						<key>folderTypes</key>
-						<array>
-							<string>public.folder</string>
-						</array>
-						<key>parser</key>
-						<string>QSDirectoryParser</string>
-						<key>path</key>
-						<string>~/Google Drive (lgarron@chromium.org)</string>
-					</dict>
-					<key>source</key>
-					<string>QSFileSystemObjectSource</string>
-				</dict>
-			</array>
-			<key>enabled</key>
-			<true/>
-			<key>name</key>
-			<string>Chrome</string>
-			<key>source</key>
-			<string>QSGroupObjectSource</string>
-		</dict>
-		<dict>
-			<key>ID</key>
-			<string>6DF8F0C2-D95C-4D76-A008-5525F0B57ED0</string>
-			<key>children</key>
-			<array/>
-			<key>enabled</key>
-			<true/>
-			<key>name</key>
-			<string>Screenshots</string>
-			<key>settings</key>
-			<dict>
-				<key>folderDepth</key>
-				<integer>1</integer>
-				<key>folderTypes</key>
-				<array>
-					<string>public.folder</string>
-				</array>
-				<key>parser</key>
-				<string>QSDirectoryParser</string>
-				<key>path</key>
-				<string>~/Google Drive/Google Photos/Screenshots</string>
-			</dict>
-			<key>source</key>
-			<string>QSFileSystemObjectSource</string>
-		</dict>
-		<dict>
-			<key>ID</key>
 			<string>0A58D54E-D71E-4AF8-BAAF-84B47F38686C</string>
 			<key>children</key>
 			<array>
@@ -783,65 +592,6 @@
 						<string>QSDirectoryParser</string>
 						<key>path</key>
 						<string>/Users/lgarron/Google Drive</string>
-					</dict>
-					<key>source</key>
-					<string>QSFileSystemObjectSource</string>
-				</dict>
-				<dict>
-					<key>ID</key>
-					<string>F785B8E0-086E-4A53-9133-37BAC32C0138</string>
-					<key>children</key>
-					<array/>
-					<key>enabled</key>
-					<true/>
-					<key>modificationDate</key>
-					<real>496794396.509624</real>
-					<key>name</key>
-					<string>Graphics</string>
-					<key>path</key>
-					<array>
-						<string>/Users/lgarron/Google Drive (lgarron@chromium.org)/Graphics</string>
-					</array>
-					<key>settings</key>
-					<dict>
-						<key>folderDepth</key>
-						<integer>1</integer>
-						<key>path</key>
-						<string>/Users/lgarron/Google Drive (lgarron@chromium.org)/Graphics</string>
-					</dict>
-					<key>source</key>
-					<string>QSFileSystemObjectSource</string>
-				</dict>
-				<dict>
-					<key>ID</key>
-					<string>BE9ACB4C-9F02-4D83-945D-7A3BF3C47469</string>
-					<key>children</key>
-					<array/>
-					<key>enabled</key>
-					<true/>
-					<key>name</key>
-					<string>Google Building MTV B43 Map.png</string>
-					<key>settings</key>
-					<dict>
-						<key>path</key>
-						<string>~/Google Drive/Data/Reference/Google Building MTV B43 Map.png</string>
-					</dict>
-					<key>source</key>
-					<string>QSFileSystemObjectSource</string>
-				</dict>
-				<dict>
-					<key>ID</key>
-					<string>1BB212FC-ED82-4B47-9B15-181FB902F067</string>
-					<key>children</key>
-					<array/>
-					<key>enabled</key>
-					<true/>
-					<key>name</key>
-					<string>Agnesi Setup (MacBook Pro).gdoc</string>
-					<key>settings</key>
-					<dict>
-						<key>path</key>
-						<string>~/Google Drive (lgarron@chromium.org)/Agnesi Setup (MacBook Pro).gdoc</string>
 					</dict>
 					<key>source</key>
 					<string>QSFileSystemObjectSource</string>
@@ -982,6 +732,27 @@
 			<string>Golang</string>
 			<key>source</key>
 			<string>QSGroupObjectSource</string>
+		</dict>
+		<dict>
+			<key>ID</key>
+			<string>85EB5CB7-1E58-4036-BA28-1860D48B3ECE</string>
+			<key>children</key>
+			<array/>
+			<key>enabled</key>
+			<true/>
+			<key>name</key>
+			<string>minecraft</string>
+			<key>settings</key>
+			<dict>
+				<key>folderDepth</key>
+				<integer>1</integer>
+				<key>parser</key>
+				<string>QSDirectoryParser</string>
+				<key>path</key>
+				<string>~/Library/Application Support/minecraft</string>
+			</dict>
+			<key>source</key>
+			<string>QSFileSystemObjectSource</string>
 		</dict>
 	</array>
 	<key>enabledPresets</key>

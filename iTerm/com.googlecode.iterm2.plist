@@ -14,6 +14,8 @@
 	<integer>0</integer>
 	<key>AppleSmoothFixedFontsSizeThreshold</key>
 	<integer>1</integer>
+	<key>AppleWindowTabbingMode</key>
+	<string>manual</string>
 	<key>AutoHideTmuxClientSession</key>
 	<false/>
 	<key>CheckTestRelease</key>
@@ -2153,9 +2155,9 @@
 	<key>NSWindow Frame SharedPreferences</key>
 	<string>1405 352 796 473 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>1280 4 1277 1413 0 0 2560 1417 </string>
+	<string>0 85 703 792 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>0 395 570 452 0 0 2560 1417 </string>
+	<string>459 425 570 452 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 10</key>
 	<string>532 881 549 452 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 11</key>
@@ -2177,21 +2179,21 @@
 	<key>NSWindow Frame iTerm Window 19</key>
 	<string>864 381 570 452 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>0 242 570 452 0 0 2560 1417 </string>
+	<string>845 607 570 452 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 20</key>
 	<string>0 93 1277 656 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
-	<string>498 770 570 452 0 0 2560 1417 </string>
+	<string>957 544 570 452 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 4</key>
-	<string>216 799 570 452 0 0 2560 1417 </string>
+	<string>644 965 570 452 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 5</key>
-	<string>197 965 570 452 0 0 2560 1417 </string>
+	<string>497 548 570 452 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 6</key>
-	<string>354 965 570 452 0 0 2560 1417 </string>
+	<string>892 337 570 452 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 7</key>
-	<string>1280 4 1277 1413 0 0 2560 1417 </string>
+	<string>1280 82 1277 1335 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 8</key>
-	<string>1169 965 549 452 0 0 2560 1417 </string>
+	<string>1169 965 570 452 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 9</key>
 	<string>511 904 549 452 0 0 2560 1417 </string>
 	<key>NeverWarnAboutShortLivedSessions_211A760B-3D20-4142-A5A1-63B464448826</key>
@@ -3837,11 +3839,13 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2017-09-10T23:01:06Z</date>
+	<date>2017-12-20T13:02:48Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SavePasteHistory</key>
 	<false/>
+	<key>Secure Input</key>
+	<true/>
 	<key>ShowBookmarkName</key>
 	<false/>
 	<key>ShowFullScreenTabBar</key>
@@ -3889,7 +3893,7 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.1.beta.9</string>
+	<string>3.1.5.beta.2</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>

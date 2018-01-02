@@ -47,6 +47,11 @@
 
     loading_indicator "config"
 
+# XDG path configuration
+
+    set XDG_CONFIG_HOME "$HOME/.config"
+    set XDG_CACHE_HOME "$HOME/.cache"
+
 # Machines
 
     set EUCLID Euclid euclid Euclid.local

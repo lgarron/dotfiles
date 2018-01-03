@@ -72,7 +72,8 @@
             "$HOME/local/brew/bin" \
             "$HOME/local/bin/misc" \
             "$HOME/local/bin/scripts" \
-            "$HOME/local/bin/dance-hacking"
+            "$HOME/local/bin/dance-hacking" \
+            "$HOME/Code/depot_tools"
     end
 
     if contains (hostname -s) $GALOIS

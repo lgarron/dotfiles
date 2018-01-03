@@ -56,13 +56,6 @@
 
     set EUCLID Euclid euclid Euclid.local
     set GALOIS Galois galois Galois.local
-    set NOETHER Noether noether
-    set AGNESI Agnesi agnesi
-    set HYPATIA Hypatia hypatia lgarron-macpro
-    set LGARRON1 lgarron1
-    set LOVELACE lovelace
-
-    set MACHINE_GROUP_LINUX_WORKSTATION $LGARRON1 $LOVELACE
 
 # Path
 
@@ -84,30 +77,6 @@
             "$HOME/local/bin/dance-hacking"
     end
 
-    if contains (hostname -s) $NOETHER
-        set PATH \
-            "/usr/local/git/current/bin" \
-            "$HOME/local/brew/bin" \
-            $PATH 
-    end
-
-    if contains (hostname -s) $AGNESI
-        set PATH \
-            "/usr/local/git/current/bin" \
-            "$HOME/local/brew/bin" \
-            $PATH 
-    end
-
-    if contains (hostname -s) $HYPATIA
-        set PATH \
-            # "$HOME/local/bin-front-of-path" \
-            "/usr/local/git/current/bin" \
-            "$HOME/local/homebrew/bin" \
-            $PATH \
-            # "$HOME/local/bin/misc" \
-            "$HOME/Code/Work/google-cloud-sdk/bin"
-    end
-
     # https://superuser.com/a/1212305
     function removepath
         if set -l index (contains -i $argv[1] $PATH)
@@ -115,14 +84,11 @@
         end
     end
 
-    if contains (hostname -s) $MACHINE_GROUP_LINUX_WORKSTATION
-        removepath "/usr/local/buildtools/java/jdk/bin"
-    end
-
 # MOTD
 
     function fish_greeting
 
+      # Based on ANSI Shadow with the shadow removed:
       if contains (hostname -s) $GALOIS
         # Based on ANSI Shadow with the shadow removed:
         # http://patorjk.com/software/taag/#p=display&v=1&f=ANSI%20Shadow&t=Galois%0AGALOIS
@@ -131,46 +97,6 @@
         __echo "██   ███   ███████   ██        ██    ██   ██   ███████ "
         __echo "██    ██   ██   ██   ██        ██    ██   ██        ██ "
         __echo " ██████    ██   ██   ███████    ██████    ██   ███████ "
-        __echo ""
-      else if contains (hostname -s) $NOETHER
-        # Based on ANSI Shadow with the shadow removed:
-        # http://patorjk.com/software/taag/#p=display&v=1&f=ANSI%20Shadow&t=NOETHER
-        __echo "███    ██  ██████  ███████ ████████ ██   ██ ███████ ██████ "
-        __echo "████   ██ ██    ██ ██         ██    ██   ██ ██      ██   ██"
-        __echo "██ ██  ██ ██    ██ █████      ██    ███████ █████   ██████ "
-        __echo "██  ██ ██ ██    ██ ██         ██    ██   ██ ██      ██   ██"
-        __echo "██   ████  ██████  ███████    ██    ██   ██ ███████ ██   ██"
-        __echo ""
-      else if contains (hostname -s) $AGNESI
-        # Based on ANSI Shadow with the shadow removed:
-        # http://patorjk.com/software/taag/#p=display&v=1&f=ANSI%20Shadow&t=AGNESI
-        __echo " █████   ██████  ███    ██ ███████ ███████ ██"
-        __echo "██   ██ ██       ████   ██ ██      ██      ██"
-        __echo "███████ ██   ███ ██ ██  ██ █████   ███████ ██"
-        __echo "██   ██ ██    ██ ██  ██ ██ ██           ██ ██"
-        __echo "██   ██  ██████  ██   ████ ███████ ███████ ██"
-        __echo ""
-      else if contains (hostname -s) $HYPATIA
-        # Based on ANSI Shadow with the shadow removed:
-        # http://patorjk.com/software/taag/#p=display&v=1&f=ANSI%20Shadow&t=HYPATIA
-        __echo "██   ██ ██    ██ ██████   █████  ████████ ██  █████ "
-        __echo "██   ██  ██  ██  ██   ██ ██   ██    ██    ██ ██   ██"
-        __echo "███████   ████   ██████  ███████    ██    ██ ███████"
-        __echo "██   ██    ██    ██      ██   ██    ██    ██ ██   ██"
-        __echo "██   ██    ██    ██      ██   ██    ██    ██ ██   ██"
-      else if contains (hostname -s) $LGARRON1
-        __echo "██       ██████   █████  ██████  ██████   ██████  ███    ██  ██"
-        __echo "██      ██       ██   ██ ██   ██ ██   ██ ██    ██ ████   ██ ███"
-        __echo "██      ██   ███ ███████ ██████  ██████  ██    ██ ██ ██  ██  ██"
-        __echo "██      ██    ██ ██   ██ ██   ██ ██   ██ ██    ██ ██  ██ ██  ██"
-        __echo "███████  ██████  ██   ██ ██   ██ ██   ██  ██████  ██   ████  ██"
-        __echo ""
-      else if contains (hostname -s) $LOVELACE
-        __echo "██       ██████  ██    ██ ███████ ██       █████   ██████ ███████"
-        __echo "██      ██    ██ ██    ██ ██      ██      ██   ██ ██      ██     "
-        __echo "██      ██    ██ ██    ██ █████   ██      ███████ ██      █████  "
-        __echo "██      ██    ██  ██  ██  ██      ██      ██   ██ ██      ██     "
-        __echo "███████  ██████    ████   ███████ ███████ ██   ██  ██████ ███████"
         __echo ""
       else if contains (hostname -s) $EUCLID
         __echo "███████ ██    ██  ██████ ██      ██ ██████ "
@@ -406,7 +332,7 @@
 
     function set-screenshot-dir-auto
       set HOSTNAME_SHORT (hostname -s)
-      if contains $HOSTNAME_SHORT $NOETHER
+      if contains $HOSTNAME_SHORT $EUCLID
         set-screenshot-dir "$HOME/Dropbox/Screenshots/Euclid Screenshots/"
       else
         echo-red "Could not determine screenshot directory."

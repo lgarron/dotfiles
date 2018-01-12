@@ -226,7 +226,7 @@
 			<key>keyCode</key>
 			<integer>36</integer>
 			<key>modifiers</key>
-			<integer>1573160</integer>
+			<integer>1310985</integer>
 			<key>onPress</key>
 			<true/>
 			<key>showWindow</key>
@@ -362,7 +362,7 @@
 			<key>keyCode</key>
 			<integer>49</integer>
 			<key>modifiers</key>
-			<integer>1573160</integer>
+			<integer>1442059</integer>
 			<key>onPress</key>
 			<true/>
 			<key>set</key>
@@ -593,7 +593,7 @@
 			<key>keyCode</key>
 			<integer>36</integer>
 			<key>modifiers</key>
-			<integer>1573160</integer>
+			<integer>1310985</integer>
 			<key>onPress</key>
 			<true/>
 			<key>showWindow</key>
@@ -622,7 +622,7 @@
 			<key>keyCode</key>
 			<integer>42</integer>
 			<key>modifiers</key>
-			<integer>1573160</integer>
+			<integer>1310985</integer>
 			<key>onPress</key>
 			<true/>
 			<key>showWindow</key>
@@ -898,7 +898,7 @@
 			<key>keyCode</key>
 			<integer>36</integer>
 			<key>modifiers</key>
-			<integer>1573160</integer>
+			<integer>1310985</integer>
 			<key>onPress</key>
 			<true/>
 			<key>type</key>

@@ -28,3 +28,7 @@ Linked [using GNU `stow`](http://brandon.invergo.net/news/2012-05-26-using-gnu-s
 ## Chromium Development
 
 See [Chromium.md](./chromium.md)
+
+## XDG Base Directory Spec
+
+Known compatibility chart: <https://wiki.archlinux.org/index.php/XDG_Base_Directory_support>

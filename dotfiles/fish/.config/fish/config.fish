@@ -344,18 +344,18 @@
 
 # Includes
 
-    loading_indicator "git"
     if test -f "$HOME/.config/fish/git.fish"
+      loading_indicator "git"
       source "$HOME/.config/fish/git.fish"
     end
 
-    loading_indicator "go"
     if test -f "$HOME/.config/fish/go.fish"
+      loading_indicator "go"
       source "$HOME/.config/fish/go.fish"
     end
 
-    loading_indicator "chrome"
     if test -f "$HOME/.config/fish/chrome.fish"
+      loading_indicator "chrome"
       source "$HOME/.config/fish/chrome.fish"
     end
 

@@ -15,7 +15,7 @@
                 },
                 "rules": [
                     {
-                        "description": "Change Control + h/j/k/l to Arrows",
+                        "description": "Change Control + h/j/k/l to Arrows (lgarron)",
                         "manipulators": [
                             {
                                 "from": {
@@ -25,7 +25,10 @@
                                             "control"
                                         ],
                                         "optional": [
-                                            "caps_lock"
+                                            "caps_lock",
+                                            "command",
+                                            "option",
+                                            "shift"
                                         ]
                                     }
                                 },
@@ -44,7 +47,10 @@
                                             "control"
                                         ],
                                         "optional": [
-                                            "caps_lock"
+                                            "caps_lock",
+                                            "command",
+                                            "option",
+                                            "shift"
                                         ]
                                     }
                                 },
@@ -63,7 +69,10 @@
                                             "control"
                                         ],
                                         "optional": [
-                                            "caps_lock"
+                                            "caps_lock",
+                                            "command",
+                                            "option",
+                                            "shift"
                                         ]
                                     }
                                 },
@@ -82,7 +91,10 @@
                                             "control"
                                         ],
                                         "optional": [
-                                            "caps_lock"
+                                            "caps_lock",
+                                            "command",
+                                            "option",
+                                            "shift"
                                         ]
                                     }
                                 },

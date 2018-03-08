@@ -288,6 +288,50 @@
 					<key>source</key>
 					<string>QSFileSystemObjectSource</string>
 				</dict>
+				<dict>
+					<key>ID</key>
+					<string>528DA8BF-0427-4B27-A385-C045B6413F2A</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>name</key>
+					<string>wca-regulations</string>
+					<key>settings</key>
+					<dict>
+						<key>folderDepth</key>
+						<integer>1</integer>
+						<key>path</key>
+						<string>~/Dropbox/Code/GitHub-clones/worldcubeassociation.org/regulations/wca-regulations</string>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
+				<dict>
+					<key>ID</key>
+					<string>EA0289A1-C18E-4C7B-BCBC-24A4FC14B63D</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>name</key>
+					<string>github.com</string>
+					<key>settings</key>
+					<dict>
+						<key>folderDepth</key>
+						<integer>2</integer>
+						<key>folderTypes</key>
+						<array>
+							<string>public.folder</string>
+						</array>
+						<key>parser</key>
+						<string>QSDirectoryParser</string>
+						<key>path</key>
+						<string>~/Dropbox/Code/gopath/src/github.com</string>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
 			</array>
 			<key>enabled</key>
 			<true/>
@@ -750,31 +794,6 @@
 				<string>QSDirectoryParser</string>
 				<key>path</key>
 				<string>~/Library/Application Support/minecraft</string>
-			</dict>
-			<key>source</key>
-			<string>QSFileSystemObjectSource</string>
-		</dict>
-		<dict>
-			<key>ID</key>
-			<string>F4AE3598-126E-4340-9199-2B9756CF8545</string>
-			<key>children</key>
-			<array/>
-			<key>enabled</key>
-			<true/>
-			<key>name</key>
-			<string>github.com</string>
-			<key>settings</key>
-			<dict>
-				<key>folderDepth</key>
-				<integer>2</integer>
-				<key>folderTypes</key>
-				<array>
-					<string>public.folder</string>
-				</array>
-				<key>parser</key>
-				<string>QSDirectoryParser</string>
-				<key>path</key>
-				<string>~/Dropbox/Code/gopath/src/github.com</string>
 			</dict>
 			<key>source</key>
 			<string>QSFileSystemObjectSource</string>

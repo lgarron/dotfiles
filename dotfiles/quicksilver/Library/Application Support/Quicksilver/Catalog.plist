@@ -583,7 +583,7 @@
 						<key>excludeFiletypes</key>
 						<array/>
 						<key>folderDepth</key>
-						<integer>3</integer>
+						<integer>2</integer>
 						<key>folderTypes</key>
 						<array>
 							<string>public.folder</string>

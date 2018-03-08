@@ -1,6 +1,6 @@
 .PHONY: auto
 auto:
-	make "$$(hostname -s)"
+	make "$$(hostname -s | tr '[:upper:]' '[:lower:]')"
 
 ########
 

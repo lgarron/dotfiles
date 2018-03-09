@@ -56,10 +56,9 @@
 ## XDG workarounds for specific programs.
 
     # TODO: Remove if https://github.com/facebook/PathPicker/issues/269 is fixed.
-    set -x FPP_DIR "$XDG_CACHE_HOME/fpp/"
+    set -x FPP_DIR "$XDG_DATA_HOME/fpp/"
 
-    # TODO: XDG_DATA_HOME instead of XDG_CACHE_HOME?
-    set -x LESSHISTFILE "$XDG_CACHE_HOME/lesshst"
+    set -x LESSHISTFILE "$XDG_DATA_HOME/lesshst"
 
     # GPG
     # See `macOS-boot.fish` for `launchctl setenv`
@@ -71,7 +70,7 @@
 
     # bash
     # TODO: `bash` doesn't create containing folder?
-    set -x HISTFILE "$XDG_CACHE_HOME/bash/history"
+    set -x HISTFILE "$XDG_DATA_HOME/bash/history"
 
     # gem
     set -x GEM_HOME "$XDG_DATA_HOME/gem"

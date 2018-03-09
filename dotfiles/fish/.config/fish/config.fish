@@ -52,6 +52,19 @@
     set XDG_CONFIG_HOME "$HOME/.config"
     set XDG_CACHE_HOME "$HOME/.cache"
 
+## XDG workarounds for specific programs.
+
+    # TODO: Remove if https://github.com/facebook/PathPicker/issues/269 is fixed.
+    set -x FPP_DIR "$XDG_CACHE_HOME/fpp/"
+
+    # TODO: XDG_DATA_HOME instead of XDG_CACHE_HOME?
+    set -x LESSHISTFILE "$XDG_CACHE_HOME/lesshst"
+
+    # GPG
+    set -x GNUPGHOME "$XDG_CONFIG_HOME/gnupg"
+    # For `GPG Keychain.app` (see http://www.dowdandassociates.com/blog/content/howto-set-an-environment-variable-in-mac-os-x-launchd-plist/):
+    launchctl setenv GNUPGHOME "$XDG_CONFIG_HOME/gnupg"
+
 # Machines
 
     set EUCLID Euclid euclid Euclid.local
@@ -155,9 +168,6 @@
 
     set -x "EDITOR" "subl -w"
     abbr -a s "subl"
-
-    # TODO: Remove if https://github.com/facebook/PathPicker/issues/269 is fixed.
-    set -x FPP_DIR "$HOME/.cache/fpp/"
 
 ## Search
 

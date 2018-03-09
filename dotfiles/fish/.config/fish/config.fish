@@ -61,9 +61,16 @@
     set -x LESSHISTFILE "$XDG_CACHE_HOME/lesshst"
 
     # GPG
+    # See `macOS-boot.fish` for `launchctl setenv`
     set -x GNUPGHOME "$XDG_CONFIG_HOME/gnupg"
-    # For `GPG Keychain.app` (see http://www.dowdandassociates.com/blog/content/howto-set-an-environment-variable-in-mac-os-x-launchd-plist/):
-    launchctl setenv GNUPGHOME "$XDG_CONFIG_HOME/gnupg"
+
+    # HTTPie
+    # https://github.com/jakubroztocil/httpie/issues/145#issuecomment-54704487
+    set -x HTTPIE_CONFIG_DIR "$XDG_CONFIG_HOME/httpie"
+
+    # bash
+    # TODO: `bash` doesn't create containing folder?
+    set -x HISTFILE "$XDG_CACHE_HOME/bash/history"
 
 # Machines
 

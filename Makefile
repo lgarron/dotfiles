@@ -14,6 +14,7 @@ mac-common: \
 	hushlogin \
 	iTerm \
 	osx \
+	osx-boot \
 	quicksilver
 
 .PHONY: mac-work
@@ -78,6 +79,7 @@ PACKAGES += golang-work
 PACKAGES += hushlogin
 # PACKAGES += iTerm # special handling
 PACKAGES += osx
+PACKAGES += osx-boot
 PACKAGES += osx-languages
 
 .PHONY: $(PACKAGES)

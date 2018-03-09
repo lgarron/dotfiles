@@ -86,7 +86,7 @@ $(PACKAGES):
 
 ########
 
-.PHONE: quicksilver
+.PHONY: quicksilver
 quicksilver:
 	# Link the entire folder for Actions
 	cd dotfiles && stow --ignore=.DS_Store -t ~/ $@

@@ -162,6 +162,31 @@
 					<key>source</key>
 					<string>QSFileSystemObjectSource</string>
 				</dict>
+				<dict>
+					<key>ID</key>
+					<string>74C6FF7C-6B41-4677-93B4-033A41AF2957</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>name</key>
+					<string>XCode Additional Tools</string>
+					<key>settings</key>
+					<dict>
+						<key>folderDepth</key>
+						<integer>3</integer>
+						<key>folderTypes</key>
+						<array>
+							<string>com.apple.application-bundle</string>
+						</array>
+						<key>parser</key>
+						<string>QSDirectoryParser</string>
+						<key>path</key>
+						<string>/Applications/XCode Additional Tools</string>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
 			</array>
 			<key>enabled</key>
 			<true/>

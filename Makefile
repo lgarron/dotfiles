@@ -8,39 +8,35 @@ auto:
 mac-common: \
 	ag \
 	fish \
-	gitattributes-mac \
-	gitignore-osx \
 	golang-fish \
 	hushlogin \
+	karabiner \
 	iTerm \
-	osx \
-	osx-boot \
+	mac-boot \
+	mac-git \
 	quicksilver
 
 .PHONY: euclid
 euclid: \
 	mac-common \
-	gitconfig-euclid \
-	osx-languages
+	povray
 
 ########
 
 PACKAGES  =
 PACKAGES += ag
 PACKAGES += chrome
-PACKAGES += chrome-osx
 PACKAGES += fish
 PACKAGES += gce-ssh
-PACKAGES += gitattributes-mac
-PACKAGES += gitconfig-euclid
-PACKAGES += gitignore-osx
 PACKAGES += golang-dropbox
 PACKAGES += golang-fish
 PACKAGES += hushlogin
 # PACKAGES += iTerm # special handling
-PACKAGES += osx
-PACKAGES += osx-boot
-PACKAGES += osx-languages
+PACKAGES += karabiner
+PACKAGES += mac-boot
+PACKAGES += mac-git
+PACKAGES += mac-goma
+PACKAGES += povray
 
 .PHONY: $(PACKAGES)
 $(PACKAGES):

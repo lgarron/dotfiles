@@ -10,7 +10,9 @@
     launchctl setenv XDG_CONFIG_HOME "$HOME/.config"
     launchctl setenv XDG_CACHE_HOME "$HOME/.cache"
 
-    # For `GPG Keychain.app`
+    # `GPG Keychain.app` requires this.
     launchctl setenv GNUPGHOME "$XDG_CONFIG_HOME/gnupg"
+
+# Allows us to check when the script was last run.
 
     launchctl setenv LAST_BOOT_FISH (date)

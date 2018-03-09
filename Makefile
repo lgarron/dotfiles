@@ -104,5 +104,5 @@ iTerm:
 	${ITERM_DEFAULTS_COMMAND} LoadPrefsFromCustomFolder -bool YES
 	${ITERM_DEFAULTS_COMMAND} PrefsCustomFolder -string ${ITERM_DIR}
 
-include macOS.Makefile
-include chromium.Makefile
+include setup/macOS.Makefile
+include setup/chromium.Makefile

@@ -49,8 +49,9 @@
 
 # XDG path configuration
 
-    set XDG_CONFIG_HOME "$HOME/.config"
     set XDG_CACHE_HOME "$HOME/.cache"
+    set XDG_CONFIG_HOME "$HOME/.config"
+    set XDG_DATA_HOME "$HOME/.data"
 
 ## XDG workarounds for specific programs.
 
@@ -71,6 +72,10 @@
     # bash
     # TODO: `bash` doesn't create containing folder?
     set -x HISTFILE "$XDG_CACHE_HOME/bash/history"
+
+    # gem
+    set -x GEM_HOME "$XDG_DATA_HOME/gem"
+    set -x GEM_SPEC_CACHE "$XDG_CACHE_HOME/gem"
 
 # Machines
 

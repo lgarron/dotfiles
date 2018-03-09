@@ -7,8 +7,9 @@
 
 # Set XDG folders
 
-    launchctl setenv XDG_CONFIG_HOME "$HOME/.config"
     launchctl setenv XDG_CACHE_HOME "$HOME/.cache"
+    launchctl setenv XDG_CONFIG_HOME "$HOME/.config"
+    launchctl setenv XDG_DATA_HOME "$HOME/.data"
 
     # `GPG Keychain.app` requires this.
     launchctl setenv GNUPGHOME "$XDG_CONFIG_HOME/gnupg"

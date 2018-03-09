@@ -17,48 +17,11 @@ mac-common: \
 	osx-boot \
 	quicksilver
 
-.PHONY: mac-work
-mac-work: \
-	chrome-osx \
-	chrome \
-	gitconfig-noether \
-	golang-work
-
-.PHONY: noether
-noether: mac-common mac-work
-
-.PHONY: hypatia
-hypatia: mac-common mac-work
-
-.PHONY: agnesi
-agnesi: mac-common
-
-.PHONY: galois
-galois: \
+.PHONY: euclid
+euclid: \
 	mac-common \
 	gitconfig-euclid \
 	osx-languages
-
-.PHONY: euclid
-euclid: galois
-
-########
-
-.PHONY: linux-work
-linux-work: \
-	ag \
-	chrome \
-	fish \
-	gitconfig-lgarron1 \
-	golang-fish \
-	golang-work \
-	hushlogin
-
-.PHONY: lgarron1
-lgarron1: linux-work
-
-.PHONY: lovelace
-lovelace: linux-work
 
 ########
 
@@ -70,12 +33,9 @@ PACKAGES += fish
 PACKAGES += gce-ssh
 PACKAGES += gitattributes-mac
 PACKAGES += gitconfig-euclid
-PACKAGES += gitconfig-noether
-PACKAGES += gitconfig-lgarron1
 PACKAGES += gitignore-osx
 PACKAGES += golang-dropbox
 PACKAGES += golang-fish
-PACKAGES += golang-work
 PACKAGES += hushlogin
 # PACKAGES += iTerm # special handling
 PACKAGES += osx

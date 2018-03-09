@@ -14,6 +14,8 @@
     # `GPG Keychain.app` requires this.
     launchctl setenv GNUPGHOME "$XDG_CONFIG_HOME/gnupg"
 
+    mkdir -p "$XDG_DATA_HOME/bash"
+
 # Allows us to check when the script was last run.
 
     launchctl setenv LAST_BOOT_FISH (date)

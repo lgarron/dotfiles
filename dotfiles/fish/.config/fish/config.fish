@@ -60,21 +60,25 @@
 
     set -x LESSHISTFILE "$XDG_DATA_HOME/lesshst"
 
-    # GPG
-    # See `macOS-boot.fish` for `launchctl setenv`
+    # GnPG
+    # See `boot.fish` for `launchctl setenv`
     set -x GNUPGHOME "$XDG_CONFIG_HOME/gnupg"
 
     # HTTPie
-    # https://github.com/jakubroztocil/httpie/issues/145#issuecomment-54704487
+    # Workaround from https://github.com/jakubroztocil/httpie/issues/145#issuecomment-54704487
     set -x HTTPIE_CONFIG_DIR "$XDG_CONFIG_HOME/httpie"
 
     # bash
-    # TODO: `bash` doesn't create containing folder?
+    # Folder is created in `boot.fish`
     set -x HISTFILE "$XDG_DATA_HOME/bash/history"
 
     # gem
     set -x GEM_HOME "$XDG_DATA_HOME/gem"
     set -x GEM_SPEC_CACHE "$XDG_CACHE_HOME/gem"
+
+    # npm
+    set -x NPM_CONFIG_USERCONFIG "$XDG_CONFIG_HOME/npm/config"
+    set -x NPM_CONFIG_CACHE "$XDG_CACHE_HOME/npm"
 
 # Machines
 

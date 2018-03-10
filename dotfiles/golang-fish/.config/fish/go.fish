@@ -19,7 +19,3 @@
       env DYLD_INSERT_LIBRARIES='' command go $argv
     end
   end
-
-  # Cant use env vars in GoSublime.sublime-settings
-  # set -x SUBLIME_ENV_GOIMPORTS (which goimports)
-  # set -x SUBLIME_ENV_GOROOT    (go env GOROOT)

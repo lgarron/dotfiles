@@ -35,7 +35,6 @@ PACKAGES += hushlogin
 PACKAGES += karabiner
 PACKAGES += mac-boot
 PACKAGES += mac-git
-PACKAGES += mac-goma
 PACKAGES += povray
 
 .PHONY: $(PACKAGES)

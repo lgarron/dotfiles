@@ -10,8 +10,8 @@ mac-common: \
 	fish \
 	golang-fish \
 	hushlogin \
-	karabiner \
 	iTerm \
+	karabiner \
 	mac-boot \
 	mac-git \
 	quicksilver

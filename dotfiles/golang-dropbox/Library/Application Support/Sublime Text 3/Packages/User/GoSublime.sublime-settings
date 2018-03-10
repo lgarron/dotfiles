@@ -1,6 +1,0 @@
-{
-  "fmt_cmd": ["goimports"],
-  "env": {
-    "GOROOT": "/usr/local/Cellar/go/1.8/libexec/"
-  }
-}

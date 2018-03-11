@@ -353,7 +353,7 @@
     function set-screenshot-dir-auto
       set HOSTNAME_SHORT (hostname -s)
       if contains $HOSTNAME_SHORT $EUCLID
-        set-screenshot-dir "$HOME/Dropbox/Screenshots/Euclid Screenshots/"
+        set-screenshot-dir "$HOME/Dropbox/Screenshots/Euclid Screenshots/Euclid Screenshots 2018/"
       else
         echo-red "Could not determine screenshot directory."
         return 1

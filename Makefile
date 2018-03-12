@@ -60,5 +60,6 @@ iTerm:
 	${ITERM_DEFAULTS_COMMAND} LoadPrefsFromCustomFolder -bool YES
 	${ITERM_DEFAULTS_COMMAND} PrefsCustomFolder -string ${ITERM_DIR}
 
-include setup/macOS.Makefile
 include setup/chromium.Makefile
+include setup/linux.Makefile
+include setup/macOS.Makefile

@@ -25,6 +25,15 @@ Linked [using GNU `stow`](http://brandon.invergo.net/news/2012-05-26-using-gnu-s
     open -a "iTerm"
     mac-fish-setup
 
+## Ubuntu/Linux
+
+    sudo apt install git make stow
+
+    git clone https://github.com/lgarron/dotfiles ~/Code/dotfiles
+    cd ~/Code/dotfiles
+    make fish
+    make linux-setup
+
 ## Chromium Development
 
 See [Chromium.md](./chromium.md)

@@ -79,6 +79,7 @@ mac-apps:
 mac-quicklook:
 	brew cask install \
 		betterzipql \
+		qlmarkdown \
 		qlstephen \
 		suspicious-package
 	qlmanage -r

@@ -24,7 +24,6 @@ euclid: \
 ########
 
 PACKAGES  =
-PACKAGES += ag
 PACKAGES += chrome
 PACKAGES += fish
 PACKAGES += gce-ssh

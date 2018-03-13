@@ -62,4 +62,4 @@ iTerm:
 
 include setup/chromium.Makefile
 include setup/linux.Makefile
-include setup/macOS.Makefile
+include setup/mac.Makefile

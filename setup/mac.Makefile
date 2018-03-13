@@ -57,8 +57,7 @@ mac-commandline-core:
 	brew install \
 		ag \
 		fish \
-		git \
-		python
+		git
 
 .PHONY: mac-commandline-extra
 mac-commandline-extra:
@@ -69,6 +68,7 @@ mac-commandline-extra:
 		go \
 		hub \
 		imagemagick \
+		python \
 		ssh-copy-id \
 		wget
 	sudo gem install jekyll

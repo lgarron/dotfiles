@@ -1,8 +1,20 @@
+# Main Installations
+
 .PHONY: mac-setup
 mac-setup: mac-fish-default-shell mac-defaults mac-commandline-core mac-apps-core
 
 .PHONY: mac-setup-extra
 mac-setup: mac-apps-extra mac-commandline-extra mac-quicklook
+
+# Definitions
+
+FISH_PATH = ${HOME}/local/brew/bin/fish
+.PHONY: mac-fish-default-shell
+mac-fish-default-shell:
+	brew install fish
+	fish -c "source ~/.config/fish/config.fish"
+	cat /etc/shells | grep "${FISH_PATH}" > /dev/null || echo "${FISH_PATH}" | sudo tee -a /etc/shells
+	chsh -s "${FISH_PATH}"
 
 .PHONY: mac-defaults
 mac-defaults:
@@ -45,11 +57,6 @@ mac-defaults:
 	# Applications
 	defaults write org.hammerspoon.Hammerspoon MJConfigFile "~/.config/hammerspoon/init.lua"
 	defaults write com.apple.Safari IncludeDevelopMenu -bool true
-
-.PHONY: reset-dock
-reset-dock:
-	defaults write com.apple.dock persistent-apps -array "{}"
-	killall Dock
 
 .PHONY: mac-commandline-core
 mac-commandline-core:
@@ -122,6 +129,17 @@ mac-browsers:
 		opera \
 		vivaldi
 
+# Extra
+
+.PHONY: reset-dock
+reset-dock:
+	defaults write com.apple.dock persistent-apps -array "{}"
+	killall Dock
+
+.PHONY: mac-right-dock
+mac-right-dock:
+	defaults write com.apple.dock orientation right && killall Dock
+
 .PHONY: mac-chrome-versions
 mac-chrome-versions:
 	mkdir -p "${CHROME_VERSIONS_TEMP_FOLDER}/stable"
@@ -142,15 +160,3 @@ mac-chrome-versions:
 
 	killall "Google Chrome"
 	rm -rf "/Applications/Google Chrome.app"
-
-.PHONY: mac-right-dock
-mac-right-dock:
-	defaults write com.apple.dock orientation right && killall Dock
-
-FISH_PATH = ${HOME}/local/brew/bin/fish
-.PHONY: mac-fish-default-shell
-mac-fish-default-shell:
-	brew install fish
-	fish -c "source ~/.config/fish/config.fish"
-	cat /etc/shells | grep "${FISH_PATH}" > /dev/null || echo "${FISH_PATH}" | sudo tee -a /etc/shells
-	chsh -s "${FISH_PATH}"

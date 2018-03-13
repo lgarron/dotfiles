@@ -53,7 +53,6 @@ reset-dock:
 
 .PHONY: mac-commandline-core
 mac-commandline-core:
-	# ffmpeg is excluded for now, because it's super slow to install.
 	brew install \
 		ag \
 		fish \
@@ -61,9 +60,9 @@ mac-commandline-core:
 
 .PHONY: mac-commandline-extra
 mac-commandline-extra:
-	# ffmpeg is excluded for now, because it's super slow to install.
 	brew install \
 		cmake \
+		ffmpeg \
 		fpp \
 		go \
 		hub \

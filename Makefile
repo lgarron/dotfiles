@@ -6,7 +6,6 @@ auto:
 
 .PHONY: mac-common
 mac-common: \
-	ag \
 	fish \
 	golang-fish \
 	hushlogin \

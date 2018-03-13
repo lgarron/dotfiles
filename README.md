@@ -27,8 +27,8 @@ Linked [using GNU `stow`](http://brandon.invergo.net/news/2012-05-26-using-gnu-s
 
     git clone https://github.com/lgarron/dotfiles ~/Code/dotfiles
     cd ~/Code/dotfiles
-    make fish
     make linux-setup
+    make fish
 
 ## Chromium Development
 

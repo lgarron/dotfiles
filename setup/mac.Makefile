@@ -1,5 +1,8 @@
 .PHONY: mac-setup
-mac-setup: mac-fish-default-shell mac-defaults mac-apps mac-quicklook mac-commandline
+mac-setup: mac-fish-default-shell mac-defaults mac-apps-core mac-commandline-core
+
+.PHONY: mac-setup-extra
+mac-setup: mac-apps-extra mac-commandline-extra mac-quicklook
 
 .PHONY: mac-defaults
 mac-defaults:
@@ -48,32 +51,56 @@ reset-dock:
 	defaults write com.apple.dock persistent-apps -array "{}"
 	killall Dock
 
+.PHONY: mac-apps-core
+mac-apps-core:
+	brew cask install \
+		bettertouchtool \
+		quicksilver \
+		iterm2 \
+		sublime-text \
+		1password
+
 #TODO: Split apps by machine?
-.PHONY: mac-apps
-mac-apps:
+.PHONY: mac-apps-extra
+mac-apps-extra: mac-browsers
 	brew cask install \
 		bartender \
-		bettertouchtool \
 		caffeine \
 		grandperspective \
-		hammerspoon \
-		quicksilver \
 		switchresx \
 		hex-fiend \
-		iterm2 \
 		java \
 		rowanj-gitx \
-		sublime-text \
 		transmit \
 		androidtool \
-		google-cloud-sdk \
 		docker \
 		keycastr \
 		obs \
 		vlc \
-		1password \
 		julia
 
+.PHONY: mac-commandline-core
+mac-commandline-core:
+	# ffmpeg is excluded for now, because it's super slow to install.
+	brew install \
+		ag \
+		fish \
+		git \
+		python
+
+.PHONY: mac-commandline-extra
+mac-commandline-extra:
+	# ffmpeg is excluded for now, because it's super slow to install.
+	brew install \
+		cmake \
+		fpp \
+		go \
+		hub \
+		imagemagick \
+		ssh-copy-id \
+		wget
+	sudo gem install jekyll
+	pip install httpie
 
 .PHONY: mac-quicklook
 mac-quicklook:
@@ -92,6 +119,7 @@ mac-browsers:
 		brave \
 		firefox \
 		firefoxnightly \
+		google-chrome \
 		opera \
 		vivaldi
 
@@ -115,24 +143,6 @@ mac-chrome-versions:
 
 	killall "Google Chrome"
 	rm -rf "/Applications/Google Chrome.app"
-
-.PHONY: mac-commandline
-mac-commandline:
-	# ffmpeg is excluded for now, because it's super slow to install.
-	brew install \
-		ag \
-		cmake \
-		fish \
-		fpp \
-		git \
-		go \
-		hub \
-		imagemagick \
-		python \
-		ssh-copy-id \
-		wget
-	sudo gem install jekyll
-	pip install httpie
 
 .PHONY: mac-right-dock
 mac-right-dock:

@@ -1,20 +1,35 @@
+# Bootstrap
+
+# TODO: Use installation path instead of .PHONY?
+.PHONY: mac-homebrew
+mac-homebrew: ${HOMEBREW_PATH}
+
+${HOMEBREW_PATH}:
+	git clone "https://github.com/Homebrew/brew/" "${HOMEBREW_PATH}"
+
 # Main Installations
 
 .PHONY: mac-setup
-mac-setup: mac-fish-default-shell mac-defaults mac-commandline-core mac-apps-core
+mac-setup: \
+	mac-homebrew \
+	mac-defaults \
+	mac-commandline-core \
+	mac-apps-core \
+	mac-fish-default-shell
 
 .PHONY: mac-setup-extra
-mac-setup: mac-apps-extra mac-commandline-extra mac-quicklook
+mac-setup-extra: \
+	mac-setup \
+	mac-apps-extra \
+	mac-commandline-extra \
+	mac-quicklook
 
 # Definitions
 
-FISH_PATH = ${HOME}/local/brew/bin/fish
 .PHONY: mac-fish-default-shell
-mac-fish-default-shell:
-	brew install fish
-	fish -c "source ~/.config/fish/config.fish"
-	cat /etc/shells | grep "${FISH_PATH}" > /dev/null || echo "${FISH_PATH}" | sudo tee -a /etc/shells
-	chsh -s "${FISH_PATH}"
+mac-fish-default-shell: mac-commandline-core
+	cat /etc/shells | grep "`which fish`" > /dev/null || echo "`which fish`" | sudo tee -a /etc/shells
+	chsh -s "`which fish`"
 
 .PHONY: mac-defaults
 mac-defaults:
@@ -63,7 +78,8 @@ mac-commandline-core:
 	brew install \
 		ag \
 		fish \
-		git
+		git \
+		stow
 
 .PHONY: mac-commandline-extra
 mac-commandline-extra:
@@ -124,7 +140,7 @@ mac-browsers:
 	brew cask install \
 		brave \
 		firefox \
-		firefoxnightly \
+		firefox-nightly \
 		google-chrome \
 		opera \
 		vivaldi

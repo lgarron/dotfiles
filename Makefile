@@ -2,6 +2,14 @@
 auto:
 	make "$$(hostname -s | tr '[:upper:]' '[:lower:]')"
 
+######## Config
+
+# Handle $PATH in case we're on a Mac.
+HOMEBREW_PATH = $(HOME)/local/brew
+
+PATH  := $(PATH):${HOMEBREW_PATH}/bin
+SHELL := env PATH=${PATH} /bin/bash
+
 ########
 
 .PHONY: mac-common
@@ -24,7 +32,7 @@ euclid: \
 
 PACKAGES  =
 PACKAGES += chrome
-PACKAGES += fish
+# PACKAGES += fish # special handling
 PACKAGES += gce-ssh
 PACKAGES += golang-fish
 PACKAGES += golang-sublime
@@ -34,12 +42,18 @@ PACKAGES += karabiner
 PACKAGES += mac-boot
 PACKAGES += mac-git
 PACKAGES += povray
+# PACKAGES += quicksilver # special handling
 
 .PHONY: $(PACKAGES)
 $(PACKAGES):
 	cd dotfiles && stow --no-folding --ignore=.DS_Store -t ~/ $@
 
 ########
+
+. PHONY: fish
+fish:
+	cd dotfiles && stow --no-folding --ignore=.DS_Store -t ~/ $@
+	fish -c "source ~/.config/fish/config.fish"
 
 .PHONY: quicksilver
 quicksilver:

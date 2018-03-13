@@ -11,16 +11,12 @@ Linked [using GNU `stow`](http://brandon.invergo.net/news/2012-05-26-using-gnu-s
     # Install Xcode, then run this:
     sudo xcodebuild -license accept
 
-    git clone https://github.com/Homebrew/brew/ ~/local/brew
-    export PATH=${PATH}:${HOME}/local/brew/bin
-    brew install stow
-
     # dotfiles
     git clone https://github.com/lgarron/dotfiles ~/Code/dotfiles
     cd ~/Code/dotfiles
-    make [machine]
     make mac-setup
-
+    make [machine]
+    
     # Go!
     open -a "iTerm"
     mac-fish-setup

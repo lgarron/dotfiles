@@ -1,5 +1,5 @@
 .PHONY: mac-setup
-mac-setup: mac-fish-default-shell mac-defaults mac-apps-core mac-commandline-core
+mac-setup: mac-fish-default-shell mac-defaults mac-commandline-core mac-apps-core
 
 .PHONY: mac-setup-extra
 mac-setup: mac-apps-extra mac-commandline-extra mac-quicklook
@@ -51,6 +51,29 @@ reset-dock:
 	defaults write com.apple.dock persistent-apps -array "{}"
 	killall Dock
 
+.PHONY: mac-commandline-core
+mac-commandline-core:
+	# ffmpeg is excluded for now, because it's super slow to install.
+	brew install \
+		ag \
+		fish \
+		git \
+		python
+
+.PHONY: mac-commandline-extra
+mac-commandline-extra:
+	# ffmpeg is excluded for now, because it's super slow to install.
+	brew install \
+		cmake \
+		fpp \
+		go \
+		hub \
+		imagemagick \
+		ssh-copy-id \
+		wget
+	sudo gem install jekyll
+	pip install httpie
+
 .PHONY: mac-apps-core
 mac-apps-core:
 	brew cask install \
@@ -78,29 +101,6 @@ mac-apps-extra: mac-browsers
 		obs \
 		vlc \
 		julia
-
-.PHONY: mac-commandline-core
-mac-commandline-core:
-	# ffmpeg is excluded for now, because it's super slow to install.
-	brew install \
-		ag \
-		fish \
-		git \
-		python
-
-.PHONY: mac-commandline-extra
-mac-commandline-extra:
-	# ffmpeg is excluded for now, because it's super slow to install.
-	brew install \
-		cmake \
-		fpp \
-		go \
-		hub \
-		imagemagick \
-		ssh-copy-id \
-		wget
-	sudo gem install jekyll
-	pip install httpie
 
 .PHONY: mac-quicklook
 mac-quicklook:

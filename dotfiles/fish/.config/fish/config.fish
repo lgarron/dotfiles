@@ -88,9 +88,10 @@
 # Path
 
     if contains (hostname -s) $EUCLID
+    # Homebrew is first for Python
         set PATH \
-            $PATH \
             "$HOME/local/brew/bin" \
+            $PATH \
             "$HOME/local/bin/misc" \
             "$HOME/local/bin/scripts" \
             "$HOME/local/bin/dance-hacking" \

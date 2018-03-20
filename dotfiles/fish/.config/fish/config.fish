@@ -340,6 +340,7 @@
         mac-add-shortcut "com.google.Chrome" "Copy Issue URL" "^c"
         mac-add-shortcut "com.google.Chrome" "Copy Issue for Snippets" "^s"
         mac-add-shortcut "com.adobe.Lightroom6" "Go to Folder in Library" "@l"
+        mac-add-shortcut "org.audacityteam.audacity" "Save Project As…" "\$@s"
     end
 
 # Screenshots

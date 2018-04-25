@@ -26,7 +26,8 @@ mac-common: \
 .PHONY: euclid
 euclid: \
 	mac-common \
-	povray
+	povray \
+	sd-card-backup
 
 ########
 
@@ -42,6 +43,7 @@ PACKAGES += karabiner
 PACKAGES += mac-boot
 PACKAGES += mac-git
 PACKAGES += povray
+PACKAGES += sd-card-backup
 # PACKAGES += quicksilver # special handling
 
 .PHONY: $(PACKAGES)

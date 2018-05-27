@@ -167,25 +167,6 @@
 			<dict>
 				<key>actionID</key>
 				<string>AppRelaunchAction</string>
-				<key>directArchive</key>
-				<dict>
-					<key>class</key>
-					<string>QSObject</string>
-					<key>data</key>
-					<dict>
-						<key>NSStringPboardType</key>
-						<string>QSCurrentApplicationProxy</string>
-						<key>public.utf8-plain-text</key>
-						<string>QSCurrentApplicationProxy</string>
-					</dict>
-					<key>properties</key>
-					<dict>
-						<key>QSObjectName</key>
-						<string>QSCurrentApplicationProxy</string>
-						<key>QSObjectType</key>
-						<string>NSStringPboardType</string>
-					</dict>
-				</dict>
 				<key>directID</key>
 				<string>QSCurrentApplicationProxy</string>
 			</dict>
@@ -248,28 +229,35 @@
 		</dict>
 		<dict>
 			<key>ID</key>
+			<string>QSRelaunchSelfTrigger</string>
+			<key>applicationScope</key>
+			<array>
+				<string>com.blacktree.Quicksilver</string>
+			</array>
+			<key>applicationScopeType</key>
+			<integer>1</integer>
+			<key>command</key>
+			<string>QSRelaunchSelfCommand</string>
+			<key>enabled</key>
+			<true/>
+			<key>keyCode</key>
+			<integer>12</integer>
+			<key>modifiers</key>
+			<integer>1835305</integer>
+			<key>onPress</key>
+			<true/>
+			<key>set</key>
+			<string>Quicksilver</string>
+			<key>type</key>
+			<string>QSHotKeyTrigger</string>
+		</dict>
+		<dict>
+			<key>ID</key>
 			<string>1565B5C0-E1A2-4E48-9A1C-3A24A699ACE0</string>
 			<key>command</key>
 			<dict>
 				<key>actionID</key>
 				<string>QSObjCSendMessageAction</string>
-				<key>directArchive</key>
-				<dict>
-					<key>class</key>
-					<string>QSObject</string>
-					<key>data</key>
-					<dict>
-						<key>public.utf8-plain-text</key>
-						<string>QSClipboardShowMessage</string>
-					</dict>
-					<key>properties</key>
-					<dict>
-						<key>QSObjectName</key>
-						<string>QSClipboardShowMessage</string>
-						<key>QSObjectType</key>
-						<string>public.utf8-plain-text</string>
-					</dict>
-				</dict>
 				<key>directID</key>
 				<string>QSClipboardShowMessage</string>
 			</dict>
@@ -523,25 +511,6 @@
 			<dict>
 				<key>actionID</key>
 				<string>QSObjectShowChildrenAction</string>
-				<key>directArchive</key>
-				<dict>
-					<key>class</key>
-					<string>QSObject</string>
-					<key>data</key>
-					<dict>
-						<key>NSStringPboardType</key>
-						<string>[iTunes Browser] :Track, Track</string>
-						<key>public.utf8-plain-text</key>
-						<string>[iTunes Browser] :Track, Track</string>
-					</dict>
-					<key>properties</key>
-					<dict>
-						<key>QSObjectName</key>
-						<string>[iTunes Browser] :Track, Track</string>
-						<key>QSObjectType</key>
-						<string>public.utf8-plain-text</string>
-					</dict>
-				</dict>
 				<key>directID</key>
 				<string>[iTunes Browser] :Track, Track</string>
 			</dict>

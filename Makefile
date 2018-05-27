@@ -21,7 +21,8 @@ mac-common: \
 	karabiner \
 	mac-boot \
 	mac-git \
-	quicksilver
+	quicksilver \
+	xdg-basedir-workarounds
 
 .PHONY: euclid
 euclid: \
@@ -44,6 +45,8 @@ PACKAGES += mac-boot
 PACKAGES += mac-git
 PACKAGES += povray
 PACKAGES += sd-card-backup
+
+PACKAGES += xdg-basedir-workarounds
 # PACKAGES += quicksilver # special handling
 
 .PHONY: $(PACKAGES)

@@ -7,7 +7,7 @@ auto:
 # Handle $PATH in case we're on a Mac.
 HOMEBREW_PATH = $(HOME)/local/brew
 
-PATH  := $(PATH):${HOMEBREW_PATH}/bin
+PATH  := "$(PATH):${HOMEBREW_PATH}/bin"
 SHELL := env PATH=${PATH} /bin/bash
 
 ########

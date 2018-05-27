@@ -1,7 +1,34 @@
 {
-  "destination": "/Users/lgarron/Downloads/test",
+  "destination_root": "/Volumes/TARDIS Charlie/Photo Backup Test",
+  "sd_card_mount_point": "/Volumes",
   "sd_card_names": [
+    "FORRESTGUMP",
+    "SNOW WHITE",
+    "ROSE TYLER",
+    "SHERLOCK",
+    "STARBUCK",
+    "KATNISS",
+    "PRIMROSE",
+    "ISHMAEL",
+    "WERTHER",
+    "BAYMAX",
+    "MAJOR TOM",
+    "RIKER",
+    "HERMIONE",
     "KUBO",
-    "NIXIE"
+    "ATTICUS",
+    "ODYSSEUS",
+    "AARON BURR",
+    "WASHINGTON",
+    "NIXIE",
+    "MACARIA",
+    "DANICA",
+    "FEZZIWIG"
+  ],
+  "folder_mapping": [
+    { "source": "DCIM",                      "destination": "DCIM"    },
+    { "source": "MP_ROOT",                   "destination": "MP_ROOT" },
+    { "source": "PRIVATE/AVCHD/BDMV/STREAM", "destination": "STREAM"  },
+    { "source": "PRIVATE/M4ROOT/CLIP",       "destination": "CLIP"    }
   ]
 }

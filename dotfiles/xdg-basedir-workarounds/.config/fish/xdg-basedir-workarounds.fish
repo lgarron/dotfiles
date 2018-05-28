@@ -42,3 +42,6 @@
 
     # wget
     set -x WGETRC "$XDG_CONFIG_HOME/wget/wgetrc"
+
+    # xauth
+    set -x XAUTHORITY "$XDG_CACHE_DIR"/xauth/Xauthority

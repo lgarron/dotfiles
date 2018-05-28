@@ -203,9 +203,6 @@
 
     abbr -a serve "python -m SimpleHTTPServer"
 
-    # Technically a private API token, but not critically secret.
-    set -x "_ECHO_NEST_API_KEY" "EJ7ZVMPNXWVFXS1KE"
-
     abbr -a "md5" "openssl dgst -md5"
     abbr -a "sha1" "openssl dgst -sha1"
     abbr -a "sha256" "openssl dgst -sha256"

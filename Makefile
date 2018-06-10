@@ -27,6 +27,7 @@ mac-common: \
 .PHONY: euclid
 euclid: \
 	mac-common \
+	mac-minecraft \
 	povray \
 	sd-card-backup
 
@@ -43,6 +44,7 @@ PACKAGES += hushlogin
 PACKAGES += karabiner
 PACKAGES += mac-boot
 PACKAGES += mac-git
+PACKAGES += mac-minecraft
 PACKAGES += povray
 PACKAGES += sd-card-backup
 

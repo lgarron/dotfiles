@@ -45,3 +45,11 @@
 
     # xauth
     set -x XAUTHORITY "$XDG_CACHE_DIR"/xauth/Xauthority
+
+    # Bundler (Ruby)
+    set -x BUNDLE_USER_CONFIG "$XDG_CONFIG_HOME"/bundle
+    set -x BUNDLE_USER_CACHE  "$XDG_CACHE_HOME"/bundle
+    set -x BUNDLE_USER_PLUGIN "$XDG_DATA_HOME"/bundle
+
+    # node
+    set -x NODE_REPL_HISTORY "$XDG_DATA_HOME"/node_repl_history

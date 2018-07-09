@@ -1,8 +1,8 @@
 version:1343
 invertYMouse:false
 mouseSensitivity:0.5
-fov:0.0
-gamma:0.0
+fov:0.5
+gamma:0.5
 saturation:0.0
 renderDistance:8
 guiScale:0
@@ -15,7 +15,7 @@ difficulty:1
 fancyGraphics:true
 ao:2
 renderClouds:true
-resourcePacks:[]
+resourcePacks:["New Default Betapack V2 - f81517ca516363c381528480bb4c5189.zip","VanillaTweaks_14843.zip"]
 incompatibleResourcePacks:[]
 lastServer:
 lang:en_us
@@ -25,12 +25,12 @@ chatLinks:true
 chatLinksPrompt:true
 chatOpacity:1.0
 snooperEnabled:true
-fullscreen:false
+fullscreen:true
 enableVsync:true
 useVbo:true
 hideServerAddress:false
 advancedItemTooltips:false
-pauseOnLostFocus:true
+pauseOnLostFocus:false
 touchscreen:false
 overrideWidth:0
 overrideHeight:0
@@ -49,9 +49,9 @@ attackIndicator:1
 showSubtitles:false
 realmsNotifications:true
 enableWeakAttacks:false
-autoJump:true
+autoJump:false
 narrator:0
-tutorialStep:movement
+tutorialStep:none
 key_key.attack:-100
 key_key.use:-99
 key_key.forward:17
@@ -86,6 +86,16 @@ key_key.hotbar.7:8
 key_key.hotbar.8:9
 key_key.hotbar.9:10
 key_of.key.zoom:46
+key_schematica.key.load:43
+key_schematica.key.save:13
+key_schematica.key.control:12
+key_schematica.key.layerInc:0
+key_schematica.key.layerDec:0
+key_schematica.key.layerToggle:0
+key_schematica.key.renderToggle:207
+key_schematica.key.printerToggle:0
+key_schematica.key.moveHere:0
+key_schematica.key.pickBlock:-98:SHIFT
 soundCategory_master:1.0
 soundCategory_music:1.0
 soundCategory_record:1.0

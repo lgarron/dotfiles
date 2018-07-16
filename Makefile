@@ -21,6 +21,7 @@ mac-common: \
 	karabiner \
 	mac-boot \
 	mac-git \
+	mac-sublime-text \
 	quicksilver \
 	xdg-basedir-workarounds
 
@@ -45,6 +46,7 @@ PACKAGES += karabiner
 PACKAGES += mac-boot
 PACKAGES += mac-git
 PACKAGES += mac-minecraft
+PACKAGES += mac-sublime-text
 PACKAGES += povray
 PACKAGES += sd-card-backup
 

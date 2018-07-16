@@ -26,5 +26,6 @@
 	"show_full_path": true,
 	"tab_size": 2,
 	"translate_tabs_to_spaces": true,
-	"use_tab_stops": true
+	"use_tab_stops": true,
+	"ensure_newline_at_eof_on_save": true
 }

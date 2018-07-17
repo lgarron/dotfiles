@@ -30,11 +30,6 @@
     abbr -a gsh   "git show HEAD"
 
     abbr -a gp    "git push"
-    function gpf
-        set_color red
-        echo -e "\nUse `gpfl` for `git push --force-with-lease`.\n" 1>&2
-        set_color normal
-    end
     abbr -a gpfl  "git push --force-with-lease"
     abbr -a grv   "git remote --verbose"
     function pr

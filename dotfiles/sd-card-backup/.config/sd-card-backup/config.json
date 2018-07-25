@@ -29,6 +29,7 @@
     { "source": "DCIM",                      "destination": "DCIM"    },
     { "source": "MP_ROOT",                   "destination": "MP_ROOT" },
     { "source": "PRIVATE/AVCHD/BDMV/STREAM", "destination": "STREAM"  },
-    { "source": "PRIVATE/M4ROOT/CLIP",       "destination": "CLIP"    }
+    { "source": "PRIVATE/M4ROOT/CLIP",       "destination": "CLIP"    },
+    { "source": "STEREO",                    "destination": "STEREO"  }
   ]
 }

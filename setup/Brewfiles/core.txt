@@ -1,0 +1,5 @@
+cask "bettertouchtool"
+cask "quicksilver"
+cask "iterm2"
+cask "sublime-text"
+cask "1password"

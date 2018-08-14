@@ -1,11 +1,13 @@
 # Bootstrap
 
+BREWFILE_FOLDER = ./setup/Brewfiles
+
 # TODO: Use installation path instead of .PHONY?
 .PHONY: mac-homebrew
 mac-homebrew: ${HOMEBREW_PATH}
 
 ${HOMEBREW_PATH}:
-	git clone "https://github.com/Homebrew/brew/" "${HOMEBREW_PATH}"
+	echo "Skipping Homebrew installation"
 
 # Main Installations
 
@@ -19,7 +21,6 @@ mac-setup: \
 
 .PHONY: mac-setup-extra
 mac-setup-extra: \
-	mac-setup \
 	mac-apps-extra \
 	mac-commandline-extra \
 	mac-quicklook
@@ -43,7 +44,7 @@ mac-defaults:
 	# When performing a search: Search the Current Folder
 	defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
 	killall Finder
-  # Show ~/Library in Finder
+	# Show ~/Library in Finder
 	chflags nohidden ~/Library
 
 	# Menu clock
@@ -75,75 +76,33 @@ mac-defaults:
 
 .PHONY: mac-commandline-core
 mac-commandline-core:
-	brew install \
-		ag \
-		fish \
-		git \
-		stow
+	brew bundle --file=${BREWFILE_FOLDER}/commandline-core.txt
 
 .PHONY: mac-commandline-extra
 mac-commandline-extra:
-	brew install \
-		cmake \
-		ffmpeg \
-		fpp \
-		go \
-		hub \
-		imagemagick \
-		python \
-		ssh-copy-id \
-		wget
+	brew bundle --file=${BREWFILE_FOLDER}/commandline-extra.txt
 	sudo gem install jekyll
 	pip install httpie
 
 .PHONY: mac-apps-core
 mac-apps-core:
-	brew cask install \
-		bettertouchtool \
-		quicksilver \
-		iterm2 \
-		sublime-text \
-		1password
+	brew bundle --file=${BREWFILE_FOLDER}/core.txt
 
 #TODO: Split apps by machine?
 .PHONY: mac-apps-extra
 mac-apps-extra: mac-browsers
-	brew cask install \
-		bartender \
-		caffeine \
-		grandperspective \
-		switchresx \
-		hex-fiend \
-		java \
-		rowanj-gitx \
-		transmit \
-		androidtool \
-		docker \
-		keycastr \
-		obs \
-		vlc \
-		julia
+	brew bundle --file=${BREWFILE_FOLDER}/extra.txt
 
 .PHONY: mac-quicklook
 mac-quicklook:
-	brew cask install \
-		betterzipql \
-		qlmarkdown \
-		qlstephen \
-		suspicious-package
+	brew bundle --file=${BREWFILE_FOLDER}/quicklook.txt
 	qlmanage -r
 
 CHROME_VERSIONS_TEMP_FOLDER = /tmp/chrome-versions
 
 .PHONY: mac-browsers
 mac-browsers:
-	brew cask install \
-		brave \
-		firefox \
-		firefox-nightly \
-		google-chrome \
-		opera \
-		vivaldi
+	brew bundle --file=${BREWFILE_FOLDER}/browsers.txt
 
 # Extra
 

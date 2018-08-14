@@ -1,0 +1,6 @@
+cask "brave"
+cask "firefox"
+cask "firefox-nightly"
+cask "google-chrome"
+cask "opera"
+cask "vivaldi"

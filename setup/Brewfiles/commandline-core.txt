@@ -1,0 +1,4 @@
+brew "ag"
+brew "fish"
+brew "git"
+brew "stow"

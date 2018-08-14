@@ -58,6 +58,7 @@
 
     set EUCLID Euclid euclid Euclid.local
     set GALOIS Galois galois Galois.local
+    set MIRZAKHANI Mirzakhani mirzakhani Mirzakhani.local
 
 # Path
 
@@ -107,6 +108,13 @@
         __echo "█████   ██    ██ ██      ██      ██ ██   ██"
         __echo "██      ██    ██ ██      ██      ██ ██   ██"
         __echo "███████  ██████   ██████ ███████ ██ ██████ "
+      else if contains (hostname -s) $MIRZAKHANI
+        __echo "███    ███ ██ ██████  ███████  █████  ██   ██ ██   ██  █████  ███    ██ ██"
+        __echo "████  ████ ██ ██   ██    ███  ██   ██ ██  ██  ██   ██ ██   ██ ████   ██ ██"
+        __echo "██ ████ ██ ██ ██████    ███   ███████ █████   ███████ ███████ ██ ██  ██ ██"
+        __echo "██  ██  ██ ██ ██   ██  ███    ██   ██ ██  ██  ██   ██ ██   ██ ██  ██ ██ ██"
+        __echo "██      ██ ██ ██   ██ ███████ ██   ██ ██   ██ ██   ██ ██   ██ ██   ████ ██"
+        __echo ""
       else
         __echo "Welcome to "(hostname -s)
       end

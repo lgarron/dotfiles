@@ -81,7 +81,7 @@ mac-commandline-core:
 .PHONY: mac-commandline-extra
 mac-commandline-extra:
 	brew bundle --file=${BREWFILE_FOLDER}/commandline-extra.txt
-	sudo gem install jekyll
+	gem install jekyll
 	pip install httpie
 
 .PHONY: mac-apps-core

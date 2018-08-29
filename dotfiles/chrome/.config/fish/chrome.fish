@@ -96,7 +96,7 @@ debug_devtools = true
       if [ (uname) = "Darwin" ]
         env DYLD_INSERT_LIBRARIES='' command ninja $NINJA_SETTINGS (string escape -- $argv)
       else
-        command ninja $NINJA_SETTINGS (string escape -- $argv)
+        command nice ninja $NINJA_SETTINGS (string escape -- $argv)
       end
     end
 

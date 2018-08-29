@@ -49,7 +49,7 @@ is_debug = $argv[1]
 enable_nacl = false
 is_component_build = true
 symbol_level = 1
-use_goma = true
+use_goma = false
 
 # Catchin' Bugs
 # https://groups.google.com/a/chromium.org/forum/#!topic/chromium-dev/0fit7KBlaUY
@@ -91,7 +91,7 @@ debug_devtools = true
     abbr -a sandbox "env BUILDTYPE=Release ./build/update-linux-sandbox.sh"
 
     function ninja
-      goma status | grep "status"
+      # goma status | grep "status"
       # echo "Invoking wrapped ninja."
       if [ (uname) = "Darwin" ]
         env DYLD_INSERT_LIBRARIES='' command ninja $NINJA_SETTINGS (string escape -- $argv)

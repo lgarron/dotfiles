@@ -3,7 +3,7 @@
 ######## Tools ########
 
 .PHONY: cr-tools
-cr-tools: cr-depot_tools cr-goma
+cr-tools: cr-depot_tools
 
 .PHONY: cr-depot_tools
 cr-depot_tools: ${HOME}/Code/depot_tools
@@ -40,8 +40,8 @@ glogin:
 ######## Building ########
 
 .PHONY: cr-chromium
-cr-chromium: cr-tools boto gitcookies ${HOME}/chromium
-${HOME}/chromium:
+cr-chromium: cr-tools boto gitcookies ${HOME}/Code/chromium
+${HOME}/Code/chromium:
 	mkdir $@
 	cd $@ && fetch chromium
 

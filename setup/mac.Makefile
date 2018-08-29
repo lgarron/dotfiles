@@ -98,8 +98,6 @@ mac-quicklook:
 	brew bundle --file=${BREWFILE_FOLDER}/quicklook.txt
 	qlmanage -r
 
-CHROME_VERSIONS_TEMP_FOLDER = /tmp/chrome-versions
-
 .PHONY: mac-browsers
 mac-browsers:
 	brew bundle --file=${BREWFILE_FOLDER}/browsers.txt
@@ -114,24 +112,3 @@ reset-dock:
 .PHONY: mac-right-dock
 mac-right-dock:
 	defaults write com.apple.dock orientation right && killall Dock
-
-.PHONY: mac-chrome-versions
-mac-chrome-versions:
-	mkdir -p "${CHROME_VERSIONS_TEMP_FOLDER}/stable"
-	brew cask install google-chrome --appdir="${CHROME_VERSIONS_TEMP_FOLDER}/stable"
-	mv "${CHROME_VERSIONS_TEMP_FOLDER}/stable/Google Chrome.app" "/Applications/Google Chrome Stable.app"
-
-	mkdir -p "${CHROME_VERSIONS_TEMP_FOLDER}/beta"
-	brew cask install Caskroom/versions/google-chrome-beta --appdir="${CHROME_VERSIONS_TEMP_FOLDER}/beta"
-	mv "${CHROME_VERSIONS_TEMP_FOLDER}/beta/Google Chrome.app" "/Applications/Google Chrome Beta.app"
-
-	mkdir -p "${CHROME_VERSIONS_TEMP_FOLDER}/dev"
-	brew cask install Caskroom/versions/google-chrome-dev --appdir="${CHROME_VERSIONS_TEMP_FOLDER}/dev"
-	mv "${CHROME_VERSIONS_TEMP_FOLDER}/dev/Google Chrome.app" "/Applications/Google Chrome Dev.app"
-
-	mkdir -p "${CHROME_VERSIONS_TEMP_FOLDER}/canary"
-	brew cask install Caskroom/versions/google-chrome-canary --appdir="${CHROME_VERSIONS_TEMP_FOLDER}/canary"
-	mv "${CHROME_VERSIONS_TEMP_FOLDER}/canary/Google Chrome Canary.app" "/Applications/Google Chrome Canary.app"
-
-	killall "Google Chrome"
-	rm -rf "/Applications/Google Chrome.app"

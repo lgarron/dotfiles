@@ -73,6 +73,12 @@
             "$HOME/Code/depot_tools"
     end
 
+    if contains (hostname -s) $MIRZAKHANI
+        set PATH \
+            $PATH \
+            "$HOME/Code/depot_tools"
+    end
+
     if contains (hostname -s) $GALOIS
         set PATH \
             $PATH \

@@ -27,7 +27,11 @@
 
     # bash
     # Folder is created in `boot.fish`
-    set -x HISTFILE "$XDG_DATA_HOME/bash/history"
+    #
+    # We'd use "$XDG_DATA_HOME/bash/history", but bash won't create the
+    # intermediate folder and this prevents us from having to create it
+    # manually.
+    set -x HISTFILE "$XDG_DATA_HOME/bash_history"
 
     # gem
     set -x GEM_HOME "$XDG_DATA_HOME/gem"

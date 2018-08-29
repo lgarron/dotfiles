@@ -162,6 +162,12 @@
         cd "$argv[1]"
     end
 
+    # rbenv
+    if type -q rbenv
+        status --is-interactive; and source (rbenv init -|psub)
+    end
+
+
 ### Editors
 
     set -x "EDITOR" "subl -w"

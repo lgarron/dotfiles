@@ -53,3 +53,8 @@
 
     # node
     set -x NODE_REPL_HISTORY "$XDG_DATA_HOME"/node_repl_history
+
+    # rbenv
+    # https://github.com/rbenv/rbenv/issues/811
+    set -x RBENV_ROOT "$XDG_DATA_HOME"/rbenv
+

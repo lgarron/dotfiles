@@ -66,15 +66,11 @@
     abbr -a ghash "git rev-parse HEAD"
     abbr -a gmessage "git log -1 --pretty=%B"
 
-    function gnuke
-        echo "Use `gclean` instead."
-    end
-
     function gclean
         set HASH (git rev-parse HEAD)
         # TODO: This requires depot_tools
         git freeze
-        git tag -f last-freeze HEAD
+        git update-ref refs/last-freeze HEAD
         git log --pretty=oneline $HASH...HEAD
         git reset --hard $HASH
     end

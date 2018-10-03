@@ -2114,6 +2114,12 @@
 	<true/>
 	<key>MaxVertically</key>
 	<false/>
+	<key>NSNavLastRootDirectory</key>
+	<string>/Applications</string>
+	<key>NSNavPanelExpandedSizeForOpenMode</key>
+	<string>{712, 448}</string>
+	<key>NSNavPanelExpandedSizeForSaveMode</key>
+	<string>{712, 448}</string>
 	<key>NSQuotedKeystrokeBinding</key>
 	<string></string>
 	<key>NSRepeatCountBinding</key>
@@ -2155,23 +2161,23 @@
 	<key>NSWindow Frame SUUpdateAlert</key>
 	<string>970 769 620 392 0 0 2560 1417 </string>
 	<key>NSWindow Frame SharedPreferences</key>
-	<string>1030 314 918 512 0 0 2560 1417 </string>
+	<string>376 129 918 512 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>1139 529 585 452 0 0 2560 1417 </string>
+	<string>0 710 1278 707 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>1280 298 585 452 0 0 2560 1417 </string>
+	<string>714 425 585 452 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 10</key>
-	<string>1418 772 570 452 0 0 2560 1417 </string>
+	<string>495 231 585 452 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 11</key>
-	<string>0 965 570 452 0 0 2560 1417 </string>
+	<string>0 0 1453 877 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 12</key>
-	<string>0 965 570 452 0 0 2560 1417 </string>
+	<string>316 677 585 452 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 13</key>
-	<string>260 898 570 452 0 0 2560 1417 </string>
+	<string>629 690 585 452 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 14</key>
-	<string>0 965 570 452 0 0 2560 1417 </string>
+	<string>0 965 585 452 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 15</key>
-	<string>637 766 570 452 0 0 2560 1417 </string>
+	<string>633 765 585 452 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 16</key>
 	<string>1280 965 570 452 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 17</key>
@@ -2181,7 +2187,7 @@
 	<key>NSWindow Frame iTerm Window 19</key>
 	<string>864 381 570 452 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>1048 304 585 452 0 0 2560 1417 </string>
+	<string>163 425 585 452 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 20</key>
 	<string>0 297 570 452 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 21</key>
@@ -2203,7 +2209,7 @@
 	<key>NSWindow Frame iTerm Window 29</key>
 	<string>1309 905 570 452 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
-	<string>403 297 585 452 0 0 2560 1417 </string>
+	<string>0 0 732 877 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 30</key>
 	<string>1330 882 570 452 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 31</key>
@@ -2217,17 +2223,17 @@
 	<key>NSWindow Frame iTerm Window 35</key>
 	<string>0 82 1277 1335 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 4</key>
-	<string>1835 943 585 452 0 0 2560 1417 </string>
+	<string>0 425 585 452 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 5</key>
-	<string>491 169 585 452 0 0 2560 1417 </string>
+	<string>153 425 585 452 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 6</key>
-	<string>55 122 585 452 0 0 2560 1417 </string>
+	<string>0 0 1453 877 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 7</key>
-	<string>0 965 570 452 0 0 2560 1417 </string>
+	<string>251 331 585 452 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 8</key>
-	<string>0 298 570 452 0 0 2560 1417 </string>
+	<string>720 425 585 452 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 9</key>
-	<string>0 298 570 452 0 0 2560 1417 </string>
+	<string>226 264 585 452 0 0 2560 1417 </string>
 	<key>NeverWarnAboutShortLivedSessions_211A760B-3D20-4142-A5A1-63B464448826</key>
 	<true/>
 	<key>NeverWarnAboutShortLivedSessions_211A760B-3D20-4142-A5A1-63B464448826_selection</key>
@@ -2980,7 +2986,7 @@
 			<key>Window Type</key>
 			<integer>0</integer>
 			<key>Working Directory</key>
-			<string>/Users/lgarron</string>
+			<string>/Users/lgarron/</string>
 		</dict>
 		<dict>
 			<key>ASCII Anti Aliased</key>
@@ -3783,7 +3789,7 @@
 			<key>Window Type</key>
 			<integer>0</integer>
 			<key>Working Directory</key>
-			<string>/Users/lgarron</string>
+			<string>/Users/lgarron/</string>
 		</dict>
 	</array>
 	<key>NoSyncCommandHistoryHasEverBeenUsed</key>
@@ -3799,6 +3805,8 @@
 	<key>NoSyncNeverRemindPrefsChangesLostForFile_selection</key>
 	<integer>0</integer>
 	<key>NoSyncPermissionToShowTip</key>
+	<true/>
+	<key>NoSyncSaveDocumentAsPathSet_saveDocumentAs:</key>
 	<true/>
 	<key>NoSyncTimeOfFirstLaunchOfVersionWithTip</key>
 	<real>521439975.63651901</real>
@@ -3866,6 +3874,8 @@
 	</dict>
 	<key>PrefsCustomFolder</key>
 	<string>/Users/lgarron/Code/dotfiles/iTerm</string>
+	<key>Print In Black And White</key>
+	<true/>
 	<key>PromptOnQuit</key>
 	<false/>
 	<key>QuitWhenAllWindowsClosed</key>
@@ -3885,13 +3895,13 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-03-30T02:18:01Z</date>
+	<date>2018-09-03T22:47:31Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SavePasteHistory</key>
 	<false/>
 	<key>Secure Input</key>
-	<true/>
+	<false/>
 	<key>ShowBookmarkName</key>
 	<false/>
 	<key>ShowFullScreenTabBar</key>
@@ -4890,7 +4900,7 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.1.6beta4</string>
+	<string>3.2.1beta1</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>

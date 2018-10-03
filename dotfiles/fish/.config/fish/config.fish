@@ -377,6 +377,11 @@
       source "$HOME/.config/fish/chrome.fish"
     end
 
+    if test -f "$HOME/.config/fish/local.fish"
+      loading_indicator "local"
+      source "$HOME/.config/fish/local.fish"
+    end
+
     _echo -ne "\r" # Clear loading indicators.
 
 # Cleanup

@@ -1,10 +1,6 @@
  # Go
 
-  if contains (hostname -s) $EUCLID
-    set -x "GOPATH" "$HOME/Dropbox/Code/gopath"
-  else
-    set -x "GOPATH" "$HOME/Code/gopath"
-  end
+  set -x "GOPATH" "$HOME/Code/gopath"
 
   set -x PATH $PATH \
     "$GOPATH/bin"

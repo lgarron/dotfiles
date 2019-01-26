@@ -2163,37 +2163,37 @@
 	<key>NSWindow Frame SharedPreferences</key>
 	<string>376 129 918 512 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>0 710 1278 707 0 0 2560 1417 </string>
+	<string>720 0 717 877 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
-	<string>714 425 585 452 0 0 2560 1417 </string>
+	<string>0 0 717 877 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 10</key>
-	<string>495 231 585 452 0 0 2560 1417 </string>
+	<string>720 425 570 452 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 11</key>
-	<string>0 0 1453 877 0 0 2560 1417 </string>
+	<string>682 245 570 452 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 12</key>
-	<string>316 677 585 452 0 0 2560 1417 </string>
+	<string>720 425 570 452 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 13</key>
-	<string>629 690 585 452 0 0 2560 1417 </string>
+	<string>793 60 570 452 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 14</key>
-	<string>0 965 585 452 0 0 2560 1417 </string>
+	<string>413 396 570 452 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 15</key>
-	<string>633 765 585 452 0 0 2560 1417 </string>
+	<string>277 337 570 452 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 16</key>
 	<string>1280 965 570 452 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 17</key>
-	<string>679 720 570 452 0 0 2560 1417 </string>
+	<string>1280 965 570 452 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 18</key>
 	<string>700 697 570 452 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 19</key>
-	<string>864 381 570 452 0 0 2560 1417 </string>
+	<string>0 0 1277 1417 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 2</key>
-	<string>163 425 585 452 0 0 2560 1417 </string>
+	<string>0 425 570 452 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 20</key>
-	<string>0 297 570 452 0 0 2560 1417 </string>
+	<string>0 131 570 452 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 21</key>
 	<string>1057 295 570 452 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 22</key>
-	<string>1162 180 570 452 0 0 2560 1417 </string>
+	<string>1280 0 1277 1417 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 23</key>
 	<string>1183 157 570 452 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 24</key>
@@ -2209,7 +2209,7 @@
 	<key>NSWindow Frame iTerm Window 29</key>
 	<string>1309 905 570 452 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 3</key>
-	<string>0 0 732 877 0 0 2560 1417 </string>
+	<string>0 425 570 452 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 30</key>
 	<string>1330 882 570 452 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 31</key>
@@ -2223,17 +2223,17 @@
 	<key>NSWindow Frame iTerm Window 35</key>
 	<string>0 82 1277 1335 0 0 2560 1417 </string>
 	<key>NSWindow Frame iTerm Window 4</key>
-	<string>0 425 585 452 0 0 2560 1417 </string>
+	<string>0 425 570 452 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 5</key>
-	<string>153 425 585 452 0 0 2560 1417 </string>
+	<string>76 249 570 452 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 6</key>
-	<string>0 0 1453 877 0 0 2560 1417 </string>
+	<string>651 115 570 452 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 7</key>
-	<string>251 331 585 452 0 0 2560 1417 </string>
+	<string>0 425 570 452 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 8</key>
-	<string>720 425 585 452 0 0 2560 1417 </string>
+	<string>0 425 570 452 0 0 1440 877 </string>
 	<key>NSWindow Frame iTerm Window 9</key>
-	<string>226 264 585 452 0 0 2560 1417 </string>
+	<string>720 4 717 435 0 0 1440 877 </string>
 	<key>NeverWarnAboutShortLivedSessions_211A760B-3D20-4142-A5A1-63B464448826</key>
 	<true/>
 	<key>NeverWarnAboutShortLivedSessions_211A760B-3D20-4142-A5A1-63B464448826_selection</key>
@@ -3895,7 +3895,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2018-09-03T22:47:31Z</date>
+	<date>2018-11-08T18:37:24Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>SavePasteHistory</key>
@@ -3905,7 +3905,7 @@
 	<key>ShowBookmarkName</key>
 	<false/>
 	<key>ShowFullScreenTabBar</key>
-	<false/>
+	<true/>
 	<key>ShowPaneTitles</key>
 	<true/>
 	<key>SmartPlacement</key>
@@ -4900,7 +4900,7 @@
 	<key>findRegex_iTerm</key>
 	<false/>
 	<key>iTerm Version</key>
-	<string>3.2.1beta1</string>
+	<string>3.2.3beta1</string>
 	<key>kCPKSelectionViewPreferredModeKey</key>
 	<integer>0</integer>
 	<key>kCPKSelectionViewShowHSBTextFieldsKey</key>

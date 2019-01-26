@@ -1,4 +1,4 @@
-version:1519
+version:1631
 invertYMouse:false
 mouseSensitivity:0.5
 fov:0.5
@@ -77,7 +77,7 @@ key_key.smoothCamera:key.keyboard.unknown
 key_key.fullscreen:key.keyboard.grave.accent
 key_key.spectatorOutlines:key.keyboard.unknown
 key_key.swapHands:key.keyboard.f
-key_key.saveToolbarActivator:key.keyboard.c
+key_key.saveToolbarActivator:key.keyboard.unknown
 key_key.loadToolbarActivator:key.keyboard.x
 key_key.advancements:key.keyboard.l
 key_key.hotbar.1:key.keyboard.1
@@ -89,6 +89,7 @@ key_key.hotbar.6:key.keyboard.6
 key_key.hotbar.7:key.keyboard.7
 key_key.hotbar.8:key.keyboard.8
 key_key.hotbar.9:key.keyboard.9
+key_of.key.zoom:key.keyboard.c
 soundCategory_master:1.0
 soundCategory_music:1.0
 soundCategory_record:1.0

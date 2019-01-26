@@ -40,14 +40,12 @@ ofVignette:0
 ofChunkUpdates:1
 ofChunkUpdatesDynamic:false
 ofTime:0
-ofClearWater:false
 ofAaLevel:0
 ofAfLevel:1
 ofProfiler:false
 ofBetterSnow:false
 ofSwampColors:true
 ofRandomEntities:true
-ofSmoothBiomes:true
 ofCustomFonts:true
 ofCustomColors:true
 ofCustomItems:true
@@ -57,6 +55,7 @@ ofNaturalTextures:false
 ofEmissiveTextures:true
 ofLazyChunkLoading:true
 ofRenderRegions:false
+ofSmartAnimations:false
 ofDynamicFov:true
 ofAlternateBlocks:true
 ofDynamicLights:3
@@ -64,8 +63,9 @@ ofScreenshotSize:1
 ofCustomEntityModels:true
 ofCustomGuis:true
 ofShowGlErrors:true
-ofFullscreenMode:1920x1080
 ofFastMath:false
 ofFastRender:false
 ofTranslucentBlocks:0
-key_of.key.zoom:46
+ofChatBackground:0
+ofChatShadow:true
+key_of.key.zoom:key.keyboard.c

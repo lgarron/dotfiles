@@ -75,11 +75,11 @@
         git reset --hard $HASH
     end
 
-    function gitx
-      echo "Invoking wrapped gitx."
-      env DYLD_INSERT_LIBRARIES='' command gitx $argv
-    end
-    abbr -a gx    "gitx --256 &"
+    # function gitx
+    #   echo "Invoking wrapped gitx."
+    #   env DYLD_INSERT_LIBRARIES='' command gitx $argv
+    # end
+    abbr -a gx    "gitx"
 
     function github
         hub browse &

@@ -23,7 +23,8 @@
     "NIXIE",
     "MACARIA",
     "DANICA",
-    "FEZZIWIG"
+    "FEZZIWIG",
+    "JANEWAY"
   ],
   "folder_mapping": [
     { "source": "DCIM",                      "destination": "DCIM"    },

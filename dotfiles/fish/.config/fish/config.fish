@@ -87,13 +87,6 @@
             "$HOME/local/bin/dance-hacking"
     end
 
-    # https://superuser.com/a/1212305
-    function removepath
-        if set -l index (contains -i $argv[1] $PATH)
-            set --erase --universal fish_user_paths[$index]
-        end
-    end
-
 # MOTD
 
     function fish_greeting
@@ -157,7 +150,7 @@
 
     set DOTFILES_FOLDER ( \
         realpath ~/.config/fish/config.fish \
-        | sed 's#dotfiles/fish/\.config/fish/config\.fish$##' \
+          | sed 's#dotfiles/fish/\.config/fish/config\.fish$##' \
     )
     abbr -a dff "$DOTFILES_FOLDER"
 
@@ -173,11 +166,11 @@
         status --is-interactive; and source (rbenv init -|psub)
     end
 
-
 ### Editors
 
-    set -x "EDITOR" "subl -w"
-    abbr -a s "subl"
+    set -x "EDITOR" "code -w"x
+    abbr -a c "code"
+    abbr -a xc "xargs code"
 
 ## Search
 
@@ -212,8 +205,6 @@
         end
     end
 
-    abbr -a xs "xargs subl"
-
     set STDERRED_PATH "$HOME/local/dylib/libstderred.dylib"
     if test -f "$STDERRED_PATH"
         export DYLD_INSERT_LIBRARIES=""
@@ -241,7 +232,6 @@
     end
 
 ## Keyboard
-
 
     # https://developer.apple.com/library/content/technotes/tn2450/_index.html
     # Caps Lock (0x39) -> Delete Key (0x2A)
@@ -362,25 +352,17 @@
 
 # Includes
 
-    if test -f "$HOME/.config/fish/git.fish"
-      loading_indicator "git"
-      source "$HOME/.config/fish/git.fish"
+    function load_if_exists
+      if test -f $argv[2]
+        loading_indicator $argv[1]
+        source $argv[2]
+      end
     end
 
-    if test -f "$HOME/.config/fish/go.fish"
-      loading_indicator "go"
-      source "$HOME/.config/fish/go.fish"
-    end
-
-    if test -f "$HOME/.config/fish/chrome.fish"
-      loading_indicator "chrome"
-      source "$HOME/.config/fish/chrome.fish"
-    end
-
-    if test -f "$HOME/.config/fish/local.fish"
-      loading_indicator "local"
-      source "$HOME/.config/fish/local.fish"
-    end
+    load_if_exists "git" "$HOME/.config/fish/git.fish"
+    load_if_exists "go" "$HOME/.config/fish/go.fish"
+    load_if_exists "chrome" "$HOME/.config/fish/chrome.fish"
+    load_if_exists "local" "$HOME/.config/fish/local.fish"
 
     _echo -ne "\r" # Clear loading indicators.
 
@@ -389,5 +371,5 @@
     if [ "$MANUAL_RELOAD" != "true" ]
         functions -e abbr
     end
-    # From now on, reloads of this file considered "manual".
+    # From now on, reloads of this file are considered "manual".
     set MANUAL_RELOAD true

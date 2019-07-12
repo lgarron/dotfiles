@@ -23,14 +23,16 @@ mac-common: \
 	mac-git \
 	mac-sublime-text \
 	quicksilver \
-	xdg-basedir-workarounds
+	xdg-basedir-workarounds \
+	vscode
 
 .PHONY: euclid
 euclid: \
 	mac-common \
 	mac-minecraft \
 	povray \
-	sd-card-backup
+	sd-card-backup \
+	vscode
 
 ########
 
@@ -49,6 +51,7 @@ PACKAGES += mac-minecraft
 PACKAGES += mac-sublime-text
 PACKAGES += povray
 PACKAGES += sd-card-backup
+PACKAGES += vscode
 
 PACKAGES += xdg-basedir-workarounds
 # PACKAGES += quicksilver # special handling

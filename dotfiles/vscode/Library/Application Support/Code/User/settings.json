@@ -1,0 +1,14 @@
+{
+    "window.zoomLevel": 1,
+    "[javascript]": {},
+    "javascript.validate.enable": false,
+    "editor.multiCursorModifier": "alt",
+    "editor.tabSize": 2,
+    "files.insertFinalNewline": true,
+    "typescript.updateImportsOnFileMove.enabled": "always",
+    "editor.fontSize": 15,
+    "tslint.jsEnable": true,
+    "editor.codeActionsOnSave": {
+        "source.fixAll.tslint": true
+    }
+}

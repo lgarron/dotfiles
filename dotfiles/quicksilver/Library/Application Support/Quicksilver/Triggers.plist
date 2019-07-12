@@ -55,7 +55,7 @@
 				<key>directID</key>
 				<string>com.blacktree.Quicksilver</string>
 				<key>indirectID</key>
-				<string>/Applications/Sublime Text.app</string>
+				<string>/Applications/Visual Studio Code.app</string>
 			</dict>
 			<key>enabled</key>
 			<true/>
@@ -544,7 +544,7 @@
 				<key>directID</key>
 				<string>QSGlobalSelectionProxy</string>
 				<key>indirectID</key>
-				<string>/Applications/Sublime Text.app</string>
+				<string>/Applications/Visual Studio Code.app</string>
 			</dict>
 			<key>enabled</key>
 			<true/>

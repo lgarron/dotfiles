@@ -168,7 +168,7 @@
 
 ### Editors
 
-    set -x "EDITOR" "code -w"x
+    set -x "EDITOR" "code -w"
     abbr -a c "code"
     abbr -a xc "xargs code"
 

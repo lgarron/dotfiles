@@ -64,6 +64,8 @@ mac-defaults:
 	defaults write NSGlobalDomain InitialKeyRepeat -int 10
 	# Keyboard > Text > Add period with double-space
 	defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
+	# Keyboard > Text > Use smart quotes and dashes
+	defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 
 	# Expand save panel by default
 	defaults write -g NSNavPanelExpandedStateForSaveMode -bool true

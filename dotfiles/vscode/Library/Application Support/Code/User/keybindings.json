@@ -1,3 +1,9 @@
 // Place your key bindings in this file to override the defaults
 [
+  {
+    "key": "`",
+    "command": "editor.action.insertSnippet",
+    "when": "editorHasSelection && editorTextFocus",
+    "args": {"snippet": "`${0:${TM_SELECTED_TEXT}}`"}
+  }
 ]

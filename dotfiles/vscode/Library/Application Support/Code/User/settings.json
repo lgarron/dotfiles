@@ -10,5 +10,10 @@
     "tslint.jsEnable": true,
     "editor.codeActionsOnSave": {
         "source.fixAll.tslint": true
-    }
+    },
+    "julia.executablePath": "/usr/local/bin/julia",
+    "julia.enableTelemetry": true,
+    "julia.enableCrashReporter": true,
+    "editor.renderWhitespace": "boundary",
+    "terminal.integrated.macOptionIsMeta": true
 }

@@ -15,5 +15,9 @@
     "julia.enableTelemetry": true,
     "julia.enableCrashReporter": true,
     "editor.renderWhitespace": "boundary",
-    "terminal.integrated.macOptionIsMeta": true
+    "terminal.integrated.macOptionIsMeta": true,
+    "editor.formatOnSave": true,
+    "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": false,
+    "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": false,
+    "javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false
 }

@@ -5,5 +5,13 @@
     "command": "editor.action.insertSnippet",
     "when": "editorHasSelection && editorTextFocus",
     "args": {"snippet": "`${0:${TM_SELECTED_TEXT}}`"}
+  },
+  {
+    "key": "cmd-ctrl-`",
+    "command": "workbench.action.terminal.split"
+  },
+  {
+    "key": "shift+cmd+2",
+    "command": "workbench.action.splitEditor"
   }
 ]

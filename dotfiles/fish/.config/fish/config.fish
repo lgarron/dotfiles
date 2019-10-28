@@ -323,6 +323,10 @@
         mac-add-shortcut "com.adobe.Lightroom6" "Go to Folder in Library" "@l"
         mac-add-shortcut "org.audacityteam.audacity" "Save Project As…" "\$@s"
         mac-add-shortcut "com.apple.iMovieApp" "File…" "\$@e"
+        mac-add-shortcut "com.bloombuilt.dayone-mac" "Paste as Plain Text" "\$@v"
+        mac-add-shortcut "com.apple.iWork.Pages" "PDF…" "\$@e"
+        mac-add-shortcut "org.audacityteam.audacity" "Zoom Out" "@-"
+        mac-add-shortcut "org.audacityteam.audacity" "Zoom In" "@="
     end
 
 # Screenshots

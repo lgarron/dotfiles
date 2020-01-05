@@ -58,8 +58,8 @@ ofRenderRegions:false
 ofSmartAnimations:false
 ofDynamicFov:true
 ofAlternateBlocks:true
-ofDynamicLights:3
-ofScreenshotSize:1
+ofDynamicLights:2
+ofScreenshotSize:4
 ofCustomEntityModels:true
 ofCustomGuis:true
 ofShowGlErrors:true
@@ -68,4 +68,5 @@ ofFastRender:false
 ofTranslucentBlocks:0
 ofChatBackground:0
 ofChatShadow:true
+ofUseVbo:true
 key_of.key.zoom:key.keyboard.c

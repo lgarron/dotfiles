@@ -187,6 +187,48 @@
 					<key>source</key>
 					<string>QSFileSystemObjectSource</string>
 				</dict>
+				<dict>
+					<key>ID</key>
+					<string>62EEFEAA-4F64-42C6-9AE7-75EEE7121587</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>name</key>
+					<string>github</string>
+					<key>settings</key>
+					<dict>
+						<key>folderDepth</key>
+						<integer>1</integer>
+						<key>parser</key>
+						<string>QSDirectoryParser</string>
+						<key>path</key>
+						<string>~/github</string>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
+				<dict>
+					<key>ID</key>
+					<string>057D7FC2-432B-47F6-848B-C8A25D57FCB3</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>name</key>
+					<string>js-cubing</string>
+					<key>settings</key>
+					<dict>
+						<key>folderDepth</key>
+						<integer>1</integer>
+						<key>parser</key>
+						<string>QSDirectoryParser</string>
+						<key>path</key>
+						<string>~/Code/js-cubing</string>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
 			</array>
 			<key>enabled</key>
 			<true/>
@@ -757,6 +799,27 @@
 						<string>QSDirectoryParser</string>
 						<key>path</key>
 						<string>~/Dropbox/Screenshots/Euclid Screenshots/Euclid Screenshots 2018</string>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
+				<dict>
+					<key>ID</key>
+					<string>A0D5F670-9DBC-479E-ADF7-737B80867EF2</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>modificationDate</key>
+					<real>560279576.66205704</real>
+					<key>name</key>
+					<string>Mirzakhani Screenshots</string>
+					<key>settings</key>
+					<dict>
+						<key>folderDepth</key>
+						<integer>1</integer>
+						<key>path</key>
+						<string>~/Google Drive/Screenshots/Mirzakhani Screenshots</string>
 					</dict>
 					<key>source</key>
 					<string>QSFileSystemObjectSource</string>

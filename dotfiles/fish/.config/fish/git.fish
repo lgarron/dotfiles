@@ -41,6 +41,20 @@
 
     abbr -a upstream "git rev-parse --abbrev-ref --symbolic-full-name \"@{upstream}\""
 
+    function gpr
+       set -l url
+       set -l branch (git rev-parse --abbrev-ref HEAD)
+       if test $status -eq 0
+           set url (hub pr list -f "%U" -h $branch)
+       end
+
+       if test -z $url
+           set url (hub browse -u)
+       end
+
+       python -mwebbrowser $url >/dev/null
+    end
+
     # Distance between branches.
     function dist
         set CURRENT (git rev-parse --abbrev-ref HEAD)
@@ -63,6 +77,7 @@
         --command dist \
         --arguments '(__fish_git_branches)'
 
+    abbr -a gbranch "git rev-parse --abbrev-ref HEAD"
     abbr -a ghash "git rev-parse HEAD"
     abbr -a gmessage "git log -1 --pretty=%B"
 

@@ -51,7 +51,7 @@ realmsNotifications:true
 enableWeakAttacks:false
 autoJump:true
 narrator:0
-tutorialStep:open_inventory
+tutorialStep:find_tree
 autoSuggestions:true
 mouseWheelSensitivity:1.0
 glDebugVerbosity:1

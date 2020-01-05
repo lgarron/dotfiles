@@ -64,6 +64,8 @@ mac-defaults:
 	defaults write NSGlobalDomain InitialKeyRepeat -int 10
 	# Keyboard > Text > Add period with double-space
 	defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
+	# Keyboard > Text > Use smart quotes and dashes
+	defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 
 	# Expand save panel by default
 	defaults write -g NSNavPanelExpandedStateForSaveMode -bool true
@@ -96,6 +98,16 @@ mac-apps-extra: mac-browsers
 .PHONY: mac-quicklook
 mac-quicklook:
 	brew bundle --file=${BREWFILE_FOLDER}/quicklook.txt
+
+	# https://gregbrown.co/code/typescript-quicklook
+	@echo "Set Quicklook to handle .ts files as text (TypeScript) instead of video."
+	touch /tmp/ts-file-extension-test.ts
+	# TODO: Make this idempotent.
+	plutil \
+		-insert "CFBundleDocumentTypes.0.LSItemContentTypes.1" \
+		-string $(shell mdls -raw -name kMDItemContentType /tmp/ts-file-extension-test.ts) \
+		${HOME}/Library/QuickLook/QLColorCode.qlgenerator/Contents/Info.plist
+
 	qlmanage -r
 
 .PHONY: mac-browsers

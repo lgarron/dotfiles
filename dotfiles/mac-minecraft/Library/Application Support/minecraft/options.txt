@@ -1,4 +1,4 @@
-version:1963
+version:1976
 autoJump:false
 autoSuggestions:true
 chatColors:true
@@ -20,7 +20,7 @@ mouseSensitivity:0.5
 fov:0.5
 gamma:1.0
 renderDistance:8
-guiScale:0
+guiScale:2
 particles:0
 maxFps:260
 difficulty:1
@@ -28,7 +28,7 @@ fancyGraphics:true
 ao:2
 biomeBlendRadius:2
 renderClouds:true
-resourcePacks:["vanilla","file/Redstone Tweaks","file/Grass Sides"]
+resourcePacks:["vanilla","file/Redstone Tweaks","file/Grass Sides","file/Quieter Minecarts"]
 incompatibleResourcePacks:[]
 lastServer:
 lang:en_us
@@ -36,7 +36,7 @@ chatVisibility:0
 chatOpacity:1.0
 textBackgroundOpacity:0.5
 backgroundForChatOnly:true
-fullscreenResolution:1920x1080@59:24
+fullscreenResolution:1600x900@59:24
 hideServerAddress:false
 advancedItemTooltips:true
 pauseOnLostFocus:false
@@ -54,6 +54,7 @@ attackIndicator:1
 narrator:0
 tutorialStep:none
 mouseWheelSensitivity:1.0
+rawMouseInput:true
 glDebugVerbosity:1
 key_key.attack:key.mouse.left
 key_key.use:key.mouse.right
@@ -89,8 +90,8 @@ key_key.hotbar.7:key.keyboard.7
 key_key.hotbar.8:key.keyboard.8
 key_key.hotbar.9:key.keyboard.9
 key_of.key.zoom:key.keyboard.c
-soundCategory_master:0.28807947
-soundCategory_music:0.5
+soundCategory_master:1.0
+soundCategory_music:0.5072833
 soundCategory_record:1.0
 soundCategory_weather:1.0
 soundCategory_block:1.0

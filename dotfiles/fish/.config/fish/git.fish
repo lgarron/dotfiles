@@ -1,5 +1,7 @@
 ## Git
 
+    abbr -a g    "git"
+
     abbr -a gs    "git status"
     abbr -a gl    "git log"
     abbr -a glp   "git log --oneline --decorate=full --graph --remotes" # git log pretty, from http://www.xerxesb.com/2010/command-line-replacement-for-gitk/
@@ -28,6 +30,10 @@
     abbr -a grom  "git rebase origin/master"
     abbr -a glast "echo \"Use `gsh`\""
     abbr -a gsh   "git show HEAD"
+
+    abbr -a gt   "git tag"
+
+    abbr -a hb   "hub browse"
 
     abbr -a gp    "git push"
     abbr -a gpfl  "git push --force-with-lease"
@@ -99,4 +105,4 @@
     function github
         hub browse &
     end
-    abbr -a gh github
+    # abbr -a gh github

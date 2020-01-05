@@ -21,18 +21,21 @@ mac-common: \
 	karabiner \
 	mac-boot \
 	mac-git \
+	mac-minecraft \
 	mac-sublime-text \
 	quicksilver \
+	sd-card-backup \
 	xdg-basedir-workarounds \
 	vscode
 
 .PHONY: euclid
 euclid: \
 	mac-common \
-	mac-minecraft \
-	povray \
-	sd-card-backup \
-	vscode
+	povray
+
+.PHONY: mirzakhani
+mirzakhani: \
+	fish-github
 
 ########
 
@@ -41,6 +44,7 @@ PACKAGES += chrome
 # PACKAGES += fish # special handling
 PACKAGES += gce-ssh
 PACKAGES += golang-fish
+PACKAGES += fish-github
 PACKAGES += golang-sublime
 PACKAGES += hushlogin
 # PACKAGES += iTerm # special handling

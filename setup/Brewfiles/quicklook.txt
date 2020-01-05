@@ -1,5 +1,5 @@
-# betterzipql isn't available in brew cask anymore?
-#cask "betterzipql"
+cask "betterzip"
 cask "qlmarkdown"
 cask "qlstephen"
 cask "suspicious-package"
+cask "quicklook-json"

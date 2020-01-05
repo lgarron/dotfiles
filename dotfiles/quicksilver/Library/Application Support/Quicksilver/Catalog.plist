@@ -1000,23 +1000,44 @@
 		</dict>
 		<dict>
 			<key>ID</key>
-			<string>28210CC9-04E8-47B3-8BD7-422AC75D6238</string>
+			<string>CF6F6603-834E-49E6-9EDC-285A6D0C98C3</string>
+			<key>children</key>
+			<array/>
+			<key>enabled</key>
+			<true/>
+			<key>name</key>
+			<string>Applications</string>
+			<key>settings</key>
+			<dict>
+				<key>folderDepth</key>
+				<integer>1</integer>
+				<key>parser</key>
+				<string>QSDirectoryParser</string>
+				<key>path</key>
+				<string>/System/Applications</string>
+			</dict>
+			<key>source</key>
+			<string>QSFileSystemObjectSource</string>
+		</dict>
+		<dict>
+			<key>ID</key>
+			<string>C71E24C7-5DC9-4701-B98E-A107227194BF</string>
 			<key>children</key>
 			<array/>
 			<key>enabled</key>
 			<true/>
 			<key>modificationDate</key>
-			<real>563623345.15229797</real>
+			<real>594776394.31249905</real>
 			<key>name</key>
-			<string>github.com</string>
+			<string>Utilities</string>
 			<key>settings</key>
 			<dict>
 				<key>folderDepth</key>
-				<integer>2</integer>
+				<integer>1</integer>
 				<key>parser</key>
 				<string>QSDirectoryParser</string>
 				<key>path</key>
-				<string>~/Code/github.com</string>
+				<string>/System/Applications/Utilities</string>
 			</dict>
 			<key>source</key>
 			<string>QSFileSystemObjectSource</string>
@@ -1072,6 +1093,8 @@
 		<true/>
 		<key>QSPresetQSCatalogEntries</key>
 		<false/>
+		<key>QSPresetRecentDocuments106</key>
+		<true/>
 		<key>QSPresetTransmitFavorites</key>
 		<true/>
 		<key>QSPresetiTunesEQPresets</key>

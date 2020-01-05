@@ -36,6 +36,7 @@ euclid: \
 
 .PHONY: mirzakhani
 mirzakhani: \
+	mac-common \
 	fish-github \
 	mac-git-github
 

@@ -187,6 +187,8 @@
     # https://github.com/ggreer/the_silver_searcher/pull/257
     abbr -a ag "ag --hidden"
 
+    abbr -a rgnh "rg -S --no-heading"
+
 ## General
 
 

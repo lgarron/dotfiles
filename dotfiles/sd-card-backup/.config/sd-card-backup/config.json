@@ -24,7 +24,8 @@
     "MACARIA",
     "DANICA",
     "FEZZIWIG",
-    "JANEWAY"
+    "JANEWAY",
+    "LYRA"
   ],
   "folder_mapping": [
     { "source": "DCIM",                      "destination": "DCIM"    },

@@ -1,23 +1,26 @@
 {
-    "window.zoomLevel": 1,
-    "[javascript]": {},
-    "javascript.validate.enable": false,
-    "editor.multiCursorModifier": "alt",
-    "editor.tabSize": 2,
-    "files.insertFinalNewline": true,
-    "typescript.updateImportsOnFileMove.enabled": "always",
-    "editor.fontSize": 15,
-    "tslint.jsEnable": true,
-    "editor.codeActionsOnSave": {
-        "source.fixAll.tslint": true
-    },
-    "julia.executablePath": "/usr/local/bin/julia",
-    "julia.enableTelemetry": true,
-    "julia.enableCrashReporter": true,
-    "editor.renderWhitespace": "boundary",
-    "terminal.integrated.macOptionIsMeta": true,
-    "editor.formatOnSave": true,
-    "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": false,
-    "javascript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": false,
-    "javascript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false
+  "javascript.validate.enable": false,
+  "editor.tabSize": 2,
+  "files.insertFinalNewline": true,
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "julia.executablePath": "/usr/local/bin/julia",
+  "julia.enableTelemetry": true,
+  "julia.enableCrashReporter": true,
+  "editor.renderWhitespace": "boundary",
+  "go.useLanguageServer": true,
+  "workbench.startupEditor": "newUntitledFile",
+  "window.zoomLevel": 1,
+  "go.toolsGopath": "/Users/lgarron/Code/gopath",
+  "editor.formatOnSave": false,
+  "eslint.autoFixOnSave": true,
+  "eslint.lintTask.enable": true,
+  "eslint.validate": [
+    "javascript",
+    "typescript"
+  ],
+  "editor.codeActionsOnSave": {
+    "source.fixAll.eslint": true
+  },
+  "editor.formatOnPaste": false,
+  "editor.formatOnType": false,
 }

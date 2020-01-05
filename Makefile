@@ -31,11 +31,13 @@ mac-common: \
 .PHONY: euclid
 euclid: \
 	mac-common \
+	mac-git-euclid \
 	povray
 
 .PHONY: mirzakhani
 mirzakhani: \
-	fish-github
+	fish-github \
+	mac-git-github
 
 ########
 
@@ -51,6 +53,8 @@ PACKAGES += hushlogin
 PACKAGES += karabiner
 PACKAGES += mac-boot
 PACKAGES += mac-git
+PACKAGES += mac-git-euclid
+PACKAGES += mac-git-github
 PACKAGES += mac-minecraft
 PACKAGES += mac-sublime-text
 PACKAGES += povray

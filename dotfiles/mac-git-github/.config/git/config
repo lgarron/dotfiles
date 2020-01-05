@@ -1,0 +1,26 @@
+[user]
+	name = Lucas Garron
+	useConfigOnly = true
+	signingkey = 6e4416f266b9028c7e74b6cdda799f82bfe37ef9
+[diff]
+[color]
+	ui = true
+[credential]
+	helper = osxkeychain
+[push]
+	default = simple
+[github]
+	user = lgarron
+[diff "plist"]
+	textconv = plutil -convert xml1 -o -
+[http]
+	cookiefile = /Users/lgarron/.gitcookies
+[filter "lfs"]
+	clean = git-lfs clean -- %f
+	smudge = git-lfs smudge -- %f
+	process = git-lfs filter-process
+	required = true
+[helper]
+	cache = --timeout=3600
+[gpg "x509"]
+	program = smimesign

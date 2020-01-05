@@ -1,6 +1,6 @@
  # Go
 
-  set -x "GOPATH" "$HOME/Code/gopath"
+  set -xU "GOPATH" "$HOME/Code/gopath"
 
   set -x PATH $PATH \
     "$GOPATH/bin"

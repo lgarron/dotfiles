@@ -330,6 +330,7 @@
         mac-add-shortcut "com.apple.iWork.Pages" "PDF…" "\$@e"
         mac-add-shortcut "org.audacityteam.audacity" "Zoom Out" "@-"
         mac-add-shortcut "org.audacityteam.audacity" "Zoom In" "@="
+        mac-add-shortcut "com.bloombuilt.dayone-mac" "JSON" "\$@e"
     end
 
 # Screenshots

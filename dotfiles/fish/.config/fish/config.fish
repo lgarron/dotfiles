@@ -355,6 +355,8 @@
         mac-add-shortcut "org.audacityteam.audacity" "Zoom Out" "@-"
         mac-add-shortcut "org.audacityteam.audacity" "Zoom In" "@="
         mac-add-shortcut "com.bloombuilt.dayone-mac" "JSON" "\$@e"
+        mac-add-shortcut "com.tinyspeck.slackmacgap" "Paste and Match Style" "\$@v"
+        mac-add-shortcut "com.apple.iWork.Pages" "Paste and Match Style" "\$@v"
     end
 
 # Screenshots

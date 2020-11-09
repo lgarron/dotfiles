@@ -22,5 +22,5 @@
 	required = true
 [helper]
 	cache = --timeout=3600
-[gpg "x509"]
-	program = smimesign
+[init]
+	defaultBranch = main

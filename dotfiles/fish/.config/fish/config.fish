@@ -344,19 +344,16 @@
 
     function mac-setup-shortcuts-auto
         mac-add-shortcut-to-all-chromes "Extensions" "\$@e"
-        mac-add-shortcut "com.google.Chrome" "Vertical Reviewers" "^v"
-        mac-add-shortcut "com.google.Chrome" "Copy Issue URL" "^c"
-        mac-add-shortcut "com.google.Chrome" "Copy Issue for Snippets" "^s"
-        mac-add-shortcut "com.adobe.Lightroom6" "Go to Folder in Library" "@l"
+        # Save
         mac-add-shortcut "org.audacityteam.audacity" "Save Project As…" "\$@s"
-        mac-add-shortcut "com.apple.iMovieApp" "File…" "\$@e"
-        mac-add-shortcut "com.bloombuilt.dayone-mac" "Paste as Plain Text" "\$@v"
-        mac-add-shortcut "com.apple.iWork.Pages" "PDF…" "\$@e"
-        mac-add-shortcut "org.audacityteam.audacity" "Zoom Out" "@-"
-        mac-add-shortcut "org.audacityteam.audacity" "Zoom In" "@="
+        # Export
         mac-add-shortcut "com.bloombuilt.dayone-mac" "JSON" "\$@e"
+        mac-add-shortcut "com.apple.iMovieApp" "File…" "\$@e"
+        mac-add-shortcut "com.apple.iWork.Pages" "PDF…" "\$@e"
+        # Past and Match Style
         mac-add-shortcut "com.tinyspeck.slackmacgap" "Paste and Match Style" "\$@v"
         mac-add-shortcut "com.apple.iWork.Pages" "Paste and Match Style" "\$@v"
+        mac-add-shortcut "com.bloombuilt.dayone-mac" "Paste as Plain Text" "\$@v"
     end
 
 # Screenshots

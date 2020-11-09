@@ -21,13 +21,6 @@
 
     if [ "$MANUAL_RELOAD" = "true" ]
       _echo "[Reloading .fish files, including abbrevations defined from scratch]"
-      for a in (abbr --list)
-        abbr -e $a
-      end
-    else
-      # Don't try to load any abbreviations (much faster).
-      function abbr
-      end
     end
 
     # Reloads the fish config file. `rc` is chosen because the config file for
@@ -369,6 +362,8 @@
       set HOSTNAME_SHORT (hostname -s)
       if contains $HOSTNAME_SHORT $EUCLID
         set-screenshot-dir "$HOME/Dropbox/Screenshots/Euclid Screenshots/Euclid Screenshots 2018/"
+      else if contains $HOSTNAME_SHORT $MIRZAKHANI
+        set-screenshot-dir "$HOME/Google Drive/Screenshots/Mirzakhani Screenshots/"
       else
         echo-red "Could not determine screenshot directory."
         return 1
@@ -400,8 +395,5 @@
 
 # Cleanup
 
-    if [ "$MANUAL_RELOAD" != "true" ]
-        functions -e abbr
-    end
     # From now on, reloads of this file are considered "manual".
     set MANUAL_RELOAD true

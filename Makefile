@@ -17,7 +17,6 @@ mac-common: \
 	fish \
 	golang-fish \
 	hushlogin \
-	iTerm \
 	karabiner \
 	mac-boot \
 	mac-git \
@@ -50,7 +49,6 @@ PACKAGES += golang-fish
 PACKAGES += fish-github
 PACKAGES += golang-sublime
 PACKAGES += hushlogin
-# PACKAGES += iTerm # special handling
 PACKAGES += karabiner
 PACKAGES += mac-boot
 PACKAGES += mac-git
@@ -82,17 +80,6 @@ quicksilver:
 	cd dotfiles && stow --ignore=.DS_Store -t ~/ $@
 
 ########
-
-MAKEFILE_DIR := $(shell dirname $(realpath $(lastword $(MAKEFILE_LIST))))
-ITERM_DIR := ${MAKEFILE_DIR}/iTerm
-ITERM_DEFAULTS_COMMAND = defaults write ~/Library/Preferences/com.googlecode.iterm2.plist
-
-.PHONY: iTerm
-iTerm:
-	@echo "Setting up iTerm to sync preferences with ${ITERM_DIR}"
-	${ITERM_DEFAULTS_COMMAND} NoSyncNeverRemindPrefsChangesLostForFile_selection -int 0
-	${ITERM_DEFAULTS_COMMAND} LoadPrefsFromCustomFolder -bool YES
-	${ITERM_DEFAULTS_COMMAND} PrefsCustomFolder -string ${ITERM_DIR}
 
 include setup/chromium.Makefile
 include setup/linux.Makefile

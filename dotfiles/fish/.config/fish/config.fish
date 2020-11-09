@@ -168,6 +168,29 @@
         status --is-interactive; and source (rbenv init -|psub)
     end
 
+    function pnice
+      set NICENESS $argv[2]
+      echo "📶 Setting niceness $NICENESS for process names containing: $argv[1]";
+      for pid in (pgrep $argv[1])
+        echo -n "🖥  renice $NICENESS $pid"
+        renice $NICENESS $pid 2&> /dev/null
+        if test $status -ne 0
+          echo -n " (sudo)"
+          sudo renice $NICENESS $pid
+        end
+        echo ""
+      end
+    end
+
+    function niceplz
+      pnice "Quicksilver" "-20"
+      pnice "Dropbox" 19
+      pnice "Backup and Sync" 19
+      echo "sudo for Time Machine (Ctrl-C to skip Time Machine)"
+      sudo echo -n "" || return
+      pnice "backupd" 19
+    end
+
 ### Editors
 
     set -x "EDITOR" "code -w"

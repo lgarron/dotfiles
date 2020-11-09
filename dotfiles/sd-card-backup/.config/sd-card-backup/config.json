@@ -1,5 +1,5 @@
 {
-  "destination_root": "/Volumes/TARDIS Delta/Files/SD Card Backup",
+  "destination_root": "/Volumes/Trenzalore/LGFS/SD Card Backup/",
   "sd_card_mount_point": "/Volumes",
   "sd_card_names": [
     "FORRESTGUMP",
@@ -28,10 +28,10 @@
     "LYRA"
   ],
   "folder_mapping": [
-    { "source": "DCIM",                      "destination": "DCIM"    },
-    { "source": "MP_ROOT",                   "destination": "MP_ROOT" },
-    { "source": "PRIVATE/AVCHD/BDMV/STREAM", "destination": "STREAM"  },
-    { "source": "PRIVATE/M4ROOT/CLIP",       "destination": "CLIP"    },
-    { "source": "STEREO",                    "destination": "STEREO"  }
+    { "source": "DCIM", "destination": "DCIM" },
+    { "source": "MP_ROOT", "destination": "MP_ROOT" },
+    { "source": "PRIVATE/AVCHD/BDMV/STREAM", "destination": "STREAM" },
+    { "source": "PRIVATE/M4ROOT/CLIP", "destination": "CLIP" },
+    { "source": "STEREO", "destination": "STEREO" }
   ]
 }

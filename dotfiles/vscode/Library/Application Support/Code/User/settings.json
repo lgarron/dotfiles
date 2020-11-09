@@ -9,18 +9,36 @@
   "editor.renderWhitespace": "boundary",
   "go.useLanguageServer": true,
   "workbench.startupEditor": "newUntitledFile",
-  "window.zoomLevel": 1,
+  "window.zoomLevel": 2,
   "go.toolsGopath": "/Users/lgarron/Code/gopath",
-  "editor.formatOnSave": false,
-  "eslint.autoFixOnSave": true,
+  "editor.formatOnSave": true,
   "eslint.lintTask.enable": true,
-  "eslint.validate": [
-    "javascript",
-    "typescript"
-  ],
+  "eslint.validate": ["javascript", "typescript"],
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
-  "editor.formatOnPaste": false,
-  "editor.formatOnType": false,
+  "editor.formatOnPaste": true,
+  "editor.formatOnType": true,
+  "editor.columnSelection": false,
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "vsonline.accountProvider": "Microsoft",
+  "workbench.sideBar.location": "left",
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[makefile]": {
+    "editor.insertSpaces": false,
+    "editor.detectIndentation": false
+  },
+  "codespaces.accountProvider": "GitHub",
+  "explorer.confirmDragAndDrop": false,
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "extensions.ignoreRecommendations": true,
+  "editor.suggest.showStatusBar": true
 }

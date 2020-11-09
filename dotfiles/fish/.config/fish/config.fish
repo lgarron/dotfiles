@@ -77,7 +77,8 @@
         set PATH \
             $PATH \
             "$HOME/Code/depot_tools" \
-            "$HOME/github/gh-cli/exe/"
+            "$HOME/Code/scripts/"*/ \
+            "$HOME/github/gh-helper-cli/exe/"
     end
 
     if contains (hostname -s) $GALOIS

@@ -1,4 +1,4 @@
-version:1976
+version:2567
 autoJump:true
 autoSuggestions:true
 chatColors:true
@@ -16,15 +16,18 @@ showSubtitles:false
 touchscreen:false
 fullscreen:false
 bobView:true
+toggleCrouch:false
+toggleSprint:false
 mouseSensitivity:0.5
 fov:-1.0
 gamma:0.0
 renderDistance:4
+entityDistanceScaling:1.0
 guiScale:0
 particles:2
 maxFps:5
 difficulty:1
-fancyGraphics:false
+graphicsMode:0
 ao:2
 biomeBlendRadius:2
 renderClouds:fast
@@ -34,6 +37,7 @@ lastServer:
 lang:en_us
 chatVisibility:0
 chatOpacity:1.0
+chatLineSpacing:0.0
 textBackgroundOpacity:0.5
 backgroundForChatOnly:true
 hideServerAddress:false
@@ -43,6 +47,7 @@ overrideWidth:0
 overrideHeight:0
 heldItemTooltips:false
 chatHeightFocused:1.0
+chatDelay: 0.0
 chatHeightUnfocused:0.44366195797920227
 chatScale:1.0
 chatWidth:1.0
@@ -55,6 +60,8 @@ tutorialStep:none
 mouseWheelSensitivity:1.0
 rawMouseInput:true
 glDebugVerbosity:1
+skipMultiplayerWarning:true
+syncChunkWrites:false
 key_key.attack:key.keyboard.n
 key_key.use:key.keyboard.m
 key_key.forward:key.keyboard.w
@@ -75,7 +82,7 @@ key_key.togglePerspective:key.keyboard.f5
 key_key.smoothCamera:key.keyboard.unknown
 key_key.fullscreen:key.keyboard.grave.accent
 key_key.spectatorOutlines:key.keyboard.unknown
-key_key.swapHands:key.keyboard.f
+key_key.swapOffhand:key.keyboard.f
 key_key.saveToolbarActivator:key.keyboard.unknown
 key_key.loadToolbarActivator:key.keyboard.x
 key_key.advancements:key.keyboard.l

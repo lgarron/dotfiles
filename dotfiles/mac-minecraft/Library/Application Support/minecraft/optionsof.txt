@@ -68,5 +68,4 @@ ofFastRender:false
 ofTranslucentBlocks:0
 ofChatBackground:0
 ofChatShadow:true
-ofUseVbo:true
 key_of.key.zoom:key.keyboard.c

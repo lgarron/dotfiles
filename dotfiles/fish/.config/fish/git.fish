@@ -35,6 +35,8 @@
 
     abbr -a hb   "hub browse"
 
+    abbr -a gf    "git fetch"
+    abbr -a gfp   "git fetch --prune"
     abbr -a gp    "git push"
     abbr -a gpfl  "git push --force-with-lease"
     abbr -a grv   "git remote --verbose"

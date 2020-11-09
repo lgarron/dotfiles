@@ -1,7 +1,7 @@
 [user]
 	name = Lucas Garron
 	useConfigOnly = true
-	signingkey = 6e4416f266b9028c7e74b6cdda799f82bfe37ef9
+	signingkey = B6FDB8D2256D0D19
 [diff]
 [color]
 	ui = true

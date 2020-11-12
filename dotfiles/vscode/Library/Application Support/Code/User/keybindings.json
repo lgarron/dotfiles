@@ -49,5 +49,19 @@
     "key": "cmd+shift+8",
     "command": "editor.action.marker.prev",
     "when": "editorFocus"
-  }
+  },
+  {
+    "key": "alt+cmd+r",
+    "command": "-revealFileInOS",
+    "when": "!editorFocus"
+  },
+  {
+    "key": "shift+cmd+r",
+    "command": "revealFileInOS"
+  },
+  {
+    "key": "shift+cmd+r",
+    "command": "-rerunSearchEditorSearch",
+    "when": "inSearchEditor"
+  },
 ]

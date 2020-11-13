@@ -3,6 +3,5 @@
 # For Codespaces
 # https://docs.github.com/en/free-pro-team@latest/github/developing-online-with-codespaces/personalizing-codespaces-for-your-account
 
-
 source ./dotfiles/fish/.config/fish/config.fish
 source ./dotfiles/fish/.config/fish/git.fish

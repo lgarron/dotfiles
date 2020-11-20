@@ -40,5 +40,6 @@
     "editor.defaultFormatter": "esbenp.prettier-vscode"
   },
   "extensions.ignoreRecommendations": true,
-  "editor.suggest.showStatusBar": true
+  "editor.suggest.showStatusBar": true,
+  "javascript.updateImportsOnFileMove.enabled": "always"
 }

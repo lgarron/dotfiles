@@ -343,6 +343,7 @@
         mac-add-shortcut "com.bloombuilt.dayone-mac" "JSON" "\$@e"
         mac-add-shortcut "com.apple.iMovieApp" "File…" "\$@e"
         mac-add-shortcut "com.apple.iWork.Pages" "PDF…" "\$@e"
+        mac-add-shortcut "com.apple.garageband10" "Export Song to Disk…" "\$@e"
         # Past and Match Style
         mac-add-shortcut "com.tinyspeck.slackmacgap" "Paste and Match Style" "\$@v"
         mac-add-shortcut "com.apple.iWork.Pages" "Paste and Match Style" "\$@v"

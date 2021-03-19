@@ -64,4 +64,9 @@
     "command": "-rerunSearchEditorSearch",
     "when": "inSearchEditor"
   },
+  {
+    "key": "shift+cmd+ctrl+space",
+    "command": "workbench.action.terminal.sendSequence",
+    "args": { "text": "\u000B\u0015qs \"${file}\"\u000D" }
+  }
 ]

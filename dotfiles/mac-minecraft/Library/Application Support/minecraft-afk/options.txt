@@ -1,4 +1,4 @@
-version:2567
+version:2584
 autoJump:true
 autoSuggestions:true
 chatColors:true
@@ -14,12 +14,14 @@ reducedDebugInfo:false
 snooperEnabled:false
 showSubtitles:false
 touchscreen:false
-fullscreen:false
+fullscreen:true
 bobView:true
 toggleCrouch:false
 toggleSprint:false
 mouseSensitivity:0.5
 fov:-1.0
+screenEffectScale:1.0
+fovEffectScale:1.0
 gamma:0.0
 renderDistance:4
 entityDistanceScaling:1.0
@@ -61,9 +63,11 @@ mouseWheelSensitivity:1.0
 rawMouseInput:true
 glDebugVerbosity:1
 skipMultiplayerWarning:true
+hideMatchedNames:true
+joinedFirstServer:true
 syncChunkWrites:false
-key_key.attack:key.keyboard.n
-key_key.use:key.keyboard.m
+key_key.attack:key.mouse.left
+key_key.use:key.mouse.right
 key_key.forward:key.keyboard.w
 key_key.left:key.keyboard.a
 key_key.back:key.keyboard.s
@@ -77,6 +81,7 @@ key_key.chat:key.keyboard.t
 key_key.playerlist:key.keyboard.tab
 key_key.pickItem:key.mouse.middle
 key_key.command:key.keyboard.slash
+key_key.socialInteractions:key.keyboard.p
 key_key.screenshot:key.keyboard.f2
 key_key.togglePerspective:key.keyboard.f5
 key_key.smoothCamera:key.keyboard.unknown

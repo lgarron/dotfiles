@@ -9,19 +9,20 @@
   "editor.renderWhitespace": "boundary",
   "go.useLanguageServer": true,
   "workbench.startupEditor": "newUntitledFile",
-  "window.zoomLevel": 2,
   "go.toolsGopath": "/Users/lgarron/Code/gopath",
-  "editor.formatOnSave": true,
   "eslint.lintTask.enable": true,
   "eslint.validate": ["javascript", "typescript"],
   "editor.codeActionsOnSave": {
     "source.fixAll.eslint": true
   },
-  "editor.formatOnPaste": true,
   "editor.formatOnType": true,
   "editor.columnSelection": false,
   "[json]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode"
+  },
+  "[markdown]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.formatOnType": false,
   },
   "vsonline.accountProvider": "Microsoft",
   "workbench.sideBar.location": "left",
@@ -32,7 +33,7 @@
     "editor.insertSpaces": false,
     "editor.detectIndentation": false
   },
-  "codespaces.accountProvider": "GitHub",
+  "codespaces.accountProvider": "Uninitialized",
   "explorer.confirmDragAndDrop": false,
   "editor.suggestSelection": "first",
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
@@ -41,5 +42,13 @@
   },
   "extensions.ignoreRecommendations": true,
   "editor.suggest.showStatusBar": true,
-  "javascript.updateImportsOnFileMove.enabled": "always"
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  "solargraph.logLevel": "debug",
+  "editor.formatOnPaste": true,
+  "editor.formatOnSave": true,
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "window.zoomLevel": 3,
+  "go.toolsManagement.autoUpdate": true
 }

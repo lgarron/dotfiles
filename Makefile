@@ -21,7 +21,6 @@ mac-common: \
 	mac-boot \
 	mac-git \
 	mac-minecraft \
-	mac-sublime-text \
 	quicksilver \
 	sd-card-backup \
 	xdg-basedir-workarounds \
@@ -55,7 +54,6 @@ PACKAGES += mac-git
 PACKAGES += mac-git-euclid
 PACKAGES += mac-git-github
 PACKAGES += mac-minecraft
-PACKAGES += mac-sublime-text
 PACKAGES += povray
 PACKAGES += sd-card-backup
 PACKAGES += vscode

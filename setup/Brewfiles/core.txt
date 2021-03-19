@@ -1,5 +1,5 @@
 cask "bettertouchtool"
 cask "quicksilver"
 cask "iterm2"
-cask "sublime-text"
+cask "visual-studio-code"
 cask "1password"

@@ -31,6 +31,35 @@
 		</dict>
 		<dict>
 			<key>ID</key>
+			<string>54DB7029-7E0F-47E2-84B0-2C26F7AC148D</string>
+			<key>children</key>
+			<array/>
+			<key>enabled</key>
+			<true/>
+			<key>modificationDate</key>
+			<real>635323907.38459301</real>
+			<key>name</key>
+			<string>Quicksilver Triggers</string>
+			<key>settings</key>
+			<dict>
+				<key>excludeFiletypes</key>
+				<array>
+					<string>public.folder</string>
+				</array>
+				<key>folderDepth</key>
+				<integer>2</integer>
+				<key>parser</key>
+				<string>QSDirectoryParser</string>
+				<key>path</key>
+				<string>~/Code/git/github.com/lgarron/dotfiles/Quicksilver Triggers</string>
+				<key>skipItem</key>
+				<true/>
+			</dict>
+			<key>source</key>
+			<string>QSFileSystemObjectSource</string>
+		</dict>
+		<dict>
+			<key>ID</key>
 			<string>B45FA9D2-BFB2-4C45-B6B9-9B028D8ECCE1</string>
 			<key>children</key>
 			<array>
@@ -76,7 +105,7 @@
 					<key>enabled</key>
 					<true/>
 					<key>modificationDate</key>
-					<real>482204060.75063002</real>
+					<real>635210632.00345004</real>
 					<key>name</key>
 					<string>Code</string>
 					<key>path</key>
@@ -229,6 +258,29 @@
 					<key>source</key>
 					<string>QSFileSystemObjectSource</string>
 				</dict>
+				<dict>
+					<key>ID</key>
+					<string>E16A768D-725E-4BD0-B199-F5086C76E01C</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>modificationDate</key>
+					<real>635324331.94445097</real>
+					<key>name</key>
+					<string>github.com</string>
+					<key>settings</key>
+					<dict>
+						<key>folderDepth</key>
+						<integer>2</integer>
+						<key>parser</key>
+						<string>QSDirectoryParser</string>
+						<key>path</key>
+						<string>~/Code/git/github.com</string>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
 			</array>
 			<key>enabled</key>
 			<true/>
@@ -244,57 +296,34 @@
 			<array>
 				<dict>
 					<key>ID</key>
-					<string>E54B0FA6-C38F-4908-9C20-51CADB1F8CD5</string>
+					<string>2F06DEAC-F6D5-4382-B303-56636B4F511B</string>
 					<key>children</key>
 					<array/>
 					<key>enabled</key>
 					<true/>
 					<key>name</key>
-					<string>go.fish</string>
+					<string>config.fish</string>
 					<key>settings</key>
 					<dict>
 						<key>path</key>
-						<string>~/Code/dotfiles/dotfiles/golang-fish/.config/fish/go.fish</string>
+						<string>~/.config/fish/config.fish</string>
 					</dict>
 					<key>source</key>
 					<string>QSFileSystemObjectSource</string>
 				</dict>
 				<dict>
 					<key>ID</key>
-					<string>CABB5681-9ACD-460E-8F31-9EEAB48CCDB0</string>
+					<string>91039EFA-4D69-44F1-B06A-9AA987599ABF</string>
 					<key>children</key>
 					<array/>
 					<key>enabled</key>
 					<true/>
 					<key>name</key>
-					<string>chrome.fish</string>
+					<string>git.fish</string>
 					<key>settings</key>
 					<dict>
 						<key>path</key>
-						<string>~/Code/dotfiles/dotfiles/chrome/.config/fish/chrome.fish</string>
-					</dict>
-					<key>source</key>
-					<string>QSFileSystemObjectSource</string>
-				</dict>
-				<dict>
-					<key>ID</key>
-					<string>D60F1830-BC97-4CF1-A319-0B7433868B71</string>
-					<key>children</key>
-					<array/>
-					<key>enabled</key>
-					<true/>
-					<key>name</key>
-					<string>fish</string>
-					<key>settings</key>
-					<dict>
-						<key>folderDepth</key>
-						<integer>1</integer>
-						<key>parser</key>
-						<string>QSDirectoryParser</string>
-						<key>path</key>
-						<string>~/Code/dotfiles/dotfiles/fish/.config/fish</string>
-						<key>skipItem</key>
-						<true/>
+						<string>~/.config/fish/git.fish</string>
 					</dict>
 					<key>source</key>
 					<string>QSFileSystemObjectSource</string>
@@ -839,27 +868,6 @@
 			<array>
 				<dict>
 					<key>ID</key>
-					<string>B97140A9-66B5-42E5-9052-6495242B3007</string>
-					<key>children</key>
-					<array/>
-					<key>enabled</key>
-					<true/>
-					<key>name</key>
-					<string>/tmp</string>
-					<key>settings</key>
-					<dict>
-						<key>folderDepth</key>
-						<integer>1</integer>
-						<key>parser</key>
-						<string>QSDirectoryParser</string>
-						<key>path</key>
-						<string>/tmp</string>
-					</dict>
-					<key>source</key>
-					<string>QSFileSystemObjectSource</string>
-				</dict>
-				<dict>
-					<key>ID</key>
 					<string>295A69EB-045A-4A91-8F68-54B45F3377EE</string>
 					<key>children</key>
 					<array/>
@@ -990,6 +998,50 @@
 					<key>source</key>
 					<string>QSFileSystemObjectSource</string>
 				</dict>
+				<dict>
+					<key>ID</key>
+					<string>1D807D75-8208-4943-A52B-47AE69B60B4F</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>name</key>
+					<string>Applications</string>
+					<key>settings</key>
+					<dict>
+						<key>folderDepth</key>
+						<integer>1</integer>
+						<key>parser</key>
+						<string>QSDirectoryParser</string>
+						<key>path</key>
+						<string>/System/Applications</string>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
+				<dict>
+					<key>ID</key>
+					<string>132E24B1-B920-45DC-BC04-1103CA15A31E</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>modificationDate</key>
+					<real>594776394.31249905</real>
+					<key>name</key>
+					<string>Utilities</string>
+					<key>settings</key>
+					<dict>
+						<key>folderDepth</key>
+						<integer>1</integer>
+						<key>parser</key>
+						<string>QSDirectoryParser</string>
+						<key>path</key>
+						<string>/System/Applications/Utilities</string>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
 			</array>
 			<key>enabled</key>
 			<true/>
@@ -997,50 +1049,6 @@
 			<string>System</string>
 			<key>source</key>
 			<string>QSGroupObjectSource</string>
-		</dict>
-		<dict>
-			<key>ID</key>
-			<string>CF6F6603-834E-49E6-9EDC-285A6D0C98C3</string>
-			<key>children</key>
-			<array/>
-			<key>enabled</key>
-			<true/>
-			<key>name</key>
-			<string>Applications</string>
-			<key>settings</key>
-			<dict>
-				<key>folderDepth</key>
-				<integer>1</integer>
-				<key>parser</key>
-				<string>QSDirectoryParser</string>
-				<key>path</key>
-				<string>/System/Applications</string>
-			</dict>
-			<key>source</key>
-			<string>QSFileSystemObjectSource</string>
-		</dict>
-		<dict>
-			<key>ID</key>
-			<string>C71E24C7-5DC9-4701-B98E-A107227194BF</string>
-			<key>children</key>
-			<array/>
-			<key>enabled</key>
-			<true/>
-			<key>modificationDate</key>
-			<real>594776394.31249905</real>
-			<key>name</key>
-			<string>Utilities</string>
-			<key>settings</key>
-			<dict>
-				<key>folderDepth</key>
-				<integer>1</integer>
-				<key>parser</key>
-				<string>QSDirectoryParser</string>
-				<key>path</key>
-				<string>/System/Applications/Utilities</string>
-			</dict>
-			<key>source</key>
-			<string>QSFileSystemObjectSource</string>
 		</dict>
 	</array>
 	<key>enabledPresets</key>
@@ -1096,6 +1104,8 @@
 		<key>QSPresetRecentDocuments106</key>
 		<true/>
 		<key>QSPresetTransmitFavorites</key>
+		<true/>
+		<key>QSPresetUserScripts</key>
 		<true/>
 		<key>QSPresetiTunesEQPresets</key>
 		<false/>

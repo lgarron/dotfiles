@@ -160,6 +160,13 @@
         status --is-interactive; and source (rbenv init -|psub)
     end
 
+    abbr -a "rmnm" "rm -rf ./node_modules ; and npm install"
+
+    function bump-version
+      # /usr/bin/env echo -n v
+      npm version --no-git-tag-version $argv[1]
+    end
+
     # function pnice
     #   set NICENESS $argv[2]
     #   echo "📶 Setting niceness $NICENESS for process names containing: $argv[1]";
@@ -343,7 +350,10 @@
         mac-add-shortcut "com.apple.iMovieApp" "File…" "\$@e"
         mac-add-shortcut "com.apple.iWork.Pages" "PDF…" "\$@e"
         mac-add-shortcut "com.apple.garageband10" "Export Song to Disk…" "\$@e"
-        # Past and Match Style
+        mac-add-shortcut "com.adobe.lightroomCC" "Export" "\$@e"
+        # Refresh
+        mac-add-shortcut "com.apple.Safari" "Reload Page From Origin" "\$@r"
+        # Paste and Match Style
         mac-add-shortcut "com.tinyspeck.slackmacgap" "Paste and Match Style" "\$@v"
         mac-add-shortcut "com.apple.iWork.Pages" "Paste and Match Style" "\$@v"
         mac-add-shortcut "com.bloombuilt.dayone-mac" "Paste as Plain Text" "\$@v"

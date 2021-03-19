@@ -69,7 +69,6 @@
     if contains (hostname -s) $MIRZAKHANI
         set PATH \
             $PATH \
-            "$HOME/Code/depot_tools" \
             "$HOME/Code/scripts/"*/ \
             "$HOME/github/gh-helper-cli/exe/"
     end

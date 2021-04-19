@@ -46,6 +46,8 @@ mac-defaults:
 	killall Finder
 	# Show ~/Library in Finder
 	chflags nohidden ~/Library
+	# Keep draggable icons in Finder window title bars
+	defaults write -g NSWindowSupportsAutomaticInlineTitle -bool false
 
 	# Menu clock
 	defaults write com.apple.menuextra.clock "DateFormat" "EEE MMM d  H:mm:ss"

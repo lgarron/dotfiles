@@ -25,7 +25,8 @@
     "DANICA",
     "FEZZIWIG",
     "JANEWAY",
-    "LYRA"
+    "LYRA",
+    "KATARA"
   ],
   "folder_mapping": [
     { "source": "DCIM", "destination": "DCIM" },

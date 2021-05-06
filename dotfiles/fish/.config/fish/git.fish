@@ -32,6 +32,8 @@
     abbr -a glast "echo \"Use `gsh`\""
     abbr -a gsh   "git show HEAD"
 
+    abbr -a gmnff "git merge --no-ff"
+
     abbr -a gt   "git tag"
 
     abbr -a hb   "hub browse"

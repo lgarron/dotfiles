@@ -12,8 +12,8 @@ Linked [using GNU `stow`](http://brandon.invergo.net/news/2012-05-26-using-gnu-s
     sudo xcodebuild -license accept
 
     # dotfiles
-    git clone https://github.com/lgarron/dotfiles ~/Code/dotfiles
-    cd ~/Code/dotfiles
+    git clone https://github.com/lgarron/dotfiles ~/Code/git/github.com/lgarron/dotfiles
+    cd ~/Code/git/github.com/lgarron/dotfiles
     make mac-setup
     make [machine]
     

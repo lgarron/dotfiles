@@ -95,7 +95,7 @@
 
     function gclean
         set HASH (git rev-parse HEAD)
-        # TODO: This requires depot_tools
+        # TODO: This requires depot_tools or https://github.com/lgarron/git-freeze
         git freeze
         git update-ref refs/last-freeze HEAD
         git log --pretty=oneline $HASH...HEAD

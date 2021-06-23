@@ -1,0 +1,21 @@
+{
+	"document.createElement": {
+		"prefix": "create",
+		"body": "document.createElement(\"$0\")",
+		"description": "document.createElement"
+	},
+	"appendChild(document.createElement())": {
+		"prefix": "apc",
+		"body": "appendChild(document.createElement(\"$0\"))",
+		"description": "appendChild(document.createElement())"
+	},
+	"DOMContentLoaded": {
+		"prefix": "DOMContentLoaded",
+		"body": "window.addEventListener(\"DOMContentLoaded\", $1() => {\n  $0\n})",
+		"description": "Listener for DOMContentLoaded"
+	},
+	"Async IIFE": {
+		"prefix": "aiife",
+		"body": "(async () => { $0 })()",
+	}
+}

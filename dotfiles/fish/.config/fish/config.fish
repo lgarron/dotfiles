@@ -366,7 +366,7 @@
       echo "📶 Setting niceness $NICENESS for process names containing: $argv[1]";
       for pid in (pgrep $argv[1])
             echo -n "🖥  renice $NICENESS $pid"
-            renice $NICENESS $pid 2&> /dev/null
+            renice $NICENESS $pid 2> /dev/null
             if test $status -ne 0
                   echo -n " (sudo)"
                   sudo renice $NICENESS $pid

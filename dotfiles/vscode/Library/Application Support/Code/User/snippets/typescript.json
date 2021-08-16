@@ -11,11 +11,27 @@
 	},
 	"DOMContentLoaded": {
 		"prefix": "DOMContentLoaded",
-		"body": "window.addEventListener(\"DOMContentLoaded\", $1() => {\n  $0\n})",
+		"body": "window.addEventListener(\"DOMContentLoaded\", $1() => {\n  $0\n});",
 		"description": "Listener for DOMContentLoaded"
 	},
 	"Async IIFE": {
 		"prefix": "aiife",
-		"body": "(async () => { $0 })()",
+		"body": "(async () => { ${0:$TM_SELECTED_TEXT} })()",
+		"description": "Async immediately invoked function expression (IIFE)"
+	},
+	"sleep": {
+		"prefix": "sleep",
+		"body": "await new Promise(async (resolve) => setTimeout(resolve, ${0:1000}));",
+		"description": "Sleep inside an async function"
+	},
+	"debug log": {
+		"prefix": "dl",
+		"body": "console.log(\"debug\", \"$TM_FILENAME\", \"$RANDOM_HEX\");",
+		"description": "Add a debug logging statement with a random identifier"
+	},
+	"debug log selected line": {
+		"prefix": "dls",
+		"body": "console.log(\"debug\", \"$TM_FILENAME\", \"$RANDOM_HEX\", \"${TM_CURRENT_LINE/\"/\\\"/g}\".trim().slice(0, 20));\n$TM_CURRENT_LINE",
+		"description": "Add a debug logging statement for a selected line"
 	}
 }

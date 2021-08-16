@@ -12,54 +12,39 @@
       end
     end
 
-    functions __default__fish_git_tags; or functions -c __fish_git_tags __default__fish_git_tags
-    function __fish_git_tags
-      if not in_slow_repo
-        __default__fish_git_tags
+    if in_slow_repo
+      function __fish_git_tags
       end
     end
 
-    functions __default__fish_git_branches; or functions -c __fish_git_branches __default__fish_git_branches
-    function __fish_git_branches
-      if not in_slow_repo
-        __default__fish_git_branches
-      else 
+    if in_slow_repo
+      function __fish_git_branches
         command git branch --no-color $argv ^/dev/null | string match -v '\* (*)' | string match -r -v ' -> ' | string trim -c "* " | string replace -r "^remotes/" ""
       end
     end
 
-    functions __default__fish_git_unique_remote_branches; or functions -c __fish_git_unique_remote_branches __default__fish_git_unique_remote_branches
-    function __fish_git_unique_remote_branches
-      if not in_slow_repo
-        __default__fish_git_unique_remote_branches
-      end
-    end
+    # if in_slow_repo
+    #   function __fish_git_unique_remote_branches
+    #   end
+    # end
 
-    functions __default__fish_git_commits; or functions -c __fish_git_commits __default__fish_git_commits
-    function __fish_git_commits
-      if not in_slow_repo
-        __default__fish_git_commits
-      end
-    end
+    # if in_slow_repo
+    #   function __fish_git_commitsts
+    #   end
+    # end
 
-    functions __default__fish_git_heads; or functions -c __fish_git_heads __default__fish_git_heads
-    function __fish_git_heads
-      if not in_slow_repo
-        __default__fish_git_heads
-      end
-    end
+    # if in_slow_repo
+    #   function __fish_git_heads
+    #   end
+    # end
 
-    functions __default__fish_git_possible_commithash; or functions -c __fish_git_possible_commithash __default__fish_git_possible_commithash
-    function __fish_git_possible_commithash
-      if not in_slow_repo
-        __default__fish_git_possible_commithash
-      end
-    end
+    # if in_slow_repo
+    #   function __fish_git_possible_commithash
+    #   end
+    # end
 
-    functions __default__fish_git_reflog; or functions -c __fish_git_reflog __default__fish_git_reflog
-    function __fish_git_reflog
-      if not in_slow_repo
-        __default__fish_git_reflog
-      end
-    end
+    # if in_slow_repo
+    #   function __fish_git_reflog
+    #   end
+    # end
 

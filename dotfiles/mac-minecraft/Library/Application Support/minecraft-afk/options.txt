@@ -1,4 +1,4 @@
-version:2584
+version:2730
 autoJump:true
 autoSuggestions:true
 chatColors:true
@@ -14,10 +14,11 @@ reducedDebugInfo:false
 snooperEnabled:false
 showSubtitles:false
 touchscreen:false
-fullscreen:true
+fullscreen:false
 bobView:true
 toggleCrouch:false
 toggleSprint:false
+darkMojangStudiosBackground:false
 mouseSensitivity:0.5
 fov:-1.0
 screenEffectScale:1.0
@@ -49,7 +50,7 @@ overrideWidth:0
 overrideHeight:0
 heldItemTooltips:false
 chatHeightFocused:1.0
-chatDelay: 0.0
+chatDelay:0.0
 chatHeightUnfocused:0.44366195797920227
 chatScale:1.0
 chatWidth:1.0
@@ -65,6 +66,7 @@ glDebugVerbosity:1
 skipMultiplayerWarning:true
 hideMatchedNames:true
 joinedFirstServer:true
+hideBundleTutorial:false
 syncChunkWrites:false
 key_key.attack:key.mouse.left
 key_key.use:key.mouse.right

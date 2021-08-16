@@ -19,3 +19,7 @@
 # Allows us to check when the script was last run.
 
     launchctl setenv LAST_BOOT_FISH (date)
+
+# Avoid Time Machine slowdown
+
+    sudo sysctl debug.lowpri_throttle_enabled=0

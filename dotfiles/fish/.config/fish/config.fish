@@ -416,6 +416,24 @@
         set-screenshot-dir-auto
     end
 
+# From automatic additions:
+
+## Wasienv
+
+    export WASIENV_DIR="/Users/lgarron/.wasienv"
+    [ -s "$WASIENV_DIR/wasienv.sh" ] && source "$WASIENV_DIR/wasienv.sh"
+
+## Wasmer
+
+    export WASMER_DIR="/Users/lgarron/.wasmer"
+    [ -s "$WASMER_DIR/wasmer.sh" ] && source "$WASMER_DIR/wasmer.sh"
+
+## google-cloud-sdk
+
+    if test -f "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.fish.inc"
+      source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.fish.inc"
+    end
+
 # Includes
 
     function load_if_exists

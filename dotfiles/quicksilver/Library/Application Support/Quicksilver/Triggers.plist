@@ -165,6 +165,35 @@
 		</dict>
 		<dict>
 			<key>ID</key>
+			<string>DCFCE78C-8085-4DDE-B48D-91D37338A1D4</string>
+			<key>applicationScope</key>
+			<array>
+				<string>com.blacktree.Quicksilver</string>
+			</array>
+			<key>applicationScopeType</key>
+			<integer>1</integer>
+			<key>command</key>
+			<dict>
+				<key>actionID</key>
+				<string>AppleScriptRunAction</string>
+				<key>directID</key>
+				<string>/Users/lgarron/Code/git/github.com/lgarron/dotfiles/Quicksilver Triggers/Main/Do Nothing.scpt</string>
+			</dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyCode</key>
+			<integer>49</integer>
+			<key>modifiers</key>
+			<integer>1310985</integer>
+			<key>onPress</key>
+			<true/>
+			<key>showWindow</key>
+			<true/>
+			<key>type</key>
+			<string>QSHotKeyTrigger</string>
+		</dict>
+		<dict>
+			<key>ID</key>
 			<string>QSiTunesSetRating3</string>
 			<key>command</key>
 			<string>QSiTunesSetRating3</string>
@@ -873,6 +902,12 @@
 		<dict>
 			<key>ID</key>
 			<string>A47C44BC-A5E4-45E1-9E98-9DA510F28EFF</string>
+			<key>applicationScope</key>
+			<array>
+				<string>com.blacktree.Quicksilver</string>
+			</array>
+			<key>applicationScopeType</key>
+			<integer>1</integer>
 			<key>command</key>
 			<dict>
 				<key>actionID</key>

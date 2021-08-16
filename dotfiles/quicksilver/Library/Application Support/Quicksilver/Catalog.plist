@@ -218,11 +218,13 @@
 				</dict>
 				<dict>
 					<key>ID</key>
-					<string>62EEFEAA-4F64-42C6-9AE7-75EEE7121587</string>
+					<string>4948B8FD-A9EC-4204-ADEE-3DE4E23CDDE9</string>
 					<key>children</key>
 					<array/>
 					<key>enabled</key>
 					<true/>
+					<key>modificationDate</key>
+					<real>649917662.15319204</real>
 					<key>name</key>
 					<string>github</string>
 					<key>settings</key>
@@ -232,7 +234,9 @@
 						<key>parser</key>
 						<string>QSDirectoryParser</string>
 						<key>path</key>
-						<string>~/github</string>
+						<string>~/Code/git/github.com/github</string>
+						<key>skipItem</key>
+						<false/>
 					</dict>
 					<key>source</key>
 					<string>QSFileSystemObjectSource</string>
@@ -266,7 +270,7 @@
 					<key>enabled</key>
 					<true/>
 					<key>modificationDate</key>
-					<real>635324331.94445097</real>
+					<real>639107747.18431902</real>
 					<key>name</key>
 					<string>github.com</string>
 					<key>settings</key>
@@ -818,14 +822,14 @@
 					<array/>
 					<key>enabled</key>
 					<true/>
+					<key>modificationDate</key>
+					<real>639107810.71318603</real>
 					<key>name</key>
 					<string>Euclid Screenshots 2018</string>
 					<key>settings</key>
 					<dict>
 						<key>folderDepth</key>
 						<integer>1</integer>
-						<key>parser</key>
-						<string>QSDirectoryParser</string>
 						<key>path</key>
 						<string>~/Dropbox/Screenshots/Euclid Screenshots/Euclid Screenshots 2018</string>
 					</dict>
@@ -1047,6 +1051,141 @@
 			<true/>
 			<key>name</key>
 			<string>System</string>
+			<key>source</key>
+			<string>QSGroupObjectSource</string>
+		</dict>
+		<dict>
+			<key>ID</key>
+			<string>2B78914B-82B9-46C9-93BC-F8C7DBEDA36A</string>
+			<key>children</key>
+			<array>
+				<dict>
+					<key>ID</key>
+					<string>A5689F99-05EC-417A-8E76-DCCA2E3C9652</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>name</key>
+					<string>SD Card Backup</string>
+					<key>settings</key>
+					<dict>
+						<key>folderDepth</key>
+						<integer>1</integer>
+						<key>parser</key>
+						<string>QSDirectoryParser</string>
+						<key>path</key>
+						<string>/Volumes/Trenzalore/SD Card Backup</string>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
+				<dict>
+					<key>ID</key>
+					<string>A48BF238-7627-48F1-86F8-D4C66F522073</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>name</key>
+					<string>LGFS</string>
+					<key>settings</key>
+					<dict>
+						<key>folderDepth</key>
+						<integer>1</integer>
+						<key>parser</key>
+						<string>QSDirectoryParser</string>
+						<key>path</key>
+						<string>/Volumes/Trenzalore/LGFS</string>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
+				<dict>
+					<key>ID</key>
+					<string>FEDF8BE2-F80D-4998-AB30-E9DE55472777</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>modificationDate</key>
+					<real>647773972.74820197</real>
+					<key>name</key>
+					<string>Twizzle Diaries | Exported</string>
+					<key>settings</key>
+					<dict>
+						<key>folderDepth</key>
+						<integer>1</integer>
+						<key>path</key>
+						<string>/Volumes/Trenzalore/LGFS/Video Editing/Twizzle Diaries/Twizzle Diaries | Exported</string>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
+				<dict>
+					<key>ID</key>
+					<string>40602BAB-994C-4265-A64F-6FF3E72D6961</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>name</key>
+					<string>Twizzle Diaries.fcpbundle</string>
+					<key>settings</key>
+					<dict>
+						<key>path</key>
+						<string>/Volumes/Trenzalore/LGFS/Video Editing/Twizzle Diaries/Twizzle Diaries.fcpbundle</string>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
+				<dict>
+					<key>ID</key>
+					<string>412A5565-8C45-4309-9A20-630348C236C3</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>name</key>
+					<string>Gan Robot</string>
+					<key>settings</key>
+					<dict>
+						<key>folderDepth</key>
+						<integer>1</integer>
+						<key>parser</key>
+						<string>QSDirectoryParser</string>
+						<key>path</key>
+						<string>/Volumes/Trenzalore/LGFS/Video Editing/Gan Robot</string>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
+				<dict>
+					<key>ID</key>
+					<string>45B0F81B-2384-4AE6-B810-3129C681091A</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>name</key>
+					<string>Twizzle Diaries</string>
+					<key>settings</key>
+					<dict>
+						<key>folderDepth</key>
+						<integer>1</integer>
+						<key>parser</key>
+						<string>QSDirectoryParser</string>
+						<key>path</key>
+						<string>/Volumes/Trenzalore/LGFS/Video Editing/Twizzle Diaries</string>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
+			</array>
+			<key>enabled</key>
+			<true/>
+			<key>name</key>
+			<string>Trenzalore</string>
 			<key>source</key>
 			<string>QSGroupObjectSource</string>
 		</dict>

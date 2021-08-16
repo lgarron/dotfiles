@@ -26,7 +26,8 @@
     "FEZZIWIG",
     "JANEWAY",
     "LYRA",
-    "KATARA"
+    "KATARA",
+    "PERSEPHONE"
   ],
   "folder_mapping": [
     { "source": "DCIM", "destination": "DCIM" },

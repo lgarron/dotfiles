@@ -351,12 +351,41 @@
         mac-add-shortcut "com.apple.iWork.Pages" "PDF…" "\$@e"
         mac-add-shortcut "com.apple.garageband10" "Export Song to Disk…" "\$@e"
         mac-add-shortcut "com.adobe.lightroomCC" "Export" "\$@e"
+        mac-add-shortcut "com.apple.FinalCut" "HEVC (H.265) up to 4K…" "\$@e"
         # Refresh
         mac-add-shortcut "com.apple.Safari" "Reload Page From Origin" "\$@r"
         # Paste and Match Style
         mac-add-shortcut "com.tinyspeck.slackmacgap" "Paste and Match Style" "\$@v"
         mac-add-shortcut "com.apple.iWork.Pages" "Paste and Match Style" "\$@v"
         mac-add-shortcut "com.bloombuilt.dayone-mac" "Paste as Plain Text" "\$@v"
+        mac-add-shortcut "com.apple.AddressBook" "Edit Card" "\$e"
+    end
+
+    function pnice
+      set NICENESS $argv[2]
+      echo "📶 Setting niceness $NICENESS for process names containing: $argv[1]";
+      for pid in (pgrep $argv[1])
+            echo -n "🖥  renice $NICENESS $pid"
+            renice $NICENESS $pid 2&> /dev/null
+            if test $status -ne 0
+                  echo -n " (sudo)"
+                  sudo renice $NICENESS $pid
+                end
+            echo ""
+          end
+    end
+
+    function niceplz
+      # Prioritize Quicksilver.
+      # I use it all the time, and it's a canary for system overload.
+      pnice "Quicksilver" "-20"
+      # Syncing processes.
+      pnice "Dropbox" 19
+      pnice "Backup and Sync" 19
+      pnice "CCC User Agent" 19
+      echo "sudo for Time Machine (Ctrl-C to skip Time Machine)"
+      sudo echo -n "" ; or return
+      pnice "backupd" 19
     end
 
 # Screenshots

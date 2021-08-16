@@ -70,7 +70,7 @@
         set PATH \
             $PATH \
             "$HOME/Code/scripts/"*/ \
-            "$HOME/github/gh-helper-cli/exe/"
+            "$HOME/Code/git/github.com/github/gh-helper-cli/exe/"
     end
 
     if contains (hostname -s) $GALOIS

@@ -37,7 +37,10 @@
 
     abbr -a gt   "git tag"
 
-    abbr -a hb   "hub browse"
+    function hb
+        echo "Use `gv`"
+    end
+    abbr -a gv   "gh repo view --web"
 
     abbr -a gf    "git fetch"
     abbr -a gfp   "git fetch --prune"
@@ -49,7 +52,10 @@
     end
 
     # "git push branch" to a remote that doesn't know about the branch yet.
-    abbr -a gpb   "git push -u origin (git rev-parse --abbrev-ref HEAD)"
+    abbr -a gph "git push -u origin HEAD"
+    function gpb
+        echo "Please use `gph` instead of `gpb`!"
+    end
 
     abbr -a upstream "git rev-parse --abbrev-ref --symbolic-full-name \"@{upstream}\""
 

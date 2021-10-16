@@ -33,5 +33,10 @@
 		"prefix": "dls",
 		"body": "console.log(\"debug\", \"$TM_FILENAME\", \"$RANDOM_HEX\", \"${TM_CURRENT_LINE/\"/\\\"/g}\".trim().slice(0, 20));\n$TM_CURRENT_LINE",
 		"description": "Add a debug logging statement for a selected line"
+	},
+	"throw new Error": {
+		"prefix": "err",
+		"body": "throw new Error($0);",
+		"description": "Add a line to throw a new error."
 	}
 }

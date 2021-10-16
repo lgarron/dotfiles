@@ -58,10 +58,16 @@
   },
   "terminal.integrated.tabs.enabled": false,
   "terminal.integrated.tabs.location": "left",
-  "window.zoomLevel": 3,
   "editor.inlineSuggest.enabled": true,
   "notebook.cellToolbarLocation": {
     "default": "right",
     "jupyter-notebook": "left"
-  }
+  },
+  "typescript.inlayHints.enumMemberValues.enabled": true,
+  "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
+  "typescript.inlayHints.propertyDeclarationTypes.enabled": true,
+  "typescript.inlayHints.parameterTypes.enabled": true,
+  "typescript.inlayHints.variableTypes.enabled": true,
+  "window.zoomLevel": 3,
+  "editor.guides.bracketPairs": true
 }

@@ -27,6 +27,7 @@
     abbr -a gsoft "git reset --soft"
     abbr -a gr    "git rebase"
     abbr -a gri   "git rebase --interactive"
+    abbr -a grm   "git rebase main"
     abbr -a grom  "git rebase origin/main"
     abbr -a groma "git rebase origin/master"
     abbr -a glast "echo \"Use `gsh`\""
@@ -37,9 +38,7 @@
 
     abbr -a gt   "git tag"
 
-    function hb
-        echo "Use `gv`"
-    end
+    abbr -a hb   "hub browse"
     abbr -a gv   "gh repo view --web"
 
     abbr -a gf    "git fetch"

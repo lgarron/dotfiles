@@ -907,7 +907,7 @@
 				<string>com.blacktree.Quicksilver</string>
 			</array>
 			<key>applicationScopeType</key>
-			<integer>1</integer>
+			<integer>-1</integer>
 			<key>command</key>
 			<dict>
 				<key>actionID</key>

@@ -194,6 +194,7 @@
 
     set -x "EDITOR" "code -w"
     abbr -a c "code"
+    abbr -a m "make"
     abbr -a xc "xargs code"
 
 ## Search

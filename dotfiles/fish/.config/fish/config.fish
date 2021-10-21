@@ -283,44 +283,6 @@
     # *h*ttps *h*eaders
     abbr -a "hh" "https -ph"
 
-## iTerm
-
-    function source_iterm_shell_integration
-      if not functions -q iterm_fish_prompt
-        set file "$HOME/.iterm2_shell_integration.fish"
-        if test -f "$file"
-          source "$file"
-        else
-          _echo "Could not find iTerm shell integration file: $file"
-        end
-      end
-    end
-
-    if [ (uname) = "Darwin" ]
-      source_iterm_shell_integration
-    else
-      if [ $SSH_TTY ]
-        source_iterm_shell_integration
-      end
-    end
-
-    functions -e source_iterm_shell_integration
-
-# SSH configs
-
-    if contains (hostname -s) $MACHINE_GROUP_LINUX_WORKSTATION
-      if [ $SSH_TTY ]
-
-        function subl
-            rmate $argv
-        end
-        set -x "EDITOR" "rmate -w"
-
-        set -x "DISPLAY" ":20"
-
-      end
-    end
-
 # Shortcuts
 
     function mac-add-shortcut

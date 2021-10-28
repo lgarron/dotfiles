@@ -35,7 +35,6 @@ euclid: \
 .PHONY: mirzakhani
 mirzakhani: \
 	mac-common \
-	fish-github \
 	mac-git-github
 
 ########
@@ -45,7 +44,6 @@ PACKAGES += chrome
 # PACKAGES += fish # special handling
 PACKAGES += gce-ssh
 PACKAGES += golang-fish
-PACKAGES += fish-github
 PACKAGES += golang-sublime
 PACKAGES += hushlogin
 PACKAGES += karabiner

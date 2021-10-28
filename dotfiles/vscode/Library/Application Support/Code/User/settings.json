@@ -69,5 +69,6 @@
   "typescript.inlayHints.parameterTypes.enabled": true,
   "typescript.inlayHints.variableTypes.enabled": true,
   "window.zoomLevel": 3,
-  "editor.guides.bracketPairs": true
+  "editor.guides.bracketPairs": true,
+  "terminal.integrated.defaultProfile.linux": "fish"
 }

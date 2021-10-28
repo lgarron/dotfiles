@@ -1,0 +1,10 @@
+#!/usr/bin/env fish
+
+# For Codespaces
+# https://docs.github.com/en/free-pro-team@latest/github/developing-online-with-codespaces/personalizing-codespaces-for-your-account
+
+set DOTFILES_REPO_DIR (dirname (status --current-filename))
+cd $DOTFILES_REPO_DIR
+
+sudo apt install stow
+make fish

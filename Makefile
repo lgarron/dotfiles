@@ -67,7 +67,6 @@ $(PACKAGES):
 
 . PHONY: fish
 fish:
-	whoami
 	cd dotfiles && stow --no-folding --ignore=.DS_Store -t ~/ $@
 # fish -c "source ~/.config/fish/config.fish"
 

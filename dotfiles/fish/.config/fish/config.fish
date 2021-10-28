@@ -85,10 +85,8 @@
 
     function fish_greeting
 
-      # Based on ANSI Shadow with the shadow removed:
+      # Based on: https://patorjk.com/software/taag/#p=display&v=1&f=ANSI%20Regular&t=GALOIS
       if contains (hostname -s) $GALOIS
-        # Based on ANSI Shadow with the shadow removed:
-        # http://patorjk.com/software/taag/#p=display&v=1&f=ANSI%20Shadow&t=Galois%0AGALOIS
         __echo " ██████     █████    ██         ██████    ██   ███████ "
         __echo "██         ██   ██   ██        ██    ██   ██   ██      "
         __echo "██   ███   ███████   ██        ██    ██   ██   ███████ "
@@ -108,6 +106,12 @@
         __echo "██  ██  ██ ██ ██   ██  ███    ██   ██ ██  ██  ██   ██ ██   ██ ██  ██ ██ ██"
         __echo "██      ██ ██ ██   ██ ███████ ██   ██ ██   ██ ██   ██ ██   ██ ██   ████ ██"
         __echo ""
+      else if [ $CODESPACES = true ]
+        __echo " ██████  ██████  ██████  ███████ ███████ ██████   █████   ██████ ███████ ███████ "
+        __echo "██      ██    ██ ██   ██ ██      ██      ██   ██ ██   ██ ██      ██      ██      "
+        __echo "██      ██    ██ ██   ██ █████   ███████ ██████  ███████ ██      █████   ███████ "
+        __echo "██      ██    ██ ██   ██ ██           ██ ██      ██   ██ ██      ██           ██ "
+        __echo " ██████  ██████  ██████  ███████ ███████ ██      ██   ██  ██████ ███████ ███████ "
       else
         __echo "Welcome to "(hostname -s)
       end

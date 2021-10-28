@@ -167,6 +167,10 @@
       npm version --no-git-tag-version $argv[1]
     end
 
+    # Workaround for Codespaces
+    # TODO: Remove once https://github.com/microsoft/vscode-dev-containers/pull/1138 is in new containers.
+    functions -e code
+
 ### Editors
 
     set -x "EDITOR" "code -w"

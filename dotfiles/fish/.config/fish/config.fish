@@ -52,6 +52,7 @@
     set EUCLID Euclid euclid Euclid.local
     set GALOIS Galois galois Galois.local
     set MIRZAKHANI Mirzakhani mirzakhani Mirzakhani.local
+    set MINITEMP Minitemp minitemp Minitemp.local
 
 # Path
 
@@ -111,6 +112,12 @@
             "|  \\/  |_ _| _ \\|_  / /_\\ | |/ /| || | /_\\ | \\| |_ _|" \
             "| |\\/| || ||   / / / / _ \\| ' < | __ |/ _ \\| .` || | " \
             "|_|  |_|___|_|_\\/___/_/ \\_\\_|\\_\\|_||_/_/ \\_\\_|\\_|___|"
+      else if contains (hostname -s) $MINITEMP
+        fish_greeting_echo \
+            " __  __ ___ _  _ ___ _____ ___ __  __ ___ " \
+            "|  \\/  |_ _| \\| |_ _|_   _| __|  \\/  | _ \\" \
+            "| |\\/| || || .` || |  | | | _|| |\\/| |  _/" \
+            "|_|  |_|___|_|\\_|___| |_| |___|_|  |_|_|  "
       else if [ $CODESPACES = true ]
         fish_greeting_echo \
             "  ___ ___  ___  ___ ___ ___  _   ___ ___ ___ " \

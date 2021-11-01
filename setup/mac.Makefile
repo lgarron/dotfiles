@@ -58,7 +58,10 @@ mac-defaults:
 	# Password delay for screensaver
 	defaults write com.apple.screensaver askForPasswordDelay -int 5
 	# Disable Dashboard
-	defaults write com.apple.dashboard mcx-disabled -boolean YES && killall Dock
+	defaults write com.apple.dashboard mcx-disabled -boolean
+	# Disable recent apps in the dock
+	defaults write com.apple.dock show-recents -bool false
+	killall Dock
 
 	# Keyboard > Shortcuts > Full Keyboard Access > All controls
 	defaults write NSGlobalDomain AppleKeyboardUIMode -int 3

@@ -54,34 +54,6 @@
     set MIRZAKHANI Mirzakhani mirzakhani Mirzakhani.local
     set MINITEMP Minitemp minitemp Minitemp.local
 
-# Path
-
-    if contains (hostname -s) $EUCLID
-    # Homebrew is first for Python
-        set PATH \
-            "$HOME/local/brew/bin" \
-            $PATH \
-            "$HOME/local/bin/misc" \
-            "$HOME/local/bin/scripts" \
-            "$HOME/local/bin/dance-hacking" \
-            "$HOME/Code/depot_tools"
-    end
-
-    if contains (hostname -s) $MIRZAKHANI
-        set PATH \
-            $PATH \
-            "$HOME/Code/scripts/"*/ \
-            "$HOME/Code/git/github.com/github/gh-helper-cli/exe/"
-    end
-
-    if contains (hostname -s) $GALOIS
-        set PATH \
-            $PATH \
-            "$HOME/local/bin/misc" \
-            "$HOME/local/bin/scripts" \
-            "$HOME/local/bin/dance-hacking"
-    end
-
 # MOTD
 
     function fish_greeting_echo

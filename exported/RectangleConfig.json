@@ -3,16 +3,16 @@
     "almostMaximizeWidth" : {
       "float" : 0
     },
-    "centerHalfCycles" : {
-      "int" : 0
-    },
-    "ignoredSnapAreas" : {
+    "curtainChangeSize" : {
       "int" : 0
     },
     "allowAnyShortcut" : {
       "bool" : true
     },
-    "curtainChangeSize" : {
+    "centerHalfCycles" : {
+      "int" : 0
+    },
+    "ignoredSnapAreas" : {
       "int" : 0
     },
     "screenEdgeGapBottom" : {
@@ -27,28 +27,28 @@
     "SUEnableAutomaticChecks" : {
       "bool" : false
     },
+    "todoSidebarWidth" : {
+      "float" : 400
+    },
+    "disabledApps" : {
+
+    },
     "gapSize" : {
       "float" : 0
     },
-    "fullIgnoreBundleIds" : {
+    "todoApplication" : {
 
     },
     "specifiedHeight" : {
       "float" : 1050
     },
-    "todoApplication" : {
+    "fullIgnoreBundleIds" : {
 
-    },
-    "disabledApps" : {
-
-    },
-    "todoSidebarWidth" : {
-      "float" : 400
-    },
-    "unsnapRestore" : {
-      "int" : 0
     },
     "centeredDirectionalMove" : {
+      "int" : 0
+    },
+    "unsnapRestore" : {
       "int" : 0
     },
     "snapEdgeMarginTop" : {
@@ -69,7 +69,7 @@
     "hideMenubarIcon" : {
       "bool" : false
     },
-    "traverseSingleScreen" : {
+    "footprintFade" : {
       "int" : 0
     },
     "snapEdgeMarginBottom" : {
@@ -78,26 +78,26 @@
     "specifiedWidth" : {
       "float" : 1680
     },
+    "traverseSingleScreen" : {
+      "int" : 0
+    },
     "minimumWindowHeight" : {
       "float" : 0
     },
-    "footprintFade" : {
-      "int" : 0
-    },
     "screenEdgeGapRight" : {
-      "float" : 0
-    },
-    "screenEdgeGapLeft" : {
       "float" : 0
     },
     "notifiedOfProblemApps" : {
       "bool" : false
     },
-    "alternateDefaultShortcuts" : {
-      "bool" : true
+    "screenEdgeGapLeft" : {
+      "float" : 0
     },
     "showAllActionsInMenu" : {
       "int" : 0
+    },
+    "alternateDefaultShortcuts" : {
+      "bool" : true
     },
     "subsequentExecutionMode" : {
       "int" : 4
@@ -111,17 +111,20 @@
     "windowSnapping" : {
       "int" : 0
     },
-    "todo" : {
-      "int" : 0
-    },
     "snapEdgeMarginLeft" : {
       "float" : 5
+    },
+    "todo" : {
+      "int" : 0
     },
     "obtainWindowOnClick" : {
       "int" : 0
     },
     "snapEdgeMarginRight" : {
       "float" : 5
+    },
+    "footprintColor" : {
+
     },
     "footprintAlpha" : {
       "float" : 0.30000001192092896
@@ -131,9 +134,6 @@
     },
     "attemptMatchOnNextPrevDisplay" : {
       "int" : 0
-    },
-    "footprintColor" : {
-
     },
     "almostMaximizeHeight" : {
       "float" : 0
@@ -179,7 +179,7 @@
       "modifierFlags" : 524288
     },
     "topLeft" : {
-      "keyCode" : 16,
+      "keyCode" : 32,
       "modifierFlags" : 524288
     },
     "lastThird" : {

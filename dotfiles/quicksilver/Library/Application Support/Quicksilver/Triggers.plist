@@ -574,6 +574,23 @@
 			<dict>
 				<key>actionID</key>
 				<string>QSObjectShowChildrenAction</string>
+				<key>directArchive</key>
+				<dict>
+					<key>class</key>
+					<string>QSObject</string>
+					<key>data</key>
+					<dict>
+						<key>public.utf8-plain-text</key>
+						<string>[iTunes Browser] :Track, Track</string>
+					</dict>
+					<key>properties</key>
+					<dict>
+						<key>QSObjectName</key>
+						<string>[iTunes Browser] :Track, Track</string>
+						<key>QSObjectType</key>
+						<string>public.utf8-plain-text</string>
+					</dict>
+				</dict>
 				<key>directID</key>
 				<string>[iTunes Browser] :Track, Track</string>
 			</dict>

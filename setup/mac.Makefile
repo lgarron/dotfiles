@@ -58,7 +58,7 @@ mac-defaults:
 	# Password delay for screensaver
 	defaults write com.apple.screensaver askForPasswordDelay -int 5
 	# Disable Dashboard
-	defaults write com.apple.dashboard mcx-disabled -boolean
+	defaults write com.apple.dashboard mcx-disabled -boolean true
 	# Disable recent apps in the dock
 	defaults write com.apple.dock show-recents -bool false
 	killall Dock
@@ -67,9 +67,10 @@ mac-defaults:
 	defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 	# Keyboard > Keyboard > Delay Until Repeat > shortest setting
 	defaults write NSGlobalDomain InitialKeyRepeat -int 10
-	# Keyboard > Text > Add period with double-space
+	# Keyboard > Text
+	defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+	defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
 	defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
-	# Keyboard > Text > Use smart quotes and dashes
 	defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
 
 	# Expand save panel by default

@@ -68,5 +68,21 @@
     "key": "shift+cmd+ctrl+space",
     "command": "workbench.action.terminal.sendSequence",
     "args": { "text": "\u000B\u0015qs \"${file}\"\u000D" }
+  },
+  {
+    "key": "cmd+=",
+    "command": "extension.customWindowZoomIn"
+  },
+  {
+    "key": "cmd+9",
+    "command": "-extension.customWindowZoomIn"
+  },
+  {
+    "key": "cmd+-",
+    "command": "extension.customWindowZoomOut"
+  },
+  {
+    "key": "cmd+8",
+    "command": "-extension.customWindowZoomOut"
   }
 ]

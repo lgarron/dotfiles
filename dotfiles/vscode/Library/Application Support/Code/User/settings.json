@@ -68,7 +68,11 @@
   "typescript.inlayHints.propertyDeclarationTypes.enabled": true,
   "typescript.inlayHints.parameterTypes.enabled": true,
   "typescript.inlayHints.variableTypes.enabled": true,
-  "window.zoomLevel": 3,
+  "window.zoomLevel": 2.5,
   "editor.guides.bracketPairs": true,
-  "terminal.integrated.defaultProfile.linux": "fish"
+  "terminal.integrated.defaultProfile.linux": "fish",
+  "customWindowZoom.zoomLevelChangeValue": 0.25,
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  }
 }

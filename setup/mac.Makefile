@@ -43,6 +43,8 @@ mac-defaults:
 	defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
 	# When performing a search: Search the Current Folder
 	defaults write com.apple.finder FXDefaultSearchScope -string "SCcf"
+	# New Finder windows show (`PfHm` is the home folder)
+	defaults write com.apple.finder NewWindowTarget -string PfHm
 	killall Finder
 	# Show ~/Library in Finder
 	chflags nohidden ~/Library

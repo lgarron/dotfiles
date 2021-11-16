@@ -201,9 +201,9 @@
         end
     end
 
-    set STDERRED_PATH "$HOME/local/dylib/libstderred.dylib"
+    set STDERRED_PATH "$HOME/Code/git/github.com/sickill/stderred/builda/libtest_stderred.dylib"
     if test -f "$STDERRED_PATH"
-        export DYLD_INSERT_LIBRARIES=""
+        set -x DYLD_INSERT_LIBRARIES "$STDERRED_PATH"
         # I can't get STDERRED_BLACKLIST to work, so let's make it easy to unset DYLD_INSERT_LIBRARIES
         abbr -a "dy" "set -e DYLD_INSERT_LIBRARIES"
     end

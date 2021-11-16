@@ -136,8 +136,6 @@
     )
     abbr -a dff "$DOTFILES_FOLDER"
 
-    abbr -a unset "set -e"
-
     function mkcd
         mkdir "$argv[1]"
         cd "$argv[1]"
@@ -172,18 +170,9 @@
       find . -iname "*$argv[1]*"
     end
 
-    function gre
-      grep -ir $argv[1] .
-    end
-
-    # Until `ag` supports a config file:
-    # https://github.com/ggreer/the_silver_searcher/pull/257
-    abbr -a ag "ag --hidden"
-
     abbr -a rgnh "rg -S --no-heading"
 
 ## General
-
 
     # abbr -a t "tee >(pbcopy)"
     function t

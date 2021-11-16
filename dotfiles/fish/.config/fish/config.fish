@@ -304,6 +304,7 @@
       pnice "Dropbox" 19
       pnice "Backup and Sync" 19
       pnice "CCC User Agent" 19
+      pnice "Maestral" 19
       echo "sudo for Time Machine (Ctrl-C to skip Time Machine)"
       sudo echo -n "" ; or return
       pnice "backupd" 19

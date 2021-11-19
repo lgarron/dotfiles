@@ -74,5 +74,6 @@
   "customWindowZoom.zoomLevelChangeValue": 0.25,
   "[html]": {
     "editor.defaultFormatter": "vscode.html-language-features"
-  }
+  },
+  "github.codespaces.createCodespaceInNewWindow": true
 }

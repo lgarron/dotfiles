@@ -1,6 +1,6 @@
 {
   "stderr": {
-    "prefix": "Fprintf",
+    "prefix": "Stderr",
     "body": ["fmt.Fprintf(os.Stderr, \"$1\\n\")"],
     "description": "fmt.Fprintf to os.Stderr"
   }

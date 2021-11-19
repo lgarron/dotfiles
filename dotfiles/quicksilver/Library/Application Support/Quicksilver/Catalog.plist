@@ -650,6 +650,29 @@
 							<key>source</key>
 							<string>QSFileSystemObjectSource</string>
 						</dict>
+						<dict>
+							<key>ID</key>
+							<string>A7867B4C-E95D-44F8-A4A2-7503117A7C7F</string>
+							<key>children</key>
+							<array/>
+							<key>enabled</key>
+							<true/>
+							<key>modificationDate</key>
+							<real>658749983.884619</real>
+							<key>name</key>
+							<string>Dropbox (Maestral)</string>
+							<key>settings</key>
+							<dict>
+								<key>folderDepth</key>
+								<integer>2</integer>
+								<key>parser</key>
+								<string>QSDirectoryParser</string>
+								<key>path</key>
+								<string>~/Dropbox (Maestral)</string>
+							</dict>
+							<key>source</key>
+							<string>QSFileSystemObjectSource</string>
+						</dict>
 					</array>
 					<key>enabled</key>
 					<true/>

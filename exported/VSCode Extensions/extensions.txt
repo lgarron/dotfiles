@@ -1,0 +1,10 @@
+craigb85.custom-window-zoom
+dbaeumer.vscode-eslint
+esbenp.prettier-vscode
+GitHub.codespaces
+GitHub.vscode-pull-request-github
+golang.go
+rvest.vs-code-prettier-eslint
+skyapps.fish-vscode
+timonwong.shellcheck
+tombonnike.vscode-status-bar-format-toggle

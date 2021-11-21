@@ -305,6 +305,8 @@
       pnice "Backup and Sync" 19
       pnice "CCC User Agent" 19
       pnice "Maestral" 19
+      pnice "Compressor" 19
+      pnice "VTEncoderXPCService" 19 # main encoding process used by Compressor?
       echo "sudo for Time Machine (Ctrl-C to skip Time Machine)"
       sudo echo -n "" ; or return
       pnice "backupd" 19

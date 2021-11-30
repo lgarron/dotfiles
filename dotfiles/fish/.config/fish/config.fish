@@ -304,6 +304,7 @@
       pnice "Dropbox" 19
       pnice "Backup and Sync" 19
       pnice "CCC User Agent" 19
+      pnice "CloneKitService" 19 # Custom CCC process name prefix
       pnice "Maestral" 19
       pnice "Compressor" 19
       pnice "VTEncoderXPCService" 19 # main encoding process used by Compressor?

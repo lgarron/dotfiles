@@ -38,8 +38,7 @@
 
     abbr -a gt   "git tag"
 
-    abbr -a hb   "hub browse"
-    abbr -a gv   "gh repo view --web"
+    abbr -a gv "gh repo view --web --branch (git rev-parse --abbrev-ref HEAD)"
 
     abbr -a gf    "git fetch"
     abbr -a gfp   "git fetch --prune"

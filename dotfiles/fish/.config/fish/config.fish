@@ -164,6 +164,12 @@
     abbr -a m "make"
     abbr -a xc "xargs code"
 
+    if [ (uname) = "Darwin" ]
+      function code
+        open -b com.microsoft.VSCode $argv
+      end
+    end
+
 ## Search
 
     function f

@@ -41,7 +41,7 @@ mirzakhani: \
 
 PACKAGES  =
 PACKAGES += chrome
-# PACKAGES += fish # special handling
+PACKAGES += fish
 PACKAGES += gce-ssh
 PACKAGES += golang-fish
 PACKAGES += golang-sublime
@@ -64,11 +64,6 @@ $(PACKAGES):
 	cd dotfiles && stow --no-folding --ignore=.DS_Store -t ~/ $@
 
 ########
-
-. PHONY: fish
-fish:
-	cd dotfiles && stow --no-folding --ignore=.DS_Store -t ~/ $@
-# fish -c "source ~/.config/fish/config.fish"
 
 .PHONY: quicksilver
 quicksilver:

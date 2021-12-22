@@ -15,12 +15,13 @@
     abbr -a gcane "git commit --amend --no-edit"
 
     abbr -a gb    "git branch"
+    abbr -a gbd   "git branch -D"
     abbr -a gco   "git checkout"
     abbr -a gcb   "git checkout -b"
     abbr -a gcp   "git cherry-pick"
     abbr -a gdno  "git diff --name-only"
 
-    abbr -a gcfd  "git clean --force -d"
+    # abbr -a gcfd  "git clean --force -d" # subsumed by `gclean`
 
     abbr -a grh   "git reset HEAD"
     abbr -a ghard "git reset --hard"
@@ -37,12 +38,14 @@
     abbr -a ffo "git merge --ff-only"
 
     abbr -a gt   "git tag"
+    abbr -a gtd  "git tag -d"
 
     abbr -a gv "gh repo view --web --branch (git rev-parse --abbrev-ref HEAD)"
 
     abbr -a gf    "git fetch"
     abbr -a gfp   "git fetch --prune"
     abbr -a gp    "git push"
+    abbr -a gpo   "git push origin"
     abbr -a gpfl  "git push --force-with-lease"
     abbr -a grv   "git remote --verbose"
     function pr
@@ -98,21 +101,12 @@
     abbr -a gmessage "git log -1 --pretty=%B"
 
     function gclean
-        set HASH (git rev-parse HEAD)
-        # TODO: This requires depot_tools or https://github.com/lgarron/git-freeze
-        git freeze
-        git update-ref refs/last-freeze HEAD
-        git log --pretty=oneline $HASH...HEAD
-        git reset --hard $HASH
+        echo "Use: `gab` (`git abandon`)"
     end
+    abbr -a gab "git abandon"
 
     # function gitx
     #   echo "Invoking wrapped gitx."
     #   env DYLD_INSERT_LIBRARIES='' command gitx $argv
     # end
-    abbr -a gx    "gitx"
-
-    function github
-        hub browse &
-    end
-    # abbr -a gh github
+    abbr -a gx "gitx"

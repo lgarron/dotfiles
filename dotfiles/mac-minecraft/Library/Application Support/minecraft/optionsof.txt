@@ -8,7 +8,6 @@ ofAoLevel:1.0
 ofClouds:0
 ofCloudsHeight:0.0
 ofTrees:0
-ofDroppedItems:0
 ofRain:0
 ofAnimatedWater:0
 ofAnimatedLava:0
@@ -65,7 +64,6 @@ ofCustomGuis:true
 ofShowGlErrors:true
 ofFastMath:false
 ofFastRender:false
-ofTranslucentBlocks:0
 ofChatBackground:0
 ofChatShadow:true
 key_of.key.zoom:key.keyboard.c

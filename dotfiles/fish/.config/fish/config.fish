@@ -166,6 +166,12 @@
 
     if [ (uname) = "Darwin" ]
       function code
+        # `open -b` fails for creating files in new directories, so we touch the files first.
+        # This changes the default behaviour of VSCode (create the file and the intermediate directory on first save), but it's acceptable as a workaround for https://github.com/microsoft/vscode/issues/139634
+        for file in $argv
+          mkdir -p (dirname $file)
+        end
+        touch -- $argv
         open -b com.microsoft.VSCode $argv
       end
     end

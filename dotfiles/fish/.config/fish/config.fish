@@ -216,7 +216,7 @@
     abbr -a "sha256" "openssl dgst -sha256"
     abbr -a "sha512" "openssl dgst -sha512"
 
-    set -x "DANCE_HACKING_MUSIC_FOLDER" "$HOME/Desktop/Music/"
+    set -x "EXPERIMENTAL_CUBING_JS_RELOAD_CHROME_MACOS" "1"
 
     function aedeploy
       _echo "Invoking wrapped aedeploy."

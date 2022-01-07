@@ -1212,6 +1212,27 @@
 			<key>source</key>
 			<string>QSGroupObjectSource</string>
 		</dict>
+		<dict>
+			<key>ID</key>
+			<string>C85B3FC2-B42A-4068-A395-C0D9DAF1943A</string>
+			<key>children</key>
+			<array/>
+			<key>enabled</key>
+			<true/>
+			<key>name</key>
+			<string>Chrome Apps.localized</string>
+			<key>settings</key>
+			<dict>
+				<key>folderDepth</key>
+				<integer>1</integer>
+				<key>parser</key>
+				<string>QSDirectoryParser</string>
+				<key>path</key>
+				<string>~/Applications/Chrome Apps.localized</string>
+			</dict>
+			<key>source</key>
+			<string>QSFileSystemObjectSource</string>
+		</dict>
 	</array>
 	<key>enabledPresets</key>
 	<dict>

@@ -315,11 +315,17 @@
       # Syncing processes.
       pnice "Dropbox" 19
       pnice "Backup and Sync" 19
+      pnice "Google Drive" 19
       pnice "CCC User Agent" 19
       pnice "CloneKitService" 19 # Custom CCC process name prefix
       pnice "Maestral" 19
       pnice "Compressor" 19
       pnice "VTEncoderXPCService" 19 # main encoding process used by Compressor?
+      pnice "Spotlight" 19
+      pnice "mds_stores" 19
+      pnice "mdsync" 19
+      pnice "mdworker_shared" 19
+      pnice "com.carbonblack.es-loader.es-extension" 19
       echo "sudo for Time Machine (Ctrl-C to skip Time Machine)"
       sudo echo -n "" ; or return
       pnice "backupd" 19

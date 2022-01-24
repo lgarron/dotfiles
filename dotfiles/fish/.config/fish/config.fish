@@ -164,8 +164,13 @@
     set -x EDITOR "open -b com.microsoft.VSCode"
 
     abbr -a c "code"
-    abbr -a m "make"
     abbr -a xc "xargs code"
+
+    abbr -a m "make"
+    abbr -a md "make dev"
+    abbr -a mb "make build"
+    abbr -a mde "make deploy"
+    abbr -a mp "make publish"
 
     if [ (uname) = "Darwin" ]
       function code

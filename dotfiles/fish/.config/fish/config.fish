@@ -167,10 +167,12 @@
     abbr -a xc "xargs code"
 
     abbr -a m "make"
-    abbr -a md "make dev"
     abbr -a mb "make build"
+    abbr -a mc "make clean"
+    abbr -a md "make dev"
     abbr -a mde "make deploy"
     abbr -a mp "make publish"
+    abbr -a mt "make test"
 
     if [ (uname) = "Darwin" ]
       function code

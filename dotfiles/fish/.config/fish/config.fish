@@ -159,7 +159,10 @@
 
 ### Editors
 
-    set -x "EDITOR" "code -w"
+    # TODO: https://github.com/microsoft/vscode/issues/139634
+    # set -x "EDITOR" "code -w"
+    set -x EDITOR "open -b com.microsoft.VSCode"
+
     abbr -a c "code"
     abbr -a m "make"
     abbr -a xc "xargs code"

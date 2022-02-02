@@ -20,6 +20,7 @@
     abbr -a gcb   "git checkout -b"
     abbr -a gcp   "git cherry-pick"
     abbr -a gdno  "git diff --name-only"
+    abbr -a gm    "git merge"
 
     # abbr -a gcfd  "git clean --force -d" # subsumed by `gclean`
 
@@ -29,6 +30,7 @@
     abbr -a gr    "git rebase"
     abbr -a gri   "git rebase --interactive"
     abbr -a grm   "git rebase main"
+    abbr -a gra   "git rebase --abort"
     abbr -a grom  "git rebase origin/main"
     abbr -a groma "git rebase origin/master"
     abbr -a glast "echo \"Use `gsh`\""
@@ -42,15 +44,17 @@
 
     abbr -a gv "gh repo view --web --branch (git rev-parse --abbrev-ref HEAD)"
 
-    abbr -a gf    "git fetch"
     abbr -a gfp   "git fetch --prune"
     abbr -a gp    "git push"
     abbr -a gpo   "git push origin"
+    abbr -a gpot  "git push origin --tags"
     abbr -a gpfl  "git push --force-with-lease"
     abbr -a grv   "git remote --verbose"
     function pr
         echo -n "pull/$argv[1]/head"
     end
+
+    abbr -a gf    "git freeze"
 
     # "git push branch" to a remote that doesn't know about the branch yet.
     abbr -a gph "git push -u origin HEAD"
@@ -101,9 +105,9 @@
     abbr -a gmessage "git log -1 --pretty=%B"
 
     function gclean
-        echo "Use: `gab` (`git abandon`)"
+        echo "Use: `ga` (`git abandon`)"
     end
-    abbr -a gab "git abandon"
+    abbr -a ga "git abandon"
 
     # function gitx
     #   echo "Invoking wrapped gitx."

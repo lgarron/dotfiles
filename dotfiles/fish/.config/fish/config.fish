@@ -160,8 +160,8 @@
 ### Editors
 
     # TODO: https://github.com/microsoft/vscode/issues/139634
-    # set -x "EDITOR" "code -w"
-    set -x EDITOR "open -b com.microsoft.VSCode"
+    set -x "EDITOR" "code -w"
+    # set -x EDITOR "open -b com.microsoft.VSCode"
 
     abbr -a c "code"
     abbr -a xc "xargs code"
@@ -170,9 +170,11 @@
     abbr -a mb "make build"
     abbr -a mc "make clean"
     abbr -a md "make dev"
-    abbr -a mde "make deploy"
+    abbr -a mdp "make deploy"
     abbr -a mp "make publish"
     abbr -a mt "make test"
+
+    abbr -a ni "npm install"
 
     if [ (uname) = "Darwin" ]
       function code

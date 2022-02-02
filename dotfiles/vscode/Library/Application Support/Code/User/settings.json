@@ -22,7 +22,7 @@
   },
   "[markdown]": {
     "editor.defaultFormatter": "esbenp.prettier-vscode",
-    "editor.formatOnType": false,
+    "editor.formatOnType": false
   },
   "vsonline.accountProvider": "Microsoft",
   "workbench.sideBar.location": "left",
@@ -75,5 +75,6 @@
   "[html]": {
     "editor.defaultFormatter": "vscode.html-language-features"
   },
-  "github.codespaces.createCodespaceInNewWindow": true
+  "github.codespaces.createCodespaceInNewWindow": true,
+  "liveshare.showInStatusBar": "whileCollaborating"
 }

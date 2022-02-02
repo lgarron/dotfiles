@@ -76,5 +76,13 @@
     "editor.defaultFormatter": "vscode.html-language-features"
   },
   "github.codespaces.createCodespaceInNewWindow": true,
-  "liveshare.showInStatusBar": "whileCollaborating"
+  "liveshare.showInStatusBar": "whileCollaborating","terminal.integrated.profiles.osx": {
+    "apple_silicon_fish": {
+        "path": "/opt/homebrew/bin//fish",
+        "args": [
+            "-l"
+        ]
+    }
+  },
+  "terminal.integrated.defaultProfile.osx": "apple_silicon_fish"
 }

@@ -2,6 +2,8 @@
 
 # Setup
 
+    set PATH $PATH /opt/homebrew/bin/
+
     # Only print if we're a TTY.
     # This prevents `protocol error: bad line length character` in git.
     function _echo
@@ -52,6 +54,7 @@
     set EUCLID Euclid euclid Euclid.local
     set GALOIS Galois galois Galois.local
     set MIRZAKHANI Mirzakhani mirzakhani Mirzakhani.local
+    set GERMAIN Germain germain Germain.local
     set MINITEMP Minitemp minitemp Minitemp.local
 
 # MOTD
@@ -84,18 +87,24 @@
             "|  \\/  |_ _| _ \\|_  / /_\\ | |/ /| || | /_\\ | \\| |_ _|" \
             "| |\\/| || ||   / / /_/ _ \\| ' < | __ |/ _ \\| .` || | " \
             "|_|  |_|___|_|_\\/___/_/ \\_\\_|\\_\\|_||_/_/ \\_\\_|\\_|___|"
+      else if contains (hostname -s) $GERMAIN
+        fish_greeting_echo \
+            "   ___ ___ ___ __  __   _   ___ _  _ " \
+            "  / __| __| _ \\  \\/  | /_\\ |_ _| \\| |" \
+            " | (_ | _||   / |\\/| |/ _ \\ | || .` |" \
+            "  \\___|___|_|_\\_|  |_/_/ \\_\\___|_|\\_|"
       else if contains (hostname -s) $MINITEMP
         fish_greeting_echo \
             " __  __ ___ _  _ ___ _____ ___ __  __ ___ " \
             "|  \\/  |_ _| \\| |_ _|_   _| __|  \\/  | _ \\" \
             "| |\\/| || || .` || |  | | | _|| |\\/| |  _/" \
             "|_|  |_|___|_|\\_|___| |_| |___|_|  |_|_|  "
-      else if [ $CODESPACES = true ]
-        fish_greeting_echo \
-            "  ___ ___  ___  ___ ___ ___  _   ___ ___ ___ " \
-            " / __/ _ \\|   \\| __/ __| _ \\/_\\ / __| __/ __|" \
-            "| (_| (_) | |) | _|\\__ \\  _/ _ \\ (__| _|\\__ \\" \
-            " \\___\\___/|___/|___|___/_|/_/ \\_\\___|___|___/"
+      #else if [ $CODESPACES = true ]
+      #  fish_greeting_echo \
+      #      "  ___ ___  ___  ___ ___ ___  _   ___ ___ ___ " \
+      #      " / __/ _ \\|   \\| __/ __| _ \\/_\\ / __| __/ __|" \
+      #      "| (_| (_) | |) | _|\\__ \\  _/ _ \\ (__| _|\\__ \\" \
+      #      " \\___\\___/|___/|___|___/_|/_/ \\_\\___|___|___/"
       else
         echo "Welcome to "(hostname -s)
       end
@@ -214,12 +223,12 @@
         end
     end
 
-    set STDERRED_PATH "$HOME/Code/git/github.com/sickill/stderred/builda/libtest_stderred.dylib"
-    if test -f "$STDERRED_PATH"
-        set -x DYLD_INSERT_LIBRARIES "$STDERRED_PATH"
-        # I can't get STDERRED_BLACKLIST to work, so let's make it easy to unset DYLD_INSERT_LIBRARIES
-        abbr -a "dy" "set -e DYLD_INSERT_LIBRARIES"
-    end
+    # set STDERRED_PATH "$HOME/Code/git/github.com/sickill/stderred/builda/libtest_stderred.dylib"
+    # if test -f "$STDERRED_PATH"
+    #     set -x DYLD_INSERT_LIBRARIES "$STDERRED_PATH"
+    #     # I can't get STDERRED_BLACKLIST to work, so let's make it easy to unset DYLD_INSERT_LIBRARIES
+    #     abbr -a "dy" "set -e DYLD_INSERT_LIBRARIES"
+    # end
 
     abbr -a serve "open http://localhost:8000; caddy file-server --listen :8000 --browse"
 

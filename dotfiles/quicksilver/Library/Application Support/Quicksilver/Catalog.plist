@@ -880,6 +880,33 @@
 					<key>source</key>
 					<string>QSFileSystemObjectSource</string>
 				</dict>
+				<dict>
+					<key>ID</key>
+					<string>CFE9B21F-05FC-4051-9761-0472A74784DF</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>modificationDate</key>
+					<real>665572524.31803703</real>
+					<key>name</key>
+					<string>Screenshots</string>
+					<key>settings</key>
+					<dict>
+						<key>folderDepth</key>
+						<integer>2</integer>
+						<key>folderTypes</key>
+						<array>
+							<string>public.folder</string>
+						</array>
+						<key>parser</key>
+						<string>QSDirectoryParser</string>
+						<key>path</key>
+						<string>~/Google Drive/Screenshots</string>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
 			</array>
 			<key>enabled</key>
 			<true/>

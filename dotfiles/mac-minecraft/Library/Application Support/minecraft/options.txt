@@ -27,7 +27,7 @@ gamma:0.659120371643926
 renderDistance:20
 simulationDistance:12
 entityDistanceScaling:1.0
-guiScale:2
+guiScale:4
 particles:0
 maxFps:260
 difficulty:1
@@ -36,8 +36,8 @@ ao:2
 prioritizeChunkUpdates:0
 biomeBlendRadius:2
 renderClouds:fast
-resourcePacks:["vanilla","file/VanillaTweaks_r293088","Fabric Mods"]
-incompatibleResourcePacks:["file/VanillaTweaks_r293088"]
+resourcePacks:["vanilla"]
+incompatibleResourcePacks:[]
 lastServer:
 lang:en_us
 soundDevice:
@@ -113,7 +113,7 @@ soundCategory_record:1.0
 soundCategory_weather:1.0
 soundCategory_block:1.0
 soundCategory_hostile:1.0
-soundCategory_neutral:0.40459946
+soundCategory_neutral:1.0
 soundCategory_player:1.0
 soundCategory_ambient:1.0
 soundCategory_voice:1.0
@@ -124,4 +124,4 @@ modelPart_right_sleeve:true
 modelPart_left_pants_leg:true
 modelPart_right_pants_leg:true
 modelPart_hat:true
-fullscreenResolution:1280x720@59:24
+fullscreenResolution:2560x1440@60:24

@@ -658,13 +658,19 @@
 							<key>enabled</key>
 							<true/>
 							<key>modificationDate</key>
-							<real>658749983.884619</real>
+							<real>665813823.17211795</real>
 							<key>name</key>
 							<string>Dropbox (Maestral)</string>
 							<key>settings</key>
 							<dict>
+								<key>excludeFiletypes</key>
+								<array/>
 								<key>folderDepth</key>
 								<integer>2</integer>
+								<key>folderTypes</key>
+								<array>
+									<string>public.folder</string>
+								</array>
 								<key>parser</key>
 								<string>QSDirectoryParser</string>
 								<key>path</key>
@@ -1268,6 +1274,8 @@
 		<key>QSPresetAllApplications</key>
 		<false/>
 		<key>QSPresetBashHistory</key>
+		<false/>
+		<key>QSPresetClipboardContents</key>
 		<false/>
 		<key>QSPresetCommandHistory</key>
 		<false/>

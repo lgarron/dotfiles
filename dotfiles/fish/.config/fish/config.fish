@@ -179,7 +179,7 @@
     abbr -a mb "make build"
     abbr -a mc "make clean"
     abbr -a md "make dev"
-    abbr -a mdp "make deploy"
+    abbr -a ml "make deploy"
     abbr -a mp "make publish"
     abbr -a mt "make test"
 

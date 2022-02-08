@@ -329,27 +329,31 @@
           end
     end
 
+    function maxnice
+      pnice $argv[1] 19
+    end
+
     function niceplz
       # Prioritize Quicksilver.
       # I use it all the time, and it's a canary for system overload.
       pnice "Quicksilver" "-20"
       # Syncing processes.
-      pnice "Dropbox" 19
-      pnice "Backup and Sync" 19
-      pnice "Google Drive" 19
-      pnice "CCC User Agent" 19
-      pnice "CloneKitService" 19 # Custom CCC process name prefix
-      pnice "Maestral" 19
-      pnice "Compressor" 19
-      pnice "VTEncoderXPCService" 19 # main encoding process used by Compressor?
-      pnice "Spotlight" 19
-      pnice "mds_stores" 19
-      pnice "mdsync" 19
-      pnice "mdworker_shared" 19
-      pnice "com.carbonblack.es-loader.es-extension" 19
+      maxnice "Dropbox"
+      maxnice "Backup and Sync"
+      maxnice "Google Drive"
+      maxnice "CCC User Agent"
+      maxnice "CloneKitService" # Custom CCC process name prefix
+      maxnice "Maestral"
+      maxnice "Compressor"
+      maxnice "VTEncoderXPCService" # main encoding process used by Compressor?
+      maxnice "Spotlight"
+      maxnice "mds_stores"
+      maxnice "mdsync"
+      maxnice "mdworker_shared"
+      maxnice "com.carbonblack.es-loader.es-extension"
       echo "sudo for Time Machine (Ctrl-C to skip Time Machine)"
       sudo echo -n "" ; or return
-      pnice "backupd" 19
+      maxnice "backupd"
     end
 
 # Screenshots

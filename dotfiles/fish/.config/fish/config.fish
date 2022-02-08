@@ -2,7 +2,7 @@
 
 # Setup
 
-    set PATH $PATH /opt/homebrew/bin/
+    set PATH $PATH /opt/homebrew/bin
 
     # Only print if we're a TTY.
     # This prevents `protocol error: bad line length character` in git.

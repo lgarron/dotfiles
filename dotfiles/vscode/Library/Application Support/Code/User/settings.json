@@ -83,5 +83,6 @@
       "args": ["-l"]
     }
   },
-  "terminal.integrated.defaultProfile.osx": "apple_silicon_fish"
+  "terminal.integrated.defaultProfile.osx": "apple_silicon_fish",
+  "window.newWindowDimensions": "inherit"
 }

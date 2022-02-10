@@ -15,6 +15,7 @@ ${HOMEBREW_PATH}:
 mac-setup: \
 	mac-homebrew \
 	mac-defaults \
+	mac-file-defaults \
 	mac-commandline-core \
 	mac-apps-core \
 	mac-fish-default-shell
@@ -83,6 +84,33 @@ mac-defaults:
 	# Applications
 	defaults write org.hammerspoon.Hammerspoon MJConfigFile "~/.config/hammerspoon/init.lua"
 	defaults write com.apple.Safari IncludeDevelopMenu -bool true
+
+.PHONY: mac-file-defaults
+mac-file-defaults:
+	which duti || brew install duti
+
+	# File formats
+
+	duti -s com.google.Chrome org.ietf.mhtml all
+	duti -s com.google.Chrome public.url all
+	duti -s com.google.Chrome public.svg-image all
+	duti -s com.google.Chrome http all
+	duti -s com.google.Chrome https all
+
+	duti -s com.microsoft.vscode public.data all
+	duti -s com.microsoft.vscode public.plain-text all
+	duti -s com.microsoft.vscode net.daringfireball.markdown all
+	duti -s com.microsoft.vscode public.json all
+
+	duti -s com.apple.quicktimeplayerx com.microsoft.waveform-audio all # wav
+	duti -s com.apple.quicktimeplayerx com.apple.m4v-video all
+	duti -s com.apple.quicktimeplayerx com.apple.m4a-audio all
+	duti -s com.apple.quicktimeplayerx org.xiph.flac all
+	duti -s com.apple.quicktimeplayerx public.mp3 all
+
+	# https://github.com/moretension/duti/issues/29
+	# duti -s com.google.Chrome public.html all
+	@echo -e "\n\nCannot set HTML handler. Right-click an HTML file in Finder to set as default.\n\n"
 
 .PHONY: mac-commandline-core
 mac-commandline-core:

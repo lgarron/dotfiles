@@ -28,7 +28,8 @@
     "LYRA",
     "KATARA",
     "PERSEPHONE",
-    "FITZWILLIAM"
+    "FITZWILLIAM",
+    "FAWKES"
   ],
   "folder_mapping": [
     { "source": "DCIM", "destination": "DCIM" },

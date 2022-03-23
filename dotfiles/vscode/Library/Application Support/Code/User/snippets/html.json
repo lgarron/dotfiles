@@ -1,6 +1,5 @@
 {
   "Modern HTML Page": {
-    "prefix": "<DOCTYPE",
     "body": "<!DOCTYPE html>\n<html>\n  <head>\n    <meta charset=\"utf8\">\n    <title>${0:$TM_SELECTED_TEXT}</title>\n    <link rel=\"stylesheet\" href=\"./${0:$TM_SELECTED_TEXT}.css\">\n    <script src=\"./${0:$TM_SELECTED_TEXT}.js\" type=\"module\"></script>\n  </head>\n  <body>\n    ${0:$TM_SELECTED_TEXT}\n  </body>\n</html>"
   }
 }

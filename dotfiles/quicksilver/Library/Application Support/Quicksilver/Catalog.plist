@@ -132,25 +132,6 @@
 				</dict>
 				<dict>
 					<key>ID</key>
-					<string>6FD60090-B9AD-4536-A33C-9023BD904704</string>
-					<key>children</key>
-					<array/>
-					<key>enabled</key>
-					<true/>
-					<key>name</key>
-					<string>wca-regulations</string>
-					<key>settings</key>
-					<dict>
-						<key>folderDepth</key>
-						<integer>1</integer>
-						<key>path</key>
-						<string>~/Dropbox/Code/GitHub-clones/worldcubeassociation.org/regulations/wca-regulations</string>
-					</dict>
-					<key>source</key>
-					<string>QSFileSystemObjectSource</string>
-				</dict>
-				<dict>
-					<key>ID</key>
 					<string>8B8D4DEF-6799-40CB-827C-520203CFEE0A</string>
 					<key>children</key>
 					<array/>
@@ -170,94 +151,6 @@
 						<string>QSDirectoryParser</string>
 						<key>path</key>
 						<string>~/Dropbox/Code/gopath/src/github.com</string>
-					</dict>
-					<key>source</key>
-					<string>QSFileSystemObjectSource</string>
-				</dict>
-				<dict>
-					<key>ID</key>
-					<string>48C50790-B998-49DE-914A-2A680422E1B7</string>
-					<key>children</key>
-					<array/>
-					<key>enabled</key>
-					<true/>
-					<key>name</key>
-					<string>js-cubing</string>
-					<key>settings</key>
-					<dict>
-						<key>folderDepth</key>
-						<integer>1</integer>
-						<key>parser</key>
-						<string>QSDirectoryParser</string>
-						<key>path</key>
-						<string>~/Code/js-cubing</string>
-					</dict>
-					<key>source</key>
-					<string>QSFileSystemObjectSource</string>
-				</dict>
-				<dict>
-					<key>ID</key>
-					<string>7E55387B-05E0-4A2E-A8A4-C7DC9D81A86F</string>
-					<key>children</key>
-					<array/>
-					<key>enabled</key>
-					<true/>
-					<key>name</key>
-					<string>js-misc</string>
-					<key>settings</key>
-					<dict>
-						<key>folderDepth</key>
-						<integer>1</integer>
-						<key>parser</key>
-						<string>QSDirectoryParser</string>
-						<key>path</key>
-						<string>~/Code/js-misc</string>
-					</dict>
-					<key>source</key>
-					<string>QSFileSystemObjectSource</string>
-				</dict>
-				<dict>
-					<key>ID</key>
-					<string>4948B8FD-A9EC-4204-ADEE-3DE4E23CDDE9</string>
-					<key>children</key>
-					<array/>
-					<key>enabled</key>
-					<true/>
-					<key>modificationDate</key>
-					<real>649917662.15319204</real>
-					<key>name</key>
-					<string>github</string>
-					<key>settings</key>
-					<dict>
-						<key>folderDepth</key>
-						<integer>1</integer>
-						<key>parser</key>
-						<string>QSDirectoryParser</string>
-						<key>path</key>
-						<string>~/Code/git/github.com/github</string>
-						<key>skipItem</key>
-						<false/>
-					</dict>
-					<key>source</key>
-					<string>QSFileSystemObjectSource</string>
-				</dict>
-				<dict>
-					<key>ID</key>
-					<string>057D7FC2-432B-47F6-848B-C8A25D57FCB3</string>
-					<key>children</key>
-					<array/>
-					<key>enabled</key>
-					<true/>
-					<key>name</key>
-					<string>js-cubing</string>
-					<key>settings</key>
-					<dict>
-						<key>folderDepth</key>
-						<integer>1</integer>
-						<key>parser</key>
-						<string>QSDirectoryParser</string>
-						<key>path</key>
-						<string>~/Code/js-cubing</string>
 					</dict>
 					<key>source</key>
 					<string>QSFileSystemObjectSource</string>

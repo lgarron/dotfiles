@@ -113,7 +113,7 @@
     #   echo "Invoking wrapped gitx."
     #   env DYLD_INSERT_LIBRARIES='' command gitx $argv
     # end
-    if which gitx
+    if which gitx > /dev/null
         abbr -a gx "gitx"
     else
         abbr -a gx "open -a GitX ."

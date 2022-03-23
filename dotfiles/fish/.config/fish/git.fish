@@ -133,3 +133,26 @@
     else
         abbr -a gx "open -a GitX ."
     end
+
+    function rmtag
+        set TAG $argv[1]
+        git tag -d $TAG; or echo "Did not need to remove tag locally"
+        echo "--------"
+        git push origin :$TAG; or echo "Did not need to remove tag from origin"
+    end
+
+    function retag
+        set TAG $argv[1]
+        echo -n "Tag was previously at at commit: "
+        git rev-parse $TAG; or echo "No old tag"
+        echo "--------"
+        rmtag $TAG
+        echo "--------"
+        git tag $TAG
+        echo "--------"
+        git push origin $TAG
+    end
+
+    function retag-auto
+        retag (echo -n "v"; cat package.json | jq -r ".version")
+    end

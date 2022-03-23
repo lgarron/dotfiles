@@ -249,6 +249,30 @@
       killall Dock
     end
 
+    function vscode_recording
+      cat "$HOME/Library/Application Support/Code/User/settings.json" \
+        | jq ".\"terminal.integrated.defaultProfile.osx\" = \"apple_silicon_fish_no_history\"" \
+        | jq ".\"editor.formatOnType\" = false" \
+        | jq ".\"editor.formatOnPaste\" = false" \
+        | jq ".\"editor.formatOnSave\" = false" \
+        | jq ".\"window.zoomLevel\" = 3.5" \
+        > /tmp/file.txt; \
+        and cat /tmp/file.txt \
+        > "$HOME/Library/Application Support/Code/User/settings.json"
+    end
+
+    function vscode_unrecording
+      cat "$HOME/Library/Application Support/Code/User/settings.json" \
+        | jq ".\"terminal.integrated.defaultProfile.osx\" = \"apple_silicon_fish\"" \
+        | jq ".\"editor.formatOnType\" = true" \
+        | jq ".\"editor.formatOnPaste\" = true" \
+        | jq ".\"editor.formatOnSave\" = true" \
+        | jq ".\"window.zoomLevel\" = 3" \
+        > /tmp/file.txt; \
+        and cat /tmp/file.txt \
+        > "$HOME/Library/Application Support/Code/User/settings.json"
+    end
+
 ## Keyboard
 
     # https://developer.apple.com/library/content/technotes/tn2450/_index.html

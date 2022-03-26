@@ -49,7 +49,8 @@
   "go.toolsManagement.autoUpdate": true,
   "terminal.integrated.macOptionIsMeta": true,
   "workbench.editorAssociations": {
-    "*.ipynb": "jupyter-notebook"
+    "*.ipynb": "jupyter-notebook",
+    "git-rebase-todo": "default"
   },
   "workbench.editor.untitled.hint": "hidden",
   "remote.SSH.useLocalServer": false,

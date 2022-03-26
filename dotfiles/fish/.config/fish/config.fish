@@ -449,3 +449,7 @@
 
     # From now on, reloads of this file are considered "manual".
     set MANUAL_RELOAD true
+
+    if which rbenv > /dev/null
+      status --is-interactive; and rbenv init - fish | source
+    end

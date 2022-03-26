@@ -239,6 +239,7 @@
     abbr -a "sha256" "openssl dgst -sha256"
     abbr -a "sha512" "openssl dgst -sha512"
 
+    abbr -a "yarn" "npx yarn"
     set -x "EXPERIMENTAL_CUBING_JS_RELOAD_CHROME_MACOS" "1"
 
     function aedeploy

@@ -18,7 +18,6 @@ mac-common: \
 	golang-fish \
 	hushlogin \
 	karabiner \
-	mac-boot \
 	mac-git \
 	mac-minecraft \
 	quicksilver \
@@ -26,15 +25,28 @@ mac-common: \
 	xdg-basedir-workarounds \
 	vscode
 
+.PHONY: mac-common-intel
+mac-common-intel: mac-common
+	mac-boot-intel
+
+.PHONY: mac-common-arm64
+mac-common-arm64: mac-common
+	mac-boot-arm64
+
 .PHONY: euclid
 euclid: \
-	mac-common \
+	mac-common-intel \
 	mac-git-euclid \
 	povray
 
 .PHONY: mirzakhani
 mirzakhani: \
-	mac-common \
+	mac-common-intel \
+	mac-git-github
+
+.PHONY: germain
+germain: \
+	mac-common-intel \
 	mac-git-github
 
 ########
@@ -47,7 +59,8 @@ PACKAGES += golang-fish
 PACKAGES += golang-sublime
 PACKAGES += hushlogin
 PACKAGES += karabiner
-PACKAGES += mac-boot
+PACKAGES += mac-boot-intel
+PACKAGES += mac-boot-arm64
 PACKAGES += mac-git
 PACKAGES += mac-git-euclid
 PACKAGES += mac-git-github

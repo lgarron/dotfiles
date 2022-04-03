@@ -16,6 +16,9 @@
 
     mkdir -p "$XDG_DATA_HOME/bash"
 
+    # VSCode
+    launchctl setenv VSCODE_EXTENSIONS "$XDG_DATA_HOME"/vscode/extensions
+
 # Allows us to check when the script was last run.
 
     launchctl setenv LAST_BOOT_FISH (date)

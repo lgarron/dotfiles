@@ -19,10 +19,13 @@
     # VSCode
     launchctl setenv VSCODE_EXTENSIONS "$XDG_DATA_HOME"/vscode/extensions
 
-# Allows us to check when the script was last run.
-
-    launchctl setenv LAST_BOOT_FISH (date)
 
 # Avoid Time Machine slowdown
 
-    sudo sysctl debug.lowpri_throttle_enabled=0
+    # Commented out to avoid a Touch ID prompt.
+    # sudo sysctl debug.lowpri_throttle_enabled=0
+
+# Allows us to check when the script was last run.
+
+    launchctl setenv LAST_BOOT_FISH (date)
+    date > ~/.config/boot.fish.lastrun.txt

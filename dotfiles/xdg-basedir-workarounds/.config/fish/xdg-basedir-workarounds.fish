@@ -6,9 +6,9 @@
 
     # Explicitly set env vars to the default paths, since that will occasionally
     # get programs to behave.
-    set XDG_CACHE_HOME "$HOME/.cache"
-    set XDG_CONFIG_HOME "$HOME/.config"
-    set XDG_DATA_HOME "$HOME/.data"
+    set -x XDG_CACHE_HOME "$HOME/.cache"
+    set -x XDG_CONFIG_HOME "$HOME/.config"
+    set -x XDG_DATA_HOME "$HOME/.data"
 
 ## XDG workarounds for specific programs.
 

@@ -7,8 +7,6 @@
 		<dict>
 			<key>ID</key>
 			<string>QSiTunesSetRating2</string>
-			<key>command</key>
-			<string>QSiTunesSetRating2</string>
 			<key>enabled</key>
 			<false/>
 			<key>name</key>
@@ -21,8 +19,6 @@
 		<dict>
 			<key>ID</key>
 			<string>QSiTunesSearchTracks</string>
-			<key>command</key>
-			<string>QSiTunesSearchTracks</string>
 			<key>enabled</key>
 			<false/>
 			<key>name</key>
@@ -34,8 +30,6 @@
 		</dict>
 		<dict>
 			<key>ID</key>
-			<string>QSiTunesSearchAlbums</string>
-			<key>command</key>
 			<string>QSiTunesSearchAlbums</string>
 			<key>enabled</key>
 			<false/>
@@ -74,8 +68,6 @@
 		<dict>
 			<key>ID</key>
 			<string>QSiTunesLoveTrackTrigger</string>
-			<key>command</key>
-			<string>QSiTunesLoveTrackCommand</string>
 			<key>name</key>
 			<string>Love Current Track</string>
 			<key>set</key>
@@ -86,8 +78,6 @@
 		<dict>
 			<key>ID</key>
 			<string>QSiTunesPlayPauseTrigger</string>
-			<key>command</key>
-			<string>QSiTunesPlayPauseCommand</string>
 			<key>enabled</key>
 			<false/>
 			<key>name</key>
@@ -152,8 +142,6 @@
 		<dict>
 			<key>ID</key>
 			<string>QSiTunesIncreaseRating</string>
-			<key>command</key>
-			<string>QSiTunesIncreaseRating</string>
 			<key>enabled</key>
 			<false/>
 			<key>name</key>
@@ -165,37 +153,6 @@
 		</dict>
 		<dict>
 			<key>ID</key>
-			<string>DCFCE78C-8085-4DDE-B48D-91D37338A1D4</string>
-			<key>applicationScope</key>
-			<array>
-				<string>com.blacktree.Quicksilver</string>
-			</array>
-			<key>applicationScopeType</key>
-			<integer>1</integer>
-			<key>command</key>
-			<dict>
-				<key>actionID</key>
-				<string>AppleScriptRunAction</string>
-				<key>directID</key>
-				<string>/Users/lgarron/Code/git/github.com/lgarron/dotfiles/Quicksilver Triggers/Main/Do Nothing.scpt</string>
-			</dict>
-			<key>enabled</key>
-			<true/>
-			<key>keyCode</key>
-			<integer>49</integer>
-			<key>modifiers</key>
-			<integer>1310985</integer>
-			<key>onPress</key>
-			<true/>
-			<key>showWindow</key>
-			<true/>
-			<key>type</key>
-			<string>QSHotKeyTrigger</string>
-		</dict>
-		<dict>
-			<key>ID</key>
-			<string>QSiTunesSetRating3</string>
-			<key>command</key>
 			<string>QSiTunesSetRating3</string>
 			<key>enabled</key>
 			<false/>
@@ -346,8 +303,6 @@
 		<dict>
 			<key>ID</key>
 			<string>QSiTunesPreviousSongTrigger</string>
-			<key>command</key>
-			<string>QSiTunesPreviousSongCommand</string>
 			<key>enabled</key>
 			<false/>
 			<key>name</key>
@@ -424,8 +379,6 @@
 		<dict>
 			<key>ID</key>
 			<string>QSiTunesPlayTrigger</string>
-			<key>command</key>
-			<string>QSiTunesPlayCommand</string>
 			<key>enabled</key>
 			<false/>
 			<key>name</key>
@@ -438,8 +391,6 @@
 		<dict>
 			<key>ID</key>
 			<string>QSiTunesSetRating4</string>
-			<key>command</key>
-			<string>QSiTunesSetRating4</string>
 			<key>enabled</key>
 			<false/>
 			<key>name</key>
@@ -451,8 +402,6 @@
 		</dict>
 		<dict>
 			<key>ID</key>
-			<string>QSiTunesDecreaseRating</string>
-			<key>command</key>
 			<string>QSiTunesDecreaseRating</string>
 			<key>enabled</key>
 			<false/>
@@ -513,8 +462,6 @@
 		</dict>
 		<dict>
 			<key>ID</key>
-			<string>QSiTunesMute</string>
-			<key>command</key>
 			<string>QSiTunesMute</string>
 			<key>enabled</key>
 			<false/>
@@ -608,8 +555,6 @@
 		<dict>
 			<key>ID</key>
 			<string>QSiTunesStopTrigger</string>
-			<key>command</key>
-			<string>QSiTunesStopCommand</string>
 			<key>enabled</key>
 			<false/>
 			<key>name</key>
@@ -682,8 +627,6 @@
 		<dict>
 			<key>ID</key>
 			<string>QSiTunesSearchAll</string>
-			<key>command</key>
-			<string>QSiTunesSearchAll</string>
 			<key>enabled</key>
 			<false/>
 			<key>name</key>
@@ -696,8 +639,6 @@
 		<dict>
 			<key>ID</key>
 			<string>QSiTunesLovePlaylistTrigger</string>
-			<key>command</key>
-			<string>QSiTunesLovePlaylistCommand</string>
 			<key>name</key>
 			<string>Love Current Playlist</string>
 			<key>set</key>
@@ -707,8 +648,6 @@
 		</dict>
 		<dict>
 			<key>ID</key>
-			<string>QSiTunesIncreaseVolume</string>
-			<key>command</key>
 			<string>QSiTunesIncreaseVolume</string>
 			<key>enabled</key>
 			<true/>
@@ -726,8 +665,6 @@
 		<dict>
 			<key>ID</key>
 			<string>QSiTunesSetRating5</string>
-			<key>command</key>
-			<string>QSiTunesSetRating5</string>
 			<key>enabled</key>
 			<false/>
 			<key>name</key>
@@ -739,8 +676,6 @@
 		</dict>
 		<dict>
 			<key>ID</key>
-			<string>QSiTunesSetRating0</string>
-			<key>command</key>
 			<string>QSiTunesSetRating0</string>
 			<key>enabled</key>
 			<false/>
@@ -765,8 +700,6 @@
 		</dict>
 		<dict>
 			<key>ID</key>
-			<string>QSiTunesSearchArtists</string>
-			<key>command</key>
 			<string>QSiTunesSearchArtists</string>
 			<key>enabled</key>
 			<false/>
@@ -800,8 +733,6 @@
 		</dict>
 		<dict>
 			<key>ID</key>
-			<string>QSiTunesShowTrackNotification</string>
-			<key>command</key>
 			<string>QSiTunesShowTrackNotification</string>
 			<key>enabled</key>
 			<true/>
@@ -859,8 +790,6 @@
 		<dict>
 			<key>ID</key>
 			<string>QSiTunesNextSongTrigger</string>
-			<key>command</key>
-			<string>QSiTunesNextSongCommand</string>
 			<key>enabled</key>
 			<false/>
 			<key>name</key>
@@ -872,8 +801,6 @@
 		</dict>
 		<dict>
 			<key>ID</key>
-			<string>QSiTunesDecreaseVolume</string>
-			<key>command</key>
 			<string>QSiTunesDecreaseVolume</string>
 			<key>enabled</key>
 			<true/>
@@ -891,8 +818,6 @@
 		<dict>
 			<key>ID</key>
 			<string>QSiTunesSetRating1</string>
-			<key>command</key>
-			<string>QSiTunesSetRating1</string>
 			<key>enabled</key>
 			<false/>
 			<key>name</key>
@@ -905,8 +830,6 @@
 		<dict>
 			<key>ID</key>
 			<string>QSiTunesPauseTrigger</string>
-			<key>command</key>
-			<string>QSiTunesPauseCommand</string>
 			<key>enabled</key>
 			<false/>
 			<key>name</key>
@@ -1002,8 +925,6 @@
 		<dict>
 			<key>ID</key>
 			<string>QSiTunesEQToggleTrigger</string>
-			<key>command</key>
-			<string>QSiTunesEQToggleCommand</string>
 			<key>enabled</key>
 			<false/>
 			<key>name</key>

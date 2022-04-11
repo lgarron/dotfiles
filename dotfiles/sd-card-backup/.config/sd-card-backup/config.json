@@ -29,7 +29,8 @@
     "KATARA",
     "PERSEPHONE",
     "FITZWILLIAM",
-    "FAWKES"
+    "FAWKES",
+    "JAR_PTITSA"
   ],
   "folder_mapping": [
     { "source": "DCIM", "destination": "DCIM" },

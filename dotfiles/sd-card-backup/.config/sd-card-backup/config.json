@@ -30,7 +30,8 @@
     "PERSEPHONE",
     "FITZWILLIAM",
     "FAWKES",
-    "JAR_PTITSA"
+    "JAR_PTITSA",
+    "LEIA"
   ],
   "folder_mapping": [
     { "source": "DCIM", "destination": "DCIM" },

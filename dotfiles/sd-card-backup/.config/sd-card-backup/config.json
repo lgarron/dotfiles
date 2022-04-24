@@ -39,6 +39,7 @@
     { "source": "PRIVATE/AVCHD/BDMV/STREAM", "destination": "STREAM" },
     { "source": "PRIVATE/M4ROOT/CLIP", "destination": "CLIP" },
     { "source": "STEREO", "destination": "STEREO" },
-    { "source": "CONTENTS", "destination": "CONTENTS" }
+    { "source": "CONTENTS", "destination": "CONTENTS" },
+    { "source": "CRM", "destination": "CRM" }
   ]
 }

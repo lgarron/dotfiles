@@ -2,13 +2,8 @@
 
   set -xU "GOPATH" "$HOME/Code/gopath"
 
-  set -x PATH $PATH \
-    "$GOPATH/bin"
-
-  if test -d "/usr/local/go/bin"
-    set -x PATH $PATH \
-      "/usr/local/go/bin"
-  end
+  add_to_path_if_exists "$GOPATH/bin"
+  add_to_path_if_exists "/usr/local/go/bin"
 
   if [ (uname) = "Darwin" ]
     function go

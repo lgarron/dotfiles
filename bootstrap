@@ -8,4 +8,5 @@ set -euo pipefail
 cd "$(dirname "$0")"
 
 sudo apt install -y fish stow
+brew install --HEAD lgarron/lgarron/git-freeze
 make fish

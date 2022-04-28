@@ -267,7 +267,7 @@
         | jq ".\"editor.formatOnType\" = false" \
         | jq ".\"editor.formatOnPaste\" = false" \
         | jq ".\"editor.formatOnSave\" = false" \
-        | jq ".\"window.zoomLevel\" = 3.5" \
+        | jq ".\"window.zoomLevel\" = 4" \
         > /tmp/file.txt; \
         and cat /tmp/file.txt \
         > "$HOME/Library/Application Support/Code/User/settings.json"

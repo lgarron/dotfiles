@@ -1180,6 +1180,8 @@
 		<false/>
 		<key>QSPresetDeveloperPublicFrameworks</key>
 		<false/>
+		<key>QSPresetDownloads</key>
+		<false/>
 		<key>QSPresetGoogleChromeBookmarks</key>
 		<false/>
 		<key>QSPresetGoogleChromeCanaryBookmarks</key>

@@ -53,7 +53,6 @@ germain: \
 
 PACKAGES  =
 PACKAGES += chrome
-PACKAGES += fish
 PACKAGES += gce-ssh
 PACKAGES += golang-fish
 PACKAGES += golang-sublime
@@ -77,6 +76,14 @@ $(PACKAGES):
 	cd dotfiles && stow --no-folding --ignore=.DS_Store -t ~/ $@
 
 ########
+
+.PHONY: fish
+fish:
+	cd dotfiles && stow --no-folding --ignore=.DS_Store -t ~/ fish
+	mkdir -p ${HOME}/.data/fish
+	mkdir -p ${HOME}/.local/share
+	ln -s ${HOME}/.data/fish ${HOME}/.local/share/fish
+
 
 .PHONY: quicksilver
 quicksilver:

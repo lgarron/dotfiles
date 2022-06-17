@@ -387,6 +387,7 @@
       maxnice "mdsync"
       maxnice "mdworker_shared"
       maxnice "com.carbonblack.es-loader.es-extension"
+      maxnice "ArqAgent"
       echo "sudo for Time Machine (Ctrl-C to skip Time Machine)"
       sudo echo -n "" ; or return
       maxnice "backupd"

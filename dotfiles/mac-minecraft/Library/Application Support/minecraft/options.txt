@@ -36,7 +36,7 @@ ao:2
 prioritizeChunkUpdates:0
 biomeBlendRadius:2
 renderClouds:fast
-resourcePacks:["vanilla"]
+resourcePacks:["vanilla","Fabric Mods","file/VanillaTweaks_r456153 - default.zip"]
 incompatibleResourcePacks:[]
 lastServer:
 lang:en_us

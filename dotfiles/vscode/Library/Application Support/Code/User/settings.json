@@ -69,7 +69,7 @@
   "typescript.inlayHints.propertyDeclarationTypes.enabled": true,
   "typescript.inlayHints.parameterTypes.enabled": true,
   "typescript.inlayHints.variableTypes.enabled": true,
-  "window.zoomLevel": 3.5,
+  "window.zoomLevel": 3.25,
   "editor.guides.bracketPairs": true,
   "terminal.integrated.defaultProfile.linux": "fish",
   "customWindowZoom.zoomLevelChangeValue": 0.25,
@@ -85,5 +85,6 @@
     }
   },
   "terminal.integrated.defaultProfile.osx": "apple_silicon_fish",
-  "window.newWindowDimensions": "inherit"
+  "window.newWindowDimensions": "inherit",
+  "explorer.fileNesting.enabled": true
 }

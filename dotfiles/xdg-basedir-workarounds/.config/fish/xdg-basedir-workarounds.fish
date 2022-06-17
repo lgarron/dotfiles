@@ -63,5 +63,5 @@
 
     # rbenv
     # https://github.com/rbenv/rbenv/issues/811
-    # set -x RBENV_ROOT "$XDG_DATA_HOME"/rbenv
+    set -x RBENV_ROOT "$XDG_DATA_HOME"/rbenv
 

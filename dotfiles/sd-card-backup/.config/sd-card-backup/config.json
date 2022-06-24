@@ -32,7 +32,8 @@
     "FAWKES",
     "JAR_PTITSA",
     "LEIA",
-    "SPARKY"
+    "SPARKY",
+    "HERMES"
   ],
   "folder_mapping": [
     { "source": "DCIM", "destination": "DCIM" },

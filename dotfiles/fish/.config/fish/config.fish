@@ -242,6 +242,8 @@
 
     abbr -a r "open -R"
 
+    abbr -a bi "brew install"
+
     # set STDERRED_PATH "$HOME/Code/git/github.com/sickill/stderred/builda/libtest_stderred.dylib"
     # if test -f "$STDERRED_PATH"
     #     set -x DYLD_INSERT_LIBRARIES "$STDERRED_PATH"

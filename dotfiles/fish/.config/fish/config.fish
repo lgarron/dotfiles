@@ -63,6 +63,7 @@
     set EUCLID Euclid euclid Euclid.local
     set GALOIS Galois galois Galois.local
     set MIRZAKHANI Mirzakhani mirzakhani Mirzakhani.local
+    set MIRZAKHANI2 Mirzakhani2 mirzakhani2 Mirzakhani2.local
     set GERMAIN Germain germain Germain.local
     set MINITEMP Minitemp minitemp Minitemp.local
 
@@ -90,6 +91,12 @@
             "| __| | | |/ __| |  |_ _|   \\ " \
             "| _|| |_| | (__| |__ | || |) |" \
             "|___|\\___/ \\___|____|___|___/ "
+      else if contains (hostname -s) $MIRZAKHANI2
+        fish_greeting_echo \
+            " __  __ ___ ___  ____  _   _  ___  _   _   _  _ ___ ___ " \
+            "|  \\/  |_ _| _ \\|_  / /_\\ | |/ / || | /_\\ | \\| |_ _|_  )" \
+            "| |\\/| || ||   / / / / _ \\| ' <| __ |/ _ \\| .` || | / / " \
+            "|_|  |_|___|_|_\\/___/_/ \\_\\_|\\_\\_||_/_/ \\_\\_|\\_|___/___|"
       else if contains (hostname -s) $MIRZAKHANI
         fish_greeting_echo \
             " __  __ ___ ___  ____  _   _  __ _  _   _   _  _ ___ " \

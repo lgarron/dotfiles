@@ -79,12 +79,12 @@
   "github.codespaces.createCodespaceInNewWindow": true,
   "liveshare.showInStatusBar": "whileCollaborating",
   "terminal.integrated.profiles.osx": {
-    "apple_silicon_fish": {
-      "path": "/opt/homebrew/bin/fish",
-      "args": ["-l"]
+    "apple_fish": {
+      "path": "/usr/bin/env",
+      "args": ["fish", "-l"]
     }
   },
-  "terminal.integrated.defaultProfile.osx": "apple_silicon_fish",
+  "terminal.integrated.defaultProfile.osx": "apple_fish",
   "window.newWindowDimensions": "inherit",
   "explorer.fileNesting.enabled": true
 }

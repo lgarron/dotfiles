@@ -48,5 +48,10 @@
     "prefix": "d",
     "body": "document.querySelector(\"$0\")",
     "description": "document.querySelector"
+  },
+  "TypeDoc @category": {
+    "prefix": "@category",
+    "body": "/** @category $0 */",
+    "description": "TypeDoc @category"
   }
 }

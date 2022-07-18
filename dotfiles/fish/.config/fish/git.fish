@@ -73,9 +73,7 @@
 
     # "git push branch" to a remote that doesn't know about the branch yet.
     abbr -a gph "git push -u origin HEAD"
-    function gpb
-        echo "Please use `gph` instead of `gpb`!"
-    end
+    abbr -a gbak "git push -f --all bak"
 
     abbr -a upstream "git rev-parse --abbrev-ref --symbolic-full-name \"@{upstream}\""
 

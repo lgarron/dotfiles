@@ -87,5 +87,6 @@
       "args": ["fish", "-l"]
     }
   },
-  // Unsorted Settings
+  // GitLens
+  "gitlens.rebaseEditor.ordering": "asc"
 }

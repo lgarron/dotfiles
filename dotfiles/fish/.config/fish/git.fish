@@ -152,5 +152,11 @@
     end
 
     function retag-auto
+        set VERSION (echo -n "v"; cat package.json | jq -r ".version")
+        set PREVIOUS_COMMIT_VERSION (echo -n "v"; git show HEAD~:package.json | jq -r ".version")
+        if test $VERSION = $PREVIOUS_COMMIT_VERSION
+            echo "`package.json` did not change since last commit. Halting `retag-auto`." 1>&2
+            return
+        end
         retag (echo -n "v"; cat package.json | jq -r ".version")
     end

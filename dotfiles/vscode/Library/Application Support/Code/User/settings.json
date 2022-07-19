@@ -69,12 +69,9 @@
   // Remote SSH
   "remote.SSH.useLocalServer": false,
   "remote.SSH.remotePlatform": {
-    "Minitemp2.local": "macOS"
+    "Minitemp2": "macOS"
   },
-  // Settings Sync
-  "vsonline.accountProvider": "Microsoft",
   // Codespaces
-  "codespaces.accountProvider": "GitHub",
   "github.codespaces.createCodespaceInNewWindow": true,
   // Live Share
   "liveshare.showInStatusBar": "whileCollaborating",

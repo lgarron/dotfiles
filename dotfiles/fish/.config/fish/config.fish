@@ -171,7 +171,8 @@
         status --is-interactive; and source (rbenv init -|psub)
     end
 
-    abbr -a ni "npm install"
+    abbr -a niy "npm init -y"
+    abbr -a ni "npm install;"
     abbr -a nis "npm install --save"
     abbr -a nid "npm install --save-dev"
     abbr -a "rmnm" "rm -rf ./node_modules ; and npm install"
@@ -181,13 +182,10 @@
       npm version --no-git-tag-version $argv[1]
     end
 
-    # Workaround for Codespaces
-    # TODO: Remove once https://github.com/microsoft/vscode-dev-containers/pull/1138 is in new containers.
-    functions -e code
-
 ### Editors
 
     # TODO: https://github.com/microsoft/vscode/issues/139634
+    set -x "VISUAL" (which code)" -w"
     set -x "EDITOR" "code -w"
     # set -x EDITOR "open -b com.microsoft.VSCode"
 
@@ -204,6 +202,7 @@
 
     if [ (uname) = "Darwin" ]
       function code
+      echo $argv
         # `open -b` fails for creating files in new directories, so we touch the files first.
         # This changes the default behaviour of VSCode (create the file and the intermediate directory on first save), but it's acceptable as a workaround for https://github.com/microsoft/vscode/issues/139634
         for file in $argv
@@ -473,3 +472,11 @@
     if which rbenv > /dev/null
       status --is-interactive; and rbenv init - fish | source
     end
+
+# Manual workaround for bun, until one of the following is resolved:
+# - https://github.com/oven-sh/bun/issues/272
+# - https://github.com/oven-sh/bun/issues/965
+add_to_path_if_exists "$HOME/.local/bin"
+
+# Simplest `bun` completion
+complete -c bun -l "run" -f

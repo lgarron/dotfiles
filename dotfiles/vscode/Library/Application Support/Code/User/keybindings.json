@@ -21,6 +21,14 @@
     }
   },
   {
+    "key": "ctrl-cmd+r",
+    "command": "workbench.action.terminal.sendSequence",
+    "when": "terminalFocus",
+    "args": {
+      "text": "\"${fileDirname}/\""
+    }
+  },
+  {
     "key": "shift+alt+cmd+k",
     "command": "workbench.action.editor.previousChange",
     "when": "editorTextFocus"

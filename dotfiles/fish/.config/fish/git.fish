@@ -25,6 +25,7 @@
     abbr -a gdc   "git diff --color-words --cached"
 
     abbr -a gst   "git stage"
+    abbr -a gsp   "git stage --patch"
     abbr -a gc    "git commit --message"
     abbr -a gca   "git commit --amend"
     abbr -a gcane "git commit --amend --no-edit"

@@ -7,6 +7,17 @@ set -euo pipefail
 
 cd "$(dirname "$0")"
 
-sudo apt install -y fish stow
-/home/linuxbrew/.linuxbrew/bin/brew install --HEAD lgarron/lgarron/git-freeze
+sudo apt-get install -y fish stow
 make fish
+
+function git-freeze-install {
+  bin=${1}
+  echo "Installing: ${bin}"
+  curl -o "/tmp/${bin}" "https://raw.githubusercontent.com/lgarron/git-freeze/main/bin/${bin}"
+  sudo cp "/tmp/${bin}" "/usr/bin/${bin}"
+  sudo chmod +x "/usr/bin/${bin}"
+}
+
+git-freeze-install git-freeze
+git-freeze-install git-thaw
+git-freeze-install git-abandon

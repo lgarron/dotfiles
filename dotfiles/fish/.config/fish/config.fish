@@ -175,6 +175,7 @@
     abbr -a ni "npm install;"
     abbr -a nis "npm install --save"
     abbr -a nid "npm install --save-dev"
+    abbr -a nu "npm uninstall"
     abbr -a "rmnm" "rm -rf ./node_modules ; and npm install"
 
     function bump-version

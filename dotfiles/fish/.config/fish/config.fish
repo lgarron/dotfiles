@@ -363,19 +363,23 @@
 
     function pnice
       set NICENESS $argv[2]
-      echo "📶 Setting niceness $NICENESS for process names containing: $argv[1]";
-      for pid in (pgrep $argv[1])
-            echo -n "🖥  renice $NICENESS $pid"
-            renice $NICENESS $pid 2> /dev/null
-            if test $status -ne 0
-                  echo -n " (sudo)"
-                  sudo renice $NICENESS $pid
-                end
-            echo ""
-          end
+      if test (count $argv) -lt 2
+        echo "Usage: pnice <process substring> <niceness>"
+      else
+        echo "📶 Setting niceness $NICENESS for process names containing: $argv[1]";
+        for pid in (pgrep $argv[1])
+          echo -n "🖥  renice $NICENESS $pid"
+          renice $NICENESS $pid 2> /dev/null
+          if test $status -ne 0
+                echo -n " (sudo)"
+                sudo renice $NICENESS $pid
+              end
+          echo ""
+        end
+      end
     end
 
-    function maxnice
+    function pnicest
       pnice $argv[1] 19
     end
 
@@ -384,23 +388,23 @@
       # I use it all the time, and it's a canary for system overload.
       pnice "Quicksilver" "-20"
       # Syncing processes.
-      maxnice "Dropbox"
-      maxnice "Backup and Sync"
-      maxnice "Google Drive"
-      maxnice "CCC User Agent"
-      maxnice "CloneKitService" # Custom CCC process name prefix
-      maxnice "Maestral"
-      maxnice "Compressor"
-      maxnice "VTEncoderXPCService" # main encoding process used by Compressor?
-      maxnice "Spotlight"
-      maxnice "mds_stores"
-      maxnice "mdsync"
-      maxnice "mdworker_shared"
-      maxnice "com.carbonblack.es-loader.es-extension"
-      maxnice "ArqAgent"
+      pnicest "Dropbox"
+      pnicest "Backup and Sync"
+      pnicest "Google Drive"
+      pnicest "CCC User Agent"
+      pnicest "CloneKitService" # Custom CCC process name prefix
+      pnicest "Maestral"
+      pnicest "Compressor"
+      pnicest "VTEncoderXPCService" # main encoding process used by Compressor?
+      pnicest "Spotlight"
+      pnicest "mds_stores"
+      pnicest "mdsync"
+      pnicest "mdworker_shared"
+      pnicest "com.carbonblack.es-loader.es-extension"
+      pnicest "ArqAgent"
       echo "sudo for Time Machine (Ctrl-C to skip Time Machine)"
       sudo echo -n "" ; or return
-      maxnice "backupd"
+      pnicest "backupd"
     end
 
 # Screenshots

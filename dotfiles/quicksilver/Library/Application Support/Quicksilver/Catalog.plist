@@ -1216,6 +1216,8 @@
 		<false/>
 		<key>QSPresetRecentDocuments106</key>
 		<true/>
+		<key>QSPresetSidebarItems</key>
+		<true/>
 		<key>QSPresetTransmitFavorites</key>
 		<true/>
 		<key>QSPresetUserScripts</key>

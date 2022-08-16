@@ -478,10 +478,10 @@
       status --is-interactive; and rbenv init - fish | source
     end
 
-# Manual workaround for bun, until one of the following is resolved:
-# - https://github.com/oven-sh/bun/issues/272
-# - https://github.com/oven-sh/bun/issues/965
-add_to_path_if_exists "$HOME/.local/bin"
+    # Manual workaround for bun, until one of the following is resolved:
+    # - https://github.com/oven-sh/bun/issues/272
+    # - https://github.com/oven-sh/bun/issues/965
+    add_to_path_if_exists "$HOME/.local/bin"
 
-# Simplest `bun` completion
-complete -c bun -l "run" -f
+    # Simplest `bun` completion
+    complete -c bun -l "run" -f

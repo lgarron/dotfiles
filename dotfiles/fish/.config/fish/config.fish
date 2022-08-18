@@ -122,7 +122,8 @@
       #      "| (_| (_) | |) | _|\\__ \\  _/ _ \\ (__| _|\\__ \\" \
       #      " \\___\\___/|___/|___|___/_|/_/ \\_\\___|___|___/"
       else
-        echo "Welcome to "(hostname -s)
+        echo -n "🐟 Welcome to "
+        set_color --bold; echo (hostname -s)
       end
 
     end

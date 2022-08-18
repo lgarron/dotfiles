@@ -47,6 +47,7 @@
     abbr -a gri   "git rebase --interactive"
     abbr -a grm   "git rebase main"
     abbr -a gra   "git rebase --abort"
+    abbr -a grc   "git rebase --continue"
     abbr -a grom  "git rebase origin/main"
     abbr -a groma "git rebase origin/master"
     abbr -a glast "echo \"Use `gsh`\""

@@ -23,13 +23,6 @@
         end
     end
 
-    # Only print if we're a TTY that is not an SSH TTY.
-    function __echo
-        if not [ $SSH_TTY ]
-            _echo $argv
-        end
-    end
-
     if [ "$MANUAL_RELOAD" = "true" ]
       _echo "[Reloading .fish files, including abbrevations defined from scratch]"
     end

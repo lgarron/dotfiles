@@ -32,6 +32,7 @@
 
     abbr -a gb    "git branch"
     abbr -a gbd   "git branch -D"
+    abbr -a gbm   "git branch -m"
     abbr -a gco   "git checkout"
     abbr -a gcb   "git checkout -b"
     abbr -a gcp   "git cherry-pick"

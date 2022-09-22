@@ -396,6 +396,7 @@
       pnicest "mdworker_shared"
       pnicest "com.carbonblack.es-loader.es-extension"
       pnicest "ArqAgent"
+      pnicest "zoom.us"
       echo "sudo for Time Machine (Ctrl-C to skip Time Machine)"
       sudo echo -n "" ; or return
       pnicest "backupd"

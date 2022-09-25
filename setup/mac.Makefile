@@ -85,6 +85,9 @@ mac-defaults:
 	defaults write org.hammerspoon.Hammerspoon MJConfigFile "~/.config/hammerspoon/init.lua"
 	defaults write com.apple.Safari IncludeDevelopMenu -bool true
 
+	# Instantly dismiss the emoji palette (https://github.com/lgarron/first-world/issues/39)
+	defaults write -g NSAutomaticWindowAnimationsEnabled -bool false
+
 .PHONY: mac-file-defaults
 mac-file-defaults:
 	which duti || brew install duti

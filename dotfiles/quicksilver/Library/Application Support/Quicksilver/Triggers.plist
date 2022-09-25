@@ -354,6 +354,29 @@
 		</dict>
 		<dict>
 			<key>ID</key>
+			<string>13D5580F-FFE0-483B-B2B3-1C75E00F4EA7</string>
+			<key>character</key>
+			<string>\</string>
+			<key>command</key>
+			<dict>
+				<key>actionID</key>
+				<string>New iTerm2 Window Here</string>
+				<key>directID</key>
+				<string>com.blacktree.Quicksilver</string>
+			</dict>
+			<key>enabled</key>
+			<false/>
+			<key>keyCode</key>
+			<integer>42</integer>
+			<key>modifiers</key>
+			<integer>1310985</integer>
+			<key>onPress</key>
+			<true/>
+			<key>type</key>
+			<string>QSHotKeyTrigger</string>
+		</dict>
+		<dict>
+			<key>ID</key>
 			<string>QSGetGlobalSelectionTrigger</string>
 			<key>applicationScope</key>
 			<array>
@@ -373,6 +396,29 @@
 			<true/>
 			<key>set</key>
 			<string>Quicksilver</string>
+			<key>type</key>
+			<string>QSHotKeyTrigger</string>
+		</dict>
+		<dict>
+			<key>ID</key>
+			<string>98ADFF95-62DE-4D39-AD21-990F42EBA108</string>
+			<key>character</key>
+			<string>+</string>
+			<key>command</key>
+			<dict>
+				<key>actionID</key>
+				<string>AppleScriptRunAction</string>
+				<key>directID</key>
+				<string>/Users/lgarron/Code/git/github.com/lgarron/dotfiles/Quicksilver Triggers/iTunes/Increase Volume Slightly.scpt</string>
+			</dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyCode</key>
+			<integer>24</integer>
+			<key>modifiers</key>
+			<integer>393475</integer>
+			<key>onPress</key>
+			<true/>
 			<key>type</key>
 			<string>QSHotKeyTrigger</string>
 		</dict>
@@ -671,6 +717,29 @@
 			<string>Set Rating to 5</string>
 			<key>set</key>
 			<string>iTunes</string>
+			<key>type</key>
+			<string>QSHotKeyTrigger</string>
+		</dict>
+		<dict>
+			<key>ID</key>
+			<string>7A6DEBB4-8058-4516-8E7D-4E7BF1908620</string>
+			<key>character</key>
+			<string>_</string>
+			<key>command</key>
+			<dict>
+				<key>actionID</key>
+				<string>AppleScriptRunAction</string>
+				<key>directID</key>
+				<string>/Users/lgarron/Code/git/github.com/lgarron/dotfiles/Quicksilver Triggers/iTunes/Decrease Volume Slightly.scpt</string>
+			</dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyCode</key>
+			<integer>27</integer>
+			<key>modifiers</key>
+			<integer>393475</integer>
+			<key>onPress</key>
+			<true/>
 			<key>type</key>
 			<string>QSHotKeyTrigger</string>
 		</dict>

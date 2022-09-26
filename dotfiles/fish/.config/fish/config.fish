@@ -160,11 +160,6 @@
         cd "$argv[1]"
     end
 
-    # rbenv
-    if type -q rbenv
-        status --is-interactive; and source (rbenv init -|psub)
-    end
-
     abbr -a niy "npm init -y"
     abbr -a ni "npm install;"
     abbr -a nis "npm install --save"
@@ -485,6 +480,3 @@
     # - https://github.com/oven-sh/bun/issues/272
     # - https://github.com/oven-sh/bun/issues/965
     add_to_path_if_exists "$HOME/.local/bin"
-
-    # Simplest `bun` completion
-    complete -c bun -l "run" -f

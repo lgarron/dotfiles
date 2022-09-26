@@ -38,6 +38,8 @@
     abbr -a gcp   "git cherry-pick"
     abbr -a gdno  "git diff --name-only"
     abbr -a gm    "git merge"
+    abbr -a gma   "git merge --abort"
+    abbr -a gmb "git merge-base main (git rev-parse --abbrev-ref HEAD)"
 
     # abbr -a gcfd  "git clean --force -d" # subsumed by `gclean`
 
@@ -67,6 +69,7 @@
     abbr -a gpo   "git push origin"
     abbr -a gpot  "git push origin --tags"
     abbr -a gpfl  "git push --force-with-lease"
+    abbr -a gu    "git pull"
     abbr -a grv   "git remote --verbose"
     function pr
         echo -n "pull/$argv[1]/head"

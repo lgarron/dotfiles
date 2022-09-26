@@ -462,8 +462,6 @@
 
     load_if_exists "git" "$HOME/.config/fish/git.fish"
     load_if_exists "go" "$HOME/.config/fish/go.fish"
-    load_if_exists "chrome" "$HOME/.config/fish/chrome.fish"
-    load_if_exists "local" "$HOME/.config/fish/local.fish"
 
     _echo -ne "\r" # Clear loading indicators.
 

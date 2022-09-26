@@ -324,9 +324,15 @@
 
         if defaults read com.apple.universalaccess "com.apple.custommenu.apps" | grep "\"$argv[1]\"" > /dev/null
         else
-            defaults write com.apple.universalaccess "com.apple.custommenu.apps" -array-add "$argv[1]"
+            if defaults write com.apple.universalaccess "com.apple.custommenu.apps" -array-add "$argv[1]"
+            else
+              echo "Try `mac-add-shortcut` in a terminal app?"
+            end
         end
-        defaults write "$argv[1]" NSUserKeyEquivalents -dict-add "$argv[2]" -string "$argv[3]"
+        if defaults write "$argv[1]" NSUserKeyEquivalents -dict-add "$argv[2]" -string "$argv[3]"
+        else
+          echo "Try `mac-add-shortcut` in a terminal app?"
+        end
     end
 
     function mac-add-shortcut-to-all-chromes
@@ -344,7 +350,8 @@
         mac-add-shortcut "com.apple.iMovieApp" "File…" "\$@e"
         mac-add-shortcut "com.apple.iWork.Pages" "PDF…" "\$@e"
         mac-add-shortcut "com.apple.garageband10" "Export Song to Disk…" "\$@e"
-        mac-add-shortcut "com.adobe.lightroomCC" "Export" "\$@e"
+        mac-add-shortcut "com.adobe.mas.lightroomCC" "Export…" "\$@e"
+        # mac-add-shortcut "com.adobe.mas.lightroomCC" "Edit in Photoshop…" "\$@p"
         mac-add-shortcut "com.apple.FinalCut" "HEVC (H.265) up to 4K…" "\$@e"
         # Refresh
         mac-add-shortcut "com.apple.Safari" "Reload Page From Origin" "\$@r"
@@ -352,6 +359,7 @@
         mac-add-shortcut "com.tinyspeck.slackmacgap" "Paste and Match Style" "\$@v"
         mac-add-shortcut "com.apple.iWork.Pages" "Paste and Match Style" "\$@v"
         mac-add-shortcut "com.bloombuilt.dayone-mac" "Paste as Plain Text" "\$@v"
+        # Consistency with other programs
         mac-add-shortcut "com.apple.AddressBook" "Edit Card" "\$e"
     end
 

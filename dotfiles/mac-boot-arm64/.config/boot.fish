@@ -1,4 +1,4 @@
-#/usr/bin/env fish
+#!/usr/bin/env fish
 
 # Caps Lock (0x39) -> Delete Key (0x2A)
 
@@ -19,6 +19,9 @@
     # VSCode
     launchctl setenv VSCODE_EXTENSIONS "$XDG_DATA_HOME"/vscode/extensions
 
+    # zsh
+    set -x ZDOTDIR "$XDG_CONFIG_HOME"/zsh
+    mkdir -p $ZDOTDIR
 
 # Avoid Time Machine slowdown
 

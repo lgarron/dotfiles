@@ -65,3 +65,6 @@
     # https://github.com/rbenv/rbenv/issues/811
     set -x RBENV_ROOT "$XDG_DATA_HOME"/rbenv
 
+    # zsh
+    set -x ZDOTDIR "$XDG_CONFIG_HOME"/zsh
+

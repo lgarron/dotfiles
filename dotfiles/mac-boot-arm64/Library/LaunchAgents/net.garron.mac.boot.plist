@@ -9,7 +9,7 @@
         <string>/opt/homebrew/bin/fish</string>
         <string>/Users/lgarron/.config/boot.fish</string>
     </array>
-    <!-- <key>KeepAlive</key> -->
+    <key>RunAtLoad</key>
     <true/>
 </dict>
 </plist>

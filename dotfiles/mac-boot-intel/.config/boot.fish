@@ -3,7 +3,10 @@
 # Caps Lock (0x39) -> Delete Key (0x2A)
 
     # https://developer.apple.com/library/content/technotes/tn2450/_index.html
-    hidutil property --set '{"UserKeyMapping":[{"HIDKeyboardModifierMappingSrc":0x700000039,"HIDKeyboardModifierMappingDst":0x70000002A}]}'
+    hidutil property --set '{"UserKeyMapping":[
+        {"HIDKeyboardModifierMappingSrc":0x700000039,"HIDKeyboardModifierMappingDst":0x070000002A},
+        {"HIDKeyboardModifierMappingSrc":0x700000049,"HIDKeyboardModifierMappingDst":0xFF00000003},
+    ]}'
 
 # Set XDG folders
 
@@ -17,7 +20,7 @@
     mkdir -p "$XDG_DATA_HOME/bash"
 
     # VSCode
-    launchctl setenv VSCODE_EXTENSIONS "$XDG_DATA_HOME"/vscode/extensions
+    # launchctl setenv VSCODE_EXTENSIONS "$XDG_DATA_HOME"/vscode/extensions
 
     # zsh
     set -x ZDOTDIR "$XDG_CONFIG_HOME"/zsh

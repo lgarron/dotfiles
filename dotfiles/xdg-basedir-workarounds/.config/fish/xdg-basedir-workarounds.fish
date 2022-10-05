@@ -59,7 +59,7 @@
     set -x NODE_REPL_HISTORY "$XDG_DATA_HOME"/node_repl_history
 
     # VSCode
-    set -x VSCODE_EXTENSIONS "$XDG_DATA_HOME"/vscode/extensions
+    # set -x VSCODE_EXTENSIONS "$XDG_DATA_HOME"/vscode/extensions
 
     # rbenv
     # https://github.com/rbenv/rbenv/issues/811

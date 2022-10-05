@@ -1,4 +1,52 @@
 {
+  "document.createElement": {
+    "scope": "javascript,typescript",
+    "prefix": "dc",
+    "body": "document.createElement(\"$0\")",
+    "description": "document.createElement"
+  },
+  "document.body.appendChild": {
+    "scope": "javascript,typescript",
+    "prefix": "dba",
+    "body": "document.body.appendChild($0)",
+    "description": "document.body.appendChild"
+  },
+  "document.querySelector": {
+    "scope": "javascript,typescript",
+    "prefix": "dq",
+    "body": "document.querySelector(\"$0\")",
+    "description": "document.querySelector"
+  },
+  "DOMContentLoaded": {
+    "scope": "javascript,typescript",
+    "prefix": "DOMContentLoaded",
+    "body": "window.addEventListener(\"DOMContentLoaded\", $1() => {\n  $0\n});",
+    "description": "Listener for DOMContentLoaded"
+  },
+  "Async IIFE": {
+    "scope": "javascript,typescript",
+    "prefix": "aiife",
+    "body": "(async () => { ${0:$TM_SELECTED_TEXT} })()",
+    "description": "Async immediately invoked function expression (IIFE)"
+  },
+  "sleep": {
+    "scope": "javascript,typescript",
+    "prefix": "sleep",
+    "body": "await new Promise((resolve) => setTimeout(resolve, ${0:1000}));",
+    "description": "Sleep inside an async function"
+  },
+  "debug log": {
+    "scope": "javascript,typescript",
+    "prefix": "dl",
+    "body": "console.log(\"debug\", \"$TM_FILENAME\", \"$RANDOM_HEX\");",
+    "description": "Add a debug logging statement with a random identifier"
+  },
+  "throw new Error": {
+    "scope": "javascript,typescript",
+    "prefix": "err",
+    "body": "throw new Error($0);",
+    "description": "Add a line to throw a new error."
+  },
   "rome-ignore-lint": {
     "scope": "javascript,typescript",
     "prefix": "// rome-ignore lint",

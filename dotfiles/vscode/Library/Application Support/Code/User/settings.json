@@ -1,10 +1,13 @@
 {
   // Main VSCode settings
-  "editor.formatOnPaste": true,
-  "editor.formatOnSave": true,
+  "editor.formatOnPaste": false,
+  "editor.formatOnSave": false,
+  "formattingToggle.affects": [
+    "editor.formatOnSave"
+  ],
   "editor.tabSize": 2,
   "editor.renderWhitespace": "boundary",
-  "editor.formatOnType": true,
+  "editor.formatOnType": false,
   "editor.columnSelection": false,
   "editor.inlineSuggest.enabled": true,
   "editor.suggest.showStatusBar": true,

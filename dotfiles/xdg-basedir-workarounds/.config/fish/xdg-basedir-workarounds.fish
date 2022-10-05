@@ -18,7 +18,7 @@
     set -x LESSHISTFILE "$XDG_DATA_HOME/lesshst"
 
     # GnPG
-    # See `boot.fish` for `launchctl setenv`
+    # See `lglogin.fish` for `launchctl setenv`
     set -x GNUPGHOME "$XDG_CONFIG_HOME/gnupg"
 
     # HTTPie
@@ -26,7 +26,7 @@
     set -x HTTPIE_CONFIG_DIR "$XDG_CONFIG_HOME/httpie"
 
     # bash
-    # Folder is created in `boot.fish`
+    # Folder is created in `lglogin.fish`
     #
     # We'd use "$XDG_DATA_HOME/bash/history", but bash won't create the
     # intermediate folder and this prevents us from having to create it

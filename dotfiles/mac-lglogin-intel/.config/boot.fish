@@ -33,5 +33,5 @@
 
 # Allows us to check when the script was last run.
 
-    launchctl setenv LAST_BOOT_FISH (date)
-    date > ~/.config/boot.fish.lastrun.txt
+    launchctl setenv LAST_LGLOGIN_FISH (date)
+    date > ~/.config/lglogin.fish.lastrun.txt

@@ -27,11 +27,11 @@ mac-common: \
 
 .PHONY: mac-common-intel
 mac-common-intel: mac-common
-	mac-boot-intel
+	mac-lglogin-intel
 
 .PHONY: mac-common-arm64
 mac-common-arm64: mac-common
-	mac-boot-arm64
+	mac-lglogin-arm64
 
 .PHONY: euclid
 euclid: \
@@ -58,8 +58,8 @@ PACKAGES += golang-fish
 PACKAGES += golang-sublime
 PACKAGES += hushlogin
 PACKAGES += karabiner
-PACKAGES += mac-boot-intel
-PACKAGES += mac-boot-arm64
+PACKAGES += mac-lglogin-intel
+PACKAGES += mac-lglogin-arm64
 PACKAGES += mac-git
 PACKAGES += mac-git-euclid
 PACKAGES += mac-git-github

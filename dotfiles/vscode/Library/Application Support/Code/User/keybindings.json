@@ -91,7 +91,9 @@
   {
     "key": "cmd+ctrl+space",
     "command": "workbench.action.terminal.sendSequence",
-    "args": { "text": "\u000B\u0015qs \"${file}\"\u000D" }
+    "args": {
+      "text": "\u000B\u0015qs \"${file}\"\u000D"
+    }
   },
   {
     "key": "cmd+=",
@@ -150,5 +152,9 @@
   {
     "key": "alt+f",
     "command": "formattingToggle.toggleFormat"
+  },
+  {
+    "key": "ctrl+cmd+p",
+    "command": "workbench.profiles.actions.switchProfile"
   }
 ]

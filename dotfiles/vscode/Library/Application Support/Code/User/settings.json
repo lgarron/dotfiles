@@ -81,10 +81,19 @@
         "fish",
         "-l"
       ]
+    },
+    "apple_fish_no_history": {
+      "path": "/usr/bin/env",
+      "args": [
+        "fish",
+        "-l",
+        "--private"
+      ]
     }
   },
   // GitLens
   "gitlens.rebaseEditor.ordering": "asc",
   "githubPullRequests.pullBranch": "never",
-  "editor.stickyScroll.enabled": true
+  "editor.stickyScroll.enabled": true,
+  "workbench.experimental.settingsProfiles.enabled": true
 }

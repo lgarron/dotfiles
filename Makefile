@@ -38,11 +38,6 @@ euclid: \
 	mac-git-euclid \
 	povray
 
-.PHONY: mirzakhani
-mirzakhani: \
-	mac-common-intel \
-	mac-git-github
-
 .PHONY: germain
 germain: \
 	mac-common-arm64 \

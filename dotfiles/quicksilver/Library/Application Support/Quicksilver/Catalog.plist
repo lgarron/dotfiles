@@ -760,27 +760,6 @@
 				</dict>
 				<dict>
 					<key>ID</key>
-					<string>A0D5F670-9DBC-479E-ADF7-737B80867EF2</string>
-					<key>children</key>
-					<array/>
-					<key>enabled</key>
-					<true/>
-					<key>modificationDate</key>
-					<real>560279576.66205704</real>
-					<key>name</key>
-					<string>Mirzakhani Screenshots</string>
-					<key>settings</key>
-					<dict>
-						<key>folderDepth</key>
-						<integer>1</integer>
-						<key>path</key>
-						<string>~/Google Drive/Screenshots/Mirzakhani Screenshots</string>
-					</dict>
-					<key>source</key>
-					<string>QSFileSystemObjectSource</string>
-				</dict>
-				<dict>
-					<key>ID</key>
 					<string>CFE9B21F-05FC-4051-9761-0472A74784DF</string>
 					<key>children</key>
 					<array/>

@@ -14,9 +14,6 @@
   "editor.suggestSelection": "first",
   "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
   "files.insertFinalNewline": true,
-  "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
-  },
   "explorer.fileNesting.enabled": true,
   "explorer.confirmDragAndDrop": false,
   "editor.guides.bracketPairs": true,
@@ -33,10 +30,9 @@
   "extensions.ignoreRecommendations": true,
   // Formatting
   "[json]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "vscode.json-language-features"
   },
   "[markdown]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode",
     "editor.formatOnType": false
   },
   "[makefile]": {
@@ -47,10 +43,10 @@
     "editor.defaultFormatter": "vscode.html-language-features"
   },
   "[javascript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "rome.rome"
   },
   "[typescript]": {
-    "editor.defaultFormatter": "esbenp.prettier-vscode"
+    "editor.defaultFormatter": "rome.rome"
   },
   // JavaScript
   "javascript.validate.enable": false,
@@ -62,9 +58,6 @@
   "typescript.inlayHints.propertyDeclarationTypes.enabled": true,
   "typescript.inlayHints.parameterTypes.enabled": true,
   "typescript.inlayHints.variableTypes.enabled": true,
-  // ESLint
-  "eslint.lintTask.enable": true,
-  "eslint.validate": ["javascript", "typescript"],
   // Go
   "go.useLanguageServer": true,
   "go.toolsGopath": "/Users/lgarron/Code/gopath",

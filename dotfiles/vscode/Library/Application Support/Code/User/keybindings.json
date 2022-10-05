@@ -29,6 +29,22 @@
     }
   },
   {
+    "key": "ctrl+r",
+    "command": "workbench.action.terminal.sendSequence",
+    "when": "terminalFocus",
+    "args": {
+      "text": "\"${relativeFile}\""
+    }
+  },
+  {
+    "key": "ctrl+shift-r",
+    "command": "workbench.action.terminal.sendSequence",
+    "when": "terminalFocus",
+    "args": {
+      "text": "\"${relativeFileDirname}/\""
+    }
+  },
+  {
     "key": "shift+alt+cmd+k",
     "command": "workbench.action.editor.previousChange",
     "when": "editorTextFocus"

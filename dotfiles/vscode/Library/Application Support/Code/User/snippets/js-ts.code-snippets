@@ -1,0 +1,14 @@
+{
+  "rome-ignore-lint": {
+    "scope": "javascript,typescript",
+    "prefix": "// rome-ignore lint",
+    "body": "// rome-ignore lint($1): $2",
+    "description": "Ignore a Rome lint issue."
+  },
+  "rome-ignore-format": {
+    "scope": "javascript,typescript",
+    "prefix": "// rome-ignore format",
+    "body": "// rome-ignore format($1): $2",
+    "description": "Ignore a Rome format issue."
+  }
+}

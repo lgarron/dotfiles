@@ -168,12 +168,15 @@
         cd "$argv[1]"
     end
 
+### `node`
+
     abbr -a niy "npm init -y"
     abbr -a ni "npm install;"
     abbr -a nis "npm install --save"
     abbr -a nid "npm install --save-dev"
     abbr -a nu "npm uninstall"
-    abbr -a "rmnm" "rm -rf ./node_modules ; and npm install"
+    abbr -a rmnm "rm -rf ./node_modules ; and npm install"
+    abbr -a wtr "npx web-test-runner"
 
     function bump-version
       # /usr/bin/env echo -n v

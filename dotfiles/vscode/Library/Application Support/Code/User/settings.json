@@ -1,7 +1,7 @@
 {
   // Main VSCode settings
   "editor.formatOnPaste": false,
-  "editor.formatOnSave": false,
+  "editor.formatOnSave": true,
   "formattingToggle.affects": [
     "editor.formatOnSave"
   ],

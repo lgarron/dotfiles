@@ -234,11 +234,6 @@
     abbr -a "yarn" "npx yarn"
     set -x "EXPERIMENTAL_CUBING_JS_RELOAD_CHROME_MACOS" "1"
 
-    function mac-add-dock-spacer
-      defaults write com.apple.dock persistent-apps -array-add '{"tile-type"="spacer-tile";}'
-      killall Dock
-    end
-
     function vscode_recording
       cat "$HOME/Library/Application Support/Code/User/settings.json" \
         | jq ".\"terminal.integrated.defaultProfile.osx\" = \"apple_silicon_fish_no_history\"" \

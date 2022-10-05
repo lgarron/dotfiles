@@ -180,13 +180,26 @@ mac-quicklook:
 mac-browsers:
 	brew bundle --file=${BREWFILE_FOLDER}/browsers.txt
 
-# Extra
+# Dock
 
-.PHONY: reset-dock
-reset-dock:
+.PHONY: mac-dock-reset
+mac-dock-reset:
 	defaults write com.apple.dock persistent-apps -array "{}"
 	killall Dock
 
-.PHONY: mac-right-dock
-mac-right-dock:
+.PHONY: mac-dock-right
+mac-dock-right:
 	defaults write com.apple.dock orientation right && killall Dock
+
+.PHONY: mac-dock-left
+mac-dock-left:
+	defaults write com.apple.dock orientation left && killall Dock
+
+.PHONY: mac-dock-bottom
+mac-dock-bottom:
+	defaults write com.apple.dock orientation bottom && killall Dock
+
+.PHONY: mac-dock-add-spacer
+mac-dock-add-spacer:
+	defaults write com.apple.dock persistent-apps -array-add '{"tile-type"="spacer-tile";}'
+	killall Dock

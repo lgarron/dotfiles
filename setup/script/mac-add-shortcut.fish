@@ -1,6 +1,6 @@
 #!/usr/bin/env fish
 
-set shortcut (echo $argv[3] | sed "s/⌘/@/g" | sed "s/⇧/\$/g" | sed "s/⌥/~/g")
+set shortcut (echo $argv[3]| tr "[:upper:]" "[:lower:]" | sed "s/⌘/@/g" | sed "s/⇧/\$/g" | sed "s/⌥/~/g")
 
 # From https://github.com/lgarron/dotfiles/blob/d61bf45f8901c985f55522330412c13d54afccf2/dotfiles/fish/.config/fish/config.fish#L126-L140
 function echo-alternate-background
@@ -24,14 +24,19 @@ echo-alternate-background \
     " > " "$argv[2]" \
     " to " "$argv[3]" " (decoded to: " "$shortcut" ")"
 
+function uh_oh_permissions
+  echo "Try `mac-add-shortcut` in a terminal app?"
+  exit 1
+end
+
 if defaults read com.apple.universalaccess "com.apple.custommenu.apps" | grep "\"$argv[1]\"" > /dev/null
 else
   if defaults write com.apple.universalaccess "com.apple.custommenu.apps" -array-add "$argv[1]"
   else
-    echo "Try `mac-add-shortcut` in a terminal app?"
+    uh_oh_permissions
   end
 end
 if defaults write "$argv[1]" NSUserKeyEquivalents -dict-add "$argv[2]" -string "$shortcut"
 else
-  echo "Try `mac-add-shortcut` in a terminal app?"
+  uh_oh_permissions
 end

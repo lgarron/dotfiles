@@ -349,25 +349,26 @@
     end
 
     function mac-setup-shortcuts-auto
+        # Global
+        mac-add-shortcut "NSGlobalDomain" "Emoji & Symbols" "@~^\$r"
+        # Chrome
         mac-add-shortcut-to-all-chromes "Extensions" "\$@e"
-        # Save
-        mac-add-shortcut "org.audacityteam.audacity" "Save Project As…" "\$@s"
+        # Paste and Match Style
+        mac-add-shortcut "com.tinyspeck.slackmacgap" "Paste and Match Style" "\$@v"
+        mac-add-shortcut "com.apple.iWork.Pages" "Paste and Match Style" "\$@v"
+        mac-add-shortcut "com.bloombuilt.dayone-mac" "Paste as Plain Text" "\$@v"
         # Export
         mac-add-shortcut "com.bloombuilt.dayone-mac" "JSON" "\$@e"
         mac-add-shortcut "com.apple.iMovieApp" "File…" "\$@e"
         mac-add-shortcut "com.apple.iWork.Pages" "PDF…" "\$@e"
         mac-add-shortcut "com.apple.garageband10" "Export Song to Disk…" "\$@e"
         mac-add-shortcut "com.adobe.mas.lightroomCC" "Export…" "\$@e"
-        # mac-add-shortcut "com.adobe.mas.lightroomCC" "Edit in Photoshop…" "\$@p"
-        mac-add-shortcut "com.apple.FinalCut" "HEVC (H.265) up to 4K…" "\$@e"
-        # Refresh
-        mac-add-shortcut "com.apple.Safari" "Reload Page From Origin" "\$@r"
-        # Paste and Match Style
-        mac-add-shortcut "com.tinyspeck.slackmacgap" "Paste and Match Style" "\$@v"
-        mac-add-shortcut "com.apple.iWork.Pages" "Paste and Match Style" "\$@v"
-        mac-add-shortcut "com.bloombuilt.dayone-mac" "Paste as Plain Text" "\$@v"
+        mac-add-shortcut "com.adobe.mas.lightroomCC" "Edit in Photoshop…" "\$@p"
+        mac-add-shortcut "com.apple.FinalCut" "'HEVC (H.265) up to 4K…'" "\$@e"
         # Consistency with other programs
-        mac-add-shortcut "com.apple.AddressBook" "Edit Card" "\$e"
+        mac-add-shortcut "com.apple.AddressBook" "Edit Card" "@e"
+        mac-add-shortcut "com.apple.Safari" "Reload Page From Origin" "\$@r"
+        mac-add-shortcut "org.audacityteam.audacity" "Save Project As…" "\$@s"
     end
 
     function pnice

@@ -1,6 +1,7 @@
 # Bootstrap
 
 BREWFILE_FOLDER = ./setup/Brewfiles
+MAC_ADD_SHORTCUT = ./setup/script/mac-add-shortcut.fish
 
 # TODO: Use installation path instead of .PHONY?
 .PHONY: mac-homebrew
@@ -15,6 +16,7 @@ ${HOMEBREW_PATH}:
 mac-setup: \
 	mac-homebrew \
 	mac-defaults \
+	mac-keyboard-shortcuts \
 	mac-file-defaults \
 	mac-commandline-core \
 	mac-apps-core \
@@ -87,6 +89,31 @@ mac-defaults:
 
 	# Instantly dismiss the emoji palette (https://github.com/lgarron/first-world/issues/39)
 	defaults write -g NSAutomaticWindowAnimationsEnabled -bool false
+
+.PHONY: mac-keyboard-shortcuts
+mac-keyboard-shortcuts:
+	# Global
+	${MAC_ADD_SHORTCUT} "NSGlobalDomain" "Emoji & Symbols"                     "^⌘⌥⇧r" # unset default
+	# Chrome
+	${MAC_ADD_SHORTCUT} "com.google.Chrome"         "Extensions"               "⇧⌘e"
+	${MAC_ADD_SHORTCUT} "com.google.Chrome.canary"  "Extensions"               "⇧⌘e"
+	${MAC_ADD_SHORTCUT} "org.chromium.Chromium"     "Extensions"               "⇧⌘e"
+	# Paste and Match Style
+	${MAC_ADD_SHORTCUT} "com.tinyspeck.slackmacgap" "Paste and Match Style"    "⇧⌘v"
+	${MAC_ADD_SHORTCUT} "com.apple.iWork.Pages"     "Paste and Match Style"    "⇧⌘v"
+	${MAC_ADD_SHORTCUT} "com.bloombuilt.dayone-mac" "Paste as Plain Text"      "⇧⌘v"
+	# Export
+	${MAC_ADD_SHORTCUT} "com.bloombuilt.dayone-mac" "JSON"                     "⇧⌘e"
+	${MAC_ADD_SHORTCUT} "com.apple.iMovieApp"       "File…"                    "⇧⌘e"
+	${MAC_ADD_SHORTCUT} "com.apple.iWork.Pages"     "PDF…"                     "⇧⌘e"
+	${MAC_ADD_SHORTCUT} "com.apple.garageband10"    "Export Song to Disk…"     "⇧⌘e"
+	${MAC_ADD_SHORTCUT} "com.adobe.mas.lightroomCC" "Export…"                  "⇧⌘e"
+	${MAC_ADD_SHORTCUT} "com.adobe.mas.lightroomCC" "Edit in Photoshop…"       "⇧⌘p"
+	${MAC_ADD_SHORTCUT} "com.apple.FinalCut"        "'HEVC (H.265) up to 4K…'" "⇧⌘e"
+	# Consistency with other programs
+	${MAC_ADD_SHORTCUT} "com.apple.contacts"        "Edit Card"                "⌘e"
+	${MAC_ADD_SHORTCUT} "com.apple.Safari"          "Reload Page From Origin"  "⇧⌘r"
+	${MAC_ADD_SHORTCUT} "org.audacityteam.audacity" "Save Project As…"         "⇧⌘s"
 
 .PHONY: mac-file-defaults
 mac-file-defaults:

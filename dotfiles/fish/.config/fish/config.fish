@@ -13,6 +13,14 @@
     add_to_path_if_exists /home/linuxbrew/.linuxbrew/bin # for codespaces
     add_to_path_if_exists /home/linuxbrew/.linuxbrew/sbin # for codespaces
 
+# Relaunch
+
+    # VSCode shell integration
+    # https://github.com/microsoft/vscode/issues/139400
+    string match -q "$TERM_PROGRAM" "vscode"; and which code-insiders > /dev/null; and . (code-insiders --locate-shell-integration-path fish)
+
+# Setup
+
     # Only print if we're a TTY.
     # This prevents `protocol error: bad line length character` in git.
     function _echo

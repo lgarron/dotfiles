@@ -26,11 +26,11 @@ mac-common: \
 
 .PHONY: mac-common-intel
 mac-common-intel: mac-common
-	mac-lglogin-intel
+	make mac-lglogin-intel
 
 .PHONY: mac-common-arm64
 mac-common-arm64: mac-common
-	mac-lglogin-arm64
+	make mac-lglogin-arm64
 
 .PHONY: euclid
 euclid: \
@@ -45,7 +45,7 @@ mirzakhani: \
 
 .PHONY: germain
 germain: \
-	mac-common-intel \
+	mac-common-arm64 \
 	mac-git-github
 
 ########
@@ -80,7 +80,7 @@ fish:
 	cd dotfiles && stow --no-folding --ignore=.DS_Store -t ~/ fish
 	mkdir -p ${HOME}/.data/fish
 	mkdir -p ${HOME}/.local/share
-	ln -s ${HOME}/.data/fish ${HOME}/.local/share/fish
+	ln -sf ${HOME}/.data/fish ${HOME}/.local/share/
 
 
 .PHONY: quicksilver

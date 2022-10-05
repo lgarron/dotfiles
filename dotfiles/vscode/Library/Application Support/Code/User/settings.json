@@ -77,9 +77,14 @@
   "terminal.integrated.profiles.osx": {
     "apple_fish": {
       "path": "/usr/bin/env",
-      "args": ["fish", "-l"]
+      "args": [
+        "fish",
+        "-l"
+      ]
     }
   },
   // GitLens
-  "gitlens.rebaseEditor.ordering": "asc"
+  "gitlens.rebaseEditor.ordering": "asc",
+  "githubPullRequests.pullBranch": "never",
+  "editor.stickyScroll.enabled": true
 }

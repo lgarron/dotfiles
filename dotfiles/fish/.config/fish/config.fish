@@ -369,25 +369,6 @@
         killall SystemUIServer
     end
 
-    function set-screenshot-dir-auto
-      set HOSTNAME_SHORT (hostname -s)
-      if contains $HOSTNAME_SHORT $EUCLID
-        set-screenshot-dir "$HOME/Dropbox/Screenshots/Euclid Screenshots/Euclid Screenshots 2018/"
-      else if contains $HOSTNAME_SHORT $MIRZAKHANI
-        set-screenshot-dir "$HOME/Google Drive/Screenshots/Mirzakhani Screenshots/"
-      else
-        echo-red "Could not determine screenshot directory."
-        return 1
-      end
-    end
-
-# Setup
-
-    function mac-fish-setup
-        mac-setup-shortcuts-auto
-        set-screenshot-dir-auto
-    end
-
 # From automatic additions:
 
 ## Wasienv

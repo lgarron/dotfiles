@@ -1,0 +1,90 @@
+{
+  // Main VSCode settings
+  "editor.formatOnPaste": false,
+  "editor.formatOnSave": false,
+  "formattingToggle.affects": [
+    "editor.formatOnSave"
+  ],
+  "editor.tabSize": 2,
+  "editor.renderWhitespace": "boundary",
+  "editor.formatOnType": false,
+  "editor.columnSelection": false,
+  "editor.inlineSuggest.enabled": true,
+  "editor.suggest.showStatusBar": true,
+  "editor.suggestSelection": "first",
+  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+  "files.insertFinalNewline": true,
+  "explorer.fileNesting.enabled": true,
+  "explorer.confirmDragAndDrop": false,
+  "editor.guides.bracketPairs": true,
+  // Window
+  "window.zoomLevel": 4,
+  "customWindowZoom.zoomLevelChangeValue": 0.25,
+  "workbench.sideBar.location": "left",
+  "workbench.startupEditor": "newUntitledFile",
+  "workbench.editor.untitled.hint": "hidden",
+  "terminal.integrated.tabs.enabled": false,
+  "terminal.integrated.tabs.location": "left",
+  "terminal.integrated.macOptionIsMeta": true,
+  "extensions.ignoreRecommendations": true,
+  // Formatting
+  "[json]": {
+    "editor.defaultFormatter": "vscode.json-language-features"
+  },
+  "[markdown]": {
+    "editor.formatOnType": false
+  },
+  "[makefile]": {
+    "editor.insertSpaces": false,
+    "editor.detectIndentation": false
+  },
+  "[html]": {
+    "editor.defaultFormatter": "vscode.html-language-features"
+  },
+  "[javascript]": {
+    "editor.defaultFormatter": "rome.rome"
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "rome.rome"
+  },
+  // JavaScript
+  "javascript.validate.enable": false,
+  "javascript.updateImportsOnFileMove.enabled": "always",
+  // TypeScript
+  "typescript.updateImportsOnFileMove.enabled": "always",
+  "typescript.inlayHints.enumMemberValues.enabled": true,
+  "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
+  "typescript.inlayHints.propertyDeclarationTypes.enabled": true,
+  "typescript.inlayHints.parameterTypes.enabled": true,
+  "typescript.inlayHints.variableTypes.enabled": true,
+  // Go
+  "go.useLanguageServer": true,
+  "go.toolsGopath": "/Users/lgarron/Code/gopath",
+  "go.toolsManagement.autoUpdate": true,
+  // Live Share
+  "liveshare.showInStatusBar": "whileCollaborating",
+  // Terminal
+  "terminal.integrated.defaultProfile.linux": "fish",
+  "terminal.integrated.defaultProfile.osx": "apple_fish_no_history",
+  "terminal.integrated.profiles.osx": {
+    "apple_fish": {
+      "path": "/usr/bin/env",
+      "args": [
+        "fish",
+        "-l"
+      ]
+    },
+    "apple_fish_no_history": {
+      "path": "/usr/bin/env",
+      "args": [
+        "fish",
+        "-l",
+        "--private"
+      ]
+    }
+  },
+  // GitLens
+  "gitlens.rebaseEditor.ordering": "asc",
+  "githubPullRequests.pullBranch": "never",
+  "editor.stickyScroll.enabled": true
+}

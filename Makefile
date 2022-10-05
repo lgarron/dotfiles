@@ -17,7 +17,6 @@ mac-common: \
 	fish \
 	golang-fish \
 	hushlogin \
-	karabiner \
 	mac-git \
 	mac-minecraft \
 	quicksilver \
@@ -57,7 +56,6 @@ PACKAGES += gce-ssh
 PACKAGES += golang-fish
 PACKAGES += golang-sublime
 PACKAGES += hushlogin
-PACKAGES += karabiner
 PACKAGES += mac-lglogin-intel
 PACKAGES += mac-lglogin-arm64
 PACKAGES += mac-git

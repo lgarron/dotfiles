@@ -21,6 +21,8 @@ Linked [using GNU `stow`](http://brandon.invergo.net/news/2012-05-26-using-gnu-s
     open -a "iTerm"
     mac-fish-setup
 
+See [`./exported/`](./exported/) for files that must be manually exported/imported.
+
 ## Ubuntu/Linux
 
     sudo apt install git make stow

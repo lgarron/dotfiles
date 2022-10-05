@@ -6,4 +6,8 @@
     "prefix": "script",
     "body": "<script src=\"$0\" type=\"module\"></script>",
   },
+  "Stylesheet file link (CSS)": {
+    "prefix": "stylesheet",
+    "body": "<link rel=\"stylesheet\" href=\"$0\">",
+  },
 }

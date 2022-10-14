@@ -1,7 +1,9 @@
 {
+  // Dynamic
+  "editor.formatOnSave": false,
+  "window.zoomLevel": 2.25,
   // Main VSCode settings
   "editor.formatOnPaste": false,
-  "editor.formatOnSave": true,
   "formattingToggle.affects": [
     "editor.formatOnSave"
   ],
@@ -20,7 +22,6 @@
   "editor.stickyScroll.enabled": true,
   "workbench.experimental.settingsProfiles.enabled": true,
   // Window
-  "window.zoomLevel": 3.25,
   "customWindowZoom.zoomLevelChangeValue": 0.25,
   "workbench.sideBar.location": "left",
   "workbench.startupEditor": "newUntitledFile",

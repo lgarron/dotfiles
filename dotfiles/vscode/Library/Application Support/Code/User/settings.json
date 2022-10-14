@@ -95,6 +95,7 @@
   // GitLens
   "gitlens.rebaseEditor.ordering": "asc",
   "githubPullRequests.pullBranch": "never",
-  "editor.stickyScroll.enabled": true,
-  "workbench.experimental.settingsProfiles.enabled": true
+  "workbench.editorAssociations": {
+    "git-rebase-todo": "default"
+  }
 }

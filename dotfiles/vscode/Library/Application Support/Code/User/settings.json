@@ -17,6 +17,7 @@
   "explorer.fileNesting.enabled": true,
   "explorer.confirmDragAndDrop": false,
   "editor.guides.bracketPairs": true,
+  "editor.stickyScroll.enabled": true,
   // Window
   "window.zoomLevel": 3.25,
   "customWindowZoom.zoomLevelChangeValue": 0.25,

@@ -25,8 +25,8 @@
   "workbench.startupEditor": "newUntitledFile",
   "workbench.editor.untitled.hint": "hidden",
   "window.newWindowDimensions": "inherit",
-  "terminal.integrated.tabs.enabled": false,
-  "terminal.integrated.tabs.location": "left",
+  "terminal.integrated.tabs.enabled": true,
+  "terminal.integrated.tabs.location": "right",
   "terminal.integrated.macOptionIsMeta": true,
   "extensions.ignoreRecommendations": true,
   // Formatting

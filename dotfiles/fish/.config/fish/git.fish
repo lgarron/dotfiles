@@ -36,6 +36,7 @@
     abbr -a gco   "git checkout"
     abbr -a gcb   "git checkout -b"
     abbr -a gcp   "git cherry-pick"
+    abbr -a gcpa  "git cherry-pick --abort"
     abbr -a gdno  "git diff --name-only"
     abbr -a gm    "git merge"
     abbr -a gma   "git merge --abort"

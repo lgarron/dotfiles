@@ -217,13 +217,6 @@
 
     abbr -a bi "brew install"
 
-    # set STDERRED_PATH "$HOME/Code/git/github.com/sickill/stderred/builda/libtest_stderred.dylib"
-    # if test -f "$STDERRED_PATH"
-    #     set -x DYLD_INSERT_LIBRARIES "$STDERRED_PATH"
-    #     # I can't get STDERRED_BLACKLIST to work, so let's make it easy to unset DYLD_INSERT_LIBRARIES
-    #     abbr -a "dy" "set -e DYLD_INSERT_LIBRARIES"
-    # end
-
     abbr -a serve "open http://localhost:8000; caddy file-server --listen :8000 --browse"
 
     abbr -a "md5" "openssl dgst -md5"

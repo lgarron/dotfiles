@@ -161,6 +161,7 @@
     abbr -a nis "npm install --save"
     abbr -a nid "npm install --save-dev"
     abbr -a nu "npm uninstall"
+    abbr -a nrd "npm run dev"
     abbr -a rmnm "rm -rf ./node_modules ; and npm install"
     abbr -a wtr "npx web-test-runner"
 

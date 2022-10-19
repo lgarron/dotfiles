@@ -17,6 +17,7 @@ mac-common: \
 	fish \
 	golang-fish \
 	hushlogin \
+	karabiner \
 	mac-git \
 	mac-minecraft \
 	quicksilver \
@@ -76,6 +77,12 @@ fish:
 	mkdir -p ${HOME}/.data/fish
 	mkdir -p ${HOME}/.local/share
 	ln -sf ${HOME}/.data/fish ${HOME}/.local/share/
+
+
+.PHONY: karabiner
+karabiner:
+	# Link the entire folder to work around https://github.com/pqrs-org/Karabiner-Elements/issues/3248
+	cd dotfiles && stow --ignore=.DS_Store -t ~/ $@
 
 
 .PHONY: quicksilver

@@ -537,21 +537,21 @@
                 },
                 {
                     "from": {
-                        "pointing_button": "button5"
-                    },
-                    "to": [
-                        {
-                            "pointing_button": "button3"
-                        }
-                    ]
-                },
-                {
-                    "from": {
                         "key_code": "insert"
                     },
                     "to": [
                         {
                             "apple_vendor_top_case_key_code": "keyboard_fn"
+                        }
+                    ]
+                },
+                {
+                    "from": {
+                        "pointing_button": "button5"
+                    },
+                    "to": [
+                        {
+                            "pointing_button": "button3"
                         }
                     ]
                 }

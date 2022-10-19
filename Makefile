@@ -16,7 +16,6 @@ SHELL := env PATH=${PATH} /bin/bash
 mac-common: \
 	fish \
 	golang-fish \
-	hushlogin \
 	karabiner \
 	mac-git \
 	mac-minecraft \

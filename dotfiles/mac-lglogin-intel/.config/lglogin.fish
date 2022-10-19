@@ -25,6 +25,12 @@
     # zsh
     set -x ZDOTDIR "$XDG_CONFIG_HOME"/zsh
     mkdir -p $ZDOTDIR
+    launchctl setenv ZDOTDIR $ZDOTDIR
+
+    # Docker
+    launchctl setenv DOCKER_CONFIG "$XDG_CONFIG_HOME"/docker
+
+    rm -rf $HOME/.oracle_jre_usage
 
 # Avoid Time Machine slowdown
 

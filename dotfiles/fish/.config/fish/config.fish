@@ -2,16 +2,24 @@
 
 # Setup
 
-    function add_to_path_if_exists
+    function append_to_path_if_exists
       set NEW_PATH_COMPONENT $argv[1]
       if test -d $NEW_PATH_COMPONENT
         set PATH $PATH $NEW_PATH_COMPONENT
       end
     end
 
-    add_to_path_if_exists /opt/homebrew/bin # macOS (Apple Silicon)
-    add_to_path_if_exists /home/linuxbrew/.linuxbrew/bin # for codespaces
-    add_to_path_if_exists /home/linuxbrew/.linuxbrew/sbin # for codespaces
+    function prepend_to_path_if_exists
+      set NEW_PATH_COMPONENT $argv[1]
+      if test -d $NEW_PATH_COMPONENT
+        set PATH $NEW_PATH_COMPONENT $PATH
+      end
+    end
+
+    append_to_path_if_exists /opt/homebrew/bin # macOS (Apple Silicon)
+    append_to_path_if_exists /home/linuxbrew/.linuxbrew/bin # for codespaces
+    append_to_path_if_exists /home/linuxbrew/.linuxbrew/sbin # for codespaces
+    prepend_to_path_if_exists $HOME/.data/rbenv/shims # rbenv https://github.com/rbenv/rbenv#how-rbenv-hooks-into-your-shell
 
 # Relaunch
 
@@ -342,11 +350,7 @@
     # From now on, reloads of this file are considered "manual".
     set MANUAL_RELOAD true
 
-    if which rbenv > /dev/null
-      status --is-interactive; and rbenv init - fish | source
-    end
-
     # Manual workaround for bun, until one of the following is resolved:
     # - https://github.com/oven-sh/bun/issues/272
     # - https://github.com/oven-sh/bun/issues/965
-    add_to_path_if_exists "$HOME/.local/bin"
+    append_to_path_if_exists "$HOME/.local/bin"

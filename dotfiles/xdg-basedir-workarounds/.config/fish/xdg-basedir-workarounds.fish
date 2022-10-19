@@ -68,3 +68,11 @@
     # zsh
     set -x ZDOTDIR "$XDG_CONFIG_HOME"/zsh
 
+    # cargo (Rust)
+    set -x CARGO_HOME "$XDG_DATA_HOME"/cargo
+
+    # Docker
+    set -x DOCKER_CONFIG "$XDG_CONFIG_HOME"/docker
+
+    # Bun (bun.sh)
+    set -x BUN_INSTALL_CACHE_DIR "$XDG_CACHE_HOME"/bun

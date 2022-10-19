@@ -30,6 +30,8 @@
     # Docker
     launchctl setenv DOCKER_CONFIG "$XDG_CONFIG_HOME"/docker
 
+    rm -rf $HOME/.oracle_jre_usage
+
 # Avoid Time Machine slowdown
 
     # Commented out to avoid a Touch ID prompt.

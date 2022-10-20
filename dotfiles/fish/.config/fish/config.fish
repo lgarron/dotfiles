@@ -40,7 +40,13 @@
     end
 
     if [ "$MANUAL_RELOAD" = "true" ]
-      _echo "[Reloading .fish files, including abbrevations defined from scratch]"
+      _echo ""
+      _echo -n "🔄 Reloading "
+      set_color --bold
+      _echo -n "fish"
+      set_color normal
+      _echo " files."
+      _echo ""
     end
 
     # Reloads the fish config file. `rc` is chosen because the config file for
@@ -54,18 +60,22 @@
 
     function loading_indicator
       if [ "$MANUAL_RELOAD" = "true" ]
-        _echo -n "$argv[1]..."
+        _echo $argv[1]
       end
     end
 
-    loading_indicator "config"
+    loading_indicator (status --current-filename)
+
+    function load_if_exists
+      if test -f $argv[2]
+        loading_indicator "↪ $argv[2]"
+        source $argv[2]
+      end
+    end
 
 # XDG path configuration
 
-    if test -f $HOME/.config/fish/xdg-basedir-workarounds.fish
-      loading_indicator "xdg-basedir-workarounds"
-      source $HOME/.config/fish/xdg-basedir-workarounds.fish
-    end
+  load_if_exists "xdg-basedir-workarounds" $HOME/.config/fish/xdg-basedir-workarounds.fish
 
 # Machines
 
@@ -333,17 +343,10 @@
 
 # Includes
 
-    function load_if_exists
-      if test -f $argv[2]
-        loading_indicator $argv[1]
-        source $argv[2]
-      end
-    end
-
     load_if_exists "git" $HOME/.config/fish/git.fish
     load_if_exists "go" $HOME/.config/fish/go.fish
 
-    _echo -ne "\r" # Clear loading indicators.
+    loading_indicator ""
 
 # Cleanup
 

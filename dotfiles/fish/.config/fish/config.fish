@@ -268,10 +268,6 @@
 
 ## Web
 
-    function https
-        http --default-scheme https $argv
-    end
-
     # *h*ttps *h*eaders
     abbr -a "hh" "https -ph"
 

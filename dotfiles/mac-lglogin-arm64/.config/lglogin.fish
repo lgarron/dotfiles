@@ -15,9 +15,9 @@
     launchctl setenv XDG_DATA_HOME "$HOME/.data"
 
     # `GPG Keychain.app` requires this.
-    launchctl setenv GNUPGHOME "$XDG_CONFIG_HOME/gnupg"
+    launchctl setenv GNUPGHOME $XDG_CONFIG_HOME/gnupg
 
-    mkdir -p "$XDG_DATA_HOME/bash"
+    mkdir -p $XDG_DATA_HOME/bash
 
     # VSCode
     # launchctl setenv VSCODE_EXTENSIONS "$XDG_DATA_HOME"/vscode/extensions

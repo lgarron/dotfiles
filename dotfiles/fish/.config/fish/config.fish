@@ -25,7 +25,7 @@
 
     # VSCode shell integration
     # https://github.com/microsoft/vscode/issues/139400
-    string match -q "$TERM_PROGRAM" "vscode"; and which code-insiders > /dev/null; and . (code-insiders --locate-shell-integration-path fish)
+    string match -q $TERM_PROGRAM vscode; and which code-insiders > /dev/null; and . (code-insiders --locate-shell-integration-path fish)
 
 # Setup
 
@@ -62,9 +62,9 @@
 
 # XDG path configuration
 
-    if test -f "$HOME/.config/fish/xdg-basedir-workarounds.fish"
+    if test -f $HOME/.config/fish/xdg-basedir-workarounds.fish
       loading_indicator "xdg-basedir-workarounds"
-      source "$HOME/.config/fish/xdg-basedir-workarounds.fish"
+      source $HOME/.config/fish/xdg-basedir-workarounds.fish
     end
 
 # Machines
@@ -128,7 +128,7 @@
     function echo-alternate-background
         set set_color_arg "normal"
         for arg in $argv[1..-1]
-            set_color "$set_color_arg"
+            set_color $set_color_arg
             echo -n $arg
 
             if [ "$set_color_arg" = "normal" ]
@@ -155,11 +155,11 @@
         realpath ~/.config/fish/config.fish \
           | sed 's#dotfiles/fish/\.config/fish/config\.fish$##' \
     )
-    abbr -a dff "$DOTFILES_FOLDER"
+    abbr -a dff $DOTFILES_FOLDER
 
     function mkcd
-        mkdir "$argv[1]"
-        cd "$argv[1]"
+        mkdir $argv[1]
+        cd $argv[1]
     end
 
 ### `node`
@@ -318,7 +318,7 @@
 
     function set-screenshot-dir
         set DIR $argv[1]
-        echo-alternate-background "Setting screenshot dir to: " "$DIR"
+        echo-alternate-background "Setting screenshot dir to: " $DIR
         defaults write com.apple.screencapture location $argv[1]
         killall SystemUIServer
     end
@@ -340,8 +340,8 @@
       end
     end
 
-    load_if_exists "git" "$HOME/.config/fish/git.fish"
-    load_if_exists "go" "$HOME/.config/fish/go.fish"
+    load_if_exists "git" $HOME/.config/fish/git.fish
+    load_if_exists "go" $HOME/.config/fish/go.fish
 
     _echo -ne "\r" # Clear loading indicators.
 
@@ -353,4 +353,4 @@
     # Manual workaround for bun, until one of the following is resolved:
     # - https://github.com/oven-sh/bun/issues/272
     # - https://github.com/oven-sh/bun/issues/965
-    append_to_path_if_exists "$HOME/.local/bin"
+    append_to_path_if_exists $HOME/.local/bin

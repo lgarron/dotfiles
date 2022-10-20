@@ -6,24 +6,24 @@
 
     # Explicitly set env vars to the default paths, since that will occasionally
     # get programs to behave.
-    set -x XDG_CACHE_HOME "$HOME/.cache"
-    set -x XDG_CONFIG_HOME "$HOME/.config"
-    set -x XDG_DATA_HOME "$HOME/.data"
+    set -x XDG_CACHE_HOME $HOME/.cache
+    set -x XDG_CONFIG_HOME $HOME/.config
+    set -x XDG_DATA_HOME $HOME/.data
 
 ## XDG workarounds for specific programs.
 
     # TODO: Remove if https://github.com/facebook/PathPicker/issues/269 is fixed.
-    set -x FPP_DIR "$XDG_DATA_HOME/fpp/"
+    set -x FPP_DIR $XDG_DATA_HOME/fpp/
 
-    set -x LESSHISTFILE "$XDG_DATA_HOME/lesshst"
+    set -x LESSHISTFILE $XDG_DATA_HOME/lesshst
 
     # GnPG
     # See `lglogin.fish` for `launchctl setenv`
-    set -x GNUPGHOME "$XDG_CONFIG_HOME/gnupg"
+    set -x GNUPGHOME $XDG_CONFIG_HOME/gnupg
 
     # HTTPie
     # Workaround from https://github.com/jakubroztocil/httpie/issues/145#issuecomment-54704487
-    set -x HTTPIE_CONFIG_DIR "$XDG_CONFIG_HOME/httpie"
+    set -x HTTPIE_CONFIG_DIR $XDG_CONFIG_HOME/httpie
 
     # bash
     # Folder is created in `lglogin.fish`
@@ -31,48 +31,48 @@
     # We'd use "$XDG_DATA_HOME/bash/history", but bash won't create the
     # intermediate folder and this prevents us from having to create it
     # manually.
-    set -x HISTFILE "$XDG_DATA_HOME/bash_history"
+    set -x HISTFILE $XDG_DATA_HOME/bash_history
 
     # gem
-    set -x GEM_HOME "$XDG_DATA_HOME/gem"
-    set -x GEM_SPEC_CACHE "$XDG_CACHE_HOME/gem"
+    set -x GEM_HOME $XDG_DATA_HOME/gem
+    set -x GEM_SPEC_CACHE $XDG_CACHE_HOME/gem
 
     # npm
-    set -x NPM_CONFIG_USERCONFIG "$XDG_CONFIG_HOME/npm/config"
-    set -x NPM_CONFIG_CACHE "$XDG_CACHE_HOME/npm"
+    set -x NPM_CONFIG_USERCONFIG $XDG_CONFIG_HOME/npm/config
+    set -x NPM_CONFIG_CACHE $XDG_CACHE_HOME/npm
 
     # Wine
-    set -x WINEPREFIX "$XDG_DATA_HOME/wine"
+    set -x WINEPREFIX $XDG_DATA_HOME/wine
 
     # wget
-    set -x WGETRC "$XDG_CONFIG_HOME/wget/wgetrc"
+    set -x WGETRC $XDG_CONFIG_HOME/wget/wgetrc
 
     # xauth
-    set -x XAUTHORITY "$XDG_CACHE_DIR"/xauth/Xauthority
+    set -x XAUTHORITY $XDG_CACHE_DIR/xauth/Xauthority
 
     # Bundler (Ruby)
-    set -x BUNDLE_USER_CONFIG "$XDG_CONFIG_HOME"/bundle
-    set -x BUNDLE_USER_CACHE  "$XDG_CACHE_HOME"/bundle
-    set -x BUNDLE_USER_PLUGIN "$XDG_DATA_HOME"/bundle
+    set -x BUNDLE_USER_CONFIG $XDG_CONFIG_HOME/bundle
+    set -x BUNDLE_USER_CACHE  $XDG_CACHE_HOME/bundle
+    set -x BUNDLE_USER_PLUGIN $XDG_DATA_HOME/bundle
 
     # node
-    set -x NODE_REPL_HISTORY "$XDG_DATA_HOME"/node_repl_history
+    set -x NODE_REPL_HISTORY $XDG_DATA_HOME/node_repl_history
 
     # VSCode
-    # set -x VSCODE_EXTENSIONS "$XDG_DATA_HOME"/vscode/extensions
+    # set -x VSCODE_EXTENSIONS $XDG_DATA_HOME/vscode/extensions
 
     # rbenv
     # https://github.com/rbenv/rbenv/issues/811
-    set -x RBENV_ROOT "$XDG_DATA_HOME"/rbenv
+    set -x RBENV_ROOT $XDG_DATA_HOME/rbenv
 
     # zsh
-    set -x ZDOTDIR "$XDG_CONFIG_HOME"/zsh
+    set -x ZDOTDIR $XDG_CONFIG_HOME/zsh
 
     # cargo (Rust)
-    set -x CARGO_HOME "$XDG_DATA_HOME"/cargo
+    set -x CARGO_HOME $XDG_DATA_HOME/cargo
 
     # Docker
-    set -x DOCKER_CONFIG "$XDG_CONFIG_HOME"/docker
+    set -x DOCKER_CONFIG $XDG_CONFIG_HOME/docker
 
     # Bun (bun.sh)
-    set -x BUN_INSTALL_CACHE_DIR "$XDG_CACHE_HOME"/bun
+    set -x BUN_INSTALL_CACHE_DIR $XDG_CACHE_HOME/bun

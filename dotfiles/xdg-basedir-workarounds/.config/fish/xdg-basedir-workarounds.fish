@@ -12,9 +12,6 @@
 
 ## XDG workarounds for specific programs.
 
-    # TODO: Remove if https://github.com/facebook/PathPicker/issues/269 is fixed.
-    set -x FPP_DIR $XDG_DATA_HOME/fpp/
-
     set -x LESSHISTFILE $XDG_DATA_HOME/lesshst
 
     # GnPG

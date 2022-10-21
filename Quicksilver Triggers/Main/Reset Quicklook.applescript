@@ -1,0 +1,1 @@
+do shell script "qlmanage -r && qlmanage -r cache"

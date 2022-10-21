@@ -1,0 +1,2 @@
+-- This can be useful for a command that captures a keyboard shortcut without doing anything.
+-- Example: https://github.com/quicksilver/Quicksilver/issues/2566#issuecomment-894790027

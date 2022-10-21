@@ -1,0 +1,1 @@
+do shell script "curl 'http://tlb:8000/cgi-bin/web.py' --data 'command=off&args=[\"all\"]' > /dev/null 2>&1 & "

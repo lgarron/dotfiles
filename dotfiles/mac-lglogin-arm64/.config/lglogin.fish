@@ -23,7 +23,7 @@
     # launchctl setenv VSCODE_EXTENSIONS "$XDG_DATA_HOME"/vscode/extensions
 
     # zsh
-    set -x ZDOTDIR "$XDG_CONFIG_HOME"/zsh
+    set ZDOTDIR "$XDG_CONFIG_HOME"/zsh
     mkdir -p $ZDOTDIR
     launchctl setenv ZDOTDIR $ZDOTDIR
 

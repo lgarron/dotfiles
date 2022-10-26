@@ -191,9 +191,9 @@
 ### Editors
 
     # TODO: https://github.com/microsoft/vscode/issues/139634
-    set -x "VISUAL" (which code)" -w"
-    set -x "EDITOR" "code -w"
-    # set -x EDITOR "open -b com.microsoft.VSCode"
+    set -xg "VISUAL" (which code)" -w"
+    set -xg "EDITOR" "code -w"
+    # set -xg EDITOR "open -b com.microsoft.VSCode"
 
     abbr -a c "code"
     abbr -a xc "xargs code"
@@ -246,7 +246,7 @@
     abbr -a "sha512" "openssl dgst -sha512"
 
     abbr -a "yarn" "npx yarn"
-    set -x "EXPERIMENTAL_CUBING_JS_RELOAD_CHROME_MACOS" "1"
+    set -xg "EXPERIMENTAL_CUBING_JS_RELOAD_CHROME_MACOS" "1"
 
 ## Keyboard
 

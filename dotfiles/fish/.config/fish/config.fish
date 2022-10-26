@@ -297,14 +297,6 @@
         killall SystemUIServer
     end
 
-# From automatic additions:
-
-## google-cloud-sdk
-
-    if test -f "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.fish.inc"
-      source "/usr/local/Caskroom/google-cloud-sdk/latest/google-cloud-sdk/path.fish.inc"
-    end
-
 # Includes
 
     load_if_exists "git" $HOME/.config/fish/git.fish

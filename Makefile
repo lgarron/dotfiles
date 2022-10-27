@@ -19,6 +19,7 @@ mac-common: \
 	karabiner \
 	mac-git \
 	mac-minecraft \
+	mac-minecraft-mods \
 	quicksilver \
 	sd-card-backup \
 	xdg-basedir-workarounds \
@@ -68,6 +69,16 @@ PACKAGES += xdg-basedir-workarounds
 $(PACKAGES):
 	cd dotfiles && stow --no-folding --ignore=.DS_Store -t ~/ $@
 
+PACKAGES_FOLDING  =
+PACKAGES_FOLDING += karabiner
+PACKAGES_FOLDING += mac-minecraft-mods
+PACKAGES_FOLDING += quicksilver
+
+.PHONY: $(PACKAGES_FOLDING)
+$(PACKAGES_FOLDING):
+	# Link the entire folder to work around https://github.com/pqrs-org/Karabiner-Elements/issues/3248
+	cd dotfiles && stow --ignore=.DS_Store -t ~/ $@
+
 ########
 
 .PHONY: fish
@@ -76,18 +87,6 @@ fish:
 	mkdir -p ${HOME}/.data/fish
 	mkdir -p ${HOME}/.local/share
 	ln -sf ${HOME}/.data/fish ${HOME}/.local/share/
-
-
-.PHONY: karabiner
-karabiner:
-	# Link the entire folder to work around https://github.com/pqrs-org/Karabiner-Elements/issues/3248
-	cd dotfiles && stow --ignore=.DS_Store -t ~/ $@
-
-
-.PHONY: quicksilver
-quicksilver:
-	# Link the entire folder for Actions
-	cd dotfiles && stow --ignore=.DS_Store -t ~/ $@
 
 ########
 

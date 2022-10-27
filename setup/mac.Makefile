@@ -93,7 +93,7 @@ mac-defaults:
 .PHONY: mac-keyboard-shortcuts
 mac-keyboard-shortcuts:
 	# Global
-	${MAC_ADD_SHORTCUT} "NSGlobalDomain"            "Emoji & Symbols"          "^⌥⇧⌘R" # unset default
+	${MAC_ADD_SHORTCUT} "NSGlobalDomain"            "Emoji & Symbols"          "^⇧⌘ "
 	# Chrome
 	${MAC_ADD_SHORTCUT} "com.google.Chrome"         "Extensions"               "⇧⌘E"
 	${MAC_ADD_SHORTCUT} "com.google.Chrome.canary"  "Extensions"               "⇧⌘E"
@@ -111,7 +111,7 @@ mac-keyboard-shortcuts:
 	${MAC_ADD_SHORTCUT} "com.adobe.mas.lightroomCC" "Edit in Photoshop…"       "⇧⌘P"
 	${MAC_ADD_SHORTCUT} "com.apple.FinalCut"        "'HEVC (H.265) up to 4K…'" "⇧⌘E"
 	# Consistency with other programs
-	${MAC_ADD_SHORTCUT} "com.apple.contacts"        "Edit Card"                "⌘E"
+	${MAC_ADD_SHORTCUT} "com.apple.AddressBook"     "Edit Card"                "⌘E"
 	${MAC_ADD_SHORTCUT} "com.apple.Safari"          "Reload Page From Origin"  "⇧⌘R"
 	${MAC_ADD_SHORTCUT} "org.audacityteam.audacity" "Save Project As…"         "⇧⌘S"
 

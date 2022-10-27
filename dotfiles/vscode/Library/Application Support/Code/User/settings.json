@@ -1,12 +1,9 @@
 {
-  // Dynamic
+  /******** Dynamic ********/
   "editor.formatOnSave": true,
   "window.zoomLevel": 3,
-  // Main VSCode settings
+  /******** Main VSCode settings ********/
   "editor.formatOnPaste": false,
-  "formattingToggle.affects": [
-    "editor.formatOnSave"
-  ],
   "editor.tabSize": 2,
   "editor.renderWhitespace": "boundary",
   "editor.formatOnType": false,
@@ -21,7 +18,7 @@
   "editor.guides.bracketPairs": true,
   "editor.stickyScroll.enabled": true,
   "workbench.experimental.settingsProfiles.enabled": true,
-  // Window
+  /******** Window ********/
   "customWindowZoom.zoomLevelChangeValue": 0.25,
   "workbench.sideBar.location": "left",
   "workbench.startupEditor": "newUntitledFile",
@@ -31,7 +28,11 @@
   "terminal.integrated.tabs.location": "right",
   "terminal.integrated.macOptionIsMeta": true,
   "extensions.ignoreRecommendations": true,
-  // Formatting
+  /******** Formatting ********/
+  // https://marketplace.visualstudio.com/items?itemName=tombonnike.vscode-status-bar-format-toggle
+  "formattingToggle.affects": [
+    "editor.formatOnSave"
+  ],
   "[json]": {
     "editor.defaultFormatter": "vscode.json-language-features"
   },
@@ -51,30 +52,30 @@
   "[typescript]": {
     "editor.defaultFormatter": "rome.rome"
   },
-  // JavaScript
+  /******** JavaScript ********/
   "javascript.validate.enable": false,
   "javascript.updateImportsOnFileMove.enabled": "always",
-  // TypeScript
+  /******** TypeScript ********/
   "typescript.updateImportsOnFileMove.enabled": "always",
   "typescript.inlayHints.enumMemberValues.enabled": true,
   "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
   "typescript.inlayHints.propertyDeclarationTypes.enabled": true,
   "typescript.inlayHints.parameterTypes.enabled": true,
   "typescript.inlayHints.variableTypes.enabled": true,
-  // Go
+  /******** Go ********/
   "go.useLanguageServer": true,
   "go.toolsGopath": "/Users/lgarron/Code/gopath",
   "go.toolsManagement.autoUpdate": true,
-  // Remote SSH
+  /******** Remote SSH ********/
   "remote.SSH.useLocalServer": false,
   "remote.SSH.remotePlatform": {
     "Minitemp2": "macOS"
   },
-  // Codespaces
+  /******** Codespaces ********/
   "github.codespaces.createCodespaceInNewWindow": true,
-  // Live Share
+  /******** Live Share ********/
   "liveshare.showInStatusBar": "whileCollaborating",
-  // Terminal
+  /******** Terminal ********/
   "terminal.integrated.defaultProfile.linux": "fish",
   "terminal.integrated.defaultProfile.osx": "apple_fish",
   "terminal.integrated.profiles.osx": {
@@ -94,7 +95,7 @@
       ]
     }
   },
-  // GitLens
+  /******** GitLens ********/
   "gitlens.rebaseEditor.ordering": "asc",
   "githubPullRequests.pullBranch": "never",
   "workbench.editorAssociations": {

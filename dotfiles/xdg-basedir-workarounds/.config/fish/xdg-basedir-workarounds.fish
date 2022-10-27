@@ -71,6 +71,3 @@
 
     # Docker
     set -xg DOCKER_CONFIG $XDG_CONFIG_HOME/docker
-
-    # Bun (bun.sh)
-    set -xg BUN_INSTALL_CACHE_DIR $XDG_CACHE_HOME/bun

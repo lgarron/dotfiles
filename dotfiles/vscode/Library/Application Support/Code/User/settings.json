@@ -1,7 +1,7 @@
 {
   // Dynamic
-  "editor.formatOnSave": false,
-  "window.zoomLevel": 2.25,
+  "editor.formatOnSave": true,
+  "window.zoomLevel": 3,
   // Main VSCode settings
   "editor.formatOnPaste": false,
   "formattingToggle.affects": [

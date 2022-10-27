@@ -7,6 +7,7 @@
     abbr -a ml "make deploy"
     abbr -a mp "make publish"
     abbr -a mt "make test"
+    abbr -a mf "make format"
     abbr -a mcd "make clean dev"
     abbr -a mcb "make clean build"
 

@@ -4,7 +4,10 @@
     abbr -a mb "make build"
     abbr -a mc "make clean"
     abbr -a md "make dev"
-    abbr -a ml "make deploy"
+    abbr -a mdp "make deploy"
+    function ml
+        echo "Use: mdp"
+    end
     abbr -a mp "make publish"
     abbr -a mt "make test"
     abbr -a mf "make format"

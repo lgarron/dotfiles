@@ -14,7 +14,7 @@
 
 ## `node`
 
-    abbr -a niy "npm init -y"
+    abbr -a niy "npm init -y ; and jq --indent 2 '.type=\"module\" | del(.main)' package.json > /tmp/package.json ; and cat /tmp/package.json > package.json"
     abbr -a ni "npm install;"
     abbr -a nis "npm install --save"
     abbr -a nid "npm install --save-dev"

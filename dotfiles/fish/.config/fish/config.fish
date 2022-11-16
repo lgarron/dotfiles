@@ -41,7 +41,7 @@
 
     if [ "$MANUAL_RELOAD" = "true" ]
       _echo ""
-      _echo -n "🔄 Reloading "
+      _echo -n "🐟🔄 Reloading "
       set_color --bold
       _echo -n "fish"
       set_color normal

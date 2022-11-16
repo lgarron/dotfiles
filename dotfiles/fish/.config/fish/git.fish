@@ -40,6 +40,7 @@
     abbr -a gdno  "git diff --name-only"
     abbr -a gm    "git merge"
     abbr -a gma   "git merge --abort"
+    abbr -a gmc   "git merge --continue"
     abbr -a gmb "git merge-base main (git rev-parse --abbrev-ref HEAD)"
 
     # abbr -a gcfd  "git clean --force -d" # subsumed by `gclean`

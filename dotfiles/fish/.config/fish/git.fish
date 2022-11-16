@@ -50,6 +50,8 @@
     abbr -a gsoft "git reset --soft"
     abbr -a gr    "git rebase"
     abbr -a gri   "git rebase --interactive"
+    abbr -a gr3   "git rebase --interactive HEAD~3"
+    abbr -a gr9   "git rebase --interactive HEAD~9"
     abbr -a grm   "git rebase main"
     abbr -a gra   "git rebase --abort"
     abbr -a grc   "git rebase --continue"

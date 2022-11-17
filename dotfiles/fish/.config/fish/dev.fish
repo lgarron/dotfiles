@@ -31,6 +31,30 @@
     abbr -a "yarn" "npx yarn"
     set -xg "EXPERIMENTAL_CUBING_JS_RELOAD_CHROME_MACOS" "1"
 
+    function add-rome.json
+        if test -f rome.json
+            echo "Error: rome.json already exists!"
+        else
+            if ! test -f package.json
+                echo "Warning: no `package.json` observed in the current folder. Check if you're in the intended folder."
+            end
+            echo "Writing: rome.json"
+    echo '\
+{
+  "formatter": {
+    "indentStyle": "space",
+    "indentSize": 2
+  },
+  "linter": {
+    "enabled": true,
+    "rules": {
+      "recommended": true
+    }
+  }
+}' > rome.json
+        end
+    end
+
 ## Web
 
     # *h*ttps *h*eaders

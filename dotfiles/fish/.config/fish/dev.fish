@@ -39,8 +39,7 @@
                 echo "Warning: no `package.json` observed in the current folder. Check if you're in the intended folder."
             end
             echo "Writing: rome.json"
-    echo '\
-{
+    echo '{
   "formatter": {
     "indentStyle": "space",
     "indentSize": 2

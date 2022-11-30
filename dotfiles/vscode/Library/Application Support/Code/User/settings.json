@@ -100,5 +100,6 @@
   "githubPullRequests.pullBranch": "never",
   "workbench.editorAssociations": {
     "git-rebase-todo": "default"
-  }
+  },
+  "terminal.integrated.defaultProfile.windows": "Ubuntu (WSL)"
 }

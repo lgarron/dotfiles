@@ -58,5 +58,10 @@
     "prefix": "// rome-ignore format",
     "body": "// rome-ignore format($1): $2",
     "description": "Ignore a Rome format issue."
+  },
+  "is-defined": {
+    "scope": "javascript,typescript",
+    "body": "typeof (${0:$TM_SELECTED_TEXT}) !== \"undefined\"",
+    "description": "Test if a value is defined."
   }
 }

@@ -17,6 +17,12 @@
     "body": "document.querySelector(\"$0\")",
     "description": "document.querySelector"
   },
+  "document.querySelectorAll": {
+    "scope": "javascript,typescript",
+    "prefix": "dqa",
+    "body": "document.querySelectorAll(\"$0\")",
+    "description": "document.querySelectorAll"
+  },
   "DOMContentLoaded": {
     "scope": "javascript,typescript",
     "prefix": "DOMContentLoaded",

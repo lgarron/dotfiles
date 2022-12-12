@@ -138,6 +138,18 @@
         abbr -a gx "open -a GitX ."
     end
 
+    function rmbranch
+        set BRANCH $argv[1]
+        echo "Branch `$BRANCH` was at: "(git rev-parse $BRANCH)
+        git push origin :$BRANCH
+        git branch -D $BRANCH
+    end
+    complete -e rmbranch
+    complete -c rmbranch -f
+    complete -c rmbranch -a "(git branch --list -q)"
+
+### `tagpush`
+
     function rmtag
         set TAG $argv[1]
         git tag -d $TAG; or echo "Did not need to remove tag locally"
@@ -145,24 +157,38 @@
         git push origin :$TAG; or echo "Did not need to remove tag from origin"
     end
 
-    function retag
+    function tagpush-check
+        set VERSION (echo -n "v"; cat package.json | jq -r ".version")
+        set PREVIOUS_COMMIT_VERSION (echo -n "v"; git show HEAD~:package.json | jq -r ".version")
+        if test $VERSION = $PREVIOUS_COMMIT_VERSION
+            echo "`package.json` did not change since last commit. Halting `retagpush`." 1>&2
+            return
+        end
+    end
+
+    function tagpush-version
+        set TAG $argv[1]
+        git tag $TAG
+        echo "--------"
+        git push origin $TAG
+    end
+
+    function tagpush
+        tagpush-check || exit
+        tagpush-version (echo -n "v"; cat package.json | jq -r ".version")
+    end
+
+    function retagpush-version
         set TAG $argv[1]
         echo -n "Tag was previously at at commit: "
         git rev-parse $TAG; or echo "No old tag"
         echo "--------"
         rmtag $TAG
         echo "--------"
-        git tag $TAG
-        echo "--------"
-        git push origin $TAG
+        tagpush-version $TAG
     end
 
-    function retag-auto
-        set VERSION (echo -n "v"; cat package.json | jq -r ".version")
-        set PREVIOUS_COMMIT_VERSION (echo -n "v"; git show HEAD~:package.json | jq -r ".version")
-        if test $VERSION = $PREVIOUS_COMMIT_VERSION
-            echo "`package.json` did not change since last commit. Halting `retag-auto`." 1>&2
-            return
-        end
-        retag (echo -n "v"; cat package.json | jq -r ".version")
+    function retagpush
+        tagpush-check || exit
+        retagpush-version (echo -n "v"; cat package.json | jq -r ".version")
     end

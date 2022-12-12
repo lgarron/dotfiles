@@ -1,6 +1,10 @@
 // Place your key bindings in this file to override the defaults
 [
   {
+    "key": "ctrl+s",
+    "command": "editor.action.insertSnippet"
+  },
+  {
     "key": "`",
     "command": "editor.action.insertSnippet",
     "when": "editorHasSelection && editorTextFocus",

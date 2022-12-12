@@ -23,6 +23,8 @@
     abbr -a rmnm "rm -rf ./node_modules ; and npm install"
     abbr -a wtr "npx web-test-runner"
 
+    abbr -a "es2020" "npx esbuild --format=esm --target=es2020 --bundle --splitting --outdir=dist/esm-bundle"
+
     function bump-version
       # /usr/bin/env echo -n v
       npm version --no-git-tag-version $argv[1]

@@ -1159,6 +1159,29 @@
 			<key>source</key>
 			<string>QSFileSystemObjectSource</string>
 		</dict>
+		<dict>
+			<key>ID</key>
+			<string>56776AE4-A0D0-46C9-9100-9A71B9648332</string>
+			<key>children</key>
+			<array/>
+			<key>enabled</key>
+			<true/>
+			<key>modificationDate</key>
+			<real>692527532.12847495</real>
+			<key>name</key>
+			<string>Obisidan</string>
+			<key>settings</key>
+			<dict>
+				<key>folderDepth</key>
+				<integer>-1</integer>
+				<key>parser</key>
+				<string>QSDirectoryParser</string>
+				<key>path</key>
+				<string>~/Library/Mobile Documents/iCloud~md~obsidian/Documents</string>
+			</dict>
+			<key>source</key>
+			<string>QSFileSystemObjectSource</string>
+		</dict>
 	</array>
 	<key>enabledPresets</key>
 	<dict>
@@ -1228,6 +1251,8 @@
 		<true/>
 	</dict>
 	<key>omittedItems</key>
-	<array/>
+	<array>
+		<string>/Users/lgarron/Library/Mobile Documents/iCloud~md~obsidian/Documents</string>
+	</array>
 </dict>
 </plist>

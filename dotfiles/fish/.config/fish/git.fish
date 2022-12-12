@@ -80,6 +80,7 @@
     end
 
     abbr -a gf    "git freeze"
+    abbr -a gth   "git thaw"
 
     # "git push branch" to a remote that doesn't know about the branch yet.
     abbr -a gph "git push -u origin HEAD"

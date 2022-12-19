@@ -146,7 +146,6 @@
         git push origin :$BRANCH
         git branch -D $BRANCH
     end
-    complete -e rmbranch
     complete -c rmbranch -f
     complete -c rmbranch -a "(git branch --list -q)"
 

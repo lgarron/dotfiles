@@ -147,7 +147,8 @@
         git branch -D $BRANCH
     end
     complete -c rmbranch -f
-    complete -c rmbranch -a "(git branch --list -q)"
+    # From https://codybonney.com/getting-a-list-of-local-git-branches-without-using-git-branch/
+    complete -c rmbranch -a "(git for-each-ref --format '%(refname:short)' refs/heads/)"
 
 ### `tagpush`
 

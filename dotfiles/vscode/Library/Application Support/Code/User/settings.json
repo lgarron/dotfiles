@@ -69,7 +69,7 @@
   /******** Remote SSH ********/
   "remote.SSH.useLocalServer": false,
   "remote.SSH.remotePlatform": {
-    "Minitemp2": "macOS"
+    "Minitemp2.local": "macOS"
   },
   /******** Codespaces ********/
   "github.codespaces.createCodespaceInNewWindow": true,

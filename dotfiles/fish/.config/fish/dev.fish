@@ -31,6 +31,7 @@
     end
 
     abbr -a "yarn" "npx yarn"
+    # https://github.com/cubing/cubing.js/blob/3597fba81b65a1c87e42c4297a2d9ef5fdc3a8e3/script/build/targets.js#L44
     set -xg "EXPERIMENTAL_CUBING_JS_RELOAD_CHROME_MACOS" "1"
 
 ## Web

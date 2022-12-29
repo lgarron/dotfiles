@@ -37,3 +37,7 @@
 
     # *h*ttps *h*eaders
     abbr -a "hh" "https -ph"
+
+## Misc
+
+    abbr -a "cx" "chmod +x"

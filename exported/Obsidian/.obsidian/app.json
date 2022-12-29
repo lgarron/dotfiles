@@ -1,0 +1,8 @@
+{
+  "useMarkdownLinks": true,
+  "alwaysUpdateLinks": true,
+  "attachmentFolderPath": "Notes/Attachments",
+  "trashOption": "local",
+  "promptDelete": false,
+  "newFileLocation": "current"
+}

@@ -728,6 +728,7 @@
 			<array>
 				<string>com.blacktree.Quicksilver</string>
 				<string>com.google.Chrome</string>
+				<string>md.obsidian</string>
 			</array>
 			<key>applicationScopeType</key>
 			<integer>-1</integer>

@@ -95,11 +95,12 @@
       ]
     }
   },
+  /******** Windows (OS) ********/
+  "terminal.integrated.defaultProfile.windows": "Ubuntu (WSL)",
   /******** GitLens ********/
   "gitlens.rebaseEditor.ordering": "asc",
   "githubPullRequests.pullBranch": "never",
   "workbench.editorAssociations": {
     "git-rebase-todo": "default"
-  },
-  "terminal.integrated.defaultProfile.windows": "Ubuntu (WSL)"
+  }
 }

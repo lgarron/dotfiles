@@ -37,8 +37,8 @@ ao:2
 prioritizeChunkUpdates:0
 biomeBlendRadius:2
 renderClouds:"false"
-resourcePacks:["vanilla","Fabric Mods"]
-incompatibleResourcePacks:[]
+resourcePacks:["vanilla","Fabric Mods","file/VanillaTweaks_r948973 — debug.zip","file/VanillaTweaks_r232320 — lgarron.zip"]
+incompatibleResourcePacks:["file/VanillaTweaks_r948973 — debug.zip","file/VanillaTweaks_r232320 — lgarron.zip"]
 lastServer:
 lang:en_us
 soundDevice:""

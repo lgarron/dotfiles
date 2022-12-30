@@ -1,4 +1,14 @@
 {
+  "insert-current-date": [
+    {
+      "modifiers": [
+        "Alt",
+        "Ctrl",
+        "Mod"
+      ],
+      "key": "S"
+    }
+  ],
   "command-palette:open": [
     {
       "modifiers": [
@@ -14,32 +24,6 @@
         "Mod"
       ],
       "key": "P"
-    }
-  ],
-  "open-with-default-app:show": [
-    {
-      "modifiers": [
-        "Mod",
-        "Shift"
-      ],
-      "key": "R"
-    }
-  ],
-  "open-with-default-app:open": [
-    {
-      "modifiers": [
-        "Ctrl",
-        "Mod"
-      ],
-      "key": "Enter"
-    }
-  ],
-  "file-explorer:reveal-active-file": [
-    {
-      "modifiers": [
-        "Mod"
-      ],
-      "key": "R"
     }
   ]
 }

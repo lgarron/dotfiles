@@ -1,7 +1,7 @@
 {
   "accentColor": "#4285f4",
+  "textFontFamily": "Ubuntu",
   "interfaceFontFamily": "Ubuntu",
   "monospaceFontFamily": "Ubuntu Mono",
-  "baseFontSize": 16,
-  "theme": "system"
+  "baseFontSize": 18
 }

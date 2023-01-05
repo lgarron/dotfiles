@@ -161,10 +161,18 @@
 
     function tagpush-check
         set VERSION (echo -n "v"; cat package.json | jq -r ".version")
+        if test $VERSION = "v"
+            echo "No `package.json` to get version." 1>&2
+            return 1
+        end
+        if test $VERSION = "vnull"
+            echo "Could not get version from `package.json`." 1>&2
+            return 1
+        end
         set PREVIOUS_COMMIT_VERSION (echo -n "v"; git show HEAD~:package.json | jq -r ".version")
         if test $VERSION = $PREVIOUS_COMMIT_VERSION
             echo "`package.json` did not change since last commit. Halting `retagpush`." 1>&2
-            return
+            return 1
         end
     end
 
@@ -176,7 +184,7 @@
     end
 
     function tagpush
-        tagpush-check || exit
+        tagpush-check || return 1
         tagpush-version (echo -n "v"; cat package.json | jq -r ".version")
     end
 
@@ -191,6 +199,6 @@
     end
 
     function retagpush
-        tagpush-check || exit
+        tagpush-check || return 1
         retagpush-version (echo -n "v"; cat package.json | jq -r ".version")
     end

@@ -37,13 +37,33 @@
     abbr -a gco   "git checkout"
     abbr -a gcb   "git checkout -b"
     abbr -a gcp   "git cherry-pick"
-    abbr -a gcpa  "git cherry-pick --abort"
-    abbr -a gcpc  "git cherry-pick --continue"
     abbr -a gdno  "git diff --name-only"
     abbr -a gm    "git merge"
-    abbr -a gma   "git merge --abort"
-    abbr -a gmc   "git merge --continue"
     abbr -a gmb "git merge-base main (git rev-parse --abbrev-ref HEAD)"
+
+    function continue_function
+        set -l cmd (commandline -op)
+        if [ "$cmd[1]" = git ]
+            if [ "$cmd[2]" = rebase -o "$cmd[2]" = merge -o "$cmd[2]" = cherry-pick ] # <- (quotes on the variables, not the literals)
+                echo "--continue"
+            else
+                return 1
+            end
+        end
+    end
+    abbr -a c --position anywhere --function continue_function
+
+    function abort_function
+        set -l cmd (commandline -op)
+        if [ "$cmd[1]" = git ]
+            if [ "$cmd[2]" = rebase -o "$cmd[2]" = merge -o "$cmd[2]" = cherry-pick ] # <- (quotes on the variables, not the literals)
+                echo "--abort"
+            else
+                return 1
+            end
+        end
+    end
+    abbr -a a --position anywhere --function abort_function
 
     # abbr -a gcfd  "git clean --force -d" # subsumed by `gclean`
 
@@ -55,8 +75,6 @@
     abbr -a gr3   "git rebase --interactive HEAD~3"
     abbr -a gr9   "git rebase --interactive HEAD~9"
     abbr -a grm   "git rebase main"
-    abbr -a gra   "git rebase --abort"
-    abbr -a grc   "git rebase --continue"
     abbr -a grom  "git rebase origin/main"
     abbr -a groma "git rebase origin/master"
     abbr -a glast "echo \"Use `gsh`\""

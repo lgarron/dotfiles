@@ -196,7 +196,7 @@
         end
         return 1
     end
-    
+
     function _lga_define_subcommand_arg_expansion
         set expansion $argv[1]
         set main_command $argv[2]
@@ -210,18 +210,20 @@
         end
         return 1
     end
-    
-    function _lga_define_anysubcommand_arg_expansion
+
+    function _lga_define_exceptsubcommand_arg_expansion
         set expansion $argv[1]
         set main_command $argv[2]
+        set sub_commands $argv[3..-1]
         set -l cmd (commandline -op)
         if [ "$cmd[1]" = $main_command -a (count $cmd) -gt 2 ]
-            echo $expansion
-            return 0
+            if not contains -- "$cmd[2]" $sub_commands
+                echo $expansion
+                return 0
+            end
         end
         return 1
     end
-
 
 ### Editors
 

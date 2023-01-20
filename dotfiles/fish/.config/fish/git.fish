@@ -55,8 +55,8 @@
 
     # A lot of `git` commands take branch arguments, so we allow the expansion for all arguments.
     # But we define it first, so that the expansion of `m` can be superseded for specific commands (e.g. `git commit`)
-    function _lga_git_anysub_main_fn; _lga_define_anysubcommand_arg_expansion \
-        main git; end
+    function _lga_git_anysub_main_fn; _lga_define_exceptsubcommand_arg_expansion \
+        main git commit; end
     abbr -a _lga_git_anysub_main --regex m --position anywhere --function _lga_git_anysub_main_fn
 
 ### Subcommands
@@ -86,17 +86,17 @@
         "--interactive" git rebase; end
     abbr -a _lga_git_sub_rebase_interactive --regex i --position anywhere --function _lga_git_sub_rebase_interactive_fn
 
-    function _lga_git_sub_rebase_amend_fn; _lga_define_subcommand_arg_expansion \
+    function _lga_git_sub_commit_amend_fn; _lga_define_subcommand_arg_expansion \
         "--amend" git commit; end
-    abbr -a _lga_git_sub_rebase_amend --regex a --position anywhere --function _lga_git_sub_rebase_amend_fn
+    abbr -a _lga_git_sub_commit_amend --regex a --position anywhere --function _lga_git_sub_commit_amend_fn
 
-    function _lga_git_sub_rebase_no_edit_fn; _lga_define_subcommand_arg_expansion \
+    function _lga_git_sub_commit_no_edit_fn; _lga_define_subcommand_arg_expansion \
         "--no-edit" git commit; end
-    abbr -a _lga_git_sub_rebase_no_edit --regex ne --position anywhere --function _lga_git_sub_rebase_no_edit_fn
+    abbr -a _lga_git_sub_commit_no_edit --regex ne --position anywhere --function _lga_git_sub_commit_no_edit_fn
 
-    function _lga_git_sub_rebase_message_fn; _lga_define_subcommand_arg_expansion \
+    function _lga_git_sub_commit_message_fn; _lga_define_subcommand_arg_expansion \
         "--message \"%\"" git commit; end
-    abbr -a _lga_git_sub_rebase_message --regex m --position anywhere --function _lga_git_sub_rebase_message_fn \
+    abbr -a _lga_git_sub_commit_message --regex m --position anywhere --function _lga_git_sub_commit_message_fn \
         --set-cursor
 
     function _lga_commit_last_command

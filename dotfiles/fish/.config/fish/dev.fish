@@ -2,35 +2,17 @@
 
     abbr -a --position command m "make"
 
-    function _lg_complete_make_b_function
-        set -l cmd (commandline -op)
-        if [ "$cmd[1]" = make ]
-            echo "build"
-            return 0
-        end
-        return 1
-    end
-    abbr -a _lg_complete_make_b --regex b --position anywhere --function _lg_complete_make_b_function
+    function _lga_git_anyarg_make_build_fn; _lga_define_anyarg_expansion \
+        build make; end
+    abbr -a _lga_git_anyarg_make_build --regex b --position anywhere --function _lga_git_anyarg_make_build_fn
 
-    function _lg_complete_make_d_function
-        set -l cmd (commandline -op)
-        if [ "$cmd[1]" = make ]
-            echo "dev"
-            return 0
-        end
-        return 1
-    end
-    abbr -a _lg_complete_make_d --regex d --position anywhere --function _lg_complete_make_d_function
+    function _lga_git_anyarg_make_dev_fn; _lga_define_anyarg_expansion \
+        dev make; end
+    abbr -a _lga_git_anyarg_make_dev --regex d --position anywhere --function _lga_git_anyarg_make_dev_fn
 
-    function _lg_complete_make_c_function
-        set -l cmd (commandline -op)
-        if [ "$cmd[1]" = make ]
-            echo "clean"
-            return 0
-        end
-        return 1
-    end
-    abbr -a _lg_complete_make_c --regex c --position anywhere --function _lg_complete_make_c_function
+    function _lga_git_anyarg_make_clean_fn; _lga_define_anyarg_expansion \
+        clean make; end
+    abbr -a _lga_git_anyarg_make_clean --regex c --position anywhere --function _lga_git_anyarg_make_clean_fn
 
     abbr -a mb "make build"
     abbr -a mc "make clean"
@@ -65,23 +47,13 @@
     # https://github.com/cubing/cubing.js/blob/3597fba81b65a1c87e42c4297a2d9ef5fdc3a8e3/script/build/targets.js#L44
     set -xg "EXPERIMENTAL_CUBING_JS_RELOAD_CHROME_MACOS" "1"
 
-    function _lg_complete_npm_run_d_function
-        set -l cmd (commandline -op)
-        if [ "$cmd[1]" = npm ]
-            if contains -- "$cmd[2]" run; echo "dev"; return 0; end
-        end
-        return 1
-    end
-    abbr -a _lg_complete_npm_run_d --regex d --position anywhere --function _lg_complete_npm_run_d_function
+    function _lga_complete_npm_run_d_fn; _lga_define_subcommand_expansion \
+        dev npm run; end
+    abbr -a _lga_complete_npm_run_d --regex d --position anywhere --function _lga_complete_npm_run_d_fn
 
-    function _lg_complete_npm_run_b_function
-        set -l cmd (commandline -op)
-        if [ "$cmd[1]" = npm ]
-            if contains -- "$cmd[2]" run; echo "build"; return 0; end
-        end
-        return 1
-    end
-    abbr -a _lg_complete_npm_run_b --regex b --position anywhere --function _lg_complete_npm_run_b_function
+    function _lga_complete_npm_run_b_fn; _lga_define_subcommand_expansion \
+        build npm run; end
+    abbr -a _lga_complete_npm_run_b --regex b --position anywhere --function _lga_complete_npm_run_b_fn
 
 ## Web
 

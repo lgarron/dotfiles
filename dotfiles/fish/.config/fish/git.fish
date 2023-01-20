@@ -27,18 +27,19 @@
     abbr -a gst   "git stage"
     abbr -a g.    "git stage ."
     abbr -a gsp   "git stage --patch"
-    abbr -a gc    --set-cursor "git commit --message \"%\""
+    abbr -a gcm   --set-cursor "git commit --message \"%\""
+    abbr -a gc    --set-cursor "git commit"
     abbr -a gca   "git commit --amend"
     abbr -a gcane "git commit --amend --no-edit"
 
-    function _lg_complete_gcv
+    function _lga_gcv
         echo "git commit --message \""(pbpaste)
         echo ""
         echo "Release notes:"
         echo ""
         echo "- %\""
     end
-    abbr -a gcv --set-cursor --function _lg_complete_gcv
+    abbr -a gcv --set-cursor --function _lga_gcv
 
     abbr -a gb    "git branch"
     abbr -a gbd   "git branch -D"
@@ -50,70 +51,58 @@
     abbr -a gm    "git merge"
     abbr -a gmb "git merge-base main (git rev-parse --abbrev-ref HEAD)"
 
-    function _lg_complete_git_main_function
-        set -l cmd (commandline -op)
-        if [ "$cmd[1]" = git -a (count $cmd) -gt 2 ]; echo "main"; return 0; end
-        return 1
-    end
-    abbr -a _lg_complete_git_main --regex m --position anywhere --function _lg_complete_git_main_function
+### Branch names
 
-    function _lg_complete_git_merge_function
-        set -l cmd (commandline -op)
-        if [ "$cmd[1]" = git -a (count $cmd) -eq 2 -a "$cmd[2]" = m ]; echo "merge"; return 0; end
-        return 1
-    end
-    abbr -a _lg_complete_git_merge --regex m --position anywhere --function _lg_complete_git_merge_function
+    # A lot of `git` commands take branch arguments, so we allow the expansion for all arguments.
+    # But we define it first, so that the expansion of `m` can be superseded for specific commands (e.g. `git commit`)
+    function _lga_git_anysub_main_fn; _lga_define_anysubcommand_arg_expansion \
+        main git; end
+    abbr -a _lga_git_anysub_main --regex m --position anywhere --function _lga_git_anysub_main_fn
+
+### Subcommands
+
+    function _lga_git_merge_fn; _lga_define_subcommand_expansion \
+        merge git m; end
+    abbr -a _lga_git_merge --regex m --position anywhere --function _lga_git_merge_fn
+
+### Subcommand arguments: re-entrant (rebase merge cherry-pick)
 
     set -g git_reentrant rebase merge cherry-pick
-    function _lg_complete_git_reentrant_a_function
-        set -l cmd (commandline -op)
-        if [ "$cmd[1]" = git ]
-            if contains -- "$cmd[2]" $git_reentrant; echo "--abort"; return 0; end
-        end
-        return 1
-    end
-    abbr -a _lg_complete_git_reentrant_a --regex a --position anywhere --function _lg_complete_git_reentrant_a_function
+    function _lga_git_sub_reentrant_abort_fn; _lga_define_subcommand_arg_expansion \
+        "--abort" git $git_reentrant; end
 
-    function _lg_complete_git_reentrant_c_function
-        set -l cmd (commandline -op)
-        if [ "$cmd[1]" = git ]
-            if contains -- "$cmd[2]" $git_reentrant; echo "--continue"; return 0; end
-        end
-        return 1
-    end
-    abbr -a _lg_complete_git_reentrant_c --regex c --position anywhere --function _lg_complete_git_reentrant_c_function
+    abbr -a _lga_git_sub_reentrant_abort --regex a --position anywhere --function _lga_git_sub_reentrant_abort_fn
+    function _lga_git_sub_reentrant_abort_fn; _lga_define_subcommand_arg_expansion \
+        "--abort" git $git_reentrant; end
+    abbr -a _lga_git_sub_reentrant_abort --regex a --position anywhere --function _lga_git_sub_reentrant_abort_fn
 
-    function _lg_complete_git_rebase_i_function
-        set -l cmd (commandline -op)
-        if [ "$cmd[1]" = git ]
-            if contains -- "$cmd[2]" rebase; echo "--interactive"; return 0; end
-        end
-        return 1
-    end
-    abbr -a _lg_complete_git_rebase_i --regex i --position anywhere --function _lg_complete_git_rebase_i_function
+    function _lga_git_sub_reentrant_abort_fn; _lga_define_subcommand_arg_expansion \
+        "--abort" git $git_reentrant; end
+    abbr -a _lga_git_sub_reentrant_abort --regex a --position anywhere --function _lga_git_sub_reentrant_abort_fn
 
-    function _lg_complete_git_commit_a_function
-        set -l cmd (commandline -op)
-        if [ "$cmd[1]" = git ]
-            if contains -- "$cmd[2]" commit; echo "--amend"; return 0; end
-        end
-        return 1
-    end
-    abbr -a _lg_complete_git_commit_a --regex c --position anywhere --function _lg_complete_git_commit_a_function
+### Subcommand arguments: others
 
-    function _lg_complete_git_commit_ne_function
-        set -l cmd (commandline -op)
-        if [ "$cmd[1]" = git ]
-            if contains -- "$cmd[2]" commit; echo "--no-edit"; return 0; end
-        end
-        return 1
-    end
-    abbr -a _lg_complete_git_commit_ne --regex ne --position anywhere --function _lg_complete_git_commit_ne_function
+    function _lga_git_sub_rebase_interactive_fn; _lga_define_subcommand_arg_expansion \
+        "--interactive" git rebase; end
+    abbr -a _lga_git_sub_rebase_interactive --regex i --position anywhere --function _lga_git_sub_rebase_interactive_fn
 
-    function commit_last_command
+    function _lga_git_sub_rebase_amend_fn; _lga_define_subcommand_arg_expansion \
+        "--amend" git commit; end
+    abbr -a _lga_git_sub_rebase_amend --regex a --position anywhere --function _lga_git_sub_rebase_amend_fn
+
+    function _lga_git_sub_rebase_no_edit_fn; _lga_define_subcommand_arg_expansion \
+        "--no-edit" git commit; end
+    abbr -a _lga_git_sub_rebase_no_edit --regex ne --position anywhere --function _lga_git_sub_rebase_no_edit_fn
+
+    function _lga_git_sub_rebase_message_fn; _lga_define_subcommand_arg_expansion \
+        "--message \"%\"" git commit; end
+    abbr -a _lga_git_sub_rebase_message --regex m --position anywhere --function _lga_git_sub_rebase_message_fn \
+        --set-cursor
+
+    function _lga_commit_last_command
         echo git commit --message "\"`$history[1]`\""
     end
-    abbr -a gc!! --position anywhere --function commit_last_command
+    abbr -a gc!! --position anywhere --function _lga_commit_last_command
 
     # abbr -a gcfd  "git clean --force -d" # subsumed by `gclean`
 

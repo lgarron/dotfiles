@@ -172,6 +172,57 @@
         cd $argv[1]
     end
 
+### `lga` (`lgarron` abbreviations)
+
+    function _lga_define_anyarg_expansion
+        set expansion $argv[1]
+        set main_command $argv[2]
+        set -l cmd (commandline -op)
+        if [ "$cmd[1]" = $main_command ]
+            echo $expansion
+            return 0
+        end
+        return 1
+    end
+
+    function _lga_define_subcommand_expansion
+        set expansion $argv[1]
+        set main_command $argv[2]
+        set sub_command_abbreviation $argv[3]
+        set -l cmd (commandline -op)
+        if [ "$cmd[1]" = $main_command -a (count $cmd) -eq 2 -a "$cmd[2]" = $sub_command_abbreviation ]
+            echo $expansion
+            return 0
+        end
+        return 1
+    end
+    
+    function _lga_define_subcommand_arg_expansion
+        set expansion $argv[1]
+        set main_command $argv[2]
+        set sub_commands $argv[3..-1]
+        set -l cmd (commandline -op)
+        if [ "$cmd[1]" = $main_command ]
+            if contains -- "$cmd[2]" $sub_commands
+                echo $expansion
+                return 0
+            end
+        end
+        return 1
+    end
+    
+    function _lga_define_anysubcommand_arg_expansion
+        set expansion $argv[1]
+        set main_command $argv[2]
+        set -l cmd (commandline -op)
+        if [ "$cmd[1]" = $main_command -a (count $cmd) -gt 2 ]
+            echo $expansion
+            return 0
+        end
+        return 1
+    end
+
+
 ### Editors
 
     # TODO: https://github.com/microsoft/vscode/issues/139634
@@ -294,7 +345,7 @@
     function set-screenshot-dir
         set DIR $argv[1]
         echo-alternate-background "Setting screenshot dir to: " $DIR
-        defaults write com.apple.screencapture location $argv[1]
+        defaults write com.apple.screencapture location $DIR
         killall SystemUIServer
     end
 

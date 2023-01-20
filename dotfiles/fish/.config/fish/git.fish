@@ -27,9 +27,18 @@
     abbr -a gst   "git stage"
     abbr -a g.    "git stage ."
     abbr -a gsp   "git stage --patch"
-    abbr -a gc    "git commit --message"
+    abbr -a gc    --set-cursor "git commit --message \"%\""
     abbr -a gca   "git commit --amend"
     abbr -a gcane "git commit --amend --no-edit"
+
+    function _lg_complete_gcv
+        echo "git commit --message \""(pbpaste)
+        echo ""
+        echo "Release notes:"
+        echo ""
+        echo "- %\""
+    end
+    abbr -a gcv --set-cursor --function _lg_complete_gcv
 
     abbr -a gb    "git branch"
     abbr -a gbd   "git branch -D"
@@ -41,29 +50,70 @@
     abbr -a gm    "git merge"
     abbr -a gmb "git merge-base main (git rev-parse --abbrev-ref HEAD)"
 
-    function continue_function
+    function _lg_complete_git_main_function
         set -l cmd (commandline -op)
-        if [ "$cmd[1]" = git ]
-            if [ "$cmd[2]" = rebase -o "$cmd[2]" = merge -o "$cmd[2]" = cherry-pick ] # <- (quotes on the variables, not the literals)
-                echo "--continue"
-            else
-                return 1
-            end
-        end
+        if [ "$cmd[1]" = git -a (count $cmd) -gt 2 ]; echo "main"; return 0; end
+        return 1
     end
-    abbr -a c --position anywhere --function continue_function
+    abbr -a _lg_complete_git_main --regex m --position anywhere --function _lg_complete_git_main_function
 
-    function abort_function
+    function _lg_complete_git_merge_function
+        set -l cmd (commandline -op)
+        if [ "$cmd[1]" = git -a (count $cmd) -eq 2 -a "$cmd[2]" = m ]; echo "merge"; return 0; end
+        return 1
+    end
+    abbr -a _lg_complete_git_merge --regex m --position anywhere --function _lg_complete_git_merge_function
+
+    set -g git_reentrant rebase merge cherry-pick
+    function _lg_complete_git_reentrant_a_function
         set -l cmd (commandline -op)
         if [ "$cmd[1]" = git ]
-            if [ "$cmd[2]" = rebase -o "$cmd[2]" = merge -o "$cmd[2]" = cherry-pick ] # <- (quotes on the variables, not the literals)
-                echo "--abort"
-            else
-                return 1
-            end
+            if contains -- "$cmd[2]" $git_reentrant; echo "--abort"; return 0; end
         end
+        return 1
     end
-    abbr -a a --position anywhere --function abort_function
+    abbr -a _lg_complete_git_reentrant_a --regex a --position anywhere --function _lg_complete_git_reentrant_a_function
+
+    function _lg_complete_git_reentrant_c_function
+        set -l cmd (commandline -op)
+        if [ "$cmd[1]" = git ]
+            if contains -- "$cmd[2]" $git_reentrant; echo "--continue"; return 0; end
+        end
+        return 1
+    end
+    abbr -a _lg_complete_git_reentrant_c --regex c --position anywhere --function _lg_complete_git_reentrant_c_function
+
+    function _lg_complete_git_rebase_i_function
+        set -l cmd (commandline -op)
+        if [ "$cmd[1]" = git ]
+            if contains -- "$cmd[2]" rebase; echo "--interactive"; return 0; end
+        end
+        return 1
+    end
+    abbr -a _lg_complete_git_rebase_i --regex i --position anywhere --function _lg_complete_git_rebase_i_function
+
+    function _lg_complete_git_commit_a_function
+        set -l cmd (commandline -op)
+        if [ "$cmd[1]" = git ]
+            if contains -- "$cmd[2]" commit; echo "--amend"; return 0; end
+        end
+        return 1
+    end
+    abbr -a _lg_complete_git_commit_a --regex c --position anywhere --function _lg_complete_git_commit_a_function
+
+    function _lg_complete_git_commit_ne_function
+        set -l cmd (commandline -op)
+        if [ "$cmd[1]" = git ]
+            if contains -- "$cmd[2]" commit; echo "--no-edit"; return 0; end
+        end
+        return 1
+    end
+    abbr -a _lg_complete_git_commit_ne --regex ne --position anywhere --function _lg_complete_git_commit_ne_function
+
+    function commit_last_command
+        echo git commit --message "\"`$history[1]`\""
+    end
+    abbr -a gc!! --position anywhere --function commit_last_command
 
     # abbr -a gcfd  "git clean --force -d" # subsumed by `gclean`
 

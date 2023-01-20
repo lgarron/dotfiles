@@ -1,6 +1,37 @@
 ## `dev`
 
-    abbr -a m "make"
+    abbr -a --position command m "make"
+
+    function _lg_complete_make_b_function
+        set -l cmd (commandline -op)
+        if [ "$cmd[1]" = make ]
+            echo "build"
+            return 0
+        end
+        return 1
+    end
+    abbr -a _lg_complete_make_b --regex b --position anywhere --function _lg_complete_make_b_function
+
+    function _lg_complete_make_d_function
+        set -l cmd (commandline -op)
+        if [ "$cmd[1]" = make ]
+            echo "dev"
+            return 0
+        end
+        return 1
+    end
+    abbr -a _lg_complete_make_d --regex d --position anywhere --function _lg_complete_make_d_function
+
+    function _lg_complete_make_c_function
+        set -l cmd (commandline -op)
+        if [ "$cmd[1]" = make ]
+            echo "clean"
+            return 0
+        end
+        return 1
+    end
+    abbr -a _lg_complete_make_c --regex c --position anywhere --function _lg_complete_make_c_function
+
     abbr -a mb "make build"
     abbr -a mc "make clean"
     abbr -a md "make dev"
@@ -33,6 +64,24 @@
     abbr -a "yarn" "npx yarn"
     # https://github.com/cubing/cubing.js/blob/3597fba81b65a1c87e42c4297a2d9ef5fdc3a8e3/script/build/targets.js#L44
     set -xg "EXPERIMENTAL_CUBING_JS_RELOAD_CHROME_MACOS" "1"
+
+    function _lg_complete_npm_run_d_function
+        set -l cmd (commandline -op)
+        if [ "$cmd[1]" = npm ]
+            if contains -- "$cmd[2]" run; echo "dev"; return 0; end
+        end
+        return 1
+    end
+    abbr -a _lg_complete_npm_run_d --regex d --position anywhere --function _lg_complete_npm_run_d_function
+
+    function _lg_complete_npm_run_b_function
+        set -l cmd (commandline -op)
+        if [ "$cmd[1]" = npm ]
+            if contains -- "$cmd[2]" run; echo "build"; return 0; end
+        end
+        return 1
+    end
+    abbr -a _lg_complete_npm_run_b --regex b --position anywhere --function _lg_complete_npm_run_b_function
 
 ## Web
 

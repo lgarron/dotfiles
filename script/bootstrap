@@ -20,7 +20,7 @@ function install_fish_3_6 {
   sudo apt install fish
 }
 
-fish --version | grep 3.5 && install_fish_3_6
+fish --version | grep "3.[012345]" && install_fish_3_6
 
 make fish
 

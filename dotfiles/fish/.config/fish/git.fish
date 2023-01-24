@@ -19,7 +19,7 @@
 
     abbr -a gs    "git status"
     abbr -a gl    "git log"
-    abbr -a glp   "git log --oneline --decorate=full --graph --remotes" # git log pretty, from http://www.xerxesb.com/2010/command-line-replacement-for-gitk/
+    abbr -a glp   "# Try: gl p"
 
     abbr -a gd    "git diff --color-words"
     abbr -a gdc   "git diff --color-words --cached"
@@ -27,10 +27,11 @@
     abbr -a gst   "git stage"
     abbr -a g.    "git stage ."
     abbr -a gsp   "git stage --patch"
-    abbr -a gcm   --set-cursor "git commit --message \"%\""
-    abbr -a gc    --set-cursor "git commit"
-    abbr -a gca   "git commit --amend"
-    abbr -a gcane "git commit --amend --no-edit"
+    abbr -a gcm   "# Try: gc m"
+    abbr -a cm    --set-cursor "git commit --message \"%\"" # Special shortened abbreviation
+    abbr -a gc    "git commit"
+    abbr -a gca   "# Try: gc a"
+    abbr -a gcane "# Try: gc a ne"
 
     function _lga_gcv
         echo "git commit --message \""(pbpaste)
@@ -42,16 +43,16 @@
     abbr -a gcv --set-cursor --function _lga_gcv
 
     abbr -a gb    "git branch"
-    abbr -a gbd   "git branch -D"
+    abbr -a gbd   "# Try g b d"
     abbr -a gbm   "git branch -m"
     abbr -a gco   "git checkout"
     abbr -a gcb   "git checkout -b"
     abbr -a gcp   "git cherry-pick"
     abbr -a gdno  "git diff --name-only"
     abbr -a gm    "git merge"
-    abbr -a gmb "git merge-base main (git rev-parse --abbrev-ref HEAD)"
+    abbr -a gmb   "git merge-base main (git rev-parse --abbrev-ref HEAD)"
 
-### Branch names
+### Ref names
 
     # A lot of `git` commands take branch arguments, so we allow the expansion for all arguments.
     # But we define it first, so that the expansion of `m` can be superseded for specific commands (e.g. `git commit`)
@@ -59,11 +60,41 @@
         main git commit; end
     abbr -a _lga_git_anysub_main --regex m --position anywhere --function _lga_git_anysub_main_fn
 
+    function _lga_git_anysub_origin_main_fn; _lga_define_exceptsubcommand_arg_expansion \
+        origin/main git; end
+    abbr -a _lga_git_anysub_origin_main --regex om --position anywhere --function _lga_git_anysub_origin_main_fn
+
+    function _lga_git_anysub_master_fn; _lga_define_exceptsubcommand_arg_expansion \
+        master git; end
+    abbr -a _lga_git_anysub_master --regex ms --position anywhere --function _lga_git_anysub_master_fn
+
+    function _lga_git_anysub_HEAD_fn; \
+        set str "HEAD"
+        if [ "$argv[1]" != "h" ]
+            set str $str"~"(string trim --left --chars=h $argv[1])"%"
+        end
+        _lga_define_exceptsubcommand_arg_expansion \
+        $str git; end
+    abbr -a _lga_git_anysub_HEAD --regex "h[0-9]*" --position anywhere --function _lga_git_anysub_HEAD_fn \
+        --set-cursor
+
 ### Subcommands
 
     function _lga_git_merge_fn; _lga_define_subcommand_expansion \
         merge git m; end
     abbr -a _lga_git_merge --regex m --position anywhere --function _lga_git_merge_fn
+
+    function _lga_git_rebase_fn; _lga_define_subcommand_expansion \
+        rebase git r; end
+    abbr -a _lga_git_rebase --regex r --position anywhere --function _lga_git_rebase_fn
+
+    function _lga_git_branch_fn; _lga_define_subcommand_expansion \
+        branch git b; end
+    abbr -a _lga_git_branch --regex b --position anywhere --function _lga_git_branch_fn
+
+    function _lga_git_push_fn; _lga_define_subcommand_expansion \
+        push git p; end
+    abbr -a _lga_git_push --regex p --position anywhere --function _lga_git_push_fn
 
 ### Subcommand arguments: re-entrant (rebase merge cherry-pick)
 
@@ -104,34 +135,69 @@
     end
     abbr -a gc!! --position anywhere --function _lga_commit_last_command
 
+    # git log pretty, from http://www.xerxesb.com/2010/command-line-replacement-for-gitk/
+    function _lga_git_sub_log_pretty_fn; _lga_define_subcommand_arg_expansion \
+        "--oneline --decorate=full --graph --remotes" git log; end
+    abbr -a _lga_git_sub_log_pretty --regex p --position anywhere --function _lga_git_sub_log_pretty_fn
+
+    function _lga_git_sub_push_origin_fn; _lga_define_subcommand_arg_expansion \
+        "origin" git push; end
+    abbr -a _lga_git_sub_push_origin --regex o --position anywhere --function _lga_git_sub_push_origin_fn
+
+    function _lga_git_sub_push_upstream_fn; _lga_define_subcommand_arg_expansion \
+        "upstream" git push; end
+    abbr -a _lga_git_sub_push_upstream --regex u --position anywhere --function _lga_git_sub_push_upstream_fn
+
+    function _lga_git_sub_push_tags_fn; _lga_define_subcommand_arg_expansion \
+        "--tags" git push; end
+    abbr -a _lga_git_sub_push_tags --regex t --position anywhere --function _lga_git_sub_push_tags_fn
+
+    function _lga_git_sub_push_force_with_lease_fn; _lga_define_subcommand_arg_expansion \
+        "--force-with-lease" git push; end
+    abbr -a _lga_git_sub_push_force_with_lease --regex fl --position anywhere --function _lga_git_sub_push_force_with_lease_fn
+
+    function _lga_git_sub_branch_delete_fn; _lga_define_subcommand_arg_expansion \
+        "-D" git branch; end
+    abbr -a _lga_git_sub_branch_delete --regex d --position anywhere --function _lga_git_sub_branch_delete_fn
+
+    function _lga_git_sub_tag_delete_fn; _lga_define_subcommand_arg_expansion \
+        "-d" git tag; end
+    abbr -a _lga_git_sub_tag_delete --regex d --position anywhere --function _lga_git_sub_tag_delete_fn
+
+    function _lga_git_sub_merge_no_ff_fn; _lga_define_subcommand_arg_expansion \
+        "--no-ff" git merge; end
+    abbr -a _lga_git_sub_merge_no_ff --regex nff --position anywhere --function _lga_git_sub_merge_no_ff_fn
+
+    function _lga_git_sub_merge_ff_only_fn; _lga_define_subcommand_arg_expansion \
+        "--ff-only" git merge; end
+    abbr -a _lga_git_sub_merge_ff_only --regex ffo --position anywhere --function _lga_git_sub_merge_ff_only_fn
+
     # abbr -a gcfd  "git clean --force -d" # subsumed by `gclean`
 
     abbr -a grh   "git reset HEAD"
     abbr -a ghard "git reset --hard"
     abbr -a gsoft "git reset --soft"
-    abbr -a gr    "git rebase"
-    abbr -a gri   "git rebase --interactive"
-    abbr -a gr3   "git rebase --interactive HEAD~3"
-    abbr -a gr9   "git rebase --interactive HEAD~9"
-    abbr -a grm   "git rebase main"
-    abbr -a grom  "git rebase origin/main"
-    abbr -a groma "git rebase origin/master"
-    abbr -a glast "echo \"Use `gsh`\""
+    abbr -a gr    "# Try: g r"
+    abbr -a gri   "# Try: g r i"
+    abbr -a gr3   "# gr i h3"
+    abbr -a gr9   "# gr i h9"
+    abbr -a grm   "# Try: g r m"
+    abbr -a grom  "# Try: g r om"
     abbr -a gsh   "git show HEAD"
 
-    abbr -a nff "git merge --no-ff"
-    abbr -a ffo "git merge --ff-only"
+    abbr -a nff "# Try: g nff"
+    abbr -a ffo "# Try: g ffo"
 
     abbr -a gt   "git tag"
-    abbr -a gtd  "git tag -d"
+    abbr -a gtd  "# Try: gt d"
 
     abbr -a gv "gh repo view --web --branch (git rev-parse --abbrev-ref HEAD)"
 
     abbr -a gfp   "git fetch --prune"
     abbr -a gp    "git push"
-    abbr -a gpo   "git push origin"
-    abbr -a gpot  "git push origin --tags"
-    abbr -a gpfl  "git push --force-with-lease"
+    abbr -a gpo   "# Try: g p o"
+    abbr -a gpot  "# Try: g p o t"
+    abbr -a gpfl  "# Try: g p fl"
     abbr -a gu    "git pull"
     abbr -a grv   "git remote --verbose"
     function pr

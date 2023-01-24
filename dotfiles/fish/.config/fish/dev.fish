@@ -14,16 +14,36 @@
         clean make; end
     abbr -a _lga_git_anyarg_make_clean --regex c --position anywhere --function _lga_git_anyarg_make_clean_fn
 
-    abbr -a mb "make build"
-    abbr -a mc "make clean"
-    abbr -a md "make dev"
-    abbr -a mdp "make deploy"
-    abbr -a mp "make publish"
-    abbr -a mt "make test"
-    abbr -a ml "make lint"
-    abbr -a mf "make format"
-    abbr -a mcd "make clean dev"
-    abbr -a mcb "make clean build"
+    function _lga_git_anyarg_make_deploy_fn; _lga_define_anyarg_expansion \
+        deploy make; end
+    abbr -a _lga_git_anyarg_make_deploy --regex dp --position anywhere --function _lga_git_anyarg_make_deploy_fn
+
+    function _lga_git_anyarg_make_publish_fn; _lga_define_anyarg_expansion \
+        publish make; end
+    abbr -a _lga_git_anyarg_make_publish --regex p --position anywhere --function _lga_git_anyarg_make_publish_fn
+
+    function _lga_git_anyarg_make_test_fn; _lga_define_anyarg_expansion \
+        test make; end
+    abbr -a _lga_git_anyarg_make_test --regex t --position anywhere --function _lga_git_anyarg_make_test_fn
+
+    function _lga_git_anyarg_make_lint_fn; _lga_define_anyarg_expansion \
+        lint make; end
+    abbr -a _lga_git_anyarg_make_lint --regex l --position anywhere --function _lga_git_anyarg_make_lint_fn
+
+    function _lga_git_anyarg_make_format_fn; _lga_define_anyarg_expansion \
+        format make; end
+    abbr -a _lga_git_anyarg_make_format --regex f --position anywhere --function _lga_git_anyarg_make_format_fn
+
+    abbr -a mb "# Try: m b"
+    abbr -a mc "# Try: m c"
+    abbr -a md "# Try: m d"
+    abbr -a mdp "# Try: m dp"
+    abbr -a mp "# Try: m p"
+    abbr -a mt "# Try: m t"
+    abbr -a ml "# Try: m l"
+    abbr -a mf "# Try: m f"
+    abbr -a mcd "# Try: m c d"
+    abbr -a mcb "# Try: m c b"
 
 ## `node`
 

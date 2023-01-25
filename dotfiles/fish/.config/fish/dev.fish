@@ -67,11 +67,11 @@
     # https://github.com/cubing/cubing.js/blob/3597fba81b65a1c87e42c4297a2d9ef5fdc3a8e3/script/build/targets.js#L44
     set -xg "EXPERIMENTAL_CUBING_JS_RELOAD_CHROME_MACOS" "1"
 
-    function _lga_complete_npm_run_d_fn; _lga_define_subcommand_expansion \
+    function _lga_complete_npm_run_d_fn; _lga_define_subcommand_arg_expansion \
         dev npm run; end
     abbr -a _lga_complete_npm_run_d --regex d --position anywhere --function _lga_complete_npm_run_d_fn
 
-    function _lga_complete_npm_run_b_fn; _lga_define_subcommand_expansion \
+    function _lga_complete_npm_run_b_fn; _lga_define_subcommand_arg_expansion \
         build npm run; end
     abbr -a _lga_complete_npm_run_b --regex b --position anywhere --function _lga_complete_npm_run_b_fn
 

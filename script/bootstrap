@@ -8,6 +8,8 @@ set -euo pipefail
 cd "$(dirname "$0")"
 cd ..
 
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - # Temporary workaround for an expired Yarn certificate
+
 sudo add-apt-repository http://archive.ubuntu.com/ubuntu/ || echo "🤷" # *sigh* https://askubuntu.com/a/1132852 # TODO: Make this more portable across Debian OSes.
 sudo apt-get install -y fish stow
 
@@ -16,7 +18,7 @@ function install_fish_3_6 {
   # https://software.opensuse.org/download.html?project=shells%3Afish%3Arelease%3A3&package=fish
   echo 'deb http://download.opensuse.org/repositories/shells:/fish:/release:/3/Debian_11/ /' | sudo tee /etc/apt/sources.list.d/shells:fish:release:3.list
   curl -fsSL https://download.opensuse.org/repositories/shells:fish:release:3/Debian_11/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/shells_fish_release_3.gpg > /dev/null
-  # sudo apt update
+  sudo apt update
   sudo apt install --yes fish
 }
 

@@ -60,6 +60,57 @@
 		</dict>
 		<dict>
 			<key>ID</key>
+			<string>D489AE7F-4214-42F2-83E4-D52F1CE87893</string>
+			<key>children</key>
+			<array>
+				<dict>
+					<key>ID</key>
+					<string>DE8DE557-A781-4BCA-B160-39A44667590E</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>name</key>
+					<string>Safari.app</string>
+					<key>settings</key>
+					<dict>
+						<key>folderDepth</key>
+						<integer>1</integer>
+						<key>parser</key>
+						<string>QSDirectoryParser</string>
+						<key>path</key>
+						<string>/Applications/Safari.app</string>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
+				<dict>
+					<key>ID</key>
+					<string>111F357D-22C9-4436-AD7A-4614CEF57751</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>name</key>
+					<string>AirDrop.app</string>
+					<key>settings</key>
+					<dict>
+						<key>path</key>
+						<string>/System/Library/CoreServices/Finder.app/Contents/Applications/AirDrop.app</string>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
+			</array>
+			<key>enabled</key>
+			<true/>
+			<key>name</key>
+			<string>Apps</string>
+			<key>source</key>
+			<string>QSGroupObjectSource</string>
+		</dict>
+		<dict>
+			<key>ID</key>
 			<string>B45FA9D2-BFB2-4C45-B6B9-9B028D8ECCE1</string>
 			<key>children</key>
 			<array>
@@ -739,48 +790,21 @@
 			<array>
 				<dict>
 					<key>ID</key>
-					<string>DFFF279C-0118-4CD0-863D-3926A17227C9</string>
+					<string>E4650F11-80B7-4647-8D24-2A4FB2ABA059</string>
 					<key>children</key>
 					<array/>
 					<key>enabled</key>
 					<true/>
-					<key>modificationDate</key>
-					<real>639107810.71318603</real>
 					<key>name</key>
-					<string>Euclid Screenshots 2018</string>
+					<string>Germain Screenshots 2023</string>
 					<key>settings</key>
 					<dict>
 						<key>folderDepth</key>
 						<integer>1</integer>
-						<key>path</key>
-						<string>~/Dropbox/Screenshots/Euclid Screenshots/Euclid Screenshots 2018</string>
-					</dict>
-					<key>source</key>
-					<string>QSFileSystemObjectSource</string>
-				</dict>
-				<dict>
-					<key>ID</key>
-					<string>CFE9B21F-05FC-4051-9761-0472A74784DF</string>
-					<key>children</key>
-					<array/>
-					<key>enabled</key>
-					<true/>
-					<key>modificationDate</key>
-					<real>665572524.31803703</real>
-					<key>name</key>
-					<string>Screenshots</string>
-					<key>settings</key>
-					<dict>
-						<key>folderDepth</key>
-						<integer>2</integer>
-						<key>folderTypes</key>
-						<array>
-							<string>public.folder</string>
-						</array>
 						<key>parser</key>
 						<string>QSDirectoryParser</string>
 						<key>path</key>
-						<string>~/Google Drive/Screenshots</string>
+						<string>~/Dropbox (Maestral)/Screenshots/Germain Screenshots/Germain Screenshots 2023</string>
 					</dict>
 					<key>source</key>
 					<string>QSFileSystemObjectSource</string>
@@ -1140,27 +1164,6 @@
 		</dict>
 		<dict>
 			<key>ID</key>
-			<string>DE8DE557-A781-4BCA-B160-39A44667590E</string>
-			<key>children</key>
-			<array/>
-			<key>enabled</key>
-			<true/>
-			<key>name</key>
-			<string>Safari.app</string>
-			<key>settings</key>
-			<dict>
-				<key>folderDepth</key>
-				<integer>1</integer>
-				<key>parser</key>
-				<string>QSDirectoryParser</string>
-				<key>path</key>
-				<string>/Applications/Safari.app</string>
-			</dict>
-			<key>source</key>
-			<string>QSFileSystemObjectSource</string>
-		</dict>
-		<dict>
-			<key>ID</key>
 			<string>56776AE4-A0D0-46C9-9100-9A71B9648332</string>
 			<key>children</key>
 			<array/>
@@ -1188,7 +1191,7 @@
 		<key>QSPresetAddressBook</key>
 		<true/>
 		<key>QSPresetAllApplications</key>
-		<false/>
+		<true/>
 		<key>QSPresetBashHistory</key>
 		<false/>
 		<key>QSPresetClipboardContents</key>

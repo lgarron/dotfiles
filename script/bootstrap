@@ -8,7 +8,7 @@ set -euo pipefail
 cd "$(dirname "$0")"
 cd ..
 
-sudo apt-add-repository -r https://dl.yarnpkg.com/debian # Temporary workaround for an expired Yarn certificate
+curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add - # Workaround for an expired Yarn certificate
 
 sudo add-apt-repository http://archive.ubuntu.com/ubuntu/ || echo "🤷" # *sigh* https://askubuntu.com/a/1132852 # TODO: Make this more portable across Debian OSes.
 sudo apt-get install -y fish stow

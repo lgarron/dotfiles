@@ -30,8 +30,8 @@
     abbr -a cm    --set-cursor "git commit --message \"%" # Special shortened abbreviation
     abbr -a gc    "# Try: gcom / cm"
     abbr -a gcom  "git commit"
-    abbr -a gca   "# Try: gc a"
-    abbr -a gcane "# Try: gc ane"
+    abbr -a gca   "git commit --amend"
+    abbr -a gcane "# Try: gca ne"
 
     function _lga_gcv
         echo "git commit --message \""(pbpaste)
@@ -124,10 +124,6 @@
     function _lga_git_sub_commit_no_edit_fn; _lga_define_subcommand_arg_expansion \
         "--no-edit" git commit; end
     abbr -a _lga_git_sub_commit_no_edit --regex ne --position anywhere --function _lga_git_sub_commit_no_edit_fn
-
-    function _lga_git_sub_commit_no_edit_fn; _lga_define_subcommand_arg_expansion \
-        "--amend --no-edit" git commit; end
-    abbr -a _lga_git_sub_commit_no_edit --regex ane --position anywhere --function _lga_git_sub_commit_no_edit_fn
 
     function _lga_git_sub_commit_message_fn; _lga_define_subcommand_arg_expansion \
         "--message \"%\"" git commit; end

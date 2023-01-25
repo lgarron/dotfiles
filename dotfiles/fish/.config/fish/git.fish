@@ -130,10 +130,9 @@
     abbr -a _lga_git_sub_commit_message --regex m --position anywhere --function _lga_git_sub_commit_message_fn \
         --set-cursor
 
-    function _lga_commit_last_command
-        echo git commit --message "\"`$history[1]`\""
-    end
-    abbr -a gc!! --position anywhere --function _lga_commit_last_command
+    function _lga_git_sub_commit_last_command_fn; _lga_define_subcommand_arg_expansion \
+        "--message \"`"(string replace --all "\"" "\\\"" $history[1])"`\"" git commit; end
+    abbr -a _lga_git_sub_commit_last_command --regex !! --position anywhere --function _lga_git_sub_commit_last_command_fn
 
     # git log pretty, from http://www.xerxesb.com/2010/command-line-replacement-for-gitk/
     function _lga_git_sub_log_pretty_fn; _lga_define_subcommand_arg_expansion \

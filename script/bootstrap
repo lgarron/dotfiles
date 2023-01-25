@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 
-# set -euo pipefail
-# aaaaaaarrghhh
-set -uo pipefail
+set -euo pipefail
 
 # For Codespaces
 # https://docs.github.com/en/codespaces/customizing-your-codespace/personalizing-github-codespaces-for-your-account#dotfiles

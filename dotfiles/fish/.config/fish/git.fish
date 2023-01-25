@@ -31,7 +31,7 @@
     abbr -a cm    --set-cursor "git commit --message \"%\"" # Special shortened abbreviation
     abbr -a gc    "git commit"
     abbr -a gca   "# Try: gc a"
-    abbr -a gcane "# Try: gc a ne"
+    abbr -a gcane "# Try: gc ane"
 
     function _lga_gcv
         echo "git commit --message \""(pbpaste)
@@ -43,7 +43,7 @@
     abbr -a gcv --set-cursor --function _lga_gcv
 
     abbr -a gb    "git branch"
-    abbr -a gbd   "# Try g b d"
+    abbr -a gbd   "# Try: gb d"
     abbr -a gbm   "git branch -m"
     abbr -a gco   "git checkout"
     abbr -a gcb   "git checkout -b"
@@ -125,6 +125,10 @@
         "--no-edit" git commit; end
     abbr -a _lga_git_sub_commit_no_edit --regex ne --position anywhere --function _lga_git_sub_commit_no_edit_fn
 
+    function _lga_git_sub_commit_no_edit_fn; _lga_define_subcommand_arg_expansion \
+        "--amend --no-edit" git commit; end
+    abbr -a _lga_git_sub_commit_no_edit --regex ane --position anywhere --function _lga_git_sub_commit_no_edit_fn
+
     function _lga_git_sub_commit_message_fn; _lga_define_subcommand_arg_expansion \
         "--message \"%\"" git commit; end
     abbr -a _lga_git_sub_commit_message --regex m --position anywhere --function _lga_git_sub_commit_message_fn \
@@ -177,12 +181,12 @@
     abbr -a grh   "git reset HEAD"
     abbr -a ghard "git reset --hard"
     abbr -a gsoft "git reset --soft"
-    abbr -a gr    "# Try: g r"
-    abbr -a gri   "# Try: g r i"
+    abbr -a gr    "git rebase"
+    abbr -a gri   "# Try: gr i"
     abbr -a gr3   "# gr i h3"
     abbr -a gr9   "# gr i h9"
-    abbr -a grm   "# Try: g r m"
-    abbr -a grom  "# Try: g r om"
+    abbr -a grm   "# Try: gr m"
+    abbr -a grom  "# Try: gr om"
     abbr -a gsh   "git show HEAD"
 
     abbr -a nff "# Try: g nff"
@@ -195,9 +199,9 @@
 
     abbr -a gfp   "git fetch --prune"
     abbr -a gp    "git push"
-    abbr -a gpo   "# Try: g p o"
-    abbr -a gpot  "# Try: g p o t"
-    abbr -a gpfl  "# Try: g p fl"
+    abbr -a gpo   "# Try: gp o"
+    abbr -a gpot  "# Try: gp o t"
+    abbr -a gpfl  "# Try: gp fl"
     abbr -a gu    "git pull"
     abbr -a grv   "git remote --verbose"
     function pr

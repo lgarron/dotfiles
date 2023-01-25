@@ -14,7 +14,7 @@ cd ..
 # curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg > /tmp/pubkey.gpg
 # sudo cp /tmp/pubkey.gpg /usr/share/keyrings/yarn-archive-keyring.gpg
 
-sudo add-apt-repository --no-update http://archive.ubuntu.com/ubuntu/ || echo "🤷" # *sigh* https://askubuntu.com/a/1132852 # TODO: Make this more portable across Debian OSes.
+sudo add-apt-repository http://archive.ubuntu.com/ubuntu/ || echo "🤷" # *sigh* https://askubuntu.com/a/1132852 # TODO: Make this more portable across Debian OSes.
 sudo apt-get install -y fish stow
 
 function install_fish_3_6 {

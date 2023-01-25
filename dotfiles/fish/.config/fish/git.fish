@@ -27,9 +27,9 @@
     abbr -a gst   "git stage"
     abbr -a g.    "git stage ."
     abbr -a gsp   "git stage --patch"
-    abbr -a gcm   "# Try: gc m"
-    abbr -a cm    --set-cursor "git commit --message \"%\"" # Special shortened abbreviation
-    abbr -a gc    "git commit"
+    abbr -a cm    --set-cursor "git commit --message \"%" # Special shortened abbreviation
+    abbr -a gc    "# Try: gcom / cm"
+    abbr -a gcom  "git commit"
     abbr -a gca   "# Try: gc a"
     abbr -a gcane "# Try: gc ane"
 

@@ -1,5 +1,6 @@
-version:3120
+version:3218
 autoJump:false
+operatorItemsTab:false
 autoSuggestions:true
 chatColors:true
 chatLinks:true
@@ -33,12 +34,12 @@ guiScale:7
 particles:0
 maxFps:260
 graphicsMode:0
-ao:2
+ao:true
 prioritizeChunkUpdates:0
 biomeBlendRadius:2
 renderClouds:"false"
-resourcePacks:["vanilla","Fabric Mods","file/VanillaTweaks_r948973 — debug.zip","file/VanillaTweaks_r232320 — lgarron.zip"]
-incompatibleResourcePacks:["file/VanillaTweaks_r948973 — debug.zip","file/VanillaTweaks_r232320 — lgarron.zip"]
+resourcePacks:["vanilla","file/VanillaTweaks_r232320 — lgarron.zip","fabric"]
+incompatibleResourcePacks:["file/VanillaTweaks_r232320 — lgarron.zip"]
 lastServer:
 lang:en_us
 soundDevice:""
@@ -75,8 +76,9 @@ hideBundleTutorial:false
 syncChunkWrites:false
 showAutosaveIndicator:true
 allowServerListing:true
-chatPreview:1
 onlyShowSecureChat:false
+panoramaScrollSpeed:1.0
+telemetryOptInExtra:false
 key_key.attack:key.mouse.left
 key_key.use:key.mouse.right
 key_key.forward:key.keyboard.w

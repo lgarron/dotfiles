@@ -9,9 +9,10 @@
     abbr -a gd    "git diff --color-words"
     abbr -a gdc   "git diff --color-words --cached"
 
-    abbr -a gst   "git stage"
-    abbr -a g.    "git stage ."
-    abbr -a gsp   "git stage --patch"
+    abbr -a gst   "# Try: ga"
+    abbr -a ga   "git add"
+    abbr -a g.    "git add ."
+    abbr -a gsp   "# Try: ga p"
     abbr -a cm    --set-cursor "git commit --message \"%" # Special shortened abbreviation
     abbr -a gc    "# Try: gcom / cm"
     abbr -a gcom  "git commit"
@@ -143,6 +144,10 @@
     function _lga_git_sub_branch_delete_fn; _lga_define_subcommand_arg_expansion \
         "-D" git branch; end
     abbr -a _lga_git_sub_branch_delete --regex d --position anywhere --function _lga_git_sub_branch_delete_fn
+
+    function _lga_git_sub_add_patch_fn; _lga_define_subcommand_arg_expansion \
+        "--patch" git add; end
+    abbr -a _lga_git_sub_add_patch --regex p --position anywhere --function _lga_git_sub_add_patch_fn
 
     function _lga_git_sub_tag_delete_fn; _lga_define_subcommand_arg_expansion \
         "-d" git tag; end

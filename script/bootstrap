@@ -8,9 +8,6 @@ set -euo pipefail
 cd "$(dirname "$0")"
 cd ..
 
-# Workaround for an expired Yarn certificate
-rm -f /etc/apt/sources.list.d/yarn.list
-
 sudo add-apt-repository http://archive.ubuntu.com/ubuntu/ || echo "🤷" # *sigh* https://askubuntu.com/a/1132852 # TODO: Make this more portable across Debian OSes.
 sudo apt-get install -y fish stow
 

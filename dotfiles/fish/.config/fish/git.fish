@@ -156,8 +156,6 @@
         "--ff-only" git merge; end
     abbr -a _lga_git_sub_merge_ff_only --regex ffo --position anywhere --function _lga_git_sub_merge_ff_only_fn
 
-    # abbr -a gcfd  "git clean --force -d" # subsumed by `gclean`
-
     abbr -a grh   "git reset HEAD"
     abbr -a ghard "git reset --hard"
     abbr -a gsoft "git reset --soft"
@@ -237,10 +235,7 @@
     abbr -a ghash "git rev-parse HEAD"
     abbr -a gmessage "git log -1 --pretty=%B"
 
-    function gclean
-        echo "Use: `ga` (`git abandon`)"
-    end
-    abbr -a ga "git abandon"
+    abbr -a gab "git abandon"
 
     if which gitx > /dev/null
         abbr -a gx "gitx"

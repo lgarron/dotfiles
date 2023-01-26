@@ -19,13 +19,13 @@
     #
     # A lot of `git` commands take branch arguments, so we allow the expansion for all arguments.
     # But we define it first, so that the expansion of `m` can be superseded for specific commands (e.g. `git commit`)
-    function _lga_git_main_fn; _lga_define_exceptsubcommand_arg_expansion \ main git commit; end; abbr -a _lga_git_main --regex m --position anywhere --function _lga_git_main_fn
+    function _lga_git_main_fn; _lga_define_exceptsubcommand_arg main git commit; end; abbr -a _lga_git_main --regex m --position anywhere --function _lga_git_main_fn
 
     # om⎵ → origin/master
-    function _lga_git_origin_main_fn; _lga_define_exceptsubcommand_arg_expansion \ origin/main git; end; abbr -a _lga_git_origin_main --regex om --position anywhere --function _lga_git_origin_main_fn
+    function _lga_git_origin_main_fn; _lga_define_exceptsubcommand_arg origin/main git; end; abbr -a _lga_git_origin_main --regex om --position anywhere --function _lga_git_origin_main_fn
 
     # ms⎵ → master
-    function _lga_git_master_fn; _lga_define_exceptsubcommand_arg_expansion \ master git; end; abbr -a _lga_git_master --regex ms --position anywhere --function _lga_git_master_fn
+    function _lga_git_master_fn; _lga_define_exceptsubcommand_arg master git; end; abbr -a _lga_git_master --regex ms --position anywhere --function _lga_git_master_fn
 
     #   h⎵ → HEAD
     #  h1⎵ → HEAD~1
@@ -35,7 +35,7 @@
         if [ "$argv[1]" != "h" ]
             set str $str"~"(string trim --left --chars=h $argv[1])"%"
         end
-        _lga_define_exceptsubcommand_arg_expansion \ $str git;
+        _lga_define_exceptsubcommand_arg $str git;
     end
     abbr -a _lga_git_HEAD --regex "h[0-9]*" --position anywhere --function _lga_git_HEAD_fn --set-cursor
 
@@ -48,20 +48,21 @@
     abbr -a gsp "# Try: ga p"
 
     # git add p⎵ → git add --patch
-    function _lga_git_add_patch_fn; _lga_define_subcommand_arg_expansion \ "--patch" git add; end; abbr -a _lga_git_add_patch --regex p --position anywhere --function _lga_git_add_patch_fn
+    function _lga_git_add_patch_fn; _lga_define_subcommand_arg "--patch" git add; end; abbr -a _lga_git_add_patch --regex p --position anywhere --function _lga_git_add_patch_fn
 
 ### git branch
+
+    # git b⎵ → git branch
+    function _lga_git_branch_fn; _lga_define_subcommand branch git b; end; abbr -a _lga_git_branch --regex b --position anywhere --function _lga_git_branch_fn
 
     abbr -a gb  "git branch"
     abbr -a gbd "# Try: gb df"
     abbr -a gbm "# Try: gb m"
 
-    function _lga_git_branch_fn; _lga_define_subcommand_expansion \ branch git b; end; abbr -a _lga_git_branch --regex b --position anywhere --function _lga_git_branch_fn
-
     # git branch m⎵ → git branch --move
-    function _lga_git_branch_move_fn; _lga_define_subcommand_arg_expansion \ "--move" git branch; end; abbr -a _lga_git_branch_move --regex m --position anywhere --function _lga_git_branch_move_fn
+    function _lga_git_branch_move_fn; _lga_define_subcommand_arg "--move" git branch; end; abbr -a _lga_git_branch_move --regex m --position anywhere --function _lga_git_branch_move_fn
     # git branch d⎵ → git branch --delete --force (equivalent to: git branch -D)
-    function _lga_git_branch_delete_fn; _lga_define_subcommand_arg_expansion \ "--delete --force" git branch; end; abbr -a _lga_git_branch_delete --regex d --position anywhere --function _lga_git_branch_delete_fn
+    function _lga_git_branch_delete_fn; _lga_define_subcommand_arg "--delete --force" git branch; end; abbr -a _lga_git_branch_delete --regex d --position anywhere --function _lga_git_branch_delete_fn
 
 ### git checkout
 
@@ -81,10 +82,14 @@
     abbr -a gc              "# Try: gcom / cm"
     abbr -a gcane           "# Try: gca ne"
 
-    function _lga_git_commit_amend_fn; _lga_define_subcommand_arg_expansion \ "--amend" git commit; end; abbr -a _lga_git_commit_amend --regex a --position anywhere --function _lga_git_commit_amend_fn
-    function _lga_git_commit_no_edit_fn; _lga_define_subcommand_arg_expansion \ "--no-edit" git commit; end; abbr -a _lga_git_commit_no_edit --regex ne --position anywhere --function _lga_git_commit_no_edit_fn
-    function _lga_git_commit_message_fn; _lga_define_subcommand_arg_expansion \ "--message \"%\"" git commit; end; abbr -a _lga_git_commit_message --regex m --position anywhere --function _lga_git_commit_message_fn --set-cursor
-    function _lga_git_commit_last_command_fn; _lga_define_subcommand_arg_expansion \ "--message \"`"(string replace --all "\"" "\\\"" $history[1])"`\"" git commit; end; abbr -a _lga_git_commit_last_command --regex !! --position anywhere --function _lga_git_commit_last_command_fn
+    # git commit a⎵ → git commit --amend
+    function _lga_git_commit_amend_fn; _lga_define_subcommand_arg "--amend" git commit; end; abbr -a _lga_git_commit_amend --regex a --position anywhere --function _lga_git_commit_amend_fn
+    # git commit ne⎵ → git commit --no-edit
+    function _lga_git_commit_no_edit_fn; _lga_define_subcommand_arg "--no-edit" git commit; end; abbr -a _lga_git_commit_no_edit --regex ne --position anywhere --function _lga_git_commit_no_edit_fn
+    # git commit m⎵ → git commit  --message "%" ( TODO: remove the second space?)
+    function _lga_git_commit_message_fn; _lga_define_subcommand_arg "--message \"%\"" git commit; end; abbr -a _lga_git_commit_message --regex m --position anywhere --function _lga_git_commit_message_fn --set-cursor
+    # git commit !!⎵ → git commit  --message "`[last command]`" ( TODO: remove the second space?)
+    function _lga_git_commit_last_command_fn; _lga_define_subcommand_arg "--message \"`"(string replace --all "\"" "\\\"" $history[1])"`\"" git commit; end; abbr -a _lga_git_commit_last_command --regex !! --position anywhere --function _lga_git_commit_last_command_fn
 
     function js_version
         echo -n "v"; cat package.json | jq -r ".version"
@@ -114,12 +119,12 @@
     abbr -a glp "# Try: gl p"
 
     # git log pretty, from http://www.xerxesb.com/2010/command-line-replacement-for-gitk/
-    function _lga_git_log_pretty_fn; _lga_define_subcommand_arg_expansion \ "--oneline --decorate=full --graph --remotes" git log; end; abbr -a _lga_git_log_pretty --regex p --position anywhere --function _lga_git_log_pretty_fn
+    function _lga_git_log_pretty_fn; _lga_define_subcommand_arg "--oneline --decorate=full --graph --remotes" git log; end; abbr -a _lga_git_log_pretty --regex p --position anywhere --function _lga_git_log_pretty_fn
 
 ### git merge
 
     # git m⎵ → git merge
-    function _lga_git_merge_fn; _lga_define_subcommand_expansion \ merge git m; end; abbr -a _lga_git_merge --regex m --position anywhere --function _lga_git_merge_fn
+    function _lga_git_merge_fn; _lga_define_subcommand merge git m; end; abbr -a _lga_git_merge --regex m --position anywhere --function _lga_git_merge_fn
 
     abbr -a gm  "git merge"
     abbr -a gmb "git merge-base main (git rev-parse --abbrev-ref HEAD)"
@@ -128,47 +133,47 @@
     abbr -a ffo "# Try: gm ffo"
 
     # git merge nff⎵ → git merge --no-ff
-    function _lga_git_merge_no_ff_fn; _lga_define_subcommand_arg_expansion \ "--no-ff" git merge; end; abbr -a _lga_git_merge_no_ff --regex nff --position anywhere --function _lga_git_merge_no_ff_fn
+    function _lga_git_merge_no_ff_fn; _lga_define_subcommand_arg "--no-ff" git merge; end; abbr -a _lga_git_merge_no_ff --regex nff --position anywhere --function _lga_git_merge_no_ff_fn
     # git merge ffo⎵ → git merge --ff-only
-    function _lga_git_merge_ff_only_fn; _lga_define_subcommand_arg_expansion \ "--ff-only" git merge; end; abbr -a _lga_git_merge_ff_only --regex ffo --position anywhere --function _lga_git_merge_ff_only_fn
+    function _lga_git_merge_ff_only_fn; _lga_define_subcommand_arg "--ff-only" git merge; end; abbr -a _lga_git_merge_ff_only --regex ffo --position anywhere --function _lga_git_merge_ff_only_fn
 
 ### git pull
 
-    abbr -a gu    "git pull"
+    abbr -a gu "git pull"
 
 ### git push
 
     # git p⎵ → git push
-    function _lga_git_push_fn; _lga_define_subcommand_expansion \ push git p; end; abbr -a _lga_git_push --regex p --position anywhere --function _lga_git_push_fn
+    function _lga_git_push_fn; _lga_define_subcommand push git p; end; abbr -a _lga_git_push --regex p --position anywhere --function _lga_git_push_fn
 
     abbr -a gp   "git push"
     abbr -a gph  "git push -u origin HEAD" # "git push branch" to a remote that doesn't know about the branch yet.
     abbr -a gbak "git push -f --all bak"
     # Legacy
-    abbr -a gpo   "# Try: gp o"
-    abbr -a gpot  "# Try: gp o t"
-    abbr -a gpfl  "# Try: gp fl"
+    abbr -a gpo  "# Try: gp o"
+    abbr -a gpot "# Try: gp o t"
+    abbr -a gpfl "# Try: gp fl"
 
     # git push t⎵ → git push --tags
-    function _lga_git_push_tags_fn; _lga_define_subcommand_arg_expansion \ "--tags" git push; end; abbr -a _lga_git_push_tags --regex t --position anywhere --function _lga_git_push_tags_fn
+    function _lga_git_push_tags_fn; _lga_define_subcommand_arg "--tags" git push; end; abbr -a _lga_git_push_tags --regex t --position anywhere --function _lga_git_push_tags_fn
     # git push fl⎵ → git push --force-with-lease
-    function _lga_git_push_force_with_lease_fn; _lga_define_subcommand_arg_expansion \ "--force-with-lease" git push; end; abbr -a _lga_git_push_force_with_lease --regex fl --position anywhere --function _lga_git_push_force_with_lease_fn
+    function _lga_git_push_force_with_lease_fn; _lga_define_subcommand_arg "--force-with-lease" git push; end; abbr -a _lga_git_push_force_with_lease --regex fl --position anywhere --function _lga_git_push_force_with_lease_fn
 
 ### git rebase
 
     # git r⎵ → git rebase
-    function _lga_git_rebase_fn; _lga_define_subcommand_expansion \ rebase git r; end; abbr -a _lga_git_rebase --regex r --position anywhere --function _lga_git_rebase_fn
+    function _lga_git_rebase_fn; _lga_define_subcommand rebase git r; end; abbr -a _lga_git_rebase --regex r --position anywhere --function _lga_git_rebase_fn
 
-    abbr -a gr    "git rebase"
+    abbr -a gr   "git rebase"
     # Legacy
-    abbr -a gri   "# Try: gr i"
-    abbr -a gr3   "# Try: gr i h3"
-    abbr -a gr9   "# Try: gr i h9"
-    abbr -a grm   "# Try: gr m"
-    abbr -a grom  "# Try: gr om"
+    abbr -a gri  "# Try: gr i"
+    abbr -a gr3  "# Try: gr i h3"
+    abbr -a gr9  "# Try: gr i h9"
+    abbr -a grm  "# Try: gr m"
+    abbr -a grom "# Try: gr om"
 
     # git rebase i⎵ → git rebase --interactive
-    function _lga_git_rebase_interactive_fn; _lga_define_subcommand_arg_expansion \ "--interactive" git rebase; end; abbr -a _lga_git_rebase_interactive --regex i --position anywhere --function _lga_git_rebase_interactive_fn
+    function _lga_git_rebase_interactive_fn; _lga_define_subcommand_arg "--interactive" git rebase; end; abbr -a _lga_git_rebase_interactive --regex i --position anywhere --function _lga_git_rebase_interactive_fn
 
 ### git remot
 
@@ -195,7 +200,7 @@
     abbr -a gtd  "# Try: gt d"
 
     # git tag d⎵ → git tag --delete (equivalent to: git tag -D)
-    function _lga_git_tag_delete_fn; _lga_define_subcommand_arg_expansion \ "--delete" git tag; end; abbr -a _lga_git_tag_delete --regex d --position anywhere --function _lga_git_tag_delete_fn
+    function _lga_git_tag_delete_fn; _lga_define_subcommand_arg "--delete" git tag; end; abbr -a _lga_git_tag_delete --regex d --position anywhere --function _lga_git_tag_delete_fn
 
 ### Repo-sensitive subcommand arguments (shared)
 ###
@@ -207,9 +212,9 @@
         push
 
     # git push o⎵ → git push origin
-    function _lga_git_push_origin_fn; _lga_define_subcommand_arg_expansion \ "origin" git $git_subcommands_repo_sensitive; end; abbr -a _lga_git_push_origin --regex o --position anywhere --function _lga_git_push_origin_fn
+    function _lga_git_push_origin_fn; _lga_define_subcommand_arg "origin" git $git_subcommands_repo_sensitive; end; abbr -a _lga_git_push_origin --regex o --position anywhere --function _lga_git_push_origin_fn
     # git push u⎵ → git push upstream
-    function _lga_git_push_upstream_fn; _lga_define_subcommand_arg_expansion \ "upstream" git $git_subcommands_repo_sensitive; end; abbr -a _lga_git_push_upstream --regex u --position anywhere --function _lga_git_push_upstream_fn
+    function _lga_git_push_upstream_fn; _lga_define_subcommand_arg "upstream" git $git_subcommands_repo_sensitive; end; abbr -a _lga_git_push_upstream --regex u --position anywhere --function _lga_git_push_upstream_fn
 
 ### Re-entrant subcommand arguments (shared)
 ###
@@ -222,9 +227,10 @@
         merge \
         cherry-pick
 
-    function _lga_git_reentrant_abort_fn; _lga_define_subcommand_arg_expansion \ "--abort" git $git_subcommands_reentrant; end; abbr -a _lga_git_reentrant_abort --regex a --position anywhere --function _lga_git_reentrant_abort_fn
-
-    function _lga_git_reentrant_continue_fn; _lga_define_subcommand_arg_expansion \ "--continue" git $git_subcommands_reentrant; end; abbr -a _lga_git_reentrant_continue --regex a --position anywhere --function _lga_git_reentrant_continue_fn
+    # git rebase a⎵ →⎵git rebase --abort
+    function _lga_git_reentrant_abort_fn; _lga_define_subcommand_arg "--abort" git $git_subcommands_reentrant; end; abbr -a _lga_git_reentrant_abort --regex a --position anywhere --function _lga_git_reentrant_abort_fn
+    # git rebase c⎵ →⎵git rebase --continue
+    function _lga_git_reentrant_continue_fn; _lga_define_subcommand_arg "--continue" git $git_subcommands_reentrant; end; abbr -a _lga_git_reentrant_continue --regex a --position anywhere --function _lga_git_reentrant_continue_fn
 
 ## gh (GitHub CLI)
 

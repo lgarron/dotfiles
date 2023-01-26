@@ -174,7 +174,7 @@
 
 ### `lga` (`lgarron` abbreviations)
 
-    function _lga_define_anyarg_expansion
+    function _lga_define_anyarg
         set expansion $argv[1]
         set main_command $argv[2]
         set -l cmd (commandline -op)
@@ -185,7 +185,7 @@
         return 1
     end
 
-    function _lga_define_subcommand_expansion
+    function _lga_define_subcommand
         set expansion $argv[1]
         set main_command $argv[2]
         set sub_command_abbreviation $argv[3]
@@ -197,7 +197,7 @@
         return 1
     end
 
-    function _lga_define_subcommand_arg_expansion
+    function _lga_define_subcommand_arg
         set expansion $argv[1]
         set main_command $argv[2]
         set sub_commands $argv[3..-1]
@@ -211,7 +211,7 @@
         return 1
     end
 
-    function _lga_define_exceptsubcommand_arg_expansion
+    function _lga_define_exceptsubcommand_arg
         set expansion $argv[1]
         set main_command $argv[2]
         set sub_commands $argv[3..-1]

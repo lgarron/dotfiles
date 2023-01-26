@@ -105,9 +105,15 @@
 
 ### git diff
 
-    abbr -a gd   "git diff --color-words"
-    abbr -a gdc  "git diff --color-words --cached" # TODO
-    abbr -a gdno "git diff --name-only" # TODO
+    abbr -a gd   "git diff"
+    # Legacy
+    abbr -a gdc  "# Try: gd c"
+    abbr -a gdno "# Try: gd no"
+
+    # git diff c⎵ → git diff --cached
+    function _lga_git_diff_cached_fn; _lga_define_subcommand_arg "--cached" git diff; end; abbr -a _lga_git_diff_cached --regex c --position anywhere --function _lga_git_diff_cached_fn
+    # git diff no⎵ → git diff --name-only
+    function _lga_git_diff_name_only_fn; _lga_define_subcommand_arg "--name-only" git diff; end; abbr -a _lga_git_diff_name_only --regex no --position anywhere --function _lga_git_diff_name_only_fn
 
 ### git fetch
 

@@ -5,6 +5,7 @@
 [diff]
 [color]
 	ui = true
+	diff = always
 [credential]
 	helper = osxkeychain
 [push]

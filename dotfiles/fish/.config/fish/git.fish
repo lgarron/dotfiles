@@ -1,17 +1,13 @@
 ## Git
 
-    abbr -a g    "git"
+    abbr -a g "git"
 
 ### Helpers
 
     abbr -a gmessage "git log -1 --pretty=%B"
     abbr -a gbranch  "git rev-parse --abbrev-ref HEAD"
     abbr -a ghash    "git rev-parse HEAD"
-    abbr -a upstream "git rev-parse --abbrev-ref --symbolic-full-name \"@{upstream}\""
-
-    function pr
-        echo -n "pull/$argv[1]/head"
-    end
+    abbr -a gupstream "git rev-parse --abbrev-ref --symbolic-full-name \"@{upstream}\"" # TODO: remove?
 
 ### Ref name abbreviations
 
@@ -41,8 +37,8 @@
 
 ### git add
 
-    abbr -a ga  "git add"
-    abbr -a g.  "git add ."
+    abbr -a ga "git add"
+    abbr -a g. "git add ."
     # Legacy
     abbr -a gst "# Try: ga"
     abbr -a gsp "# Try: ga p"
@@ -66,21 +62,21 @@
 
 ### git checkout
 
-    abbr -a gco   "git checkout"
-    abbr -a gcb   "git checkout -b"
+    abbr -a gco "git checkout"
+    abbr -a gcb "git checkout -b"
 
 ### git cherry-pick
 
-    abbr -a gcp   "git cherry-pick"
+    abbr -a gcp "git cherry-pick"
 
 ### git commit
 
-    abbr -a gcom            "git commit"
-    abbr -a gca             "git commit --amend"
-    abbr -a cm --set-cursor "git commit --message \"%" # Special shortened abbreviation
+    abbr -a gcom              "git commit"
+    abbr -a gca               "git commit --amend"
+    abbr -a cm   --set-cursor "git commit --message \"%" # Special shortened abbreviation
     # Legacy
-    abbr -a gc              "# Try: gcom / cm"
-    abbr -a gcane           "# Try: gca ne"
+    abbr -a gc    "# Try: gcom / cm"
+    abbr -a gcane "# Try: gca ne"
 
     # git commit a⎵ → git commit --amend
     function _lga_git_commit_amend_fn; _lga_define_subcommand_arg "--amend" git commit; end; abbr -a _lga_git_commit_amend --regex a --position anywhere --function _lga_git_commit_amend_fn
@@ -101,11 +97,11 @@
         echo ""
         echo "- %\""
     end
-    abbr -a gcv --set-cursor --function _lga_gcv
+    abbr -a gcv --function _lga_gcv --set-cursor
 
 ### git diff
 
-    abbr -a gd   "git diff"
+    abbr -a gd "git diff"
     # Legacy
     abbr -a gdc  "# Try: gd c"
     abbr -a gdno "# Try: gd no"
@@ -117,7 +113,7 @@
 
 ### git fetch
 
-    abbr -a gfp   "git fetch --prune"
+    abbr -a gfp "git fetch --prune"
 
 ### git log
 
@@ -125,6 +121,7 @@
     abbr -a glp "# Try: gl p"
 
     # git log pretty, from http://www.xerxesb.com/2010/command-line-replacement-for-gitk/
+    # git log p⎵ → git log [several arguments for a nice, condensed output]
     function _lga_git_log_pretty_fn; _lga_define_subcommand_arg "--oneline --decorate=full --graph --remotes" git log; end; abbr -a _lga_git_log_pretty --regex p --position anywhere --function _lga_git_log_pretty_fn
 
 ### git merge
@@ -170,7 +167,7 @@
     # git r⎵ → git rebase
     function _lga_git_rebase_fn; _lga_define_subcommand rebase git r; end; abbr -a _lga_git_rebase --regex r --position anywhere --function _lga_git_rebase_fn
 
-    abbr -a gr   "git rebase"
+    abbr -a gr "git rebase"
     # Legacy
     abbr -a gri  "# Try: gr i"
     abbr -a gr3  "# Try: gr i h3"
@@ -193,17 +190,17 @@
 
 ### git show
 
-    abbr -a gsh   "git show HEAD"
+    abbr -a gsh "git show HEAD"
 
 ### git status
 
-    abbr -a gs    "git status"
+    abbr -a gs "git status"
 
 ### git tag
 
-    abbr -a gt   "git tag"
+    abbr -a gt "git tag"
     # Legacy
-    abbr -a gtd  "# Try: gt d"
+    abbr -a gtd "# Try: gt d"
 
     # git tag d⎵ → git tag --delete (equivalent to: git tag -D)
     function _lga_git_tag_delete_fn; _lga_define_subcommand_arg "--delete" git tag; end; abbr -a _lga_git_tag_delete --regex d --position anywhere --function _lga_git_tag_delete_fn

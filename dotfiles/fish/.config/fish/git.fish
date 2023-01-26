@@ -1,20 +1,5 @@
 ## Git
 
-    # # Core abbreviations
-    # abbr -a gs    "git status"
-    # abbr -a gl    "git log"
-    #
-    # abbr -a gd    "git diff --color-words"
-    # abbr -a gdc   "git diff --color-words --cached"
-    # abbr -a gdno  "git diff --name-only"
-    #
-    # abbr -a gst   "git stage"
-    # abbr -a grh   "git reset HEAD"
-    # abbr -a gc    "git commit --message"
-    # abbr -a gca   "git commit --amend"
-    #
-    # abbr -a gr    "git rebase"
-
     abbr -a g    "git"
 
     abbr -a gs    "git status"

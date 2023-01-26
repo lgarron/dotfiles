@@ -240,7 +240,8 @@
 ## gh (GitHub CLI)
 
     abbr -a gv "gh repo view --web --branch (git rev-parse --abbrev-ref HEAD)"
-    abbr -a gpr "gh pr view --web"
+    abbr -a gpr "# Try: gpv"
+    abbr -a gpv "gh pr view --web"
 
 ## git freeze (https://github.com/lgarron/git-freeze)
 

@@ -207,10 +207,12 @@
 
 ### Repo-sensitive subcommand arguments (shared)
 ###
+### - git fetch
 ### - git pull
 ### - git push
 
     set -g git_subcommands_repo_sensitive \
+        fetch \
         pull \
         push
 

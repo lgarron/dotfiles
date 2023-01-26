@@ -31,7 +31,9 @@
     launchctl setenv DOCKER_CONFIG "$XDG_CONFIG_HOME"/docker
 
     rm -rf $HOME/.cups
+    rm -rf $HOME/.gnupg
     rm -rf $HOME/.oracle_jre_usage
+    rm -rf $HOME/.step
 
 # Avoid Time Machine slowdown
 

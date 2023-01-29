@@ -114,6 +114,7 @@ mac-keyboard-shortcuts:
 	${MAC_ADD_SHORTCUT} "com.apple.AddressBook"     "Edit Card"                "⌘E"
 	${MAC_ADD_SHORTCUT} "com.apple.Safari"          "Reload Page From Origin"  "⇧⌘R"
 	${MAC_ADD_SHORTCUT} "org.audacityteam.audacity" "Save Project As…"         "⇧⌘S"
+	${MAC_ADD_SHORTCUT} "org.audacityteam.audacity" "Change Tempo…"            "⇧⌘T"
 
 .PHONY: mac-file-defaults
 mac-file-defaults:

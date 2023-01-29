@@ -82,6 +82,8 @@
     function _abbr_git_commit_amend_fn; _abbr_define_subcommand_arg "--amend" git commit; end; abbr -a _abbr_git_commit_amend --regex a --position anywhere --function _abbr_git_commit_amend_fn
     # git commit ne⎵ → git commit --no-edit
     function _abbr_git_commit_no_edit_fn; _abbr_define_subcommand_arg "--no-edit" git commit; end; abbr -a _abbr_git_commit_no_edit --regex ne --position anywhere --function _abbr_git_commit_no_edit_fn
+    # git commit ne⎵ → git commit --allow-empty
+    function _abbr_git_commit_allow_empty_fn; _abbr_define_subcommand_arg "--allow-empty" git commit; end; abbr -a _abbr_git_commit_allow_empty --regex ae --position anywhere --function _abbr_git_commit_allow_empty_fn
     # git commit m⎵ → git commit  --message "%" ( TODO: remove the second space?)
     function _abbr_git_commit_message_fn; _abbr_define_subcommand_arg "--message \"%\"" git commit; end; abbr -a _abbr_git_commit_message --regex m --position anywhere --function _abbr_git_commit_message_fn --set-cursor
     # git commit !!⎵ → git commit  --message "`[last command]`" ( TODO: remove the second space?)

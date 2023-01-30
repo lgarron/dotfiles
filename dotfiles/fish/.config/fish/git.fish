@@ -237,7 +237,7 @@
     # git rebase a⎵ →⎵git rebase --abort
     function _abbr_git_reentrant_abort_fn; _abbr_define_subcommand_arg "--abort" git $git_subcommands_reentrant; end; abbr -a _abbr_git_reentrant_abort --regex a --position anywhere --function _abbr_git_reentrant_abort_fn
     # git rebase c⎵ →⎵git rebase --continue
-    function _abbr_git_reentrant_continue_fn; _abbr_define_subcommand_arg "--continue" git $git_subcommands_reentrant; end; abbr -a _abbr_git_reentrant_continue --regex a --position anywhere --function _abbr_git_reentrant_continue_fn
+    function _abbr_git_reentrant_continue_fn; _abbr_define_subcommand_arg "--continue" git $git_subcommands_reentrant; end; abbr -a _abbr_git_reentrant_continue --regex c --position anywhere --function _abbr_git_reentrant_continue_fn
 
 ## gh (GitHub CLI)
 

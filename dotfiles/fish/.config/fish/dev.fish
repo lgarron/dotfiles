@@ -31,6 +31,7 @@
     abbr -a nid "npm install --save-dev"
     abbr -a nu "npm uninstall"
     abbr -a nr "npm run"
+    abbr -a nl "npm link"
 
     # npm run d⎵ → npm run dev
     function _abbr_npm_run_d_fn; _abbr_define_subcommand_arg dev npm run; end; abbr -a _abbr_npm_run_d --regex d --position anywhere --function _abbr_npm_run_d_fn

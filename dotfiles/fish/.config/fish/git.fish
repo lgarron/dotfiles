@@ -97,7 +97,7 @@
         echo ""
         echo "Release notes:"
         echo ""
-        echo "- %\""
+        echo "- %"
     end
     abbr -a gcv --function _abbr_gcv --set-cursor
 

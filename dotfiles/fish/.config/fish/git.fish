@@ -16,12 +16,12 @@
     # A lot of `git` commands take branch arguments, so we allow the expansion for all arguments.
     # But we define it first, so that the expansion of `m` can be superseded for specific commands (e.g. `git commit`)
     function _abbr_git_main_fn; _abbr_define_exceptsubcommand_arg main git commit; end; abbr -a _abbr_git_main --regex m --position anywhere --function _abbr_git_main_fn
-
-    # om⎵ → origin/master
+    # om⎵ → origin/main
     function _abbr_git_origin_main_fn; _abbr_define_exceptsubcommand_arg origin/main git; end; abbr -a _abbr_git_origin_main --regex om --position anywhere --function _abbr_git_origin_main_fn
-
     # ms⎵ → master
     function _abbr_git_master_fn; _abbr_define_exceptsubcommand_arg master git; end; abbr -a _abbr_git_master --regex ms --position anywhere --function _abbr_git_master_fn
+    # oms⎵ → origin/master
+    function _abbr_git_originmaster_fn; _abbr_define_exceptsubcommand_arg origin/master git; end; abbr -a _abbr_git_originmaster --regex oms --position anywhere --function _abbr_git_originmaster_fn
 
     #   h⎵ → HEAD
     #  h1⎵ → HEAD~1
@@ -84,10 +84,14 @@
     function _abbr_git_commit_no_edit_fn; _abbr_define_subcommand_arg "--no-edit" git commit; end; abbr -a _abbr_git_commit_no_edit --regex ne --position anywhere --function _abbr_git_commit_no_edit_fn
     # git commit ne⎵ → git commit --allow-empty
     function _abbr_git_commit_allow_empty_fn; _abbr_define_subcommand_arg "--allow-empty" git commit; end; abbr -a _abbr_git_commit_allow_empty --regex ae --position anywhere --function _abbr_git_commit_allow_empty_fn
-    # git commit m⎵ → git commit  --message "%" ( TODO: remove the second space?)
+    # git commit m⎵ → git commit --message "%" ( TODO: remove the second space?)
     function _abbr_git_commit_message_fn; _abbr_define_subcommand_arg "--message \"%\"" git commit; end; abbr -a _abbr_git_commit_message --regex m --position anywhere --function _abbr_git_commit_message_fn --set-cursor
-    # git commit !!⎵ → git commit  --message "`[last command]`" ( TODO: remove the second space?)
+    # git commit !!⎵ → git commit --message "`[last command]`" ( TODO: remove the second space?)
     function _abbr_git_commit_last_command_fn; _abbr_define_subcommand_arg "--message \"`"(string replace --all "\"" "\\\"" $history[1])"`\"" git commit; end; abbr -a _abbr_git_commit_last_command --regex !! --position anywhere --function _abbr_git_commit_last_command_fn
+    # git commit !!!⎵ → git commit --message "`[second-to-last command]`" ( TODO: remove the second space?)
+    function _abbr_git_commit_secondlast_command_fn; _abbr_define_subcommand_arg "--message \"`"(string replace --all "\"" "\\\"" $history[2])"`\"" git commit; end; abbr -a _abbr_git_commit_secondlast_command --regex !!! --position anywhere --function _abbr_git_commit_secondlast_command_fn
+    # git commit !!!!⎵ → git commit --message "`[third-to-last command]`" ( TODO: remove the second space?)
+    function _abbr_git_commit_thirdlast_command_fn; _abbr_define_subcommand_arg "--message \"`"(string replace --all "\"" "\\\"" $history[3])"`\"" git commit; end; abbr -a _abbr_git_commit_thirdlast_command --regex !!! --position anywhere --function _abbr_git_commit_thirdlast_command_fn
 
     function js_version
         echo -n "v"; cat package.json | jq -r ".version"

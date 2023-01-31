@@ -81,9 +81,6 @@
     abbr -a gcane "# Try: gca ne"
 
     abbr -a gg "git commit --amend --no-edit && git push --force-with-lease"
-    abbr -a ggg "git stage . &&
-git commit --amend --no-edit &&
-git push --force-with-lease"
     abbr -a gggg "git status && read -p \"echo \\\"Continue? \\\"\" &&
 git stage . &&
 git commit --amend --no-edit &&

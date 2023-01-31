@@ -25,4 +25,4 @@ fish --version | grep "3.[012345]" && install_fish_3_6
 make fish
 
 cd "$(dirname "$0")"
-./raw-git-freeze-install
+./install-git-commands

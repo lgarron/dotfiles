@@ -27,7 +27,20 @@
     # oms⎵ → origin/master
     function _abbr_git_originmaster_fn; _abbr_define_exceptsubcommand_arg origin/master git; end; abbr -a _abbr_git_originmaster --regex oms --position anywhere --function _abbr_git_originmaster_fn
     # ob⎵ → origin/(expansion of current branch name)
-    function _abbr_git_origincurrentbranch_fn; _abbr_define_exceptsubcommand_arg origin/(git rev-parse --abbrev-ref HEAD) git; end; abbr -a _abbr_git_origincurrentbranch --regex ob --position anywhere --function _abbr_git_origincurrentbranch_fn
+    function _abbr_git_origincurrentbranch_fn; _abbr_define_exceptsubcommand_arg origin/(git rev-parse --abbrev-ref HEAD) git; end; abbr -a _abbr_git_origincurrentbranch --regex ob --position anywhere --function _abbr_git_origincurrentbranch_f
+
+    # b-⎵ → (expansion of last branch name)
+    function _abbr_git_currentbranch_fn; _abbr_define_exceptsubcommand_arg (git rev-parse --abbrev-ref @{-1}) git; end; abbr -a _abbr_git_currentbranch --regex b- --position anywhere --function _abbr_git_currentbranch_fn
+    # TODO
+    # function _abbr_git_branchhist_fn; \
+    #     set ref "@"
+    #     if [ "$argv[1]" != "h" ]
+    #         set ref $ref"{-"(string trim --left --chars=b $argv[1])"}"
+    #     end
+    #     set expanded_branch (git rev-parse -- --abbrev-ref $ref)
+    #     _abbr_define_exceptsubcommand_arg $expanded_branch git;
+    # end
+    # abbr -a _abbr_git_branchhist --regex "b[0-9]*" --position anywhere --function _abbr_git_branchhist_fn --set-cursor
 
     #   h⎵ → HEAD
     #  h1⎵ → HEAD~1

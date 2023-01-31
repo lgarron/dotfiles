@@ -144,7 +144,10 @@ git push --force-with-lease"
 
 ### git fetch
 
-    abbr -a gfp "git fetch --prune"
+    abbr -a ge "git fetch"
+    abbr -a gep "git fetch --prune"
+    # Legacy
+    abbr -a gfp "# Try: gep"
 
 ### git log
 

@@ -267,28 +267,11 @@ git push --force-with-lease"
 
 ### dist
 
-    abbr -a dist "# Try: gdist"
-
-    # Distance between branches.
-    function gdist
-        set CURRENT (git rev-parse --abbrev-ref HEAD)
-        set OTHER $argv[1]
-
-        git rev-list --left-only --count $CURRENT...$OTHER | tr -d '\n'
-        echo -n " commit(s) on "
-        set_color -o
-        echo "$CURRENT"
-        set_color normal
-
-        git rev-list --right-only --count $CURRENT...$OTHER | tr -d '\n'
-        echo -n " commit(s) on "
-        set_color -o
-        echo "$OTHER"
-        set_color normal
-    end
+    abbr -a dist "git distance"
 
     complete --no-files \
-        --command gdist \
+        --command git \
+        --arguments distance \
         --arguments '(__fish_git_branches)'
 
 ## GitX

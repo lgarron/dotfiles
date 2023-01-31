@@ -80,6 +80,15 @@
     abbr -a gc    "# Try: gcom / cm"
     abbr -a gcane "# Try: gca ne"
 
+    abbr -a gg "git commit --amend --no-edit && git push --force-with-lease"
+    abbr -a ggg "git stage . &&
+git commit --amend --no-edit &&
+git push --force-with-lease"
+    abbr -a gggg "git status && read -p \"echo \\\"Continue? \\\"\" &&
+git stage . &&
+git commit --amend --no-edit &&
+git push --force-with-lease"
+
     # git commit a⎵ → git commit --amend
     function _abbr_git_commit_amend_fn; _abbr_define_subcommand_arg "--amend" git commit; end; abbr -a _abbr_git_commit_amend --regex a --position anywhere --function _abbr_git_commit_amend_fn
     # git commit ne⎵ → git commit --no-edit

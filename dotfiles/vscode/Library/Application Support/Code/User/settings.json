@@ -102,5 +102,8 @@
   "githubPullRequests.pullBranch": "never",
   "workbench.editorAssociations": {
     "git-rebase-todo": "default"
-  }
+  },
+  /******** CodeQL ********/
+  "codeQL.telemetry.enableTelemetry": false,
+  "codeQL.canary": true,
 }

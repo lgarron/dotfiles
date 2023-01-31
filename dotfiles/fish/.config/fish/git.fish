@@ -15,15 +15,19 @@
     #
     # A lot of `git` commands take branch arguments, so we allow the expansion for all arguments.
     # But we define it first, so that the expansion of `m` can be superseded for specific commands (e.g. `git commit`)
+    # We also explicitly exclude `git commit` as a known conflict, just in case.
     function _abbr_git_main_fn; _abbr_define_exceptsubcommand_arg main git commit; end; abbr -a _abbr_git_main --regex m --position anywhere --function _abbr_git_main_fn
-    # om⎵ → origin/main
-    function _abbr_git_origin_main_fn; _abbr_define_exceptsubcommand_arg origin/main git; end; abbr -a _abbr_git_origin_main --regex om --position anywhere --function _abbr_git_origin_main_fn
     # ms⎵ → master
     function _abbr_git_master_fn; _abbr_define_exceptsubcommand_arg master git; end; abbr -a _abbr_git_master --regex ms --position anywhere --function _abbr_git_master_fn
-    # oms⎵ → origin/master
-    function _abbr_git_originmaster_fn; _abbr_define_exceptsubcommand_arg origin/master git; end; abbr -a _abbr_git_originmaster --regex oms --position anywhere --function _abbr_git_originmaster_fn
     # b⎵ → (expansion of current branch name)
     function _abbr_git_currentbranch_fn; _abbr_define_exceptsubcommand_arg (git rev-parse --abbrev-ref HEAD) git; end; abbr -a _abbr_git_currentbranch --regex b --position anywhere --function _abbr_git_currentbranch_fn
+
+    # om⎵ → origin/main
+    function _abbr_git_origin_main_fn; _abbr_define_exceptsubcommand_arg origin/main git; end; abbr -a _abbr_git_origin_main --regex om --position anywhere --function _abbr_git_origin_main_fn
+    # oms⎵ → origin/master
+    function _abbr_git_originmaster_fn; _abbr_define_exceptsubcommand_arg origin/master git; end; abbr -a _abbr_git_originmaster --regex oms --position anywhere --function _abbr_git_originmaster_fn
+    # ob⎵ → origin/(expansion of current branch name)
+    function _abbr_git_origincurrentbranch_fn; _abbr_define_exceptsubcommand_arg origin/(git rev-parse --abbrev-ref HEAD) git; end; abbr -a _abbr_git_origincurrentbranch --regex ob --position anywhere --function _abbr_git_origincurrentbranch_fn
 
     #   h⎵ → HEAD
     #  h1⎵ → HEAD~1

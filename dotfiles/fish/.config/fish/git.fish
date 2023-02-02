@@ -27,7 +27,7 @@
     # oms⎵ → origin/master
     function _abbr_git_originmaster_fn; _abbr_define_exceptsubcommand_arg origin/master git; end; abbr -a _abbr_git_originmaster --regex oms --position anywhere --function _abbr_git_originmaster_fn
     # ob⎵ → origin/(expansion of current branch name)
-    function _abbr_git_origincurrentbranch_fn; _abbr_define_exceptsubcommand_arg origin/(git rev-parse --abbrev-ref HEAD) git; end; abbr -a _abbr_git_origincurrentbranch --regex ob --position anywhere --function _abbr_git_origincurrentbranch_f
+    function _abbr_git_origincurrentbranch_fn; _abbr_define_exceptsubcommand_arg origin/(git rev-parse --abbrev-ref HEAD) git; end; abbr -a _abbr_git_origincurrentbranch --regex ob --position anywhere --function _abbr_git_origincurrentbranch_fn
 
     # b-⎵ → (expansion of last branch name)
     function _abbr_git_currentbranch_fn; _abbr_define_exceptsubcommand_arg (git rev-parse --abbrev-ref @{-1}) git; end; abbr -a _abbr_git_currentbranch --regex b- --position anywhere --function _abbr_git_currentbranch_fn

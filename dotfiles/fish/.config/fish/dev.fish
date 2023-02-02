@@ -2,15 +2,16 @@
 
     abbr -a --position command m "make"
 
-    # Legacy (TODO: restore?)
-    abbr -a mb "# Try: m b"
-    abbr -a mc "# Try: m c"
-    abbr -a md "# Try: m d"
-    abbr -a mdp "# Try: m dp"
-    abbr -a mp "# Try: m p"
-    abbr -a mt "# Try: m t"
-    abbr -a ml "# Try: m l"
-    abbr -a mf "# Try: m f"
+    # Allow the first (and usually the only) target to be combined with the initial `m`:
+    # Additional targets can be expanded using the argument abbreviations below.
+    abbr -a mb "make build"
+    abbr -a mc "make clean"
+    abbr -a md "make dev"
+    abbr -a mdp "make deploy"
+    abbr -a mp "make publish"
+    abbr -a mt "make test"
+    abbr -a ml "make lint"
+    abbr -a mf "make format"
     abbr -a mcd "# Try: m c d"
     abbr -a mcb "# Try: m c b"
 

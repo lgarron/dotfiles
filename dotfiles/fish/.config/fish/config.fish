@@ -55,6 +55,7 @@
     # For this config file, `rc` will also force redefining abbreviations. See
     # the "Setup" section above.
     abbr -a rc ". $HOME/.config/fish/config.fish"
+    abbr -a rcu "cd $DOTFILES_FOLDER && git pull && cd - && . $HOME/.config/fish/config.fish"
 
 # Loading
 

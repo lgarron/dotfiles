@@ -56,6 +56,9 @@
     # the "Setup" section above.
     abbr -a rc ". $HOME/.config/fish/config.fish"
     abbr -a rcu "cd $DOTFILES_FOLDER && git pull && cd - && . $HOME/.config/fish/config.fish"
+    if [ $CODESPACES = true ]
+      abbr -a rcuf "cd $DOTFILES_FOLDER && git fetch origin main && git abandon && git reset --hard origin/main && cd - && . $HOME/.config/fish/config.fish"
+    end
 
 # Loading
 

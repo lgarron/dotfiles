@@ -48,11 +48,11 @@
     function _abbr_git_HEAD_fn; \
         set str "HEAD"
         if [ "$argv[1]" != "h" ]
-            set str $str"~"(string trim --left --chars=h $argv[1])"%"
+            set str $str"~"(string trim --left --chars=h $argv[1])
         end
         _abbr_define_exceptsubcommand_arg $str git;
     end
-    abbr -a _abbr_git_HEAD --regex "h[0-9]*" --position anywhere --function _abbr_git_HEAD_fn --set-cursor
+    abbr -a _abbr_git_HEAD --regex "h[0-9]*" --position anywhere --function _abbr_git_HEAD_fn
 
 ### git add
 

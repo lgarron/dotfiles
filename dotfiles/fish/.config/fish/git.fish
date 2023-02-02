@@ -134,8 +134,8 @@ git push --force-with-lease"
 ### git diff
 
     abbr -a gd "git diff"
+    abbr -a gdc "git diff --cached"
     # Legacy
-    abbr -a gdc  "# Try: gd c"
     abbr -a gdno "# Try: gd no"
 
     # git diff c⎵ → git diff --cached

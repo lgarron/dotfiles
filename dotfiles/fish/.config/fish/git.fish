@@ -57,7 +57,7 @@
 ### git add
 
     abbr -a ga "git add"
-    abbr -a gap "git add --patch"
+    abbr -a gap "git add --patch" # second-level convenience
     abbr -a g. "git add ."
     # Legacy
     abbr -a gst "# Try: ga"
@@ -134,7 +134,7 @@ git push --force-with-lease"
 ### git diff
 
     abbr -a gd "git diff"
-    abbr -a gdc "git diff --cached"
+    abbr -a gdc "git diff --cached" # second-level convenience
     # Legacy
     abbr -a gdno "# Try: gd no"
 

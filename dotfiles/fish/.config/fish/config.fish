@@ -87,6 +87,7 @@
     set GALOIS Galois galois Galois.local
     set GERMAIN Germain germain Germain.local
     set MINITEMP Minitemp minitemp Minitemp.local
+    set PYTHAGORAS Pythagoras pythagoras Pythagoras.local
 
 # MOTD
 
@@ -118,6 +119,12 @@
             " / __| __| _ \\  \\/  | /_\\ |_ _| \\| |" \
             "| (_ | _||   / |\\/| |/ _ \\ | || .` |" \
             " \\___|___|_|_\\_|  |_/_/ \\_\\___|_|\\_|"
+      else if contains (hostname -s) $PYTHAGORAS
+        fish_greeting_echo \
+          " _____   _______ _  _   _   ___  ___  ___    _   ___ " \
+          "| _ \\ \\ / /_   _| || | /_\\ / __|/ _ \\| _ \\  /_\\ / __|" \
+          "|  _/\\ V /  | | | __ |/ _ \\ (_ | (_) |   / / _ \\\\__ \\" \
+          "|_|   |_|   |_| |_||_/_/ \\_\\___|\\___/|_|_\\/_/ \\_\\___/"
       else if contains (hostname -s) $MINITEMP
         fish_greeting_echo \
             " __  __ ___ _  _ ___ _____ ___ __  __ ___ " \

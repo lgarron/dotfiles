@@ -1,7 +1,7 @@
 {
   /******** Dynamic ********/
   "editor.formatOnSave": true,
-  "window.zoomLevel": 3,
+  "window.zoomLevel": 3.25,
   /******** Main VSCode settings ********/
   "editor.formatOnPaste": false,
   "editor.tabSize": 2,
@@ -17,7 +17,6 @@
   "explorer.confirmDragAndDrop": false,
   "editor.guides.bracketPairs": true,
   "editor.stickyScroll.enabled": true,
-  "workbench.experimental.settingsProfiles.enabled": true,
   /******** Window ********/
   "customWindowZoom.zoomLevelChangeValue": 0.25,
   "workbench.sideBar.location": "left",
@@ -69,7 +68,8 @@
   /******** Remote SSH ********/
   "remote.SSH.useLocalServer": false,
   "remote.SSH.remotePlatform": {
-    "Minitemp2.local": "macOS"
+    "Minitemp2.local": "macOS",
+    "Pythagoras.local": "macOS"
   },
   /******** Codespaces ********/
   "github.codespaces.createCodespaceInNewWindow": true,
@@ -106,4 +106,7 @@
   /******** CodeQL ********/
   "codeQL.telemetry.enableTelemetry": false,
   "codeQL.canary": true,
+  "[python]": {
+    "editor.formatOnType": true
+  },
 }

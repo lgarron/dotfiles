@@ -477,23 +477,6 @@
 		</dict>
 		<dict>
 			<key>ID</key>
-			<string>2C9B965D-D7F4-4D23-A889-F91607FA758B</string>
-			<key>command</key>
-			<dict>
-				<key>actionID</key>
-				<string>FileOpenAction</string>
-				<key>directID</key>
-				<string>/Users/lgarron/Dropbox (Maestral)/Graphics/Quicksilver Big Sur Icon</string>
-			</dict>
-			<key>enabled</key>
-			<true/>
-			<key>onPress</key>
-			<true/>
-			<key>type</key>
-			<string>QSHotKeyTrigger</string>
-		</dict>
-		<dict>
-			<key>ID</key>
 			<string>00BA3577-6121-422D-A5DD-9EE3FC32F2B2</string>
 			<key>character</key>
 			<string>&lt;</string>
@@ -1160,6 +1143,48 @@
 			<string>Search Artists</string>
 			<key>set</key>
 			<string>iTunes</string>
+			<key>type</key>
+			<string>QSHotKeyTrigger</string>
+		</dict>
+		<dict>
+			<key>ID</key>
+			<string>374FD541-3311-4898-9D01-6769BBBAE028</string>
+			<key>character</key>
+			<string>&gt;</string>
+			<key>command</key>
+			<dict>
+				<key>actionID</key>
+				<string>QSTextTypeAction</string>
+				<key>directArchive</key>
+				<dict>
+					<key>class</key>
+					<string>QSObject</string>
+					<key>data</key>
+					<dict>
+						<key>public.utf8-plain-text</key>
+						<string>…</string>
+					</dict>
+					<key>properties</key>
+					<dict>
+						<key>QSObjectCreationDate</key>
+						<date>2023-02-03T03:50:31Z</date>
+						<key>QSObjectName</key>
+						<string>…</string>
+						<key>QSObjectSource</key>
+						<string>com.blacktree.Quicksilver</string>
+						<key>QSObjectType</key>
+						<string>public.utf8-plain-text</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyCode</key>
+			<integer>47</integer>
+			<key>modifiers</key>
+			<integer>917795</integer>
+			<key>onPress</key>
+			<true/>
 			<key>type</key>
 			<string>QSHotKeyTrigger</string>
 		</dict>

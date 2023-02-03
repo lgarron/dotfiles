@@ -111,7 +111,7 @@ mac-keyboard-shortcuts:
 	${MAC_ADD_SHORTCUT} "com.adobe.mas.lightroomCC" "Edit in Photoshop…"       "⇧⌘P"
 	${MAC_ADD_SHORTCUT} "com.apple.FinalCut"        "'HEVC (H.265) up to 4K…'" "⇧⌘E"
 	# Consistency with other programs
-	${MAC_ADD_SHORTCUT} "com.apple.AddressBook"     "Edit Card"                "⌘E"
+	# ${MAC_ADD_SHORTCUT} "com.apple.AddressBook"     "Edit Card"                "⌘E"
 	${MAC_ADD_SHORTCUT} "com.apple.Safari"          "Reload Page From Origin"  "⇧⌘R"
 	${MAC_ADD_SHORTCUT} "org.audacityteam.audacity" "Save Project As…"         "⇧⌘S"
 	${MAC_ADD_SHORTCUT} "org.audacityteam.audacity" "Change Tempo…"            "⇧⌘T"
@@ -122,7 +122,7 @@ mac-file-defaults:
 
 	# File formats
 
-	duti -s com.google.Chrome org.ietf.mhtml all
+	duti -s com.google.Chrome org.ietf.mhtml all # Unknown type at macOS install time?
 	duti -s com.google.Chrome public.url all
 	duti -s com.google.Chrome public.svg-image all
 	duti -s com.google.Chrome http all
@@ -130,7 +130,7 @@ mac-file-defaults:
 
 	duti -s com.microsoft.vscode public.data all
 	duti -s com.microsoft.vscode public.plain-text all
-	duti -s com.microsoft.vscode net.daringfireball.markdown all
+	duti -s com.microsoft.vscode net.daringfireball.markdown all # Unknown type at macOS install time?
 	duti -s com.microsoft.vscode public.json all
 
 	duti -s com.apple.quicktimeplayerx com.microsoft.waveform-audio all # wav

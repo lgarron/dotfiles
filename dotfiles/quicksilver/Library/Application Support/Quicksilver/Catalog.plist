@@ -1185,6 +1185,33 @@
 			<key>source</key>
 			<string>QSFileSystemObjectSource</string>
 		</dict>
+		<dict>
+			<key>ID</key>
+			<string>C5006CAC-ED7C-40BE-9CAA-F23BB484E072</string>
+			<key>children</key>
+			<array/>
+			<key>enabled</key>
+			<true/>
+			<key>modificationDate</key>
+			<real>697367878.53831005</real>
+			<key>name</key>
+			<string>Dropbox (Maestral)</string>
+			<key>settings</key>
+			<dict>
+				<key>folderDepth</key>
+				<integer>1</integer>
+				<key>parser</key>
+				<string>QSDirectoryParser</string>
+				<key>path</key>
+				<string>/Volumes/Dirichlet Pythagoras/Users/lgarron/Dropbox (Maestral)</string>
+				<key>skipItem</key>
+				<false/>
+				<key>watchTarget</key>
+				<false/>
+			</dict>
+			<key>source</key>
+			<string>QSFileSystemObjectSource</string>
+		</dict>
 	</array>
 	<key>enabledPresets</key>
 	<dict>

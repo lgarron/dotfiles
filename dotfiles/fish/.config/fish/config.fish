@@ -1,5 +1,27 @@
 # `config.fish`
 
+    set DOTFILES_FOLDER ( \
+        realpath ~/.config/fish/config.fish \
+          | sed 's#dotfiles/fish/\.config/fish/config\.fish$##' \
+    )
+
+    abbr -a dff "cd $DOTFILES_FOLDER"
+
+    # Reloads the fish config file. `rc` is chosen because the config file for
+    # other shells is often known as the `rc` file, and `rc` is easy to type.
+    #
+    # For this config file, `rc` will also force redefining abbreviations. See
+    # the "Setup" section above.
+    abbr -a rc ". $HOME/.config/fish/config.fish"
+    # TODO: why is this needed? It seems that `$DOTFILES_FOLDER` is reset by something else between its original definition and here, when running in a codespace?
+    if [ "$CODESPACES" = "true" ]
+      set DOTFILES_FOLDER "/workspaces/.codespaces/.persistedshare/dotfiles/"
+    end
+    abbr -a rcu "cd $DOTFILES_FOLDER && git pull && cd - && . $HOME/.config/fish/config.fish"
+    if [ "$CODESPACES" = "true" ]
+      abbr -a rcuf "cd $DOTFILES_FOLDER && git fetch origin main && git abandon && git reset --hard origin/main && cd - && . $HOME/.config/fish/config.fish"
+    end
+
 # Setup
 
     function append_to_path_if_exists
@@ -58,21 +80,6 @@
       set_color normal
       _echo " files."
       _echo ""
-    end
-
-    # Reloads the fish config file. `rc` is chosen because the config file for
-    # other shells is often known as the `rc` file, and `rc` is easy to type.
-    #
-    # For this config file, `rc` will also force redefining abbreviations. See
-    # the "Setup" section above.
-    abbr -a rc ". $HOME/.config/fish/config.fish"
-    # TODO: why is this needed? It seems that `$DOTFILES_FOLDER` is reset by something else between its original definition and here, when running in a codespace?
-    if [ "$CODESPACES" = "true" ]
-      set DOTFILES_FOLDER "/workspaces/.codespaces/.persistedshare/dotfiles/"
-    end
-    abbr -a rcu "cd $DOTFILES_FOLDER && git pull && cd - && . $HOME/.config/fish/config.fish"
-    if [ "$CODESPACES" = "true" ]
-      abbr -a rcuf "cd $DOTFILES_FOLDER && git fetch origin main && git abandon && git reset --hard origin/main && cd - && . $HOME/.config/fish/config.fish"
     end
 
 # Loading
@@ -170,12 +177,6 @@
 # Shortcuts
 
 ## Shell
-
-    set DOTFILES_FOLDER ( \
-        realpath ~/.config/fish/config.fish \
-          | sed 's#dotfiles/fish/\.config/fish/config\.fish$##' \
-    )
-    abbr -a dff $DOTFILES_FOLDER
 
     function mkcd
         mkdir $argv[1]

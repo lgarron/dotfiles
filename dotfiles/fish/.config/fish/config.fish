@@ -98,10 +98,7 @@
 
 # Machines
 
-    set EUCLID Euclid euclid Euclid.local
-    set GALOIS Galois galois Galois.local
     set GERMAIN Germain germain Germain.local
-    set MINITEMP Minitemp minitemp Minitemp.local
     set PYTHAGORAS Pythagoras pythagoras Pythagoras.local
 
 # MOTD
@@ -114,49 +111,35 @@
       echo ""
     end
 
+    # If `hostname -s` is incorrect on macOS:
+    #
+    # 1. `dscacheutil -flushcache`
+    # 2. Reboot
+    #
+    # Alternatively, use:
+    #
+    #     set MAC_HOSTNAME (which scutil > /dev/null && scutil --get ComputerName)
+    #
+    # https://apple.stackexchange.com/a/53042
+
     # Based on: https://patorjk.com/software/taag/#p=display&v=1&f=Small&t=GALOIS
     function fish_greeting
-      if contains (hostname -s) $GALOIS
-        fish_greeting_echo \
-            "  ___   _   _    ___ ___ ___ " \
-            " / __| /_\\ | |  / _ \\_ _/ __|" \
-            "| (_ |/ _ \\| |_| (_) | |\\__ \\" \
-            " \\___/_/ \\_\\____\\___/___|___/"
-      else if contains (hostname -s) $EUCLID
-        fish_greeting_echo \
-            " ___ _   _  ___ _    ___ ___  " \
-            "| __| | | |/ __| |  |_ _|   \\ " \
-            "| _|| |_| | (__| |__ | || |) |" \
-            "|___|\\___/ \\___|____|___|___/ "
-      else if contains (hostname -s) $GERMAIN
+      if contains $MAC_HOSTNAME $GERMAIN
         fish_greeting_echo \
             "  ___ ___ ___ __  __   _   ___ _  _ " \
             " / __| __| _ \\  \\/  | /_\\ |_ _| \\| |" \
             "| (_ | _||   / |\\/| |/ _ \\ | || .` |" \
             " \\___|___|_|_\\_|  |_/_/ \\_\\___|_|\\_|"
-      else if contains (hostname -s) $PYTHAGORAS
+      else if contains $MAC_HOSTNAME $PYTHAGORAS
         fish_greeting_echo \
           " _____   _______ _  _   _   ___  ___  ___    _   ___ " \
           "| _ \\ \\ / /_   _| || | /_\\ / __|/ _ \\| _ \\  /_\\ / __|" \
           "|  _/\\ V /  | | | __ |/ _ \\ (_ | (_) |   / / _ \\\\__ \\" \
           "|_|   |_|   |_| |_||_/_/ \\_\\___|\\___/|_|_\\/_/ \\_\\___/"
-      else if contains (hostname -s) $MINITEMP
-        fish_greeting_echo \
-            " __  __ ___ _  _ ___ _____ ___ __  __ ___ " \
-            "|  \\/  |_ _| \\| |_ _|_   _| __|  \\/  | _ \\" \
-            "| |\\/| || || .` || |  | | | _|| |\\/| |  _/" \
-            "|_|  |_|___|_|\\_|___| |_| |___|_|  |_|_|  "
-      #else if [ $CODESPACES = true ]
-      #  fish_greeting_echo \
-      #      "  ___ ___  ___  ___ ___ ___  _   ___ ___ ___ " \
-      #      " / __/ _ \\|   \\| __/ __| _ \\/_\\ / __| __/ __|" \
-      #      "| (_| (_) | |) | _|\\__ \\  _/ _ \\ (__| _|\\__ \\" \
-      #      " \\___\\___/|___/|___|___/_|/_/ \\_\\___|___|___/"
       else
         echo -n "🐟 Welcome to "
         set_color --bold; echo (hostname -s)
       end
-
     end
 
 # Printing

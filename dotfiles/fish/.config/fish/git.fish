@@ -145,10 +145,8 @@ git push --force-with-lease"
 
 ### git fetch
 
-    abbr -a ge "git fetch"
-    abbr -a gep "git fetch --prune"
-    # Legacy
-    abbr -a gfp "# Try: gep"
+    abbr -a gf "git fetch"
+    abbr -a gfp "git fetch --prune"
 
 ### git log
 
@@ -280,7 +278,7 @@ git push --force-with-lease"
 
 ## git freeze (https://github.com/lgarron/git-freeze)
 
-    abbr -a gf  "git freeze"
+    abbr -a gfr "git freeze"
     abbr -a gth "git thaw"
     abbr -a gab "git abandon"
 

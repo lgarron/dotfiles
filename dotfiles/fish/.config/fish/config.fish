@@ -123,14 +123,15 @@
     # https://apple.stackexchange.com/a/53042
 
     # Based on: https://patorjk.com/software/taag/#p=display&v=1&f=Small&t=GALOIS
+    set GREETING_HOSTNAME (hostname -s)
     function fish_greeting
-      if contains $MAC_HOSTNAME $GERMAIN
+      if contains $GREETING_HOSTNAME $GERMAIN
         fish_greeting_echo \
             "  ___ ___ ___ __  __   _   ___ _  _ " \
             " / __| __| _ \\  \\/  | /_\\ |_ _| \\| |" \
             "| (_ | _||   / |\\/| |/ _ \\ | || .` |" \
             " \\___|___|_|_\\_|  |_/_/ \\_\\___|_|\\_|"
-      else if contains $MAC_HOSTNAME $PYTHAGORAS
+      else if contains $GREETING_HOSTNAME $PYTHAGORAS
         fish_greeting_echo \
           " _____   _______ _  _   _   ___  ___  ___    _   ___ " \
           "| _ \\ \\ / /_   _| || | /_\\ / __|/ _ \\| _ \\  /_\\ / __|" \

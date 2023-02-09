@@ -77,8 +77,8 @@
 
     # git branch m⎵ → git branch --move
     function _abbr_git_branch_move_fn; _abbr_define_subcommand_arg "--move" git branch; end; abbr -a _abbr_git_branch_move --regex m --position anywhere --function _abbr_git_branch_move_fn
-    # git branch d⎵ → git branch --delete --force (equivalent to: git branch -D)
-    function _abbr_git_branch_delete_fn; _abbr_define_subcommand_arg "--delete --force" git branch; end; abbr -a _abbr_git_branch_delete --regex d --position anywhere --function _abbr_git_branch_delete_fn
+    # git branch df⎵ → git branch --delete --force (equivalent to: git branch -D)
+    function _abbr_git_branch_delete_fn; _abbr_define_subcommand_arg "--delete --force" git branch; end; abbr -a _abbr_git_branch_delete --regex df --position anywhere --function _abbr_git_branch_delete_fn
 
 ### git checkout
 

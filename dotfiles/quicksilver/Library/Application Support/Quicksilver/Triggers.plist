@@ -121,7 +121,7 @@
 			<key>command</key>
 			<dict>
 				<key>actionID</key>
-				<string>FileOpenWithAction</string>
+				<string>[Action]:/Users/lgarron/Library/Application Support/Quicksilver/Actions/Open in Editor.scpt</string>
 				<key>directID</key>
 				<string>com.blacktree.Quicksilver</string>
 				<key>indirectID</key>
@@ -718,7 +718,7 @@
 			<key>command</key>
 			<dict>
 				<key>actionID</key>
-				<string>FileOpenWithAction</string>
+				<string>[Action]:/Users/lgarron/Library/Application Support/Quicksilver/Actions/Open in Editor.scpt</string>
 				<key>directID</key>
 				<string>QSGlobalSelectionProxy</string>
 				<key>indirectID</key>

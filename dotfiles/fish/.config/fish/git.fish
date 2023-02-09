@@ -30,7 +30,7 @@
     function _abbr_git_origincurrentbranch_fn; _abbr_define_exceptsubcommand_arg origin/(git rev-parse --abbrev-ref HEAD) git; end; abbr -a _abbr_git_origincurrentbranch --regex ob --position anywhere --function _abbr_git_origincurrentbranch_fn
 
     # b-⎵ → (expansion of last branch name)
-    function _abbr_git_currentbranch_fn; _abbr_define_exceptsubcommand_arg (git rev-parse --abbrev-ref @{-1}) git; end; abbr -a _abbr_git_currentbranch --regex b- --position anywhere --function _abbr_git_currentbranch_fn
+    function _ablas_fn; _abbr_define_exceptsubcommand_arg (git rev-parse --abbrev-ref @{-1}) git; end; abbr -a _abbr_git_lastbranch --regex b- --position anywhere --function _abbr_git_lastbranch_fn
     # TODO
     # function _abbr_git_branchhist_fn; \
     #     set ref "@"

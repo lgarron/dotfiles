@@ -20,7 +20,7 @@
     # ms⎵ → master
     function _abbr_git_master_fn; _abbr_define_exceptsubcommand_arg master git; end; abbr -a _abbr_git_master --regex ms --position anywhere --function _abbr_git_master_fn
     # b⎵ → (expansion of current branch name)
-    function _abbr_git_currentbranch_fn; _abbr_define_exceptsubcommand_arg (git rev-parse --abbrev-ref HEAD) git; end; abbr -a _abbr_git_currentbranch --regex b --position anywhere --function _abbr_git_currentbranch_fn
+    # function _abbr_git_currentbranch_fn; _abbr_define_exceptsubcommand_arg (git rev-parse --abbrev-ref HEAD) git; end; abbr -a _abbr_git_currentbranch --regex b --position anywhere --function _abbr_git_currentbranch_fn
 
     # om⎵ → origin/main
     function _abbr_git_origin_main_fn; _abbr_define_exceptsubcommand_arg origin/main git; end; abbr -a _abbr_git_origin_main --regex om --position anywhere --function _abbr_git_origin_main_fn
@@ -31,16 +31,18 @@
 
     # b-⎵ → (expansion of last branch name)
     function _abbr_git_lastbranch_fn; _abbr_define_exceptsubcommand_arg (git rev-parse --abbrev-ref @{-1}) git; end; abbr -a _abbr_git_lastbranch --regex b- --position anywhere --function _abbr_git_lastbranch_fn
-    # TODO
-    # function _abbr_git_branchhist_fn; \
-    #     set ref "@"
-    #     if [ "$argv[1]" != "h" ]
-    #         set ref $ref"{-"(string trim --left --chars=b $argv[1])"}"
-    #     end
-    #     set expanded_branch (git rev-parse -- --abbrev-ref $ref)
-    #     _abbr_define_exceptsubcommand_arg $expanded_branch git;
-    # end
-    # abbr -a _abbr_git_branchhist --regex "b[0-9]*" --position anywhere --function _abbr_git_branchhist_fn --set-cursor
+    #  b⎵ → (expansion of current branch name)
+    # b1⎵ → (expansion of last branch name)
+    # b3⎵ → (expansion of three branch names ago)
+    function _abbr_git_branchhist_fn; \
+        set ref "@"
+        if [ "$argv[1]" != "b" ]
+            set ref $ref"{-"(string trim --left --chars=b $argv[1])"}"
+        end
+        set expanded_branch (git rev-parse --abbrev-ref $ref 2>/dev/null); or return 1
+        _abbr_define_exceptsubcommand_arg $expanded_branch git
+    end
+    abbr -a _abbr_git_branchhist --regex "b[0-9]*" --position anywhere --function _abbr_git_branchhist_fn
 
     #   h⎵ → HEAD
     #  h1⎵ → HEAD~1

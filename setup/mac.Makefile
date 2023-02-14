@@ -109,7 +109,7 @@ mac-keyboard-shortcuts:
 	${MAC_ADD_SHORTCUT} "com.apple.garageband10"    "Export Song to Disk…"     "⇧⌘E"
 	${MAC_ADD_SHORTCUT} "com.adobe.mas.lightroomCC" "Export…"                  "⇧⌘E"
 	${MAC_ADD_SHORTCUT} "com.adobe.mas.lightroomCC" "Edit in Photoshop…"       "⇧⌘P"
-	${MAC_ADD_SHORTCUT} "com.apple.FinalCut"        "'HEVC (H.265) up to 4K…'" "⇧⌘E"
+	${MAC_ADD_SHORTCUT} "com.apple.FinalCut"        "'HEVC 8-bit Rec. 709 (auto bit rate)…'" "⇧⌘E"
 	# Consistency with other programs
 	# ${MAC_ADD_SHORTCUT} "com.apple.AddressBook"     "Edit Card"                "⌘E"
 	${MAC_ADD_SHORTCUT} "com.apple.Safari"          "Reload Page From Origin"  "⇧⌘R"

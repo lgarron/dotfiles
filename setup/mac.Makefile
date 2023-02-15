@@ -108,7 +108,7 @@ mac-defaults:
 
 	# Calendar
 	# Start on Monday
-	defaults write com.apple.iCal "first day of week" 1
+	defaults write com.apple.iCal "first day of week" 2
 
 	# Misc. Applications
 	defaults write org.hammerspoon.Hammerspoon MJConfigFile "~/.config/hammerspoon/init.lua"

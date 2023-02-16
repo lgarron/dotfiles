@@ -14,4 +14,12 @@
     "prefix": "stylesheet",
     "body": "<link rel=\"stylesheet\" href=\"$0\">",
   },
+  "Meta Refresh": {
+    "prefix": "refresh",
+    "body": "<meta http-equiv=\"refresh\" content=\"0; url=$0\">"
+  },
+  "Link (<a>)": {
+    "prefix": "a",
+    "body": "<a href=\"$1\">${0:$TM_SELECTED_TEXT}</a>",
+  },
 }

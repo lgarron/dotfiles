@@ -21,6 +21,10 @@
     function _abbr_git_master_fn; _abbr_define_exceptsubcommand_arg master git; end; abbr -a _abbr_git_master --regex ms --position anywhere --function _abbr_git_master_fn
     # b⎵ → (expansion of current branch name)
     # function _abbr_git_currentbranch_fn; _abbr_define_exceptsubcommand_arg (git rev-parse --abbrev-ref HEAD) git; end; abbr -a _abbr_git_currentbranch --regex b --position anywhere --function _abbr_git_currentbranch_fn
+    # :b⎵ → :(expansion of current branch name)
+    function _abbr_git_coloncurrentbranch_fn; _abbr_define_subcommand_arg :(git rev-parse --abbrev-ref HEAD) git push; end; abbr -a _abbr_git_coloncurrentbranch --regex :b --position anywhere --function _abbr_git_coloncurrentbranch_fn
+    function _abbr_git_coloncurrentbranch1_fn; _abbr_define_subcommand_arg :(git rev-parse --abbrev-ref @{-1}) git push; end; abbr -a _abbr_git_coloncurrentbranch1 --regex :b1 --position anywhere --function _abbr_git_coloncurrentbranch1_fn
+    function _abbr_git_coloncurrentbranch2_fn; _abbr_define_subcommand_arg :(git rev-parse --abbrev-ref @{-2}) git push; end; abbr -a _abbr_git_coloncurrentbranch2 --regex :b2 --position anywhere --function _abbr_git_coloncurrentbranch2_fn
 
     # om⎵ → origin/main
     function _abbr_git_origin_main_fn; _abbr_define_exceptsubcommand_arg origin/main git; end; abbr -a _abbr_git_origin_main --regex om --position anywhere --function _abbr_git_origin_main_fn

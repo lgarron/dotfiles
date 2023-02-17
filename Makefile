@@ -2,14 +2,6 @@
 auto:
 	make "$$(hostname -s | tr '[:upper:]' '[:lower:]')"
 
-######## Config
-
-# Handle $PATH in case we're on a Mac.
-HOMEBREW_PATH = $(HOME)/local/brew
-
-PATH  := "$(PATH):${HOMEBREW_PATH}/bin"
-SHELL := env PATH=${PATH} /bin/bash
-
 ########
 
 .PHONY: mac-common

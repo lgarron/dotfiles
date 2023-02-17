@@ -113,6 +113,7 @@ mac-defaults:
 	# Misc. Applications
 	defaults write org.hammerspoon.Hammerspoon MJConfigFile "~/.config/hammerspoon/init.lua"
 	defaults write com.apple.Safari IncludeDevelopMenu -bool true
+	defaults write com.apple.FinalCut FFAutoStartBGRender -bool false
 
 	# Force settings to take effect
 	killall SystemUIServer

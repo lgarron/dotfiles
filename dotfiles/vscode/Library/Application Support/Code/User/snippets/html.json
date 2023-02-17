@@ -22,4 +22,8 @@
     "prefix": "a",
     "body": "<a href=\"$1\">${0:$TM_SELECTED_TEXT}</a>",
   },
+  "Wrap in element": {
+    "prefix": "<",
+    "body": "<$1$2>${0:$TM_SELECTED_TEXT}</$1>",
+  },
 }

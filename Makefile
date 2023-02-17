@@ -82,6 +82,5 @@ fish:
 
 ########
 
-include setup/chromium.Makefile
 include setup/linux.Makefile
 include setup/mac.Makefile

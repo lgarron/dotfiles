@@ -105,8 +105,5 @@
   },
   /******** CodeQL ********/
   "codeQL.telemetry.enableTelemetry": false,
-  "codeQL.canary": true,
-  "[python]": {
-    "editor.formatOnType": true
-  },
+  "codeQL.canary": true
 }

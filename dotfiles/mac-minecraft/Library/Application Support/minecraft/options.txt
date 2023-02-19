@@ -38,8 +38,8 @@ ao:true
 prioritizeChunkUpdates:0
 biomeBlendRadius:2
 renderClouds:"false"
-resourcePacks:["vanilla","file/VanillaTweaks_r232320 — lgarron.zip","fabric"]
-incompatibleResourcePacks:["file/VanillaTweaks_r232320 — lgarron.zip"]
+resourcePacks:["vanilla","fabric","file/VanillaTweaks_r180819 — lgarron.zip","file/VanillaTweaks_r224192 — debug.zip","file/HalfVolumeZombiePiglinsAndMinecarts.zip"]
+incompatibleResourcePacks:["file/VanillaTweaks_r180819 — lgarron.zip","file/VanillaTweaks_r224192 — debug.zip"]
 lastServer:
 lang:en_us
 soundDevice:""

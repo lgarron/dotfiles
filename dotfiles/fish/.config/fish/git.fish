@@ -104,7 +104,7 @@
     abbr -a cm   --set-cursor "git commit --message \"%" # Special shortened abbreviation
     # Legacy
     abbr -a gc    "# Try: gcom / cm"
-    abbr -a gcane "# Try: gca ne"
+    abbr -a gcane "# Try: gca ne (or gg)"
 
     abbr -a gg "git commit --amend --no-edit && git push --force-with-lease"
     abbr -a gggg "git status && read -p \"echo \\\"Press enter to continue (Ctrl-C to abort)\\\"\" &&
@@ -196,7 +196,7 @@ git push --force-with-lease"
     # Legacy
     abbr -a gpo  "# Try: gp o"
     abbr -a gpot "# Try: gp o t"
-    abbr -a gpfl "# Try: gp fl"
+    abbr -a gpfl "# Try: gp fl (or gg)"
 
     # git push t⎵ → git push --tags
     function _abbr_git_push_tags_fn; _abbr_define_subcommand_arg "--tags" git push; end; abbr -a _abbr_git_push_tags --regex t --position anywhere --function _abbr_git_push_tags_fn

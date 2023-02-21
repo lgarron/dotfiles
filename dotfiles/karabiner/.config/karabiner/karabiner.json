@@ -397,16 +397,6 @@
                     "simple_modifications": [
                         {
                             "from": {
-                                "pointing_button": "button4"
-                            },
-                            "to": [
-                                {
-                                    "key_code": "left_option"
-                                }
-                            ]
-                        },
-                        {
-                            "from": {
                                 "pointing_button": "button5"
                             },
                             "to": [
@@ -621,16 +611,6 @@
                     "to": [
                         {
                             "key_code": "delete_or_backspace"
-                        }
-                    ]
-                },
-                {
-                    "from": {
-                        "pointing_button": "button4"
-                    },
-                    "to": [
-                        {
-                            "key_code": "left_option"
                         }
                     ]
                 },

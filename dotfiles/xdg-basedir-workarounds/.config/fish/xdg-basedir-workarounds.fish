@@ -66,8 +66,9 @@
     # zsh
     set -Ux ZDOTDIR $XDG_CONFIG_HOME/zsh
 
-    # cargo (Rust)
+    # Rust
     set -Ux CARGO_HOME $XDG_DATA_HOME/cargo
+    set -Ux RUSTUP_HOME $XDG_DATA_HOME/rustup
 
     # Docker
     set -Ux DOCKER_CONFIG $XDG_CONFIG_HOME/docker

@@ -53,6 +53,18 @@
     # https://github.com/cubing/cubing.js/blob/3597fba81b65a1c87e42c4297a2d9ef5fdc3a8e3/script/build/targets.js#L44
     set -xg "EXPERIMENTAL_CUBING_JS_RELOAD_CHROME_MACOS" "1"
 
+# Cargo
+
+    abbr -a co "cargo"
+
+    abbr -a ca "cargo add"
+    abbr -a cb "cargo build"
+    abbr -a ct "cargo test"
+
+    function _abbr_cargo_add_fn; _abbr_define_anyarg add cargo; end; abbr -a _abbr_cargo_add --regex a --position anywhere --function _abbr_cargo_add_fn
+    function _abbr_cargo_build_fn; _abbr_define_anyarg build cargo; end; abbr -a _abbr_cargo_build --regex b --position anywhere --function _abbr_cargo_build_fn
+    function _abbr_cargo_test_fn; _abbr_define_anyarg test cargo; end; abbr -a _abbr_cargo_test --regex t --position anywhere --function _abbr_cargo_test_fn
+
 ## Web
 
     # *h*ttps *h*eaders

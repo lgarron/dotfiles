@@ -41,6 +41,7 @@
     append_to_path_if_exists /opt/homebrew/bin # macOS (Apple Silicon)
     append_to_path_if_exists /home/linuxbrew/.linuxbrew/bin # for codespaces
     append_to_path_if_exists /home/linuxbrew/.linuxbrew/sbin # for codespaces
+    append_to_path_if_exists "$HOME/.data/cargo/bin" # For Rust
     prepend_to_path_if_exists $HOME/.data/rbenv/shims # rbenv https://github.com/rbenv/rbenv#how-rbenv-hooks-into-your-shell
 
 # Temporary workaround for a bug in Codespaces

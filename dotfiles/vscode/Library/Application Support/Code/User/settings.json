@@ -103,7 +103,9 @@
   "workbench.editorAssociations": {
     "git-rebase-todo": "default"
   },
+  /******** Rust ********/
+  "rust-analyzer.check.command": "clippy",
   /******** CodeQL ********/
   "codeQL.telemetry.enableTelemetry": false,
-  "codeQL.canary": true
+  "codeQL.canary": true,
 }

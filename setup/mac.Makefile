@@ -162,6 +162,7 @@ mac-file-defaults:
 	duti -s com.microsoft.vscode public.plain-text all
 	duti -s com.microsoft.vscode net.daringfireball.markdown all # Unknown type at macOS install time?
 	duti -s com.microsoft.vscode public.json all
+	duti -s com.microsoft.vscode public.python-script all
 
 	duti -s com.apple.quicktimeplayerx com.microsoft.waveform-audio all # wav
 	duti -s com.apple.quicktimeplayerx com.apple.m4v-video all

@@ -184,6 +184,41 @@
         cd $argv[1]
     end
 
+    function resize
+      if test (count $argv) -lt 3
+        echo "Usage: resize 1200 630 in.png out.png"
+        return 1
+      end
+      if test (count $argv) -lt 4
+        set output (path change-extension "" $argv[3]).$argv[1]x$argv[2].png
+        echo "Writing to: $output"
+      else
+        set output $argv[4]
+      end
+      convert $argv[3] -background transparent -trim -gravity Center -extent $argv[1]:$argv[2]\# -scale $argv[1]x$argv[2] $output
+    end
+    function square
+      resize $argv[1] $argv[1] $argv[2] $argv[3]
+    end
+    function web-app-images
+      if test (count $argv) -lt 1
+        echo "Usage: web-app-images icon-source.png"
+        return 1
+      end
+      set input $argv[1]
+      set output_prefix (path change-extension "" $input)
+      set temp_dir (mktemp -d)
+      square 16 $input $temp_dir/$output_prefix.16px.png
+      square 32 $input $temp_dir/$output_prefix.32px.png
+      convert $temp_dir/$output_prefix.16px.png $temp_dir/$output_prefix.32px.png $output_prefix.favicon.ico
+      echo "$output_prefix.favicon.ico"
+      square 256 $input $output_prefix.app-icon.png
+      echo "$output_prefix.app-icon.png"
+      resize 1200 630 $input $output_prefix.social-media-preview.png
+      echo "$output_prefix.social-media-preview.png"
+    end
+
+
 ### Abbrevation definition helpers
 
     function _abbr_define_anyarg

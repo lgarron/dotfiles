@@ -52,7 +52,6 @@
       fish_add_path -P /vscode/bin/linux-x64/$CODE_VERSION/bin/
       fish_add_path -P /vscode/bin/linux-x64/$CODE_VERSION/bin/remote-cli/
       fish_add_path -P /vscode/bin/linux-x64/$CODE_VERSION/bin/helpers/
-      echo $PATH
     end
 
 # Relaunch

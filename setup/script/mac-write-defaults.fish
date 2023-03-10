@@ -1,7 +1,7 @@
 #!/usr/bin/env fish
 
 # Menu clock
-# This might not work arnymore?
+# This might not work anymore?
 defaults write com.apple.menuextra.clock "DateFormat" "EEE MMM d — H:mm:ss"
 
 # Password delay for screensaver

@@ -61,11 +61,13 @@
     abbr -a cb "cargo build"
     abbr -a cf "cargo fmt"
     abbr -a ct "cargo test"
+    abbr -a cr "cargo run --"
 
     function _abbr_cargo_add_fn; _abbr_define_anyarg add cargo; end; abbr -a _abbr_cargo_add --regex a --position anywhere --function _abbr_cargo_add_fn
     function _abbr_cargo_build_fn; _abbr_define_anyarg build cargo; end; abbr -a _abbr_cargo_build --regex b --position anywhere --function _abbr_cargo_build_fn
     function _abbr_cargo_fmt_fn; _abbr_define_anyarg fmt cargo; end; abbr -a _abbr_cargo_fmt --regex f --position anywhere --function _abbr_cargo_fmt_fn
     function _abbr_cargo_test_fn; _abbr_define_anyarg test cargo; end; abbr -a _abbr_cargo_test --regex t --position anywhere --function _abbr_cargo_test_fn
+    function _abbr_cargo_run_fn; _abbr_define_anyarg "run --" cargo; end; abbr -a _abbr_cargo_run --regex r --position anywhere --function _abbr_cargo_run_fn
 
 ## Web
 

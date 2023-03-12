@@ -152,5 +152,14 @@
   {
     "key": "ctrl+cmd+p",
     "command": "workbench.profiles.actions.switchProfile"
+  },
+  {
+    "key": "shift+cmd+d",
+    "command": "-workbench.view.debug",
+    "when": "viewContainer.workbench.view.debug.enabled"
+  },
+  {
+    "key": "shift+cmd+d",
+    "command": "editor.action.duplicateSelection"
   }
 ]

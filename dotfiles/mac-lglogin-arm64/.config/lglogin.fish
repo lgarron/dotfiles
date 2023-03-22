@@ -31,9 +31,12 @@
     launchctl setenv DOCKER_CONFIG "$XDG_CONFIG_HOME"/docker
 
     rm -rf $HOME/.cups
+    rm -rf $HOME/.docker
     rm -rf $HOME/.gnupg
     rm -rf $HOME/.oracle_jre_usage
+    rm -rf $HOME/.swiftpm
     rm -rf $HOME/.step
+    rm -rf $HOME/.yarnrc
 
 # Avoid Time Machine slowdown
 

@@ -108,4 +108,5 @@
   /******** CodeQL ********/
   "codeQL.telemetry.enableTelemetry": false,
   "codeQL.canary": true,
+  "rome.requireConfiguration": true,
 }

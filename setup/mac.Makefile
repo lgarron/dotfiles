@@ -79,7 +79,8 @@ mac-file-defaults:
 
 	duti -s com.microsoft.vscode public.data all
 	duti -s com.microsoft.vscode public.plain-text all
-	duti -s com.microsoft.vscode net.daringfireball.markdown all # Unknown type at macOS install time?
+	-duti -s com.microsoft.vscode net.daringfireball.markdown all \
+		|| echo -e "\n\nCannot set HTML handler at install time. Run later or right-click an HTML file in Finder to set as default.\n\n"
 	duti -s com.microsoft.vscode public.json all
 	duti -s com.microsoft.vscode public.python-script all
 
@@ -90,9 +91,10 @@ mac-file-defaults:
 	duti -s com.apple.quicktimeplayerx public.mp3 all
 
 	# https://github.com/moretension/duti/issues/29
-	-duti -s com.google.Chrome org.ietf.mhtml all # Unknown type at macOS install time?
-	-duti -s com.google.Chrome public.html all
-	@echo -e "\n\nCannot set HTML handlers. Right-click an HTML file in Finder to set as default.\n\n"
+	-duti -s com.google.Chrome org.ietf.mhtml all \
+		|| echo -e "\n\nCannot set HTML handler at install time. Run later or right-click an HTML file in Finder to set as default.\n\n"
+	-duti -s com.google.Chrome public.html all \
+		|| echo -e "\n\nCannot set HTML handler at install time. Run later or right-click an HTML file in Finder to set as default.\n\n"
 
 .PHONY: mac-commandline-core
 mac-commandline-core:

@@ -72,7 +72,6 @@ mac-file-defaults:
 
 	# File formats
 
-	duti -s com.google.Chrome org.ietf.mhtml all # Unknown type at macOS install time?
 	duti -s com.google.Chrome public.url all
 	duti -s com.google.Chrome public.svg-image all
 	duti -s com.google.Chrome http all
@@ -91,8 +90,9 @@ mac-file-defaults:
 	duti -s com.apple.quicktimeplayerx public.mp3 all
 
 	# https://github.com/moretension/duti/issues/29
-	# duti -s com.google.Chrome public.html all
-	@echo -e "\n\nCannot set HTML handler. Right-click an HTML file in Finder to set as default.\n\n"
+	-duti -s com.google.Chrome org.ietf.mhtml all # Unknown type at macOS install time?
+	-duti -s com.google.Chrome public.html all
+	@echo -e "\n\nCannot set HTML handlers. Right-click an HTML file in Finder to set as default.\n\n"
 
 .PHONY: mac-commandline-core
 mac-commandline-core:

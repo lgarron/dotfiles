@@ -28,14 +28,7 @@
     function append_to_path_if_exists
       set NEW_PATH_COMPONENT $argv[1]
       if test -d $NEW_PATH_COMPONENT
-        set PATH $PATH $NEW_PATH_COMPONENT
-      end
-    end
-
-    function prepend_to_path_if_exists
-      set NEW_PATH_COMPONENT $argv[1]
-      if test -d $NEW_PATH_COMPONENT
-        set PATH $NEW_PATH_COMPONENT $PATH
+        fish_add_path $NEW_PATH_COMPONENT
       end
     end
 
@@ -43,7 +36,7 @@
     append_to_path_if_exists /home/linuxbrew/.linuxbrew/bin # for codespaces
     append_to_path_if_exists /home/linuxbrew/.linuxbrew/sbin # for codespaces
     append_to_path_if_exists "$HOME/.data/cargo/bin" # For Rust
-    prepend_to_path_if_exists $HOME/.data/rbenv/shims # rbenv https://github.com/rbenv/rbenv#how-rbenv-hooks-into-your-shell
+    append_to_path_if_exists /opt/homebrew/opt/postgresql@15/bin # For postgres
 
 # Temporary workaround for a bug in Codespaces
 

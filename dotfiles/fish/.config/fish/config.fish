@@ -38,16 +38,6 @@
     append_to_path_if_exists "$HOME/.data/cargo/bin" # For Rust
     append_to_path_if_exists /opt/homebrew/opt/postgresql@15/bin # For postgres
 
-# Temporary workaround for a bug in Codespaces
-
-    if test -z "$(code --version)"
-      set CODE_VERSION 97dec172d3256f8ca4bfb2143f3f76b503ca0534
-      echo "Patching VS CODE PATHS for VS Code $CODE_VERSION"
-      fish_add_path -P /vscode/bin/linux-x64/$CODE_VERSION/bin/
-      fish_add_path -P /vscode/bin/linux-x64/$CODE_VERSION/bin/remote-cli/
-      fish_add_path -P /vscode/bin/linux-x64/$CODE_VERSION/bin/helpers/
-    end
-
 # Relaunch
 
     # VSCode shell integration

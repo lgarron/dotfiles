@@ -6,6 +6,7 @@
     )
 
     abbr -a dff "cd $DOTFILES_FOLDER"
+    abbr -a dlf "cd ~/Downloads"
 
     # Reloads the fish config file. `rc` is chosen because the config file for
     # other shells is often known as the `rc` file, and `rc` is easy to type.

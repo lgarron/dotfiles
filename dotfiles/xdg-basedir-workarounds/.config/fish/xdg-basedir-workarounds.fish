@@ -72,3 +72,7 @@
 
     # Docker
     set -Ux DOCKER_CONFIG $XDG_CONFIG_HOME/docker
+
+    set PSQL_DATA_HOME $XDG_DATA_HOME/postgres
+    set -Ux PSQL_HISTORY $PSQL_DATA_HOME/pqsl_history
+    mkdir -p $PSQL_DATA_HOME &

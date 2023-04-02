@@ -6,6 +6,7 @@ auto:
 
 .PHONY: mac-common
 mac-common: \
+	compressor \
 	fish \
 	golang-fish \
 	karabiner \
@@ -62,6 +63,7 @@ $(PACKAGES):
 	cd dotfiles && stow --no-folding --ignore=.DS_Store -t ~/ $@
 
 PACKAGES_FOLDING  =
+PACKAGES_FOLDING += compressor
 PACKAGES_FOLDING += karabiner
 PACKAGES_FOLDING += mac-minecraft-mods
 PACKAGES_FOLDING += quicksilver

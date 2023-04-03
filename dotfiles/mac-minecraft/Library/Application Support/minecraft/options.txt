@@ -1,4 +1,4 @@
-version:3337
+version:3444
 autoJump:false
 operatorItemsTab:false
 autoSuggestions:true
@@ -77,6 +77,7 @@ skipRealms32bitWarning:false
 hideMatchedNames:true
 joinedFirstServer:true
 hideBundleTutorial:false
+hasSeenVotingScreen:true
 syncChunkWrites:false
 showAutosaveIndicator:true
 allowServerListing:true

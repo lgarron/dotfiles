@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<setting name="HEVC%2010-bit%20HLG%20(225Mbps%20for%204K)%20420">
+<setting name="HEVC%2010-bit%20HLG%20(225Mbps%20for%204K%20HQ)">
     <version>406784</version>
     <description>QuickTime%20Movie</description>
     <default-destination/>
@@ -11,7 +11,6 @@
         <marker-image width="0" height="0"/>
         <encode-cc>yes</encode-cc>
         <encode-chapters>yes</encode-chapters>
-        <auto-bit-rate-purpose>8</auto-bit-rate-purpose>
         <include-hidden-metadata>yes</include-hidden-metadata>
         <metadata-options>1</metadata-options>
         <audio-encode name="Audio" isEnabled="yes">
@@ -37,7 +36,7 @@
             <rotation>0</rotation>
             <flip>0</flip>
             <color-space primaries="2" transfer="2" matrix="2"/>
-            <color-spec-default>-1000</color-spec-default>
+            <color-spec-default>3</color-spec-default>
             <raw-to-log>0</raw-to-log>
             <camera-lut>0</camera-lut>
             <camera-lut-color>-1000</camera-lut-color>
@@ -51,10 +50,10 @@
             <spatial pixelDepth="24" minQuality="768" quality="768"/>
             <temporal keyFrameInterval="0" minQuality="768" quality="768" partial-sync="0"/>
             <icm2-options max-passes="1" allow-frame-reoder="no"/>
-            <data-rate>0</data-rate>
+            <data-rate>28125000</data-rate>
             <data-rate-limit-percentage>0</data-rate-limit-percentage>
             <data-rate-limit-duration>0</data-rate-limit-duration>
-            <encoder-properties><![CDATA[YnBsaXN0MDDSAQIDDF8QEGNvZGVjLXByb3BlcnRpZXNaZW5jb2Rlci1pZNEEBVxQcm9maWxlTGV2ZWzTBgcICQoLW29iamVjdFZhbHVlW2lzRGVmYXVsdEhRW2Rlc2NyaXB0aW9uXxAVSEVWQ19NYWluMTBfQXV0b0xldmVsCF8QFDEwLUJpdCBDb2xvciAoNDoyOjApVGh2YzEIDSArLjtCTlpmfn+WAAAAAAAAAQEAAAAAAAAADQAAAAAAAAAAAAAAAAAAAJs=]]></encoder-properties>
+            <encoder-properties><![CDATA[YnBsaXN0MDDSAQIDDF8QEGNvZGVjLXByb3BlcnRpZXNaZW5jb2Rlci1pZNEEBVxQcm9maWxlTGV2ZWzTBgcICQoLW29iamVjdFZhbHVlW2lzRGVmYXVsdEhRW2Rlc2NyaXB0aW9uXxAYSEVWQ19NYWluNDIyMTBfQXV0b0xldmVsCF8QFDEwLUJpdCBDb2xvciAoNDoyOjIpVGh2YzEIDSArLjtCTlpmgYKZAAAAAAAAAQEAAAAAAAAADQAAAAAAAAAAAAAAAAAAAJ4=]]></encoder-properties>
             <video-360-metadata-format>0</video-360-metadata-format>
             <video-360-metadata-auto>yes</video-360-metadata-auto>
             <encoder-variant>1</encoder-variant>

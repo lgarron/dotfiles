@@ -54,6 +54,7 @@
   /******** JavaScript ********/
   "javascript.validate.enable": false,
   "javascript.updateImportsOnFileMove.enabled": "always",
+  "rome.requireConfiguration": true,
   /******** TypeScript ********/
   "typescript.updateImportsOnFileMove.enabled": "always",
   "typescript.inlayHints.enumMemberValues.enabled": true,
@@ -105,8 +106,4 @@
   },
   /******** Rust ********/
   "rust-analyzer.check.command": "clippy",
-  /******** CodeQL ********/
-  "codeQL.telemetry.enableTelemetry": false,
-  "codeQL.canary": true,
-  "rome.requireConfiguration": true,
 }

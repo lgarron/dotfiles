@@ -28,7 +28,7 @@
     function append_to_path_if_exists
       set NEW_PATH_COMPONENT $argv[1]
       if test -d $NEW_PATH_COMPONENT
-        fish_add_path --append $NEW_PATH_COMPONENT
+        set PATH $PATH $NEW_PATH_COMPONENT
       end
     end
 

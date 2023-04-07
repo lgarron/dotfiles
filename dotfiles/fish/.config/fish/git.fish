@@ -128,10 +128,24 @@ git push --force-with-lease"
     function _abbr_git_commit_thirdlast_command_fn; _abbr_define_subcommand_arg "--message \"`"(string replace --all "\"" "\\\"" $history[3])"`\"" git commit; end; abbr -a _abbr_git_commit_thirdlast_command --regex !!! --position anywhere --function _abbr_git_commit_thirdlast_command_fn
 
     function js_version
-        echo -n "v"; cat package.json | jq -r ".version"
+        if not test -f package.json
+            return 1
+        end
+        set VERSION (cat package.json | jq -r ".version")
+        echo -n "v$VERSION"
+    end
+    function rust_version
+        if not test -f Cargo.toml
+            return 1
+        end
+        set VERSION (cat Cargo.toml | toml2json | jq -r ".package.version")
+        echo -n "v$VERSION"
+    end
+    function project_version
+        js_version; or rust_version
     end
     function _abbr_gcv
-        echo "git commit --message \""(js_version)
+        echo "git commit --message \""(project_version)
         echo ""
         echo "Release notes:"
         echo ""

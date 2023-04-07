@@ -1197,13 +1197,17 @@
 			<key>enabled</key>
 			<true/>
 			<key>modificationDate</key>
-			<real>692527532.12847495</real>
+			<real>702250641.61657298</real>
 			<key>name</key>
 			<string>Obisidan</string>
 			<key>settings</key>
 			<dict>
 				<key>folderDepth</key>
 				<integer>-1</integer>
+				<key>folderTypes</key>
+				<array>
+					<string>public.folder</string>
+				</array>
 				<key>parser</key>
 				<string>QSDirectoryParser</string>
 				<key>path</key>

@@ -27,3 +27,5 @@
 	defaultBranch = main
 [pull]
 	ff = only
+[remote "origin"]
+	gh-resolved = base

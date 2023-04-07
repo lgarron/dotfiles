@@ -201,6 +201,7 @@
       echo "$output_prefix.social-media-preview.png"
     end
 
+    abbr -a "date-iso-8601" "date \"+%Y-%m-%d\""
 
 ### Abbrevation definition helpers
 

@@ -6,60 +6,6 @@
 	<array>
 		<dict>
 			<key>ID</key>
-			<string>E6AA0AAE-0B00-4307-81F2-0C75A8F3BC82</string>
-			<key>children</key>
-			<array/>
-			<key>enabled</key>
-			<true/>
-			<key>name</key>
-			<string>Quicksilver Triggers</string>
-			<key>settings</key>
-			<dict>
-				<key>folderDepth</key>
-				<integer>-1</integer>
-				<key>folderTypes</key>
-				<array>
-					<string>com.apple.applescript.script</string>
-				</array>
-				<key>parser</key>
-				<string>QSDirectoryParser</string>
-				<key>path</key>
-				<string>~/Code/dotfiles/Quicksilver Triggers</string>
-			</dict>
-			<key>source</key>
-			<string>QSFileSystemObjectSource</string>
-		</dict>
-		<dict>
-			<key>ID</key>
-			<string>54DB7029-7E0F-47E2-84B0-2C26F7AC148D</string>
-			<key>children</key>
-			<array/>
-			<key>enabled</key>
-			<true/>
-			<key>modificationDate</key>
-			<real>635323907.38459301</real>
-			<key>name</key>
-			<string>Quicksilver Triggers</string>
-			<key>settings</key>
-			<dict>
-				<key>excludeFiletypes</key>
-				<array>
-					<string>public.folder</string>
-				</array>
-				<key>folderDepth</key>
-				<integer>2</integer>
-				<key>parser</key>
-				<string>QSDirectoryParser</string>
-				<key>path</key>
-				<string>~/Code/git/github.com/lgarron/dotfiles/Quicksilver Triggers</string>
-				<key>skipItem</key>
-				<true/>
-			</dict>
-			<key>source</key>
-			<string>QSFileSystemObjectSource</string>
-		</dict>
-		<dict>
-			<key>ID</key>
 			<string>D489AE7F-4214-42F2-83E4-D52F1CE87893</string>
 			<key>children</key>
 			<array>
@@ -116,6 +62,25 @@
 			<array>
 				<dict>
 					<key>ID</key>
+					<string>E6B38DB4-C848-497A-BD49-9BF4007BCAF9</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>name</key>
+					<string>Application Support</string>
+					<key>settings</key>
+					<dict>
+						<key>folderDepth</key>
+						<integer>1</integer>
+						<key>path</key>
+						<string>~/Library/Application Support</string>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
+				<dict>
+					<key>ID</key>
 					<string>6C5947B9-A531-403B-8C3E-C3C295AC0F2E</string>
 					<key>children</key>
 					<array/>
@@ -139,7 +104,7 @@
 			<key>enabled</key>
 			<true/>
 			<key>name</key>
-			<string>Application Settings</string>
+			<string>Library</string>
 			<key>source</key>
 			<string>QSGroupObjectSource</string>
 		</dict>
@@ -177,58 +142,6 @@
 						<string>QSDirectoryParser</string>
 						<key>path</key>
 						<string>/Users/lgarron/Code</string>
-					</dict>
-					<key>source</key>
-					<string>QSFileSystemObjectSource</string>
-				</dict>
-				<dict>
-					<key>ID</key>
-					<string>8B8D4DEF-6799-40CB-827C-520203CFEE0A</string>
-					<key>children</key>
-					<array/>
-					<key>enabled</key>
-					<true/>
-					<key>name</key>
-					<string>github.com</string>
-					<key>settings</key>
-					<dict>
-						<key>folderDepth</key>
-						<integer>2</integer>
-						<key>folderTypes</key>
-						<array>
-							<string>public.folder</string>
-						</array>
-						<key>parser</key>
-						<string>QSDirectoryParser</string>
-						<key>path</key>
-						<string>~/Dropbox/Code/gopath/src/github.com</string>
-					</dict>
-					<key>source</key>
-					<string>QSFileSystemObjectSource</string>
-				</dict>
-				<dict>
-					<key>ID</key>
-					<string>274F964A-D626-43CC-A0CC-5E237B7C3A48</string>
-					<key>children</key>
-					<array/>
-					<key>enabled</key>
-					<true/>
-					<key>modificationDate</key>
-					<real>701995826.922665</real>
-					<key>name</key>
-					<string>bitbucket.org</string>
-					<key>settings</key>
-					<dict>
-						<key>folderDepth</key>
-						<integer>2</integer>
-						<key>folderTypes</key>
-						<array>
-							<string>public.folder</string>
-						</array>
-						<key>parser</key>
-						<string>QSDirectoryParser</string>
-						<key>path</key>
-						<string>~/Code/git/bitbucket.org</string>
 					</dict>
 					<key>source</key>
 					<string>QSFileSystemObjectSource</string>
@@ -303,510 +216,63 @@
 					<key>source</key>
 					<string>QSFileSystemObjectSource</string>
 				</dict>
+				<dict>
+					<key>ID</key>
+					<string>E394391A-8ACF-47A7-9BB8-1B84B5FBDAD5</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>modificationDate</key>
+					<real>406085864.02119201</real>
+					<key>name</key>
+					<string>.ssh</string>
+					<key>path</key>
+					<array>
+						<string>/Users/lgarron/.ssh</string>
+					</array>
+					<key>settings</key>
+					<dict>
+						<key>path</key>
+						<string>/Users/lgarron/.ssh</string>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
+				<dict>
+					<key>ID</key>
+					<string>54DB7029-7E0F-47E2-84B0-2C26F7AC148D</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>modificationDate</key>
+					<real>635323907.38459301</real>
+					<key>name</key>
+					<string>Quicksilver Triggers</string>
+					<key>settings</key>
+					<dict>
+						<key>excludeFiletypes</key>
+						<array>
+							<string>public.folder</string>
+						</array>
+						<key>folderDepth</key>
+						<integer>2</integer>
+						<key>parser</key>
+						<string>QSDirectoryParser</string>
+						<key>path</key>
+						<string>~/Code/git/github.com/lgarron/dotfiles/Quicksilver Triggers</string>
+						<key>skipItem</key>
+						<true/>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
 			</array>
 			<key>enabled</key>
 			<true/>
 			<key>name</key>
 			<string>Dotfiles</string>
-			<key>source</key>
-			<string>QSGroupObjectSource</string>
-		</dict>
-		<dict>
-			<key>ID</key>
-			<string>1B37D1D0-249F-4D4F-B0C4-1793EF915150</string>
-			<key>children</key>
-			<array>
-				<dict>
-					<key>ID</key>
-					<string>07A33A15-1C11-4A83-ACC8-DC7B974E9578</string>
-					<key>children</key>
-					<array/>
-					<key>enabled</key>
-					<true/>
-					<key>name</key>
-					<string>src</string>
-					<key>settings</key>
-					<dict>
-						<key>folderDepth</key>
-						<integer>2</integer>
-						<key>folderTypes</key>
-						<array>
-							<string>public.folder</string>
-						</array>
-						<key>parser</key>
-						<string>QSDirectoryParser</string>
-						<key>path</key>
-						<string>~/Code/gopath/src</string>
-					</dict>
-					<key>source</key>
-					<string>QSFileSystemObjectSource</string>
-				</dict>
-				<dict>
-					<key>ID</key>
-					<string>AD24A6EC-5D8F-40DA-9ABA-3973F21371F4</string>
-					<key>children</key>
-					<array/>
-					<key>enabled</key>
-					<true/>
-					<key>name</key>
-					<string>github.com</string>
-					<key>settings</key>
-					<dict>
-						<key>folderDepth</key>
-						<integer>2</integer>
-						<key>parser</key>
-						<string>QSDirectoryParser</string>
-						<key>path</key>
-						<string>~/Code/gopath/src/github.com</string>
-					</dict>
-					<key>source</key>
-					<string>QSFileSystemObjectSource</string>
-				</dict>
-				<dict>
-					<key>ID</key>
-					<string>1AC0824E-77EA-4EE3-9E77-091F91CDE749</string>
-					<key>children</key>
-					<array/>
-					<key>enabled</key>
-					<true/>
-					<key>modificationDate</key>
-					<real>560256421.23435497</real>
-					<key>name</key>
-					<string>src</string>
-					<key>settings</key>
-					<dict>
-						<key>folderDepth</key>
-						<integer>1</integer>
-						<key>parser</key>
-						<string>QSDirectoryParser</string>
-						<key>path</key>
-						<string>~/Dropbox/Code/gopath/src</string>
-					</dict>
-					<key>source</key>
-					<string>QSFileSystemObjectSource</string>
-				</dict>
-				<dict>
-					<key>ID</key>
-					<string>A73DA28D-77DC-44BD-B88A-06A6157F561E</string>
-					<key>children</key>
-					<array/>
-					<key>enabled</key>
-					<true/>
-					<key>name</key>
-					<string>github.com</string>
-					<key>settings</key>
-					<dict>
-						<key>folderDepth</key>
-						<integer>1</integer>
-						<key>parser</key>
-						<string>QSDirectoryParser</string>
-						<key>path</key>
-						<string>~/Dropbox/Code/gopath/src/github.com</string>
-					</dict>
-					<key>source</key>
-					<string>QSFileSystemObjectSource</string>
-				</dict>
-			</array>
-			<key>enabled</key>
-			<true/>
-			<key>name</key>
-			<string>Golang</string>
-			<key>source</key>
-			<string>QSGroupObjectSource</string>
-		</dict>
-		<dict>
-			<key>ID</key>
-			<string>F04F3AB5-71CE-49F9-86FA-87B523852B3A</string>
-			<key>children</key>
-			<array>
-				<dict>
-					<key>ID</key>
-					<string>5AE95240-068C-407E-BAB9-AC097895F70B</string>
-					<key>children</key>
-					<array/>
-					<key>enabled</key>
-					<true/>
-					<key>modificationDate</key>
-					<real>438136690.90494698</real>
-					<key>name</key>
-					<string>Google Drive</string>
-					<key>path</key>
-					<array>
-						<string>/Users/lgarron/Google Drive</string>
-					</array>
-					<key>settings</key>
-					<dict>
-						<key>excludeFiletypes</key>
-						<array/>
-						<key>folderDepth</key>
-						<integer>2</integer>
-						<key>folderTypes</key>
-						<array>
-							<string>public.folder</string>
-						</array>
-						<key>parser</key>
-						<string>QSDirectoryParser</string>
-						<key>path</key>
-						<string>/Users/lgarron/Google Drive</string>
-					</dict>
-					<key>source</key>
-					<string>QSFileSystemObjectSource</string>
-				</dict>
-			</array>
-			<key>enabled</key>
-			<true/>
-			<key>name</key>
-			<string>Google</string>
-			<key>source</key>
-			<string>QSGroupObjectSource</string>
-		</dict>
-		<dict>
-			<key>ID</key>
-			<string>00F711BC-35A5-44DB-80C4-8CFC0E015F58</string>
-			<key>children</key>
-			<array>
-				<dict>
-					<key>ID</key>
-					<string>3B853A2A-8352-45CA-8023-C929986BB3CD</string>
-					<key>children</key>
-					<array/>
-					<key>enabled</key>
-					<true/>
-					<key>name</key>
-					<string>~/local</string>
-					<key>settings</key>
-					<dict>
-						<key>folderDepth</key>
-						<integer>1</integer>
-						<key>parser</key>
-						<string>QSDirectoryParser</string>
-						<key>path</key>
-						<string>~/local</string>
-					</dict>
-					<key>source</key>
-					<string>QSFileSystemObjectSource</string>
-				</dict>
-				<dict>
-					<key>ID</key>
-					<string>84CB1911-A2D0-465D-9668-65769E935880</string>
-					<key>children</key>
-					<array/>
-					<key>enabled</key>
-					<true/>
-					<key>name</key>
-					<string>~/local/bin</string>
-					<key>settings</key>
-					<dict>
-						<key>excludeFiletypes</key>
-						<array>
-							<string>public.folder</string>
-						</array>
-						<key>folderDepth</key>
-						<integer>2</integer>
-						<key>parser</key>
-						<string>QSDirectoryParser</string>
-						<key>path</key>
-						<string>~/local/bin</string>
-					</dict>
-					<key>source</key>
-					<string>QSFileSystemObjectSource</string>
-				</dict>
-			</array>
-			<key>enabled</key>
-			<true/>
-			<key>name</key>
-			<string>~/local</string>
-			<key>source</key>
-			<string>QSGroupObjectSource</string>
-		</dict>
-		<dict>
-			<key>ID</key>
-			<string>9AC57B4C-339C-4DDE-8B3F-6841AC9744F0</string>
-			<key>children</key>
-			<array>
-				<dict>
-					<key>ID</key>
-					<string>6D2F6B7F-F707-451B-9044-DEA3BD3C3BD2</string>
-					<key>children</key>
-					<array>
-						<dict>
-							<key>ID</key>
-							<string>7416B21C-2D35-48ED-BA16-D0B5E27A3D84</string>
-							<key>children</key>
-							<array/>
-							<key>enabled</key>
-							<true/>
-							<key>name</key>
-							<string>Archive</string>
-							<key>settings</key>
-							<dict>
-								<key>folderDepth</key>
-								<integer>1</integer>
-								<key>path</key>
-								<string>~/Archive</string>
-							</dict>
-							<key>source</key>
-							<string>QSFileSystemObjectSource</string>
-						</dict>
-						<dict>
-							<key>ID</key>
-							<string>72E69B23-BF3C-4F24-9976-2DF09674F0F8</string>
-							<key>children</key>
-							<array/>
-							<key>enabled</key>
-							<true/>
-							<key>name</key>
-							<string>Backups</string>
-							<key>settings</key>
-							<dict>
-								<key>folderDepth</key>
-								<integer>1</integer>
-								<key>parser</key>
-								<string>QSDirectoryParser</string>
-								<key>path</key>
-								<string>~/Backups</string>
-							</dict>
-							<key>source</key>
-							<string>QSFileSystemObjectSource</string>
-						</dict>
-						<dict>
-							<key>ID</key>
-							<string>88B431D7-5B9B-4B49-834F-9907646C654D</string>
-							<key>children</key>
-							<array/>
-							<key>enabled</key>
-							<true/>
-							<key>name</key>
-							<string>Code</string>
-							<key>settings</key>
-							<dict>
-								<key>folderDepth</key>
-								<integer>2</integer>
-								<key>parser</key>
-								<string>QSDirectoryParser</string>
-								<key>path</key>
-								<string>~/Dropbox/Code</string>
-							</dict>
-							<key>source</key>
-							<string>QSFileSystemObjectSource</string>
-						</dict>
-						<dict>
-							<key>ID</key>
-							<string>6ABE1088-458D-4492-998A-8E5A0D8FDD36</string>
-							<key>children</key>
-							<array/>
-							<key>enabled</key>
-							<true/>
-							<key>modificationDate</key>
-							<real>482140868.875938</real>
-							<key>name</key>
-							<string>Dropbox</string>
-							<key>path</key>
-							<array>
-								<string>/Users/lgarron/Dropbox</string>
-							</array>
-							<key>settings</key>
-							<dict>
-								<key>folderDepth</key>
-								<integer>2</integer>
-								<key>folderTypes</key>
-								<array>
-									<string>public.folder</string>
-								</array>
-								<key>parser</key>
-								<string>QSDirectoryParser</string>
-								<key>path</key>
-								<string>/Users/lgarron/Dropbox</string>
-							</dict>
-							<key>source</key>
-							<string>QSFileSystemObjectSource</string>
-						</dict>
-						<dict>
-							<key>ID</key>
-							<string>A7867B4C-E95D-44F8-A4A2-7503117A7C7F</string>
-							<key>children</key>
-							<array/>
-							<key>enabled</key>
-							<true/>
-							<key>modificationDate</key>
-							<real>665813823.17211795</real>
-							<key>name</key>
-							<string>Dropbox (Maestral)</string>
-							<key>settings</key>
-							<dict>
-								<key>excludeFiletypes</key>
-								<array/>
-								<key>folderDepth</key>
-								<integer>2</integer>
-								<key>folderTypes</key>
-								<array>
-									<string>public.folder</string>
-								</array>
-								<key>parser</key>
-								<string>QSDirectoryParser</string>
-								<key>path</key>
-								<string>~/Dropbox (Maestral)</string>
-							</dict>
-							<key>source</key>
-							<string>QSFileSystemObjectSource</string>
-						</dict>
-					</array>
-					<key>enabled</key>
-					<true/>
-					<key>name</key>
-					<string>Home Folder</string>
-					<key>source</key>
-					<string>QSGroupObjectSource</string>
-				</dict>
-				<dict>
-					<key>ID</key>
-					<string>1AD25208-F4B8-4AB1-8496-F5DF3C77EDD1</string>
-					<key>children</key>
-					<array>
-						<dict>
-							<key>ID</key>
-							<string>5F791AE1-1FF3-4979-AA5A-1BA4EAB858F9</string>
-							<key>children</key>
-							<array/>
-							<key>enabled</key>
-							<true/>
-							<key>name</key>
-							<string>Videos</string>
-							<key>settings</key>
-							<dict>
-								<key>folderDepth</key>
-								<integer>1</integer>
-								<key>parser</key>
-								<string>QSDirectoryParser</string>
-								<key>path</key>
-								<string>~/Archive/Media/Videos</string>
-							</dict>
-							<key>source</key>
-							<string>QSFileSystemObjectSource</string>
-						</dict>
-					</array>
-					<key>enabled</key>
-					<true/>
-					<key>name</key>
-					<string>Archive</string>
-					<key>source</key>
-					<string>QSGroupObjectSource</string>
-				</dict>
-				<dict>
-					<key>ID</key>
-					<string>9FB9EC9D-8D29-4546-83A9-1763D93D1C2D</string>
-					<key>children</key>
-					<array>
-						<dict>
-							<key>ID</key>
-							<string>380086D5-D620-440F-9370-306C2D502C98</string>
-							<key>children</key>
-							<array/>
-							<key>enabled</key>
-							<true/>
-							<key>name</key>
-							<string>Notes</string>
-							<key>settings</key>
-							<dict>
-								<key>folderDepth</key>
-								<integer>-1</integer>
-								<key>folderTypes</key>
-								<array>
-									<string>net.daringfireball.markdown</string>
-								</array>
-								<key>parser</key>
-								<string>QSDirectoryParser</string>
-								<key>path</key>
-								<string>~/Dropbox/Notes</string>
-							</dict>
-							<key>source</key>
-							<string>QSFileSystemObjectSource</string>
-						</dict>
-					</array>
-					<key>enabled</key>
-					<true/>
-					<key>name</key>
-					<string>Dropbox</string>
-					<key>source</key>
-					<string>QSGroupObjectSource</string>
-				</dict>
-				<dict>
-					<key>ID</key>
-					<string>224A6EAA-EC7C-46C6-8B77-E12DFC4B2C0E</string>
-					<key>children</key>
-					<array>
-						<dict>
-							<key>ID</key>
-							<string>9012B646-B751-408E-85B5-FC51A0DCA796</string>
-							<key>children</key>
-							<array/>
-							<key>enabled</key>
-							<true/>
-							<key>name</key>
-							<string>GitHub</string>
-							<key>settings</key>
-							<dict>
-								<key>folderDepth</key>
-								<integer>1</integer>
-								<key>parser</key>
-								<string>QSDirectoryParser</string>
-								<key>path</key>
-								<string>~/Dropbox/Code/GitHub</string>
-							</dict>
-							<key>source</key>
-							<string>QSFileSystemObjectSource</string>
-						</dict>
-						<dict>
-							<key>ID</key>
-							<string>70E48A90-7108-4C63-9C79-0E8175158DF3</string>
-							<key>children</key>
-							<array/>
-							<key>enabled</key>
-							<true/>
-							<key>name</key>
-							<string>GitHub-clones</string>
-							<key>settings</key>
-							<dict>
-								<key>folderDepth</key>
-								<integer>1</integer>
-								<key>parser</key>
-								<string>QSDirectoryParser</string>
-								<key>path</key>
-								<string>~/Dropbox/Code/GitHub-clones</string>
-							</dict>
-							<key>source</key>
-							<string>QSFileSystemObjectSource</string>
-						</dict>
-					</array>
-					<key>enabled</key>
-					<true/>
-					<key>name</key>
-					<string>Code</string>
-					<key>source</key>
-					<string>QSGroupObjectSource</string>
-				</dict>
-				<dict>
-					<key>ID</key>
-					<string>62BFDF51-35D0-4DFA-B740-DF739E2C18E8</string>
-					<key>children</key>
-					<array/>
-					<key>enabled</key>
-					<true/>
-					<key>name</key>
-					<string>social-dance-tempos.png</string>
-					<key>settings</key>
-					<dict>
-						<key>path</key>
-						<string>~/Dropbox/Code/GitHub/social-dance-tempos/social-dance-tempos.png</string>
-					</dict>
-					<key>source</key>
-					<string>QSFileSystemObjectSource</string>
-				</dict>
-			</array>
-			<key>enabled</key>
-			<true/>
-			<key>name</key>
-			<string>Personal</string>
 			<key>source</key>
 			<string>QSGroupObjectSource</string>
 		</dict>
@@ -832,6 +298,27 @@
 						<string>QSDirectoryParser</string>
 						<key>path</key>
 						<string>~/Dropbox (Maestral)/Screenshots/Germain Screenshots/Germain Screenshots 2023</string>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
+				<dict>
+					<key>ID</key>
+					<string>6E4DE642-5402-467F-93BF-D75758500342</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>modificationDate</key>
+					<real>702530695.58016205</real>
+					<key>name</key>
+					<string>Pythagoras Screenshots 2023</string>
+					<key>settings</key>
+					<dict>
+						<key>folderDepth</key>
+						<integer>1</integer>
+						<key>path</key>
+						<string>/Volumes/Samos/Pythagoras/Users/lgarron/Dropbox/Screenshots/Pythagoras Screenshots/Pythagoras Screenshots 2023</string>
 					</dict>
 					<key>source</key>
 					<string>QSFileSystemObjectSource</string>
@@ -868,52 +355,6 @@
 				</dict>
 				<dict>
 					<key>ID</key>
-					<string>E394391A-8ACF-47A7-9BB8-1B84B5FBDAD5</string>
-					<key>children</key>
-					<array/>
-					<key>enabled</key>
-					<true/>
-					<key>modificationDate</key>
-					<real>406085864.02119201</real>
-					<key>name</key>
-					<string>.ssh</string>
-					<key>path</key>
-					<array>
-						<string>/Users/lgarron/.ssh</string>
-					</array>
-					<key>settings</key>
-					<dict>
-						<key>path</key>
-						<string>/Users/lgarron/.ssh</string>
-					</dict>
-					<key>source</key>
-					<string>QSFileSystemObjectSource</string>
-				</dict>
-				<dict>
-					<key>ID</key>
-					<string>E041DF52-910D-4870-A4F7-D68E60D33854</string>
-					<key>children</key>
-					<array/>
-					<key>enabled</key>
-					<true/>
-					<key>modificationDate</key>
-					<real>415189585.12146598</real>
-					<key>name</key>
-					<string>.gnupg</string>
-					<key>path</key>
-					<array>
-						<string>/Users/lgarron/.gnupg</string>
-					</array>
-					<key>settings</key>
-					<dict>
-						<key>path</key>
-						<string>/Users/lgarron/.gnupg</string>
-					</dict>
-					<key>source</key>
-					<string>QSFileSystemObjectSource</string>
-				</dict>
-				<dict>
-					<key>ID</key>
 					<string>96500F36-2D4A-458E-A404-A87D65F83E9A</string>
 					<key>children</key>
 					<array/>
@@ -933,25 +374,6 @@
 						<string>QSDirectoryParser</string>
 						<key>path</key>
 						<string>~/Library</string>
-					</dict>
-					<key>source</key>
-					<string>QSFileSystemObjectSource</string>
-				</dict>
-				<dict>
-					<key>ID</key>
-					<string>E6B38DB4-C848-497A-BD49-9BF4007BCAF9</string>
-					<key>children</key>
-					<array/>
-					<key>enabled</key>
-					<true/>
-					<key>name</key>
-					<string>Application Support</string>
-					<key>settings</key>
-					<dict>
-						<key>folderDepth</key>
-						<integer>1</integer>
-						<key>path</key>
-						<string>~/Library/Application Support</string>
 					</dict>
 					<key>source</key>
 					<string>QSFileSystemObjectSource</string>
@@ -1035,141 +457,6 @@
 		</dict>
 		<dict>
 			<key>ID</key>
-			<string>2B78914B-82B9-46C9-93BC-F8C7DBEDA36A</string>
-			<key>children</key>
-			<array>
-				<dict>
-					<key>ID</key>
-					<string>A5689F99-05EC-417A-8E76-DCCA2E3C9652</string>
-					<key>children</key>
-					<array/>
-					<key>enabled</key>
-					<true/>
-					<key>name</key>
-					<string>SD Card Backup</string>
-					<key>settings</key>
-					<dict>
-						<key>folderDepth</key>
-						<integer>1</integer>
-						<key>parser</key>
-						<string>QSDirectoryParser</string>
-						<key>path</key>
-						<string>/Volumes/Trenzalore/SD Card Backup</string>
-					</dict>
-					<key>source</key>
-					<string>QSFileSystemObjectSource</string>
-				</dict>
-				<dict>
-					<key>ID</key>
-					<string>A48BF238-7627-48F1-86F8-D4C66F522073</string>
-					<key>children</key>
-					<array/>
-					<key>enabled</key>
-					<true/>
-					<key>name</key>
-					<string>LGFS</string>
-					<key>settings</key>
-					<dict>
-						<key>folderDepth</key>
-						<integer>1</integer>
-						<key>parser</key>
-						<string>QSDirectoryParser</string>
-						<key>path</key>
-						<string>/Volumes/Trenzalore/LGFS</string>
-					</dict>
-					<key>source</key>
-					<string>QSFileSystemObjectSource</string>
-				</dict>
-				<dict>
-					<key>ID</key>
-					<string>FEDF8BE2-F80D-4998-AB30-E9DE55472777</string>
-					<key>children</key>
-					<array/>
-					<key>enabled</key>
-					<true/>
-					<key>modificationDate</key>
-					<real>647773972.74820197</real>
-					<key>name</key>
-					<string>Twizzle Diaries | Exported</string>
-					<key>settings</key>
-					<dict>
-						<key>folderDepth</key>
-						<integer>1</integer>
-						<key>path</key>
-						<string>/Volumes/Trenzalore/LGFS/Video Editing/Twizzle Diaries/Twizzle Diaries | Exported</string>
-					</dict>
-					<key>source</key>
-					<string>QSFileSystemObjectSource</string>
-				</dict>
-				<dict>
-					<key>ID</key>
-					<string>40602BAB-994C-4265-A64F-6FF3E72D6961</string>
-					<key>children</key>
-					<array/>
-					<key>enabled</key>
-					<true/>
-					<key>name</key>
-					<string>Twizzle Diaries.fcpbundle</string>
-					<key>settings</key>
-					<dict>
-						<key>path</key>
-						<string>/Volumes/Trenzalore/LGFS/Video Editing/Twizzle Diaries/Twizzle Diaries.fcpbundle</string>
-					</dict>
-					<key>source</key>
-					<string>QSFileSystemObjectSource</string>
-				</dict>
-				<dict>
-					<key>ID</key>
-					<string>412A5565-8C45-4309-9A20-630348C236C3</string>
-					<key>children</key>
-					<array/>
-					<key>enabled</key>
-					<true/>
-					<key>name</key>
-					<string>Gan Robot</string>
-					<key>settings</key>
-					<dict>
-						<key>folderDepth</key>
-						<integer>1</integer>
-						<key>parser</key>
-						<string>QSDirectoryParser</string>
-						<key>path</key>
-						<string>/Volumes/Trenzalore/LGFS/Video Editing/Gan Robot</string>
-					</dict>
-					<key>source</key>
-					<string>QSFileSystemObjectSource</string>
-				</dict>
-				<dict>
-					<key>ID</key>
-					<string>45B0F81B-2384-4AE6-B810-3129C681091A</string>
-					<key>children</key>
-					<array/>
-					<key>enabled</key>
-					<true/>
-					<key>name</key>
-					<string>Twizzle Diaries</string>
-					<key>settings</key>
-					<dict>
-						<key>folderDepth</key>
-						<integer>1</integer>
-						<key>parser</key>
-						<string>QSDirectoryParser</string>
-						<key>path</key>
-						<string>/Volumes/Trenzalore/LGFS/Video Editing/Twizzle Diaries</string>
-					</dict>
-					<key>source</key>
-					<string>QSFileSystemObjectSource</string>
-				</dict>
-			</array>
-			<key>enabled</key>
-			<true/>
-			<key>name</key>
-			<string>Trenzalore</string>
-			<key>source</key>
-			<string>QSGroupObjectSource</string>
-		</dict>
-		<dict>
-			<key>ID</key>
 			<string>C85B3FC2-B42A-4068-A395-C0D9DAF1943A</string>
 			<key>children</key>
 			<array/>
@@ -1224,17 +511,21 @@
 			<key>enabled</key>
 			<true/>
 			<key>modificationDate</key>
-			<real>697367878.53831005</real>
+			<real>702530624.09897804</real>
 			<key>name</key>
-			<string>Dropbox (Maestral)</string>
+			<string>Dropbox</string>
 			<key>settings</key>
 			<dict>
 				<key>folderDepth</key>
 				<integer>1</integer>
+				<key>folderTypes</key>
+				<array>
+					<string>public.folder</string>
+				</array>
 				<key>parser</key>
 				<string>QSDirectoryParser</string>
 				<key>path</key>
-				<string>/Volumes/Dirichlet Pythagoras/Users/lgarron/Dropbox (Maestral)</string>
+				<string>/Volumes/Samos/Pythagoras/Users/lgarron/Dropbox</string>
 				<key>skipItem</key>
 				<false/>
 				<key>watchTarget</key>

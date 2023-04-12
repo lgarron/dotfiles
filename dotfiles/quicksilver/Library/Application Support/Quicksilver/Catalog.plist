@@ -47,6 +47,27 @@
 					<key>source</key>
 					<string>QSFileSystemObjectSource</string>
 				</dict>
+				<dict>
+					<key>ID</key>
+					<string>7B494B91-F393-41D0-B8EE-3D4D2AFFD82D</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>name</key>
+					<string>Applications</string>
+					<key>settings</key>
+					<dict>
+						<key>folderDepth</key>
+						<integer>1</integer>
+						<key>parser</key>
+						<string>QSDirectoryParser</string>
+						<key>path</key>
+						<string>/System/Library/CoreServices/Applications</string>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
 			</array>
 			<key>enabled</key>
 			<true/>
@@ -165,6 +186,33 @@
 						<string>QSDirectoryParser</string>
 						<key>path</key>
 						<string>~/Code/git/github.com</string>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
+				<dict>
+					<key>ID</key>
+					<string>8AED1BBA-0215-4B05-A1DD-2D129204FB4B</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>modificationDate</key>
+					<real>702954079.55804002</real>
+					<key>name</key>
+					<string>bitbucket.org</string>
+					<key>settings</key>
+					<dict>
+						<key>folderDepth</key>
+						<integer>2</integer>
+						<key>folderTypes</key>
+						<array>
+							<string>public.folder</string>
+						</array>
+						<key>parser</key>
+						<string>QSDirectoryParser</string>
+						<key>path</key>
+						<string>~/Code/git/bitbucket.org</string>
 					</dict>
 					<key>source</key>
 					<string>QSFileSystemObjectSource</string>
@@ -530,6 +578,27 @@
 				<false/>
 				<key>watchTarget</key>
 				<false/>
+			</dict>
+			<key>source</key>
+			<string>QSFileSystemObjectSource</string>
+		</dict>
+		<dict>
+			<key>ID</key>
+			<string>D270825E-A03C-460B-A7F5-0AEE26A963FF</string>
+			<key>children</key>
+			<array/>
+			<key>enabled</key>
+			<true/>
+			<key>name</key>
+			<string>Dropbox (Maestral)</string>
+			<key>settings</key>
+			<dict>
+				<key>folderDepth</key>
+				<integer>1</integer>
+				<key>parser</key>
+				<string>QSDirectoryParser</string>
+				<key>path</key>
+				<string>~/Dropbox (Maestral)</string>
 			</dict>
 			<key>source</key>
 			<string>QSFileSystemObjectSource</string>

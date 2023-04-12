@@ -127,23 +127,6 @@ git push --force-with-lease"
     # git commit !!!!⎵ → git commit --message "`[third-to-last command]`" ( TODO: remove the second space?)
     function _abbr_git_commit_thirdlast_command_fn; _abbr_define_subcommand_arg "--message \"`"(string replace --all "\"" "\\\"" $history[3])"`\"" git commit; end; abbr -a _abbr_git_commit_thirdlast_command --regex !!! --position anywhere --function _abbr_git_commit_thirdlast_command_fn
 
-    function js_version
-        if not test -f package.json
-            return 1
-        end
-        set VERSION (cat package.json | jq -r ".version")
-        echo -n "v$VERSION"
-    end
-    function rust_version
-        if not test -f Cargo.toml
-            return 1
-        end
-        set VERSION (cat Cargo.toml | toml2json | jq -r ".package.version")
-        echo -n "v$VERSION"
-    end
-    function project_version
-        js_version; or rust_version
-    end
     function _abbr_gcv
         echo "git commit --message \""(project_version)
         echo ""
@@ -344,21 +327,52 @@ git push --force-with-lease"
         git push origin :$TAG; or echo "Did not need to remove tag from origin"
     end
 
+## Project version tag management
+
+### project_version
+
+    function js_version
+        if not test -f package.json
+            return 1
+        end
+        set VERSION (cat package.json | jq -r ".version")
+        echo -n "v$VERSION"
+    end
+    function rust_version
+        if not test -f Cargo.toml
+            return 1
+        end
+        set VERSION (cat Cargo.toml | toml2json | jq -r ".package.version")
+        echo -n "v$VERSION"
+    end
+    function project_version
+        js_version; or rust_version
+    end
+    function prev_js_version
+        if not test -f package.json
+            return 1
+        end
+        set VERSION (git show HEAD~:package.json | jq -r ".version")
+        echo -n "v$VERSION"
+    end
+    function prev_rust_version
+        if not test -f Cargo.toml
+            return 1
+        end
+        set VERSION (git show HEAD~:Cargo.toml | toml2json | jq -r ".package.version")
+        echo -n "v$VERSION"
+    end
+    function prev_project_version
+        prev_js_version; or prev_rust_version
+    end
+
 ### tagpush
 
     function tagpush-check
-        set VERSION (echo -n "v"; cat package.json | jq -r ".version")
-        if test $VERSION = "v"
-            echo "No `package.json` to get version." 1>&2
-            return 1
-        end
-        if test $VERSION = "vnull"
-            echo "Could not get version from `package.json`." 1>&2
-            return 1
-        end
-        set PREVIOUS_COMMIT_VERSION (echo -n "v"; git show HEAD~:package.json | jq -r ".version")
+        set VERSION (project_version)
+        set PREVIOUS_COMMIT_VERSION (prev_project_version)
         if test $VERSION = $PREVIOUS_COMMIT_VERSION
-            echo "`package.json` did not change since last commit. Halting `retagpush`." 1>&2
+            echo "Project version did not change since last commit. Halting `retagpush`." 1>&2
             return 1
         end
     end
@@ -372,7 +386,7 @@ git push --force-with-lease"
 
     function tagpush
         tagpush-check || return 1
-        tagpush-version (echo -n "v"; cat package.json | jq -r ".version")
+        tagpush-version (project_version)
     end
 
     function retagpush-version
@@ -387,5 +401,5 @@ git push --force-with-lease"
 
     function retagpush
         tagpush-check || return 1
-        retagpush-version (echo -n "v"; cat package.json | jq -r ".version")
+        retagpush-version (project_version)
     end

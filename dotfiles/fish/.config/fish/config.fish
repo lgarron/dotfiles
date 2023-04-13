@@ -25,18 +25,20 @@
 
 # Setup
 
-    function add_to_path_if_exists
+    function add_to_path
       set NEW_PATH_COMPONENT $argv[1]
-      if test -d $NEW_PATH_COMPONENT
-        fish_add_path --path $NEW_PATH_COMPONENT
-      end
+      fish_add_path --path $NEW_PATH_COMPONENT
     end
 
-    add_to_path_if_exists "$HOME/.data/cargo/bin" # For Rust
-    add_to_path_if_exists /opt/homebrew/bin # macOS (Apple Silicon)
-    add_to_path_if_exists /home/linuxbrew/.linuxbrew/bin # for codespaces
-    add_to_path_if_exists /home/linuxbrew/.linuxbrew/sbin # for codespaces
-    add_to_path_if_exists /opt/homebrew/opt/postgresql@15/bin # For postgres
+    set -x "GOPATH" "$HOME/Code/gopath"
+
+    add_to_path "$HOME/.data/cargo/bin" # For Rust
+    add_to_path /opt/homebrew/bin # macOS (Apple Silicon)
+    add_to_path /home/linuxbrew/.linuxbrew/bin # for codespaces
+    add_to_path /home/linuxbrew/.linuxbrew/sbin # for codespaces
+    add_to_path "$GOPATH/bin"
+    add_to_path "/usr/local/go/bin"
+    add_to_path /opt/homebrew/opt/postgresql@15/bin # For postgres
 
 # Relaunch
 

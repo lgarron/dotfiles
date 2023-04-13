@@ -1,5 +1,7 @@
 ## `dev`
 
+## `make
+
     abbr -a --position command m "make"
 
     # Allow the first (and usually the only) target to be combined with the initial `m`:

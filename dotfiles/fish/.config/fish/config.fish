@@ -394,8 +394,3 @@
 
     # From now on, reloads of this file are considered "manual".
     set MANUAL_RELOAD true
-
-    # Manual workaround for bun, until one of the following is resolved:
-    # - https://github.com/oven-sh/bun/issues/272
-    # - https://github.com/oven-sh/bun/issues/965
-    append_to_path_if_exists $HOME/.local/bin

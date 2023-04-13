@@ -83,3 +83,4 @@
 ## Misc
 
     abbr -a "cx" "chmod +x"
+    abbr -a "p3" "python3"

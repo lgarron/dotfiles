@@ -62,9 +62,9 @@
 
 ### git add
 
-    abbr -a ga "git add"
+    abbr -a ga  "git add"
     abbr -a gap "git add --patch" # second-level convenience
-    abbr -a g. "git add ."
+    abbr -a g.  "git add ."
     # Legacy
     abbr -a gst "# Try: ga"
     abbr -a gsp "# Try: gap"
@@ -218,7 +218,7 @@ git push --force-with-lease"
 
 ### git remot
 
-    abbr -a grv   "git remote --verbose"
+    abbr -a grv "git remote --verbose"
 
 ### git reset
 

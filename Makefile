@@ -8,7 +8,6 @@ auto:
 mac-common: \
 	compressor \
 	fish \
-	golang-fish \
 	karabiner \
 	mac-git \
 	mac-minecraft \
@@ -42,7 +41,6 @@ germain: \
 PACKAGES  =
 PACKAGES += chrome
 PACKAGES += gce-ssh
-PACKAGES += golang-fish
 PACKAGES += golang-sublime
 PACKAGES += hushlogin
 PACKAGES += mac-lglogin-intel

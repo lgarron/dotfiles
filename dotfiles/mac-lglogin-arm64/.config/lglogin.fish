@@ -30,10 +30,15 @@
     # Docker
     launchctl setenv DOCKER_CONFIG "$XDG_CONFIG_HOME"/docker
 
+    # Python
+    launchctl setenv PYTHONSTARTUP $XDG_CONFIG_HOME/python/pythonrc
+    mkdir -p $XDG_DATA_HOME/python
+
     rm -rf $HOME/.cups
     rm -rf $HOME/.docker
     rm -rf $HOME/.gnupg
     rm -rf $HOME/.oracle_jre_usage
+    rm -rf $HOME/.python_history
     rm -rf $HOME/.swiftpm
     rm -rf $HOME/.step
     rm -rf $HOME/.yarnrc

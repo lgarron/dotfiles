@@ -36,7 +36,6 @@
 
     # npm
     set -Ux NPM_CONFIG_USERCONFIG $XDG_CONFIG_HOME/npm/config
-    set -Ux npm_config_userconfig $XDG_CONFIG_HOME/npm/config
     set -Ux NPM_CONFIG_CACHE $XDG_CACHE_HOME/npm
 
     # Wine
@@ -65,6 +64,10 @@
 
     # zsh
     set -Ux ZDOTDIR $XDG_CONFIG_HOME/zsh
+
+    # Python
+    set -Ux PYTHONSTARTUP $XDG_CONFIG_HOME/python/pythonrc
+    mkdir -p $XDG_DATA_HOME/python &
 
     # Rust
     set -Ux CARGO_HOME $XDG_DATA_HOME/cargo

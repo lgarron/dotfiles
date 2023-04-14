@@ -28,7 +28,8 @@
     # We'd use "$XDG_DATA_HOME/bash/history", but bash won't create the
     # intermediate folder and this prevents us from having to create it
     # manually.
-    set -Ux HISTFILE $XDG_DATA_HOME/bash_history
+    set -Ux HISTFILE $XDG_DATA_HOME/bash/history
+    mkdir -p (dirname $HISTFILE) &
 
     # gem
     set -Ux GEM_HOME $XDG_DATA_HOME/gem
@@ -64,10 +65,11 @@
 
     # zsh
     set -Ux ZDOTDIR $XDG_CONFIG_HOME/zsh
+    mkdir -p $ZDOTDIR &
 
     # Python
-    set -Ux PYTHONSTARTUP $XDG_CONFIG_HOME/python/pythonrc
-    mkdir -p $XDG_DATA_HOME/python &
+    set -Ux PYTHONSTARTUP $XDG_CONFIG_HOME/python/pythonrc # Note: this is not the history file itself, it's a script that sets the history file.
+    mkdir -p $XDG_DATA_HOME/python & # Note: this is the folder in which the history file itself is stored.
 
     # Rust
     set -Ux CARGO_HOME $XDG_DATA_HOME/cargo
@@ -76,6 +78,6 @@
     # Docker
     set -Ux DOCKER_CONFIG $XDG_CONFIG_HOME/docker
 
-    set PSQL_DATA_HOME $XDG_DATA_HOME/postgres
-    set -Ux PSQL_HISTORY $PSQL_DATA_HOME/pqsl_history
-    mkdir -p $PSQL_DATA_HOME &
+    # Postgres
+    set -Ux PSQL_HISTORY $XDG_DATA_HOME/postgres/pqsl_history
+    mkdir -p (dirname "$PSQL_HISTORY") &

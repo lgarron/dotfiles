@@ -32,8 +32,7 @@ euclid: \
 
 .PHONY: germain
 germain: \
-	mac-common-arm64 \
-	mac-git-github
+	mac-common-arm64
 
 ########
 
@@ -45,7 +44,6 @@ PACKAGES += golang-sublime
 PACKAGES += hushlogin
 PACKAGES += mac-lglogin-arm64
 PACKAGES += mac-git
-PACKAGES += mac-git-github
 PACKAGES += mac-minecraft
 PACKAGES += povray
 PACKAGES += sd-card-backup

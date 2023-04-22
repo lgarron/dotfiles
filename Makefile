@@ -8,22 +8,18 @@ auto:
 mac-common: \
 	compressor \
 	fish \
+	git \
 	karabiner \
-	mac-git \
-	mac-minecraft \
-	mac-minecraft-mods \
+	lglogin \
+	minecraft \
+	minecraft-mods \
 	quicksilver \
 	sd-card-backup \
 	xdg-basedir-workarounds \
 	vscode
 
-.PHONY: mac-common-arm64
-mac-common-arm64: mac-common
-	make mac-lglogin-arm64
-
 .PHONY: germain
-germain: \
-	mac-common-arm64
+germain: mac-common
 
 ########
 
@@ -33,9 +29,9 @@ PACKAGES += civilization
 PACKAGES += gce-ssh
 PACKAGES += golang-sublime
 PACKAGES += hushlogin
-PACKAGES += mac-lglogin-arm64
-PACKAGES += mac-git
-PACKAGES += mac-minecraft
+PACKAGES += lglogin
+PACKAGES += git
+PACKAGES += minecraft
 PACKAGES += povray
 PACKAGES += sd-card-backup
 PACKAGES += vscode
@@ -50,7 +46,7 @@ $(PACKAGES):
 PACKAGES_FOLDING  =
 PACKAGES_FOLDING += compressor
 PACKAGES_FOLDING += karabiner
-PACKAGES_FOLDING += mac-minecraft-mods
+PACKAGES_FOLDING += minecraft-mods
 PACKAGES_FOLDING += quicksilver
 
 .PHONY: $(PACKAGES_FOLDING)

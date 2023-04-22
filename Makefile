@@ -24,19 +24,14 @@ germain: mac-common
 ########
 
 PACKAGES  =
-PACKAGES += chrome
 PACKAGES += civilization
-PACKAGES += gce-ssh
-PACKAGES += golang-sublime
-PACKAGES += lglogin
 PACKAGES += git
+PACKAGES += lglogin
 PACKAGES += minecraft
 PACKAGES += povray
 PACKAGES += sd-card-backup
 PACKAGES += vscode
-
 PACKAGES += xdg-basedir-workarounds
-# PACKAGES += quicksilver # special handling
 
 .PHONY: $(PACKAGES)
 $(PACKAGES):

@@ -17,18 +17,9 @@ mac-common: \
 	xdg-basedir-workarounds \
 	vscode
 
-.PHONY: mac-common-intel
-mac-common-intel: mac-common
-	make mac-lglogin-intel
-
 .PHONY: mac-common-arm64
 mac-common-arm64: mac-common
 	make mac-lglogin-arm64
-
-.PHONY: euclid
-euclid: \
-	mac-common-intel \
-	povray
 
 .PHONY: germain
 germain: \

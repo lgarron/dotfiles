@@ -40,6 +40,7 @@ germain: \
 
 PACKAGES  =
 PACKAGES += chrome
+PACKAGES += civilization
 PACKAGES += gce-ssh
 PACKAGES += golang-sublime
 PACKAGES += hushlogin

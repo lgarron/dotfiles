@@ -1,0 +1,163 @@
+;Altering this number will cause the app to overwrite this file with defaults
+Version 10
+
+[Video]
+;Overrides all other options to achieve desired performance profile. Must be set to -1 for changes in this file to be applied.
+PerformanceImpact -1
+
+;Overrides all other options to achieve desired memory profile. Must be set to -1 for changes in this file to be applied.
+MemoryImpact -1
+
+;MSAA sample count.  0 ==> 1. -1 ==> Max available
+MSAA 2
+
+;MSAA quality, enables EQAA or CSAA if supported
+MSAAQuality 0
+
+;1 = Wait for vertical sync. 0 = I don't mind tearing artifacts
+VSync 1
+
+;Resolution of shadow map (NxN)
+ShadowMapResolution 4096
+
+;Resolution of ambient occlusion depth map (NxN)
+AODepthResolution 2048
+
+;Resolution of ambient occlusion render texture (NxN)
+AORenderResolution 2048
+
+;Resolution of mask for FOW (NxN)
+TerrainHeightMaskResolution 1024
+
+;Refresh rate for fullscreen mode. Ignored for windowed mode
+RefreshRateInHz 60
+
+;Set to 0 to use full resolution textures.  Non-zero to reduce them
+ReducedAssetTextures 0
+
+[Terrain]
+;1 = full-res, 2 = low-res.
+TerrainSynthesisDetailLevel 1
+
+;Valid settings are 0 to 4.  Higher number = higher quality.
+TerrainQuality 4
+
+;Discard less important terrain materials. Saves memory.
+ReducedTerrainMaterials 0
+
+;Set to use low quality terrain shader (reduces texture filtering quality and specular lighting)
+LowQualityTerrainShader 0
+
+[General]
+;Number of passes when calculating screen-space reflection with 16 samples per pass, default is 4 (64 samples). 0 disables SSR.
+SSReflectPasses 4
+
+;Drop highest mip level for water LEAN maps
+UseLowResWater 0
+
+;Disable high quality water (no refraction or reflection).
+UseLowQualityWaterShader 0
+
+;Minimap size (0 is minimum size, 1 is maximum size)
+MinimapSize 0.500000
+
+;Minimap quality (0 is 4xSuperSampling, 1 is 16xSuperSampling)
+MinimapQuality 0
+
+;Default time of day
+DefaultTimeOfDay 11.500000
+
+;Enable/disable ambient time of day cycling.
+AmbientTimeOfDay 1
+
+;Set which game views are enabled: 0 = Strategic only. 1 = 3D only. 2 = Both.
+AvailableViews 2
+
+;Indicates the level of detail for vfx. 0 = low. 1 = high
+VFXDetailLevel 1
+
+;How much stuff on the map? 0 = not a lot. 1 = a lot
+ClutterDetailLevel 1
+
+;Enable screen-space overlay effect.
+ScreenSpaceOverlay 0
+
+;Whether or not to cull models which are small on screen
+SmallObjectCulling 1
+
+;Start fading small models at this threshold (area in pixels)
+SmallObjectCulling_Start 25
+
+;Drop out small models at this threshold (area in pixels)
+SmallObjectCulling_End 15
+
+;Maximum instruction set extension allowed for optimized code paths on compatible CPUs. Disabled (0), SSE2 (1), or AVX (2)
+OptimizationLevel 2
+
+;[DEPRECATED] Allow use of AVX code paths on compatible CPUs
+EnableAVXOptimizations 1
+
+;[DEPRECATED] Allow use of AVX code paths on compatible CPUs
+EnableAVX2Optimizations 0
+
+[AO]
+;Whether or not to turn on AO
+EnableAO 1
+
+[Bloom]
+;Whether or not to turn on Bloom
+EnableBloom 1
+
+[Shadows]
+;Whether or not to turn on Shadows
+EnableShadows 1
+
+[DynamicLighting]
+;Whether or not to use dynamic lighting
+EnableDynamicLighting 1
+
+[CloudShadows]
+;Whether or not to turn on Cloud Shadows
+EnableCloudShadows 1
+
+[Leaders]
+;Overall leader rendering quality
+Quality 3
+
+;Whether or not to use motion blur for leaders, requires medium quality (2) or greater
+EnableMotionBlur 1
+
+[General]
+;Force d3d debug layer.  This is a debugging switch
+ForceDebugLayer 0
+
+;Force GPU breadcrumbs, if available.  This is a debugging switch
+EnableBreadcrumbs 0
+
+[DX12]
+;Throw away all compute dispatches.  This is a debugging switch
+DiscardCompute 0
+
+;Enable packing small textures into 4K aligned buffers instead of 64K aligned ones. Saves GPU memory, especially on low-end devices.
+Use4KSmallTexturePacking 1
+
+;If supported, use Root Signature 1.1 (1), or don't (0), or platform default(-1)
+EnableRootSig_1_1 -1
+
+;Set DX12 compute queue usage on (1), off (0), or platform default(-1).
+EnableAsyncCompute -1
+
+;Enable DX12 split-screen optimizations for multi-GPU systems. On (1), Off(0), or platform default (-1) [Platform Default is OFF, but may change in the future.]
+EnableSplitScreenMultiGPU 0
+
+[Video]
+;Experimental rendering modes
+RenderMode 0
+
+;Experimental resolve modes
+ResolveMode 0
+
+[Debug]
+;Set to 1 to drop all rendering except for UI.  This is a debugging switch
+UIOnlyRendering 0
+

@@ -1,0 +1,258 @@
+;Altering this number will cause the app to overwrite this file with defaults
+Version 1
+
+[Gameplay]
+;Number of autosaves to keep
+AutoSaveKeepCount 10
+
+;Number of turns between autosaves
+AutoSaveFrequency 1
+
+;Whether or not to automatically end a turn when no more actions are available. (0 = off)
+AutoEndTurn 0
+
+;Whether or not to treat city range attacks as a turn blocking notification. (0 = not turn blocking)
+CityRangeAttackTurnBlocking 1
+
+;Game history logging level, 0 = off
+GameHistoryLogLevel 0
+
+;Sequential Game history logging level, 0 = off
+GameHistorySequentialLogLevel 0
+
+;Skips movement animations, 0 = off
+QuickMovement 0
+
+;Skips combat animations, 0 = off
+QuickCombat 0
+
+;Enables always-on screen edge scrolling, 0 = off
+EdgePan 0
+
+;Forces the Production Panel to open in queue mode, 0 = off
+AutoProdQueue 0
+
+;Log all AI systems, 0 = off
+AI_MasterLogging 1
+
+;AI city build plot analysis logging level, 0 = off
+AICityBuildPlotLog 0
+
+;AI settlement analysis logging level (very large), 0 = off
+AISettlementEvaluationLog 0
+
+;AI diplomatic action logging level, 0 = off
+AiDiplomaticActionLog 0
+
+;AI operation evaluation logging level, 0 = off
+AIOperationEvalLog 0
+
+;Game Era Moments Log, 0=Top moments only, 1=All moments
+GameEraMomentsLog 0
+
+;Game Effects logging level, 0 = off, 1 = Minimal, 2 = Normal, Detailed = 3, Diagnostic = 4
+GameEffectsLogLevel 0
+
+;Profile logging enabled, 0 = off, 1 = on
+ProfileEnabled 0
+
+;Depth of profiling, -1 = all
+ProfileDepth -1
+
+;If an AI player's processing time exceeds the time in seconds, keep the turn's autosave, 0 = off
+ProfileSaveIfPlayerTimeExceeds 0.000000
+
+;Removes the 'One More Turn' option after achieving a victory.
+DisableOneMoreTurn 0
+
+;if the plot tooltip follows the mouse cursor (0 = off)
+PlotToolTipFollowsMouse 1
+
+;Look at the local player's combat on their turn. (0 = off, 1 = move camera, 2 = move and zoom camera
+LookAtPlayerTurnCombat 2
+
+;Look at the local player's combat when not their turn. (0 = off, 1 = move camera, 2 = move and zoom camera
+LookAtPlayerOffTurnCombat 1
+
+;The zoom level to use for player turn combat, 0.0 to 1.0
+LookAtPlayerTurnCombatZoomLevel 0.230000
+
+;The zoom level to use for player turn combat, 0.0 to 1.0
+LookAtPlayerOffTurnCombatZoomLevel 0.500000
+
+;Does the selection auto cycle to the next available unit? (0 = no, 1 = yes)
+AutoUnitCycle 1
+
+;How the unit cycle determines the next closest unit to cycle to. 0 = Last closest, 1 = Closest of last two.
+UnitCycleProximityType 0
+
+[Tutorial]
+;Experience level of player for tutorial prompts.
+TutorialLevel -1
+
+;Set to 1 if the user has chosen a tutorial level
+HasChosenTutorialLevel 1
+
+;Automatically set to 1 after the user has seen the XP1 features screen at least once.
+HasSeenXP1FeaturesScreen 0
+
+;Automatically set to 1 after the user has seen the XP2 features screen at least once.
+HasSeenXP2FeaturesScreen 1
+
+;Set to 1 after the user has opted to no longer show the screen.
+HideXP1FeaturesScreen 0
+
+;Set to 1 after the user has opted to no longer show the screen.
+HideXP2FeaturesScreen 1
+
+;Automatically set to 1 after the user has seen the CivRoyale How to Play screen at least once.
+HasSeenCivRoyaleIntro 0
+
+;Automatically set to 1 after the user has seen the Pirates How to Play screen at least once.
+HasSeenPiratesIntro 0
+
+[Multiplayer]
+;Player name used during local network games.
+LANPlayerName 
+
+;Automatically download community made additional content when it is required to join a multiplayer game.
+AutoModDownload 0
+
+;URL to send a simple, no-payload WebHook for Play By Cloud turn changes. See TurnWebHookFrequency for frequency setting. 
+TurnWebHookURL 
+
+;
+LobbyZone 
+
+;Frequency of Play By Cloud turn change WebHooks. (0 = Send on local player's turn, 1 = Send on every player's turn.)
+TurnWebHookFrequency 0
+
+[Logging]
+;Enable network message logging
+NetMessageLogs 1
+
+[Gameplay]
+;
+Difficulty 0
+
+;
+Era 0
+
+;
+Attack 1
+
+;
+MiniMapZoom 0
+
+;Set to 1 to see the path a unit will traverse.
+MovementPathOn 1
+
+;
+AllPathsOn 0
+
+;
+ClipCursor 1
+
+;
+AutoDeselect 0
+
+;
+PlayVignettes 1
+
+;
+ShowMapGrid 1
+
+;
+ShowMapResources 1
+
+;
+ShowMapYields 1
+
+;
+ShowMapLabelsDeserts 0
+
+;
+ShowMapLabelsMountainRanges 0
+
+;
+ShowMapLabelsNationalParks 1
+
+;
+ShowMapLabelsNaturalWonders 1
+
+;
+ShowMapLabelsRivers 1
+
+;
+ShowMapLabelsVolcanoes 1
+
+;
+ShowMapLabelsLakes 0
+
+;
+ShowMapLabelsOceans 1
+
+;
+ShowMapLabelsSeas 1
+
+;Set to 1 to start games in strategic view.
+StartInStrategicView 0
+
+;Modifies how fast the camera moves to the target location during 'look-at' events.
+CameraLookAtTimeScale 1.000000
+
+[Interface]
+;In-Game Clock format (0 for 12-hour, 1 for 24-hour)
+ClockFormat 1
+
+;If stats should be shown below the leaders' portraits in the HUD ribbon.
+RibbonStats 0
+
+;The amount of time, in seconds, before displaying the plot tooltip.
+PlotTooltipDelay 1.100000
+
+;The size of the text in the chat box.
+ChatTextValue 12
+
+;Sort type for Save Game list, 1 = By Last Modified, 2 = Alphabetical
+SaveGameBrowseSortDefault 1
+
+;Sort type for World Builder Map list, 1 = By Last Modified, 2 = Alphabetical
+WorldBuilderMapBrowseSortDefault 1
+
+;Play reveal animation whenever a pride moment is unlocked.
+PlayHistoricMomentAnimation 1
+
+;Has the user seen the PlayByCloud lobby?  Displays new-game-mode indicator if they have not looked at it yet.
+SeenPlayByCloudLobby 0
+
+;List of PlayByCloud games that we have seen completed. Used by the UI. Do not alter!
+PlayByCloudSeenCompleted 
+
+;Display unset PlayByCloud notifications reminder popup.
+PlayByCloudNotifyRemind 1
+
+;What happens after a PlayByCloud turn is committed? 0 = Ask Me, 1 = Do Nothing, 2 = Exit to Main Menu
+PlayByCloudEndTurnBehavior 0
+
+;What happens after a client has readied up in a PlayByCloud game? 0 = Ask Me, 1 = Stay in Staging Room, 2 = Exit to Lobby
+PlayByCloudClientReadyBehavior 0
+
+;Determine the speed multiplier for mouse wheel scrolling.
+ScrollSpeed 0.500000
+
+;Determine the auto scrolling speed for scrolling text.
+ScrollTextSpeed 0.250000
+
+;EXPERIMENTAL! Force font rendering at a point size beyond what was authored.
+FontSizeIncrease 0
+
+;Last version the user accepted the copyright notice.
+CopyrightAccept 1.0.12.28 (846892)
+
+;Replaces the drag functionality of DragControls with click to drag behavior, 0 = off
+ReplaceDragWithClick 0
+
+;Has the user seen the Unified PC Play lobby?  Displays new-game-mode indicator if they have not seen it yet.
+SeenCrossPlayMultiplayer 0
+

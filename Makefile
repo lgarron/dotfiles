@@ -28,7 +28,6 @@ mac-common-arm64: mac-common
 .PHONY: euclid
 euclid: \
 	mac-common-intel \
-	mac-git-euclid \
 	povray
 
 .PHONY: germain
@@ -46,7 +45,6 @@ PACKAGES += golang-sublime
 PACKAGES += hushlogin
 PACKAGES += mac-lglogin-arm64
 PACKAGES += mac-git
-PACKAGES += mac-git-euclid
 PACKAGES += mac-git-github
 PACKAGES += mac-minecraft
 PACKAGES += povray

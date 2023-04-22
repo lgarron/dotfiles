@@ -44,7 +44,6 @@ PACKAGES += civilization
 PACKAGES += gce-ssh
 PACKAGES += golang-sublime
 PACKAGES += hushlogin
-PACKAGES += mac-lglogin-intel
 PACKAGES += mac-lglogin-arm64
 PACKAGES += mac-git
 PACKAGES += mac-git-euclid

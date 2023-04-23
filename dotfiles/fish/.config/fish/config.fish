@@ -388,7 +388,6 @@
 
     load_if_exists "git" $HOME/.config/fish/git.fish
     load_if_exists "dev" $HOME/.config/fish/dev.fish
-    load_if_exists "go" $HOME/.config/fish/go.fish
 
     loading_indicator ""
 

@@ -1,5 +1,77 @@
 # `config.fish`
 
+# Setup
+
+    # Only print if we're a TTY.
+    # This prevents `protocol error: bad line length character` in git.
+    function _echo
+        if isatty
+            if not [ $SSH_TTY ]
+                echo $argv
+            end
+        end
+    end
+
+# Paths
+
+    function add_to_path
+      set NEW_PATH_COMPONENT $argv[1]
+      fish_add_path --append $NEW_PATH_COMPONENT
+      # set PATH $PATH $NEW_PATH_COMPONENT
+    end
+
+    set -x "GOPATH" "$HOME/Code/gopath"
+
+    if [ "$MANUAL_RELOAD" = "true" -o (count $fish_user_paths) -eq 0 ]
+      _echo ""
+      set -e fish_user_paths
+
+      add_to_path "$HOME/.data/cargo/bin" # For Rust
+      add_to_path /opt/homebrew/bin # macOS (Apple Silicon)
+      add_to_path /home/linuxbrew/.linuxbrew/bin # for codespaces
+      add_to_path /home/linuxbrew/.linuxbrew/sbin # for codespaces
+      add_to_path "$GOPATH/bin"
+      add_to_path "/usr/local/go/bin"
+      add_to_path /opt/homebrew/opt/postgresql@15/bin # For postgres
+
+      set_color --bold; _echo -n "\$fish_user_paths"; set_color normal
+      echo " has been set the following order:"
+      for path in $fish_user_paths
+        _echo "↪ $path"
+      end
+      _echo ""
+    end
+
+# Main reload message
+
+    if [ "$MANUAL_RELOAD" = "true" ]
+      _echo -n "🐟🔄 Reloading "
+      set_color --bold
+      _echo -n "fish"
+      set_color normal
+      _echo " files."
+    end
+
+# Loading
+
+    function loading_indicator
+      if [ "$MANUAL_RELOAD" = "true" ]
+        _echo $argv[1]
+      end
+    end
+
+    loading_indicator -n "↪ "
+    loading_indicator (status --current-filename)
+
+    function load_if_exists
+      if test -f $argv[2]
+        loading_indicator "  ↪ $argv[2]"
+        source $argv[2]
+      end
+    end
+
+# Dotfiles conveniences
+
     set DOTFILES_FOLDER ( \
         realpath ~/.config/fish/config.fish \
           | sed 's#dotfiles/fish/\.config/fish/config\.fish$##' \
@@ -21,68 +93,6 @@
     abbr -a rcu "cd $DOTFILES_FOLDER && git pull && cd - && . $HOME/.config/fish/config.fish"
     if [ "$CODESPACES" = "true" ]
       abbr -a rcuf "cd $DOTFILES_FOLDER && git fetch origin main && git abandon && git reset --hard origin/main && cd - && . $HOME/.config/fish/config.fish"
-    end
-
-# Setup
-
-    function add_to_path
-      set NEW_PATH_COMPONENT $argv[1]
-      fish_add_path --path $NEW_PATH_COMPONENT
-    end
-
-    set -x "GOPATH" "$HOME/Code/gopath"
-
-    add_to_path "$HOME/.data/cargo/bin" # For Rust
-    add_to_path /opt/homebrew/bin # macOS (Apple Silicon)
-    add_to_path /home/linuxbrew/.linuxbrew/bin # for codespaces
-    add_to_path /home/linuxbrew/.linuxbrew/sbin # for codespaces
-    add_to_path "$GOPATH/bin"
-    add_to_path "/usr/local/go/bin"
-    add_to_path /opt/homebrew/opt/postgresql@15/bin # For postgres
-
-# Relaunch
-
-    # VSCode shell integration
-    # https://github.com/microsoft/vscode/issues/139400
-    string match -q $TERM_PROGRAM vscode; and which code-insiders > /dev/null; and . (code-insiders --locate-shell-integration-path fish)
-
-# Setup
-
-    # Only print if we're a TTY.
-    # This prevents `protocol error: bad line length character` in git.
-    function _echo
-        if isatty
-            if not [ $SSH_TTY ]
-                echo $argv
-            end
-        end
-    end
-
-    if [ "$MANUAL_RELOAD" = "true" ]
-      _echo ""
-      _echo -n "🐟🔄 Reloading "
-      set_color --bold
-      _echo -n "fish"
-      set_color normal
-      _echo " files."
-      _echo ""
-    end
-
-# Loading
-
-    function loading_indicator
-      if [ "$MANUAL_RELOAD" = "true" ]
-        _echo $argv[1]
-      end
-    end
-
-    loading_indicator (status --current-filename)
-
-    function load_if_exists
-      if test -f $argv[2]
-        loading_indicator "↪ $argv[2]"
-        source $argv[2]
-      end
     end
 
 # XDG path configuration

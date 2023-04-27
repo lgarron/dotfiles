@@ -29,6 +29,16 @@ See [`./exported/`](./exported/) for files that must be manually exported/import
     cd ~/Code/dotfiles
     make linux-setup fish
 
+## GitPod
+
+If the built-in dotfile functionality fails due to [this bug](https://github.com/gitpod-io/gitpod/issues/14984), install dotfiles manually using:
+
+```shell
+git clone https://github.com/lgarron/dotfiles ~/dotfiles && cd ~/dotfiles
+script/bootstrap
+fish # start a new shell
+```
+
 ## XDG Base Directory Spec
 
 Known compatibility chart: <https://wiki.archlinux.org/index.php/XDG_Base_Directory_support>

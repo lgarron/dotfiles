@@ -18,6 +18,7 @@
   "editor.guides.bracketPairs": true,
   "editor.stickyScroll.enabled": true,
   /******** Window ********/
+  "workbench.colorTheme": "Default Dark+",
   "customWindowZoom.zoomLevelChangeValue": 0.25,
   "workbench.sideBar.location": "left",
   "workbench.startupEditor": "newUntitledFile",

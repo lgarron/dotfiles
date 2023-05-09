@@ -8,13 +8,6 @@ set -euo pipefail
 cd "$(dirname "$0")"
 cd ..
 
-if [ -n "$GITPOD_HOST" ]
-then
-  rm -rf \
-    ~/.config/fish/config.fish \
-    /home/gitpod/.local/share/fish
-fi
-
 sudo add-apt-repository --yes http://archive.ubuntu.com/ubuntu/ || echo "🤷" # *sigh* https://askubuntu.com/a/1132852 # TODO: Make this more portable across Debian OSes.
 sudo apt-get install -y fish stow
 
@@ -29,6 +22,12 @@ function install_fish_3_6 {
 
 fish --version | grep "3.[012345]" && install_fish_3_6
 
+if [ -n "$GITPOD_HOST" ]
+then
+  rm -rf \
+    ~/.config/fish/config.fish \
+    /home/gitpod/.local/share/fish
+fi
 make fish
 
 cd "$(dirname "$0")"

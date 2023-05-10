@@ -85,12 +85,16 @@ mac-file-defaults:
 		|| echo -e "\n\nCannot set HTML handler at install time. Run later or right-click an HTML file in Finder to set as default.\n\n"
 	duti -s com.microsoft.vscode public.json all
 	duti -s com.microsoft.vscode public.python-script all
+	-duti -s com.microsoft.vscode public.xml all
 
 	duti -s com.apple.quicktimeplayerx com.microsoft.waveform-audio all # wav
 	duti -s com.apple.quicktimeplayerx com.apple.m4v-video all
 	duti -s com.apple.quicktimeplayerx com.apple.m4a-audio all
 	duti -s com.apple.quicktimeplayerx org.xiph.flac all
 	duti -s com.apple.quicktimeplayerx public.mp3 all
+
+	duti -s org.videolan.vlc public.playlist
+	duti -s org.videolan.vlc public.m3u-playlist
 
 	# https://github.com/moretension/duti/issues/29
 	-duti -s com.google.Chrome org.ietf.mhtml all \

@@ -81,3 +81,6 @@
     # Postgres
     set -Ux PSQL_HISTORY $XDG_DATA_HOME/postgres/pqsl_history
     mkdir -p (dirname "$PSQL_HISTORY") &
+
+    # Wasmer
+    set -Ux WASMER_DIR $XDG_DATA_HOME/wasmer

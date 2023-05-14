@@ -86,6 +86,11 @@ mac-file-defaults:
 	duti -s com.microsoft.vscode public.json all
 	duti -s com.microsoft.vscode public.python-script all
 	-duti -s com.microsoft.vscode public.xml all
+	# TODO: public.source-code?
+	duti -s com.microsoft.vscode public.c-source
+	duti -s com.microsoft.vscode public.c-header
+	duti -s com.microsoft.vscode public.c-plus-plus-source
+	duti -s com.microsoft.vscode public.source-code
 
 	duti -s com.apple.quicktimeplayerx com.microsoft.waveform-audio all # wav
 	duti -s com.apple.quicktimeplayerx com.apple.m4v-video all

@@ -21,6 +21,9 @@ mac-common: \
 .PHONY: germain
 germain: mac-common
 
+.PHONY: pythagoras
+germain: mac-common
+
 ########
 
 PACKAGES  =

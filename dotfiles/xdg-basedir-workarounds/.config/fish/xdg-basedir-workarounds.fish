@@ -72,8 +72,8 @@
     mkdir -p $XDG_DATA_HOME/python & # Note: this is the folder in which the history file itself is stored.
 
     # Rust
-    set -Ux CARGO_HOME $XDG_DATA_HOME/cargo
-    set -Ux RUSTUP_HOME $XDG_DATA_HOME/rustup
+    set -Ux CARGO_HOME $XDG_CACHE_HOME/cargo
+    set -Ux RUSTUP_HOME $XDG_CACHE_HOME/rustup
 
     # Docker
     set -Ux DOCKER_CONFIG $XDG_CONFIG_HOME/docker

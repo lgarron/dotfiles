@@ -42,6 +42,7 @@
     rm -rf $HOME/.swiftpm
     rm -rf $HOME/.step
     rm -rf $HOME/.yarnrc
+    rm -rf $HOME/.vscode-cli
 
 # Avoid Time Machine slowdown
 

@@ -23,7 +23,9 @@
     set -x "GOPATH" "$HOME/Code/gopath"
 
     if [ "$MANUAL_RELOAD" = "true" -o (count $fish_user_paths) -eq 0 ]
-      _echo ""
+      if [ "$MANUAL_RELOAD" = "true" ]
+        _echo ""
+      end
       set -e fish_user_paths
 
       add_to_path "$HOME/.cache/cargo/bin" # For Rust
@@ -35,7 +37,7 @@
       add_to_path /opt/homebrew/opt/postgresql@15/bin # For postgres
 
       set_color --bold; _echo -n "\$fish_user_paths"; set_color normal
-      echo " has been set the following order:"
+      echo " has been set to the following order:"
       for path in $fish_user_paths
         _echo "↪ $path"
       end

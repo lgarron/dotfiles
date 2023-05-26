@@ -64,6 +64,8 @@
 						<string>QSDirectoryParser</string>
 						<key>path</key>
 						<string>/System/Library/CoreServices/Applications</string>
+						<key>watchTarget</key>
+						<false/>
 					</dict>
 					<key>source</key>
 					<string>QSFileSystemObjectSource</string>
@@ -584,13 +586,13 @@
 		</dict>
 		<dict>
 			<key>ID</key>
-			<string>D270825E-A03C-460B-A7F5-0AEE26A963FF</string>
+			<string>8D718F9A-459D-425B-B2F7-0811E879171C</string>
 			<key>children</key>
 			<array/>
 			<key>enabled</key>
 			<true/>
 			<key>name</key>
-			<string>Dropbox (Maestral)</string>
+			<string>Applications</string>
 			<key>settings</key>
 			<dict>
 				<key>folderDepth</key>
@@ -598,10 +600,195 @@
 				<key>parser</key>
 				<string>QSDirectoryParser</string>
 				<key>path</key>
-				<string>~/Dropbox (Maestral)</string>
+				<string>/Applications</string>
 			</dict>
 			<key>source</key>
 			<string>QSFileSystemObjectSource</string>
+		</dict>
+		<dict>
+			<key>ID</key>
+			<string>215123B8-19E7-4CC0-9FA2-3A8768861FFE</string>
+			<key>children</key>
+			<array/>
+			<key>enabled</key>
+			<true/>
+			<key>settings</key>
+			<dict>
+				<key>modificationDate</key>
+				<real>706381190.68652105</real>
+				<key>path</key>
+				<string>/Applications</string>
+				<key>query</key>
+				<string>kMDItemContentTypeTree == 'com.apple.application'</string>
+			</dict>
+			<key>source</key>
+			<string>QSSpotlightObjectSource</string>
+		</dict>
+		<dict>
+			<key>ID</key>
+			<string>D3CB24BB-D16B-492D-8D40-129D27CA7F4A</string>
+			<key>children</key>
+			<array>
+				<dict>
+					<key>ID</key>
+					<string>00E8A598-D755-4CC2-8108-29B473A79B23</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>name</key>
+					<string>Code</string>
+					<key>settings</key>
+					<dict>
+						<key>folderDepth</key>
+						<integer>1</integer>
+						<key>parser</key>
+						<string>QSDirectoryParser</string>
+						<key>path</key>
+						<string>~/Dropbox (Maestral)/Code</string>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
+				<dict>
+					<key>ID</key>
+					<string>3A87E6AC-0133-4638-A15E-8D45B0CBB442</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>name</key>
+					<string>Cubing</string>
+					<key>settings</key>
+					<dict>
+						<key>folderDepth</key>
+						<integer>1</integer>
+						<key>parser</key>
+						<string>QSDirectoryParser</string>
+						<key>path</key>
+						<string>~/Dropbox (Maestral)/Cubing</string>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
+				<dict>
+					<key>ID</key>
+					<string>8E558CD9-F283-4839-B236-BB447353280F</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>name</key>
+					<string>Events</string>
+					<key>settings</key>
+					<dict>
+						<key>folderDepth</key>
+						<integer>1</integer>
+						<key>parser</key>
+						<string>QSDirectoryParser</string>
+						<key>path</key>
+						<string>~/Dropbox (Maestral)/Events</string>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
+				<dict>
+					<key>ID</key>
+					<string>77C867FC-0B15-4467-8473-CD1B16AA6286</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>name</key>
+					<string>Graphics</string>
+					<key>settings</key>
+					<dict>
+						<key>folderDepth</key>
+						<integer>1</integer>
+						<key>parser</key>
+						<string>QSDirectoryParser</string>
+						<key>path</key>
+						<string>~/Dropbox (Maestral)/Graphics</string>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
+				<dict>
+					<key>ID</key>
+					<string>375D0284-7F0E-4562-9A3D-F27065DD5B98</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>name</key>
+					<string>Internet Scrapbook</string>
+					<key>settings</key>
+					<dict>
+						<key>folderDepth</key>
+						<integer>1</integer>
+						<key>parser</key>
+						<string>QSDirectoryParser</string>
+						<key>path</key>
+						<string>~/Dropbox (Maestral)/Internet Scrapbook</string>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
+				<dict>
+					<key>ID</key>
+					<string>8CC5EE41-027F-47B6-8F4E-D5ADCBC61933</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>name</key>
+					<string>Logistics</string>
+					<key>settings</key>
+					<dict>
+						<key>folderDepth</key>
+						<integer>1</integer>
+						<key>parser</key>
+						<string>QSDirectoryParser</string>
+						<key>path</key>
+						<string>~/Dropbox (Maestral)/Logistics</string>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
+				<dict>
+					<key>ID</key>
+					<string>D270825E-A03C-460B-A7F5-0AEE26A963FF</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>modificationDate</key>
+					<real>706726040.57823896</real>
+					<key>name</key>
+					<string>Dropbox (Maestral)</string>
+					<key>settings</key>
+					<dict>
+						<key>folderDepth</key>
+						<integer>1</integer>
+						<key>folderTypes</key>
+						<array>
+							<string>public.folder</string>
+						</array>
+						<key>parser</key>
+						<string>QSDirectoryParser</string>
+						<key>path</key>
+						<string>~/Dropbox (Maestral)</string>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
+			</array>
+			<key>enabled</key>
+			<true/>
+			<key>name</key>
+			<string>Dropbox (Maestral)</string>
+			<key>source</key>
+			<string>QSGroupObjectSource</string>
 		</dict>
 	</array>
 	<key>enabledPresets</key>
@@ -609,7 +796,7 @@
 		<key>QSPresetAddressBook</key>
 		<true/>
 		<key>QSPresetAllApplications</key>
-		<false/>
+		<true/>
 		<key>QSPresetBashHistory</key>
 		<false/>
 		<key>QSPresetClipboardContents</key>
@@ -659,6 +846,8 @@
 		<key>QSPresetQSCatalogEntries</key>
 		<false/>
 		<key>QSPresetRecentDocuments106</key>
+		<true/>
+		<key>QSPresetRunningProcesses</key>
 		<true/>
 		<key>QSPresetSidebarItems</key>
 		<true/>

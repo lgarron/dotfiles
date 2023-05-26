@@ -44,6 +44,7 @@
     rm -rf $HOME/.step
     rm -rf $HOME/.yarnrc
     rm -rf $HOME/.vscode-cli
+    rm -rf $HOME/go
 
 # Avoid Time Machine slowdown
 

@@ -34,6 +34,7 @@
     launchctl setenv PYTHONSTARTUP $XDG_CONFIG_HOME/python/pythonrc
     mkdir -p $XDG_DATA_HOME/python
 
+    rm -rf $HOME/.cargo
     rm -rf $HOME/.cups
     rm -rf $HOME/.docker
     rm -rf $HOME/.gnupg

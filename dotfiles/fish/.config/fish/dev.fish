@@ -18,15 +18,15 @@
     abbr -a mcd "# Try: m c d"
     abbr -a mcb "# Try: m c b"
 
-    function _abbr_git_make_build_fn; _abbr_define_anyarg build make; end; abbr -a _abbr_git_make_build --regex b --position anywhere --function _abbr_git_make_build_fn
-    function _abbr_git_make_dev_fn; _abbr_define_anyarg dev make; end; abbr -a _abbr_git_make_dev --regex d --position anywhere --function _abbr_git_make_dev_fn
-    function _abbr_git_make_clean_fn; _abbr_define_anyarg clean make; end; abbr -a _abbr_git_make_clean --regex c --position anywhere --function _abbr_git_make_clean_fn
-    function _abbr_git_make_deploy_fn; _abbr_define_anyarg deploy make; end; abbr -a _abbr_git_make_deploy --regex dp --position anywhere --function _abbr_git_make_deploy_fn
-    function _abbr_git_make_publish_fn; _abbr_define_anyarg publish make; end; abbr -a _abbr_git_make_publish --regex p --position anywhere --function _abbr_git_make_publish_fn
-    function _abbr_git_make_test_fn; _abbr_define_anyarg test make; end; abbr -a _abbr_git_make_test --regex t --position anywhere --function _abbr_git_make_test_fn
-    function _abbr_git_make_test_all_fn; _abbr_define_anyarg test-all make; end; abbr -a _abbr_git_make_test_all --regex ta --position anywhere --function _abbr_git_make_test_all_fn
-    function _abbr_git_make_lint_fn; _abbr_define_anyarg lint make; end; abbr -a _abbr_git_make_lint --regex l --position anywhere --function _abbr_git_make_lint_fn
-    function _abbr_git_make_format_fn; _abbr_define_anyarg format make; end; abbr -a _abbr_git_make_format --regex f --position anywhere --function _abbr_git_make_format_fn
+    function _abbr_make_build_fn; _abbr_define_anyarg build make; end; abbr -a _abbr_make_build --regex b --position anywhere --function _abbr_make_build_fn
+    function _abbr_make_dev_fn; _abbr_define_anyarg dev make; end; abbr -a _abbr_make_dev --regex d --position anywhere --function _abbr_make_dev_fn
+    function _abbr_make_clean_fn; _abbr_define_anyarg clean make; end; abbr -a _abbr_make_clean --regex c --position anywhere --function _abbr_make_clean_fn
+    function _abbr_make_deploy_fn; _abbr_define_anyarg deploy make; end; abbr -a _abbr_make_deploy --regex dp --position anywhere --function _abbr_make_deploy_fn
+    function _abbr_make_publish_fn; _abbr_define_anyarg publish make; end; abbr -a _abbr_make_publish --regex p --position anywhere --function _abbr_make_publish_fn
+    function _abbr_make_test_fn; _abbr_define_anyarg test make; end; abbr -a _abbr_make_test --regex t --position anywhere --function _abbr_make_test_fn
+    function _abbr_make_test_all_fn; _abbr_define_anyarg test-all make; end; abbr -a _abbr_make_test_all --regex ta --position anywhere --function _abbr_make_test_all_fn
+    function _abbr_make_lint_fn; _abbr_define_anyarg lint make; end; abbr -a _abbr_make_lint --regex l --position anywhere --function _abbr_make_lint_fn
+    function _abbr_make_format_fn; _abbr_define_anyarg format make; end; abbr -a _abbr_make_format --regex f --position anywhere --function _abbr_make_format_fn
 
 ## `node`
 

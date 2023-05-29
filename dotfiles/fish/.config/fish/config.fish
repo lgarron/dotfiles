@@ -282,9 +282,8 @@
 
 ## Search
 
-    function f
-      find . -iname "*$argv[1]*"
-    end
+    functions -e f # Delete any old function
+    abbr -a f --set-cursor "find . -iname \"*%*\""
 
     abbr -a rgnh "rg -S --no-heading"
 

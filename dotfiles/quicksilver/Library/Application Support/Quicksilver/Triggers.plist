@@ -158,6 +158,7 @@
 			<key>applicationScope</key>
 			<array>
 				<string>com.blacktree.Quicksilver</string>
+				<string>com.apple.ScreenSharing</string>
 			</array>
 			<key>applicationScopeType</key>
 			<integer>-1</integer>
@@ -712,6 +713,7 @@
 				<string>com.blacktree.Quicksilver</string>
 				<string>com.google.Chrome</string>
 				<string>md.obsidian</string>
+				<string>com.apple.ScreenSharing</string>
 			</array>
 			<key>applicationScopeType</key>
 			<integer>-1</integer>
@@ -885,6 +887,7 @@
 			<key>applicationScope</key>
 			<array>
 				<string>com.microsoft.VSCode</string>
+				<string>com.apple.ScreenSharing</string>
 			</array>
 			<key>applicationScopeType</key>
 			<integer>-1</integer>

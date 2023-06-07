@@ -22,6 +22,12 @@ function install_fish_3_6 {
 
 fish --version | grep "3.[012345]" && install_fish_3_6
 
+if [ -n "$CODESPACES" ]
+then
+  rm -rf \
+    ~/.config/fish/config.fish \
+    ~/.local/share/fish
+fi
 make fish
 
 cd "$(dirname "$0")"

@@ -22,12 +22,6 @@ function install_fish_3_6 {
 
 fish --version | grep "3.[012345]" && install_fish_3_6
 
-if [ -n "$GITPOD_HOST" ]
-then
-  rm -rf \
-    ~/.config/fish/config.fish \
-    /home/gitpod/.local/share/fish
-fi
 make fish
 
 cd "$(dirname "$0")"

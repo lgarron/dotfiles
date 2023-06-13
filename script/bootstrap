@@ -10,8 +10,7 @@ cd ..
 
 if ! command -v stow
 then
-  # Uncomment the following line if needed.
-  # sudo add-apt-repository --yes http://archive.ubuntu.com/ubuntu/ || echo "🤷" # *sigh* https://askubuntu.com/a/1132852 # TODO: Make this more portable across Debian OSes.
+  sudo add-apt-repository --yes http://archive.ubuntu.com/ubuntu/ || echo "🤷" # *sigh* https://askubuntu.com/a/1132852 # TODO: Make this more portable across Debian OSes.
   sudo apt-get install -y stow
 
   # Note: we would install `fish` together with `stow`, but most default PPAs are 3 years of date. So we don't even bother, and handle `fish` separately below.

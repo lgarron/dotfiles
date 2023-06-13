@@ -10,6 +10,7 @@ cd ..
 
 if ! command -v stow
 then
+  echo "Installing \`stow\`."
   sudo add-apt-repository --yes http://archive.ubuntu.com/ubuntu/ || echo "🤷" # *sigh* https://askubuntu.com/a/1132852 # TODO: Make this more portable across Debian OSes.
   sudo apt-get install -y stow
 
@@ -27,8 +28,10 @@ function install_fish_3_6 {
 
 if command -v fish
 then
+  echo "\`fish\` detected… testing if we're before version 3.6"
   fish --version | grep "3.[012345]" && install_fish_3_6
 else
+  echo "No \`fish\` detected."
   install_fish_3_6
 fi
 

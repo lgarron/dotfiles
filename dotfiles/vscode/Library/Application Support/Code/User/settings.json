@@ -52,6 +52,12 @@
   "[typescript]": {
     "editor.defaultFormatter": "rome.rome"
   },
+  "[python]": {
+    "editor.codeActionsOnSave": {
+      "source.organizeImports": true
+    },
+    "editor.defaultFormatter": "ms-python.black-formatter"
+  },
   /******** JavaScript ********/
   "javascript.validate.enable": false,
   "javascript.updateImportsOnFileMove.enabled": "always",
@@ -111,6 +117,11 @@
   "workbench.editorAssociations": {
     "git-rebase-todo": "default"
   },
+  /******** Python ********/
+  "python.analysis.autoImportCompletions": true,
+  "python.analysis.autoImportUserSymbols": true,
+  "python.analysis.indexing": true,
+  "terminal.integrated.enableMultiLinePasteWarning": false,
   /******** Rust ********/
   "rust-analyzer.check.command": "clippy",
   /******** Zig ********/

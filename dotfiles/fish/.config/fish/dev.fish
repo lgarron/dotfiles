@@ -30,13 +30,25 @@
 
 ## `node`
 
+    abbr -a n "npm"
+
     abbr -a niy "npm init -y ; and jq --indent 2 '.type=\"module\" | del(.main)' package.json > /tmp/package.json ; and cat /tmp/package.json > package.json"
     abbr -a ni "npm install;"
     abbr -a nis "npm install --save"
     abbr -a nid "npm install --save-dev"
-    abbr -a nu "npm uninstall"
     abbr -a nr "npm run"
     abbr -a nl "npm link"
+
+    function _abbr_npm_install_fn; _abbr_define_subcommand install npm i; end; abbr -a _abbr_npm_install --regex i --position anywhere --function _abbr_npm_install_fn
+    function _abbr_npm_uninstall_fn; _abbr_define_subcommand uninstall npm u; end; abbr -a _abbr_npm_uninstall --regex u --position anywhere --function _abbr_npm_uninstall_fn
+    function _abbr_npm_run_fn; _abbr_define_subcommand run npm i; end; abbr -a _abbr_npm_run --regex r --position anywhere --function _abbr_npm_run_fn
+    function _abbr_npm_link_fn; _abbr_define_subcommand link npm l; end; abbr -a _abbr_npm_link --regex l --position anywhere --function _abbr_npm_link_fn
+
+    # npm install s⎵ → npm install --save
+    function _abbr_npm_install_save_fn; _abbr_define_subcommand_arg --save npm install; end; abbr -a _abbr_npm_install_save --regex s --position anywhere --function _abbr_npm_install_save_fn
+
+    # npm install d⎵ → npm install --save-dev
+    function _abbr_npm_install_save_dev_fn; _abbr_define_subcommand_arg --save-dev npm install; end; abbr -a _abbr_npm_install_save_dev --regex d --position anywhere --function _abbr_npm_install_save_dev_fn
 
     # npm run d⎵ → npm run dev
     function _abbr_npm_run_d_fn; _abbr_define_subcommand_arg dev npm run; end; abbr -a _abbr_npm_run_d --regex d --position anywhere --function _abbr_npm_run_d_fn

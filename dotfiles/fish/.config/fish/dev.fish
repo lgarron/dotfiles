@@ -100,3 +100,4 @@
     abbr -a "p3" "python3"
     abbr -a "dig" "xdig"
     abbr -a "pod" "gp"
+    abbr -a "tf" "terraform"

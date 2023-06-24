@@ -11,6 +11,7 @@ github.vscode-github-actions
 GitHub.vscode-pull-request-github
 golang.go
 GraphQL.vscode-graphql-syntax
+hashicorp.terraform
 hbenl.vscode-test-explorer
 jmaxwilson.vscode-povray
 julialang.language-julia

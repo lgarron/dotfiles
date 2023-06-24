@@ -9,7 +9,6 @@ GitHub.codespaces
 GitHub.vscode-codeql
 github.vscode-github-actions
 GitHub.vscode-pull-request-github
-gitpod.gitpod-desktop
 golang.go
 GraphQL.vscode-graphql-syntax
 hbenl.vscode-test-explorer

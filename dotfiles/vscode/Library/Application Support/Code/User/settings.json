@@ -70,8 +70,14 @@
   /******** Remote SSH ********/
   "remote.SSH.useLocalServer": false,
   "remote.SSH.remotePlatform": {
-    "Minitemp2.local": "macOS",
-    "Pythagoras.local": "macOS"
+    "Pythagoras": "macOS",
+    "Pythagoras.web": "macOS",
+    "Pythagoras.thunderbolt": "macOS"
+  },
+  "remote.SSH.serverInstallPath": {
+    "Pythagoras": "~/.data/vscode-server",
+    "Pythagoras.web": "~/.data/vscode-server",
+    "Pythagoras.thunderbolt": "~/.data/vscode-server"
   },
   /******** Codespaces ********/
   "github.codespaces.createCodespaceInNewWindow": true,

@@ -34,7 +34,8 @@
       add_to_path /home/linuxbrew/.linuxbrew/sbin # for codespaces
       add_to_path "$GOPATH/bin"
       add_to_path "/usr/local/go/bin"
-      add_to_path /opt/homebrew/opt/postgresql@15/bin # For postgres
+      add_to_path /opt/homebrew/opt/postgresql@15/bin
+      add_to_path $HOME/.cache/.bun/bin # For zig (for building Bun) https://bun.sh/docs/project/development
 
       set_color --bold; _echo -n "\$fish_user_paths"; set_color normal
       echo " has been set to the following order:"

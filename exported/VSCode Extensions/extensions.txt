@@ -35,3 +35,4 @@ stkb.rewrap
 timonwong.shellcheck
 Tobiah.language-pde
 tombonnike.vscode-status-bar-format-toggle
+ziglang.vscode-zig

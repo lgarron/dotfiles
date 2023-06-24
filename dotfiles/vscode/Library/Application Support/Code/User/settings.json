@@ -113,4 +113,7 @@
   },
   /******** Rust ********/
   "rust-analyzer.check.command": "clippy",
+  /******** Zig ********/
+  "zig.zls.path": "/Users/lgarron/Library/Application Support/Code/User/globalStorage/ziglang.vscode-zig/zls_install/zls",
+  /****************/
 }

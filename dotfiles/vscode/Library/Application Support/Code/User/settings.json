@@ -129,6 +129,11 @@
   "python.analysis.autoImportUserSymbols": true,
   "python.analysis.indexing": true,
   "terminal.integrated.enableMultiLinePasteWarning": false,
+  // This works around a bug with the Django template extension where it tries
+  // to take over all HTML files in all repositories.
+  "files.associations": {
+    "*.html": "html"
+  },
   /******** Rust ********/
   "rust-analyzer.check.command": "clippy",
   /******** Zig ********/

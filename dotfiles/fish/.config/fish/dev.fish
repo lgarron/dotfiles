@@ -85,6 +85,8 @@
     function _abbr_cargo_fmt_fn; _abbr_define_anyarg fmt cargo; end; abbr -a _abbr_cargo_fmt --regex f --position anywhere --function _abbr_cargo_fmt_fn
     function _abbr_cargo_test_fn; _abbr_define_anyarg test cargo; end; abbr -a _abbr_cargo_test --regex t --position anywhere --function _abbr_cargo_test_fn
     function _abbr_cargo_run_fn; _abbr_define_anyarg "run --" cargo; end; abbr -a _abbr_cargo_run --regex r --position anywhere --function _abbr_cargo_run_fn
+
+    # cargo run h⎵ → cargo run --help
     function _abbr_cargo_run_help_fn; _abbr_define_subcommand_arg "--help" cargo run; end; abbr -a _abbr_cargo_run_help --regex h --position anywhere --function _abbr_cargo_run_help_fn
 
 ## Web

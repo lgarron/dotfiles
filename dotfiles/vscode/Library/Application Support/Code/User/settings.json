@@ -87,6 +87,13 @@
   },
   /******** Codespaces ********/
   "github.codespaces.createCodespaceInNewWindow": true,
+  // The following is not necessarily specific to codespaces, but prevents a
+  // confusing and useless warning in codespaces when working in a codebase that
+  // ever has PRs from `main` to another branch (e.g. `production` or
+  // `release`).
+  "githubPullRequests.ignoredPullRequestBranches": [
+    "main"
+  ],
   /******** Live Share ********/
   "liveshare.showInStatusBar": "whileCollaborating",
   /******** Terminal ********/

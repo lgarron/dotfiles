@@ -24,10 +24,6 @@
 
     # bash
     # Folder is created in `lglogin.fish`
-    #
-    # We'd use "$XDG_DATA_HOME/bash/history", but bash won't create the
-    # intermediate folder and this prevents us from having to create it
-    # manually.
     set -Ux HISTFILE $XDG_DATA_HOME/bash/history
     mkdir -p (dirname $HISTFILE) &
 

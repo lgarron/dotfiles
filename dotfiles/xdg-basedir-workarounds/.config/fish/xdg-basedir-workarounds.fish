@@ -84,3 +84,6 @@
 
     # Wasmer
     set -Ux WASMER_DIR $XDG_DATA_HOME/wasmer
+
+    # OPAM
+    set -Ux OPAMROOT $XDG_DATA_HOME/opam

@@ -72,9 +72,6 @@
     abbr -a ga  "git add"
     abbr -a gap "git add --patch" # second-level convenience
     abbr -a g.  "git add ."
-    # Legacy
-    abbr -a gst "# Try: ga"
-    abbr -a gsp "# Try: gap"
 
     # git add p⎵ → git add --patch
     function _abbr_git_add_patch_fn; _abbr_define_subcommand_arg "--patch" git add; end; abbr -a _abbr_git_add_patch --regex p --position anywhere --function _abbr_git_add_patch_fn

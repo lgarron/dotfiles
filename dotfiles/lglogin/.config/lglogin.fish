@@ -38,6 +38,7 @@
     rm -rf $HOME/.cups
     rm -rf $HOME/.docker
     rm -rf $HOME/.gnupg
+    rm -rf $HOME/.npm
     rm -rf $HOME/.oracle_jre_usage
     rm -rf $HOME/.python_history
     rm -rf $HOME/.swiftpm

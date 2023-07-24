@@ -227,7 +227,8 @@ git push --force-with-lease"
 ### git reset
 
     abbr -a grh   "git reset HEAD"
-    abbr -a ghard "git reset --hard"
+    abbr -a ghard "# Try: ghr"
+    abbr -a ghr "git reset --hard" # Shorter abbreviation
     abbr -a gsoft "git reset --soft"
 
 ### git show

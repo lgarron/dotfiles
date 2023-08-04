@@ -310,8 +310,6 @@
 
     abbr -a bi "brew install"
 
-    abbr -a serve "open http://localhost:8000; caddy file-server --listen :8000 --browse"
-
     abbr -a "md5" "openssl dgst -md5"
     abbr -a "sha1" "openssl dgst -sha1"
     abbr -a "sha256" "openssl dgst -sha256"

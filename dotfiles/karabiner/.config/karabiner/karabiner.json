@@ -136,6 +136,123 @@
                                 "type": "basic"
                             }
                         ]
+                    },
+                    {
+                        "description": "Take fullscreen screenshot",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "print_screen"
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "/Users/lgarron/Code/git/github.com/lgarron/scripts/system/app-screenshot"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Take fullscreen screenshot and reveal",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "print_screen",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "shift"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "/Users/lgarron/Code/git/github.com/lgarron/scripts/system/app-screenshot --reveal"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Take window screenshot",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "print_screen",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "option"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "/Users/lgarron/Code/git/github.com/lgarron/scripts/system/app-screenshot --front-window-shadowed-png"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Take window screenshot and reveal",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "print_screen",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "shift",
+                                            "option"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "/Users/lgarron/Code/git/github.com/lgarron/scripts/system/app-screenshot --front-window-shadowed-png --reveal"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Take shadowless window screenshot",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "scroll_lock"
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "/Users/lgarron/Code/git/github.com/lgarron/scripts/system/app-screenshot --front-window-shadowless-jpg"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Take shadowless window screenshot and reveal",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "scroll_lock",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "shift"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "/Users/lgarron/Code/git/github.com/lgarron/scripts/system/app-screenshot --front-window-shadowless-jpg --reveal"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
                     }
                 ]
             },

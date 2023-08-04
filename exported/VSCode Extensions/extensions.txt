@@ -1,5 +1,3 @@
-alefragnani.Bookmarks
-atlassian.atlascode
 bibhasdn.django-html
 bierner.markdown-preview-github-styles
 craigb85.custom-window-zoom
@@ -7,13 +5,8 @@ DavidAnson.vscode-markdownlint
 dnicolson.binary-plist
 eamodio.gitlens
 GitHub.codespaces
-GitHub.vscode-codeql
-github.vscode-github-actions
-GitHub.vscode-pull-request-github
 golang.go
-GraphQL.vscode-graphql-syntax
 hashicorp.terraform
-hbenl.vscode-test-explorer
 jmaxwilson.vscode-povray
 julialang.language-julia
 Leathong.openscad-language-support
@@ -25,15 +18,11 @@ ms-python.black-formatter
 ms-python.isort
 ms-python.python
 ms-python.vscode-pylance
-ms-vscode-remote.remote-containers
 ms-vscode-remote.remote-ssh
 ms-vscode-remote.remote-wsl
 ms-vscode.cpptools
 ms-vscode.remote-explorer
-ms-vscode.test-adapter-converter
-ms-vsliveshare.vsliveshare
 njpwerner.autodocstring
-redhat.vscode-yaml
 rome.rome
 rust-lang.rust-analyzer
 skyapps.fish-vscode

@@ -1,7 +1,7 @@
 {
   /******** Dynamic ********/
   "editor.formatOnSave": true,
-  "window.zoomLevel": 3.25,
+  "window.zoomLevel": 2.75,
   /******** Main VSCode settings ********/
   "editor.formatOnPaste": false,
   "editor.tabSize": 2,
@@ -97,8 +97,9 @@
   /******** Live Share ********/
   "liveshare.showInStatusBar": "whileCollaborating",
   /******** Terminal ********/
-  "terminal.integrated.defaultProfile.linux": "fish",
   "terminal.integrated.defaultProfile.osx": "apple_fish",
+  "terminal.integrated.defaultProfile.linux": "fish",
+  "terminal.integrated.defaultProfile.windows": "Ubuntu (WSL)",
   "terminal.integrated.profiles.osx": {
     "apple_fish": {
       "path": "/usr/bin/env",
@@ -116,8 +117,6 @@
       ]
     }
   },
-  /******** Windows (OS) ********/
-  "terminal.integrated.defaultProfile.windows": "Ubuntu (WSL)",
   /******** GitLens ********/
   "gitlens.rebaseEditor.ordering": "asc",
   "githubPullRequests.pullBranch": "never",
@@ -138,5 +137,96 @@
   "rust-analyzer.check.command": "clippy",
   /******** Zig ********/
   "zig.zls.path": "/Users/lgarron/Library/Application Support/Code/User/globalStorage/ziglang.vscode-zig/zls_install/zls",
+  "markdown.editor.pasteUrlAsFormattedLink.enabled": "always",
+  "editor.acceptSuggestionOnCommitCharacter": false,
+  "workbench.settings.applyToAllProfiles": [
+    /******** Dynamic ********/
+    // "editor.formatOnSave",
+    // "editor.formatOnPaste",
+    // "window.zoomLevel",
+    /******** Main VSCode settings ********/
+    "editor.tabSize",
+    "editor.renderWhitespace",
+    "editor.formatOnType",
+    "editor.columnSelection",
+    "editor.inlineSuggest.enabled",
+    "editor.suggest.showStatusBar",
+    "editor.suggestSelection",
+    "vsintellicode.modify.editor.suggestSelection",
+    "files.insertFinalNewline",
+    "explorer.fileNesting.enabled",
+    "explorer.confirmDragAndDrop",
+    "editor.guides.bracketPairs",
+    "editor.stickyScroll.enabled",
+    /******** Window ********/
+    "workbench.colorTheme",
+    "customWindowZoom.zoomLevelChangeValue",
+    "workbench.sideBar.location",
+    "workbench.startupEditor",
+    "workbench.editor.untitled.hint",
+    "window.newWindowDimensions",
+    "terminal.integrated.tabs.enabled",
+    "terminal.integrated.tabs.location",
+    "terminal.integrated.macOptionIsMeta",
+    "extensions.ignoreRecommendations",
+    /******** Formatting ********/
+    "formattingToggle.affects",
+    "[json].editor.defaultFormatter",
+    "[markdown].editor.formatOnType",
+    "[makefile].editor.insertSpaces",
+    "[makefile].editor.detectIndentation",
+    "[html].editor.defaultFormatter",
+    "[javascript].editor.defaultFormatter",
+    "[typescript].editor.defaultFormatter",
+    "[python].editor.codeActionsOnSave",
+    /******** JavaScript ********/
+    "source.organizeImports",
+    "editor.defaultFormatter",
+    "javascript.validate.enable",
+    /******** TypeScript ********/
+    "javascript.updateImportsOnFileMove.enabled",
+    "rome.requireConfiguration",
+    "typescript.updateImportsOnFileMove.enabled",
+    "typescript.inlayHints.enumMemberValues.enabled",
+    "typescript.inlayHints.functionLikeReturnTypes.enabled",
+    "typescript.inlayHints.propertyDeclarationTypes.enabled",
+    "typescript.inlayHints.parameterTypes.enabled",
+    "typescript.inlayHints.variableTypes.enabled",
+    /******** Go ********/
+    "go.useLanguageServer",
+    "go.toolsGopath",
+    "go.toolsManagement.autoUpdate",
+    /******** Remote SSH ********/
+    "remote.SSH.useLocalServer",
+    "remote.SSH.remotePlatform",
+    "remote.SSH.serverInstallPath",
+    /******** Codespaces ********/
+    "github.codespaces.createCodespaceInNewWindow",
+    "githubPullRequests.ignoredPullRequestBranches",
+    /******** Live Share ********/
+    "liveshare.showInStatusBar",
+    /******** Terminal ********/
+    // "terminal.integrated.defaultProfile.linux",
+    // "terminal.integrated.defaultProfile.osx",
+    "terminal.integrated.defaultProfile.windows",
+    "terminal.integrated.profiles.osx",
+    /******** GitLens ********/
+    "gitlens.rebaseEditor.ordering",
+    "githubPullRequests.pullBranch",
+    "workbench.editorAssociations",
+    /******** Python ********/
+    "python.analysis.autoImportCompletions",
+    "python.analysis.autoImportUserSymbols",
+    "python.analysis.indexing",
+    /******** Rust ********/
+    "terminal.integrated.enableMultiLinePasteWarning",
+    "files.associations",
+    "rust-analyzer.check.command",
+    /******** Zig ********/
+    "zig.zls.path",
+    "markdown.editor.pasteUrlAsFormattedLink.enabled",
+    "editor.acceptSuggestionOnCommitCharacter",
+    "workbench.settings.applyToAllProfiles"
+  ],
   /****************/
 }

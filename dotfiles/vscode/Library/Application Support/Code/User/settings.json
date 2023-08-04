@@ -17,6 +17,7 @@
   "explorer.confirmDragAndDrop": false,
   "editor.guides.bracketPairs": true,
   "editor.stickyScroll.enabled": true,
+  "editor.acceptSuggestionOnCommitCharacter": false,
   /******** Window ********/
   "workbench.colorTheme": "Default Dark+",
   "customWindowZoom.zoomLevelChangeValue": 0.25,
@@ -137,8 +138,9 @@
   "rust-analyzer.check.command": "clippy",
   /******** Zig ********/
   "zig.zls.path": "/Users/lgarron/Library/Application Support/Code/User/globalStorage/ziglang.vscode-zig/zls_install/zls",
-  "markdown.editor.pasteUrlAsFormattedLink.enabled": "always",
-  "editor.acceptSuggestionOnCommitCharacter": false,
+  /******** Markdown ********/
+  "markdown.editor.pasteUrlAsFormattedLink.enabled": "smart",
+  /******* Apply to all profiles *********/
   "workbench.settings.applyToAllProfiles": [
     /******** Dynamic ********/
     // "editor.formatOnSave",
@@ -169,6 +171,7 @@
     "terminal.integrated.tabs.location",
     "terminal.integrated.macOptionIsMeta",
     "extensions.ignoreRecommendations",
+    "editor.acceptSuggestionOnCommitCharacter",
     /******** Formatting ********/
     "formattingToggle.affects",
     "[json].editor.defaultFormatter",
@@ -224,8 +227,9 @@
     "rust-analyzer.check.command",
     /******** Zig ********/
     "zig.zls.path",
+    /******** Markdown ********/
     "markdown.editor.pasteUrlAsFormattedLink.enabled",
-    "editor.acceptSuggestionOnCommitCharacter",
+    /******* Apply to all profiles *********/
     "workbench.settings.applyToAllProfiles"
   ],
   /****************/

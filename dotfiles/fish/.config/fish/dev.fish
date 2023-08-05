@@ -28,7 +28,7 @@
     function _abbr_make_lint_fn; _abbr_define_anyarg lint make; end; abbr -a _abbr_make_lint --regex l --position anywhere --function _abbr_make_lint_fn
     function _abbr_make_format_fn; _abbr_define_anyarg format make; end; abbr -a _abbr_make_format --regex f --position anywhere --function _abbr_make_format_fn
 
-## `node`
+## JavaScript
 
     abbr -a n "npm"
 
@@ -68,6 +68,23 @@
 
     # https://github.com/cubing/cubing.js/blob/3597fba81b65a1c87e42c4297a2d9ef5fdc3a8e3/script/build/targets.js#L44
     set -xg "EXPERIMENTAL_CUBING_JS_RELOAD_CHROME_MACOS" "1"
+
+    abbr -a b "bun"
+
+    abbr -a bi "bun install;"
+    abbr -a ba "bun add"
+    abbr -a br "bun run"
+
+    abbr -a bad "# Try: ba d"
+    abbr -a bis "# Try: ba"
+    abbr -a bid "# Try: ba d"
+
+    function _abbr_bun_add_fn; _abbr_define_subcommand add bun a; end; abbr -a _abbr_bun_add --regex a --position anywhere --function _abbr_bun_add_fn
+    function _abbr_bun_install_fn; _abbr_define_subcommand install bun i; end; abbr -a _abbr_bun_install --regex i --position anywhere --function _abbr_bun_install_fn
+    function _abbr_bun_run_fn; _abbr_define_subcommand run bun r; end; abbr -a _abbr_bun_run --regex r --position anywhere --function _abbr_bun_run_fn
+
+    # bun add d⎵ → bun add --development
+    function _abbr_bun_add_development_fn; _abbr_define_subcommand_arg --development bun add; end; abbr -a _abbr_bun_add_development --regex d --position anywhere --function _abbr_bun_add_development_fn
 
 # Cargo
 

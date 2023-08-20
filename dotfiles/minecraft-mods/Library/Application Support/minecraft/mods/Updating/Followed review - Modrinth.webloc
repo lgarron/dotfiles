@@ -3,6 +3,6 @@
 <plist version="1.0">
 <dict>
 	<key>URL</key>
-	<string>https://modrinth.com/settings/follows</string>
+	<string>https://modrinth.com/dashboard/follows</string>
 </dict>
 </plist>

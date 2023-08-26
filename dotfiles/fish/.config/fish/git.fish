@@ -108,7 +108,7 @@
     abbr -a cm   --set-cursor "git commit --message \"%" # Special shortened abbreviation
     # Legacy
     abbr -a gc    "# Try: gcom / cm"
-    abbr -a gcane "# Try: gca ne (or gg)"
+    abbr -a gcane "git commit --amend --no-edit"
 
     abbr -a gg "git commit --amend --no-edit && git push --force-with-lease"
     abbr -a gggg "git status && read -p \"echo \\\"Press enter to continue (Ctrl-C to abort)\\\"\" &&

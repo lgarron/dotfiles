@@ -226,9 +226,11 @@ git push --force-with-lease"
 ### git reset
 
     abbr -a grh   "git reset HEAD"
+    abbr -a h.    "git reset HEAD ." # Note that this doesn't delete any unsaved data (on its own).
     abbr -a ghard "# Try: ghr"
-    abbr -a ghr "git reset --hard" # Shorter abbreviation
+    abbr -a ghr   "git reset --hard" # Shorter abbreviation
     abbr -a gsoft "git reset --soft"
+
 
 ### git show
 

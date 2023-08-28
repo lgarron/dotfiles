@@ -311,6 +311,8 @@
     abbr -a w "brew"
     abbr -a wi "brew install"
     abbr -a wu "brew uninstall"
+    function _abbr_brew_install_fn; _abbr_define_subcommand install brew i; end; abbr -a _abbr_brew_install --regex i --position anywhere --function _abbr_brew_install_fn
+    function _abbr_brew_uninstall_fn; _abbr_define_subcommand uninstall brew u; end; abbr -a _abbr_brew_uninstall --regex u --position anywhere --function _abbr_brew_uninstall_fn
 
     abbr -a "md5" "openssl dgst -md5"
     abbr -a "sha1" "openssl dgst -sha1"

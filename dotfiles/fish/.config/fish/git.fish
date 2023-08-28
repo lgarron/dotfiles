@@ -173,9 +173,8 @@ git push --force-with-lease"
 
     abbr -a gm  "git merge"
     abbr -a gmb "git merge-base main (git rev-parse --abbrev-ref HEAD)"
-    # Legacy
-    abbr -a nff "# Try: gm nff"
-    abbr -a ffo "# Try: gm ffo"
+    abbr -a nff "git merge --no-ff"
+    abbr -a ffo "git merge --ff-only"
 
     # git merge nff⎵ → git merge --no-ff
     function _abbr_git_merge_no_ff_fn; _abbr_define_subcommand_arg "--no-ff" git merge; end; abbr -a _abbr_git_merge_no_ff --regex nff --position anywhere --function _abbr_git_merge_no_ff_fn

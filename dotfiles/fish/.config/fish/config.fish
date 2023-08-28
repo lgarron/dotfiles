@@ -310,6 +310,7 @@
 
     abbr -a w "brew"
     abbr -a wi "brew install"
+    abbr -a wu "brew uninstall"
 
     abbr -a "md5" "openssl dgst -md5"
     abbr -a "sha1" "openssl dgst -sha1"

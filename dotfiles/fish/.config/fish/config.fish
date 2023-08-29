@@ -319,6 +319,14 @@
     abbr -a "sha256" "openssl dgst -sha256"
     abbr -a "sha512" "openssl dgst -sha512"
 
+    function cd-dir
+      set INPUT_PATH $argv[1]
+      if not test -d $INPUT_PATH
+        set INPUT_PATH (dirname $INPUT_PATH)
+      end
+      cd $INPUT_PATH
+    end
+
 ## Keyboard
 
     # https://developer.apple.com/library/content/technotes/tn2450/_index.html

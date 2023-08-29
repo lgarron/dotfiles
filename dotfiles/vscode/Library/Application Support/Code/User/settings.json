@@ -232,6 +232,9 @@
     "rust-analyzer.check.command",
     /******** Zig ********/
     "zig.zls.path",
+    /******** C++ ********/
+    "[cpp].editor.defaultFormatter",
+    "C_Cpp.autoAddFileAssociations",
     /******** Markdown ********/
     "markdown.editor.pasteUrlAsFormattedLink.enabled",
     /******* Apply to all profiles *********/

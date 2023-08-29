@@ -707,6 +707,39 @@
 		</dict>
 		<dict>
 			<key>ID</key>
+			<string>3D7BB2ED-CCD1-4170-904D-A68E20C7D249</string>
+			<key>applicationScope</key>
+			<array>
+				<string>com.apple.finder</string>
+			</array>
+			<key>applicationScopeType</key>
+			<integer>1</integer>
+			<key>character</key>
+			<string>C</string>
+			<key>command</key>
+			<dict>
+				<key>actionID</key>
+				<string>[Action]:/Users/lgarron/Library/Application Support/Quicksilver/Actions/Copy Path to Clipboard.scpt</string>
+				<key>directID</key>
+				<string>QSGlobalSelectionProxy</string>
+				<key>indirectID</key>
+				<string>/Users/lgarron/Code/private/dotfiles-private/Devices</string>
+			</dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyCode</key>
+			<integer>8</integer>
+			<key>modifiers</key>
+			<integer>1179914</integer>
+			<key>onPress</key>
+			<true/>
+			<key>showWindow</key>
+			<true/>
+			<key>type</key>
+			<string>QSHotKeyTrigger</string>
+		</dict>
+		<dict>
+			<key>ID</key>
 			<string>4E84CE2D-1B98-4036-B2AB-A17D287E17BE</string>
 			<key>applicationScope</key>
 			<array>

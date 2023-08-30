@@ -103,11 +103,11 @@
 
 ### git commit
 
-    abbr -a gcom              "git commit"
+    abbr -a gc                "git commit"
+    abbr -a gcom              "# Try: gc"
     abbr -a gca               "git commit --amend"
     abbr -a cm   --set-cursor "git commit --message \"%" # Special shortened abbreviation
     # Legacy
-    abbr -a gc    "# Try: gcom / cm"
     abbr -a gcane "git commit --amend --no-edit"
 
     abbr -a gg "git commit --amend --no-edit && git push --force-with-lease"

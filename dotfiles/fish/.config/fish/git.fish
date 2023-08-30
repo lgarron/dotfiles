@@ -18,7 +18,7 @@
     # We also explicitly exclude `git commit` as a known conflict, just in case.
     function _abbr_git_main_fn; _abbr_define_exceptsubcommand_arg main git commit; end; abbr -a _abbr_git_main --regex m --position anywhere --function _abbr_git_main_fn
     # ms⎵ → master
-    function _abbr_git_master_fn; _abbr_define_exceptsubcommand_arg master git; end; abbr -a _abbr_git_master --regex ms --position anywhere --function _abbr_git_master_fn
+    function _abbr_git_master_fn; _abbr_define_exceptsubcommand_arg master git commit; end; abbr -a _abbr_git_master --regex ms --position anywhere --function _abbr_git_master_fn
     # b⎵ → (expansion of current branch name)
     # function _abbr_git_currentbranch_fn; _abbr_define_exceptsubcommand_arg (git rev-parse --abbrev-ref HEAD) git; end; abbr -a _abbr_git_currentbranch --regex b --position anywhere --function _abbr_git_currentbranch_fn
     # :b⎵ → :(expansion of current branch name)
@@ -27,21 +27,21 @@
     function _abbr_git_coloncurrentbranch2_fn; _abbr_define_subcommand_arg :(git rev-parse --abbrev-ref @{-2}) git push; end; abbr -a _abbr_git_coloncurrentbranch2 --regex :b2 --position anywhere --function _abbr_git_coloncurrentbranch2_fn
 
     # om⎵ → origin/main
-    function _abbr_git_originmain_fn; _abbr_define_exceptsubcommand_arg origin/main git; end; abbr -a _abbr_git_originmain --regex om --position anywhere --function _abbr_git_originmain_fn
+    function _abbr_git_originmain_fn; _abbr_define_exceptsubcommand_arg origin/main git commit; end; abbr -a _abbr_git_originmain --regex om --position anywhere --function _abbr_git_originmain_fn
     # oms⎵ → origin/master
-    function _abbr_git_originmaster_fn; _abbr_define_exceptsubcommand_arg origin/master git; end; abbr -a _abbr_git_originmaster --regex oms --position anywhere --function _abbr_git_originmaster_fn
+    function _abbr_git_originmaster_fn; _abbr_define_exceptsubcommand_arg origin/master git commit; end; abbr -a _abbr_git_originmaster --regex oms --position anywhere --function _abbr_git_originmaster_fn
     # ob⎵ → origin/(expansion of current branch name)
-    function _abbr_git_origincurrentbranch_fn; _abbr_define_exceptsubcommand_arg origin/(git rev-parse --abbrev-ref HEAD) git; end; abbr -a _abbr_git_origincurrentbranch --regex ob --position anywhere --function _abbr_git_origincurrentbranch_fn
+    function _abbr_git_origincurrentbranch_fn; _abbr_define_exceptsubcommand_arg origin/(git rev-parse --abbrev-ref HEAD) git commit; end; abbr -a _abbr_git_origincurrentbranch --regex ob --position anywhere --function _abbr_git_origincurrentbranch_fn
 
     # um⎵ → upstream/main
-    function _abbr_git_upstreammain_fn; _abbr_define_exceptsubcommand_arg upstream/main git; end; abbr -a _abbr_git_upstreammain --regex um --position anywhere --function _abbr_git_upstreammain_fn
+    function _abbr_git_upstreammain_fn; _abbr_define_exceptsubcommand_arg upstream/main git commit; end; abbr -a _abbr_git_upstreammain --regex um --position anywhere --function _abbr_git_upstreammain_fn
     # ums⎵ → upstream/master
-    function _abbr_git_upstreammaster_fn; _abbr_define_exceptsubcommand_arg upstream/master git; end; abbr -a _abbr_git_upstreammaster --regex ums --position anywhere --function _abbr_git_upstreammaster_fn
+    function _abbr_git_upstreammaster_fn; _abbr_define_exceptsubcommand_arg upstream/master git commit; end; abbr -a _abbr_git_upstreammaster --regex ums --position anywhere --function _abbr_git_upstreammaster_fn
     # ub⎵ → upstream/(expansion of current branch name)
-    function _abbr_git_upstreamcurrentbranch_fn; _abbr_define_exceptsubcommand_arg upstream/(git rev-parse --abbrev-ref HEAD) git; end; abbr -a _abbr_git_upstreamcurrentbranch --regex ub --position anywhere --function _abbr_git_upstreamcurrentbranch_fn
+    function _abbr_git_upstreamcurrentbranch_fn; _abbr_define_exceptsubcommand_arg upstream/(git commit rev-parse --abbrev-ref HEAD) git; end; abbr -a _abbr_git_upstreamcurrentbranch --regex ub --position anywhere --function _abbr_git_upstreamcurrentbranch_fn
 
     # b-⎵ → (expansion of last branch name)
-    function _abbr_git_lastbranch_fn; _abbr_define_exceptsubcommand_arg (git rev-parse --abbrev-ref @{-1}) git; end; abbr -a _abbr_git_lastbranch --regex b- --position anywhere --function _abbr_git_lastbranch_fn
+    function _abbr_git_lastbranch_fn; _abbr_define_exceptsubcommand_arg (git rev-parse --abbrev-ref @{-1}) git commit; end; abbr -a _abbr_git_lastbranch --regex b- --position anywhere --function _abbr_git_lastbranch_fn
     #  b⎵ → (expansion of current branch name)
     # b1⎵ → (expansion of last branch name)
     # b3⎵ → (expansion of three branch names ago)
@@ -51,7 +51,7 @@
             set ref $ref"{-"(string trim --left --chars=b $argv[1])"}"
         end
         set expanded_branch (git rev-parse --abbrev-ref $ref 2>/dev/null); or return 1
-        _abbr_define_exceptsubcommand_arg $expanded_branch git
+        _abbr_define_exceptsubcommand_arg $expanded_branch git commit
     end
     abbr -a _abbr_git_branchhist --regex "b[0-9]*" --position anywhere --function _abbr_git_branchhist_fn
 
@@ -63,7 +63,7 @@
         if [ "$argv[1]" != "h" ]
             set str $str"~"(string trim --left --chars=h $argv[1])
         end
-        _abbr_define_exceptsubcommand_arg $str git;
+        _abbr_define_exceptsubcommand_arg $str git commit;
     end
     abbr -a _abbr_git_HEAD --regex "h[0-9]*" --position anywhere --function _abbr_git_HEAD_fn
 

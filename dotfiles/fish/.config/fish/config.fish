@@ -291,12 +291,13 @@
 ## General
 
     # abbr -a t "tee >(pbcopy)"
-    function t
+    function 📋
         cat > /tmp/pbcopy.txt
         cat /tmp/pbcopy.txt
         cat /tmp/pbcopy.txt | pbcopy
         rm /tmp/pbcopy.txt
     end
+    abbr -a t "📋"
 
     function o
         if [ (count $argv) = 0 ]

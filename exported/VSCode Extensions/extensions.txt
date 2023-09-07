@@ -23,7 +23,7 @@ ms-vscode-remote.remote-wsl
 ms-vscode.cpptools
 ms-vscode.remote-explorer
 njpwerner.autodocstring
-rome.rome
+biomejs.biome
 rust-lang.rust-analyzer
 skyapps.fish-vscode
 stkb.rewrap

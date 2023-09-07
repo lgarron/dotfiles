@@ -35,7 +35,7 @@
     "editor.formatOnSave"
   ],
   "[json]": {
-    "editor.defaultFormatter": "rome.rome"
+    "editor.defaultFormatter": "biomejs.biome"
   },
   "[markdown]": {
     "editor.formatOnType": false
@@ -48,10 +48,10 @@
     "editor.defaultFormatter": "vscode.html-language-features"
   },
   "[javascript]": {
-    "editor.defaultFormatter": "rome.rome"
+    "editor.defaultFormatter": "biomejs.biome"
   },
   "[typescript]": {
-    "editor.defaultFormatter": "rome.rome"
+    "editor.defaultFormatter": "biomejs.biome"
   },
   "[python]": {
     "editor.codeActionsOnSave": {
@@ -62,7 +62,7 @@
   /******** JavaScript ********/
   "javascript.validate.enable": false,
   "javascript.updateImportsOnFileMove.enabled": "always",
-  "rome.requireConfiguration": true,
+  "biome.requireConfiguration": true,
   /******** TypeScript ********/
   "typescript.updateImportsOnFileMove.enabled": "always",
   "typescript.inlayHints.enumMemberValues.enabled": true,
@@ -193,7 +193,7 @@
     "javascript.validate.enable",
     /******** TypeScript ********/
     "javascript.updateImportsOnFileMove.enabled",
-    "rome.requireConfiguration",
+    "biome.requireConfiguration",
     "typescript.updateImportsOnFileMove.enabled",
     "typescript.inlayHints.enumMemberValues.enabled",
     "typescript.inlayHints.functionLikeReturnTypes.enabled",

@@ -53,17 +53,17 @@
     "body": "throw new Error($0);",
     "description": "Add a line to throw a new error."
   },
-  "rome-ignore-lint": {
+  "biome-ignore-lint": {
     "scope": "javascript,typescript",
-    "prefix": "// rome-ignore lint",
-    "body": "// rome-ignore lint($1): $2",
-    "description": "Ignore a Rome lint issue."
+    "prefix": "// biome-ignore lint",
+    "body": "// biome-ignore lint($1): $2",
+    "description": "Ignore a Biome lint issue."
   },
-  "rome-ignore-format": {
+  "biome-ignore-format": {
     "scope": "javascript,typescript",
-    "prefix": "// rome-ignore format",
-    "body": "// rome-ignore format($1): $2",
-    "description": "Ignore a Rome format issue."
+    "prefix": "// biome-ignore format",
+    "body": "// biome-ignore format($1): $2",
+    "description": "Ignore a Biome format issue."
   },
   "is-defined": {
     "scope": "javascript,typescript",

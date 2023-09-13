@@ -19,6 +19,7 @@
   "editor.stickyScroll.enabled": true,
   "editor.acceptSuggestionOnCommitCharacter": false,
   /******** Window ********/
+  "window.commandCenter": false,
   "workbench.colorTheme": "Default Dark+",
   "customWindowZoom.zoomLevelChangeValue": 0.25,
   "workbench.sideBar.location": "left",
@@ -166,6 +167,7 @@
     "editor.guides.bracketPairs",
     "editor.stickyScroll.enabled",
     /******** Window ********/
+    "window.commandCenter",
     "workbench.colorTheme",
     "customWindowZoom.zoomLevelChangeValue",
     "workbench.sideBar.location",

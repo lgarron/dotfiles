@@ -224,6 +224,7 @@
     "gitlens.rebaseEditor.ordering",
     "githubPullRequests.pullBranch",
     "workbench.editorAssociations",
+    "workbench.editorAssociations.git-rebase-todo",
     /******** Python ********/
     "python.analysis.autoImportCompletions",
     "python.analysis.autoImportUserSymbols",

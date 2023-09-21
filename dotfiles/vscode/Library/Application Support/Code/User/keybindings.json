@@ -173,21 +173,21 @@
     "when": "editorHasSelection"
   },
   {
-    "key": "shift+cmd+v",
-    "command": "-notebook.cell.pasteAbove",
-    "when": "notebookEditorFocused && !inputFocus"
-  },
-  {
-    "key": "shift+cmd+v",
-    "command": "-markdown.showPreview",
-    "when": "!notebookEditorFocused && editorLangId == 'markdown'"
-  },
-  {
-    "key": "shift+cmd+v",
+    "key": "cmd+v",
     "command": "editor.action.pasteAs",
     "args": {
       "id": "text"
     },
-    "when": "editorLangId == 'markdown'"
+    "when": "!editorHasSelection && editorLangId == 'markdown'"
+  },
+  {
+    "key": "cmd+v",
+    "command": "editor.action.clipboardPasteAction",
+    "args": {},
+    "when": "editorHasSelection || editorLangId != 'markdown'"
+  },
+  {
+    "key": "cmd+v",
+    "command": "-editor.action.clipboardPasteAction"
   }
 ]

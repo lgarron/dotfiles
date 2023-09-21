@@ -74,6 +74,7 @@
     abbr -a bi "bun install;"
     abbr -a ba "bun add"
     abbr -a br "bun run"
+    abbr -a bt "bun test"
 
     abbr -a bad "# Try: ba d"
     abbr -a bis "# Try: ba"
@@ -82,6 +83,7 @@
     function _abbr_bun_add_fn; _abbr_define_subcommand add bun a; end; abbr -a _abbr_bun_add --regex a --position anywhere --function _abbr_bun_add_fn
     function _abbr_bun_install_fn; _abbr_define_subcommand install bun i; end; abbr -a _abbr_bun_install --regex i --position anywhere --function _abbr_bun_install_fn
     function _abbr_bun_run_fn; _abbr_define_subcommand run bun r; end; abbr -a _abbr_bun_run --regex r --position anywhere --function _abbr_bun_run_fn
+    function _abbr_bun_test_fn; _abbr_define_subcommand run test t; end; abbr -a _abbr_bun_test --regex t --position anywhere --function _abbr_bun_test_fn
 
     # bun add d⎵ → bun add --development
     function _abbr_bun_add_development_fn; _abbr_define_subcommand_arg --development bun add; end; abbr -a _abbr_bun_add_development --regex d --position anywhere --function _abbr_bun_add_development_fn

@@ -172,22 +172,27 @@
     "command": "-extension.toggleCase",
     "when": "editorHasSelection"
   },
+  // Smart link paste for Markdown
+  // See: https://github.com/microsoft/vscode/issues/188871#issuecomment-1728667796
   {
     "key": "cmd+v",
     "command": "editor.action.pasteAs",
     "args": {
       "id": "text"
     },
-    "when": "!editorHasSelection && editorLangId == 'markdown'"
+    "when": "inputFocus && !editorHasSelection && editorLangId == 'markdown'"
   },
   {
     "key": "cmd+v",
-    "command": "editor.action.clipboardPasteAction",
-    "args": {},
-    "when": "editorHasSelection || editorLangId != 'markdown'"
+    "command": "-editor.action.clipboardPasteAction",
+    "when": "inputFocus && !editorHasSelection && editorLangId == 'markdown'"
   },
   {
-    "key": "cmd+v",
-    "command": "-editor.action.clipboardPasteAction"
+    "key": "shift-cmd+v",
+    "command": "editor.action.pasteAs",
+    "args": {
+      "id": "text"
+    },
+    "when": "inputFocus && editorHasSelection"
   }
 ]

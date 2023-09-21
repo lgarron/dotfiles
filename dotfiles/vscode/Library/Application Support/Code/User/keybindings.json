@@ -161,5 +161,33 @@
   {
     "key": "shift+cmd+d",
     "command": "editor.action.duplicateSelection"
+  },
+  {
+    "key": "ctrl+cmd+m",
+    "command": "extension.toggleCase",
+    "when": "editorHasSelection"
+  },
+  {
+    "key": "cmd+m",
+    "command": "-extension.toggleCase",
+    "when": "editorHasSelection"
+  },
+  {
+    "key": "shift+cmd+v",
+    "command": "-notebook.cell.pasteAbove",
+    "when": "notebookEditorFocused && !inputFocus"
+  },
+  {
+    "key": "shift+cmd+v",
+    "command": "-markdown.showPreview",
+    "when": "!notebookEditorFocused && editorLangId == 'markdown'"
+  },
+  {
+    "key": "shift+cmd+v",
+    "command": "editor.action.pasteAs",
+    "args": {
+      "id": "text"
+    },
+    "when": "editorLangId == 'markdown'"
   }
 ]

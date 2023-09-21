@@ -146,6 +146,17 @@
   "zig.zls.path": "/Users/lgarron/Library/Application Support/Code/User/globalStorage/ziglang.vscode-zig/zls_install/zls",
   /******** Markdown ********/
   "markdown.editor.pasteUrlAsFormattedLink.enabled": "smart",
+  /******** Toggle Case ********/
+  "toggleCase.case.capitalCase": false,
+  "toggleCase.case.dotCase": false,
+  "toggleCase.case.headerCase": false,
+  "toggleCase.case.kebabCase": false,
+  "toggleCase.case.lowerCase": false,
+  "toggleCase.case.pathCase": false,
+  "toggleCase.case.sentenceCase": false,
+  "toggleCase.case.titleCase": false,
+  "toggleCase.case.upperCase": false,
+  "toggleCase.notification.notifyOnChange": false,
   /******* Apply to all profiles *********/
   "workbench.settings.applyToAllProfiles": [
     /******** Dynamic ********/
@@ -240,8 +251,21 @@
     "C_Cpp.autoAddFileAssociations",
     /******** Markdown ********/
     "markdown.editor.pasteUrlAsFormattedLink.enabled",
+    /******* Toggle Case *********/
+    "toggleCase.case.camelCase",
+    "toggleCase.case.capitalCase",
+    "toggleCase.case.dotCase",
+    "toggleCase.case.headerCase",
+    "toggleCase.case.kebabCase",
+    "toggleCase.case.pascalCase",
+    "toggleCase.case.pathCase",
+    "toggleCase.case.sentenceCase",
+    "toggleCase.case.titleCase",
+    "toggleCase.case.snakeCase",
+    "toggleCase.case.upperCase",
+    "toggleCase.notification.notifyOnChange",
     /******* Apply to all profiles *********/
-    "workbench.settings.applyToAllProfiles"
+    "workbench.settings.applyToAllProfiles",
   ],
   /****************/
 }

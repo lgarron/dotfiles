@@ -29,7 +29,15 @@
     "command": "workbench.action.terminal.sendSequence",
     "when": "terminalFocus",
     "args": {
-      "text": "\"${fileDirname}/\""
+      "text": "\"${relativeFile}\""
+    }
+  },
+  {
+    "key": "ctrl-cmd+enter",
+    "command": "workbench.action.terminal.sendSequence",
+    "when": "terminalFocus",
+    "args": {
+      "text": "\"${fileDirname}\""
     }
   },
   {

@@ -747,6 +747,7 @@
 				<string>com.google.Chrome</string>
 				<string>md.obsidian</string>
 				<string>com.apple.ScreenSharing</string>
+				<string>com.microsoft.VSCode</string>
 			</array>
 			<key>applicationScopeType</key>
 			<integer>-1</integer>

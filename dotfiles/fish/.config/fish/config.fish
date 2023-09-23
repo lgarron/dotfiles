@@ -309,6 +309,8 @@
 
     abbr -a r "open -R"
 
+    abbr -a - "cd -"
+
     abbr -a w "brew"
     abbr -a wi "brew install"
     abbr -a wu "brew uninstall"

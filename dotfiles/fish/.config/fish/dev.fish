@@ -13,6 +13,7 @@
     abbr -a mp "make publish"
     abbr -a mt "make test"
     abbr -a mta "make test-all"
+    abbr -a mtf "time make -j 16 test-fast"
     abbr -a ml "make lint"
     abbr -a mf "make format"
     abbr -a mcd "# Try: m c d"

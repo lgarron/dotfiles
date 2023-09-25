@@ -404,11 +404,14 @@
 
     abbr -a w "brew"
     abbr -a wi "brew install"
+    abbr -a wih "brew install --HEAD"
     abbr -a wu "brew uninstall"
     abbr -a ws "brew search"
     function _abbr_brew_install_fn; _abbr_define_subcommand install brew i; end; abbr -a _abbr_brew_install --regex i --position anywhere --function _abbr_brew_install_fn
+    function _abbr_brew_install_HEAD_fn; _abbr_define_subcommand_arg "--HEAD" brew install; end; abbr -a _abbr_brew_install_HEAD --regex h --position anywhere --function _abbr_brew_install_HEAD_fn
     function _abbr_brew_uninstall_fn; _abbr_define_subcommand uninstall brew u; end; abbr -a _abbr_brew_uninstall --regex u --position anywhere --function _abbr_brew_uninstall_fn
     function _abbr_brew_search_fn; _abbr_define_subcommand search brew s; end; abbr -a _abbr_brew_search --regex s --position anywhere --function _abbr_brew_search_fn
+    
 
     abbr -a "md5" "openssl dgst -md5"
     abbr -a "sha1" "openssl dgst -sha1"

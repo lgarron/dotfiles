@@ -285,16 +285,16 @@
     # Define a subcommand argument, i.e. an argument that can only follow certain subcommands.
     # For example, `git` has different arguments for each subcommand:
     #
-    #  - git commit m⎵ → git commit --message "%" ( TODO: remove the second space?)
     #  - git branch m⎵ → git branch --move
+    #  - git commit m⎵ → git commit --message "%"
     #
     # Example implementations:
     #
-    #     function _abbr_git_commit_message_fn; _abbr_define_subcommand_arg "--message \"%\"" git commit; end;
-    #     abbr -a _abbr_git_commit_message --regex m --position anywhere --function _abbr_git_commit_message_fn --set-cursor
-    #
     #     function _abbr_git_branch_move_fn; _abbr_define_subcommand_arg "--move" git branch; end;
     #     abbr -a _abbr_git_branch_move --regex m --position anywhere --function _abbr_git_branch_move_fn
+    #
+    #     function _abbr_git_commit_message_fn; _abbr_define_subcommand_arg "--message \"%\"" git commit; end;
+    #     abbr -a _abbr_git_commit_message --regex m --position anywhere --function _abbr_git_commit_message_fn --set-cursor
     #
     # Multiple commands can also be specified together. For example, the following can be defined at once:
     #

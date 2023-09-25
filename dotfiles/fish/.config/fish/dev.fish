@@ -16,6 +16,7 @@
     abbr -a mtf "time make -j 16 test-fast"
     abbr -a ml "make lint"
     abbr -a mf "make format"
+    abbr -a ms "make setup"
     abbr -a mcd "# Try: m c d"
     abbr -a mcb "# Try: m c b"
 
@@ -28,6 +29,7 @@
     function _abbr_make_test_all_fn; _abbr_define_anyarg test-all make; end; abbr -a _abbr_make_test_all --regex ta --position anywhere --function _abbr_make_test_all_fn
     function _abbr_make_lint_fn; _abbr_define_anyarg lint make; end; abbr -a _abbr_make_lint --regex l --position anywhere --function _abbr_make_lint_fn
     function _abbr_make_format_fn; _abbr_define_anyarg format make; end; abbr -a _abbr_make_format --regex f --position anywhere --function _abbr_make_format_fn
+    function _abbr_make_setup_fn; _abbr_define_anyarg setup make; end; abbr -a _abbr_make_setup --regex s --position anywhere --function _abbr_make_setup_fn
 
 ## JavaScript
 

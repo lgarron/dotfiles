@@ -67,6 +67,18 @@
     end
     abbr -a _abbr_git_HEAD --regex "h[0-9]*" --position anywhere --function _abbr_git_HEAD_fn
 
+    #   m⎵ → main
+    #  m1⎵ → main~1
+    # m12⎵ → main~12
+    function _abbr_git_mainhist_fn; \
+        set str "main"
+        if [ "$argv[1]" != "m" ]
+            set str $str"~"(string trim --left --chars=m $argv[1])
+        end
+        _abbr_define_exceptsubcommand_arg $str git commit;
+    end
+    abbr -a _abbr_git_mainhist --regex "m[0-9]*" --position anywhere --function _abbr_git_mainhist_fn
+
 ### git add
 
     abbr -a ga  "git add"

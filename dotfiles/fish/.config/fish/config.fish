@@ -220,6 +220,23 @@
 
 ### Abbrevation definition helpers
 
+    # For more detailed examples, see: https://github.com/fish-shell/fish-shell/issues/9411#issuecomment-1397950277
+
+    # Define an abbreviation that can be used in any arg position.
+    # For example, `make` targets can appear in any order:
+    #
+    # - make b⎵ → make build
+    # - make c⎵ → make clean
+    # - make c⎵ b⎵ → make clean build
+    #
+    # Example implementations:
+    #
+    #     function _abbr_make_build_fn; _abbr_define_anyarg build make; end
+    #     abbr -a _abbr_make_build --regex b --position anywhere --function _abbr_make_build_fn
+    #
+    #     function _abbr_make_clean_fn; _abbr_define_anyarg clean make; end
+    #     abbr -a _abbr_make_clean --regex c --position anywhere --function _abbr_make_clean_fn
+    #
     function _abbr_define_anyarg
         set expansion $argv[1]
         set main_command $argv[2]
@@ -231,6 +248,24 @@
         return 1
     end
 
+    # Define a subcommand, i.e. something that must be used as the first argument to a command.
+    # For example, the `git` command is built around subcommands:
+    #
+    # - git p⎵ → git push
+    # - git m⎵ → git merge
+    #
+    # But:
+    #
+    # - git checkout m⎵ → (not expanded to `git checkout merge`)
+    #
+    # Example implementations:
+    #
+    #     function _abbr_git_push_fn; _abbr_define_subcommand push git p; end
+    #     abbr -a _abbr_git_push --regex p --position anywhere --function _abbr_git_push_fn
+    #
+    #     function _abbr_git_merge_fn; _abbr_define_subcommand merge git m; end;
+    #     abbr -a _abbr_git_merge --regex m --position anywhere --function _abbr_git_merge_fn
+    #
     function _abbr_define_subcommand
         set expansion $argv[1]
         set main_command $argv[2]
@@ -243,6 +278,35 @@
         return 1
     end
 
+    # Define a subcommand argument, i.e. an argument that can only follow certain subcommands.
+    # For example, `git` has different arguments for each subcommand:
+    #
+    #  - git commit m⎵ → git commit --message "%" ( TODO: remove the second space?)
+    #  - git branch m⎵ → git branch --move
+    #
+    # Example implementations:
+    #
+    #     function _abbr_git_commit_message_fn; _abbr_define_subcommand_arg "--message \"%\"" git commit; end;
+    #     abbr -a _abbr_git_commit_message --regex m --position anywhere --function _abbr_git_commit_message_fn --set-cursor
+    #
+    #     function _abbr_git_branch_move_fn; _abbr_define_subcommand_arg "--move" git branch; end;
+    #     abbr -a _abbr_git_branch_move --regex m --position anywhere --function _abbr_git_branch_move_fn
+    #
+    # Multiple commands can also be specified together. For example, the following can be defined at once:
+    #
+    # - git rebase      c[space] → git rebase      --continue
+    # - git merge       c[space] → git merge       --continue
+    # - git cherry-pick c[space] → git cherry-pick --continue
+    #
+    # Example implementation:
+    #
+    #     set -g git_subcommands_reentrant \
+    #         rebase \
+    #         merge \
+    #         cherry-pick
+    #     function _abbr_git_reentrant_continue_fn; _abbr_define_subcommand_arg "--continue" git $git_subcommands_reentrant; end
+    #     abbr -a _abbr_git_reentrant_continue --regex c --position anywhere --function _abbr_git_reentrant_continue_fn
+    #
     function _abbr_define_subcommand_arg
         set expansion $argv[1]
         set main_command $argv[2]
@@ -257,6 +321,29 @@
         return 1
     end
 
+    # Define a subcommand argument using a denylist. This is like
+    # `_abbr_define_subcommand_arg`, but instead of allowing it as an argument
+    # for the given subcommands, it will work for all subcommands *except* the
+    # listed ones.
+    #
+    # For example, `m` → `main` is a useful branch name expansion for most `git`
+    # subcommands. But it would conflict with `git commit m` → `git commit
+    # --message` (see above). This function lets you exclude `git commit`
+    # without having to specify a large list of `git` subcommands explicitly:
+    #
+    #  - git checkout m⎵ → git checkout main
+    #  - git merge m⎵ → git merge main
+    #  - git log m⎵ → git log main
+    #
+    # But:
+    #
+    #  - git commit m⎵ → (not expanded to `git commit main`)
+    #
+    # Example implementation:
+    #
+    #     function _abbr_git_main_fn; _abbr_define_exceptsubcommand_arg main git commit; end
+    #     abbr -a _abbr_git_main --regex m --position anywhere --function _abbr_git_main_fn
+    #
     function _abbr_define_exceptsubcommand_arg
         set expansion $argv[1]
         set main_command $argv[2]

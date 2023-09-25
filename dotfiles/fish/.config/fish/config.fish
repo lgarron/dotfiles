@@ -248,8 +248,9 @@
         return 1
     end
 
-    # Define a subcommand, i.e. something that must be used as the first argument to a command.
-    # For example, the `git` command is built around subcommands:
+    # Define a subcommand, i.e. something that must be used as the first
+    # argument to a command. For example, the `git` command is built around
+    # subcommands:
     #
     # - git p⎵ → git push
     # - git m⎵ → git merge
@@ -265,6 +266,9 @@
     #
     #     function _abbr_git_merge_fn; _abbr_define_subcommand merge git m; end;
     #     abbr -a _abbr_git_merge --regex m --position anywhere --function _abbr_git_merge_fn
+    #
+    # To implement an argument for *all* subcommands of a given command, use
+    # `_abbr_define_subcommand_arg` (see below) with an empty denylist.
     #
     function _abbr_define_subcommand
         set expansion $argv[1]

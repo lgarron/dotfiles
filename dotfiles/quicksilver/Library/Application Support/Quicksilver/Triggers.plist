@@ -1243,6 +1243,44 @@
 		</dict>
 		<dict>
 			<key>ID</key>
+			<string>4DF43B66-0474-4D8F-870A-FEBFE4D0DA11</string>
+			<key>character</key>
+			<string>"</string>
+			<key>command</key>
+			<dict>
+				<key>actionID</key>
+				<string>QSTextTypeAction</string>
+				<key>directArchive</key>
+				<dict>
+					<key>class</key>
+					<string>QSObject</string>
+					<key>data</key>
+					<dict>
+						<key>public.utf8-plain-text</key>
+						<string>⏎</string>
+					</dict>
+					<key>properties</key>
+					<dict>
+						<key>QSObjectName</key>
+						<string>⏎</string>
+						<key>QSObjectType</key>
+						<string>public.utf8-plain-text</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyCode</key>
+			<integer>39</integer>
+			<key>modifiers</key>
+			<integer>655650</integer>
+			<key>onPress</key>
+			<true/>
+			<key>type</key>
+			<string>QSHotKeyTrigger</string>
+		</dict>
+		<dict>
+			<key>ID</key>
 			<string>22E393B9-86A4-4124-AD89-B13B19E0A0AA</string>
 			<key>command</key>
 			<dict>

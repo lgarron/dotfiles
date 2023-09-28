@@ -187,6 +187,8 @@ git push --force-with-lease"
     abbr -a gf "git fetch"
     abbr -a gfp "git fetch --prune"
 
+    abbr_subcommand_arg git p "--prune" fetch
+
 ### git log
 
     abbr -a gl  "git log"

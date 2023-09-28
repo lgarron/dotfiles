@@ -71,9 +71,6 @@
     #     abbr_subcommand git p push
     #     abbr_subcommand git m merge
     #
-    # To implement an argument for *all* subcommands of a given command, use
-    # `abbr_anysubcommand_arg` (see below).
-    #
     function _abbr_expand_subcommand
         set main_command $argv[1]
         set sub_command_abbreviation $argv[2]
@@ -109,6 +106,9 @@
     # Example implementation:
     #
     #     abbr_subcommand_arg git c "--continue" rebase merge cherry-pick
+    #
+    # To implement an argument for *all* subcommands of a given command, use
+    # `abbr_anysubcommand_arg` (see below).
     #
     function _abbr_expand_subcommand_arg
         set main_command $argv[1]

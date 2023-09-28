@@ -146,7 +146,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "/Users/lgarron/Code/git/github.com/lgarron/scripts/system/app-screenshot"
+                                        "shell_command": "/Users/lgarron/Code/git/github.com/lgarron/scripts/system/app-screenshot.fish"
                                     }
                                 ],
                                 "type": "basic"
@@ -167,7 +167,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "/Users/lgarron/Code/git/github.com/lgarron/scripts/system/app-screenshot --reveal"
+                                        "shell_command": "/Users/lgarron/Code/git/github.com/lgarron/scripts/system/app-screenshot.fish --reveal"
                                     }
                                 ],
                                 "type": "basic"
@@ -188,7 +188,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "/Users/lgarron/Code/git/github.com/lgarron/scripts/system/app-screenshot --front-window-shadowed-png"
+                                        "shell_command": "/Users/lgarron/Code/git/github.com/lgarron/scripts/system/app-screenshot.fish --front-window-shadowed-png"
                                     }
                                 ],
                                 "type": "basic"
@@ -210,7 +210,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "/Users/lgarron/Code/git/github.com/lgarron/scripts/system/app-screenshot --front-window-shadowed-png --reveal"
+                                        "shell_command": "/Users/lgarron/Code/git/github.com/lgarron/scripts/system/app-screenshot.fish --front-window-shadowed-png --reveal"
                                     }
                                 ],
                                 "type": "basic"
@@ -226,7 +226,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "/Users/lgarron/Code/git/github.com/lgarron/scripts/system/app-screenshot --front-window-shadowless-jpg"
+                                        "shell_command": "/Users/lgarron/Code/git/github.com/lgarron/scripts/system/app-screenshot.fish --front-window-shadowless-jpg"
                                     }
                                 ],
                                 "type": "basic"
@@ -247,7 +247,7 @@
                                 },
                                 "to": [
                                     {
-                                        "shell_command": "/Users/lgarron/Code/git/github.com/lgarron/scripts/system/app-screenshot --front-window-shadowless-jpg --reveal"
+                                        "shell_command": "/Users/lgarron/Code/git/github.com/lgarron/scripts/system/app-screenshot.fish --front-window-shadowless-jpg --reveal"
                                     }
                                 ],
                                 "type": "basic"

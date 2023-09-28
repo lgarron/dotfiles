@@ -219,6 +219,7 @@
     abbr -a "date-iso-8601" "date \"+%Y-%m-%d\""
     abbr -a "cv" "command -v"
     abbr -a "cva" "command -va"
+    abbr -a "which" "# Try: cv"
 
 ### Abbrevation definition helpers
 

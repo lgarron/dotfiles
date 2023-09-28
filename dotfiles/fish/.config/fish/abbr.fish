@@ -173,5 +173,5 @@
         echo "ERROR: abbr_anysubcommand_arg does not take denylist arguments"
         return 1
       end
-      _curry_abbr _abbr_expand_exceptsubcommand_arg $argv[1] $argv[2] $argv[3]
+      _curry_abbr _abbr_expand_exceptsubcommand_arg $argv[1..3]
     end

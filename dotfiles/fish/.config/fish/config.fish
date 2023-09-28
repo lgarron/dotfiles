@@ -328,7 +328,7 @@
     #
     # Example implementations:
     #
-    #     abbr_subcommand_arg git m --move branch
+    #     abbr_subcommand_arg git m "--move" branch
     #     abbr_subcommand_arg git m "--message" commit
     #
     # Multiple commands can also be specified together. For example, the following can be defined at once:

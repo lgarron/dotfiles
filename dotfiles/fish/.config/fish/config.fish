@@ -333,13 +333,13 @@
     #
     # Multiple commands can also be specified together. For example, the following can be defined at once:
     #
-    # - git rebase      c[space] → git rebase      --continue
-    # - git merge       c[space] → git merge       --continue
-    # - git cherry-pick c[space] → git cherry-pick --continue
+    # - git rebase      c⎵ → git rebase      --continue
+    # - git merge       c⎵ → git merge       --continue
+    # - git cherry-pick c⎵ → git cherry-pick --continue
     #
     # Example implementation:
     #
-    #     abbr_subcommand git c --continue rebase merge cherry-pick
+    #     abbr_subcommand_arg git c --continue rebase merge cherry-pick
     #
     function _abbr_expand_subcommand_arg
         set main_command $argv[1]

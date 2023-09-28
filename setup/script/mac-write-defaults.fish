@@ -1,4 +1,4 @@
-#!/usr/bin/env fish
+#!/usr/bin/env -S fish --no-config
 
 # Menu clock
 # This might not work anymore?

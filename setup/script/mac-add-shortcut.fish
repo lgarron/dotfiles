@@ -1,4 +1,4 @@
-#!/usr/bin/env fish
+#!/usr/bin/env -S fish --no-config
 
 set shortcut (echo $argv[3]| tr "[:upper:]" "[:lower:]" | sed "s/⌘/@/g" | sed "s/⇧/\$/g" | sed "s/⌥/~/g")
 

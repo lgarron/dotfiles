@@ -20,16 +20,16 @@
     abbr -a mcd "# Try: m c d"
     abbr -a mcb "# Try: m c b"
 
-    function _abbr_make_build_fn; _abbr_define_anyarg build make; end; abbr -a _abbr_make_build --regex b --position anywhere --function _abbr_make_build_fn
-    function _abbr_make_dev_fn; _abbr_define_anyarg dev make; end; abbr -a _abbr_make_dev --regex d --position anywhere --function _abbr_make_dev_fn
-    function _abbr_make_clean_fn; _abbr_define_anyarg clean make; end; abbr -a _abbr_make_clean --regex c --position anywhere --function _abbr_make_clean_fn
-    function _abbr_make_deploy_fn; _abbr_define_anyarg deploy make; end; abbr -a _abbr_make_deploy --regex dp --position anywhere --function _abbr_make_deploy_fn
-    function _abbr_make_publish_fn; _abbr_define_anyarg publish make; end; abbr -a _abbr_make_publish --regex p --position anywhere --function _abbr_make_publish_fn
-    function _abbr_make_test_fn; _abbr_define_anyarg test make; end; abbr -a _abbr_make_test --regex t --position anywhere --function _abbr_make_test_fn
-    function _abbr_make_test_all_fn; _abbr_define_anyarg test-all make; end; abbr -a _abbr_make_test_all --regex ta --position anywhere --function _abbr_make_test_all_fn
-    function _abbr_make_lint_fn; _abbr_define_anyarg lint make; end; abbr -a _abbr_make_lint --regex l --position anywhere --function _abbr_make_lint_fn
-    function _abbr_make_format_fn; _abbr_define_anyarg format make; end; abbr -a _abbr_make_format --regex f --position anywhere --function _abbr_make_format_fn
-    function _abbr_make_setup_fn; _abbr_define_anyarg setup make; end; abbr -a _abbr_make_setup --regex s --position anywhere --function _abbr_make_setup_fn
+    abbr_anyarg make b  build
+    abbr_anyarg make d  dev
+    abbr_anyarg make c  clean
+    abbr_anyarg make dp deploy
+    abbr_anyarg make p  publish
+    abbr_anyarg make t  test
+    abbr_anyarg make ta test-all
+    abbr_anyarg make l  lint
+    abbr_anyarg make f  format
+    abbr_anyarg make s  setup
 
 ## JavaScript
 
@@ -42,21 +42,21 @@
     abbr -a nr "npm run"
     abbr -a nl "npm link"
 
-    function _abbr_npm_install_fn; _abbr_define_subcommand install npm i; end; abbr -a _abbr_npm_install --regex i --position anywhere --function _abbr_npm_install_fn
-    function _abbr_npm_uninstall_fn; _abbr_define_subcommand uninstall npm u; end; abbr -a _abbr_npm_uninstall --regex u --position anywhere --function _abbr_npm_uninstall_fn
-    function _abbr_npm_run_fn; _abbr_define_subcommand run npm i; end; abbr -a _abbr_npm_run --regex r --position anywhere --function _abbr_npm_run_fn
-    function _abbr_npm_link_fn; _abbr_define_subcommand link npm l; end; abbr -a _abbr_npm_link --regex l --position anywhere --function _abbr_npm_link_fn
+    abbr_subcommand npm i install
+    abbr_subcommand npm u uninstall
+    abbr_subcommand npm r run
+    abbr_subcommand npm l link
 
     # npm install s⎵ → npm install --save
-    function _abbr_npm_install_save_fn; _abbr_define_subcommand_arg --save npm install; end; abbr -a _abbr_npm_install_save --regex s --position anywhere --function _abbr_npm_install_save_fn
+    abbr_subcommand_arg npm s --save install
 
     # npm install d⎵ → npm install --save-dev
-    function _abbr_npm_install_save_dev_fn; _abbr_define_subcommand_arg --save-dev npm install; end; abbr -a _abbr_npm_install_save_dev --regex d --position anywhere --function _abbr_npm_install_save_dev_fn
+    abbr_subcommand_arg npm d --save-dev install
 
     # npm run d⎵ → npm run dev
-    function _abbr_npm_run_d_fn; _abbr_define_subcommand_arg dev npm run; end; abbr -a _abbr_npm_run_d --regex d --position anywhere --function _abbr_npm_run_d_fn
+    abbr_subcommand_arg npm d dev run
     # npm run b⎵ → npm run build
-    function _abbr_npm_run_b_fn; _abbr_define_subcommand_arg build npm run; end; abbr -a _abbr_npm_run_b --regex b --position anywhere --function _abbr_npm_run_b_fn
+    abbr_subcommand_arg npm b build run
 
     abbr -a rmnm "rm -rf ./node_modules ; and npm install"
     abbr -a wtr "npx web-test-runner"
@@ -83,13 +83,13 @@
     abbr -a bis "# Try: ba"
     abbr -a bid "# Try: ba d"
 
-    function _abbr_bun_add_fn; _abbr_define_subcommand add bun a; end; abbr -a _abbr_bun_add --regex a --position anywhere --function _abbr_bun_add_fn
-    function _abbr_bun_install_fn; _abbr_define_subcommand install bun i; end; abbr -a _abbr_bun_install --regex i --position anywhere --function _abbr_bun_install_fn
-    function _abbr_bun_run_fn; _abbr_define_subcommand run bun r; end; abbr -a _abbr_bun_run --regex r --position anywhere --function _abbr_bun_run_fn
-    function _abbr_bun_test_fn; _abbr_define_subcommand run test t; end; abbr -a _abbr_bun_test --regex t --position anywhere --function _abbr_bun_test_fn
+    abbr_subcommand bun a add
+    abbr_subcommand bun i install
+    abbr_subcommand bun r run
+    abbr_subcommand bun t test
 
     # bun add d⎵ → bun add --development
-    function _abbr_bun_add_development_fn; _abbr_define_subcommand_arg --development bun add; end; abbr -a _abbr_bun_add_development --regex d --position anywhere --function _abbr_bun_add_development_fn
+    abbr_subcommand_arg bun d --development add
 
 # Cargo
 
@@ -102,16 +102,16 @@
     abbr -a cr "cargo run --"
     abbr -a crh "cargo run -- --help"
 
-    function _abbr_cargo_add_fn; _abbr_define_anyarg add cargo; end; abbr -a _abbr_cargo_add --regex a --position anywhere --function _abbr_cargo_add_fn
-    function _abbr_cargo_build_fn; _abbr_define_anyarg build cargo; end; abbr -a _abbr_cargo_build --regex b --position anywhere --function _abbr_cargo_build_fn
-    function _abbr_cargo_fmt_fn; _abbr_define_anyarg fmt cargo; end; abbr -a _abbr_cargo_fmt --regex f --position anywhere --function _abbr_cargo_fmt_fn
-    function _abbr_cargo_test_fn; _abbr_define_anyarg test cargo; end; abbr -a _abbr_cargo_test --regex t --position anywhere --function _abbr_cargo_test_fn
-    function _abbr_cargo_run_fn; _abbr_define_anyarg "run --" cargo; end; abbr -a _abbr_cargo_run --regex r --position anywhere --function _abbr_cargo_run_fn
+    abbr_subcommand cargo a add
+    abbr_subcommand cargo b build
+    abbr_subcommand cargo f fmt
+    abbr_subcommand cargo t test
+    abbr_subcommand cargo r "run --"
 
-    function _abbr_cargo_package_fn; _abbr_define_anyarg "--package" cargo; end; abbr -a _abbr_cargo_run --regex p --position anywhere --function _abbr_cargo_package_fn
+    abbr_anysubcommand_arg cargo p "--package"
 
-    # cargo run h⎵ → cargo run --help
-    function _abbr_cargo_run_help_fn; _abbr_define_subcommand_arg "--help" cargo run; end; abbr -a _abbr_cargo_run_help --regex h --position anywhere --function _abbr_cargo_run_help_fn
+    # cargo run -- h⎵ → cargo run -- --help
+    abbr_subcommand_arg cargo h "--help" run
 
 ## Web
 

@@ -16,68 +16,86 @@
     # A lot of `git` commands take branch arguments, so we allow the expansion for all arguments.
     # But we define it first, so that the expansion of `m` can be superseded for specific commands (e.g. `git commit`)
     # We also explicitly exclude `git commit` as a known conflict, just in case.
-    function _abbr_git_main_fn; _abbr_define_exceptsubcommand_arg main git commit; end; abbr -a _abbr_git_main --regex m --position anywhere --function _abbr_git_main_fn
+    abbr_exceptsubcommand_arg git m main commit
     # ms⎵ → master
-    function _abbr_git_master_fn; _abbr_define_exceptsubcommand_arg master git commit; end; abbr -a _abbr_git_master --regex ms --position anywhere --function _abbr_git_master_fn
+    abbr_exceptsubcommand_arg git ms master commit
     # b⎵ → (expansion of current branch name)
-    # function _abbr_git_currentbranch_fn; _abbr_define_exceptsubcommand_arg (git rev-parse --abbrev-ref HEAD) git; end; abbr -a _abbr_git_currentbranch --regex b --position anywhere --function _abbr_git_currentbranch_fn
+    # function abbr_git_currentbranch_fn; _abbr_expand_exceptsubcommand_arg (git rev-parse --abbrev-ref HEAD) git; end; abbr -a abbr_git_currentbranch --regex b --position anywhere --function abbr_git_currentbranch_f
     # :b⎵ → :(expansion of current branch name)
-    function _abbr_git_coloncurrentbranch_fn; _abbr_define_subcommand_arg :(git rev-parse --abbrev-ref HEAD) git push; end; abbr -a _abbr_git_coloncurrentbranch --regex :b --position anywhere --function _abbr_git_coloncurrentbranch_fn
-    function _abbr_git_coloncurrentbranch1_fn; _abbr_define_subcommand_arg :(git rev-parse --abbrev-ref @{-1}) git push; end; abbr -a _abbr_git_coloncurrentbranch1 --regex :b1 --position anywhere --function _abbr_git_coloncurrentbranch1_fn
-    function _abbr_git_coloncurrentbranch2_fn; _abbr_define_subcommand_arg :(git rev-parse --abbrev-ref @{-2}) git push; end; abbr -a _abbr_git_coloncurrentbranch2 --regex :b2 --position anywhere --function _abbr_git_coloncurrentbranch2_fn
+    function abbr_git_coloncurrentbranch_fn
+        _abbr_expand_subcommand_arg git :b :(git rev-parse --abbrev-ref HEAD) push
+    end
+    abbr -a abbr_git_coloncurrentbranch --regex :b --position anywhere --function abbr_git_coloncurrentbranch_fn
+    function abbr_git_coloncurrentbranch1_fn
+        _abbr_expand_subcommand_arg git :b1 :(git rev-parse --abbrev-ref @{-1}) push
+    end
+    abbr -a abbr_git_coloncurrentbranch1 --regex :b1 --position anywhere --function abbr_git_coloncurrentbranch1_fn
+    function abbr_git_coloncurrentbranch2_fn
+        _abbr_expand_subcommand_arg git :b2 :(git rev-parse --abbrev-ref @{-2}) push
+    end
+    abbr -a abbr_git_coloncurrentbranch2 --regex :b2 --position anywhere --function abbr_git_coloncurrentbranch2_fn
 
     # om⎵ → origin/main
-    function _abbr_git_originmain_fn; _abbr_define_exceptsubcommand_arg origin/main git commit; end; abbr -a _abbr_git_originmain --regex om --position anywhere --function _abbr_git_originmain_fn
+    abbr_exceptsubcommand_arg git om origin/main commit
     # oms⎵ → origin/master
-    function _abbr_git_originmaster_fn; _abbr_define_exceptsubcommand_arg origin/master git commit; end; abbr -a _abbr_git_originmaster --regex oms --position anywhere --function _abbr_git_originmaster_fn
+    abbr_exceptsubcommand_arg git oms origin/master commit
     # ob⎵ → origin/(expansion of current branch name)
-    function _abbr_git_origincurrentbranch_fn; _abbr_define_exceptsubcommand_arg origin/(git rev-parse --abbrev-ref HEAD) git commit; end; abbr -a _abbr_git_origincurrentbranch --regex ob --position anywhere --function _abbr_git_origincurrentbranch_fn
+    function abbr_git_origincurrentbranch_fn
+        _abbr_expand_exceptsubcommand_arg git ob origin/(git rev-parse --abbrev-ref HEAD) commit
+    end
+    abbr -a abbr_git_origincurrentbranch --regex ob --position anywhere --function abbr_git_origincurrentbranch_fn
 
     # um⎵ → upstream/main
-    function _abbr_git_upstreammain_fn; _abbr_define_exceptsubcommand_arg upstream/main git commit; end; abbr -a _abbr_git_upstreammain --regex um --position anywhere --function _abbr_git_upstreammain_fn
+    abbr_exceptsubcommand_arg git um upstream/main commit
     # ums⎵ → upstream/master
-    function _abbr_git_upstreammaster_fn; _abbr_define_exceptsubcommand_arg upstream/master git commit; end; abbr -a _abbr_git_upstreammaster --regex ums --position anywhere --function _abbr_git_upstreammaster_fn
+    abbr_exceptsubcommand_arg git ums upstream/master commit
     # ub⎵ → upstream/(expansion of current branch name)
-    function _abbr_git_upstreamcurrentbranch_fn; _abbr_define_exceptsubcommand_arg upstream/(git commit rev-parse --abbrev-ref HEAD) git; end; abbr -a _abbr_git_upstreamcurrentbranch --regex ub --position anywhere --function _abbr_git_upstreamcurrentbranch_fn
+    function abbr_git_upstreamcurrentbranch_fn
+        _abbr_expand_exceptsubcommand_arg git ub upstream/(commit rev-parse --abbrev-ref HEAD) git
+    end
+    abbr -a abbr_git_upstreamcurrentbranch --regex ub --position anywhere --function abbr_git_upstreamcurrentbranch_fn
 
     # b-⎵ → (expansion of last branch name)
-    function _abbr_git_lastbranch_fn; _abbr_define_exceptsubcommand_arg (git rev-parse --abbrev-ref @{-1}) git commit; end; abbr -a _abbr_git_lastbranch --regex b- --position anywhere --function _abbr_git_lastbranch_fn
+    function abbr_git_lastbranch_fn
+        _abbr_expand_exceptsubcommand_arg git b- (git rev-parse --abbrev-ref @{-1}) commit
+    end
+    abbr -a abbr_git_lastbranch --regex b- --position anywhere --function abbr_git_lastbranch_fn
     #  b⎵ → (expansion of current branch name)
     # b1⎵ → (expansion of last branch name)
     # b3⎵ → (expansion of three branch names ago)
-    function _abbr_git_branchhist_fn; \
+    function abbr_git_branchhist_fn; \
         set ref "@"
         if [ "$argv[1]" != "b" ]
             set ref $ref"{-"(string trim --left --chars=b $argv[1])"}"
         end
         set expanded_branch (git rev-parse --abbrev-ref $ref 2>/dev/null); or return 1
-        _abbr_define_exceptsubcommand_arg $expanded_branch git commit
+        _abbr_expand_exceptsubcommand_arg git _ $expanded_branch commit
     end
-    abbr -a _abbr_git_branchhist --regex "b[0-9]*" --position anywhere --function _abbr_git_branchhist_fn
+    abbr -a abbr_git_branchhist --regex "b[0-9]*" --position anywhere --function abbr_git_branchhist_fn
 
     #   h⎵ → HEAD
     #  h1⎵ → HEAD~1
     # h12⎵ → HEAD~12
-    function _abbr_git_HEAD_fn; \
+    function abbr_git_HEAD_fn; \
         set str "HEAD"
         if [ "$argv[1]" != "h" ]
             set str $str"~"(string trim --left --chars=h $argv[1])
         end
-        _abbr_define_exceptsubcommand_arg $str git commit;
+        _abbr_expand_exceptsubcommand_arg git _ $str commit;
     end
-    abbr -a _abbr_git_HEAD --regex "h[0-9]*" --position anywhere --function _abbr_git_HEAD_fn
+    abbr -a abbr_git_HEAD --regex "h[0-9]*" --position anywhere --function abbr_git_HEAD_fn
 
     #   m⎵ → main
     #  m1⎵ → main~1
     # m12⎵ → main~12
-    function _abbr_git_mainhist_fn; \
+    function abbr_git_mainhist_fn; \
         set str "main"
         if [ "$argv[1]" != "m" ]
             set str $str"~"(string trim --left --chars=m $argv[1])
         end
-        _abbr_define_exceptsubcommand_arg $str git commit;
+        _abbr_expand_exceptsubcommand_arg git _ $str commit;
     end
-    abbr -a _abbr_git_mainhist --regex "m[0-9]*" --position anywhere --function _abbr_git_mainhist_fn
+    abbr -a abbr_git_mainhist --regex "m[0-9]*" --position anywhere --function abbr_git_mainhist_fn
 
 ### git add
 
@@ -86,23 +104,23 @@
     abbr -a g.  "git add ."
 
     # git add p⎵ → git add --patch
-    function _abbr_git_add_patch_fn; _abbr_define_subcommand_arg "--patch" git add; end; abbr -a _abbr_git_add_patch --regex p --position anywhere --function _abbr_git_add_patch_fn
+    abbr_subcommand_arg git p "--patch" add
 
 ### git branch
 
     # git b⎵ → git branch
-    function _abbr_git_branch_fn; _abbr_define_subcommand branch git b; end; abbr -a _abbr_git_branch --regex b --position anywhere --function _abbr_git_branch_fn
+    abbr_subcommand git b branch
 
     abbr -a gb  "git branch"
     abbr -a gbd "# Try: gb df"
     abbr -a gbm "# Try: gb m"
 
     # git branch m⎵ → git branch --move
-    function _abbr_git_branch_move_fn; _abbr_define_subcommand_arg "--move" git branch; end; abbr -a _abbr_git_branch_move --regex m --position anywhere --function _abbr_git_branch_move_fn
+    abbr_subcommand_arg git m "--move" branch
     # git branch d⎵ → git branch --delete
-    function _abbr_git_branch_delete_fn; _abbr_define_subcommand_arg "--delete" git branch; end; abbr -a _abbr_git_branch_delete --regex d --position anywhere --function _abbr_git_branch_delete_fn
+    abbr_subcommand_arg git d "--delete" branch
     # git branch df⎵ → git branch --delete --force (equivalent to: git branch -D)
-    function _abbr_git_branch_deleteforce_fn; _abbr_define_subcommand_arg "--delete --force" git branch; end; abbr -a _abbr_git_branch_deleteforce --regex df --position anywhere --function _abbr_git_branch_deleteforce_fn
+    abbr_subcommand_arg git df "--delete --force" branch
 
 ### git checkout
 
@@ -129,28 +147,28 @@ git commit --amend --no-edit &&
 git push --force-with-lease"
 
     # git commit a⎵ → git commit --amend
-    function _abbr_git_commit_amend_fn; _abbr_define_subcommand_arg "--amend" git commit; end; abbr -a _abbr_git_commit_amend --regex a --position anywhere --function _abbr_git_commit_amend_fn
+    abbr_subcommand_arg git a "--amend" commit
     # git commit ne⎵ → git commit --no-edit
-    function _abbr_git_commit_no_edit_fn; _abbr_define_subcommand_arg "--no-edit" git commit; end; abbr -a _abbr_git_commit_no_edit --regex ne --position anywhere --function _abbr_git_commit_no_edit_fn
+    abbr_subcommand_arg git ne "--no-edit" commit
     # git commit ne⎵ → git commit --allow-empty
-    function _abbr_git_commit_allow_empty_fn; _abbr_define_subcommand_arg "--allow-empty" git commit; end; abbr -a _abbr_git_commit_allow_empty --regex ae --position anywhere --function _abbr_git_commit_allow_empty_fn
+    abbr_subcommand_arg git ae "--allow-empty" commit
     # git commit m⎵ → git commit --message "%" ( TODO: remove the second space?)
-    function _abbr_git_commit_message_fn; _abbr_define_subcommand_arg "--message \"%\"" git commit; end; abbr -a _abbr_git_commit_message --regex m --position anywhere --function _abbr_git_commit_message_fn --set-cursor
+    function abbr_git_commit_message_fn; _abbr_expand_subcommand_arg git m "--message \"%\"" commit; end; abbr -a abbr_git_commit_message --regex m --position anywhere --function abbr_git_commit_message_fn --set-cursor
     # git commit !!⎵ → git commit --message "`[last command]`" ( TODO: remove the second space?)
-    function _abbr_git_commit_last_command_fn; _abbr_define_subcommand_arg "--message \"`"(string replace --all "\"" "\\\"" $history[1])"`\"" git commit; end; abbr -a _abbr_git_commit_last_command --regex !! --position anywhere --function _abbr_git_commit_last_command_fn
+    function abbr_git_commit_last_command_fn; _abbr_expand_subcommand_arg git !! "--message \"`"(string replace --all "\"" "\\\"" $history[1])"`\"" commit; end; abbr -a abbr_git_commit_last_command --regex !! --position anywhere --function abbr_git_commit_last_command_fn
     # git commit !!!⎵ → git commit --message "`[second-to-last command]`" ( TODO: remove the second space?)
-    function _abbr_git_commit_secondlast_command_fn; _abbr_define_subcommand_arg "--message \"`"(string replace --all "\"" "\\\"" $history[2])"`\"" git commit; end; abbr -a _abbr_git_commit_secondlast_command --regex !!! --position anywhere --function _abbr_git_commit_secondlast_command_fn
+    function abbr_git_commit_secondlast_command_fn; _abbr_expand_subcommand_arg git !!! "--message \"`"(string replace --all "\"" "\\\"" $history[2])"`\"" commit; end; abbr -a abbr_git_commit_secondlast_command --regex !!! --position anywhere --function abbr_git_commit_secondlast_command_fn
     # git commit !!!!⎵ → git commit --message "`[third-to-last command]`" ( TODO: remove the second space?)
-    function _abbr_git_commit_thirdlast_command_fn; _abbr_define_subcommand_arg "--message \"`"(string replace --all "\"" "\\\"" $history[3])"`\"" git commit; end; abbr -a _abbr_git_commit_thirdlast_command --regex !!! --position anywhere --function _abbr_git_commit_thirdlast_command_fn
+    function abbr_git_commit_thirdlast_command_fn; _abbr_expand_subcommand_arg git !!! "--message \"`"(string replace --all "\"" "\\\"" $history[3])"`\"" commit; end; abbr -a abbr_git_commit_thirdlast_command --regex !!! --position anywhere --function abbr_git_commit_thirdlast_command_fn
 
-    function _abbr_gcv
+    function abbr_gcv
         echo "git commit --message \""(project_version)
         echo ""
         echo "Release notes:"
         echo ""
         echo "- %"
     end
-    abbr -a gcv --function _abbr_gcv --set-cursor
+    abbr -a gcv --function abbr_gcv --set-cursor
 
 ### git diff
 
@@ -160,9 +178,9 @@ git push --force-with-lease"
     abbr -a gdno "# Try: gd no"
 
     # git diff c⎵ → git diff --cached
-    function _abbr_git_diff_cached_fn; _abbr_define_subcommand_arg "--cached" git diff; end; abbr -a _abbr_git_diff_cached --regex c --position anywhere --function _abbr_git_diff_cached_fn
+    abbr_subcommand_arg git c "--cached" diff
     # git diff no⎵ → git diff --name-only
-    function _abbr_git_diff_name_only_fn; _abbr_define_subcommand_arg "--name-only" git diff; end; abbr -a _abbr_git_diff_name_only --regex no --position anywhere --function _abbr_git_diff_name_only_fn
+    abbr_subcommand_arg git no "--name-only" diff
 
 ### git fetch
 
@@ -176,12 +194,12 @@ git push --force-with-lease"
 
     # git log pretty, from http://www.xerxesb.com/2010/command-line-replacement-for-gitk/
     # git log p⎵ → git log [several arguments for a nice, condensed output]
-    function _abbr_git_log_pretty_fn; _abbr_define_subcommand_arg "--oneline --decorate=full --graph --remotes" git log; end; abbr -a _abbr_git_log_pretty --regex p --position anywhere --function _abbr_git_log_pretty_fn
+    abbr_subcommand_arg git p "--oneline --decorate=full --graph --remotes" log
 
 ### git merge
 
     # git m⎵ → git merge
-    function _abbr_git_merge_fn; _abbr_define_subcommand merge git m; end; abbr -a _abbr_git_merge --regex m --position anywhere --function _abbr_git_merge_fn
+    abbr_subcommand git m merge
 
     abbr -a gm  "git merge"
     abbr -a gmb "git merge-base main (git rev-parse --abbrev-ref HEAD)"
@@ -189,9 +207,9 @@ git push --force-with-lease"
     abbr -a ffo "git merge --ff-only"
 
     # git merge nff⎵ → git merge --no-ff
-    function _abbr_git_merge_no_ff_fn; _abbr_define_subcommand_arg "--no-ff" git merge; end; abbr -a _abbr_git_merge_no_ff --regex nff --position anywhere --function _abbr_git_merge_no_ff_fn
+    abbr_subcommand_arg git nff "--no-ff" merge
     # git merge ffo⎵ → git merge --ff-only
-    function _abbr_git_merge_ff_only_fn; _abbr_define_subcommand_arg "--ff-only" git merge; end; abbr -a _abbr_git_merge_ff_only --regex ffo --position anywhere --function _abbr_git_merge_ff_only_fn
+    abbr_subcommand_arg git ffo "--ff-only" merge
 
 ### git pull
 
@@ -200,7 +218,7 @@ git push --force-with-lease"
 ### git push
 
     # git p⎵ → git push
-    function _abbr_git_push_fn; _abbr_define_subcommand push git p; end; abbr -a _abbr_git_push --regex p --position anywhere --function _abbr_git_push_fn
+    abbr_subcommand git p push
 
     abbr -a gp   "git push"
     abbr -a gph  "git push -u origin HEAD" # "git push branch" to a remote that doesn't know about the branch yet.
@@ -211,14 +229,14 @@ git push --force-with-lease"
     abbr -a gpfl "# Try: gp fl (or gg)"
 
     # git push t⎵ → git push --tags
-    function _abbr_git_push_tags_fn; _abbr_define_subcommand_arg "--tags" git push; end; abbr -a _abbr_git_push_tags --regex t --position anywhere --function _abbr_git_push_tags_fn
+    abbr_subcommand_arg git t "--tags" push
     # git push fl⎵ → git push --force-with-lease
-    function _abbr_git_push_force_with_lease_fn; _abbr_define_subcommand_arg "--force-with-lease" git push; end; abbr -a _abbr_git_push_force_with_lease --regex fl --position anywhere --function _abbr_git_push_force_with_lease_fn
+    abbr_subcommand_arg git fl "--force-with-lease" push
 
 ### git rebase
 
     # git r⎵ → git rebase
-    function _abbr_git_rebase_fn; _abbr_define_subcommand rebase git r; end; abbr -a _abbr_git_rebase --regex r --position anywhere --function _abbr_git_rebase_fn
+    abbr_subcommand git r rebase
 
     abbr -a gr "git rebase"
     # Legacy
@@ -229,7 +247,7 @@ git push --force-with-lease"
     abbr -a grom "# Try: gr om"
 
     # git rebase i⎵ → git rebase --interactive
-    function _abbr_git_rebase_interactive_fn; _abbr_define_subcommand_arg "--interactive" git rebase; end; abbr -a _abbr_git_rebase_interactive --regex i --position anywhere --function _abbr_git_rebase_interactive_fn
+    abbr_subcommand_arg git i "--interactive" rebase
 
 ### git remot
 
@@ -259,7 +277,7 @@ git push --force-with-lease"
     abbr -a gtd "# Try: gt d"
 
     # git tag d⎵ → git tag --delete (equivalent to: git tag -D)
-    function _abbr_git_tag_delete_fn; _abbr_define_subcommand_arg "--delete" git tag; end; abbr -a _abbr_git_tag_delete --regex d --position anywhere --function _abbr_git_tag_delete_fn
+    abbr_subcommand_arg git d "--delete" tag
 
 ### Repo-sensitive subcommand arguments (shared)
 ###
@@ -273,9 +291,9 @@ git push --force-with-lease"
         push
 
     # git push o⎵ → git push origin
-    function _abbr_git_push_origin_fn; _abbr_define_subcommand_arg "origin" git $git_subcommands_repo_sensitive; end; abbr -a _abbr_git_push_origin --regex o --position anywhere --function _abbr_git_push_origin_fn
+    abbr_subcommand_arg git o "origin" $git_subcommands_repo_sensitive
     # git push u⎵ → git push upstream
-    function _abbr_git_push_upstream_fn; _abbr_define_subcommand_arg "upstream" git $git_subcommands_repo_sensitive; end; abbr -a _abbr_git_push_upstream --regex u --position anywhere --function _abbr_git_push_upstream_fn
+    abbr_subcommand_arg git u "upstream" $git_subcommands_repo_sensitive
 
 ### Re-entrant subcommand arguments (shared)
 ###
@@ -289,9 +307,9 @@ git push --force-with-lease"
         cherry-pick
 
     # git rebase a⎵ →⎵git rebase --abort
-    function _abbr_git_reentrant_abort_fn; _abbr_define_subcommand_arg "--abort" git $git_subcommands_reentrant; end; abbr -a _abbr_git_reentrant_abort --regex a --position anywhere --function _abbr_git_reentrant_abort_fn
+    abbr_subcommand_arg git a "--abort" $git_subcommands_reentrant
     # git rebase c⎵ →⎵git rebase --continue
-    function _abbr_git_reentrant_continue_fn; _abbr_define_subcommand_arg "--continue" git $git_subcommands_reentrant; end; abbr -a _abbr_git_reentrant_continue --regex c --position anywhere --function _abbr_git_reentrant_continue_fn
+    abbr_subcommand_arg git c "--continue" $git_subcommands_reentrant
 
 ## gh (GitHub CLI)
 

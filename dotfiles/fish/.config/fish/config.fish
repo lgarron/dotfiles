@@ -232,6 +232,30 @@
 
 ### Abbrevation definition helpers
 
+    set CURRY_COUNTER 1
+    function abbr_next_curried_function_name
+      echo "_curried_$CURRY_COUNTER"
+      set CURRY_COUNTER (math $CURRY_COUNTER + 1)
+    end
+
+    function _curry
+      set HELPER (abbr_next_curried_function_name)
+      # store args in a global var (since fish can't capture vars function definitions)
+      set -g "$HELPER"_argv $argv
+      function "$HELPER"
+        # retrieve global vars
+        set HELPER_ARGV (status current-function)_argv
+        $$HELPER_ARGV
+      end
+      echo $HELPER
+    end
+
+    function _curry_abbr
+      set abbreviation $argv[3]
+      set HELPER (_curry $argv)
+      abbr -a "$HELPER"_abbr --regex $abbreviation --position anywhere --function "$HELPER"
+    end
+
     # For more detailed examples, see: https://github.com/fish-shell/fish-shell/issues/9411#issuecomment-1397950277
 
     # Define an abbreviation that can be used in any arg position.
@@ -243,15 +267,13 @@
     #
     # Example implementations:
     #
-    #     function _abbr_make_build_fn; _abbr_define_anyarg build make; end
-    #     abbr -a _abbr_make_build --regex b --position anywhere --function _abbr_make_build_fn
+    #     __abbr_anyarg make b build
+    #     __abbr_anyarg make c clean
     #
-    #     function _abbr_make_clean_fn; _abbr_define_anyarg clean make; end
-    #     abbr -a _abbr_make_clean --regex c --position anywhere --function _abbr_make_clean_fn
-    #
-    function _abbr_define_anyarg
-        set expansion $argv[1]
-        set main_command $argv[2]
+    function _abbr_expand_anyarg
+        set main_command $argv[1]
+        # set command_abbreviation $argv[2] # unused
+        set expansion $argv[3]
         set -l cmd (commandline -op)
         if [ "$cmd[1]" = $main_command ]
             echo $expansion
@@ -259,6 +281,10 @@
         end
         return 1
     end
+    function abbr_anyarg
+      _curry_abbr _abbr_expand_subcommand $argv
+    end
+    
 
     # Define a subcommand, i.e. something that must be used as the first
     # argument to a command. For example, the `git` command is built around
@@ -273,19 +299,16 @@
     #
     # Example implementations:
     #
-    #     function _abbr_git_push_fn; _abbr_define_subcommand push git p; end
-    #     abbr -a _abbr_git_push --regex p --position anywhere --function _abbr_git_push_fn
-    #
-    #     function _abbr_git_merge_fn; _abbr_define_subcommand merge git m; end;
-    #     abbr -a _abbr_git_merge --regex m --position anywhere --function _abbr_git_merge_fn
+    #     abbr_subcommand git p push
+    #     abbr_subcommand git m merge
     #
     # To implement an argument for *all* subcommands of a given command, use
-    # `_abbr_define_subcommand_arg` (see below) with an empty denylist.
+    # `abbr_anysubcommand_arg` (see below).
     #
-    function _abbr_define_subcommand
-        set expansion $argv[1]
-        set main_command $argv[2]
-        set sub_command_abbreviation $argv[3]
+    function _abbr_expand_subcommand
+        set main_command $argv[1]
+        set sub_command_abbreviation $argv[2]
+        set expansion $argv[3]
         set -l cmd (commandline -op)
         if [ "$cmd[1]" = $main_command -a (count $cmd) -eq 2 -a "$cmd[2]" = $sub_command_abbreviation ]
             echo $expansion
@@ -293,20 +316,20 @@
         end
         return 1
     end
+    function abbr_subcommand
+      _curry_abbr _abbr_expand_subcommand $argv
+    end
 
     # Define a subcommand argument, i.e. an argument that can only follow certain subcommands.
     # For example, `git` has different arguments for each subcommand:
     #
     #  - git branch m⎵ → git branch --move
-    #  - git commit m⎵ → git commit --message "%"
+    #  - git commit m⎵ → git commit --message
     #
     # Example implementations:
     #
-    #     function _abbr_git_branch_move_fn; _abbr_define_subcommand_arg "--move" git branch; end;
-    #     abbr -a _abbr_git_branch_move --regex m --position anywhere --function _abbr_git_branch_move_fn
-    #
-    #     function _abbr_git_commit_message_fn; _abbr_define_subcommand_arg "--message \"%\"" git commit; end;
-    #     abbr -a _abbr_git_commit_message --regex m --position anywhere --function _abbr_git_commit_message_fn --set-cursor
+    #     abbr_subcommand_arg git m --move branch
+    #     abbr_subcommand_arg git m "--message" commit
     #
     # Multiple commands can also be specified together. For example, the following can be defined at once:
     #
@@ -316,29 +339,28 @@
     #
     # Example implementation:
     #
-    #     set -g git_subcommands_reentrant \
-    #         rebase \
-    #         merge \
-    #         cherry-pick
-    #     function _abbr_git_reentrant_continue_fn; _abbr_define_subcommand_arg "--continue" git $git_subcommands_reentrant; end
-    #     abbr -a _abbr_git_reentrant_continue --regex c --position anywhere --function _abbr_git_reentrant_continue_fn
+    #     abbr_subcommand git c --continue rebase merge cherry-pick
     #
-    function _abbr_define_subcommand_arg
-        set expansion $argv[1]
-        set main_command $argv[2]
-        set sub_commands $argv[3..-1]
+    function _abbr_expand_subcommand_arg
+        set main_command $argv[1]
+        # set arg_abbreviation $argv[2] # unused
+        set arg_expansion $argv[3]
+        set sub_commands $argv[4..-1]
         set -l cmd (commandline -op)
         if [ "$cmd[1]" = $main_command ]
             if contains -- "$cmd[2]" $sub_commands
-                echo $expansion
+                echo $arg_expansion
                 return 0
             end
         end
         return 1
     end
+    function abbr_subcommand_arg
+      _curry_abbr _abbr_expand_subcommand_arg $argv
+    end
 
     # Define a subcommand argument using a denylist. This is like
-    # `_abbr_define_subcommand_arg`, but instead of allowing it as an argument
+    # `_abbr_expand_subcommand_arg`, but instead of allowing it as an argument
     # for the given subcommands, it will work for all subcommands *except* the
     # listed ones.
     #
@@ -357,22 +379,34 @@
     #
     # Example implementation:
     #
-    #     function _abbr_git_main_fn; _abbr_define_exceptsubcommand_arg main git commit; end
-    #     abbr -a _abbr_git_main --regex m --position anywhere --function _abbr_git_main_fn
+    #     abbr_exceptsubcommand_arg git m main commit
     #
-    function _abbr_define_exceptsubcommand_arg
-        set expansion $argv[1]
-        set main_command $argv[2]
-        set sub_commands $argv[3..-1]
+    function _abbr_expand_exceptsubcommand_arg
+        set main_command $argv[1]
+        # set arg_abbreviation $argv[2] # unused
+        set arg_expansion $argv[3]
+        set excluded_sub_commands $argv[4..-1]
         set -l cmd (commandline -op)
         if [ "$cmd[1]" = $main_command -a (count $cmd) -gt 2 ]
-            if not contains -- "$cmd[2]" $sub_commands
-                echo $expansion
+            if not contains -- "$cmd[2]" $excluded_sub_commands
+                echo $arg_expansion
                 return 0
             end
         end
         return 1
     end
+    function abbr_exceptsubcommand_arg
+      _curry_abbr _abbr_expand_exceptsubcommand_arg $argv
+    end
+    # Convenience
+    function abbr_anysubcommand_arg
+      if [ (count $argv) -gt 3 ]
+        echo "ERROR: abbr_anysubcommand_arg does not take denylist arguments"
+        return 1
+      end
+      _curry_abbr _abbr_expand_exceptsubcommand_arg $argv[1] $argv[2] $argv[3]
+    end
+
 
 ### Editors
 
@@ -420,11 +454,10 @@
     abbr -a wr "brew reinstall"
     abbr -a wu "brew uninstall"
     abbr -a ws "brew search"
-    function _abbr_brew_install_fn; _abbr_define_subcommand install brew i; end; abbr -a _abbr_brew_install --regex i --position anywhere --function _abbr_brew_install_fn
-    function _abbr_brew_install_HEAD_fn; _abbr_define_subcommand_arg "--HEAD" brew install; end; abbr -a _abbr_brew_install_HEAD --regex h --position anywhere --function _abbr_brew_install_HEAD_fn
-    function _abbr_brew_reinstall_fn; _abbr_define_subcommand reinstall brew r; end; abbr -a _abbr_brew_reinstall --regex r --position anywhere --function _abbr_brew_reinstall_fn
-    function _abbr_brew_uninstall_fn; _abbr_define_subcommand uninstall brew u; end; abbr -a _abbr_brew_uninstall --regex u --position anywhere --function _abbr_brew_uninstall_fn
-    function _abbr_brew_search_fn; _abbr_define_subcommand search brew s; end; abbr -a _abbr_brew_search --regex s --position anywhere --function _abbr_brew_search_fn
+    abbr_subcommand brew i install
+    abbr_subcommand brew r reinstall
+    abbr_subcommand brew u uninstall
+    abbr_subcommand brew s search
     
 
     abbr -a "md5" "openssl dgst -md5"

@@ -4,12 +4,15 @@
 
     # Only print if we're a TTY.
     # This prevents `protocol error: bad line length character` in git.
-    function _echo
-        if isatty
-            if not [ $SSH_TTY ]
-                echo $argv
-            end
-        end
+    if isatty; and not [ $SSH_TTY ]
+      if not status is-interactive
+        echo "WARNING: Loaded `config.fish` outside an interactive shell."
+      end
+      function _echo
+        echo $argv
+      end
+    else
+        function _echo; end
     end
 
 # Paths

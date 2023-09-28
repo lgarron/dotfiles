@@ -51,7 +51,7 @@
         return 1
     end
     function abbr_anyarg
-      _curry_abbr _abbr_expand_subcommand $argv
+      _curry_abbr _abbr_expand_anyarg $argv
     end
     
 

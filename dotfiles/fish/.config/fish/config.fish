@@ -6,7 +6,7 @@
     # This prevents `protocol error: bad line length character` in git.
     if isatty; and not [ $SSH_TTY ]
       if not status is-interactive
-        echo "WARNING: Loaded `config.fish` outside an interactive shell."
+        echo "WARNING: Loaded `config.fish` outside an interactive shell. This may be due to a script shebang: https://github.com/fish-shell/fish-shell/issues/5394"
       end
       function _echo
         echo $argv

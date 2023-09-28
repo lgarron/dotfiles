@@ -108,7 +108,7 @@
     #
     # Example implementation:
     #
-    #     abbr_subcommand_arg git c --continue rebase merge cherry-pick
+    #     abbr_subcommand_arg git c "--continue" rebase merge cherry-pick
     #
     function _abbr_expand_subcommand_arg
         set main_command $argv[1]

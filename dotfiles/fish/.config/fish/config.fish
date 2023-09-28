@@ -38,7 +38,7 @@
       add_to_path $HOME/.cache/.bun/bin # For zig (for building Bun) https://bun.sh/docs/project/development
 
       set_color --bold; _echo -n "\$fish_user_paths"; set_color normal
-      echo " has been set to the following order:"
+      _echo " has been set to the following order:"
       for path in $fish_user_paths
         _echo "↪ $path"
       end

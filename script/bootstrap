@@ -41,7 +41,7 @@ then
     ~/.config/fish/config.fish \
     ~/.local/share/fish
 fi
-make fish
+make linux
 
 cd "$(dirname "$0")"
 ./install-git-commands

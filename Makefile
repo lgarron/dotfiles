@@ -24,6 +24,10 @@ germain: mac-common
 .PHONY: pythagoras
 germain: mac-common
 
+.PHONY: linux
+linux: fish xdg-basedir-workarounds
+
+
 ########
 
 PACKAGES  =

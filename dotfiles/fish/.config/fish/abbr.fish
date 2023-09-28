@@ -36,8 +36,8 @@
     #
     # Example implementations:
     #
-    #     __abbr_anyarg make b build
-    #     __abbr_anyarg make c clean
+    #     abbr_anyarg make b build
+    #     abbr_anyarg make c clean
     #
     function _abbr_expand_anyarg
         set main_command $argv[1]

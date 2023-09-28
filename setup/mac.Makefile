@@ -91,6 +91,7 @@ mac-file-defaults:
 	duti -s com.microsoft.vscode public.c-header
 	duti -s com.microsoft.vscode public.c-plus-plus-source
 	duti -s com.microsoft.vscode public.source-code
+	duti -s com.microsoft.vscode public.com.netscape.javascript-source
 
 	duti -s com.apple.quicktimeplayerx com.microsoft.waveform-audio all # wav
 	duti -s com.apple.quicktimeplayerx com.apple.m4v-video all

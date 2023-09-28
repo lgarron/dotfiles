@@ -22,7 +22,7 @@
 
     set -x "GOPATH" "$HOME/Code/gopath"
 
-    if [ "$MANUAL_RELOAD" = "true" -o (count $fish_user_paths) -eq 0 ]
+    if [ "$MANUAL_RELOAD" = "true" -o "$FISH_USER_PATHS_HAS_BEEN_SET_UP_BEFORE" != "true" ]
       if [ "$MANUAL_RELOAD" = "true" ]
         _echo ""
       end
@@ -38,11 +38,17 @@
       add_to_path $HOME/.cache/.bun/bin # For zig (for building Bun) https://bun.sh/docs/project/development
 
       set_color --bold; _echo -n "\$fish_user_paths"; set_color normal
-      _echo " has been set to the following order:"
-      for path in $fish_user_paths
-        _echo "↪ $path"
+      if [ (count $fish_user_paths) -gt 0 ]
+        _echo " has been set to the following order:"
+        for path in $fish_user_paths
+          _echo "↪ $path"
+        end
+      else
+        _echo " has been reset, and contains no paths."
       end
       _echo ""
+
+      set -U FISH_USER_PATHS_HAS_BEEN_SET_UP_BEFORE true
     end
 
 # Main reload message

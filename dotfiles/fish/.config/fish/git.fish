@@ -118,9 +118,9 @@
     # git branch m⎵ → git branch --move
     abbr_subcommand_firstarg git m "--move" branch
     # git branch d⎵ → git branch --delete
-    abbr_subcommand_arg git d "--delete" branch
+    abbr_subcommand_firstarg git d "--delete" branch
     # git branch df⎵ → git branch --delete --force (equivalent to: git branch -D)
-    abbr_subcommand_arg git df "--delete --force" branch
+    abbr_subcommand_firstarg git df "--delete --force" branch
 
 ### git checkout
 
@@ -279,7 +279,7 @@ git push --force-with-lease"
     abbr -a gtd "# Try: gt d"
 
     # git tag d⎵ → git tag --delete (equivalent to: git tag -D)
-    abbr_subcommand_arg git d "--delete" tag
+    abbr_subcommand_firstarg git d "--delete" tag
 
 ### Repo-sensitive subcommand arguments (shared)
 ###
@@ -309,9 +309,9 @@ git push --force-with-lease"
         cherry-pick
 
     # git rebase a⎵ →⎵git rebase --abort
-    abbr_subcommand_arg git a "--abort" $git_subcommands_reentrant
+    abbr_subcommand_firstarg git a "--abort" $git_subcommands_reentrant
     # git rebase c⎵ →⎵git rebase --continue
-    abbr_subcommand_arg git c "--continue" $git_subcommands_reentrant
+    abbr_subcommand_firstarg git c "--continue" $git_subcommands_reentrant
 
 ## gh (GitHub CLI)
 

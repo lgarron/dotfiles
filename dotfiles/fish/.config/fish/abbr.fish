@@ -2,13 +2,13 @@
 ### Abbrevation definition helpers
 
     set CURRY_COUNTER 1
-    function abbr_next_curried_function_name
+    function _abbr_next_curried_function_name
       echo "_curried_$CURRY_COUNTER"
       set CURRY_COUNTER (math $CURRY_COUNTER + 1)
     end
 
     function _curry
-      set HELPER (abbr_next_curried_function_name)
+      set HELPER (_abbr_next_curried_function_name)
       # store args in a global var (since fish can't capture vars function definitions)
       set -g "$HELPER"_argv $argv
       function "$HELPER"

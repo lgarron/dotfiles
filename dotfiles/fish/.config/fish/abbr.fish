@@ -9,11 +9,13 @@
     #     abbr_subcommand git p push
     #     abbr_subcommand git m merge
     #
-    #     abbr_subcommand_arg git m "--move" branch
     #     abbr_subcommand_arg git m "--message" commit
+    #     abbr_subcommand_arg git p "--patch" add
     #     abbr_subcommand_arg git c --continue rebase merge cherry-pick
     #
-    #     abbr_exceptsubcommand_arg git m main branch commit
+    #     abbr_subcommand_firstarg git m "--move" branch
+    #
+    #     abbr_exceptsubcommand_arg git m main commit
     #
     # See below for more details
     #
@@ -82,13 +84,13 @@
     # Define a subcommand argument, i.e. an argument that can only follow certain subcommands.
     # For example, `git` has different arguments for each subcommand:
     #
-    #  - git branch m⎵ → git branch --move
     #  - git commit m⎵ → git commit --message
+    #  - git add p⎵ → git add --patch
     #
     # Example implementations:
     #
-    #     abbr_subcommand_arg git m "--move" branch
     #     abbr_subcommand_arg git m "--message" commit
+    #     abbr_subcommand_arg git p "--patch" add
     #
     # Multiple commands can also be specified together. For example, the following can be defined at once:
     #
@@ -122,6 +124,39 @@
         return 1
     end
 
+    # Define a subcommand argument that expands only if it's the *first* argument.
+    # This is useful for larg CLIs where each subcommand essentially has "sub-subcommands". For example:
+    #
+    #  - git branch m⎵ → git branch --move
+    #  - git branch --move m⎵ → (not expanded to `git branch --move --move`)
+    #
+    # Example implementations:
+    #
+    #     abbr_subcommand_firstarg git m "--move" branch
+    #
+    function abbr_subcommand_firstarg
+      _curry_abbr _abbr_expand_subcommand_firstarg $argv
+    end
+
+    function _abbr_expand_subcommand_firstarg
+        set -l main_command $argv[1]
+        set -l arg_abbreviation $argv[2]
+        set -l arg_expansion $argv[3]
+        set -l sub_commands $argv[4..-1]
+        set -l cmd (commandline -op)
+        if [ "$cmd[1]" = $main_command ]
+          if [ (count $cmd) = 3 ]
+            if [ "$cmd[3]" = $arg_abbreviation ]
+              if contains -- "$cmd[2]" $sub_commands
+                  echo $arg_expansion
+                  return 0
+              end
+            end
+          end
+        end
+        return 1
+    end
+
     # Define a subcommand argument using a denylist. This is like
     # `_abbr_expand_subcommand_arg`, but instead of allowing it as an argument
     # for the given subcommands, it will work for all subcommands *except* the
@@ -138,12 +173,14 @@
     #
     # But:
     #
-    #  - git branch m⎵ → (not expanded to `git branch main`)
     #  - git commit m⎵ → (not expanded to `git commit main`)
     #
     # Example implementation:
     #
-    #     abbr_exceptsubcommand_arg git m main branch commit
+    #     abbr_exceptsubcommand_arg git m main commit
+    #
+    # Note: If you combine this with the `abbr_subcommand_firstarg git m "--move" branch` example from above,
+    # then you can expand `git branch m⎵ m⎵` to `git branch --move main`.
     #
     function abbr_exceptsubcommand_arg
       _curry_abbr _abbr_expand_exceptsubcommand_arg $argv

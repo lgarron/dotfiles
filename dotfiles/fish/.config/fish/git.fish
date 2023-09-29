@@ -116,7 +116,7 @@
     abbr -a gbm "# Try: gb m"
 
     # git branch m⎵ → git branch --move
-    abbr_subcommand_arg git m "--move" branch
+    abbr_subcommand_firstarg git m "--move" branch
     # git branch d⎵ → git branch --delete
     abbr_subcommand_arg git d "--delete" branch
     # git branch df⎵ → git branch --delete --force (equivalent to: git branch -D)

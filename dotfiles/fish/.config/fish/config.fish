@@ -158,30 +158,6 @@
       end
     end
 
-# Printing
-
-    function echo-alternate-background
-        set set_color_arg "normal"
-        for arg in $argv[1..-1]
-            set_color $set_color_arg
-            echo -n $arg
-
-            if [ "$set_color_arg" = "normal" ]
-                set set_color_arg "-r"
-            else
-                set set_color_arg "normal"
-            end
-        end
-        set_color "normal"
-        echo ""
-    end
-
-    function echo-red
-        set_color "red"
-        echo $argv[1]
-        set_color "normal"
-    end
-
 # Shortcuts
 
 ## Shell

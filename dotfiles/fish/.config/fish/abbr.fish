@@ -1,25 +1,24 @@
 
 ### Abbrevation definition helpers
 
-    set CURRY_COUNTER 1
-    function _curry
-      set -l CURRIED_FN "_curried_fn_$CURRY_COUNTER"
-      set CURRY_COUNTER (math $CURRY_COUNTER + 1)
-      
-      set -l INHERITED_ARGS $argv
-      function "$CURRIED_FN" --inherit-variable INHERITED_ARGS
-        $INHERITED_ARGS $argv
-      end
-      echo $CURRIED_FN
-    end
+    # Quick examples:
+    #
+    #     abbr_anyarg make b build
+    #     abbr_anyarg make c clean
+    #
+    #     abbr_subcommand git p push
+    #     abbr_subcommand git m merge
+    #
+    #     abbr_subcommand_arg git m "--move" branch
+    #     abbr_subcommand_arg git m "--message" commit
+    #     abbr_subcommand_arg git c --continue rebase merge cherry-pick
+    #
+    #     abbr_exceptsubcommand_arg git m main commit
+    #
+    # See below for more details
+    #
 
-    function _curry_abbr
-      set -l abbreviation $argv[3]
-      set -l CURRIED_FN (_curry $argv)
-      abbr -a "$CURRIED_FN"_abbr --regex $abbreviation --position anywhere --function "$CURRIED_FN"
-    end
-
-    # For more detailed examples, see: https://github.com/fish-shell/fish-shell/issues/9411#issuecomment-1397950277
+    ################################
 
     # Define an abbreviation that can be used in any arg position.
     # For example, `make` targets can appear in any order:
@@ -33,6 +32,9 @@
     #     abbr_anyarg make b build
     #     abbr_anyarg make c clean
     #
+    function abbr_anyarg
+      _curry_abbr _abbr_expand_anyarg $argv
+    end
     function _abbr_expand_anyarg
         set -l main_command $argv[1]
         # set -l command_abbreviation $argv[2] # unused
@@ -44,10 +46,6 @@
         end
         return 1
     end
-    function abbr_anyarg
-      _curry_abbr _abbr_expand_anyarg $argv
-    end
-    
 
     # Define a subcommand, i.e. something that must be used as the first
     # argument to a command. For example, the `git` command is built around
@@ -65,6 +63,10 @@
     #     abbr_subcommand git p push
     #     abbr_subcommand git m merge
     #
+    function abbr_subcommand
+      _curry_abbr _abbr_expand_subcommand $argv
+    end
+
     function _abbr_expand_subcommand
         set -l main_command $argv[1]
         set -l sub_command_abbreviation $argv[2]
@@ -75,9 +77,6 @@
             return 0
         end
         return 1
-    end
-    function abbr_subcommand
-      _curry_abbr _abbr_expand_subcommand $argv
     end
 
     # Define a subcommand argument, i.e. an argument that can only follow certain subcommands.
@@ -104,6 +103,10 @@
     # To implement an argument for *all* subcommands of a given command, use
     # `abbr_anysubcommand_arg` (see below).
     #
+    function abbr_subcommand_arg
+      _curry_abbr _abbr_expand_subcommand_arg $argv
+    end
+
     function _abbr_expand_subcommand_arg
         set -l main_command $argv[1]
         # set -l arg_abbreviation $argv[2] # unused
@@ -117,9 +120,6 @@
             end
         end
         return 1
-    end
-    function abbr_subcommand_arg
-      _curry_abbr _abbr_expand_subcommand_arg $argv
     end
 
     # Define a subcommand argument using a denylist. This is like
@@ -144,6 +144,19 @@
     #
     #     abbr_exceptsubcommand_arg git m main commit
     #
+    function abbr_exceptsubcommand_arg
+      _curry_abbr _abbr_expand_exceptsubcommand_arg $argv
+    end
+
+    # Convenience
+    function abbr_anysubcommand_arg
+      if [ (count $argv) -gt 3 ]
+        echo "ERROR: abbr_anysubcommand_arg does not take denylist arguments"
+        return 1
+      end
+      _curry_abbr _abbr_expand_exceptsubcommand_arg $argv[1..3]
+    end
+
     function _abbr_expand_exceptsubcommand_arg
         set -l main_command $argv[1]
         # set -l arg_abbreviation $argv[2] # unused
@@ -158,14 +171,23 @@
         end
         return 1
     end
-    function abbr_exceptsubcommand_arg
-      _curry_abbr _abbr_expand_exceptsubcommand_arg $argv
-    end
-    # Convenience
-    function abbr_anysubcommand_arg
-      if [ (count $argv) -gt 3 ]
-        echo "ERROR: abbr_anysubcommand_arg does not take denylist arguments"
-        return 1
+
+    # 🪄 Currying ✨
+
+    set CURRY_COUNTER 1
+    function _curry
+      set -l CURRIED_FN "_curried_fn_$CURRY_COUNTER"
+      set CURRY_COUNTER (math $CURRY_COUNTER + 1)
+      
+      set -l INHERITED_ARGS $argv
+      function "$CURRIED_FN" --inherit-variable INHERITED_ARGS
+        $INHERITED_ARGS $argv
       end
-      _curry_abbr _abbr_expand_exceptsubcommand_arg $argv[1..3]
+      echo $CURRIED_FN
+    end
+
+    function _curry_abbr
+      set -l abbreviation $argv[3]
+      set -l CURRIED_FN (_curry $argv)
+      abbr -a "$CURRIED_FN"_abbr --regex $abbreviation --position anywhere --function "$CURRIED_FN"
     end

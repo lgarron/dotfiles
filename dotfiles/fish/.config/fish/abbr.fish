@@ -8,20 +8,17 @@
     end
 
     function _curry
-      set HELPER (_abbr_next_curried_function_name)
-      # store args in a global var (since fish can't capture vars function definitions)
-      set -g "$HELPER"_argv $argv
-      function "$HELPER"
-        # retrieve global vars
-        set HELPER_ARGV (status current-function)_argv
-        $$HELPER_ARGV $argv
+      set -l HELPER (_abbr_next_curried_function_name)
+      set -l INHERITED_ARGS $argv
+      function "$HELPER" --inherit-variable INHERITED_ARGS
+        $INHERITED_ARGS $argv
       end
       echo $HELPER
     end
 
     function _curry_abbr
-      set abbreviation $argv[3]
-      set HELPER (_curry $argv)
+      set -l abbreviation $argv[3]
+      set -l HELPER (_curry $argv)
       abbr -a "$HELPER"_abbr --regex $abbreviation --position anywhere --function "$HELPER"
     end
 
@@ -40,9 +37,9 @@
     #     abbr_anyarg make c clean
     #
     function _abbr_expand_anyarg
-        set main_command $argv[1]
-        # set command_abbreviation $argv[2] # unused
-        set expansion $argv[3]
+        set -l main_command $argv[1]
+        # set -l command_abbreviation $argv[2] # unused
+        set -l expansion $argv[3]
         set -l cmd (commandline -op)
         if [ "$cmd[1]" = $main_command ]
             echo $expansion
@@ -72,9 +69,9 @@
     #     abbr_subcommand git m merge
     #
     function _abbr_expand_subcommand
-        set main_command $argv[1]
-        set sub_command_abbreviation $argv[2]
-        set expansion $argv[3]
+        set -l main_command $argv[1]
+        set -l sub_command_abbreviation $argv[2]
+        set -l expansion $argv[3]
         set -l cmd (commandline -op)
         if [ "$cmd[1]" = $main_command -a (count $cmd) -eq 2 -a "$cmd[2]" = $sub_command_abbreviation ]
             echo $expansion
@@ -111,10 +108,10 @@
     # `abbr_anysubcommand_arg` (see below).
     #
     function _abbr_expand_subcommand_arg
-        set main_command $argv[1]
-        # set arg_abbreviation $argv[2] # unused
-        set arg_expansion $argv[3]
-        set sub_commands $argv[4..-1]
+        set -l main_command $argv[1]
+        # set -l arg_abbreviation $argv[2] # unused
+        set -l arg_expansion $argv[3]
+        set -l sub_commands $argv[4..-1]
         set -l cmd (commandline -op)
         if [ "$cmd[1]" = $main_command ]
             if contains -- "$cmd[2]" $sub_commands
@@ -151,10 +148,10 @@
     #     abbr_exceptsubcommand_arg git m main commit
     #
     function _abbr_expand_exceptsubcommand_arg
-        set main_command $argv[1]
-        # set arg_abbreviation $argv[2] # unused
-        set arg_expansion $argv[3]
-        set excluded_sub_commands $argv[4..-1]
+        set -l main_command $argv[1]
+        # set -l arg_abbreviation $argv[2] # unused
+        set -l arg_expansion $argv[3]
+        set -l excluded_sub_commands $argv[4..-1]
         set -l cmd (commandline -op)
         if [ "$cmd[1]" = $main_command -a (count $cmd) -gt 2 ]
             if not contains -- "$cmd[2]" $excluded_sub_commands

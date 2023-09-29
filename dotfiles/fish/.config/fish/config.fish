@@ -296,56 +296,6 @@
         hidutil property --get "UserKeyMapping"
     end
 
-# Shortcuts
-
-    function pnice
-      set NICENESS $argv[2]
-      if test (count $argv) -lt 2
-        echo "Usage: pnice <process substring> <niceness>"
-      else
-        echo "📶 Setting niceness $NICENESS for process names containing: $argv[1]";
-        for pid in (pgrep $argv[1])
-          echo -n "🖥  renice $NICENESS $pid"
-          renice $NICENESS $pid 2> /dev/null
-          if test $status -ne 0
-                echo -n " (sudo)"
-                sudo renice $NICENESS $pid
-              end
-          echo ""
-        end
-      end
-    end
-
-    function pnicest
-      pnice $argv[1] 19
-    end
-
-    function niceplz
-      # Prioritize Quicksilver.
-      # I use it all the time, and it's a canary for system overload.
-      pnice "Quicksilver" "-20"
-      # Syncing processes.
-      pnicest "Dropbox"
-      pnicest "Backup and Sync"
-      pnicest "Google Drive"
-      pnicest "CCC User Agent"
-      pnicest "CloneKitService" # Custom CCC process name prefix
-      pnicest "Maestral"
-      pnicest "Compressor"
-      pnicest "VTEncoderXPCService" # main encoding process used by Compressor?
-      pnicest "Spotlight"
-      pnicest "mds_stores"
-      pnicest "mdsync"
-      pnicest "mdworker_shared"
-      pnicest "com.carbonblack.es-loader.es-extension"
-      pnicest "ArqAgent"
-      pnicest "zoom.us"
-      pnicest "com.apple.DriverKit.AppleUserECM" # Ethernet?
-      echo "sudo for Time Machine (Ctrl-C to skip Time Machine)"
-      sudo echo -n "" ; or return
-      pnicest "backupd"
-    end
-
 # Screenshots
 
     function set-screenshot-dir

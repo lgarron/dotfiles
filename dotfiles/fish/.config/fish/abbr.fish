@@ -14,7 +14,7 @@
       function "$HELPER"
         # retrieve global vars
         set HELPER_ARGV (status current-function)_argv
-        $$HELPER_ARGV
+        $$HELPER_ARGV $argv
       end
       echo $HELPER
     end

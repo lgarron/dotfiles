@@ -281,6 +281,7 @@
     abbr -a wu "brew uninstall"
     abbr -a ws "brew search"
     abbr_subcommand brew i install
+    abbr_subcommand_arg brew h --HEAD install
     abbr_subcommand brew r reinstall
     abbr_subcommand brew u uninstall
     abbr_subcommand brew s search

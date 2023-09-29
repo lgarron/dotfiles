@@ -69,5 +69,19 @@
     "scope": "javascript,typescript",
     "body": "typeof (${0:$TM_SELECTED_TEXT}) !== \"undefined\"",
     "description": "Test if a value is defined."
-  }
+  },
+  "node shebang": {
+		"prefix": "#!",
+		"body": [
+			"#!/usr/bin/env node"
+		],
+		"description": "node shebang"
+	},
+  "bun shebang": {
+		"prefix": "#!",
+		"body": [
+			"#!/usr/bin/env bun"
+		],
+		"description": "bun shebang"
+	}
 }

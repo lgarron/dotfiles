@@ -13,7 +13,7 @@
     #     abbr_subcommand_arg git m "--message" commit
     #     abbr_subcommand_arg git c --continue rebase merge cherry-pick
     #
-    #     abbr_exceptsubcommand_arg git m main commit
+    #     abbr_exceptsubcommand_arg git m main branch commit
     #
     # See below for more details
     #
@@ -138,11 +138,12 @@
     #
     # But:
     #
+    #  - git branch m⎵ → (not expanded to `git branch main`)
     #  - git commit m⎵ → (not expanded to `git commit main`)
     #
     # Example implementation:
     #
-    #     abbr_exceptsubcommand_arg git m main commit
+    #     abbr_exceptsubcommand_arg git m main branch commit
     #
     function abbr_exceptsubcommand_arg
       _curry_abbr _abbr_expand_exceptsubcommand_arg $argv

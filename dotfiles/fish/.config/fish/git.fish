@@ -16,7 +16,7 @@
     # A lot of `git` commands take branch arguments, so we allow the expansion for all arguments.
     # But we define it first, so that the expansion of `m` can be superseded for specific commands (e.g. `git commit`)
     # We also explicitly exclude `git commit` as a known conflict, just in case.
-    abbr_exceptsubcommand_arg git m main commit
+    abbr_exceptsubcommand_arg git m main branch commit
     # ms⎵ → master
     abbr_exceptsubcommand_arg git ms master commit
     # b⎵ → (expansion of current branch name)

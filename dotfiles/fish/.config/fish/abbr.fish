@@ -2,24 +2,21 @@
 ### Abbrevation definition helpers
 
     set CURRY_COUNTER 1
-    function _abbr_next_curried_function_name
-      echo "_curried_$CURRY_COUNTER"
-      set CURRY_COUNTER (math $CURRY_COUNTER + 1)
-    end
-
     function _curry
-      set -l HELPER (_abbr_next_curried_function_name)
+      set -l CURRIED_FN "_curried_fn_$CURRY_COUNTER"
+      set CURRY_COUNTER (math $CURRY_COUNTER + 1)
+      
       set -l INHERITED_ARGS $argv
-      function "$HELPER" --inherit-variable INHERITED_ARGS
+      function "$CURRIED_FN" --inherit-variable INHERITED_ARGS
         $INHERITED_ARGS $argv
       end
-      echo $HELPER
+      echo $CURRIED_FN
     end
 
     function _curry_abbr
       set -l abbreviation $argv[3]
-      set -l HELPER (_curry $argv)
-      abbr -a "$HELPER"_abbr --regex $abbreviation --position anywhere --function "$HELPER"
+      set -l CURRIED_FN (_curry $argv)
+      abbr -a "$CURRIED_FN"_abbr --regex $abbreviation --position anywhere --function "$CURRIED_FN"
     end
 
     # For more detailed examples, see: https://github.com/fish-shell/fish-shell/issues/9411#issuecomment-1397950277

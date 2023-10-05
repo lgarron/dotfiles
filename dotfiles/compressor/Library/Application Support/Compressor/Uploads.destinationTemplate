@@ -1,1 +1,1 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?><destinationTemplate name="Uploads"><parentURL>file:///Users/lgarron/Uploads/</parentURL><baseName/><extension/><format>%25B</format></destinationTemplate>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?><destinationTemplate name="Uploads"><parentURL>file:///Users/lgarron/Uploads/</parentURL><baseName/><extension/><format>%25B%20%E2%80%94%20%25T</format></destinationTemplate>

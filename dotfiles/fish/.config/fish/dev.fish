@@ -100,6 +100,7 @@
     abbr -a cf "cargo fmt"
     abbr -a ct "cargo test"
     abbr -a cr "cargo run --"
+    abbr -a crr "cargo run --release --"
     abbr -a crh "cargo run -- --help"
 
     abbr_subcommand cargo a add

@@ -7,6 +7,7 @@
     <key>ProgramArguments</key>
     <array>
         <string>/opt/homebrew/bin/fish</string>
+        <string>--no-config</string>
         <string>/Users/lgarron/.config/lglogin.fish</string>
     </array>
     <key>RunAtLoad</key>

@@ -3,6 +3,7 @@
 ## `make
 
     abbr -a --position command m "make"
+    abbr -a --position command k "mak"
 
     # Allow the first (and usually the only) target to be combined with the initial `m`:
     # Additional targets can be expanded using the argument abbreviations below.

@@ -74,7 +74,8 @@
         set -l sub_command_abbreviation $argv[2]
         set -l expansion $argv[3]
         set -l cmd (commandline -op)
-        if [ "$cmd[1]" = $main_command -a (count $cmd) -eq 2 -a "$cmd[2]" = $sub_command_abbreviation ]
+        # TODO: do exact safe string comparison without an underscore hack.
+        if [ "_$cmd[1]" = "_$main_command" -a (count $cmd) -eq 2 -a "_$cmd[2]" = "_$sub_command_abbreviation" ]
             echo $expansion
             return 0
         end
@@ -115,7 +116,8 @@
         set -l arg_expansion $argv[3]
         set -l sub_commands $argv[4..-1]
         set -l cmd (commandline -op)
-        if [ "$cmd[1]" = $main_command ]
+        # TODO: do exact safe string comparison without an underscore hack.
+        if [ "_$cmd[1]" = "_$main_command" ]
             if contains -- "$cmd[2]" $sub_commands
                 echo $arg_expansion
                 return 0
@@ -144,9 +146,11 @@
         set -l arg_expansion $argv[3]
         set -l sub_commands $argv[4..-1]
         set -l cmd (commandline -op)
-        if [ "$cmd[1]" = $main_command ]
+        # TODO: do exact safe string comparison without an underscore hack.
+        if [ "_$cmd[1]" = "_$main_command" ]
           if [ (count $cmd) = 3 ]
-            if [ "$cmd[3]" = $arg_abbreviation ]
+            # TODO: do exact safe string comparison without an underscore hack.
+            if [ "_$cmd[3]" = "_$arg_abbreviation" ]
               if contains -- "$cmd[2]" $sub_commands
                   echo $arg_expansion
                   return 0
@@ -201,7 +205,8 @@
         set -l arg_expansion $argv[3]
         set -l excluded_sub_commands $argv[4..-1]
         set -l cmd (commandline -op)
-        if [ "$cmd[1]" = $main_command -a (count $cmd) -gt 2 ]
+        # TODO: do exact safe string comparison without an underscore hack.
+        if [ "_$cmd[1]" = "_$main_command" -a (count $cmd) -gt 2 ]
             if not contains -- "$cmd[2]" $excluded_sub_commands
                 echo $arg_expansion
                 return 0

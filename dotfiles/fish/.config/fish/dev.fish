@@ -12,11 +12,14 @@
     abbr -a mdp "make deploy"
     abbr -a mp "make publish"
     abbr -a mt "make test"
-    abbr -a mta "make test-all"
-    abbr -a mtf "time make -j 16 test-fast"
     abbr -a ml "make lint"
     abbr -a mf "make format"
     abbr -a ms "make setup"
+
+    # `cubing.js` targets I used often.
+    abbr -a mta "make test-all"
+    abbr -a mtf "time make -j 16 test-fast"
+
     abbr -a mcd "# Try: m c d"
     abbr -a mcb "# Try: m c b"
 
@@ -27,10 +30,13 @@
         abbr_anyarg $make_command dp deploy
         abbr_anyarg $make_command p  publish
         abbr_anyarg $make_command t  test
-        abbr_anyarg $make_command ta test-all
         abbr_anyarg $make_command l  lint
         abbr_anyarg $make_command f  format
         abbr_anyarg $make_command s  setup
+
+        # `cubing.js` targets I used often.
+        abbr_anyarg $make_command ta test-all
+        abbr_anyarg $make_command tf test-fast
     end
 
 ## JavaScript

@@ -42,7 +42,7 @@
         # set -l command_abbreviation $argv[2] # unused
         set -l expansion $argv[3]
         set -l cmd (commandline -op)
-        if [ "$cmd[1]" = $main_command ]
+        if test "$cmd[1]" = $main_command
             echo $expansion
             return 0
         end
@@ -70,16 +70,19 @@
     end
 
     function _abbr_expand_subcommand
-        set -l main_command $argv[1]
-        set -l sub_command_abbreviation $argv[2]
-        set -l expansion $argv[3]
-        set -l cmd (commandline -op)
-        # TODO: do exact safe string comparison without an underscore hack.
-        if [ "_$cmd[1]" = "_$main_command" -a (count $cmd) -eq 2 -a "_$cmd[2]" = "_$sub_command_abbreviation" ]
+      set -l main_command $argv[1]
+      set -l sub_command_abbreviation $argv[2]
+      set -l expansion $argv[3]
+      set -l cmd (commandline -op)
+      if string match -e -- "$cmd[1]" "$main_command" > /dev/null
+        if test (count $cmd) -eq 2
+          if string match -e -- "$cmd[2]" "$sub_command_abbreviation" > /dev/null
             echo $expansion
             return 0
+          end
         end
-        return 1
+      end
+      return 1
     end
 
     # Define a subcommand argument, i.e. an argument that can only follow certain subcommands.
@@ -111,19 +114,18 @@
     end
 
     function _abbr_expand_subcommand_arg
-        set -l main_command $argv[1]
-        # set -l arg_abbreviation $argv[2] # unused
-        set -l arg_expansion $argv[3]
-        set -l sub_commands $argv[4..-1]
-        set -l cmd (commandline -op)
-        # TODO: do exact safe string comparison without an underscore hack.
-        if [ "_$cmd[1]" = "_$main_command" ]
-            if contains -- "$cmd[2]" $sub_commands
-                echo $arg_expansion
-                return 0
-            end
+      set -l main_command $argv[1]
+      # set -l arg_abbreviation $argv[2] # unused
+      set -l arg_expansion $argv[3]
+      set -l sub_commands $argv[4..-1]
+      set -l cmd (commandline -op)
+      if string match -e -- "$cmd[1]" "$main_command" > /dev/null
+        if contains -- "$cmd[2]" $sub_commands
+          echo $arg_expansion
+          return 0
         end
-        return 1
+      end
+      return 1
     end
 
     # Define a subcommand argument that expands only if it's the *first* argument.
@@ -146,11 +148,9 @@
         set -l arg_expansion $argv[3]
         set -l sub_commands $argv[4..-1]
         set -l cmd (commandline -op)
-        # TODO: do exact safe string comparison without an underscore hack.
-        if [ "_$cmd[1]" = "_$main_command" ]
-          if [ (count $cmd) = 3 ]
-            # TODO: do exact safe string comparison without an underscore hack.
-            if [ "_$cmd[3]" = "_$arg_abbreviation" ]
+        if string match -e -- "$cmd[1]" "$main_command" > /dev/null
+          if test (count $cmd) = 3
+            if string match -e -- "$cmd[3]" "$arg_abbreviation" > /dev/null
               if contains -- "$cmd[2]" $sub_commands
                   echo $arg_expansion
                   return 0
@@ -192,7 +192,7 @@
 
     # Convenience
     function abbr_anysubcommand_arg
-      if [ (count $argv) -gt 3 ]
+      if test (count $argv) -gt 3
         echo "ERROR: abbr_anysubcommand_arg does not take denylist arguments"
         return 1
       end
@@ -200,19 +200,20 @@
     end
 
     function _abbr_expand_exceptsubcommand_arg
-        set -l main_command $argv[1]
-        # set -l arg_abbreviation $argv[2] # unused
-        set -l arg_expansion $argv[3]
-        set -l excluded_sub_commands $argv[4..-1]
-        set -l cmd (commandline -op)
-        # TODO: do exact safe string comparison without an underscore hack.
-        if [ "_$cmd[1]" = "_$main_command" -a (count $cmd) -gt 2 ]
-            if not contains -- "$cmd[2]" $excluded_sub_commands
-                echo $arg_expansion
-                return 0
-            end
+      set -l main_command $argv[1]
+      # set -l arg_abbreviation $argv[2] # unused
+      set -l arg_expansion $argv[3]
+      set -l excluded_sub_commands $argv[4..-1]
+      set -l cmd (commandline -op)
+      if string match -e -- "$cmd[1]" "$main_command" > /dev/null
+        if test (count $cmd) -gt 2
+          if not contains -- "$cmd[2]" $excluded_sub_commands
+            echo $arg_expansion
+            return 0
+          end
         end
-        return 1
+      end
+      return 1
     end
 
     # 🪄 Currying ✨

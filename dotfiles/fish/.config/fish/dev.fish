@@ -20,16 +20,18 @@
     abbr -a mcd "# Try: m c d"
     abbr -a mcb "# Try: m c b"
 
-    abbr_anyarg make b  build
-    abbr_anyarg make d  dev
-    abbr_anyarg make c  clean
-    abbr_anyarg make dp deploy
-    abbr_anyarg make p  publish
-    abbr_anyarg make t  test
-    abbr_anyarg make ta test-all
-    abbr_anyarg make l  lint
-    abbr_anyarg make f  format
-    abbr_anyarg make s  setup
+    for make_command in make mak
+        abbr_anyarg $make_command b  build
+        abbr_anyarg $make_command d  dev
+        abbr_anyarg $make_command c  clean
+        abbr_anyarg $make_command dp deploy
+        abbr_anyarg $make_command p  publish
+        abbr_anyarg $make_command t  test
+        abbr_anyarg $make_command ta test-all
+        abbr_anyarg $make_command l  lint
+        abbr_anyarg $make_command f  format
+        abbr_anyarg $make_command s  setup
+    end
 
 ## JavaScript
 

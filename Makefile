@@ -9,6 +9,7 @@ mac-common: \
 	compressor \
 	fish \
 	git \
+	hushlogin \
 	karabiner \
 	lglogin \
 	minecraft \
@@ -22,7 +23,9 @@ mac-common: \
 germain: mac-common
 
 .PHONY: pythagoras
-germain: mac-common
+germain: \
+	mac-common \
+	hushlogin # for SSH
 
 .PHONY: linux
 linux: fish xdg-basedir-workarounds

@@ -17,12 +17,14 @@
     abbr -a mf "make format"
     abbr -a ms "make setup"
 
-    # `cubing.js` targets I used often.
-    abbr -a mta "make test-all"
-    abbr -a mtf "time make -j 16 test-fast"
+    # Chords
+    abbr -a mcb "make clean build"
 
-    abbr -a mcd "# Try: m c d"
-    abbr -a mcb "# Try: m c b"
+    # `cubing.js` targets I use often.
+    abbr -a mta "make test-all"
+    abbr -a kta "mak test-all"
+    abbr -a mtf "time make -j 16 test-fast"
+    abbr -a ktf "mak test-fast"
 
     for make_command in make mak
         abbr_anyarg $make_command b  build
@@ -35,7 +37,10 @@
         abbr_anyarg $make_command f  format
         abbr_anyarg $make_command s  setup
 
-        # `cubing.js` targets I used often.
+        # Chords
+        abbr_anyarg $make_command cb "clean build"
+
+        # `cubing.js` targets I use often.
         abbr_anyarg $make_command ta test-all
         abbr_anyarg $make_command tf test-fast
     end

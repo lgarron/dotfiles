@@ -118,7 +118,7 @@ key_key.hotbar.6:key.keyboard.6
 key_key.hotbar.7:key.keyboard.7
 key_key.hotbar.8:key.keyboard.8
 key_key.hotbar.9:key.keyboard.9
-soundCategory_master:0.9398167894376036
+soundCategory_master:0.8508681543615481
 soundCategory_music:0.5072833
 soundCategory_record:1.0
 soundCategory_weather:1.0

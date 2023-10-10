@@ -268,6 +268,9 @@ git push --force-with-lease"
 
     abbr -a gsh "git show HEAD"
 
+    # git show s⎵ → git show --summary
+    abbr_subcommand_arg git s "--summary" show
+
 ### git status
 
     abbr -a gs "git status"

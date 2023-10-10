@@ -124,6 +124,7 @@
     abbr_subcommand cargo r "run --"
 
     abbr_anysubcommand_arg cargo p "--package"
+    abbr_anysubcommand_arg cargo pt "--package twsearch-cpp-wrapper"
 
     # cargo run -- h⎵ → cargo run -- --help
     abbr_subcommand_arg cargo h "--help" run

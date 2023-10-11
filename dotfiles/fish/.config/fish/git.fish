@@ -359,6 +359,11 @@ git push --force-with-lease"
     # From https://codybonney.com/getting-a-list-of-local-git-branches-without-using-git-branch/
     complete -c rmbranch -a "(git for-each-ref --format '%(refname:short)' refs/heads/)"
 
+    function abbr_rmbranch_lastbranch_fn
+        _abbr_expand_anyarg rmbranch b- (git rev-parse --abbrev-ref @{-1})
+    end
+    abbr -a abbr_rmbranch_lastbranch --regex b- --position anywhere --function abbr_rmbranch_lastbranch_fn
+
 ### rmtag
 
     function rmtag

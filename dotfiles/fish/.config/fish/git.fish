@@ -350,10 +350,11 @@ git push --force-with-lease"
 ## rmbranch
 
     function rmbranch
-        set BRANCH $argv[1]
-        echo "Branch `$BRANCH` was at: "(git rev-parse $BRANCH)
-        git push origin :$BRANCH
-        git branch -D $BRANCH
+        for BRANCH in $argv
+            echo "Branch `$BRANCH` was at: "(git rev-parse $BRANCH)
+            git push origin :$BRANCH
+            git branch -D $BRANCH
+        end
     end
     complete -c rmbranch -f
     # From https://codybonney.com/getting-a-list-of-local-git-branches-without-using-git-branch/

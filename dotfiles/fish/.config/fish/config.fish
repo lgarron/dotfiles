@@ -142,10 +142,10 @@
     function fish_greeting
       if contains $GREETING_HOSTNAME $GERMAIN
         fish_greeting_echo \
-            "  ___ ___ ___ __  __   _   ___ _  _ " \
-            " / __| __| _ \\  \\/  | /_\\ |_ _| \\| |" \
-            "| (_ | _||   / |\\/| |/ _ \\ | || .` |" \
-            " \\___|___|_|_\\_|  |_/_/ \\_\\___|_|\\_|"
+          "  ___ ___ ___ __  __   _   ___ _  _ " \
+          " / __| __| _ \\  \\/  | /_\\ |_ _| \\| |" \
+          "| (_ | _||   / |\\/| |/ _ \\ | || .` |" \
+          " \\___|___|_|_\\_|  |_/_/ \\_\\___|_|\\_|"
       else if contains $GREETING_HOSTNAME $PYTHAGORAS
         fish_greeting_echo \
           " _____   _______ _  _   _   ___  ___  ___    _   ___ " \
@@ -163,8 +163,8 @@
 ## Shell
 
     function mkcd
-        mkdir $argv[1]
-        cd $argv[1]
+      mkdir $argv[1]
+      cd $argv[1]
     end
 
     abbr -a "date-iso-8601" "date \"+%Y-%m-%d\""
@@ -197,19 +197,19 @@
 
     # abbr -a t "tee >(pbcopy)"
     function 📋
-        cat > /tmp/pbcopy.txt
-        cat /tmp/pbcopy.txt
-        cat /tmp/pbcopy.txt | pbcopy
-        rm /tmp/pbcopy.txt
+      cat > /tmp/pbcopy.txt
+      cat /tmp/pbcopy.txt
+      cat /tmp/pbcopy.txt | pbcopy
+      rm /tmp/pbcopy.txt
     end
     abbr -a t "📋"
 
     function o
-        if [ (count $argv) = 0 ]
-            open .
-        else
-            open $argv
-        end
+      if [ (count $argv) = 0 ]
+        open .
+      else
+        open $argv
+      end
     end
 
     abbr -a r "open -R"
@@ -247,10 +247,10 @@
     # Caps Lock (0x39) -> Delete Key (0x2A)
     # Insert (0x49) -> Fn key (0x03 in table 0xFF)
     function remap-keys
-        hidutil property --set '{"UserKeyMapping":[
-          {"HIDKeyboardModifierMappingSrc":0x700000039,"HIDKeyboardModifierMappingDst":0x070000002A},
-          {"HIDKeyboardModifierMappingSrc":0x700000049,"HIDKeyboardModifierMappingDst":0xFF00000003},
-        ]}'
+      hidutil property --set '{"UserKeyMapping":[
+        {"HIDKeyboardModifierMappingSrc":0x700000039,"HIDKeyboardModifierMappingDst":0x070000002A},
+        {"HIDKeyboardModifierMappingSrc":0x700000049,"HIDKeyboardModifierMappingDst":0xFF00000003},
+      ]}'
     end
 
     function remap-keys-reset
@@ -264,10 +264,10 @@
 # Screenshots
 
     function set-screenshot-dir
-        set DIR $argv[1]
-        echo-alternate-background "Setting screenshot dir to: " $DIR
-        defaults write com.apple.screencapture location $DIR
-        killall SystemUIServer
+      set DIR $argv[1]
+      echo-alternate-background "Setting screenshot dir to: " $DIR
+      defaults write com.apple.screencapture location $DIR
+      killall SystemUIServer
     end
 
 # Includes

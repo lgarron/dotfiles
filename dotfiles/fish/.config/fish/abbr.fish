@@ -129,7 +129,7 @@
     end
 
     # Define a subcommand argument that expands only if it's the *first* argument.
-    # This is useful for larg CLIs where each subcommand essentially has "sub-subcommands". For example:
+    # This is useful for large CLIs where each subcommand essentially has "sub-subcommands". For example:
     #
     #  - git branch m⎵ → git branch --move
     #  - git branch --move m⎵ → (not expanded to `git branch --move --move`)

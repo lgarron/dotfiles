@@ -225,10 +225,10 @@ git push --force-with-lease"
     abbr -a gp   "git push"
     abbr -a gph  "git push -u origin HEAD" # "git push branch" to a remote that doesn't know about the branch yet.
     abbr -a gbak "git push -f --all bak"
+    abbr -a gpfl "git push --force-with-lease"
     # Legacy
     abbr -a gpo  "# Try: gp o"
     abbr -a gpot "# Try: gp o t"
-    abbr -a gpfl "# Try: gp fl (or gg)"
 
     # git push t⎵ → git push --tags
     abbr_subcommand_arg git t "--tags" push

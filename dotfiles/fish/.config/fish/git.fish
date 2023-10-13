@@ -51,7 +51,7 @@
     abbr_exceptsubcommand_arg git ums upstream/master commit
     # ub⎵ → upstream/(expansion of current branch name)
     function abbr_git_upstreamcurrentbranch_fn
-        _abbr_expand_exceptsubcommand_arg git ub upstream/(commit rev-parse --abbrev-ref HEAD) git
+        _abbr_expand_exceptsubcommand_arg git ub upstream/(git rev-parse --abbrev-ref HEAD) git
     end
     abbr -a abbr_git_upstreamcurrentbranch --regex ub --position anywhere --function abbr_git_upstreamcurrentbranch_fn
 

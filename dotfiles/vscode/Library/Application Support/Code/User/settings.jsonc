@@ -1,7 +1,7 @@
 {
   /******** Dynamic ********/
   "editor.formatOnSave": true,
-  "window.zoomLevel": 2.25,
+  "window.zoomLevel": 3,
   /******** Main VSCode settings ********/
   "editor.formatOnPaste": false,
   "editor.tabSize": 2,
@@ -32,9 +32,7 @@
   "extensions.ignoreRecommendations": true,
   /******** Formatting ********/
   // https://marketplace.visualstudio.com/items?itemName=tombonnike.vscode-status-bar-format-toggle
-  "formattingToggle.affects": [
-    "editor.formatOnSave"
-  ],
+  "formattingToggle.affects": ["editor.formatOnSave"],
   "[json]": {
     "editor.defaultFormatter": "biomejs.biome"
   },
@@ -94,9 +92,7 @@
   // confusing and useless warning in codespaces when working in a codebase that
   // ever has PRs from `main` to another branch (e.g. `production` or
   // `release`).
-  "githubPullRequests.ignoredPullRequestBranches": [
-    "main"
-  ],
+  "githubPullRequests.ignoredPullRequestBranches": ["main"],
   /******** Live Share ********/
   "liveshare.showInStatusBar": "whileCollaborating",
   /******** Terminal ********/
@@ -108,20 +104,13 @@
       "path": "/usr/bin/env",
       "icon": "heart-filled",
       "overrideName": true,
-      "args": [
-        "fish",
-        "-l"
-      ]
+      "args": ["fish", "-l"]
     },
     "apple_fish_no_history": {
       "path": "/usr/bin/env",
       "icon": "heart",
       "overrideName": true,
-      "args": [
-        "fish",
-        "-l",
-        "--private"
-      ]
+      "args": ["fish", "-l", "--private"]
     }
   },
   /******** GitLens ********/
@@ -266,8 +255,9 @@
     "toggleCase.case.upperCase",
     "toggleCase.notification.notifyOnChange",
     /******* Apply to all profiles *********/
-    "workbench.settings.applyToAllProfiles",
+    "workbench.settings.applyToAllProfiles"
   ],
   "window.openFilesInNewWindow": "default",
+  "workbench.editor.empty.hint": "hidden"
   /****************/
 }

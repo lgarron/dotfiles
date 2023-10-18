@@ -1,4 +1,3 @@
-
 ### Abbrevation definition helpers
 
     # Quick examples:

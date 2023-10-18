@@ -162,7 +162,7 @@ git push --force-with-lease"
     function abbr_git_commit_thirdlast_command_fn; _abbr_expand_subcommand_arg git !!! "--message \"`"(string replace --all "\"" "\\\"" $history[3])"`\"" commit; end; abbr -a abbr_git_commit_thirdlast_command --regex !!! --position anywhere --function abbr_git_commit_thirdlast_command_fn
 
     function abbr_gcv
-        echo "git commit --message \""(project_version)
+        echo "git commit --message \""(version)
         echo ""
         echo "Release notes:"
         echo ""

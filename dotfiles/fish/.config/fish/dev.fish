@@ -115,6 +115,8 @@
     abbr -a ct "cargo test"
     abbr -a cr "cargo run --release --" # I need to test release performance more often than debugging.
     abbr -a crd "cargo run --debug --"
+    abbr -a cre "cargo run --release --example"
+    abbr -a cred "cargo run --debug --example"
     abbr -a crh "cargo run -- --help"
 
     abbr_subcommand cargo a add

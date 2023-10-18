@@ -1,9 +1,1 @@
-{
-  /******** Dynamic ********/
-  "editor.formatOnSave": false,
-  "editor.formatOnPaste": false,
-  "window.zoomLevel": 3.25,
-  /******** Terminal ********/
-  "terminal.integrated.defaultProfile.osx": "apple_fish_no_history",
-  /****************/
-}
+settings.jsonc

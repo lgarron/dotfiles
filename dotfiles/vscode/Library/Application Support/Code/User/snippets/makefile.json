@@ -1,7 +1,1 @@
-{
-  ".PHONY": {
-    "prefix": ".PHONY",
-    "body": ".PHONY: $1\n$1:\n\t$0\n",
-    "description": "An inline function"
-  }
-}
+makefile.jsonc

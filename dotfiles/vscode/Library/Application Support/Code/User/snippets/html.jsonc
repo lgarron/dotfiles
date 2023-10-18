@@ -1,0 +1,29 @@
+{
+  "Modern HTML Page": {
+    "body": "<!DOCTYPE html>\n<html>\n  <head>\n    <meta charset=\"utf8\">\n    <title>${0:$TM_SELECTED_TEXT}</title>\n    <link rel=\"stylesheet\" href=\"./${0:$TM_SELECTED_TEXT}.css\">\n    <script src=\"./${0:$TM_SELECTED_TEXT}.js\" type=\"module\"></script>\n  </head>\n  <body>\n    ${0:$TM_SELECTED_TEXT}\n  </body>\n</html>"
+  },
+  "Module script": {
+    "prefix": "script",
+    "body": "<script src=\"$0\" type=\"module\"></script>",
+  },
+  "Module script (TypeScript)": {
+    "prefix": "script",
+    "body": "<script src=\"$0.js\" href=\"$0.ts\" type=\"module\"></script>",
+  },
+  "Stylesheet file link (CSS)": {
+    "prefix": "stylesheet",
+    "body": "<link rel=\"stylesheet\" href=\"$0\">",
+  },
+  "Meta Refresh": {
+    "prefix": "refresh",
+    "body": "<meta http-equiv=\"refresh\" content=\"0; url=$0\">"
+  },
+  "Link (<a>)": {
+    "prefix": "a",
+    "body": "<a href=\"$1\">${0:$TM_SELECTED_TEXT}</a>",
+  },
+  "Wrap in element": {
+    "prefix": "<",
+    "body": "<$1$2>${0:$TM_SELECTED_TEXT}</$1>",
+  },
+}

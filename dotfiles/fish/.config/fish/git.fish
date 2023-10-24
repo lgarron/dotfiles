@@ -174,8 +174,7 @@ git push --force-with-lease"
 
     abbr -a gd "git diff"
     abbr -a gdc "git diff --cached" # second-level convenience
-    # Legacy
-    abbr -a gdno "# Try: gd no"
+    abbr -a gdno "git diff --name-only"
 
     # git diff c⎵ → git diff --cached
     abbr_subcommand_arg git c "--cached" diff

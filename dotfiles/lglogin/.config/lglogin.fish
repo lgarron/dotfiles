@@ -34,15 +34,20 @@
     launchctl setenv PYTHONSTARTUP $XDG_CONFIG_HOME/python/pythonrc
     mkdir -p $XDG_DATA_HOME/python
 
+    rm -rf $HOME/.biome
     rm -rf $HOME/.cargo
     rm -rf $HOME/.cups
     rm -rf $HOME/.docker
+    rm -rf $HOME/.dts
     rm -rf $HOME/.gnupg
     rm -rf $HOME/.npm
     rm -rf $HOME/.oracle_jre_usage
+    rm -rf $HOME/.pnpm-state
     rm -rf $HOME/.python_history
+    rm -rf $HOME/.rustup
     rm -rf $HOME/.swiftpm
     rm -rf $HOME/.step
+    rm -rf $HOME/.terraform.d
     rm -rf $HOME/.yarnrc
     rm -rf $HOME/.vscode-cli
     rm -rf $HOME/.vscode-server

@@ -1,4 +1,4 @@
-#!/usr/bin/env fish
+#!/usr/bin/env -S fish --no-config
 
 # Caps Lock (0x39) -> Delete Key (0x2A)
 

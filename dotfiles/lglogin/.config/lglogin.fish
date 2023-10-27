@@ -34,6 +34,8 @@
     launchctl setenv PYTHONSTARTUP $XDG_CONFIG_HOME/python/pythonrc
     mkdir -p $XDG_DATA_HOME/python
 
+# The Naughty List
+
     rm -rf $HOME/.biome
     rm -rf $HOME/.cargo
     rm -rf $HOME/.cups
@@ -53,6 +55,13 @@
     rm -rf $HOME/.vscode-server
     rm -rf $HOME/.wasmer
     rm -rf $HOME/go
+
+    # Flutter
+    rm -rf $HOME/.dart
+    rm -rf $HOME/.dart-tool
+    rm -rf $HOME/.flutter
+    rm -rf $HOME/.flutter-devtools
+    rm -rf $HOME/.pub-cache
 
 # Avoid Time Machine slowdown
 

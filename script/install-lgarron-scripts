@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+function install-lgarron-script {
+  script="${1}"
+  script_source="${2}"
+  echo "Installing: ${script}"
+  curl -o "/tmp/${script}" "https://raw.githubusercontent.com/lgarron/scripts/main/${script_source}"
+  sudo cp "/tmp/${script}" "/usr/bin/${script}"
+  sudo chmod +x "/usr/bin/${script}"
+}
+
+function install-lgarron-script-with-completions {
+  script="${1}"
+  install-lgarron-script "$@"
+  mkdir -p "${HOME}/.config/fish/completions"
+  "/usr/bin/${script}" --completions fish > "${HOME}/.config/fish/completions/${script}.fish"
+}
+
+command -v version || install-lgarron-script-with-completions version git/version.fish
+command -v rmbranch || install-lgarron-script-with-completions rmbranch git/rmbranch.fish
+command -v rmtag || install-lgarron-script-with-completions rmtag git/rmtag.fish
+command -v git-distance || install-lgarron-script-with-completions git-distance git/git-distance.fish

@@ -202,5 +202,9 @@
       "id": "text"
     },
     "when": "inputFocus && editorHasSelection"
+  },
+  {
+    "key": "shift+cmd+c",
+    "command": "gitlens.copyRemoteFileUrlToClipboard"
   }
 ]

@@ -206,5 +206,9 @@
   {
     "key": "shift+cmd+c",
     "command": "gitlens.copyRemoteFileUrlToClipboard"
+  },
+  {
+    "key": "cmd+j cmd+s",
+    "command": "workbench.action.openGlobalKeybindingsFile"
   }
 ]

@@ -124,8 +124,8 @@
 
 ### git checkout
 
-    abbr -a gco "git checkout"
-    abbr -a gcb "git checkout -b"
+    abbr -a gco "# Try: ge"
+    abbr -a gcb "# Try: gw"
 
 ### git cherry-pick
 
@@ -250,7 +250,7 @@ git push --force-with-lease"
     # git rebase i⎵ → git rebase --interactive
     abbr_subcommand_arg git i "--interactive" rebase
 
-### git remot
+### git remote
 
     abbr -a grv "git remote --verbose"
 
@@ -262,6 +262,9 @@ git push --force-with-lease"
     abbr -a ghr   "git reset --hard" # Shorter abbreviation
     abbr -a gsoft "git reset --soft"
 
+### git switch
+
+    abbr -a ge "git switch"  # *g*it s**itch
 
 ### git show
 
@@ -273,6 +276,10 @@ git push --force-with-lease"
 ### git status
 
     abbr -a gs "git status"
+
+### git switch
+
+    abbr -a gw "git restore"  # *g*it r*e*store
 
 ### git tag
 
@@ -326,6 +333,11 @@ git push --force-with-lease"
     abbr -a gfr "git freeze"
     abbr -a gth "git thaw"
     abbr -a gab "git abandon"
+
+## Related command abbreviations
+
+    abbr -a "tp" "tagpush"
+    abbr_anyarg tagpush r "--retag"
 
 ## Functions
 

@@ -124,8 +124,8 @@
 
 ### git checkout
 
-    abbr -a gco "# Try: ge"
-    abbr -a gcb "# Try: gw"
+    abbr -a gco "# Try: gw / ge"
+    abbr -a gcb "# Try: gw c"
 
 ### git cherry-pick
 
@@ -264,7 +264,12 @@ git push --force-with-lease"
 
 ### git switch
 
-    abbr -a ge "git switch"  # *g*it s**itch
+    abbr -a gw "git switch"  # *g*it s**itch
+    abbr -a gwc "git switch --create"  # *g*it s**itch
+
+    # git switch c⎵ → git switch --create
+    abbr_subcommand_arg git c "--create" switch
+
 
 ### git show
 
@@ -279,7 +284,7 @@ git push --force-with-lease"
 
 ### git switch
 
-    abbr -a gw "git restore"  # *g*it r*e*store
+    abbr -a ge "git restore"  # *g*it r*e*store
 
 ### git tag
 

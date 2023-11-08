@@ -285,6 +285,8 @@ git push --force-with-lease"
 ### git switch
 
     abbr -a ge "git restore"  # *g*it r*e*store
+    abbr -a ges "git restore --source"  # *g*it r*e*store
+    abbr_subcommand_arg git s "--source" restore
 
 ### git tag
 

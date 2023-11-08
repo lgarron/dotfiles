@@ -39,6 +39,8 @@ if [ -n "$CODESPACES" ]
 then
   rm -rf \
     ~/.config/fish/config.fish \
+    ~/.local/share/fish || rm -rf \
+    ~/.config/fish/config.fish \
     ~/.local/share/fish
 fi
 make linux

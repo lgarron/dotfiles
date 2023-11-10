@@ -45,8 +45,7 @@ then
 fi
 make linux
 
-cargo install mak || echo "Could not invoke cargo"
-
 cd "$(dirname "$0")"
 ./install-git-commands
 ./install-lgarron-scripts
+./install-mak

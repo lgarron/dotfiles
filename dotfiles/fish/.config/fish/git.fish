@@ -270,6 +270,9 @@ git push --force-with-lease"
     # git switch c⎵ → git switch --create
     abbr_subcommand_arg git c "--create" switch
 
+    # git switch d⎵ → git switch --detach
+    abbr_subcommand_arg git d "--detach" switch
+
 
 ### git show
 

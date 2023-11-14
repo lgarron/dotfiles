@@ -142,5 +142,6 @@
     abbr -a "p3" "python3"
     abbr -a "dig" "xdig"
     abbr -a "tf" "terraform"
+    abbr -a "sdm" "script/dev/manage"
 
     abbr -a serve "open http://localhost:8000; caddy file-server --listen :8000 --browse --root ."

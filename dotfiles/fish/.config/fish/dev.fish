@@ -114,9 +114,9 @@
     abbr -a cf "cargo fmt"
     abbr -a ct "cargo test"
     abbr -a cr "cargo run --release --" # I need to test release performance more often than debugging.
-    abbr -a crd "cargo run --debug --"
+    abbr -a crd "cargo run --"
     abbr -a cre "cargo run --release --example"
-    abbr -a cred "cargo run --debug --example"
+    abbr -a cred "cargo run --example"
     abbr -a crh "cargo run -- --help"
 
     abbr_subcommand cargo a add
@@ -127,6 +127,9 @@
 
     abbr_anysubcommand_arg cargo p "--package"
     abbr_anysubcommand_arg cargo pt "--package twsearch-cpp-wrapper"
+
+    # cargo build -- r⎵ → cargo build --release
+    abbr_subcommand_arg cargo r "--release" build
 
     # cargo run -- h⎵ → cargo run -- --help
     abbr_subcommand_arg cargo h "--help" run

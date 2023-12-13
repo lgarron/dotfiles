@@ -1,6 +1,0 @@
-bibhasdn.django-html
-hashicorp.terraform
-mikoz.autoflake-extension
-monosans.djlint
-ms-python.isort
-njpwerner.autodocstring

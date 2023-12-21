@@ -17,6 +17,8 @@
     # But we define it first, so that the expansion of `m` can be superseded for specific commands (e.g. `git commit`)
     # We also explicitly exclude `git commit` as a known conflict, just in case.
     abbr_exceptsubcommand_arg git m main branch commit
+    # p⎵ → production
+    abbr_exceptsubcommand_arg git p production branch commit
     # ms⎵ → master
     abbr_exceptsubcommand_arg git ms master commit
     # b⎵ → (expansion of current branch name)
@@ -37,6 +39,8 @@
 
     # om⎵ → origin/main
     abbr_exceptsubcommand_arg git om origin/main commit
+    # op⎵ → origin/production
+    abbr_exceptsubcommand_arg git op origin/production commit
     # oms⎵ → origin/master
     abbr_exceptsubcommand_arg git oms origin/master commit
     # ob⎵ → origin/(expansion of current branch name)
@@ -47,6 +51,8 @@
 
     # um⎵ → upstream/main
     abbr_exceptsubcommand_arg git um upstream/main commit
+    # up⎵ → upstream/production
+    abbr_exceptsubcommand_arg git up upstream/production commit
     # ums⎵ → upstream/master
     abbr_exceptsubcommand_arg git ums upstream/master commit
     # ub⎵ → upstream/(expansion of current branch name)

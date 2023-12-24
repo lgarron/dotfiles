@@ -20,11 +20,10 @@
   "editor.acceptSuggestionOnCommitCharacter": false,
   /******** Window ********/
   "window.commandCenter": false,
-  "workbench.colorTheme": "Default Dark+",
   "customWindowZoom.zoomLevelChangeValue": 0.25,
   "workbench.sideBar.location": "left",
   "workbench.startupEditor": "newUntitledFile",
-  "workbench.editor.untitled.hint": "hidden",
+  "workbench.editor.empty.hint": "hidden",
   "window.newWindowDimensions": "inherit",
   "terminal.integrated.tabs.enabled": true,
   "terminal.integrated.tabs.location": "right",
@@ -38,6 +37,12 @@
   "[json]": {
     "editor.defaultFormatter": "biomejs.biome"
   },
+  "[javascript][typescript]": {
+    "editor.defaultFormatter": "biomejs.biome",
+    "editor.codeActionsOnSave": {
+      "source.organizeImports.biome": "explicit"
+    }
+  },
   "[markdown]": {
     "editor.formatOnType": false
   },
@@ -48,21 +53,9 @@
   "[html]": {
     "editor.defaultFormatter": "vscode.html-language-features"
   },
-  "[javascript]": {
-    "editor.defaultFormatter": "biomejs.biome",
-    "editor.codeActionsOnSave": {
-      "source.organizeImports.biome": true
-    }
-  },
-  "[typescript]": {
-    "editor.defaultFormatter": "biomejs.biome",
-    "editor.codeActionsOnSave": {
-      "source.organizeImports.biome": true
-    }
-  },
   "[python]": {
     "editor.codeActionsOnSave": {
-      "source.organizeImports": true
+      "source.organizeImports": "explicit"
     },
     "editor.defaultFormatter": "charliermarsh.ruff"
   },
@@ -281,6 +274,6 @@
     "workbench.settings.applyToAllProfiles"
   ],
   "window.openFilesInNewWindow": "default",
-  "workbench.editor.empty.hint": "hidden"
   /****************/
+  "terminal.integrated.stickyScroll.enabled": true
 }

@@ -271,7 +271,8 @@ git push --force-with-lease"
 ### git switch
 
     abbr -a gw "git switch"  # *g*it s**itch
-    abbr -a gwc "git switch --create"  # *g*it s**itch
+    abbr -a gwc "git switch --create"
+    abbr -a gwd "git switch --detach"
 
     # git switch c⎵ → git switch --create
     abbr_subcommand_arg git c "--create" switch

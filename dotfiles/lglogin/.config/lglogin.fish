@@ -42,6 +42,7 @@
     rm -rf $HOME/.docker
     rm -rf $HOME/.dts
     rm -rf $HOME/.gnupg
+    rm -rf $HOME/.gradle
     rm -rf $HOME/.npm
     rm -rf $HOME/.oracle_jre_usage
     rm -rf $HOME/.pnpm-state
@@ -50,6 +51,7 @@
     rm -rf $HOME/.swiftpm
     rm -rf $HOME/.step
     rm -rf $HOME/.terraform.d
+    rm -rf $HOME/.thumbnails
     rm -rf $HOME/.yarnrc
     rm -rf $HOME/.vscode-cli
     rm -rf $HOME/.vscode-server

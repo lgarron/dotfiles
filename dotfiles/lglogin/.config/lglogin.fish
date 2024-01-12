@@ -37,12 +37,13 @@
 # The Naughty List
 
     rm -rf $HOME/.biome
+    rm -rf $HOME/.bundle # Ruby Gems
     rm -rf $HOME/.cargo
     rm -rf $HOME/.cups
     rm -rf $HOME/.docker
     rm -rf $HOME/.dts
     rm -rf $HOME/.gnupg
-    rm -rf $HOME/.gradle
+    rm -rf $HOME/.gradle # Gradle (Java)
     rm -rf $HOME/.npm
     rm -rf $HOME/.oracle_jre_usage
     rm -rf $HOME/.pnpm-state

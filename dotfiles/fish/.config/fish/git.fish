@@ -187,6 +187,8 @@ git push --force-with-lease"
     # git diff no⎵ → git diff --name-only
     abbr_subcommand_arg git no "--name-only" diff
 
+    abbr -a gdnm "git diff --name-only (git merge-base main (git rev-parse --abbrev-ref HEAD))"
+
 ### git fetch
 
     abbr -a gf "git fetch"
@@ -209,7 +211,6 @@ git push --force-with-lease"
     abbr_subcommand git m merge
 
     abbr -a gm  "git merge"
-    abbr -a gmb "git merge-base main (git rev-parse --abbrev-ref HEAD)"
     abbr -a nff "git merge --no-ff"
     abbr -a ffo "git merge --ff-only"
 
@@ -217,6 +218,14 @@ git push --force-with-lease"
     abbr_subcommand_arg git nff "--no-ff" merge
     # git merge ffo⎵ → git merge --ff-only
     abbr_subcommand_arg git ffo "--ff-only" merge
+
+### git merge
+
+    # git mb⎵ → git merge-base
+    abbr_subcommand git m merge
+
+    abbr -a gmb "git merge-base"
+    abbr -a gmbmb "git merge-base main (git rev-parse --abbrev-ref HEAD)"
 
 ### git pull
 

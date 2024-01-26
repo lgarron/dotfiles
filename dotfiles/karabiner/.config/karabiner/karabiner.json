@@ -18,6 +18,27 @@
                 },
                 "rules": [
                     {
+                        "description": "Take shadowless window screenshot and reveal (F12)",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "f12",
+                                    "modifiers": {
+                                        "mandatory": [
+                                            "shift"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "shell_command": "/opt/homebrew/bin/fish --no-config /Users/lgarron/Code/git/github.com/lgarron/scripts/system/app-screenshot.fish --front-window-shadowless-jpg --reveal"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Change Control + h/j/k/l to Arrows (lgarron)",
                         "manipulators": [
                             {

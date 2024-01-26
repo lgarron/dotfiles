@@ -45,6 +45,8 @@ then
 fi
 make linux
 
+sudo chsh "$(id -un)" --shell "$(command -v fish)"
+
 cd "$(dirname "$0")"
 ./install-git-commands
 ./install-lgarron-scripts

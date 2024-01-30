@@ -1,0 +1,23 @@
+{
+  "processes_by_substring": {
+    "Quicksilver": -20,
+    "screensharing": -20,
+    "Dropbox": 19,
+    "Backup and Sync": 19,
+    "Google Drive": 19,
+    "CCC User Agent": 19,
+    "CloneKitService": 19,
+    "Maestral": 19,
+    "Compressor": 19,
+    "VTEncoderXPCService": 19,
+    "Spotlight": 19,
+    "mds_stores": 19,
+    "mdsync": 19,
+    "mdworker_shared": 19,
+    "com.carbonblack.es-loader.es-extension": 19,
+    "ArqAgent": 19,
+    "zoom.us": 19,
+    "com.apple.DriverKit.AppleUserECM": 19,
+    "backupd": 20
+  }
+}

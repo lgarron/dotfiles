@@ -14,6 +14,7 @@ mac-common: \
 	lglogin \
 	minecraft \
 	minecraft-mods \
+	niceplz \
 	quicksilver \
 	sd-card-backup \
 	xdg-basedir-workarounds \
@@ -42,6 +43,7 @@ PACKAGES += povray
 PACKAGES += sd-card-backup
 PACKAGES += vscode
 PACKAGES += xdg-basedir-workarounds
+PACKAGES += niceplz
 
 .PHONY: $(PACKAGES)
 $(PACKAGES):

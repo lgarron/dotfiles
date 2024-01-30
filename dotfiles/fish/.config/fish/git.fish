@@ -306,6 +306,8 @@ git push --force-with-lease"
     abbr -a ge "git restore"  # *g*it r*e*store
     abbr -a ges "git restore --source"  # *g*it r*e*store
     abbr_subcommand_arg git s "--source" restore
+    abbr -a geh "git restore --source HEAD"  # *g*it r*e*store
+    abbr_subcommand_arg git h "--source HEAD" restore
     abbr -a ged "git restore --detach"  # *g*it r*e*store
     abbr_subcommand_arg git d "--detach" restore
 

@@ -115,7 +115,9 @@
     abbr -a cf "cargo fmt"
     abbr -a ct "cargo test"
     abbr -a cr "cargo run --release --" # I need to test release performance more often than debugging.
+    abbr -a crq "cargo run --release --quiet --"
     abbr -a crd "cargo run --"
+    abbr -a crdq "cargo run --quiet --"
     abbr -a cre "cargo run --release --example"
     abbr -a cred "cargo run --example"
     abbr -a crh "cargo run -- --help"
@@ -132,6 +134,8 @@
     # cargo build -- r⎵ → cargo build --release
     abbr_subcommand_arg cargo r "--release" build
 
+    # cargo run -- q⎵ → cargo run --quiet
+    abbr_subcommand_arg cargo q "--quiet" run
     # cargo run -- h⎵ → cargo run -- --help
     abbr_subcommand_arg cargo h "--help" run
 

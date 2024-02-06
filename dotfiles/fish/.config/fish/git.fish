@@ -21,6 +21,9 @@
     abbr_exceptsubcommand_arg git p production branch commit
     # ms⎵ → master
     abbr_exceptsubcommand_arg git ms master commit
+    # lf⎵ refs/last-freeze
+    abbr_exceptsubcommand_arg git lf refs/last-freeze commit
+
     # b⎵ → (expansion of current branch name)
     # function abbr_git_currentbranch_fn; _abbr_expand_exceptsubcommand_arg (git rev-parse --abbrev-ref HEAD) git; end; abbr -a abbr_git_currentbranch --regex b --position anywhere --function abbr_git_currentbranch_f
     # :b⎵ → :(expansion of current branch name)
@@ -305,11 +308,17 @@ git push --force-with-lease"
 
     abbr -a ge "git restore"  # *g*it r*e*store
     abbr -a ges "git restore --source"  # *g*it r*e*store
-    abbr_subcommand_arg git s "--source" restore
-    abbr -a geh "git restore --source HEAD"  # *g*it r*e*store
-    abbr_subcommand_arg git h "--source HEAD" restore
+
     abbr -a ged "git restore --detach"  # *g*it r*e*store
     abbr_subcommand_arg git d "--detach" restore
+
+    abbr_subcommand_arg git s "--source" restore
+    # abbr -a gem "git restore --source HEAD" Conflict with the `gem` command.
+    abbr_subcommand_arg git m "--source main" restore
+    abbr -a geh "git restore --source HEAD"
+    abbr_subcommand_arg git h "--source HEAD" restore
+    abbr -a gelf "git restore --source refs/last-freeze"
+    abbr_subcommand_arg git lf "--source refs/last-freeze" restore
 
 ### git tag
 

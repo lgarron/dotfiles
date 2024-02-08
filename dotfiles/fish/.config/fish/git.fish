@@ -301,6 +301,15 @@ git push --force-with-lease"
     # git show s⎵ → git show --summary
     abbr_subcommand_arg git s "--summary" show
 
+### git stash
+
+    abbr -a gst "git stash"
+    abbr -a st "git stash"
+    abbr -a stp "git stash pop"
+
+    abbr_subcommand_arg git p "pop" stash
+    abbr_subcommand_arg git s "show" stash
+
 ### git status
 
     abbr -a gs "git status"

@@ -284,6 +284,7 @@ git push --force-with-lease"
 
     abbr -a gw "git switch"  # *g*it s**itch
     abbr -a gwc "git switch --create"
+    abbr -a g+ "git switch --create"
     abbr -a gwd "git switch --detach"
 
     # git switch c⎵ → git switch --create

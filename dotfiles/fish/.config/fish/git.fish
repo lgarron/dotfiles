@@ -244,7 +244,7 @@ git push --force-with-lease"
     abbr -a gbak "git push -f --all bak"
     abbr -a gpfl "git push --force-with-lease"
     # Legacy
-    abbr -a gpo  "# Try: gp o"
+    abbr -a gpo  "git push origin"
     abbr -a gpot "# Try: gp o t"
 
     # git push t⎵ → git push --tags

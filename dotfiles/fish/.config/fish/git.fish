@@ -307,6 +307,9 @@ git push --force-with-lease"
     abbr -a st "git stash"
     abbr -a stp "git stash pop"
 
+    abbr_subcommand git st "stash"
+    abbr_subcommand git stash "# Try: `st`"
+
     abbr_subcommand_arg git p "pop" stash
     abbr_subcommand_arg git s "show" stash
 

@@ -25,6 +25,8 @@
     abbr -a kta "mak test-all"
     abbr -a mtf "time make -j 16 test-fast"
     abbr -a ktf "mak test-fast"
+    # Targets for other programs
+    abbr -a kt "mak test"
 
     for make_command in make mak
         abbr_anyarg $make_command b  build

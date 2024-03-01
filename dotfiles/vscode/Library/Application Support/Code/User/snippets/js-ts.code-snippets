@@ -83,5 +83,11 @@
 			"#!/usr/bin/env bun"
 		],
 		"description": "bun shebang"
-	}
+	},
+  "Promise type": {
+    "scope": "typescript",
+    "prefix": "P",
+    "body": "Promise<${0:void}>",
+    "description": "Promise type"
+  },
 }

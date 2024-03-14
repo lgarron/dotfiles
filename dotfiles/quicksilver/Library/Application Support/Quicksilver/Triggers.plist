@@ -736,44 +736,6 @@
 		</dict>
 		<dict>
 			<key>ID</key>
-			<string>FB084DF0-9ECD-4B35-BD72-72381077E89F</string>
-			<key>character</key>
-			<string> </string>
-			<key>command</key>
-			<dict>
-				<key>actionID</key>
-				<string>QSLargeTypeAction</string>
-				<key>directArchive</key>
-				<dict>
-					<key>class</key>
-					<string>QSObject</string>
-					<key>data</key>
-					<dict>
-						<key>public.utf8-plain-text</key>
-						<string>Use: ^⌘⎵</string>
-					</dict>
-					<key>properties</key>
-					<dict>
-						<key>QSObjectName</key>
-						<string>Use: ^⌘⎵</string>
-						<key>QSObjectType</key>
-						<string>public.utf8-plain-text</string>
-					</dict>
-				</dict>
-			</dict>
-			<key>enabled</key>
-			<false/>
-			<key>keyCode</key>
-			<integer>49</integer>
-			<key>modifiers</key>
-			<integer>1442059</integer>
-			<key>onPress</key>
-			<true/>
-			<key>type</key>
-			<string>QSHotKeyTrigger</string>
-		</dict>
-		<dict>
-			<key>ID</key>
 			<string>3D7BB2ED-CCD1-4170-904D-A68E20C7D249</string>
 			<key>applicationScope</key>
 			<array>
@@ -1208,46 +1170,6 @@
 			<true/>
 			<key>showWindow</key>
 			<false/>
-			<key>type</key>
-			<string>QSHotKeyTrigger</string>
-		</dict>
-		<dict>
-			<key>ID</key>
-			<string>B8AED33B-6F5D-430B-A6D1-A0EC59D11B1A</string>
-			<key>character</key>
-			<string></string>
-			<key>command</key>
-			<dict>
-				<key>actionID</key>
-				<string>AppleScriptRunAction</string>
-				<key>directArchive</key>
-				<dict>
-					<key>class</key>
-					<string>QSObject</string>
-					<key>data</key>
-					<dict>
-						<key>public.utf8-plain-text</key>
-						<string>/Users/lgarron/Code/git/github.com/lgarron/dotfiles/Quicksilver Triggers/Main/Toggle Emoji &amp; Symbols.applescript</string>
-					</dict>
-					<key>properties</key>
-					<dict>
-						<key>QSObjectName</key>
-						<string>/Users/lgarron/Code/git/github.com/lgarron/dotfiles/Quicksilver Triggers/Main/Toggle Emoji &amp; Symbols.applescript</string>
-						<key>QSObjectType</key>
-						<string>public.utf8-plain-text</string>
-					</dict>
-				</dict>
-				<key>directID</key>
-				<string>/Users/lgarron/Code/git/github.com/lgarron/dotfiles/Quicksilver Triggers/Main/Toggle Emoji &amp; Symbols.applescript</string>
-			</dict>
-			<key>enabled</key>
-			<false/>
-			<key>keyCode</key>
-			<integer>36</integer>
-			<key>modifiers</key>
-			<integer>1442059</integer>
-			<key>onPress</key>
-			<true/>
 			<key>type</key>
 			<string>QSHotKeyTrigger</string>
 		</dict>

@@ -65,6 +65,9 @@ mac-keyboard-shortcuts:
 	${MAC_ADD_SHORTCUT} "com.apple.Safari"          "Reload Page From Origin"  "⇧⌘R"
 	${MAC_ADD_SHORTCUT} "org.audacityteam.audacity" "Save Project As…"         "⇧⌘S"
 	${MAC_ADD_SHORTCUT} "org.audacityteam.audacity" "Change Tempo…"            "⇧⌘T"
+	# Final Cut Project
+	${MAC_ADD_SHORTCUT} "com.apple.FinalCut"        "Organize — big video"        "^⇧⌘1"
+	${MAC_ADD_SHORTCUT} "com.apple.FinalCut"        "Color & Effects — big video" "^⇧⌘2"
 	# Misc
 	${MAC_ADD_SHORTCUT} "com.apple.Music"           "as Songs"                 "⌘2"
 

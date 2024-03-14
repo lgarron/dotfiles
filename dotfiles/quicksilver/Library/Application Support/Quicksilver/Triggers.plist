@@ -520,6 +520,35 @@
 		</dict>
 		<dict>
 			<key>ID</key>
+			<string>E6934AE0-D0D9-4E86-A624-426B4D3FBEBB</string>
+			<key>applicationScope</key>
+			<array>
+				<string>com.apple.finder</string>
+			</array>
+			<key>applicationScopeType</key>
+			<integer>1</integer>
+			<key>character</key>
+			<string>b</string>
+			<key>command</key>
+			<dict>
+				<key>actionID</key>
+				<string>[Action]:/Users/lgarron/Library/Application Support/Quicksilver/Actions/Reveal SD Card Backup Target (DCIM).scpt</string>
+				<key>directID</key>
+				<string>QSGlobalSelectionProxy</string>
+			</dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyCode</key>
+			<integer>11</integer>
+			<key>modifiers</key>
+			<integer>1048840</integer>
+			<key>onPress</key>
+			<true/>
+			<key>type</key>
+			<string>QSHotKeyTrigger</string>
+		</dict>
+		<dict>
+			<key>ID</key>
 			<string>QSiTunesSetRating1</string>
 			<key>enabled</key>
 			<false/>

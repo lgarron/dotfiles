@@ -18,6 +18,8 @@
   "editor.guides.bracketPairs": true,
   "editor.stickyScroll.enabled": true,
   "editor.acceptSuggestionOnCommitCharacter": false,
+  "diffEditor.hideUnchangedRegions.enabled": true,
+  "window.title": "${activeEditorShort}${separator}${rootName}${separator}${profileName}${separator}branch: ${activeRepositoryBranchName}",
   /******** Window ********/
   "window.commandCenter": false,
   "customWindowZoom.zoomLevelChangeValue": 0.25,
@@ -181,6 +183,7 @@
     "explorer.confirmDragAndDrop",
     "editor.guides.bracketPairs",
     "editor.stickyScroll.enabled",
+    "diffEditor.hideUnchangedRegions.enabled",
     /******** Window ********/
     "window.commandCenter",
     "workbench.colorTheme",

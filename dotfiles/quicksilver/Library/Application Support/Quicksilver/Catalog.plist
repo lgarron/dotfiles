@@ -626,25 +626,6 @@
 		</dict>
 		<dict>
 			<key>ID</key>
-			<string>215123B8-19E7-4CC0-9FA2-3A8768861FFE</string>
-			<key>children</key>
-			<array/>
-			<key>enabled</key>
-			<true/>
-			<key>settings</key>
-			<dict>
-				<key>modificationDate</key>
-				<real>706381190.68652105</real>
-				<key>path</key>
-				<string>/Applications</string>
-				<key>query</key>
-				<string>kMDItemContentTypeTree == 'com.apple.application'</string>
-			</dict>
-			<key>source</key>
-			<string>QSSpotlightObjectSource</string>
-		</dict>
-		<dict>
-			<key>ID</key>
 			<string>D3CB24BB-D16B-492D-8D40-129D27CA7F4A</string>
 			<key>children</key>
 			<array>
@@ -808,6 +789,139 @@
 			<string>Dropbox (Maestral)</string>
 			<key>source</key>
 			<string>QSGroupObjectSource</string>
+		</dict>
+		<dict>
+			<key>ID</key>
+			<string>2A622E45-A66E-4FE4-836F-7EF31D9BFD44</string>
+			<key>children</key>
+			<array>
+				<dict>
+					<key>ID</key>
+					<string>7F4D71BA-558F-4C5C-9158-B1A377744A00</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>modificationDate</key>
+					<real>731013295.92342103</real>
+					<key>name</key>
+					<string>Trenzalore → Video Editing → 2024</string>
+					<key>settings</key>
+					<dict>
+						<key>name</key>
+						<string>Trenzalore → Video Editing → 2024</string>
+						<key>target</key>
+						<string>/Volumes/Trenzalore/Video Editing/2024</string>
+						<key>targetType</key>
+						<string>public.data</string>
+					</dict>
+					<key>source</key>
+					<string>QSUserDefinedProxySource</string>
+				</dict>
+				<dict>
+					<key>ID</key>
+					<string>A1D28572-6686-4975-AF73-B87094FAE54B</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>modificationDate</key>
+					<real>731013117.78778994</real>
+					<key>name</key>
+					<string>Trenzalore → Video Editing → 2024 (direct entry)</string>
+					<key>settings</key>
+					<dict>
+						<key>folderDepth</key>
+						<integer>1</integer>
+						<key>path</key>
+						<string>/Volumes/Trenzalore/Video Editing/2024</string>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
+			</array>
+			<key>enabled</key>
+			<true/>
+			<key>name</key>
+			<string>Trenzalore</string>
+			<key>source</key>
+			<string>QSGroupObjectSource</string>
+		</dict>
+		<dict>
+			<key>ID</key>
+			<string>A3C13C7F-63C3-499B-9234-D372208DE7C7</string>
+			<key>children</key>
+			<array>
+				<dict>
+					<key>ID</key>
+					<string>DAFC95A4-7823-42C1-B339-2FC67980D301</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>modificationDate</key>
+					<real>731013248.554371</real>
+					<key>name</key>
+					<string>Pythagoras → Samos → Uploads</string>
+					<key>settings</key>
+					<dict>
+						<key>name</key>
+						<string>Pythagoras → Samos → Uploads</string>
+						<key>target</key>
+						<string>/Volumes/Samos/Pythagoras/Users/lgarron/Uploads</string>
+						<key>targetType</key>
+						<string>public.data</string>
+					</dict>
+					<key>source</key>
+					<string>QSUserDefinedProxySource</string>
+				</dict>
+				<dict>
+					<key>ID</key>
+					<string>8AD49EE8-F190-4CF6-A3EC-132A14F05F9B</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>modificationDate</key>
+					<real>731013178.87261999</real>
+					<key>name</key>
+					<string>Pythagoras → Samos → Uploads (direct entry)</string>
+					<key>settings</key>
+					<dict>
+						<key>folderDepth</key>
+						<integer>1</integer>
+						<key>path</key>
+						<string>/Volumes/Samos/Pythagoras/Users/lgarron/Uploads</string>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
+			</array>
+			<key>enabled</key>
+			<true/>
+			<key>name</key>
+			<string>Pythagoras</string>
+			<key>source</key>
+			<string>QSGroupObjectSource</string>
+		</dict>
+		<dict>
+			<key>ID</key>
+			<string>215123B8-19E7-4CC0-9FA2-3A8768861FFE</string>
+			<key>children</key>
+			<array/>
+			<key>enabled</key>
+			<true/>
+			<key>settings</key>
+			<dict>
+				<key>modificationDate</key>
+				<real>706381190.68652105</real>
+				<key>path</key>
+				<string>/Applications</string>
+				<key>query</key>
+				<string>kMDItemContentTypeTree == 'com.apple.application'</string>
+			</dict>
+			<key>source</key>
+			<string>QSSpotlightObjectSource</string>
 		</dict>
 	</array>
 	<key>enabledPresets</key>

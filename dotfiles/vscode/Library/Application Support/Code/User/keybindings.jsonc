@@ -219,5 +219,10 @@
   {
     "key": "ctrl+shift+cmd+p",
     "command": "workbench.action.experimental.quickTextSearch"
+  },
+  {
+    "key": "cmd+w",
+    "command": "-workbench.action.closeWindow",
+    "when": "!editorIsOpen && !multipleEditorGroups"
   }
 ]

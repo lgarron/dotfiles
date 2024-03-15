@@ -73,3 +73,4 @@ fish:
 
 include setup/linux.Makefile
 include setup/mac.Makefile
+include setup/rust.Makefile # TODO: Figure out Rustup vs. Homebrew so this can be added to `mac-common`.

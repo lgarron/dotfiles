@@ -83,3 +83,7 @@
 
     # OPAM
     set -Ux OPAMROOT $XDG_DATA_HOME/opam
+
+    # AWS
+    set -Ux AWS_SHARED_CREDENTIALS_FILE $XDG_CONFIG_HOME/aws/credentials
+    set -Ux AWS_CONFIG_FILE $XDG_CONFIG_HOME/aws/config

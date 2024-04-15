@@ -156,3 +156,23 @@
     abbr -a "disk-speed-test" '"/Applications/Blackmagic Disk Speed Test.app/Contents/MacOS/DiskSpeedTest" --cmd --dir'
 
     abbr -a serve "open http://localhost:8000; caddy file-server --listen :8000 --browse --root ."
+
+    # Workaround for VS Code not using `dev.containers.defaultExtensionsIfInstalledLocally` for codespaces created outside its (interactive ⇒ very slow) UI.
+    function codespaces-install-common-extensions
+        set -l _CODESPACES_COMMON_EXTENSIONS \
+        GitHub.vscode-pull-request-github \
+        craigb85.custom-window-zoom \
+        eamodio.gitlens \
+        stkb.rewrap \
+        pranshuagrawal.toggle-case \
+        bierner.markdown-preview-github-styles
+        for extension_id in $_CODESPACES_COMMON_EXTENSIONS
+            code --install-extension $extension_id
+        end
+        set -Ux _CODESPACES_COMMON_EXTENSIONS_HAVE_BEEN_INSTALLED true
+    end
+    if set -q CODESPACES
+        if not set -q _CODESPACES_COMMON_EXTENSIONS_HAVE_BEEN_INSTALLED
+            codespaces-install-common-extensions
+        end
+    end

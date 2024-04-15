@@ -42,6 +42,13 @@ then
     ~/.local/share/fish || rm -rf \
     ~/.config/fish/config.fish \
     ~/.local/share/fish
+
+  code --install-extension GitHub.vscode-pull-request-github
+  code --install-extension craigb85.custom-window-zoom
+  code --install-extension eamodio.gitlens
+  code --install-extension stkb.rewrap
+  code --install-extension pranshuagrawal.toggle-case
+  code --install-extension bierner.markdown-preview-github-styles
 fi
 make linux
 

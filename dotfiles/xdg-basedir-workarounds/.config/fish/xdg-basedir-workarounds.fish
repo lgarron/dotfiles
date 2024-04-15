@@ -61,7 +61,8 @@
 
     # zsh
     set -Ux ZDOTDIR $XDG_CONFIG_HOME/zsh
-    mkdir -p $ZDOTDIR &
+    # TODO: why does using `$ZDOTDIR` fail here? 😳
+    mkdir -p $XDG_CONFIG_HOME/zsh &
 
     # Python
     set -Ux PYTHONSTARTUP $XDG_CONFIG_HOME/python/pythonrc # Note: this is not the history file itself, it's a script that sets the history file.

@@ -42,15 +42,6 @@ then
     ~/.local/share/fish || rm -rf \
     ~/.config/fish/config.fish \
     ~/.local/share/fish
-
-  # `code` is not in the path at bootstrap time. So we try to grab an entry point that will work.
-  SOME_VSCODE_ENTRY_POINT_PATH=$(ls /vscode/bin/linux-x64/*/bin/remote-cli/code | head -n 1)
-  $SOME_VSCODE_ENTRY_POINT_PATH --install-extension GitHub.vscode-pull-request-github
-  $SOME_VSCODE_ENTRY_POINT_PATH --install-extension craigb85.custom-window-zoom
-  $SOME_VSCODE_ENTRY_POINT_PATH --install-extension eamodio.gitlens
-  $SOME_VSCODE_ENTRY_POINT_PATH --install-extension stkb.rewrap
-  $SOME_VSCODE_ENTRY_POINT_PATH --install-extension pranshuagrawal.toggle-case
-  $SOME_VSCODE_ENTRY_POINT_PATH --install-extension bierner.markdown-preview-github-styles
 fi
 make linux
 

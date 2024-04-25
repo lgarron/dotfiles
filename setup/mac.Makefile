@@ -33,8 +33,8 @@ mac-setup-extra: \
 
 .PHONY: mac-fish-default-shell
 mac-fish-default-shell: mac-commandline-core
-	cat /etc/shells | grep "`which fish`" → /dev/null || echo "`which fish`" | sudo tee -a /etc/shells
-	chsh -s "`which fish`"
+	cat /etc/shells | grep "`command -v fish`" > /dev/null || echo "`command -v fish`" | sudo tee -a /etc/shells
+	chsh -s "`command -v fish`"
 
 .PHONY: mac-defaults
 mac-defaults:

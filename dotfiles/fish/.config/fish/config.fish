@@ -265,7 +265,7 @@
 
     function set-screenshot-dir
       set DIR $argv[1]
-      echo-alternate-background "Setting screenshot dir to: " $DIR
+      echo "Setting screenshot dir to: $DIR"
       defaults write com.apple.screencapture location $DIR
       killall SystemUIServer
     end

@@ -1,0 +1,11 @@
+/.DefaultTemplate
+/*.plist
+/*.plist.default
+/*.watchfolderids
+/History
+/Layouts
+/Storage
+/*.compressor
+/*.jobcache.db
+!/.gitignore
+!Settings

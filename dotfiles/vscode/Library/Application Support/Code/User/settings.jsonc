@@ -30,7 +30,6 @@
   "terminal.integrated.tabs.enabled": true,
   "terminal.integrated.tabs.location": "right",
   "terminal.integrated.macOptionIsMeta": true,
-  "extensions.ignoreRecommendations": true,
   /******** Formatting ********/
   // https://marketplace.visualstudio.com/items?itemName=tombonnike.vscode-status-bar-format-toggle
   "formattingToggle.affects": [
@@ -195,7 +194,6 @@
     "terminal.integrated.tabs.enabled",
     "terminal.integrated.tabs.location",
     "terminal.integrated.macOptionIsMeta",
-    "extensions.ignoreRecommendations",
     "editor.acceptSuggestionOnCommitCharacter",
     /******** Formatting ********/
     "formattingToggle.affects",

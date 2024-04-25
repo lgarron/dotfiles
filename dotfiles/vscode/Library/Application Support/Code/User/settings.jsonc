@@ -27,9 +27,6 @@
   "workbench.startupEditor": "newUntitledFile",
   "workbench.editor.empty.hint": "hidden",
   "window.newWindowDimensions": "inherit",
-  "terminal.integrated.tabs.enabled": true,
-  "terminal.integrated.tabs.location": "right",
-  "terminal.integrated.macOptionIsMeta": true,
   /******** Formatting ********/
   // https://marketplace.visualstudio.com/items?itemName=tombonnike.vscode-status-bar-format-toggle
   "formattingToggle.affects": [
@@ -100,6 +97,10 @@
   /******** Live Share ********/
   "liveshare.showInStatusBar": "whileCollaborating",
   /******** Terminal ********/
+  "terminal.integrated.tabs.enabled": true,
+  "terminal.integrated.tabs.location": "right",
+  "terminal.integrated.macOptionIsMeta": true,
+  "terminal.integrated.stickyScroll.enabled": true,
   "terminal.integrated.defaultProfile.osx": "apple_fish",
   "terminal.integrated.defaultProfile.linux": "fish",
   "terminal.integrated.defaultProfile.windows": "Ubuntu (WSL)",
@@ -191,9 +192,6 @@
     "workbench.startupEditor",
     "workbench.editor.untitled.hint",
     "window.newWindowDimensions",
-    "terminal.integrated.tabs.enabled",
-    "terminal.integrated.tabs.location",
-    "terminal.integrated.macOptionIsMeta",
     "editor.acceptSuggestionOnCommitCharacter",
     /******** Formatting ********/
     "formattingToggle.affects",
@@ -234,6 +232,10 @@
     /******** Live Share ********/
     "liveshare.showInStatusBar",
     /******** Terminal ********/
+    "terminal.integrated.tabs.enabled",
+    "terminal.integrated.tabs.location",
+    "terminal.integrated.macOptionIsMeta",
+    "terminal.integrated.stickyScroll.enabled",
     // "terminal.integrated.defaultProfile.linux",
     // "terminal.integrated.defaultProfile.osx",
     "terminal.integrated.defaultProfile.windows",
@@ -276,5 +278,4 @@
   ],
   "window.openFilesInNewWindow": "default",
   /****************/
-  "terminal.integrated.stickyScroll.enabled": true
 }

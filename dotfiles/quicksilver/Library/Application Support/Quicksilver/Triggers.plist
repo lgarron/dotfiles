@@ -103,7 +103,7 @@
 			<key>keyCode</key>
 			<integer>7</integer>
 			<key>modifiers</key>
-			<integer>655682</integer>
+			<integer>655650</integer>
 			<key>onPress</key>
 			<true/>
 			<key>type</key>
@@ -625,7 +625,7 @@
 			<key>keyCode</key>
 			<integer>6</integer>
 			<key>modifiers</key>
-			<integer>655682</integer>
+			<integer>655650</integer>
 			<key>onPress</key>
 			<true/>
 			<key>type</key>
@@ -1053,7 +1053,7 @@
 			<key>keyCode</key>
 			<integer>8</integer>
 			<key>modifiers</key>
-			<integer>655682</integer>
+			<integer>655650</integer>
 			<key>onPress</key>
 			<true/>
 			<key>type</key>

@@ -1,0 +1,1 @@
+do shell script "open \"vnc://Pythagoras.wyvern-climb.ts.net\""

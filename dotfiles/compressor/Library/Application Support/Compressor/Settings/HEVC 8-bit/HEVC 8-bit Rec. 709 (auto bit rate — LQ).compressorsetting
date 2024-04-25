@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <setting name="HEVC%208-bit%20Rec.%20709%20(auto%20bit%20rate%20%E2%80%94%20LQ)">
-    <version>406784</version>
+    <version>409600</version>
     <description>QuickTime%20Movie</description>
     <default-destination/>
     <encoder name="QT">
@@ -29,7 +29,7 @@
             <crop left="0" top="0" right="0" bottom="0"/>
             <padding left="0" top="0" right="0" bottom="0"/>
             <frame-rate>-100.000000</frame-rate>
-            <automatic video-conversion="" color-spec="" width="-1920" height="1080" frame-rate="-100" crop="no" padding="no" center-crop="0" field-dominance="no"/>
+            <automatic video-conversion="" color-spec="" width="-100" height="-100" frame-rate="-100" crop="no" auto-pad="0" center-crop="0" field-dominance="no"/>
             <video-conversion>1 3 1 0 N 0 1 0 0 0</video-conversion>
             <color-spec>3</color-spec>
             <computed-pad>no</computed-pad>
@@ -45,6 +45,7 @@
             <ignore-crop-during-processing>no</ignore-crop-during-processing>
             <dithering-setting>0</dithering-setting>
             <embedded_dovis_format>0</embedded_dovis_format>
+            <purpose-group/>
             <codec-type>hvc1</codec-type>
             <codec-manufacturer>appl</codec-manufacturer>
             <family-codec-configured>no</family-codec-configured>

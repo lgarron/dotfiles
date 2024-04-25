@@ -337,6 +337,27 @@
 					<key>source</key>
 					<string>QSFileSystemObjectSource</string>
 				</dict>
+				<dict>
+					<key>ID</key>
+					<string>A5F38F81-DF2F-4382-B9CA-A5702F966667</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>modificationDate</key>
+					<real>732750983.24793601</real>
+					<key>name</key>
+					<string>.config</string>
+					<key>settings</key>
+					<dict>
+						<key>folderDepth</key>
+						<integer>1</integer>
+						<key>path</key>
+						<string>~/.config</string>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
 			</array>
 			<key>enabled</key>
 			<true/>
@@ -358,7 +379,7 @@
 					<key>enabled</key>
 					<true/>
 					<key>name</key>
-					<string>Germain Screenshots 2023</string>
+					<string>Germain Screenshots 2024</string>
 					<key>settings</key>
 					<dict>
 						<key>folderDepth</key>
@@ -366,7 +387,7 @@
 						<key>parser</key>
 						<string>QSDirectoryParser</string>
 						<key>path</key>
-						<string>~/Dropbox (Maestral)/Screenshots/Germain Screenshots/Germain Screenshots 2023</string>
+						<string>~/Dropbox (Maestral)/Screenshots/Germain Screenshots/Germain Screenshots 2024</string>
 					</dict>
 					<key>source</key>
 					<string>QSFileSystemObjectSource</string>
@@ -381,13 +402,13 @@
 					<key>modificationDate</key>
 					<real>702530695.58016205</real>
 					<key>name</key>
-					<string>Pythagoras Screenshots 2023</string>
+					<string>Pythagoras Screenshots 2024</string>
 					<key>settings</key>
 					<dict>
 						<key>folderDepth</key>
 						<integer>1</integer>
 						<key>path</key>
-						<string>/Volumes/Samos/Pythagoras/Users/lgarron/Dropbox/Screenshots/Pythagoras Screenshots/Pythagoras Screenshots 2023</string>
+						<string>/Volumes/Samos/Pythagoras/Users/lgarron/Dropbox/Screenshots/Pythagoras Screenshots/Pythagoras Screenshots 2024</string>
 					</dict>
 					<key>source</key>
 					<string>QSFileSystemObjectSource</string>

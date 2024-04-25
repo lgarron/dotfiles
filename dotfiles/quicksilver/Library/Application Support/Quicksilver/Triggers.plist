@@ -1175,43 +1175,6 @@
 		</dict>
 		<dict>
 			<key>ID</key>
-			<string>8E671110-F1F5-4EB8-9581-BEDEB8EAF196</string>
-			<key>command</key>
-			<dict>
-				<key>actionID</key>
-				<string>AppleScriptRunAction</string>
-				<key>directID</key>
-				<string>/Users/lgarron/Code/git/github.com/lgarron/dotfiles/Quicksilver Triggers/Date/Set Clipboard to Date.applescript</string>
-			</dict>
-			<key>enabled</key>
-			<true/>
-			<key>keyCode</key>
-			<integer>1</integer>
-			<key>modifiers</key>
-			<integer>1835305</integer>
-			<key>onPress</key>
-			<true/>
-			<key>onRelease</key>
-			<false/>
-			<key>showWindow</key>
-			<true/>
-			<key>type</key>
-			<string>QSHotKeyTrigger</string>
-		</dict>
-		<dict>
-			<key>ID</key>
-			<string>QSiTunesSearchArtists</string>
-			<key>enabled</key>
-			<false/>
-			<key>name</key>
-			<string>Search Artists</string>
-			<key>set</key>
-			<string>iTunes</string>
-			<key>type</key>
-			<string>QSHotKeyTrigger</string>
-		</dict>
-		<dict>
-			<key>ID</key>
 			<string>374FD541-3311-4898-9D01-6769BBBAE028</string>
 			<key>character</key>
 			<string>&gt;</string>
@@ -1249,6 +1212,43 @@
 			<integer>917795</integer>
 			<key>onPress</key>
 			<true/>
+			<key>type</key>
+			<string>QSHotKeyTrigger</string>
+		</dict>
+		<dict>
+			<key>ID</key>
+			<string>8E671110-F1F5-4EB8-9581-BEDEB8EAF196</string>
+			<key>command</key>
+			<dict>
+				<key>actionID</key>
+				<string>AppleScriptRunAction</string>
+				<key>directID</key>
+				<string>/Users/lgarron/Code/git/github.com/lgarron/dotfiles/Quicksilver Triggers/Date/Set Clipboard to Date.applescript</string>
+			</dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyCode</key>
+			<integer>1</integer>
+			<key>modifiers</key>
+			<integer>1835305</integer>
+			<key>onPress</key>
+			<true/>
+			<key>onRelease</key>
+			<false/>
+			<key>showWindow</key>
+			<true/>
+			<key>type</key>
+			<string>QSHotKeyTrigger</string>
+		</dict>
+		<dict>
+			<key>ID</key>
+			<string>QSiTunesSearchArtists</string>
+			<key>enabled</key>
+			<false/>
+			<key>name</key>
+			<string>Search Artists</string>
+			<key>set</key>
+			<string>iTunes</string>
 			<key>type</key>
 			<string>QSHotKeyTrigger</string>
 		</dict>

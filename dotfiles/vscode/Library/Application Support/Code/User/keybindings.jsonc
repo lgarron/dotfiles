@@ -41,7 +41,7 @@
     }
   },
   {
-    "key": "ctrl+r",
+    "key": "ctrl+shift+r",
     "command": "workbench.action.terminal.sendSequence",
     "when": "terminalFocus",
     "args": {

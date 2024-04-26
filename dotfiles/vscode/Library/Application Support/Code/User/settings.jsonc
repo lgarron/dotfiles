@@ -19,6 +19,7 @@
   "editor.stickyScroll.enabled": true,
   "editor.acceptSuggestionOnCommitCharacter": false,
   "diffEditor.hideUnchangedRegions.enabled": true,
+  "editor.accessibilitySupport": "off", // Setting regularly added by VS Code after asking if I'm using a screen reader.
   "window.title": "${activeEditorShort}${separator}${rootName}${separator}${profileName}${separator}branch: ${activeRepositoryBranchName}",
   /******** Window ********/
   "window.commandCenter": false,
@@ -184,6 +185,7 @@
     "editor.guides.bracketPairs",
     "editor.stickyScroll.enabled",
     "diffEditor.hideUnchangedRegions.enabled",
+    "editor.accessibilitySupport",
     /******** Window ********/
     "window.commandCenter",
     "workbench.colorTheme",

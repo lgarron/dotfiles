@@ -1,0 +1,1 @@
+do shell script "/opt/homebrew/bin/tailscale up && open \"vnc://Pythagoras-ts.wyvern-climb.ts.net\""

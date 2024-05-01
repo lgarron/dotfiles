@@ -21,7 +21,8 @@ mac-setup: \
 	mac-file-defaults \
 	mac-commandline-core \
 	mac-apps-core \
-	mac-fish-default-shell
+	mac-fish-default-shell \
+	prefer-wired-over-wireless-for-SMB
 
 .PHONY: mac-setup-extra
 mac-setup-extra: \
@@ -173,3 +174,9 @@ mac-dock-bottom:
 mac-dock-add-spacer:
 	defaults write com.apple.dock persistent-apps -array-add '{"tile-type"="spacer-tile";}'
 	killall Dock
+
+# Misc
+
+.PHONY: prefer-wired-over-wireless-for-SMB
+prefer-wired-over-wireless-for-SMB:
+	echo "mc_prefer_wired=yes" | sudo tee -a /etc/nsmb.conf # https://support.apple.com/en-us/102010

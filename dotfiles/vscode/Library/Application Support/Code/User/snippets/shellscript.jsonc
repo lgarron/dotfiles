@@ -1,0 +1,18 @@
+{
+	"`bash` boilerplate": {
+		"body": [
+			"#!/usr/bin/env bash",
+			"",
+			"set -euo pipefail",
+			"",
+			""
+		]
+	},
+	"`fish` boilerplate": {
+		"body": [
+			"#!/usr/bin/env -S fish --no-config",
+			"",
+			""
+		]
+	}
+}

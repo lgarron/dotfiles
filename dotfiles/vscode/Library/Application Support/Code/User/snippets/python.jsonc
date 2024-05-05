@@ -1,0 +1,51 @@
+{
+	"pdb.set_trace()": {
+		"prefix": "pdb",
+		"body": [
+			"import pdb; pdb.set_trace()"
+		],
+		"description": "Set `pdb` trace for debugging."
+	},
+	"Debugger: pdb.set_trace()": {
+		"prefix": "debugger",
+		"body": [
+			"import pdb; pdb.set_trace()"
+		],
+		"description": "Set `pdb` trace for debugging."
+	},
+	"None": {
+		"prefix": "null",
+		"body": [
+			"None"
+		],
+		"description": "📎👀 Did you mean `null` but found yourself in Python?"
+	},
+	"True": {
+		"prefix": "true",
+		"body": [
+			"True"
+		],
+		"description": "📎👀 Did you mean `true` but found yourself in Python?"
+	},
+	"False": {
+		"prefix": "false",
+		"body": [
+			"False"
+		],
+		"description": "📎👀 Did you mean `false` but found yourself in Python?"
+	},
+	"print(…)": {
+		"prefix": "console.log",
+		"body": [
+			"print($1)"
+		],
+		"description": "📎👀 Did you mean `console.log` but found yourself in Python?"
+	},
+	"str": {
+		"prefix": "string",
+		"body": [
+			"str"
+		],
+		"description": "📎👀 Did you mean `string` but found yourself in Python?"
+	}
+}

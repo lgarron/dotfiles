@@ -1,0 +1,11 @@
+{
+	"@cubing/deploy": {
+		"prefix": "@cubing/deploy",
+		"body": [
+			"\"@cubing/deploy\": {",
+			"  \"${0:https://…}\": {}",
+			"}",
+		],
+		"description": "Add @cubing/deploy settings"
+	}
+}

@@ -2,6 +2,15 @@
   ".PHONY": {
     "prefix": ".PHONY",
     "body": ".PHONY: $1\n$1:\n\t$0\n",
-    "description": "An inline function"
+    "description": "Add a .PHONY target"
+  },
+  "deploy": {
+    "prefix": "@cubing/deploy",
+    "body": [
+      ".PHOHY: deploy",
+      "deploy: ${0:build}",
+      "\tbun x @cubing/deploy"
+    ],
+    "description": "Deploy using @cubing/deploy"
   }
 }

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<setting name="HEVC%208-bit%20Rec.%20709%20(1Gbps%20=%201Gbps%20for%208K)">
+<setting name="HEVC%208-bit%20Rec.%20709%20(100Mbps%20for%204K%20MQ)">
     <version>409600</version>
     <description>QuickTime%20Movie</description>
     <default-destination/>
@@ -51,7 +51,7 @@
             <spatial pixelDepth="24" minQuality="768" quality="768"/>
             <temporal keyFrameInterval="0" minQuality="768" quality="768" partial-sync="0"/>
             <icm2-options max-passes="1" allow-frame-reoder="no"/>
-            <data-rate>125000000</data-rate>
+            <data-rate>12500000</data-rate>
             <data-rate-limit-percentage>0</data-rate-limit-percentage>
             <data-rate-limit-duration>0</data-rate-limit-duration>
             <encoder-properties><![CDATA[YnBsaXN0MDDSAQIDDF8QEGNvZGVjLXByb3BlcnRpZXNaZW5jb2Rlci1pZNEEBVxQcm9maWxlTGV2ZWzTBgcICQoLW29iamVjdFZhbHVlW2lzRGVmYXVsdEhRW2Rlc2NyaXB0aW9uXxATSEVWQ19NYWluX0F1dG9MZXZlbAlfEBM4LUJpdCBDb2xvciAoNDoyOjApVGh2YzEIDSArLjtCTlpmfH2TAAAAAAAAAQEAAAAAAAAADQAAAAAAAAAAAAAAAAAAAJg=]]></encoder-properties>

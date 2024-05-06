@@ -136,7 +136,7 @@
   "python.analysis.autoImportCompletions": true,
   "python.analysis.autoImportUserSymbols": true,
   "python.analysis.indexing": true,
-  "terminal.integrated.enableMultiLinePasteWarning": false,
+  "terminal.integrated.enableMultiLinePasteWarning": "never",
   // This works around a bug with the Django template extension where it tries
   // to take over all HTML files in all repositories.
   "files.associations": {

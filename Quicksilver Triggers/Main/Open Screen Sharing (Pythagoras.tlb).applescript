@@ -1,1 +1,1 @@
-do shell script "open \"vnc://Pythagoras.tlb\""
+do shell script "/opt/homebrew/bin/fish /Users/lgarron/Code/git/github.com/lgarron/scripts/system/set-remote-screen-sharing-resolution.fish Pythagoras.tlb && open \"vnc://Pythagoras.tlb\""

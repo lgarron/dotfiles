@@ -195,6 +195,8 @@
             -profile:v main10 \
             # Needed to play in Quicktime
             -tag:v hvc1 \
+            # Streaming
+            -movflags faststart \
             -q:v $QUALITY \
             -f mp4 \
             $OUT
@@ -216,6 +218,8 @@
             -profile:v main \
             # Needed to play in Quicktime
             -tag:v hvc1 \
+            # Streaming
+            -movflags faststart \
             -q:v $QUALITY \
             -f mp4 \
             $OUT

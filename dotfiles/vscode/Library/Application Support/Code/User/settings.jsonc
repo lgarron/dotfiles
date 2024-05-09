@@ -76,15 +76,12 @@
   /******** Remote SSH ********/
   "remote.SSH.useLocalServer": false,
   "remote.SSH.remotePlatform": {
-    "Pythagoras": "macOS",
-    "Pythagoras.web": "macOS",
-    "Pythagoras.thunderbolt": "macOS",
+    "Pythagoras.tlb": "macOS",
     "Pythagoras.wyvern-climb.ts.net": "macOS"
   },
   "remote.SSH.serverInstallPath": {
-    "Pythagoras": "~/.data/vscode-server",
-    "Pythagoras.web": "~/.data/vscode-server",
-    "Pythagoras.thunderbolt": "~/.data/vscode-server"
+    "Pythagoras.tlb": "/Users/lgarron/.cache/vscode-server",
+    "Pythagoras.wyvern-climb.ts.net": "/Users/lgarron/.cache/vscode-server"
   },
   /******** Codespaces ********/
   "github.codespaces.createCodespaceInNewWindow": true,

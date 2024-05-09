@@ -90,7 +90,6 @@
     )
 
     abbr -a dff "cd $DOTFILES_FOLDER"
-    abbr -a dlf "cd ~/Downloads"
 
     # Reloads the fish config file. `rc` is chosen because the config file for
     # other shells is often known as the `rc` file, and `rc` is easy to type.
@@ -179,8 +178,8 @@
 ### Editors
 
     # TODO: https://github.com/microsoft/vscode/issues/139634
-    set -xg "VISUAL" (which code)" -w"
-    set -xg "EDITOR" "code -w"
+    set -xg "VISUAL" (command -v code)" -w"
+    set -xg "EDITOR" (command -v code)" -w"
     # set -xg EDITOR "open -b com.microsoft.VSCode"
 
     abbr -a c "code"
@@ -213,8 +212,28 @@
     end
 
     abbr -a r "open -R"
+    abbr -a r. "open -R ."
 
     abbr -a - "cd -"
+
+    abbr -a "md5" "openssl dgst -md5"
+    abbr -a "sha1" "openssl dgst -sha1"
+    abbr -a "sha256" "openssl dgst -sha256"
+    abbr -a "sha512" "openssl dgst -sha512"
+
+    abbr -a dlf "cd ~/Downloads"
+
+    function cd-dir
+      set INPUT_PATH $argv[1]
+      if not test -d $INPUT_PATH
+        set INPUT_PATH (dirname $INPUT_PATH)
+      end
+      cd $INPUT_PATH
+    end
+
+    abbr -a _hh_abbr --regex "hh" --position anywhere -- "--help"
+
+## Homebrew
 
     abbr -a w "brew"
     abbr -a wi "brew install"
@@ -231,19 +250,6 @@
     abbr_subcommand brew un uninstall
     abbr_subcommand brew up upgrade
     abbr_subcommand brew s search
-
-    abbr -a "md5" "openssl dgst -md5"
-    abbr -a "sha1" "openssl dgst -sha1"
-    abbr -a "sha256" "openssl dgst -sha256"
-    abbr -a "sha512" "openssl dgst -sha512"
-
-    function cd-dir
-      set INPUT_PATH $argv[1]
-      if not test -d $INPUT_PATH
-        set INPUT_PATH (dirname $INPUT_PATH)
-      end
-      cd $INPUT_PATH
-    end
 
 ## Keyboard
 

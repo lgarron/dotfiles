@@ -116,7 +116,7 @@
       set -l main_command $argv[1]
       # set -l arg_abbreviation $argv[2] # unused
       set -l arg_expansion $argv[3]
-      set -l sub_commands $argv[4..-1]
+      set -l sub_commands $argv[4..-2]
       set -l cmd (commandline -op)
       if string match -e -- "$cmd[1]" "$main_command" > /dev/null
         if contains -- "$cmd[2]" $sub_commands
@@ -145,7 +145,7 @@
         set -l main_command $argv[1]
         set -l arg_abbreviation $argv[2]
         set -l arg_expansion $argv[3]
-        set -l sub_commands $argv[4..-1]
+        set -l sub_commands $argv[4..-2]
         set -l cmd (commandline -op)
         if string match -e -- "$cmd[1]" "$main_command" > /dev/null
           if test (count $cmd) = 3
@@ -202,7 +202,7 @@
       set -l main_command $argv[1]
       # set -l arg_abbreviation $argv[2] # unused
       set -l arg_expansion $argv[3]
-      set -l excluded_sub_commands $argv[4..-1]
+      set -l excluded_sub_commands $argv[4..-2]
       set -l cmd (commandline -op)
       if string match -e -- "$cmd[1]" "$main_command" > /dev/null
         if test (count $cmd) -gt 2

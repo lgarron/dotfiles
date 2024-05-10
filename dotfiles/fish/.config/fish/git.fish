@@ -285,6 +285,7 @@ git push --force-with-lease"
     abbr -a gw "git switch"  # *g*it s**itch
     abbr -a gwc "# try: g+"
     abbr -a g+ "git switch --create"
+    abbr -a "gj" "git switch --create" # alias for `g+` that doesn't need ⇧
     abbr -a gwd "# try: g-"
     abbr -a g- "git switch --detach"
 

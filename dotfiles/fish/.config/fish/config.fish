@@ -232,6 +232,7 @@
     end
 
     abbr -a _hh_abbr --regex "hh" --position anywhere -- "--help"
+    abbr -a ccv --set-cursor "code (command -v %)"
 
 ## Homebrew
 

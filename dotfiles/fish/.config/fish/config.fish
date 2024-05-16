@@ -237,6 +237,10 @@
     abbr_anyarg ssh pt Pythagoras.tlb
     abbr_anyarg ssh pw Pythagoras-ts.wyvern-climb.ts.net
 
+    if command -v wat > /dev/null
+      wat --completions fish | source # TOO: install using Homebrew
+    end
+
 ## Homebrew
 
     abbr -a w "brew"

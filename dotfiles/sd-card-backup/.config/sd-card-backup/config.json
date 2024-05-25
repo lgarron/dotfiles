@@ -35,7 +35,8 @@
     "SPARKY",
     "HERMES",
     "DONNA",
-    "WILF"
+    "WILF",
+    "FRANK_CFE"
   ],
   "folder_mapping": [
     { "source": "DCIM", "destination": "DCIM" },

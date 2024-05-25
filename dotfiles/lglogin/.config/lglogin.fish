@@ -49,6 +49,7 @@
     rm -rf $HOME/.pnpm-state
     rm -rf $HOME/.python_history
     rm -rf $HOME/.rustup
+    rm -rf "$HOME/.sentry "
     rm -rf $HOME/.swiftpm
     rm -rf $HOME/.step
     rm -rf $HOME/.terraform.d

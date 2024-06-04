@@ -37,7 +37,7 @@
       "InlineParameterSets" : false,
       "MetadataPassthrough" : true,
       "Mp4iPodCompatible" : false,
-      "Optimize" : false,
+      "Optimize" : true,
       "PictureAllowUpscaling" : false,
       "PictureAutoCrop" : true,
       "PictureBottomCrop" : 0,
@@ -49,7 +49,7 @@
       "PictureCombDetectCustom" : "",
       "PictureCombDetectPreset" : "off",
       "PictureCropMode" : 2,
-      "PictureDARWidth" : 3456,
+      "PictureDARWidth" : 4096,
       "PictureDeblockCustom" : "strength=strong:thresh=20:blocksize=8",
       "PictureDeblockPreset" : "off",
       "PictureDeblockTune" : "medium",
@@ -89,7 +89,7 @@
       "PictureWidth" : 0,
       "PresetDescription" : "",
       "PresetDisabled" : false,
-      "PresetName" : "HEVC 10-bit test 1",
+      "PresetName" : "HEVC 8-bit (qv65)",
       "SubtitleAddCC" : false,
       "SubtitleAddForeignAudioSearch" : false,
       "SubtitleAddForeignAudioSubtitle" : false,
@@ -104,7 +104,7 @@
       "UsesPictureFilters" : true,
       "VideoAvgBitrate" : 17500,
       "VideoColorMatrixCodeOverride" : 0,
-      "VideoEncoder" : "vt_h265_10bit",
+      "VideoEncoder" : "vt_h265",
       "VideoFramerate" : "auto",
       "VideoFramerateMode" : "vfr",
       "VideoGrayScale" : false,
@@ -124,7 +124,7 @@
       "x264UseAdvancedOptions" : false
     }
   ],
-  "VersionMajor" : 53,
+  "VersionMajor" : 56,
   "VersionMicro" : 0,
   "VersionMinor" : 0
 }

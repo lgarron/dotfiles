@@ -241,6 +241,8 @@
       wat --completions fish | source # TOO: install using Homebrew
     end
 
+    abbr_anyarg hevc q "--quality"
+
 ## Homebrew
 
     abbr -a w "brew"

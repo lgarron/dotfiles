@@ -16,6 +16,7 @@
     abbr -a ml "make lint"
     abbr -a mf "make format"
     abbr -a ms "make setup"
+    abbr -a mi "make install"
 
     # Chords
     abbr -a mcb "make clean build"
@@ -38,6 +39,7 @@
         abbr_anyarg $make_command l  lint
         abbr_anyarg $make_command f  format
         abbr_anyarg $make_command s  setup
+        abbr_anyarg $make_command i  install
 
         # Chords
         abbr_anyarg $make_command cb "clean build"

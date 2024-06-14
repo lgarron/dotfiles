@@ -392,6 +392,8 @@ git push --force-with-lease"
 
     abbr -a "tp" "tagpush"
     abbr_anyarg tagpush r "--retag"
+    abbr -a rmb "rmbranch"
+    abbr -a rmt "rmtag"
 
 ## Functions
 

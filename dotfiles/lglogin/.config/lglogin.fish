@@ -61,6 +61,10 @@
     rm -rf $HOME/.wasmer
     rm -rf $HOME/go
 
+    # chruby
+    rm -rf $HOME/.rubies
+    rm -rf $HOME/src
+
     # Flutter
     rm -rf $HOME/.dart
     rm -rf $HOME/.dart-tool

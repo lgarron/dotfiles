@@ -18,6 +18,22 @@
                 },
                 "rules": [
                     {
+                        "description": "change F1 to END",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "f1"
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "end"
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Take shadowless window screenshot and reveal (F12)",
                         "manipulators": [
                             {

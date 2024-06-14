@@ -242,7 +242,7 @@ git push --force-with-lease"
     abbr -a gp   "git push"
     abbr -a gph  "git push -u origin HEAD" # "git push branch" to a remote that doesn't know about the branch yet.
     abbr -a gbak "git push -f --all bak"
-    abbr -a gpfl "git push --force-with-lease"
+    abbr -a gpfl "git push --force-with-lease # 🗻"
     # Legacy
     abbr -a gpo  "git push origin"
     abbr -a gpot "# Try: gp o t"

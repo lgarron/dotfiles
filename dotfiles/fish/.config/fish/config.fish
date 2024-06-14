@@ -250,6 +250,7 @@
     abbr -a win "brew info"
     abbr -a wih "brew install --HEAD"
     abbr -a wr "brew reinstall"
+    abbr -a wu "# try: `wun` (brew uninstall) or `wup` (brew upgrade)"
     abbr -a wun "brew uninstall"
     abbr -a wup "brew upgrade"
     abbr -a ws "brew search"
@@ -257,6 +258,7 @@
     abbr_subcommand brew in info
     abbr_subcommand_arg brew h --HEAD install
     abbr_subcommand brew r reinstall
+    abbr_subcommand brew u "# try: `w un` (brew uninstall) or `w up` (brew upgrade)"
     abbr_subcommand brew un uninstall
     abbr_subcommand brew up upgrade
     abbr_subcommand brew s search

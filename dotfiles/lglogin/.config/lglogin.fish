@@ -77,6 +77,10 @@
     # Commented out to avoid a Touch ID prompt.
     # sudo sysctl debug.lowpri_throttle_enabled=0
 
+# niceplz
+
+    /opt/homebrew/bin/niceplz-sudo
+
 # Allows us to check when the script was last run.
 
     launchctl setenv LAST_LGLOGIN_FISH (date)

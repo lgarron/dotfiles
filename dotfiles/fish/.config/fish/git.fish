@@ -267,6 +267,14 @@ git push --force-with-lease"
 
     # git rebase i⎵ → git rebase --interactive
     abbr_subcommand_arg git i "--interactive" rebase
+    abbr_subcommand_arg git 2 "--interactive HEAD~2" rebase
+    abbr_subcommand_arg git 3 "--interactive HEAD~3" rebase
+    abbr_subcommand_arg git 4 "--interactive HEAD~4" rebase
+    abbr_subcommand_arg git 5 "--interactive HEAD~5" rebase
+    abbr_subcommand_arg git 6 "--interactive HEAD~6" rebase
+    abbr_subcommand_arg git 7 "--interactive HEAD~7" rebase
+    abbr_subcommand_arg git 8 "--interactive HEAD~8" rebase
+    abbr_subcommand_arg git 9 "--interactive HEAD~9" rebase
 
 ### git remote
 

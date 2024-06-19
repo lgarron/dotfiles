@@ -29,6 +29,12 @@
     "body": "window.addEventListener(\"DOMContentLoaded\", $1() => {\n  $0\n});",
     "description": "Listener for DOMContentLoaded"
   },
+  "IIFE": {
+    "scope": "javascript,typescript",
+    "prefix": "iife",
+    "body": "(() => { ${0:$TM_SELECTED_TEXT} })()",
+    "description": "Immediately invoked function expression (IIFE)"
+  },
   "Async IIFE": {
     "scope": "javascript,typescript",
     "prefix": "aiife",

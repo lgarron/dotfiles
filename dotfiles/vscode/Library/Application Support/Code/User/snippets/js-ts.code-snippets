@@ -71,19 +71,19 @@
     "description": "Test if a value is defined."
   },
   "node shebang": {
-		"prefix": "#!",
-		"body": [
-			"#!/usr/bin/env node"
-		],
-		"description": "node shebang"
-	},
+    "prefix": "#!",
+    "body": [
+      "#!/usr/bin/env node"
+    ],
+    "description": "node shebang"
+  },
   "bun shebang": {
-		"prefix": "#!",
-		"body": [
-			"#!/usr/bin/env bun"
-		],
-		"description": "bun shebang"
-	},
+    "prefix": "#!",
+    "body": [
+      "#!/usr/bin/env bun"
+    ],
+    "description": "bun shebang"
+  },
   "Promise type": {
     "scope": "typescript",
     "prefix": "P",

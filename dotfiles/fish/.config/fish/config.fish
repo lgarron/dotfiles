@@ -236,6 +236,8 @@
 
     abbr_anyarg ssh pt Pythagoras.tlb
     abbr_anyarg ssh pw Pythagoras-ts.wyvern-climb.ts.net
+
+    abbr -a "sp" "sshping -H"
     abbr_anyarg sshping pt Pythagoras.tlb
     abbr_anyarg sshping pw Pythagoras-ts.wyvern-climb.ts.net
 

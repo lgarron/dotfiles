@@ -22,10 +22,10 @@ EnableFallback 1
 DeviceID 26640
 
 ;Render width in pixels.
-RenderWidth 5120
+RenderWidth 3456
 
 ;Render height in pixels.
-RenderHeight 2880
+RenderHeight 2160
 
 ;0 : windowed, 1 : fullscreen, 2 : windowed with no title bar
 FullScreen 1

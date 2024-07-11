@@ -276,5 +276,6 @@
     "workbench.settings.applyToAllProfiles"
   ],
   "window.openFilesInNewWindow": "default",
+  "scm.experimental.showHistoryGraph": true,
   /****************/
 }

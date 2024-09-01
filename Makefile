@@ -13,7 +13,6 @@ mac-common: \
 	karabiner \
 	lglogin \
 	minecraft \
-	minecraft-mods \
 	niceplz \
 	quicksilver \
 	sd-card-backup \
@@ -53,7 +52,6 @@ $(PACKAGES):
 PACKAGES_FOLDING  =
 PACKAGES_FOLDING += compressor
 PACKAGES_FOLDING += karabiner
-PACKAGES_FOLDING += minecraft-mods
 PACKAGES_FOLDING += quicksilver
 
 .PHONY: $(PACKAGES_FOLDING)

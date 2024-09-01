@@ -224,5 +224,10 @@
     "key": "cmd+w",
     "command": "-workbench.action.closeWindow",
     "when": "!editorIsOpen && !multipleEditorGroups"
+  },
+  {
+    "key": "ctrl+shift+s",
+    "command": "editor.action.surroundWithSnippet",
+    "when": "editorHasSelection && !editorReadonly"
   }
 ]

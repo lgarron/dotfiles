@@ -47,6 +47,12 @@
     "body": "await new Promise((resolve) => setTimeout(resolve, ${0:1000}));",
     "description": "Sleep inside an async function"
   },
+  "console.log": {
+    "scope": "javascript,typescript",
+    "prefix": "cl",
+    "body": "console.log(${0:$TM_SELECTED_TEXT});",
+    "description": "Log to the console"
+  },
   "debug log": {
     "scope": "javascript,typescript",
     "prefix": "dl",

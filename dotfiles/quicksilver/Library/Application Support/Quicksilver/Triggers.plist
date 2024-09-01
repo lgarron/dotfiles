@@ -121,7 +121,7 @@
 			<key>command</key>
 			<dict>
 				<key>actionID</key>
-				<string>[Action]:/Users/lgarron/Library/Application Support/Quicksilver/Actions/Open in Editor.scpt</string>
+				<string>[Action]:/Users/lgarron/Library/Application Support/Quicksilver/Actions/Open in editor.scpt</string>
 				<key>directID</key>
 				<string>com.blacktree.Quicksilver</string>
 				<key>indirectID</key>
@@ -165,28 +165,11 @@
 			<key>command</key>
 			<dict>
 				<key>actionID</key>
-				<string>[Action]:/Users/lgarron/Library/Application Support/Quicksilver/Actions/Open Folder in Terminal.scpt</string>
+				<string>[Action]:/Users/lgarron/Library/Application Support/Quicksilver/Actions/Open folder in terminal app.scpt</string>
 				<key>directID</key>
 				<string>QSGlobalSelectionProxy</string>
-				<key>indirectArchive</key>
-				<dict>
-					<key>class</key>
-					<string>QSObject</string>
-					<key>data</key>
-					<dict>
-						<key>public.utf8-plain-text</key>
-						<string>/Users/lgarron/Downloads/danselibre/export-187.jpg</string>
-					</dict>
-					<key>properties</key>
-					<dict>
-						<key>QSObjectName</key>
-						<string>/Users/lgarron/Downloads/danselibre/export-187.jpg</string>
-						<key>QSObjectType</key>
-						<string>public.utf8-plain-text</string>
-					</dict>
-				</dict>
 				<key>indirectID</key>
-				<string>/Users/lgarron/Downloads/danselibre/export-187.jpg</string>
+				<string>/Users/lgarron/Library/CoreFollowUp</string>
 			</dict>
 			<key>enabled</key>
 			<true/>
@@ -250,7 +233,7 @@
 			<key>command</key>
 			<dict>
 				<key>actionID</key>
-				<string>[Action]:/Users/lgarron/Library/Application Support/Quicksilver/Actions/Open Folder in Terminal.scpt</string>
+				<string>[Action]:/Users/lgarron/Library/Application Support/Quicksilver/Actions/Open folder in terminal app.scpt</string>
 				<key>directID</key>
 				<string>com.blacktree.Quicksilver</string>
 			</dict>
@@ -532,7 +515,7 @@
 			<key>command</key>
 			<dict>
 				<key>actionID</key>
-				<string>[Action]:/Users/lgarron/Library/Application Support/Quicksilver/Actions/Reveal SD Card Backup Target (DCIM).scpt</string>
+				<string>[Action]:/Users/lgarron/Library/Application Support/Quicksilver/Actions/Reveal SD card backup target (DCIM).scpt</string>
 				<key>directID</key>
 				<string>QSGlobalSelectionProxy</string>
 			</dict>
@@ -748,11 +731,32 @@
 			<key>command</key>
 			<dict>
 				<key>actionID</key>
-				<string>[Action]:/Users/lgarron/Library/Application Support/Quicksilver/Actions/Copy Path to Clipboard.scpt</string>
+				<string>[Action]:/Users/lgarron/Library/Application Support/Quicksilver/Actions/Copy file path to clipboard.scpt</string>
 				<key>directID</key>
 				<string>QSGlobalSelectionProxy</string>
-				<key>indirectID</key>
-				<string>/Users/lgarron/Code/private/dotfiles-private/Devices</string>
+				<key>indirectArchive</key>
+				<dict>
+					<key>class</key>
+					<string>QSObject</string>
+					<key>data</key>
+					<dict>
+						<key>public.utf8-plain-text</key>
+						<string>public.zip-archive</string>
+						<key>qs.filecompressortype</key>
+						<string>public.zip-archive</string>
+					</dict>
+					<key>properties</key>
+					<dict>
+						<key>QSObjectDetails</key>
+						<string>Zip archive</string>
+						<key>QSObjectIconName</key>
+						<string>com.apple.archiveutility</string>
+						<key>QSObjectName</key>
+						<string>zip</string>
+						<key>QSObjectType</key>
+						<string>qs.filecompressortype</string>
+					</dict>
+				</dict>
 			</dict>
 			<key>enabled</key>
 			<true/>
@@ -783,11 +787,11 @@
 			<key>command</key>
 			<dict>
 				<key>actionID</key>
-				<string>[Action]:/Users/lgarron/Library/Application Support/Quicksilver/Actions/Open in Editor.scpt</string>
+				<string>[Action]:/Users/lgarron/Library/Application Support/Quicksilver/Actions/Open in editor.scpt</string>
 				<key>directID</key>
 				<string>QSGlobalSelectionProxy</string>
 				<key>indirectID</key>
-				<string>/Applications/Visual Studio Code.app</string>
+				<string>/Users/lgarron/Library/CoreFollowUp</string>
 			</dict>
 			<key>enabled</key>
 			<true/>

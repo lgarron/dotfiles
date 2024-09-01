@@ -34,7 +34,6 @@ linux: fish xdg-basedir-workarounds
 ########
 
 PACKAGES  =
-PACKAGES += civilization
 PACKAGES += git
 PACKAGES += hushlogin
 PACKAGES += lglogin

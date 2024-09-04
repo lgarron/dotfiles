@@ -830,6 +830,35 @@
 		</dict>
 		<dict>
 			<key>ID</key>
+			<string>61024620-CF06-47A9-92C6-75C94D4879D0</string>
+			<key>applicationScope</key>
+			<array>
+				<string>QuickTimer Player</string>
+			</array>
+			<key>applicationScopeType</key>
+			<integer>1</integer>
+			<key>character</key>
+			<string></string>
+			<key>command</key>
+			<dict>
+				<key>actionID</key>
+				<string>AppleScriptRunAction</string>
+				<key>directID</key>
+				<string>/Users/lgarron/Code/git/github.com/lgarron/dotfiles/Quicksilver Triggers/Audio/Fast-forward QuickTime 15 seconds.applescript</string>
+			</dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyCode</key>
+			<integer>124</integer>
+			<key>modifiers</key>
+			<integer>10486016</integer>
+			<key>onPress</key>
+			<true/>
+			<key>type</key>
+			<string>QSHotKeyTrigger</string>
+		</dict>
+		<dict>
+			<key>ID</key>
 			<string>QSiTunesSearchTracks</string>
 			<key>character</key>
 			<string> </string>
@@ -845,6 +874,35 @@
 			<true/>
 			<key>set</key>
 			<string>iTunes</string>
+			<key>type</key>
+			<string>QSHotKeyTrigger</string>
+		</dict>
+		<dict>
+			<key>ID</key>
+			<string>707DD4D9-E33A-44E9-A8AF-28E2CBAC903A</string>
+			<key>applicationScope</key>
+			<array>
+				<string>QuickTimer Player</string>
+			</array>
+			<key>applicationScopeType</key>
+			<integer>1</integer>
+			<key>character</key>
+			<string></string>
+			<key>command</key>
+			<dict>
+				<key>actionID</key>
+				<string>AppleScriptRunAction</string>
+				<key>directID</key>
+				<string>/Users/lgarron/Code/git/github.com/lgarron/dotfiles/Quicksilver Triggers/Audio/Rewind QuickTime 5 seconds.applescript</string>
+			</dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyCode</key>
+			<integer>123</integer>
+			<key>modifiers</key>
+			<integer>10748161</integer>
+			<key>onPress</key>
+			<true/>
 			<key>type</key>
 			<string>QSHotKeyTrigger</string>
 		</dict>
@@ -934,6 +992,35 @@
 		</dict>
 		<dict>
 			<key>ID</key>
+			<string>22D81318-4CE6-4E85-B5B1-88FC1B99F269</string>
+			<key>applicationScope</key>
+			<array>
+				<string>QuickTimer Player</string>
+			</array>
+			<key>applicationScopeType</key>
+			<integer>1</integer>
+			<key>character</key>
+			<string></string>
+			<key>command</key>
+			<dict>
+				<key>actionID</key>
+				<string>AppleScriptRunAction</string>
+				<key>directID</key>
+				<string>/Users/lgarron/Code/git/github.com/lgarron/dotfiles/Quicksilver Triggers/Audio/Rewind QuickTime 15 seconds.applescript</string>
+			</dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyCode</key>
+			<integer>123</integer>
+			<key>modifiers</key>
+			<integer>10486016</integer>
+			<key>onPress</key>
+			<true/>
+			<key>type</key>
+			<string>QSHotKeyTrigger</string>
+		</dict>
+		<dict>
+			<key>ID</key>
 			<string>QSiTunesShowTrackNotification</string>
 			<key>enabled</key>
 			<true/>
@@ -972,6 +1059,35 @@
 			<true/>
 			<key>set</key>
 			<string>Quicksilver</string>
+			<key>type</key>
+			<string>QSHotKeyTrigger</string>
+		</dict>
+		<dict>
+			<key>ID</key>
+			<string>3713EDC7-86FF-4679-8BF6-D26CD452D518</string>
+			<key>applicationScope</key>
+			<array>
+				<string>QuickTimer Player</string>
+			</array>
+			<key>applicationScopeType</key>
+			<integer>1</integer>
+			<key>character</key>
+			<string></string>
+			<key>command</key>
+			<dict>
+				<key>actionID</key>
+				<string>AppleScriptRunAction</string>
+				<key>directID</key>
+				<string>/Users/lgarron/Code/git/github.com/lgarron/dotfiles/Quicksilver Triggers/Audio/Fast-forward QuickTime 5 seconds.applescript</string>
+			</dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyCode</key>
+			<integer>124</integer>
+			<key>modifiers</key>
+			<integer>10617090</integer>
+			<key>onPress</key>
+			<true/>
 			<key>type</key>
 			<string>QSHotKeyTrigger</string>
 		</dict>

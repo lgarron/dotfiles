@@ -230,6 +230,7 @@
       end
       cd $INPUT_PATH
     end
+    abbr -a "cdd" "cd-dir"
 
     abbr -a _hh_abbr --regex "hh" --position anywhere -- "--help"
     abbr -a ccv --set-cursor "code (command -v %)"

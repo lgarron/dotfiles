@@ -36,6 +36,7 @@
 
 # The Naughty List
 
+    rm -rf $HOME/.angular-config.json
     rm -rf $HOME/.biome
     rm -rf $HOME/.bundle # Ruby Gems
     rm -rf $HOME/.cargo

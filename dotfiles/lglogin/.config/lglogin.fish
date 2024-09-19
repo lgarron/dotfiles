@@ -1,5 +1,7 @@
 #!/usr/bin/env -S fish --no-config
 
+    echo "Start: "(date) > ~/.config/lglogin.fish.lastrun.txt
+
 # Caps Lock (0x39) -> Delete Key (0x2A)
 
     # https://developer.apple.com/library/content/technotes/tn2450/_index.html
@@ -85,4 +87,4 @@
 # Allows us to check when the script was last run.
 
     launchctl setenv LAST_LGLOGIN_FISH (date)
-    date > ~/.config/lglogin.fish.lastrun.txt
+    echo "End: "(date) >> ~/.config/lglogin.fish.lastrun.txt

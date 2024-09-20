@@ -15,6 +15,8 @@
 	user = lgarron
 [diff "plist"]
 	textconv = plutil -convert xml1 -o -
+[diff "lockb"]
+	textconv = bun
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f

@@ -269,6 +269,10 @@
     abbr_subcommand brew up upgrade
     abbr_subcommand brew s search
 
+    # Expand `lgarron/lgarron` tap args.
+    function abbr_brew_l_fn; _abbr_expand_anyarg brew l "--HEAD lgarron/lgarron/%" commit; end; abbr -a abbr_brew_l --regex l --position anywhere --function abbr_brew_l_fn --set-cursor
+    function abbr_brew_ll_fn; _abbr_expand_anyarg brew ll "lgarron/lgarron/%" commit; end; abbr -a abbr_brew_ll --regex ll --position anywhere --function abbr_brew_ll_fn --set-cursor
+
 ## Keyboard
 
     # https://developer.apple.com/library/content/technotes/tn2450/_index.html

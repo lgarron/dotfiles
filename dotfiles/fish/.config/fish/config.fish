@@ -235,6 +235,8 @@
     abbr -a _hh_abbr --regex "hh" --position anywhere -- "--help"
     abbr -a ccv --set-cursor "code (command -v %)"
 
+    abbr -a s "ssh"
+
     abbr_anyarg ssh pt Pythagoras.tlb
     abbr_anyarg ssh pw Pythagoras-ts.wyvern-climb.ts.net
 

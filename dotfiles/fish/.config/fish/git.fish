@@ -72,7 +72,7 @@
     #  b⎵ → (expansion of current branch name)
     # b1⎵ → (expansion of last branch name)
     # b3⎵ → (expansion of three branch names ago)
-    function abbr_git_branchhist_fn; \
+    function abbr_git_branchhist_fn
         set ref "@"
         if [ "$argv[1]" != "b" ]
             set ref $ref"{-"(string trim --left --chars=b $argv[1])"}"
@@ -85,7 +85,7 @@
     #   h⎵ → HEAD
     #  h1⎵ → HEAD~1
     # h12⎵ → HEAD~12
-    function abbr_git_HEAD_fn; \
+    function abbr_git_HEAD_fn
         set str "HEAD"
         if [ "$argv[1]" != "h" ]
             set str $str"~"(string trim --left --chars=h $argv[1])
@@ -97,7 +97,7 @@
     #   m⎵ → main
     #  m1⎵ → main~1
     # m12⎵ → main~12
-    function abbr_git_mainhist_fn; \
+    function abbr_git_mainhist_fn
         set str "main"
         if [ "$argv[1]" != "m" ]
             set str $str"~"(string trim --left --chars=m $argv[1])

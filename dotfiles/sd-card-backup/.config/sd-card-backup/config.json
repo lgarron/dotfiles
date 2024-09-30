@@ -49,6 +49,8 @@
 		{ "source": "PRIVATE/AUDIO", "destination": "AUDIO" },
 		{ "source": "STEREO", "destination": "STEREO" },
 		{ "source": "CONTENTS", "destination": "CONTENTS" },
-		{ "source": "CRM", "destination": "CRM" }
+		{ "source": "CRM", "destination": "CRM" },
+		{ "source": "ipcam", "destination": "ipcam" },
+		{ "source": "timelapse", "destination": "timelapse" }
 	]
 }

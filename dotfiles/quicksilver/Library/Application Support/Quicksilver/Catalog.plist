@@ -826,6 +826,27 @@
 					<key>source</key>
 					<string>QSFileSystemObjectSource</string>
 				</dict>
+				<dict>
+					<key>ID</key>
+					<string>00817220-1F9C-4AE2-8477-B432F516BA02</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>name</key>
+					<string>Projects</string>
+					<key>settings</key>
+					<dict>
+						<key>folderDepth</key>
+						<integer>1</integer>
+						<key>parser</key>
+						<string>QSDirectoryParser</string>
+						<key>path</key>
+						<string>~/Dropbox (Maestral)/Projects</string>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
 			</array>
 			<key>enabled</key>
 			<true/>

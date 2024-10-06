@@ -71,6 +71,7 @@ mac-keyboard-shortcuts:
 	${MAC_ADD_SHORTCUT} "com.apple.FinalCut"        "Color & Effects — big video" "^⇧⌘2"
 	# Misc
 	${MAC_ADD_SHORTCUT} "com.apple.Music"           "as Songs"                 "⌘2"
+	${MAC_ADD_SHORTCUT} "com.bambulab.bambu-studio" "Redo"                     "⇧⌘Z"
 
 .PHONY: mac-file-defaults
 mac-file-defaults:

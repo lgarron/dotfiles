@@ -161,6 +161,19 @@
     abbr -a "sm" "script/manage"
     abbr -a "disk-speed-test" '"/Applications/Blackmagic Disk Speed Test.app/Contents/MacOS/DiskSpeedTest" --cmd --dir'
 
+    # TODO: move this to a script.
+    functions -e scad
+    function scad
+        set TARGET_PATH $argv[1]".stl"
+        if test -f $TARGET_PATH
+            echo "Target file exists. If you want to replace it, delete it first." >&2
+            return 1
+        end
+        openscad -o $TARGET_PATH $argv[1]
+        read -p "echo \"Press enter to reveal…\""
+        open -R $TARGET_PATH
+    end
+
     abbr -a serve "open http://localhost:8000; caddy file-server --listen :8000 --browse --root ."
 
     # Workaround for VS Code not using `dev.containers.defaultExtensionsIfInstalledLocally` for codespaces created outside its (interactive ⇒ very slow) UI.

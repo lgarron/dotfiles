@@ -15,6 +15,27 @@
         function _echo; end
     end
 
+# fish 4.0 experimentation for token nav
+
+    if [ "$EXPERIMENTAL_FISH_LAUNCHED" != "true"  ]
+      set -x EXPERIMENTAL_FISH_LAUNCHED true
+      if test -f /usr/local/bin/fish
+        echo "🧪🐟 Launching experimental fish…"
+        /usr/local/bin/fish
+      end
+      exit 0
+    end
+
+    bind alt-left backward-token
+    bind alt-right forward-token
+    bind alt-delete backward-kill-token
+    bind alt-= kill-token
+
+    bind ctrl-left backward-word
+    bind ctrl-right forward-word
+    bind ctrl-h backward-kill-word # ctrl-backspace registers as ctrl-h
+    bind ctrl-= kill-word
+
 # Paths
 
     function add_to_path

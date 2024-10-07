@@ -22,9 +22,12 @@
       if test -f /usr/local/bin/fish
         echo "🧪🐟 Launching experimental fish…"
         /usr/local/bin/fish
+        echo "Press Ctrl-D again to exit, or continue to stay in in 3.7.1"
       end
-      exit 0
+    else
+      echo "🧪🐟 version: "$FISH_VERSION
     end
+
 
     bind alt-left backward-token
     bind alt-right forward-token

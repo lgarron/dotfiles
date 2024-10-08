@@ -28,14 +28,16 @@ function fish_prompt --description 'Write out the prompt'
     set TIME_PREFIX ""
     if [ $CMD_DURATION -ne 0 ]
         set_color purple
-        set TIME_PREFIX $prompt_status "⏱️ " (math $CMD_DURATION / 1000)s"
-"
+        set TIME_PREFIX $prompt_status "⏱️ " (math $CMD_DURATION / 1000)s
     end
 
     set EXPERIMENTAL_PREFIX ""
     if string match -e "$EXPERIMENTAL_FISH_LAUNCHED" "true" > /dev/null
-        set EXPERIMENTAL_PREFIX "🧪🐟 "
+        set EXPERIMENTAL_PREFIX "🐟🧪 "
     end
+    set PREFIX $TIME_PREFIX $normal "
+📂" (set_color $color_cwd) (pwd) "
+"
 
-    echo -n -s $TIME_PREFIX $normal $EXPERIMENTAL_PREFIX (set_color $fish_color_user) "$USER" $normal @ (set_color $color_host) (prompt_hostname) $normal ' ' (set_color $color_cwd) (prompt_pwd) $normal (fish_vcs_prompt) $normal $suffix " "
+    echo -n -s $PREFIX $normal $EXPERIMENTAL_PREFIX (set_color $fish_color_user) "$USER" $normal @ (set_color $color_host) (prompt_hostname) $normal (fish_vcs_prompt) $normal $suffix " "
 end

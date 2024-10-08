@@ -22,6 +22,7 @@
       if test -f /usr/local/bin/fish
         echo "🧪🐟 Launching experimental fish…"
         /usr/local/bin/fish
+        set EXPERIMENTAL_FISH_LAUNCHED false
         echo "Press Ctrl-D again to exit, or continue to stay in in 3.7.1"
       end
     else

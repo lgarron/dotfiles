@@ -261,13 +261,12 @@
     abbr -a ccv --set-cursor "code (command -v %)"
 
     abbr -a s "ssh"
-
-    abbr_anyarg ssh pt Pythagoras.tlb
-    abbr_anyarg ssh pw Pythagoras-ts.wyvern-climb.ts.net
-
     abbr -a "sp" "sshping -H"
-    abbr_anyarg sshping pt Pythagoras.tlb
-    abbr_anyarg sshping pw Pythagoras-ts.wyvern-climb.ts.net
+    for ssh_like_command in ssh mosh sshping
+      # TODO: share abbreviation functions between these?
+      abbr_anyarg $ssh_like_command pt Pythagoras.tlb
+      abbr_anyarg $ssh_like_command pw Pythagoras-ts.wyvern-climb.ts.net
+    end
 
     if command -v wat > /dev/null
       wat --completions fish | source # TOO: install using Homebrew

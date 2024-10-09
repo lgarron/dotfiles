@@ -72,7 +72,7 @@ function fish_prompt --description 'Write out the prompt'
             _echo_padded \
                 "╰─── $PREVIOUS_COMMAND_TIME " \
                 (set_color F19E4C)
-            # echo ""
+            echo ""
         end
 
         set -l PREFIX (set_color F19E4C)"╭─── "

@@ -37,11 +37,6 @@ function fish_prompt --description 'Write out the prompt'
         end
     # end
 
-    set EXPERIMENTAL_PREFIX ""
-    if string match -e "$EXPERIMENTAL_FISH_LAUNCHED" "true" > /dev/null
-        set EXPERIMENTAL_PREFIX "🐟🧪 "
-    end
-
     set MAIN_PROMPT_PWD ""
     if string match -e -- $_FISH_PROMPT_THEME "html" > /dev/null
         if string match -e -- "$_FISH_PROMPT_AFTER_FIRST_RUN" true > /dev/null
@@ -51,7 +46,11 @@ function fish_prompt --description 'Write out the prompt'
         echo -n $normal
         echo -n -e "\r"(set_color blue)
         echo -n "<command path=\""
-        echo (set_color $color_cwd)(pwd)(set_color blue)"\">"
+        echo -n (set_color $color_cwd)(pwd)(set_color blue)"\""
+        if string match -e "$EXPERIMENTAL_FISH_LAUNCHED" "true" > /dev/null
+            echo -n " experimental-fish"
+        end
+        echo ">"
     else
         # LCARS
         set PREVIOUS_COMMAND_SUMMARY_LENGTH (string length --visible $PREVIOUS_COMMAND_SUMMARY)
@@ -61,13 +60,17 @@ function fish_prompt --description 'Write out the prompt'
             echo -e "\r"
         end
 
-        set DASHES (string repeat -n (math $COLUMNS - 1) "─")
-        echo -n (set_color green)"╭"$DASHES
+        if string match -e "$EXPERIMENTAL_FISH_LAUNCHED" "true" > /dev/null
+            set EXPERIMENTAL_INFIX " 🐠🧪 "
+        end
+        set EXPERIMENTAL_INFIX_LENGTH (string length --visible $EXPERIMENTAL_INFIX)
+        set DASHES (string repeat -n (math $COLUMNS - $EXPERIMENTAL_INFIX_LENGTH - 3) "─")
+        echo -n (set_color green)"╭──"$EXPERIMENTAL_INFIX$DASHES
         echo -e "\r"
         set MAIN_PROMPT_PWD " "(set_color $color_cwd)(prompt_pwd)
     end
 
     set _FISH_PROMPT_AFTER_FIRST_RUN true
 
-    echo -n -s $PREFIX $normal $EXPERIMENTAL_PREFIX (set_color $fish_color_user) "$USER" $normal @ (set_color $color_host) (prompt_hostname)$MAIN_PROMPT_PWD $normal (fish_vcs_prompt) $normal $suffix " "
+    echo -n -s $PREFIX $normal (set_color $fish_color_user) "$USER" $normal @ (set_color $color_host) (prompt_hostname)$MAIN_PROMPT_PWD $normal (fish_vcs_prompt) $normal $suffix " "
 end

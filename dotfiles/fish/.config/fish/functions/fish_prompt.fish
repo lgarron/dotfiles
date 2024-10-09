@@ -5,8 +5,12 @@ set _FISH_PROMPT_THEME $THEMES[(random 1 2)]
 
 set __fish_git_prompt_show_informative_status 1
 
+set _FISH_LCARS_ORANGE F19E4C
+
 # TODO: is this cheap enough to do in the hot code?
 if string match --entire -- $_FISH_PROMPT_THEME "LCARS" > /dev/null
+    set ___fish_git_prompt_color_branch (set_color --reverse $_FISH_LCARS_ORANGE)" "
+    set ___fish_git_prompt_color_branch_done " "(set_color normal; set_color $_FISH_LCARS_ORANGE)
     set ___fish_git_prompt_char_stateseparator " | "
 end
 
@@ -76,27 +80,27 @@ function fish_prompt --description 'Write out the prompt'
             end
             _echo_padded \
                 "╰─── $PREVIOUS_COMMAND_TIME " \
-                (set_color F19E4C)
+                (set_color $_FISH_LCARS_ORANGE)
             echo ""
         end
 
-        set -l PREFIX (set_color F19E4C)"╭─── "
+        set -l PREFIX (set_color $_FISH_LCARS_ORANGE)"╭─── "
         if string match -e "$EXPERIMENTAL_FISH_LAUNCHED" "true" > /dev/null
             set -l PREFIX "🐠🧪 "
         end
         set -l PREFIX $PREFIX(pwd)" "
         _echo_padded \
             $PREFIX \
-            (set_color F19E4C)
+            (set_color $_FISH_LCARS_ORANGE)
 
         set FISH_VCS_PROMPT (fish_vcs_prompt "%s")
         if not string match -e "$FISH_VCS_PROMPT" "" > /dev/null
-            set -l PREFIX (set_color F19E4C)"├─ "$FISH_VCS_PROMPT" "
+            set -l PREFIX (set_color $_FISH_LCARS_ORANGE)"├─ "$FISH_VCS_PROMPT" "
             echo $PREFIX
         end
         echo -n "├─ "
         set suffix $suffix"
-" (set_color F19E4C) "│"
+" (set_color $_FISH_LCARS_ORANGE) "│"
     end
 
     set _FISH_PROMPT_AFTER_FIRST_RUN true

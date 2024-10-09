@@ -48,6 +48,7 @@ function fish_prompt --description 'Write out the prompt'
 
     set -l _VCS ""
     if string match -e -- $_FISH_PROMPT_THEME "html" > /dev/null
+        # html
         if string match -e -- "$_FISH_PROMPT_AFTER_FIRST_RUN" true > /dev/null
             echo -n (set_color blue)"</command>"(set_color purple)" <!-- $prompt_status"(set_color purple)$PREVIOUS_COMMAND_TIME" -->"
         end
@@ -61,11 +62,16 @@ function fish_prompt --description 'Write out the prompt'
         set _VCS (fish_vcs_prompt)
     else
         # LCARS
-        _echo_padded \
-            (set_color B594E2)"╰─── $prompt_status"(set_color B594E2)$PREVIOUS_COMMAND_TIME" " \
-            (set_color F19E4C)
+        if string match -e -- "$_FISH_PROMPT_AFTER_FIRST_RUN" true > /dev/null
+            if not string match -e -- "$prompt_status" " " > /dev/null
+                echo (set_color B594E2)"├─ $prompt_status"(set_color B594E2)
+            end
+            _echo_padded \
+                (set_color B594E2)"╰─── $PREVIOUS_COMMAND_TIME " \
+                (set_color F19E4C)
+        end
 
-        set -l PREFIX "╭─── "
+        set -l PREFIX (set_color F19E4C)"╭─── "
         if string match -e "$EXPERIMENTAL_FISH_LAUNCHED" "true" > /dev/null
             set -l PREFIX "🐠🧪 "
         end

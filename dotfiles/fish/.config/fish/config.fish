@@ -35,15 +35,17 @@
 
 
     bind alt-left backward-token
+    bind alt-b backward-token # VS Code????
     bind alt-right forward-token
+    bind alt-f forward-token # VS Code????
     bind alt-backspace backward-kill-token
     bind \cW backward-kill-token # VS Code????
-    bind alt-= kill-token
+    bind alt-\\ kill-token
 
     bind ctrl-left backward-word
     bind ctrl-right forward-word
     bind ctrl-h backward-kill-word # ctrl-backspace registers as ctrl-h
-    bind ctrl-= kill-word
+    bind ctrl-\\ kill-word
 
 # Paths
 

@@ -3,8 +3,11 @@
 
 set __fish_git_prompt_show_informative_status 1
 
-set _FISH_LCARS_ORANGE F19E4C
-set _FISH_LCARS_LAVENDER B594E2
+# TODO: these should be local, but VS Code's `fish` integration makes some bad
+# assumptions that break scope for variables declared here and used in
+# `fish_prompt` below.
+set -g _FISH_LCARS_ORANGE F19E4C
+set -g _FISH_LCARS_LAVENDER B594E2
 
 set -g ___fish_git_prompt_color_branch (set_color --reverse $_FISH_LCARS_ORANGE)" "
 set -g ___fish_git_prompt_color_branch_done " "(set_color normal; set_color $_FISH_LCARS_ORANGE)

@@ -55,14 +55,14 @@ function fish_prompt --description 'Write out the prompt'
     else
         # tron
         set PREVIOUS_COMMAND_SUMMARY_LENGTH (string length --visible $PREVIOUS_COMMAND_SUMMARY)
-        set DASHES (string repeat -n (math $COLUMNS - $PREVIOUS_COMMAND_SUMMARY_LENGTH - 4) "─")
+        set DASHES (string repeat -n (math $COLUMNS - $PREVIOUS_COMMAND_SUMMARY_LENGTH - 5) "━")
         if string match -e -- "$_FISH_PROMPT_AFTER_FIRST_RUN" true > /dev/null
-            echo -n (set_color purple)"└─ "$PREVIOUS_COMMAND_SUMMARY" "$DASHES
+            echo -n (set_color purple)"┕━━ "$PREVIOUS_COMMAND_SUMMARY" "$DASHES
             echo -e "\r"
         end
 
-        set DASHES (string repeat -n (math $COLUMNS - 1) "─")
-        echo -n (set_color green)"┌"$DASHES
+        set DASHES (string repeat -n (math $COLUMNS - 1) "━")
+        echo -n (set_color green)"┍"$DASHES
         echo -e "\r"
         set MAIN_PROMPT_PWD " "(set_color $color_cwd)(prompt_pwd)
     end

@@ -42,12 +42,12 @@ function fish_prompt --description 'Write out the prompt'
     end
 
     # Write pipestatus
-    set -l prompt_status (__fish_print_pipestatus "[" "] " "|" (set_color $fish_color_status) (set_color --bold $fish_color_status) $last_pipestatus)
-
     set -l PREVIOUS_COMMAND_TIME "⏱️ "(math $CMD_DURATION / 1000)s
 
     set -l _VCS ""
     if string match -e -- $_FISH_PROMPT_THEME "html" > /dev/null
+        set -l prompt_status (__fish_print_pipestatus "[" "] " "|" (set_color $fish_color_status) (set_color --bold $fish_color_status) $last_pipestatus)
+
         # html
         if string match -e -- "$_FISH_PROMPT_AFTER_FIRST_RUN" true > /dev/null
             echo -n (set_color blue)"</command>"(set_color purple)" <!-- $prompt_status"(set_color purple)$PREVIOUS_COMMAND_TIME" -->"
@@ -63,12 +63,16 @@ function fish_prompt --description 'Write out the prompt'
     else
         # LCARS
         if string match -e -- "$_FISH_PROMPT_AFTER_FIRST_RUN" true > /dev/null
+            set_color B594E2
+            # echo (set_color B594E2)"│"
+            set -l prompt_status (__fish_print_pipestatus "[" "] " "|" (set_color B594E2) (set_color --bold B594E2) $last_pipestatus)
             if not string match -e -- "$prompt_status" " " > /dev/null
-                echo (set_color B594E2)"├─ $prompt_status"(set_color B594E2)
+                echo "├─ $prompt_status"(set_color B594E2)"command status"
             end
             _echo_padded \
-                (set_color B594E2)"╰─── $PREVIOUS_COMMAND_TIME " \
+                "╰─── $PREVIOUS_COMMAND_TIME " \
                 (set_color F19E4C)
+            # echo ""
         end
 
         set -l PREFIX (set_color F19E4C)"╭─── "
@@ -86,6 +90,8 @@ function fish_prompt --description 'Write out the prompt'
             echo $PREFIX
         end
         echo -n "├─ "
+        set suffix $suffix"
+" (set_color F19E4C) "│"
     end
 
     set _FISH_PROMPT_AFTER_FIRST_RUN true

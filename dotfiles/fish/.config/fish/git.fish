@@ -94,7 +94,6 @@
     end
     abbr -a abbr_git_HEAD --regex "h[0-9]*" --position anywhere --function abbr_git_HEAD_fn
 
-    #   m⎵ → main
     #  m1⎵ → main~1
     # m12⎵ → main~12
     function abbr_git_mainhist_fn
@@ -104,7 +103,7 @@
         end
         _abbr_expand_exceptsubcommand_arg git _ $str commit;
     end
-    abbr -a abbr_git_mainhist --regex "m[0-9]*" --position anywhere --function abbr_git_mainhist_fn
+    abbr -a abbr_git_mainhist --regex "m[0-9]+" --position anywhere --function abbr_git_mainhist_fn
 
 ### git add
 

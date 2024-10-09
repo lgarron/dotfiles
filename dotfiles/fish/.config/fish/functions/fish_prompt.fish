@@ -5,6 +5,11 @@ set _FISH_PROMPT_THEME $THEMES[(random 1 2)]
 
 set __fish_git_prompt_show_informative_status 1
 
+# TODO: is this cheap enough to do in the hot code?
+if string match --entire -- $_FISH_PROMPT_THEME "LCARS" > /dev/null
+    set ___fish_git_prompt_char_stateseparator " | "
+end
+
 function _echo_padded
     set -l PREFIX $argv[1]
     set -l SET_COLOR_END $argv[2]
@@ -84,9 +89,9 @@ function fish_prompt --description 'Write out the prompt'
             $PREFIX \
             (set_color F19E4C)
 
-        set FISH_VCS_PROMPT (fish_vcs_prompt)
+        set FISH_VCS_PROMPT (fish_vcs_prompt "%s")
         if not string match -e "$FISH_VCS_PROMPT" "" > /dev/null
-            set -l PREFIX (set_color F19E4C)"├─"$FISH_VCS_PROMPT" "
+            set -l PREFIX (set_color F19E4C)"├─ "$FISH_VCS_PROMPT" "
             echo $PREFIX
         end
         echo -n "├─ "

@@ -3,6 +3,8 @@
 set -l THEMES "html" "LCARS"
 set _FISH_PROMPT_THEME $THEMES[(random 1 2)]
 
+set __fish_git_prompt_show_informative_status 1
+
 function _echo_padded
     set -l PREFIX $argv[1]
     set -l SET_COLOR_END $argv[2]

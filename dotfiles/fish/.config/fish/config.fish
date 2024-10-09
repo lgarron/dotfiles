@@ -32,7 +32,8 @@
 
     bind alt-left backward-token
     bind alt-right forward-token
-    bind alt-delete backward-kill-token
+    bind alt-backspace backward-kill-token
+    bind \cW backward-kill-token # VS Code????
     bind alt-= kill-token
 
     bind ctrl-left backward-word

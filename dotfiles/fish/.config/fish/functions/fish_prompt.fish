@@ -92,11 +92,14 @@ function fish_prompt --description 'Write out the prompt'
             echo ""
         end
 
-        set -l PREFIX (set_color $_FISH_LCARS_ORANGE)"╭─── "
+        set -l PREFIX_BEFORE_PWD (set_color $_FISH_LCARS_ORANGE)"╭─── "
         if string match -e "$EXPERIMENTAL_FISH_LAUNCHED" "true" > /dev/null
-            set -l PREFIX "🐠🧪 "
+            set -l PREFIX_BEFORE_PWD "🐠🧪 "
         end
-        set -l PREFIX $PREFIX(pwd)" "
+        set -l PREFIX $PREFIX_BEFORE_PWD(pwd)" "
+        if test (string length --visible $PREFIX) -gt $COLUMNS
+            set PREFIX $PREFIX_BEFORE_PWD(prompt_pwd)" "
+        end
         _echo_padded \
             $PREFIX \
             (set_color $_FISH_LCARS_ORANGE)

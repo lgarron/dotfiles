@@ -17,17 +17,19 @@
 
 # fish 4.0 experimentation for token nav
 
+    set FISH_MASTER_BIN_FOLDER "$HOME/.fish-master/bin"
     if status is-interactive
       if [ "$EXPERIMENTAL_FISH_LAUNCHED" != "true"  ]
         set -x EXPERIMENTAL_FISH_LAUNCHED true
-        if test -f /usr/local/bin/fish
+        if test -f $FISH_MASTER_BIN_FOLDER/fish
           echo "🐟🧪 Launching experimental fish…"
-          /usr/local/bin/fish
+          $FISH_MASTER_BIN_FOLDER/fish
           set EXPERIMENTAL_FISH_LAUNCHED false
           echo "Press Ctrl-D again to exit, or continue to stay in in 3.7.1"
         end
       else
         echo "🐟🧪 version: "$FISH_VERSION
+        set PATH $FISH_MASTER_BIN_FOLDER $PATH
       end
     end
 

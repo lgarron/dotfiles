@@ -46,6 +46,7 @@
     rm -rf $HOME/.docker
     rm -rf $HOME/.dts
     rm -rf $HOME/.gnupg
+    rm -rf $HOME/.gk
     rm -rf $HOME/.gradle # Gradle (Java)
     rm -rf $HOME/.npm
     rm -rf $HOME/.oracle_jre_usage

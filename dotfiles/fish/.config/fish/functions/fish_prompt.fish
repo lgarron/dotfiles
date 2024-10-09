@@ -46,6 +46,7 @@ function fish_prompt --description 'Write out the prompt'
 
     set -l PREVIOUS_COMMAND_TIME "⏱️ "(math $CMD_DURATION / 1000)s
 
+    set -l _VCS ""
     if string match -e -- $_FISH_PROMPT_THEME "html" > /dev/null
         if string match -e -- "$_FISH_PROMPT_AFTER_FIRST_RUN" true > /dev/null
             echo (set_color blue)"</command>"(set_color purple)" <!-- $prompt_status"(set_color purple)$PREVIOUS_COMMAND_TIME" -->"
@@ -56,6 +57,7 @@ function fish_prompt --description 'Write out the prompt'
             echo -n "experimental=\"🧪\" "
         end
         echo "path=\""(set_color $color_cwd)(pwd)(set_color blue)"\">"
+        set _VCS (fish_vcs_prompt)
     else
         # LCARS
         _echo_padded \
@@ -70,9 +72,17 @@ function fish_prompt --description 'Write out the prompt'
         _echo_padded \
             $PREFIX \
             $normal
+
+        set FISH_VCS_PROMPT (fish_vcs_prompt)
+        if not string match -e "$FISH_VCS_PROMPT" "" > /dev/null
+            set -l PREFIX (set_color F19E4C)"╭─"$normal$FISH_VCS_PROMPT(set_color F19E4C)" "
+            _echo_padded \
+                $PREFIX \
+                $normal
+        end
     end
 
     set _FISH_PROMPT_AFTER_FIRST_RUN true
 
-    echo -n -s $normal (set_color $fish_color_user) "$USER" $normal @ (set_color $color_host) (prompt_hostname) $normal (fish_vcs_prompt) $normal $suffix " "
+    echo -n -s $normal (set_color $fish_color_user) "$USER" $normal @ (set_color $color_host) (prompt_hostname) $normal $_VCS $normal $suffix " "
 end

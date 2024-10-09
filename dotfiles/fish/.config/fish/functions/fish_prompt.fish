@@ -1,5 +1,9 @@
 # Classic + VCS, hopefully
 # TODO: Keep this in sync with `fish`, or configure semantically instead of hardcoding a snapshot.
+set -l THEMES "html" "tron"
+set _FISH_PROMPT_THEME $THEMES[(random 1 2)]
+
+set _FISH_PROMPT_AFTER_FIRST_RUN false
 function fish_prompt --description 'Write out the prompt'
     set -l last_pipestatus $pipestatus
     set -l last_status $status
@@ -26,18 +30,39 @@ function fish_prompt --description 'Write out the prompt'
     set -l prompt_status (__fish_print_pipestatus "[" "] " "|" (set_color $fish_color_status) (set_color --bold $fish_color_status) $last_pipestatus)
 
     set TIME_PREFIX ""
-    if [ $CMD_DURATION -ne 0 ]
-        set_color purple
-        set TIME_PREFIX $prompt_status "⏱️ " (math $CMD_DURATION / 1000)s
-    end
+    # if [ $CMD_DURATION -ne 0 ]
+        set TIME_PREFIX $prompt_status "⏱️ "(math $CMD_DURATION / 1000)s
+    # end
 
     set EXPERIMENTAL_PREFIX ""
     if string match -e "$EXPERIMENTAL_FISH_LAUNCHED" "true" > /dev/null
         set EXPERIMENTAL_PREFIX "🐟🧪 "
     end
-    set PREFIX $TIME_PREFIX $normal "
-📂 " (set_color $color_cwd) (pwd) "
-"
 
-    echo -n -s $PREFIX $normal $EXPERIMENTAL_PREFIX (set_color $fish_color_user) "$USER" $normal @ (set_color $color_host) (prompt_hostname) $normal (fish_vcs_prompt) $normal $suffix " "
+    set MAIN_PROMPT_PWD ""
+    if string match -e -- $_FISH_PROMPT_THEME "html" > /dev/null
+        if string match -e -- "$_FISH_PROMPT_AFTER_FIRST_RUN" true > /dev/null
+            echo (set_color blue)"</command>"(set_color purple)" <!--" $TIME_PREFIX "-->"
+        end
+        
+        echo -n $normal
+        echo -n -e "\r"(set_color blue)
+        echo -n "<command path=\""
+        echo (set_color $color_cwd)(pwd)(set_color blue)"\">"
+    else
+        # tron
+        set DASHES (string repeat -n (math $COLUMNS - 1) "─")
+        if string match -e -- "$_FISH_PROMPT_AFTER_FIRST_RUN" true > /dev/null
+            echo -n (set_color purple)"└"$DASHES
+            echo -e "\r"
+        end
+
+        echo -n (set_color green)"┌"$DASHES
+        echo -e "\r"
+        set MAIN_PROMPT_PWD " "(set_color $color_cwd)(prompt_pwd)
+    end
+
+    set _FISH_PROMPT_AFTER_FIRST_RUN true
+
+    echo -n -s $PREFIX $normal $EXPERIMENTAL_PREFIX (set_color $fish_color_user) "$USER" $normal @ (set_color $color_host) (prompt_hostname)$MAIN_PROMPT_PWD $normal (fish_vcs_prompt) $normal $suffix " "
 end

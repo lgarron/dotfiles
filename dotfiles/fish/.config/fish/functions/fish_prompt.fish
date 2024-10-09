@@ -49,10 +49,11 @@ function fish_prompt --description 'Write out the prompt'
     set -l _VCS ""
     if string match -e -- $_FISH_PROMPT_THEME "html" > /dev/null
         if string match -e -- "$_FISH_PROMPT_AFTER_FIRST_RUN" true > /dev/null
-            echo (set_color blue)"</command>"(set_color purple)" <!-- $prompt_status"(set_color purple)$PREVIOUS_COMMAND_TIME" -->"
+            echo -n (set_color blue)"</command>"(set_color purple)" <!-- $prompt_status"(set_color purple)$PREVIOUS_COMMAND_TIME" -->"
         end
         
-        echo -n (set_color blue)"<command "
+        echo (set_color blue)
+        echo -n "<command "
         if string match -e "$EXPERIMENTAL_FISH_LAUNCHED" "true" > /dev/null
             echo -n "experimental=\"🧪\" "
         end
@@ -64,25 +65,24 @@ function fish_prompt --description 'Write out the prompt'
             (set_color B594E2)"╰─── $prompt_status"(set_color B594E2)$PREVIOUS_COMMAND_TIME" " \
             (set_color F19E4C)
 
-        set -l PREFIX "╭─ "
+        set -l PREFIX "╭─── "
         if string match -e "$EXPERIMENTAL_FISH_LAUNCHED" "true" > /dev/null
             set -l PREFIX "🐠🧪 "
         end
-        set -l PREFIX $PREFIX(set_color $color_cwd)(pwd)(set_color F19E4C)" "
+        set -l PREFIX $PREFIX(pwd)" "
         _echo_padded \
             $PREFIX \
-            $normal
+            (set_color F19E4C)
 
         set FISH_VCS_PROMPT (fish_vcs_prompt)
         if not string match -e "$FISH_VCS_PROMPT" "" > /dev/null
-            set -l PREFIX (set_color F19E4C)"╭─"$normal$FISH_VCS_PROMPT(set_color F19E4C)" "
-            _echo_padded \
-                $PREFIX \
-                $normal
+            set -l PREFIX (set_color F19E4C)"├─"$FISH_VCS_PROMPT" "
+            echo $PREFIX
         end
+        echo -n "├─ "
     end
 
     set _FISH_PROMPT_AFTER_FIRST_RUN true
 
-    echo -n -s $normal (set_color $fish_color_user) "$USER" $normal @ (set_color $color_host) (prompt_hostname) $normal $_VCS $normal $suffix " "
+    echo -n -s (set_color $fish_color_user) "$USER" $normal @ (set_color $color_host) (prompt_hostname) $normal $_VCS $normal $suffix " "
 end

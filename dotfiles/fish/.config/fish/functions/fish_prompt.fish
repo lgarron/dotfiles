@@ -84,7 +84,7 @@ function fish_prompt --description 'Write out the prompt'
             # echo (set_color B594E2)"│"
             set -l prompt_status (__fish_print_pipestatus "[" "] " "|" (set_color B594E2) (set_color --bold red) $last_pipestatus)
             if not string match -e -- "$prompt_status" " " > /dev/null
-                echo "├─ $prompt_status"(set_color B594E2)"command status"
+                echo "├─ ❌ $prompt_status"(set_color B594E2)"command status"
             end
             _echo_padded \
                 "╰─── $PREVIOUS_COMMAND_TIME " \

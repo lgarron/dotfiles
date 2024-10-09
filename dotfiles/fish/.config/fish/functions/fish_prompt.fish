@@ -45,32 +45,39 @@ function fish_prompt --description 'Write out the prompt'
         
         echo -n $normal
         echo -n -e "\r"(set_color blue)
-        echo -n "<command path=\""
-        echo -n (set_color $color_cwd)(pwd)(set_color blue)"\""
+        echo -n "<command"
         if string match -e "$EXPERIMENTAL_FISH_LAUNCHED" "true" > /dev/null
-            echo -n " experimental-fish"
+            echo -n " experimental=\"🧪\" "
         end
-        echo ">"
+        echo -n "path=\""
+        echo (set_color $color_cwd)(pwd)(set_color blue)"\">"
     else
         # LCARS
         set PREVIOUS_COMMAND_SUMMARY_LENGTH (string length --visible $PREVIOUS_COMMAND_SUMMARY)
-        set DASHES (string repeat -n (math $COLUMNS - $PREVIOUS_COMMAND_SUMMARY_LENGTH - 5) "─")
+        set DASHES (string repeat -n (math $COLUMNS - $PREVIOUS_COMMAND_SUMMARY_LENGTH - 6) "─")
         if string match -e -- "$_FISH_PROMPT_AFTER_FIRST_RUN" true > /dev/null
-            echo -n (set_color purple)"╰── "$PREVIOUS_COMMAND_SUMMARY" "$DASHES
+            echo -n (set_color purple)"╰─── "$PREVIOUS_COMMAND_SUMMARY" "$DASHES(set_color green)
             echo -e "\r"
         end
+        echo -n (set_color green)
 
         if string match -e "$EXPERIMENTAL_FISH_LAUNCHED" "true" > /dev/null
             set EXPERIMENTAL_INFIX " 🐠🧪 "
         end
+        set EXPERIMENTAL_INFIX $EXPERIMENTAL_INFIX""(pwd)" "
         set EXPERIMENTAL_INFIX_LENGTH (string length --visible $EXPERIMENTAL_INFIX)
-        set DASHES (string repeat -n (math $COLUMNS - $EXPERIMENTAL_INFIX_LENGTH - 3) "─")
-        echo -n (set_color green)"╭──"$EXPERIMENTAL_INFIX$DASHES
-        echo -e "\r"
-        set MAIN_PROMPT_PWD " "(set_color $color_cwd)(prompt_pwd)
+        echo -n "╭─"$EXPERIMENTAL_INFIX
+        set NUM_DASHES (math $COLUMNS - $EXPERIMENTAL_INFIX_LENGTH - 2)
+        if test $NUM_DASHES -gt 0
+            set DASHES (string repeat -n $NUM_DASHES "─")
+            echo -n $DASHES
+            echo -e "\r"
+        else
+            echo ""
+        end
     end
 
     set _FISH_PROMPT_AFTER_FIRST_RUN true
 
-    echo -n -s $PREFIX $normal (set_color $fish_color_user) "$USER" $normal @ (set_color $color_host) (prompt_hostname)$MAIN_PROMPT_PWD $normal (fish_vcs_prompt) $normal $suffix " "
+    echo -n -s $normal (set_color $fish_color_user) "$USER" $normal @ (set_color $color_host) (prompt_hostname) $normal (fish_vcs_prompt) $normal $suffix " "
 end

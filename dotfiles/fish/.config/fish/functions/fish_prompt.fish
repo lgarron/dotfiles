@@ -1,18 +1,26 @@
 # Classic + VCS, hopefully
 # TODO: Keep this in sync with `fish`, or configure semantically instead of hardcoding a snapshot.
-set -l THEMES "html" "LCARS"
-set _FISH_PROMPT_THEME $THEMES[(random 1 2)]
 
 set __fish_git_prompt_show_informative_status 1
 
 set _FISH_LCARS_ORANGE F19E4C
-
-# TODO: is this cheap enough to do in the hot code?
-if string match --entire -- $_FISH_PROMPT_THEME "LCARS" > /dev/null
-    set ___fish_git_prompt_color_branch (set_color --reverse $_FISH_LCARS_ORANGE)" "
-    set ___fish_git_prompt_color_branch_done " "(set_color normal; set_color $_FISH_LCARS_ORANGE)
-    set ___fish_git_prompt_char_stateseparator " | "
+set -l THEMES "html" "LCARS"
+function set_prompt_theme
+    set -g _FISH_PROMPT_THEME $argv[1]
+    if string match -e -- $argv[1] "html" > /dev/null
+        set -e ___fish_git_prompt_color_branch
+        set -e ___fish_git_prompt_color_branch_done
+        set -e ___fish_git_prompt_char_stateseparator
+    else
+        set -g ___fish_git_prompt_color_branch (set_color --reverse $_FISH_LCARS_ORANGE)" "
+        set -g ___fish_git_prompt_color_branch_done " "(set_color normal; set_color $_FISH_LCARS_ORANGE)
+        set -g ___fish_git_prompt_char_stateseparator " | "
+        # set ___fish_git_prompt_color_merging " "
+        # set ___fish_git_prompt_color_upstream " "
+    end
 end
+
+set_prompt_theme $THEMES[(random 1 (count $THEMES))]
 
 function _echo_padded
     set -l PREFIX $argv[1]
@@ -74,7 +82,7 @@ function fish_prompt --description 'Write out the prompt'
         if string match -e -- "$_FISH_PROMPT_AFTER_FIRST_RUN" true > /dev/null
             set_color B594E2
             # echo (set_color B594E2)"│"
-            set -l prompt_status (__fish_print_pipestatus "[" "] " "|" (set_color B594E2) (set_color --bold B594E2) $last_pipestatus)
+            set -l prompt_status (__fish_print_pipestatus "[" "] " "|" (set_color B594E2) (set_color --bold red) $last_pipestatus)
             if not string match -e -- "$prompt_status" " " > /dev/null
                 echo "├─ $prompt_status"(set_color B594E2)"command status"
             end

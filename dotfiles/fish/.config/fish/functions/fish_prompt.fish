@@ -29,9 +29,12 @@ function fish_prompt --description 'Write out the prompt'
     # Write pipestatus
     set -l prompt_status (__fish_print_pipestatus "[" "] " "|" (set_color $fish_color_status) (set_color --bold $fish_color_status) $last_pipestatus)
 
-    set TIME_PREFIX ""
+    set PREVIOUS_COMMAND_SUMMARY ""
     # if [ $CMD_DURATION -ne 0 ]
-        set TIME_PREFIX $prompt_status "⏱️ "(math $CMD_DURATION / 1000)s
+        set PREVIOUS_COMMAND_SUMMARY "⏱️ "(math $CMD_DURATION / 1000)s
+        if not string match -e -- $prompt_status "" > /dev/null
+            set PREVIOUS_COMMAND_SUMMARY "$prompt_status"(set_color purple)"$PREVIOUS_COMMAND_SUMMARY"
+        end
     # end
 
     set EXPERIMENTAL_PREFIX ""
@@ -42,7 +45,7 @@ function fish_prompt --description 'Write out the prompt'
     set MAIN_PROMPT_PWD ""
     if string match -e -- $_FISH_PROMPT_THEME "html" > /dev/null
         if string match -e -- "$_FISH_PROMPT_AFTER_FIRST_RUN" true > /dev/null
-            echo (set_color blue)"</command>"(set_color purple)" <!--" $TIME_PREFIX "-->"
+            echo (set_color blue)"</command>"(set_color purple)" <!--" $PREVIOUS_COMMAND_SUMMARY "-->"
         end
         
         echo -n $normal
@@ -51,12 +54,14 @@ function fish_prompt --description 'Write out the prompt'
         echo (set_color $color_cwd)(pwd)(set_color blue)"\">"
     else
         # tron
-        set DASHES (string repeat -n (math $COLUMNS - 1) "─")
+        set PREVIOUS_COMMAND_SUMMARY_LENGTH (string length --visible $PREVIOUS_COMMAND_SUMMARY)
+        set DASHES (string repeat -n (math $COLUMNS - $PREVIOUS_COMMAND_SUMMARY_LENGTH - 4) "─")
         if string match -e -- "$_FISH_PROMPT_AFTER_FIRST_RUN" true > /dev/null
-            echo -n (set_color purple)"└"$DASHES
+            echo -n (set_color purple)"└─ "$PREVIOUS_COMMAND_SUMMARY" "$DASHES
             echo -e "\r"
         end
 
+        set DASHES (string repeat -n (math $COLUMNS - 1) "─")
         echo -n (set_color green)"┌"$DASHES
         echo -e "\r"
         set MAIN_PROMPT_PWD " "(set_color $color_cwd)(prompt_pwd)

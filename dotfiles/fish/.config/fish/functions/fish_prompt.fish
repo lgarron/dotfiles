@@ -3,6 +3,19 @@
 set -l THEMES "html" "LCARS"
 set _FISH_PROMPT_THEME $THEMES[(random 1 2)]
 
+function _echo_padded
+    set -l PREFIX $argv[1]
+    set -l SET_COLOR_END $argv[2]
+    set -l NUM_DASHES (math $COLUMNS - (string length --visible $PREFIX))
+    if test $NUM_DASHES -lt 0
+        echo $PREFIX$SET_COLOR_END
+        return
+    end
+    set -l DASHES (string repeat -n $NUM_DASHES "─")
+    echo -n $PREFIX$DASHES$SET_COLOR_END
+    echo -e "\r"
+end
+
 set _FISH_PROMPT_AFTER_FIRST_RUN false
 function fish_prompt --description 'Write out the prompt'
     set -l last_pipestatus $pipestatus
@@ -29,52 +42,32 @@ function fish_prompt --description 'Write out the prompt'
     # Write pipestatus
     set -l prompt_status (__fish_print_pipestatus "[" "] " "|" (set_color $fish_color_status) (set_color --bold $fish_color_status) $last_pipestatus)
 
-    set PREVIOUS_COMMAND_SUMMARY ""
-    # if [ $CMD_DURATION -ne 0 ]
-        set PREVIOUS_COMMAND_SUMMARY "⏱️ "(math $CMD_DURATION / 1000)s
-        if not string match -e -- $prompt_status "" > /dev/null
-            set PREVIOUS_COMMAND_SUMMARY "$prompt_status"(set_color purple)"$PREVIOUS_COMMAND_SUMMARY"
-        end
-    # end
+    set -l PREVIOUS_COMMAND_TIME "⏱️ "(math $CMD_DURATION / 1000)s
 
-    set MAIN_PROMPT_PWD ""
     if string match -e -- $_FISH_PROMPT_THEME "html" > /dev/null
         if string match -e -- "$_FISH_PROMPT_AFTER_FIRST_RUN" true > /dev/null
-            echo (set_color blue)"</command>"(set_color purple)" <!--" $PREVIOUS_COMMAND_SUMMARY "-->"
+            echo (set_color blue)"</command>"(set_color purple)" <!-- $prompt_status"(set_color purple)$PREVIOUS_COMMAND_TIME" -->"
         end
         
-        echo -n $normal
-        echo -n -e "\r"(set_color blue)
-        echo -n "<command"
+        echo -n (set_color blue)"<command "
         if string match -e "$EXPERIMENTAL_FISH_LAUNCHED" "true" > /dev/null
-            echo -n " experimental=\"🧪\" "
+            echo -n "experimental=\"🧪\" "
         end
-        echo -n "path=\""
-        echo (set_color $color_cwd)(pwd)(set_color blue)"\">"
+        echo "path=\""(set_color $color_cwd)(pwd)(set_color blue)"\">"
     else
         # LCARS
-        set PREVIOUS_COMMAND_SUMMARY_LENGTH (string length --visible $PREVIOUS_COMMAND_SUMMARY)
-        set DASHES (string repeat -n (math $COLUMNS - $PREVIOUS_COMMAND_SUMMARY_LENGTH - 6) "─")
-        if string match -e -- "$_FISH_PROMPT_AFTER_FIRST_RUN" true > /dev/null
-            echo -n (set_color purple)"╰─── "$PREVIOUS_COMMAND_SUMMARY" "$DASHES(set_color green)
-            echo -e "\r"
-        end
-        echo -n (set_color green)
+        _echo_padded \
+            (set_color B594E2)"╰─── $prompt_status"(set_color B594E2)$PREVIOUS_COMMAND_TIME" " \
+            (set_color F19E4C)
 
+        set -l PREFIX "╭─ "
         if string match -e "$EXPERIMENTAL_FISH_LAUNCHED" "true" > /dev/null
-            set EXPERIMENTAL_INFIX " 🐠🧪 "
+            set -l PREFIX "🐠🧪 "
         end
-        set EXPERIMENTAL_INFIX $EXPERIMENTAL_INFIX""(pwd)" "
-        set EXPERIMENTAL_INFIX_LENGTH (string length --visible $EXPERIMENTAL_INFIX)
-        echo -n "╭─"$EXPERIMENTAL_INFIX
-        set NUM_DASHES (math $COLUMNS - $EXPERIMENTAL_INFIX_LENGTH - 2)
-        if test $NUM_DASHES -gt 0
-            set DASHES (string repeat -n $NUM_DASHES "─")
-            echo -n $DASHES
-            echo -e "\r"
-        else
-            echo ""
-        end
+        set -l PREFIX $PREFIX(set_color $color_cwd)(pwd)(set_color F19E4C)" "
+        _echo_padded \
+            $PREFIX \
+            $normal
     end
 
     set _FISH_PROMPT_AFTER_FIRST_RUN true

@@ -39,7 +39,8 @@
 		"FRANK_CFE",
 		"RUBY SUNDAY",
 		"DOROTHY",
-		"TIN MAN"
+		"TIN MAN",
+		"SCARECROW"
 	],
 	"folder_mapping": [
 		{ "source": "DCIM", "destination": "DCIM" },

@@ -1,6 +1,6 @@
 # Classic + VCS, hopefully
 # TODO: Keep this in sync with `fish`, or configure semantically instead of hardcoding a snapshot.
-set -l THEMES "html" "tron"
+set -l THEMES "html" "LCARS"
 set _FISH_PROMPT_THEME $THEMES[(random 1 2)]
 
 set _FISH_PROMPT_AFTER_FIRST_RUN false
@@ -53,16 +53,16 @@ function fish_prompt --description 'Write out the prompt'
         echo -n "<command path=\""
         echo (set_color $color_cwd)(pwd)(set_color blue)"\">"
     else
-        # tron
+        # LCARS
         set PREVIOUS_COMMAND_SUMMARY_LENGTH (string length --visible $PREVIOUS_COMMAND_SUMMARY)
-        set DASHES (string repeat -n (math $COLUMNS - $PREVIOUS_COMMAND_SUMMARY_LENGTH - 5) "━")
+        set DASHES (string repeat -n (math $COLUMNS - $PREVIOUS_COMMAND_SUMMARY_LENGTH - 5) "─")
         if string match -e -- "$_FISH_PROMPT_AFTER_FIRST_RUN" true > /dev/null
-            echo -n (set_color purple)"┕━━ "$PREVIOUS_COMMAND_SUMMARY" "$DASHES
+            echo -n (set_color purple)"╰── "$PREVIOUS_COMMAND_SUMMARY" "$DASHES
             echo -e "\r"
         end
 
-        set DASHES (string repeat -n (math $COLUMNS - 1) "━")
-        echo -n (set_color green)"┍"$DASHES
+        set DASHES (string repeat -n (math $COLUMNS - 1) "─")
+        echo -n (set_color green)"╭"$DASHES
         echo -e "\r"
         set MAIN_PROMPT_PWD " "(set_color $color_cwd)(prompt_pwd)
     end

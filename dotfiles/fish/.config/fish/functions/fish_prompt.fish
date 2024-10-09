@@ -4,6 +4,7 @@
 set __fish_git_prompt_show_informative_status 1
 
 set _FISH_LCARS_ORANGE F19E4C
+set _FISH_LCARS_LAVENDER B594E2
 set -l THEMES "html" "LCARS"
 function set_prompt_theme
     set -g _FISH_PROMPT_THEME $argv[1]
@@ -80,11 +81,11 @@ function fish_prompt --description 'Write out the prompt'
     else
         # LCARS
         if string match -e -- "$_FISH_PROMPT_AFTER_FIRST_RUN" true > /dev/null
-            set_color B594E2
-            # echo (set_color B594E2)"│"
-            set -l prompt_status (__fish_print_pipestatus "[" "] " "|" (set_color B594E2) (set_color --bold red) $last_pipestatus)
+            set_color $_FISH_LCARS_LAVENDER
+            # echo (set_color $_FISH_LCARS_LAVENDER)"│"
+            set -l prompt_status (__fish_print_pipestatus "[" "] " "|" (set_color $_FISH_LCARS_LAVENDER) (set_color --bold red) $last_pipestatus)
             if not string match -e -- "$prompt_status" " " > /dev/null
-                echo "├─ ❌ $prompt_status"(set_color B594E2)"command status"
+                echo "├─ ❌ $prompt_status"(set_color $_FISH_LCARS_LAVENDER)"command status"
             end
             _echo_padded \
                 "╰─── $PREVIOUS_COMMAND_TIME " \

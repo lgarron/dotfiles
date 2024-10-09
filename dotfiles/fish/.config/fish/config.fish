@@ -19,7 +19,7 @@
 
     set FISH_MASTER_BIN_FOLDER "$HOME/.fish-master/bin"
     if status is-interactive
-      if [ "$EXPERIMENTAL_FISH_LAUNCHED" != "true"  ]
+      if not string match --entire "$EXPERIMENTAL_FISH_LAUNCHED" "true" > /dev/null && string match --entire "$FISH_VERSION" "3.7.1" > /dev/null
         set -x EXPERIMENTAL_FISH_LAUNCHED true
         if test -f $FISH_MASTER_BIN_FOLDER/fish
           echo "🐟🧪 Launching experimental fish…"
@@ -152,7 +152,6 @@
         echo -n $arg | head -c(tput cols)
         echo ""
       end
-      echo ""
     end
 
     # If `hostname -s` is incorrect on macOS:
@@ -170,17 +169,22 @@
     set GREETING_HOSTNAME (hostname -s)
     function fish_greeting
       if contains $GREETING_HOSTNAME $GERMAIN
+        set_color 9AAAFF
         fish_greeting_echo \
-          "  ___ ___ ___ __  __   _   ___ _  _ " \
-          " / __| __| _ \\  \\/  | /_\\ |_ _| \\| |" \
-          "| (_ | _||   / |\\/| |/ _ \\ | || .` |" \
-          " \\___|___|_|_\\_|  |_/_/ \\_\\___|_|\\_|"
+          "╭──                                    ──╮" \
+          "│    ___ ___ ___ __  __   _   ___ _  _   │" \
+          "│   / __| __| _ \\  \\/  | /_\\ |_ _| \\| |  │" \
+          "│  | (_ | _||   / |\\/| |/ _ \\ | || .` |  │" \
+          "│   \\___|___|_|_\\_|  |_/_/ \\_\\___|_|\\_|  │" \
+          "│                                        │" \
+          "╰──                                    ──╯"
       else if contains $GREETING_HOSTNAME $PYTHAGORAS
         fish_greeting_echo \
           " _____   _______ _  _   _   ___  ___  ___    _   ___ " \
           "| _ \\ \\ / /_   _| || | /_\\ / __|/ _ \\| _ \\  /_\\ / __|" \
           "|  _/\\ V /  | | | __ |/ _ \\ (_ | (_) |   / / _ \\\\__ \\" \
-          "|_|   |_|   |_| |_||_/_/ \\_\\___|\\___/|_|_\\/_/ \\_\\___/"
+          "|_|   |_|   |_| |_||_/_/ \\_\\___|\\___/|_|_\\/_/ \\_\\___/" \
+          ""
       else
         echo -n "🐟 Welcome to "
         set_color --bold; echo (hostname -s)
@@ -253,14 +257,35 @@
 
     abbr -a dlf "cd ~/Downloads"
 
+    set LATEST_CD_DIR_PATH $HOME
     function cd-dir
       set INPUT_PATH $argv[1]
+      set -g LATEST_CD_DIR_PATH $INPUT_PATH
       if not test -d $INPUT_PATH
         set INPUT_PATH (dirname $INPUT_PATH)
       end
       cd $INPUT_PATH
     end
     abbr -a "cdd" "cd-dir"
+    function cd-dir-from-iterm
+      set -l NUM_DASHES (math $COLUMNS - 1)
+      echo -n (set_color B594E2)"╭"
+      string repeat -n $NUM_DASHES "─"
+      echo "│ Launching shell in folder for path:"
+      echo "│ "(set_color --bold)"$argv[1]"(set_color B594E2)
+      echo -n "╰"
+      string repeat -n $NUM_DASHES "─"
+      echo -n (set_color normal)
+
+      cd-dir $argv[1]
+    end
+    function _abbr_latest_cd_dir_path
+      if not set -q LATEST_CD_DIR_PATH
+        return 1
+      end
+      string escape $LATEST_CD_DIR_PATH
+    end
+    abbr -a "kk" --position anywhere --function _abbr_latest_cd_dir_path
 
     abbr -a _hh_abbr --regex "hh" --position anywhere -- "--help"
     abbr -a ccv --set-cursor "code (command -v %)"

@@ -43,6 +43,10 @@ function fish_prompt --description 'Write out the prompt'
         set suffix '#'
     end
 
+    set -l fish_color_user $_FISH_LCARS_ORANGE
+    set -l fish_color_host $_FISH_LCARS_ORANGE
+    set -l fish_color_host_remote white
+
     # If we're running via SSH, change the host color.
     set -l color_host $fish_color_host
     if set -q SSH_TTY
@@ -70,7 +74,7 @@ function fish_prompt --description 'Write out the prompt'
     if string match -e "$EXPERIMENTAL_FISH_LAUNCHED" "true" > /dev/null
         set -l PREFIX_BEFORE_PWD "🐠🧪 "
     end
-    set -l PREFIX $PREFIX_BEFORE_PWD(pwd)" "
+    set -l PREFIX "$PREFIX_BEFORE_PWD"(pwd)" "
     if test (string length --visible $PREFIX) -gt $COLUMNS
         set PREFIX $PREFIX_BEFORE_PWD(prompt_pwd)" "
     end
@@ -87,7 +91,7 @@ function fish_prompt --description 'Write out the prompt'
     set suffix $suffix"
 " (set_color $_FISH_LCARS_ORANGE) "│"
 
-    echo -n -s (set_color $fish_color_user) "$USER" $normal @ (set_color $color_host) (prompt_hostname) $normal $suffix " "
+    echo -n -s (set_color $fish_color_user) "$USER" @ (set_color $color_host) (prompt_hostname) (set_color $_FISH_LCARS_ORANGE) $suffix " "
 end
 
 function _fish_prompt_preexec_blank_line --on-event fish_preexec

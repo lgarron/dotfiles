@@ -91,11 +91,11 @@ function fish_prompt --description 'Write out the prompt'
 end
 
 function _fish_prompt_preexec_blank_line --on-event fish_preexec
-    echo ""
+    echo (set_color $_FISH_LCARS_ORANGE)"┴"(set_color normal)
     set _FISH_PROMPT_FIRST_COMMAND_HAS_RUN true
 end
 
 # This needs to be here to avoid an extra blank line in the prompt.
 function _fish_prompt_postexec_blank_line --on-event fish_postexec
-    echo ""
+    echo (set_color $_FISH_LCARS_LAVENDER)"┬"(set_color normal)
 end

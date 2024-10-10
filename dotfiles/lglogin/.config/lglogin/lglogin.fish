@@ -38,43 +38,54 @@
 
 # The Naughty List
 
-    rm -rf $HOME/.angular-config.json
-    rm -rf $HOME/.biome
-    rm -rf $HOME/.bundle # Ruby Gems
-    rm -rf $HOME/.cargo
-    rm -rf $HOME/.cups
-    rm -rf $HOME/.docker
-    rm -rf $HOME/.dts
-    rm -rf $HOME/.gnupg
-    rm -rf $HOME/.gk
-    rm -rf $HOME/.gradle # Gradle (Java)
-    rm -rf $HOME/.npm
-    rm -rf $HOME/.oracle_jre_usage
-    rm -rf $HOME/.pnpm-state
-    rm -rf $HOME/.python_history
-    rm -rf $HOME/.rustup
-    rm -rf "$HOME/.sentry "
-    rm -rf $HOME/.swiftpm
-    rm -rf $HOME/.step
-    rm -rf $HOME/.terraform.d
-    rm -rf $HOME/.thumbnails
-    rm -rf $HOME/.yarnrc
-    rm -rf $HOME/.vscode-cli
-    rm -rf $HOME/.vscode-server
-    rm -rf $HOME/.vscode-remote-containers
-    rm -rf $HOME/.wasmer
-    rm -rf $HOME/go
+    function rm_and_log
+        set NAUGHTY_PATH $argv[1]
+        if test -e $NAUGHTY_PATH
+            rm -rf $NAUGHTY_PATH
+            /opt/homebrew/bin/bun run \
+                /Users/lgarron/Code/git/github.com/lgarron/scripts/storage/counter-file.ts \
+                /Users/lgarron/.config/lglogin/naughty-list.json \
+                $NAUGHTY_PATH
+        end
+    end
+
+    rm_and_log $HOME/.angular-config.json
+    rm_and_log $HOME/.biome
+    rm_and_log $HOME/.bundle # Ruby Gems
+    rm_and_log $HOME/.cargo
+    rm_and_log $HOME/.cups
+    rm_and_log $HOME/.docker
+    rm_and_log $HOME/.dts
+    rm_and_log $HOME/.gnupg
+    rm_and_log $HOME/.gk
+    rm_and_log $HOME/.gradle # Gradle (Java)
+    rm_and_log $HOME/.npm
+    rm_and_log $HOME/.oracle_jre_usage
+    rm_and_log $HOME/.pnpm-state
+    rm_and_log $HOME/.python_history
+    rm_and_log $HOME/.rustup
+    rm_and_log "$HOME/.sentry "
+    rm_and_log $HOME/.swiftpm
+    rm_and_log $HOME/.step
+    rm_and_log $HOME/.terraform.d
+    rm_and_log $HOME/.thumbnails
+    rm_and_log $HOME/.yarnrc
+    rm_and_log $HOME/.vscode-cli
+    rm_and_log $HOME/.vscode-server
+    rm_and_log $HOME/.vscode-remote-containers
+    rm_and_log $HOME/.wasmer
+    rm_and_log $HOME/go
 
     # chruby
-    rm -rf $HOME/.rubies
-    rm -rf $HOME/src
+    rm_and_log $HOME/.rubies
+    rm_and_log $HOME/src
 
     # Flutter
-    rm -rf $HOME/.dart
-    rm -rf $HOME/.dart-tool
-    rm -rf $HOME/.flutter
-    rm -rf $HOME/.flutter-devtools
-    rm -rf $HOME/.pub-cache
+    rm_and_log $HOME/.dart
+    rm_and_log $HOME/.dart-tool
+    rm_and_log $HOME/.flutter
+    rm_and_log $HOME/.flutter-devtools
+    rm_and_log $HOME/.pub-cache
 
 # Avoid Time Machine slowdown
 

@@ -47,6 +47,11 @@
     bind ctrl-h backward-kill-word # ctrl-backspace registers as ctrl-h
     bind ctrl-\\ kill-word
 
+    function _add_LATEST_CD_DIR_PATH
+      commandline --insert (string escape $LATEST_CD_DIR_PATH)
+    end
+    bind ctrl-alt-r _add_LATEST_CD_DIR_PATH
+
 # Paths
 
     function add_to_path
@@ -273,8 +278,11 @@
       set -l NUM_DASHES (math $COLUMNS - 1)
       echo -n (set_color B594E2)"╭"
       string repeat -n $NUM_DASHES "─"
-      echo "│ Launching shell in folder for path:"
-      echo "│ "(set_color --bold)"$argv[1]"(set_color B594E2)
+      echo "┴ Launching shell in folder for path:"
+      echo ""
+      echo (set_color --bold)"$argv[1]"(set_color B594E2)
+      echo ""
+      echo "┬ Use ^⇧R to place this into a command."
       echo -n "╰"
       string repeat -n $NUM_DASHES "─"
       echo -n (set_color normal)
@@ -287,7 +295,6 @@
       end
       string escape $LATEST_CD_DIR_PATH
     end
-    abbr -a "kk" --position anywhere --function _abbr_latest_cd_dir_path
 
     abbr -a _hh_abbr --regex "hh" --position anywhere -- "--help"
     abbr -a ccv --set-cursor "code (command -v %)"

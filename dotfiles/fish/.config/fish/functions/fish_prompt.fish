@@ -8,6 +8,7 @@ set __fish_git_prompt_show_informative_status 1
 # `fish_prompt` below.
 set -g _FISH_LCARS_ORANGE F19E4C
 set -g _FISH_LCARS_LAVENDER B594E2
+set -g _FISH_PROMPT_FIRST_COMMAND_HAS_RUN false # var
 
 set -g ___fish_git_prompt_color_branch (set_color --reverse $_FISH_LCARS_ORANGE)" "
 set -g ___fish_git_prompt_color_branch_done " "(set_color normal; set_color $_FISH_LCARS_ORANGE)
@@ -26,7 +27,6 @@ function _echo_padded
     echo -e "\r"
 end
 
-set _FISH_PROMPT_AFTER_FIRST_RUN false
 function fish_prompt --description 'Write out the prompt'
     set -l last_pipestatus $pipestatus
     set -l last_status $status
@@ -53,7 +53,7 @@ function fish_prompt --description 'Write out the prompt'
     set -l PREVIOUS_COMMAND_TIME "⏱️ "(math $CMD_DURATION / 1000)s
 
     # LCARS
-    if string match -e -- "$_FISH_PROMPT_AFTER_FIRST_RUN" true > /dev/null
+    if string match -e -- "$_FISH_PROMPT_FIRST_COMMAND_HAS_RUN" true > /dev/null
         set_color $_FISH_LCARS_LAVENDER
         # echo (set_color $_FISH_LCARS_LAVENDER)"│"
         set -l prompt_status (__fish_print_pipestatus "[" "] " "|" (set_color $_FISH_LCARS_LAVENDER) (set_color --bold red) $last_pipestatus)
@@ -87,7 +87,15 @@ function fish_prompt --description 'Write out the prompt'
     set suffix $suffix"
 " (set_color $_FISH_LCARS_ORANGE) "│"
 
-    set _FISH_PROMPT_AFTER_FIRST_RUN true
-
     echo -n -s (set_color $fish_color_user) "$USER" $normal @ (set_color $color_host) (prompt_hostname) $normal $suffix " "
+end
+
+function _fish_prompt_preexec_blank_line --on-event fish_preexec
+    echo ""
+    set _FISH_PROMPT_FIRST_COMMAND_HAS_RUN true
+end
+
+# This needs to be here to avoid an extra blank line in the prompt.
+function _fish_prompt_postexec_blank_line --on-event fish_postexec
+    echo ""
 end

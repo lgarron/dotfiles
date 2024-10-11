@@ -35,6 +35,8 @@
       end
     end
 
+    # It would be more consistent with macOS to use `alt` for `*-word`. However,
+    # using `ctrl-delete` for `backward-kill-token` doesn't seem to work at all.
 
     bind alt-left backward-token
     bind alt-b backward-token # VS Code????
@@ -43,11 +45,14 @@
     bind alt-backspace backward-kill-token
     bind \cW backward-kill-token # VS Code????
     bind alt-\\ kill-token
+    bind alt-delete kill-token # `alt-delete` just gets sent as `delete`, so this doesn't work
+    bind alt-d kill-token # VS Code maps `alt-delete` to this?
 
     bind ctrl-left backward-word
     bind ctrl-right forward-word
-    bind ctrl-h backward-kill-word # ctrl-backspace registers as ctrl-h
+    bind ctrl-h backward-kill-token # ctrl-backspace registers as ctrl-h
     bind ctrl-\\ kill-word
+    bind ctrl-delete kill-word
 
     function _add_LATEST_CD_DIR_PATH
       commandline --insert (string escape $LATEST_CD_DIR_PATH)

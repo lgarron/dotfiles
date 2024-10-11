@@ -173,9 +173,9 @@
     # https://apple.stackexchange.com/a/53042
 
     # Based on: https://patorjk.com/software/taag/#p=display&v=1&f=Small&t=GALOIS
-    set GREETING_HOSTNAME (hostname -s)
-    function fish_greeting
-      if contains $GREETING_HOSTNAME $GERMAIN
+    set -l CURRENT_HOSTNAME (hostname -s)
+    if contains $CURRENT_HOSTNAME $GERMAIN
+      function fish_greeting
         set_color 9AAAFF
         fish_greeting_echo \
           "╭──                                    ──╮" \
@@ -185,14 +185,22 @@
           "│   \\___|___|_|_\\_|  |_/_/ \\_\\___|_|\\_|  │" \
           "│                                        │" \
           "╰──                                    ──╯"
-      else if contains $GREETING_HOSTNAME $PYTHAGORAS
+      end
+    else if contains $CURRENT_HOSTNAME $PYTHAGORAS
+      set -g _FISH_LCARS_BOTTOM 44CCAA
+      set -g _FISH_LCARS_TOP 66AAFF
+      function fish_greeting
         fish_greeting_echo \
           " _____   _______ _  _   _   ___  ___  ___    _   ___ " \
           "| _ \\ \\ / /_   _| || | /_\\ / __|/ _ \\| _ \\  /_\\ / __|" \
           "|  _/\\ V /  | | | __ |/ _ \\ (_ | (_) |   / / _ \\\\__ \\" \
           "|_|   |_|   |_| |_||_/_/ \\_\\___|\\___/|_|_\\/_/ \\_\\___/" \
           ""
-      else
+      end
+    else
+      set -g _FISH_LCARS_BOTTOM 888888
+      set -g _FISH_LCARS_TOP 888888
+      function fish_greeting
         echo -n "🐟 Welcome to "
         set_color --bold; echo (hostname -s)
       end

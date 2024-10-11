@@ -177,7 +177,7 @@
     set -l CURRENT_HOSTNAME (hostname -s)
     if contains $CURRENT_HOSTNAME $GERMAIN
       function fish_greeting
-        set_color 9AAAFF
+        set_color B594E2
         echo -n -e "\r" # Clear any pending typed text (it will still be passed to the next prompt).
         fish_greeting_echo \
           "╭──                                    ──╮" \
@@ -191,14 +191,17 @@
     else if contains $CURRENT_HOSTNAME $PYTHAGORAS
       set -g _FISH_LCARS_BOTTOM 44CCAA
       set -g _FISH_LCARS_TOP 66AAFF
+      set_color 66AAFF
       function fish_greeting
         echo -n -e "\r" # Clear any pending typed text (it will still be passed to the next prompt).
         fish_greeting_echo \
-          " _____   _______ _  _   _   ___  ___  ___    _   ___ " \
-          "| _ \\ \\ / /_   _| || | /_\\ / __|/ _ \\| _ \\  /_\\ / __|" \
-          "|  _/\\ V /  | | | __ |/ _ \\ (_ | (_) |   / / _ \\\\__ \\" \
-          "|_|   |_|   |_| |_||_/_/ \\_\\___|\\___/|_|_\\/_/ \\_\\___/" \
-          ""
+          "╭──                                                     ──╮" \
+          "│   _____   _______ _  _   _   ___  ___  ___    _   ___   │" \
+          "│  | _ \\ \\ / /_   _| || | /_\\ / __|/ _ \\| _ \\  /_\\ / __|  │" \
+          "│  |  _/\\ V /  | | | __ |/ _ \\ (_ | (_) |   / / _ \\\\__ \\  │" \
+          "│  |_|   |_|   |_| |_||_/_/ \\_\\___|\\___/|_|_\\/_/ \\_\\___/  │" \
+          "│                                                         │" \
+          "╰──                                                     ──╯"
       end
     else
       set -g _FISH_LCARS_BOTTOM 888888

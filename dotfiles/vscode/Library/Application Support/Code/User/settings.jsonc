@@ -1,7 +1,7 @@
 {
   /******** Dynamic ********/
   "editor.formatOnSave": true,
-  "window.zoomLevel": 3,
+  "window.zoomLevel": 2.5,
   /******** Main VSCode settings ********/
   "editor.formatOnPaste": false,
   "editor.tabSize": 2,

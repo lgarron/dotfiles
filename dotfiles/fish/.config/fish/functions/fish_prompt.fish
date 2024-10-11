@@ -35,7 +35,7 @@ function fish_prompt --description 'Write out the prompt'
 
     set -l fish_color_user $_FISH_LCARS_BOTTOM
     set -l fish_color_host $_FISH_LCARS_BOTTOM
-    set -l fish_color_host_remote white
+    set -l fish_color_host_remote --bold white
 
     # If we're running via SSH, change the host color.
     set -l color_host $fish_color_host

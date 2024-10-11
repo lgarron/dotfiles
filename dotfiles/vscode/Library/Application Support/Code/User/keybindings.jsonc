@@ -239,10 +239,6 @@
     "command": "workbench.action.positionPanelLeft"
   },
   {
-    "key": "alt+cmd+down alt+cmd+down",
-    "command": "workbench.action.positionPanelBottom"
-  },
-  {
     "key": "alt+cmd+up alt+cmd+up",
     "command": "workbench.action.positionPanelTop"
   }

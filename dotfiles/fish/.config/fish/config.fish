@@ -22,12 +22,14 @@
       if not string match --entire "$EXPERIMENTAL_FISH_LAUNCHED" "true" > /dev/null && string match --entire "$FISH_VERSION" "3.7.1" > /dev/null
         set -x EXPERIMENTAL_FISH_LAUNCHED true
         if test -f $FISH_MASTER_BIN_FOLDER/fish
+          echo -n -e "\r"
           echo "🐟🧪 Launching experimental fish…"
           $FISH_MASTER_BIN_FOLDER/fish
           set EXPERIMENTAL_FISH_LAUNCHED false
           echo "Press Ctrl-D again to exit, or continue to stay in in 3.7.1"
         end
       else
+        echo -n -e "\r"
         echo "🐟🧪 version: "$FISH_VERSION
         set PATH $FISH_MASTER_BIN_FOLDER $PATH
       end
@@ -176,6 +178,7 @@
     if contains $CURRENT_HOSTNAME $GERMAIN
       function fish_greeting
         set_color 9AAAFF
+        echo -n -e "\r" # Clear any pending typed text (it will still be passed to the next prompt).
         fish_greeting_echo \
           "╭──                                    ──╮" \
           "│    ___ ___ ___ __  __   _   ___ _  _   │" \
@@ -189,6 +192,7 @@
       set -g _FISH_LCARS_BOTTOM 44CCAA
       set -g _FISH_LCARS_TOP 66AAFF
       function fish_greeting
+        echo -n -e "\r" # Clear any pending typed text (it will still be passed to the next prompt).
         fish_greeting_echo \
           " _____   _______ _  _   _   ___  ___  ___    _   ___ " \
           "| _ \\ \\ / /_   _| || | /_\\ / __|/ _ \\| _ \\  /_\\ / __|" \

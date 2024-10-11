@@ -229,5 +229,21 @@
     "key": "ctrl+shift+s",
     "command": "editor.action.surroundWithSnippet",
     "when": "editorHasSelection && !editorReadonly"
+  },
+  {
+    "key": "alt+cmd+right alt+cmd+right",
+    "command": "workbench.action.positionPanelRight"
+  },
+  {
+    "key": "alt+cmd+left alt+cmd+left",
+    "command": "workbench.action.positionPanelLeft"
+  },
+  {
+    "key": "alt+cmd+down alt+cmd+down",
+    "command": "workbench.action.positionPanelBottom"
+  },
+  {
+    "key": "alt+cmd+up alt+cmd+up",
+    "command": "workbench.action.positionPanelTop"
   }
 ]

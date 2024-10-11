@@ -156,8 +156,7 @@
 
     function fish_greeting_echo
       for arg in $argv
-        echo -n $arg | head -c(tput cols)
-        echo ""
+        string shorten --max $COLUMNS $arg
       end
     end
 

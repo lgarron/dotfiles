@@ -50,7 +50,7 @@
 
     bind ctrl-left backward-word
     bind ctrl-right forward-word
-    bind ctrl-h backward-kill-token # ctrl-backspace registers as ctrl-h
+    bind ctrl-h backward-kill-word # ctrl-backspace registers as ctrl-h
     bind ctrl-\\ kill-word
     bind ctrl-delete kill-word
 

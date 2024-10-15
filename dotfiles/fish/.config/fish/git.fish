@@ -25,20 +25,20 @@
     abbr_exceptsubcommand_arg git lf refs/last-freeze commit
 
     # b⎵ → (expansion of current branch name)
-    # function abbr_git_currentbranch_fn; _abbr_expand_exceptsubcommand_arg (git rev-parse --abbrev-ref HEAD) git; end; abbr -a abbr_git_currentbranch --regex b --position anywhere --function abbr_git_currentbranch_f
+    # function _abbr_git_currentbranch_fn; _abbr_expand_exceptsubcommand_arg (git rev-parse --abbrev-ref HEAD) git; end; abbr -a _abbr_git_currentbranch --regex b --position anywhere --function _abbr_git_currentbranch_f
     # :b⎵ → :(expansion of current branch name)
-    function abbr_git_coloncurrentbranch_fn
+    function _abbr_git_coloncurrentbranch_fn
         _abbr_expand_subcommand_arg git :b :(git rev-parse --abbrev-ref HEAD) push
     end
-    abbr -a abbr_git_coloncurrentbranch --regex :b --position anywhere --function abbr_git_coloncurrentbranch_fn
-    function abbr_git_coloncurrentbranch1_fn
+    abbr -a _abbr_git_coloncurrentbranch --regex :b --position anywhere --function _abbr_git_coloncurrentbranch_fn
+    function _abbr_git_coloncurrentbranch1_fn
         _abbr_expand_subcommand_arg git :b1 :(git rev-parse --abbrev-ref @{-1}) push
     end
-    abbr -a abbr_git_coloncurrentbranch1 --regex :b1 --position anywhere --function abbr_git_coloncurrentbranch1_fn
-    function abbr_git_coloncurrentbranch2_fn
+    abbr -a _abbr_git_coloncurrentbranch1 --regex :b1 --position anywhere --function _abbr_git_coloncurrentbranch1_fn
+    function _abbr_git_coloncurrentbranch2_fn
         _abbr_expand_subcommand_arg git :b2 :(git rev-parse --abbrev-ref @{-2}) push
     end
-    abbr -a abbr_git_coloncurrentbranch2 --regex :b2 --position anywhere --function abbr_git_coloncurrentbranch2_fn
+    abbr -a _abbr_git_coloncurrentbranch2 --regex :b2 --position anywhere --function _abbr_git_coloncurrentbranch2_fn
 
     # om⎵ → origin/main
     abbr_exceptsubcommand_arg git om origin/main commit
@@ -47,10 +47,10 @@
     # oms⎵ → origin/master
     abbr_exceptsubcommand_arg git oms origin/master commit
     # ob⎵ → origin/(expansion of current branch name)
-    function abbr_git_origincurrentbranch_fn
+    function _abbr_git_origincurrentbranch_fn
         _abbr_expand_exceptsubcommand_arg git ob origin/(git rev-parse --abbrev-ref HEAD) commit
     end
-    abbr -a abbr_git_origincurrentbranch --regex ob --position anywhere --function abbr_git_origincurrentbranch_fn
+    abbr -a _abbr_git_origincurrentbranch --regex ob --position anywhere --function _abbr_git_origincurrentbranch_fn
 
     # um⎵ → upstream/main
     abbr_exceptsubcommand_arg git um upstream/main commit
@@ -59,20 +59,20 @@
     # ums⎵ → upstream/master
     abbr_exceptsubcommand_arg git ums upstream/master commit
     # ub⎵ → upstream/(expansion of current branch name)
-    function abbr_git_upstreamcurrentbranch_fn
+    function _abbr_git_upstreamcurrentbranch_fn
         _abbr_expand_exceptsubcommand_arg git ub upstream/(git rev-parse --abbrev-ref HEAD) git
     end
-    abbr -a abbr_git_upstreamcurrentbranch --regex ub --position anywhere --function abbr_git_upstreamcurrentbranch_fn
+    abbr -a _abbr_git_upstreamcurrentbranch --regex ub --position anywhere --function _abbr_git_upstreamcurrentbranch_fn
 
     # b-⎵ → (expansion of last branch name)
-    function abbr_git_lastbranch_fn
+    function _abbr_git_lastbranch_fn
         _abbr_expand_exceptsubcommand_arg git b- (git rev-parse --abbrev-ref @{-1}) commit
     end
-    abbr -a abbr_git_lastbranch --regex b- --position anywhere --function abbr_git_lastbranch_fn
+    abbr -a _abbr_git_lastbranch --regex b- --position anywhere --function _abbr_git_lastbranch_fn
     #  b⎵ → (expansion of current branch name)
     # b1⎵ → (expansion of last branch name)
     # b3⎵ → (expansion of three branch names ago)
-    function abbr_git_branchhist_fn
+    function _abbr_git_branchhist_fn
         set ref "@"
         if [ "$argv[1]" != "b" ]
             set ref $ref"{-"(string trim --left --chars=b $argv[1])"}"
@@ -80,30 +80,30 @@
         set expanded_branch (git rev-parse --abbrev-ref $ref 2>/dev/null); or return 1
         _abbr_expand_exceptsubcommand_arg git _ $expanded_branch commit
     end
-    abbr -a abbr_git_branchhist --regex "b[0-9]*" --position anywhere --function abbr_git_branchhist_fn
+    abbr -a _abbr_git_branchhist --regex "b[0-9]*" --position anywhere --function _abbr_git_branchhist_fn
 
     #   h⎵ → HEAD
     #  h1⎵ → HEAD~1
     # h12⎵ → HEAD~12
-    function abbr_git_HEAD_fn
+    function _abbr_git_HEAD_fn
         set str "HEAD"
         if [ "$argv[1]" != "h" ]
             set str $str"~"(string trim --left --chars=h $argv[1])
         end
         _abbr_expand_exceptsubcommand_arg git _ $str commit;
     end
-    abbr -a abbr_git_HEAD --regex "h[0-9]*" --position anywhere --function abbr_git_HEAD_fn
+    abbr -a _abbr_git_HEAD --regex "h[0-9]*" --position anywhere --function _abbr_git_HEAD_fn
 
     #  m1⎵ → main~1
     # m12⎵ → main~12
-    function abbr_git_mainhist_fn
+    function _abbr_git_mainhist_fn
         set str "main"
         if [ "$argv[1]" != "m" ]
             set str $str"~"(string trim --left --chars=m $argv[1])
         end
         _abbr_expand_exceptsubcommand_arg git _ $str commit;
     end
-    abbr -a abbr_git_mainhist --regex "m[0-9]+" --position anywhere --function abbr_git_mainhist_fn
+    abbr -a _abbr_git_mainhist --regex "m[0-9]+" --position anywhere --function _abbr_git_mainhist_fn
 
 ### git add
 
@@ -161,13 +161,13 @@ git push --force-with-lease"
     # git commit ne⎵ → git commit --allow-empty
     abbr_subcommand_arg git ae "--allow-empty" commit
     # git commit m⎵ → git commit --message "%" ( TODO: remove the second space?)
-    function abbr_git_commit_message_fn; _abbr_expand_subcommand_arg git m "--message \"%\"" commit; end; abbr -a abbr_git_commit_message --regex m --position anywhere --function abbr_git_commit_message_fn --set-cursor
+    function _abbr_git_commit_message_fn; _abbr_expand_subcommand_arg git m "--message \"%\"" commit; end; abbr -a _abbr_git_commit_message --regex m --position anywhere --function _abbr_git_commit_message_fn --set-cursor
     # git commit !!⎵ → git commit --message "`[last command]`" ( TODO: remove the second space?)
-    function abbr_git_commit_last_command_fn; _abbr_expand_subcommand_arg git !! "--message \"`"(string replace --all "\"" "\\\"" $history[1])"`\"" commit; end; abbr -a abbr_git_commit_last_command --regex !! --position anywhere --function abbr_git_commit_last_command_fn
+    function _abbr_git_commit_last_command_fn; _abbr_expand_subcommand_arg git !! "--message \"`"(string replace --all "\"" "\\\"" $history[1])"`\"" commit; end; abbr -a _abbr_git_commit_last_command --regex !! --position anywhere --function _abbr_git_commit_last_command_fn
     # git commit !!!⎵ → git commit --message "`[second-to-last command]`" ( TODO: remove the second space?)
-    function abbr_git_commit_secondlast_command_fn; _abbr_expand_subcommand_arg git !!! "--message \"`"(string replace --all "\"" "\\\"" $history[2])"`\"" commit; end; abbr -a abbr_git_commit_secondlast_command --regex !!! --position anywhere --function abbr_git_commit_secondlast_command_fn
+    function _abbr_git_commit_secondlast_command_fn; _abbr_expand_subcommand_arg git !!! "--message \"`"(string replace --all "\"" "\\\"" $history[2])"`\"" commit; end; abbr -a _abbr_git_commit_secondlast_command --regex !!! --position anywhere --function _abbr_git_commit_secondlast_command_fn
     # git commit !!!!⎵ → git commit --message "`[third-to-last command]`" ( TODO: remove the second space?)
-    function abbr_git_commit_thirdlast_command_fn; _abbr_expand_subcommand_arg git !!! "--message \"`"(string replace --all "\"" "\\\"" $history[3])"`\"" commit; end; abbr -a abbr_git_commit_thirdlast_command --regex !!! --position anywhere --function abbr_git_commit_thirdlast_command_fn
+    function _abbr_git_commit_thirdlast_command_fn; _abbr_expand_subcommand_arg git !!! "--message \"`"(string replace --all "\"" "\\\"" $history[3])"`\"" commit; end; abbr -a _abbr_git_commit_thirdlast_command --regex !!! --position anywhere --function _abbr_git_commit_thirdlast_command_fn
 
     function abbr_gcv
         echo "git commit --message \""(version)

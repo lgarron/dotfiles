@@ -17,21 +17,21 @@
 
 # fish 4.0 experimentation for token nav
 
-    set FISH_MASTER_BIN_FOLDER "$HOME/.fish-master/bin"
+    set -l _FISH_MASTER_BIN_FOLDER "$HOME/.fish-master/bin"
     if status is-interactive
-      if not string match --entire "$EXPERIMENTAL_FISH_LAUNCHED" "true" > /dev/null && string match --entire "$FISH_VERSION" "3.7.1" > /dev/null
-        set -x EXPERIMENTAL_FISH_LAUNCHED true
-        if test -f $FISH_MASTER_BIN_FOLDER/fish
+      if not string match --entire "$_EXPERIMENTAL_FISH_LAUNCHED" "true" > /dev/null && string match --entire "$FISH_VERSION" "3.7.1" > /dev/null
+        set -x _EXPERIMENTAL_FISH_LAUNCHED true
+        if test -f $_FISH_MASTER_BIN_FOLDER/fish
           echo -n -e "\r"
           echo "🐟🧪 Launching experimental fish…"
-          $FISH_MASTER_BIN_FOLDER/fish
-          set EXPERIMENTAL_FISH_LAUNCHED false
+          $_FISH_MASTER_BIN_FOLDER/fish
+          set _EXPERIMENTAL_FISH_LAUNCHED false
           echo "Press Ctrl-D again to exit, or continue to stay in in 3.7.1"
         end
       else
         echo -n -e "\r"
         echo "🐟🧪 version: "$FISH_VERSION
-        set PATH $FISH_MASTER_BIN_FOLDER $PATH
+        set PATH $_FISH_MASTER_BIN_FOLDER $PATH
       end
     end
 
@@ -68,8 +68,8 @@
 
     set -x "GOPATH" "$HOME/Code/gopath"
 
-    if [ "$MANUAL_RELOAD" = "true" -o "$FISH_USER_PATHS_HAS_BEEN_SET_UP_BEFORE" != "true" ]
-      if [ "$MANUAL_RELOAD" = "true" ]
+    if [ "$_FISH_MANUAL_RELOAD" = "true" -o "$_FISH_USER_PATHS_HAS_BEEN_SET_UP_BEFORE" != "true" ]
+      if [ "$_FISH_MANUAL_RELOAD" = "true" ]
         _echo ""
       end
       set -e fish_user_paths
@@ -93,12 +93,12 @@
       end
       _echo ""
 
-      set -U FISH_USER_PATHS_HAS_BEEN_SET_UP_BEFORE true
+      set -U _FISH_USER_PATHS_HAS_BEEN_SET_UP_BEFORE true
     end
 
 # Main reload message
 
-    if [ "$MANUAL_RELOAD" = "true" ]
+    if [ "$_FISH_MANUAL_RELOAD" = "true" ]
       _echo -n "🐟🔄 Reloading "
       set_color --bold
       _echo -n "fish"
@@ -109,7 +109,7 @@
 # Loading
 
     function loading_indicator
-      if [ "$MANUAL_RELOAD" = "true" ]
+      if [ "$_FISH_MANUAL_RELOAD" = "true" ]
         _echo $argv[1]
       end
     end
@@ -126,12 +126,12 @@
 
 # Dotfiles conveniences
 
-    set DOTFILES_FOLDER ( \
+    set _DOTFILES_FOLDER ( \
         realpath ~/.config/fish/config.fish \
           | sed 's#dotfiles/fish/\.config/fish/config\.fish$##' \
     )
 
-    abbr -a dff "cd $DOTFILES_FOLDER"
+    abbr -a dff "cd $_DOTFILES_FOLDER"
 
     # Reloads the fish config file. `rc` is chosen because the config file for
     # other shells is often known as the `rc` file, and `rc` is easy to type.
@@ -139,13 +139,13 @@
     # For this config file, `rc` will also force redefining abbreviations. See
     # the "Setup" section above.
     abbr -a rc ". $HOME/.config/fish/config.fish"
-    # TODO: why is this needed? It seems that `$DOTFILES_FOLDER` is reset by something else between its original definition and here, when running in a codespace?
+    # TODO: why is this needed? It seems that `$_DOTFILES_FOLDER` is reset by something else between its original definition and here, when running in a codespace?
     if [ "$CODESPACES" = "true" ]
-      set DOTFILES_FOLDER "/workspaces/.codespaces/.persistedshare/dotfiles/"
+      set _DOTFILES_FOLDER "/workspaces/.codespaces/.persistedshare/dotfiles/"
     end
-    abbr -a rcu "git -C \"$DOTFILES_FOLDER\" pull ; and . $HOME/.config/fish/config.fish"
+    abbr -a rcu "git -C \"$_DOTFILES_FOLDER\" pull ; and . $HOME/.config/fish/config.fish"
     if [ "$CODESPACES" = "true" ]
-      abbr -a rcuf "cd $DOTFILES_FOLDER && git fetch origin main && git abandon && git reset --hard origin/main && cd - && . $HOME/.config/fish/config.fish"
+      abbr -a rcuf "cd $_DOTFILES_FOLDER && git fetch origin main && git abandon && git reset --hard origin/main && cd - && . $HOME/.config/fish/config.fish"
     end
 
 # XDG path configuration
@@ -154,8 +154,8 @@
 
 # Machines
 
-    set GERMAIN Germain germain Germain.local
-    set PYTHAGORAS Pythagoras pythagoras Pythagoras.local
+    set -l GERMAIN Germain germain Germain.local
+    set -l PYTHAGORAS Pythagoras pythagoras Pythagoras.local
 
 # MOTD
 
@@ -177,8 +177,8 @@
     # https://apple.stackexchange.com/a/53042
 
     # Based on: https://patorjk.com/software/taag/#p=display&v=1&f=Small&t=GALOIS
-    set -l CURRENT_HOSTNAME (hostname -s)
-    if contains $CURRENT_HOSTNAME $GERMAIN
+    set -l _CURRENT_HOSTNAME (hostname -s)
+    if contains $_CURRENT_HOSTNAME $GERMAIN
       function fish_greeting
         set_color B594E2
         echo -n -e "\r" # Clear any pending typed text (it will still be passed to the next prompt).
@@ -191,7 +191,7 @@
           "│                                        │" \
           "╰──                                    ──╯"
       end
-    else if contains $CURRENT_HOSTNAME $PYTHAGORAS
+    else if contains $_CURRENT_HOSTNAME $PYTHAGORAS
       set -g _FISH_LCARS_BOTTOM 44CCAA
       set -g _FISH_LCARS_TOP 66AAFF
       set_color 66AAFF
@@ -281,10 +281,10 @@
 
     abbr -a dlf "cd ~/Downloads"
 
-    set LATEST_CD_DIR_PATH $HOME
+    set _LATEST_CD_DIR_PATH $HOME
     function cd-dir
       set INPUT_PATH $argv[1]
-      set -g LATEST_CD_DIR_PATH $INPUT_PATH
+      set -g _LATEST_CD_DIR_PATH $INPUT_PATH
       if not test -d $INPUT_PATH
         set INPUT_PATH (dirname $INPUT_PATH)
       end
@@ -307,10 +307,10 @@
       cd-dir $argv[1]
     end
     function _abbr_latest_cd_dir_path
-      if not set -q LATEST_CD_DIR_PATH
+      if not set -q _LATEST_CD_DIR_PATH
         return 1
       end
-      string escape $LATEST_CD_DIR_PATH
+      string escape $_LATEST_CD_DIR_PATH
     end
     abbr -a _kk_abbr --regex "kk" --position anywhere --function _abbr_latest_cd_dir_path
 
@@ -395,4 +395,4 @@
 # Cleanup
 
     # From now on, reloads of this file are considered "manual".
-    set MANUAL_RELOAD true
+    set _FISH_MANUAL_RELOAD true

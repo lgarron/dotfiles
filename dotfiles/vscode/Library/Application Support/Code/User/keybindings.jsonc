@@ -241,5 +241,9 @@
   {
     "key": "alt+cmd+up alt+cmd+up",
     "command": "workbench.action.positionPanelTop"
+  },
+  {
+    "key": "ctrl+alt+cmd+m ctrl+alt+cmd+m",
+    "command": "workbench.action.positionPanelBottom"
   }
 ]

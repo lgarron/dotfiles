@@ -86,7 +86,7 @@
       if [ (count $fish_user_paths) -gt 0 ]
         _echo " has been set to the following order:"
         for path in $fish_user_paths
-          _echo "↪ $path"
+          _echo "↪ 📂$path"
         end
       else
         _echo " has been reset, and contains no paths."
@@ -114,12 +114,11 @@
       end
     end
 
-    loading_indicator -n "↪ "
-    loading_indicator (status --current-filename)
+    loading_indicator "↪ "(status --current-filename)
 
     function load_if_exists
       if test -f $argv[2]
-        loading_indicator "  ↪ $argv[2]"
+        loading_indicator "  ↪ 🐟 $argv[2]"
         source $argv[2]
       end
     end

@@ -160,6 +160,7 @@
     abbr -a "tf" "terraform"
     abbr -a "sm" "script/manage"
     abbr -a "disk-speed-test" '"/Applications/Blackmagic Disk Speed Test.app/Contents/MacOS/DiskSpeedTest" --cmd --dir'
+    abbr -a "oa" 'openscad-auto'
 
     # TODO: move this to a script.
     functions -e scad

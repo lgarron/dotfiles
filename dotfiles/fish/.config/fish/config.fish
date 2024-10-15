@@ -314,6 +314,7 @@
       end
       string escape $LATEST_CD_DIR_PATH
     end
+    abbr -a _kk_abbr --regex "kk" --position anywhere --function _abbr_latest_cd_dir_path
 
     abbr -a _hh_abbr --regex "hh" --position anywhere -- "--help"
     abbr -a ccv --set-cursor "code (command -v %)"

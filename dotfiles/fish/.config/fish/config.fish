@@ -64,7 +64,6 @@
     function add_to_path
       set NEW_PATH_COMPONENT $argv[1]
       fish_add_path --append $NEW_PATH_COMPONENT
-      # set PATH $PATH $NEW_PATH_COMPONENT
     end
 
     set -x "GOPATH" "$HOME/Code/gopath"
@@ -80,9 +79,8 @@
       add_to_path /home/linuxbrew/.linuxbrew/bin # for codespaces
       add_to_path /home/linuxbrew/.linuxbrew/sbin # for codespaces
       add_to_path "$GOPATH/bin"
-      add_to_path "/usr/local/go/bin"
-      add_to_path /opt/homebrew/opt/postgresql@15/bin
       add_to_path $HOME/.cache/.bun/bin # For zig (for building Bun) https://bun.sh/docs/project/development
+      add_to_path "/usr/local/bin"
 
       set_color --bold; _echo -n "\$fish_user_paths"; set_color normal
       if [ (count $fish_user_paths) -gt 0 ]

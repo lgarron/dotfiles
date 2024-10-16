@@ -231,19 +231,19 @@
     "when": "editorHasSelection && !editorReadonly"
   },
   {
-    "key": "alt+cmd+right alt+cmd+right",
+    "key": "cmd+j cmd+l",
     "command": "workbench.action.positionPanelRight"
   },
   {
-    "key": "alt+cmd+left alt+cmd+left",
+    "key": "cmd+j cmd+h",
     "command": "workbench.action.positionPanelLeft"
   },
   {
-    "key": "alt+cmd+up alt+cmd+up",
+    "key": "cmd+j cmd+k",
     "command": "workbench.action.positionPanelTop"
   },
   {
-    "key": "ctrl+alt+cmd+m ctrl+alt+cmd+m",
+    "key": "cmd+j cmd+j",
     "command": "workbench.action.positionPanelBottom"
   }
 ]

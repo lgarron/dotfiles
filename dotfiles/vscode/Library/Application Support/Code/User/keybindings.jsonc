@@ -5,6 +5,11 @@
     "command": "editor.action.insertSnippet"
   },
   {
+    "key": "ctrl+shift+s",
+    "command": "editor.action.surroundWithSnippet",
+    "when": "editorHasSelection && !editorReadonly"
+  },
+  {
     "key": "`",
     "command": "editor.action.insertSnippet",
     "when": "editorHasSelection && editorTextFocus",
@@ -13,11 +18,7 @@
     }
   },
   {
-    "key": "cmd-ctrl-`",
-    "command": "workbench.action.terminal.split"
-  },
-  {
-    "key": "cmd+r",
+    "key": "cmd-r",
     "command": "workbench.action.terminal.sendSequence",
     "when": "terminalFocus",
     "args": {
@@ -30,14 +31,6 @@
     "when": "terminalFocus",
     "args": {
       "text": "\"${relativeFile}\""
-    }
-  },
-  {
-    "key": "ctrl-cmd+enter",
-    "command": "workbench.action.terminal.sendSequence",
-    "when": "terminalFocus",
-    "args": {
-      "text": "\"${fileDirname}\""
     }
   },
   {
@@ -74,7 +67,7 @@
     "when": "editorFocus"
   },
   {
-    "key": "cmd+shift+8",
+    "key": "shift+cmd+8",
     "command": "editor.action.marker.prev",
     "when": "editorFocus"
   },
@@ -126,11 +119,6 @@
     "when": "suggestWidgetVisible && textInputFocus"
   },
   {
-    "key": "cmd+i",
-    "command": "-editor.action.triggerSuggest",
-    "when": "editorHasCompletionItemProvider && textInputFocus && !editorReadonly"
-  },
-  {
     "key": "shift+cmd+c",
     "command": "-workbench.action.terminal.openNativeConsole",
     "when": "!terminalFocus"
@@ -145,11 +133,11 @@
     "command": "workbench.action.openSettingsJson"
   },
   {
-    "key": "ctrl+shift+`",
+    "key": "cmd-j cmd-m",
     "command": "workbench.action.toggleMaximizedPanel"
   },
   {
-    "key": "ctrl+shift+`",
+    "key": "cmd-j cmd-m",
     "command": "-workbench.action.terminal.new",
     "when": "terminalProcessSupported || terminalWebExtensionContributedProfile"
   },
@@ -226,11 +214,6 @@
     "when": "!editorIsOpen && !multipleEditorGroups"
   },
   {
-    "key": "ctrl+shift+s",
-    "command": "editor.action.surroundWithSnippet",
-    "when": "editorHasSelection && !editorReadonly"
-  },
-  {
     "key": "cmd+j cmd+l",
     "command": "workbench.action.positionPanelRight"
   },
@@ -245,5 +228,19 @@
   {
     "key": "cmd+j cmd+j",
     "command": "workbench.action.positionPanelBottom"
-  }
+  },
+  {
+    "key": "cmd+enter",
+    "command": "workbench.action.togglePanel",
+    "when": "!findWidgetVisible || terminalFocus"
+  },
+  {
+    "key": "cmd-ctrl-enter",
+    "command": "workbench.action.terminal.split"
+  },
+  {
+    "key": "ctrl+`",
+    "command": "-workbench.action.terminal.toggleTerminal",
+    "when": "terminal.active"
+  },
 ]

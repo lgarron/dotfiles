@@ -35,24 +35,29 @@
       end
     end
 
-    # It would be more consistent with macOS to use `alt` for `*-word`. However,
-    # using `ctrl-delete` for `backward-kill-token` doesn't seem to work at all.
+    # These bindings depend on `CSI u` support.
+    bind alt-left backward-word
+    bind alt-right forward-word
+    bind alt-backspace backward-kill-word
+    bind alt-delete kill-word
+    bind alt-\\ kill-word
 
-    bind alt-left backward-token
-    bind alt-b backward-token # VS Code????
-    bind alt-right forward-token
-    bind alt-f forward-token # VS Code????
-    bind alt-backspace backward-kill-token
-    bind \cW backward-kill-token # VS Code????
-    bind alt-\\ kill-token
-    bind alt-delete kill-token # `alt-delete` just gets sent as `delete`, so this doesn't work
-    bind alt-d kill-token # VS Code maps `alt-delete` to this?
+    bind ctrl-left backward-token
+    bind ctrl-right forward-token
+    bind ctrl-backspace backward-kill-token
+    bind ctrl-delete kill-token
+    bind ctrl-\\ kill-token
 
-    bind ctrl-left backward-word
-    bind ctrl-right forward-word
-    bind ctrl-h backward-kill-word # ctrl-backspace registers as ctrl-h
-    bind ctrl-\\ kill-word
-    bind ctrl-delete kill-word
+    if string match --entire -- $TERM_PROGRAM vscode > /dev/null
+      # Legacy bindings
+      bind alt-b backward-word
+      bind alt-f forward-word
+      bind ctrl-w backward-kill-word
+      bind alt-d kill-word
+
+      # Legacy bindings
+      bind ctrl-h backward-kill-token
+    end
 
     function _add_LATEST_CD_DIR_PATH
       commandline --insert (string escape $LATEST_CD_DIR_PATH)

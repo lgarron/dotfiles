@@ -60,9 +60,10 @@
     end
 
     function _add_LATEST_CD_DIR_PATH
-      commandline --insert (string escape $LATEST_CD_DIR_PATH)
+      commandline --insert (string escape $_LATEST_CD_DIR_PATH)
     end
     bind ctrl-alt-r _add_LATEST_CD_DIR_PATH
+    bind alt-r _add_LATEST_CD_DIR_PATH
 
 # Paths
 

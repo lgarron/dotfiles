@@ -74,7 +74,7 @@
 
     set -x "GOPATH" "$HOME/Code/gopath"
 
-    if [ "$_FISH_MANUAL_RELOAD" = "true" -o "$_FISH_USER_PATHS_HAS_BEEN_SET_UP_BEFORE" != "true" ]
+    if [ "$_FISH_MANUAL_RELOAD" = "true" -o "$_FISH_USER_PATHS_HAS_BEEN_SET_UP" != "true" ]
       if [ "$_FISH_MANUAL_RELOAD" = "true" ]
         _echo ""
       end
@@ -99,7 +99,34 @@
       end
       _echo ""
 
-      set -U _FISH_USER_PATHS_HAS_BEEN_SET_UP_BEFORE true
+      set -U _FISH_USER_PATHS_HAS_BEEN_SET_UP true
+    end
+
+# Completions
+
+    if [ "$_FISH_MANUAL_RELOAD" = "true" -o "$_FISH_MANUAL_COMPLETIONS_HAVE_BEEN_SET_UP" != "true" ]
+      if [ "$_FISH_MANUAL_RELOAD" = "true" ]
+        _echo "Loading completions for Rust binaries and scripts…"
+      end
+
+      function _rust_completion
+        set -l COMMAND $argv[1]
+        set -l COMMAND_COMPLETIONS_FILE_PATH $HOME/.config/fish/completions/$COMMAND.fish
+        _echo "↪ 🦀 $COMMAND"
+        if command -v $COMMAND > /dev/null
+          command $COMMAND --completions fish 2>/dev/null > $COMMAND_COMPLETIONS_FILE_PATH # TODO: do we need to account for path traversal?
+        else
+          rm -f $COMMAND_COMPLETIONS_FILE_PATH
+        end
+      end
+
+      # TODO: figure out how to move all of these to Homebrew
+      _rust_completion wat
+      _rust_completion openscad-auto
+
+      _echo ""
+
+      set -U _FISH_MANUAL_COMPLETIONS_HAVE_BEEN_SET_UP true
     end
 
 # Main reload message
@@ -326,10 +353,6 @@
       # TODO: share abbreviation functions between these?
       abbr_anyarg $ssh_like_command pt Pythagoras.tlb
       abbr_anyarg $ssh_like_command pw Pythagoras-ts.wyvern-climb.ts.net
-    end
-
-    if command -v wat > /dev/null
-      wat --completions fish | source # TOO: install using Homebrew
     end
 
     abbr_anyarg hevc q "--quality"

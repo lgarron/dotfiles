@@ -112,8 +112,8 @@
       function _rust_completion
         set -l COMMAND $argv[1]
         set -l COMMAND_COMPLETIONS_FILE_PATH $HOME/.config/fish/completions/$COMMAND.fish
-        _echo "↪ 🦀 $COMMAND"
         if command -v $COMMAND > /dev/null
+          _echo "↪ 🦀 $COMMAND"
           command $COMMAND --completions fish 2>/dev/null > $COMMAND_COMPLETIONS_FILE_PATH # TODO: do we need to account for path traversal?
         else
           rm -f $COMMAND_COMPLETIONS_FILE_PATH

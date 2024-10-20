@@ -329,7 +329,7 @@
       echo ""
       echo (set_color --bold)"$argv[1]"(set_color B594E2)
       echo ""
-      echo "┬ Use ^⇧R to place this into a command."
+      echo "┬ Use ^⌥R to place this into a command."
       echo -n "╰"
       string repeat -n $NUM_DASHES "─"
       echo -n (set_color normal)

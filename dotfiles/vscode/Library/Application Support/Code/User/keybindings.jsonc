@@ -231,7 +231,7 @@
   },
   {
     "key": "cmd+enter",
-    "command": "workbench.action.togglePanel",
+    "command": "workbench.action.terminal.toggleTerminal",
     "when": "!findWidgetVisible || terminalFocus"
   },
   {
@@ -242,5 +242,15 @@
     "key": "ctrl+`",
     "command": "-workbench.action.terminal.toggleTerminal",
     "when": "terminal.active"
+  },
+  {
+    "key": "backspace",
+    "command": "workbench.debug.panel.action.clearReplAction",
+    "when": "focusedView == 'workbench.panel.repl.view'"
+  },
+  {
+    "key": "cmd+k",
+    "command": "-workbench.debug.panel.action.clearReplAction",
+    "when": "focusedView == 'workbench.panel.repl.view'"
   },
 ]

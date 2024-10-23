@@ -102,4 +102,10 @@
     "body": "Promise<${0:void}>",
     "description": "Promise type"
   },
+  "import.meta.resolve": {
+    "scope": "javascript,typescript",
+    "prefix": "imr",
+    "body": "import.meta.resolve(${0})",
+    "description": "import.meta.resolve"
+  },
 }

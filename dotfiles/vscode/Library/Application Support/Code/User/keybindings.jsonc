@@ -18,15 +18,7 @@
     }
   },
   {
-    "key": "cmd-r",
-    "command": "workbench.action.terminal.sendSequence",
-    "when": "terminalFocus",
-    "args": {
-      "text": "\"${file}\""
-    }
-  },
-  {
-    "key": "ctrl-cmd+r",
+    "key": "shift+cmd+enter",
     "command": "workbench.action.terminal.sendSequence",
     "when": "terminalFocus",
     "args": {
@@ -34,7 +26,15 @@
     }
   },
   {
-    "key": "ctrl+shift+r",
+    "key": "alt+cmd+enter",
+    "command": "workbench.action.terminal.sendSequence",
+    "when": "terminalFocus",
+    "args": {
+      "text": "\"${file}\""
+    }
+  },
+  {
+    "key": "shift+ctrl+r",
     "command": "workbench.action.terminal.sendSequence",
     "when": "terminalFocus",
     "args": {

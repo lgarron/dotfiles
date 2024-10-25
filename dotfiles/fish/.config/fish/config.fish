@@ -106,14 +106,15 @@
 
     if [ "$_FISH_MANUAL_RELOAD" = "true" -o "$_FISH_MANUAL_COMPLETIONS_HAVE_BEEN_SET_UP" != "true" ]
       if [ "$_FISH_MANUAL_RELOAD" = "true" ]
-        _echo "Loading completions for Rust binaries and scripts…"
+        _echo "Loading completions for commands…"
       end
 
-      function _rust_completion
-        set -l COMMAND $argv[1]
+      function _dash_dash_completions
+        set -l EMOJI $argv[1]
+        set -l COMMAND $argv[2]
         set -l COMMAND_COMPLETIONS_FILE_PATH $HOME/.config/fish/completions/$COMMAND.fish
         if command -v $COMMAND > /dev/null
-          _echo "↪ 🦀 $COMMAND"
+          _echo "↪ $EMOJI $COMMAND"
           command $COMMAND --completions fish 2>/dev/null > $COMMAND_COMPLETIONS_FILE_PATH # TODO: do we need to account for path traversal?
         else
           rm -f $COMMAND_COMPLETIONS_FILE_PATH
@@ -121,8 +122,10 @@
       end
 
       # TODO: figure out how to move all of these to Homebrew
-      _rust_completion wat
-      _rust_completion openscad-auto
+      _dash_dash_completions 🦀 wat
+      _dash_dash_completions 🦀 openscad-auto
+      _dash_dash_completions 📜 rmbranch
+      _dash_dash_completions 📜 rmtag
 
       _echo ""
 

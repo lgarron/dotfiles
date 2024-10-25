@@ -69,6 +69,12 @@
         _abbr_expand_exceptsubcommand_arg git b- (git rev-parse --abbrev-ref @{-1}) commit
     end
     abbr -a _abbr_git_lastbranch --regex b- --position anywhere --function _abbr_git_lastbranch_fn
+
+    function _abbr_rmbranch_lastbranch_fn
+        _abbr_expand_exceptsubcommand_arg rmbranch b- (git rev-parse --abbrev-ref @{-1}) commit
+    end
+    abbr -a _abbr_rmbranch_lastbranch --regex b- --position anywhere --function _abbr_rmbranch_lastbranch_fn
+
     #  b⎵ → (expansion of current branch name)
     # b1⎵ → (expansion of last branch name)
     # b3⎵ → (expansion of three branch names ago)

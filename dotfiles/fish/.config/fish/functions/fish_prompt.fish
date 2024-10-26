@@ -10,6 +10,9 @@ if not set -q _FISH_LCARS_BOTTOM; set -g _FISH_LCARS_BOTTOM F19E4C; end
 if not set -q _FISH_LCARS_TOP; set -g _FISH_LCARS_TOP B594E2; end
 set -g _FISH_PROMPT_FIRST_COMMAND_HAS_RUN false # var
 
+set -g _PROMPT_COMPACT_MODE_MAX_LINES 15
+set -g _PROMPT_EVEN_MORE_COMPACT_MODE_MAX_LINES 12
+
 function _echo_padded
     set -l PREFIX $argv[1]
     set -l SET_COLOR_END $argv[2]
@@ -54,10 +57,14 @@ function fish_prompt --description 'Write out the prompt'
         if not string match -e -- "$prompt_status" " " > /dev/null
             echo "├─ ❌ $prompt_status"(set_color $_FISH_LCARS_TOP)"command status"
         end
-        _echo_padded \
-            "╰─── $PREVIOUS_COMMAND_TIME " \
-            (set_color $_FISH_LCARS_BOTTOM)
-        echo ""
+        if [ (tput lines) -gt $_PROMPT_EVEN_MORE_COMPACT_MODE_MAX_LINES ]
+            _echo_padded \
+                "╰─── $PREVIOUS_COMMAND_TIME " \
+                (set_color $_FISH_LCARS_BOTTOM)
+        end
+        if [ (tput lines) -gt $_PROMPT_COMPACT_MODE_MAX_LINES ]
+            echo ""
+        end
     end
 
     set -l PREFIX_BEFORE_PWD (set_color $_FISH_LCARS_BOTTOM)"╭─── "
@@ -75,11 +82,19 @@ function fish_prompt --description 'Write out the prompt'
     set FISH_VCS_PROMPT (fish_vcs_prompt "%s")
     if not string match -e "$FISH_VCS_PROMPT" "" > /dev/null
         set -l PREFIX (set_color $_FISH_LCARS_BOTTOM)"├─ "$FISH_VCS_PROMPT" "
-        echo $PREFIX
+        echo -n $PREFIX
+        if [ (tput lines) -gt $_PROMPT_COMPACT_MODE_MAX_LINES ]
+            echo ""
+        end
     end
-    echo -n "├─ "
+    if [ (tput lines) -gt $_PROMPT_COMPACT_MODE_MAX_LINES ]
+        echo -n "├─ "
     set suffix "
 " (set_color $_FISH_LCARS_BOTTOM) "│"
+    else
+        echo -n "│ "
+        set suffix " │" (set_color $_FISH_LCARS_BOTTOM) ""
+    end
 
     echo -n -s (set_color $fish_color_user) "$USER" @ (set_color $color_host) (prompt_hostname) (set_color $_FISH_LCARS_BOTTOM) $suffix " "
 end
@@ -91,5 +106,7 @@ end
 
 # This needs to be here to avoid an extra blank line in the prompt.
 function _fish_prompt_postexec_blank_line --on-event fish_postexec
-    echo (set_color $_FISH_LCARS_TOP)"┬"(set_color normal)
+    if [ (tput lines) -gt $_PROMPT_COMPACT_MODE_MAX_LINES ]
+        echo (set_color $_FISH_LCARS_TOP)"┬"(set_color normal)
+    end
 end

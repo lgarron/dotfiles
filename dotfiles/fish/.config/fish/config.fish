@@ -262,6 +262,9 @@
     abbr -a "cva" "command -va"
     abbr -a "which" "# Try: cv"
 
+    # Restore the functionality of using `⌥_` to enter `—` on macOS.
+    bind alt-_ "commandline -i —"
+
 ### Abbrevation definition helpers
 
     source $HOME/.config/fish/abbr.fish

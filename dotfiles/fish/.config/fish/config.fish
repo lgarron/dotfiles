@@ -211,7 +211,7 @@
     #
     # https://apple.stackexchange.com/a/53042
 
-    # Based on: https://patorjk.com/software/taag/#p=display&v=1&f=Small&t=GALOIS
+    # Font: https://www.npmjs.com/package/stalwart-ascii-font?activeTab=readme
     set -l _CURRENT_HOSTNAME (hostname -s)
     if contains $_CURRENT_HOSTNAME $GERMAIN
       function fish_greeting

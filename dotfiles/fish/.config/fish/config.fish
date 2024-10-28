@@ -210,6 +210,13 @@
     #     set MAC_HOSTNAME (which scutil > /dev/null && scutil --get ComputerName)
     #
     # https://apple.stackexchange.com/a/53042
+    #
+    # To fix a hostname (e.g. if it was changed due to conflict from multiple paths on the same network):
+    #
+    #     set FIXED_HOSTNAME Germain
+    #     sudo scutil --set HostName $FIXED_HOSTNAME
+    #     sudo scutil --set ComputerName $FIXED_HOSTNAME
+    #     sudo scutil --set LocalHostName $FIXED_HOSTNAME
 
     # Font: https://www.npmjs.com/package/stalwart-ascii-font?activeTab=readme
     set -l _CURRENT_HOSTNAME (hostname -s)

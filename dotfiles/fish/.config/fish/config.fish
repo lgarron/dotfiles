@@ -109,23 +109,28 @@
         _echo "Loading completions for commands…"
       end
 
-      function _dash_dash_completions
-        set -l EMOJI $argv[1]
-        set -l COMMAND $argv[2]
+      function _completions
+        set -l DASH_DASH $argv[1]
+        set -l EMOJI $argv[2]
+        set -l COMMAND $argv[3]
         set -l COMMAND_COMPLETIONS_FILE_PATH $HOME/.config/fish/completions/$COMMAND.fish
         if command -v $COMMAND > /dev/null
           _echo "↪ $EMOJI $COMMAND"
-          command $COMMAND --completions fish 2>/dev/null > $COMMAND_COMPLETIONS_FILE_PATH # TODO: do we need to account for path traversal?
+          command $COMMAND $DASH_DASH"completions" fish 2>/dev/null > $COMMAND_COMPLETIONS_FILE_PATH # TODO: do we need to account for path traversal?
         else
           rm -f $COMMAND_COMPLETIONS_FILE_PATH
         end
       end
 
       # TODO: figure out how to move all of these to Homebrew
-      _dash_dash_completions 🦀 wat
-      _dash_dash_completions 🦀 openscad-auto
-      _dash_dash_completions 📜 rmbranch
-      _dash_dash_completions 📜 rmtag
+      _completions "--" 🦀 wat
+      _completions "--" 🦀 openscad-auto
+      _completions "--" 📜 rmbranch
+      _completions "--" 📜 rmtag
+
+      # Temporary until I figure out how to compile `fish` with the Homebrew data dirs.
+      _completions "" 🦀 twsearch
+      _completions "" 🦀 twsearch-cpp-wrapper
 
       _echo ""
 

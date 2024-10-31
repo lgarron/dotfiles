@@ -275,5 +275,8 @@
   ],
   "window.openFilesInNewWindow": "default",
   "scm.experimental.showHistoryGraph": true,
+  "[css]": {
+    "editor.defaultFormatter": "biomejs.biome"
+  }
   /****************/
 }

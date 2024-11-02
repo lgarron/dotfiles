@@ -164,6 +164,10 @@
 
     abbr -a serve "open http://localhost:8000; caddy file-server --listen :8000 --browse --root ."
 
+    abbr_subcommand alg p parse
+    abbr_subcommand alg i invert
+    abbr_anysubcommand_arg alg s --stdin
+
     # Workaround for VS Code not using `dev.containers.defaultExtensionsIfInstalledLocally` for codespaces created outside its (interactive ⇒ very slow) UI.
     function codespaces-install-common-extensions
         set -l _CODESPACES_COMMON_EXTENSIONS \

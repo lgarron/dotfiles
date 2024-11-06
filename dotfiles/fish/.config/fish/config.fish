@@ -104,6 +104,7 @@
 
 # Completions
 
+    # TODO: https://github.com/fish-shell/fish-shell/issues/10835
     if [ "$_FISH_MANUAL_RELOAD" = "true" -o "$_FISH_MANUAL_COMPLETIONS_HAVE_BEEN_SET_UP" != "true" ]
       if [ "$_FISH_MANUAL_RELOAD" = "true" ]
         _echo "Loading completions for commands…"
@@ -131,6 +132,9 @@
       # Temporary until I figure out how to compile `fish` with the Homebrew data dirs.
       _completions "" 🦀 twsearch
       _completions "" 🦀 twsearch-cpp-wrapper
+
+      # TODO: https://github.com/fish-shell/fish-shell/issues/10835
+      zellij setup --generate-completion fish > $HOME/.config/fish/completions/zellij.fish
 
       _echo ""
 

@@ -17,7 +17,8 @@ mac-common: \
 	quicksilver \
 	sd-card-backup \
 	xdg-basedir-workarounds \
-	vscode
+	vscode \
+	zellij
 
 .PHONY: germain
 germain: mac-common
@@ -28,7 +29,10 @@ germain: \
 	hushlogin # for SSH
 
 .PHONY: linux
-linux: fish xdg-basedir-workarounds
+linux: \
+	fish \
+	xdg-basedir-workarounds \
+	zellij
 
 
 ########
@@ -43,6 +47,7 @@ PACKAGES += sd-card-backup
 PACKAGES += vscode
 PACKAGES += xdg-basedir-workarounds
 PACKAGES += niceplz
+PACKAGES += zellij
 
 .PHONY: $(PACKAGES)
 $(PACKAGES):

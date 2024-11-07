@@ -95,3 +95,15 @@ setup:
 setup-dev-dependencies:
 	@echo "Note: \`make setup\` sets up the repo for development (installing dependencies), it does not set up dotfiles themselves."
 	bun install
+
+########
+
+.PHONY: test
+test: test-completions
+
+.PHONY: test-completions
+test-completions:
+	cargo run --bin openscad-auto -- --completions fish
+	./scripts/git/tagpush.ts --completions fish
+	./scripts/git/rmbranch.fish --completions fish
+	./scripts/git/rmtag.fish --completions fish

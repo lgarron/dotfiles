@@ -188,8 +188,8 @@
           "╰──                                          ──╯"
       end
     else if contains $_CURRENT_HOSTNAME $PYTHAGORAS
-      set -g _FISH_LCARS_BOTTOM 44CCAA
-      set -g _FISH_LCARS_TOP 66AAFF
+      set -g _FISH_PROMPT_LCARS_BOTTOM_COLOR 44CCAA
+      set -g _FISH_PROMPT_LCARS_TOP_COLOR 66AAFF
       function fish_greeting
         set_color 66AAFF
         echo -n -e "\r" # Clear any pending typed text (it will still be passed to the next prompt).
@@ -202,8 +202,8 @@
           "╰──                                                              ──╯"
       end
     else
-      set -g _FISH_LCARS_BOTTOM 888888
-      set -g _FISH_LCARS_TOP 888888
+      set -g _FISH_PROMPT_LCARS_BOTTOM_COLOR D0B699
+      set -g _FISH_PROMPT_LCARS_TOP_COLOR D0B699
       function fish_greeting
         echo -n "🐟 Welcome to "
         set_color --bold; echo (hostname -s)

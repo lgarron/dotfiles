@@ -29,6 +29,13 @@ See [`./exported/`](./exported/) for files that must be manually exported/import
     cd ~/Code/dotfiles
     make linux-setup fish
 
+## Languages, Ecosystems, and Runtimes
+
+- `bash` (deprecated, except for bootstrapping)
+- `fish`
+- `bun` for TypeScript
+- `cargo +nightly -Zscript`
+
 ## XDG Base Directory Spec
 
 Known compatibility chart: <https://wiki.archlinux.org/index.php/XDG_Base_Directory_support>

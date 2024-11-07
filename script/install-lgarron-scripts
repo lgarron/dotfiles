@@ -2,13 +2,12 @@
 
 set -euo pipefail
 
-function install-lgarron-script {
-  script="${1}"
-  script_source="${2}"
-  echo "Installing: ${script}"
-  curl -o "/tmp/${script}" "https://raw.githubusercontent.com/lgarron/dotfiles/scripts/main/${script_source}"
-  sudo cp "/tmp/${script}" "/usr/bin/${script}"
-  sudo chmod +x "/usr/bin/${script}"
+function install-scripts-bin {
+  dest_bin=${1}
+  src_bin=${2}
+  echo "Installing: ${dest_bin}"
+  sudo cp "scripts/${src_bin}" "/usr/bin/${dest_bin}"
+  sudo chmod +x "/usr/bin/${dest_bin}"
 }
 
 function install-lgarron-script-with-completions {

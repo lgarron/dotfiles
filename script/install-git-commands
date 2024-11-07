@@ -15,12 +15,11 @@ command -v git-thaw || install-git-freeze-bin git-thaw
 command -v git-abandon || install-git-freeze-bin git-abandon
 
 function install-scripts-bin {
-  src_bin=${1}
-  dest_bin=${2}
+  dest_bin=${1}
+  src_bin=${2}
   echo "Installing: ${dest_bin}"
-  curl -o "/tmp/${dest_bin}" "https://raw.githubusercontent.com/lgarron/dotfiles/scripts/main/${src_bin}"
-  sudo cp "/tmp/${dest_bin}" "/usr/bin/${dest_bin}"
+  sudo cp "scripts/${src_bin}" "/usr/bin/${dest_bin}"
   sudo chmod +x "/usr/bin/${dest_bin}"
 }
 
-command -v git-distance || install-scripts-bin git/git-distance.fish git-distance
+command -v git-distance || install-scripts-bin git-distance git/git-distance.fish

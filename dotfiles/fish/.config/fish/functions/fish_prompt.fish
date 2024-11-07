@@ -23,7 +23,12 @@ function _echo_padded
     end
     set -l DASHES (string repeat -n $NUM_DASHES "─")
     echo -n $PREFIX$DASHES$SET_COLOR_END
-    echo -e "\r"
+    if echo $version | grep "3\.[0-9]\+\.[0-9]\+-[0-9]\+-g[0-9a-f]\{8\}" > /dev/null
+        echo -e "\r"
+    else
+        # Older `fish` has some compatibility issues around character width calculation and newlines. We fall back to a simple newline here for "close enough" functionality.
+        echo ""
+    end
 end
 
 function fish_prompt --description 'Write out the prompt'

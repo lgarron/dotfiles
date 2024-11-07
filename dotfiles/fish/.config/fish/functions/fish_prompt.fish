@@ -10,8 +10,8 @@ if not set -q _FISH_LCARS_BOTTOM; set -g _FISH_LCARS_BOTTOM F19E4C; end
 if not set -q _FISH_LCARS_TOP; set -g _FISH_LCARS_TOP B594E2; end
 set -g _FISH_PROMPT_FIRST_COMMAND_HAS_RUN false # var
 
-set -g _PROMPT_COMPACT_MODE_MAX_LINES 15
-set -g _PROMPT_EVEN_MORE_COMPACT_MODE_MAX_LINES 12
+set -g _FISH_PROMPT_COMPACT_MODE_MAX_ROWS 15
+set -g _FISH_PROMPT_EVEN_MORE_COMPACT_MODE_MAX_ROWS 12
 
 function _echo_padded
     set -l PREFIX $argv[1]
@@ -57,12 +57,12 @@ function fish_prompt --description 'Write out the prompt'
         if not string match -e -- "$prompt_status" " " > /dev/null
             echo "├─ ❌ $prompt_status"(set_color $_FISH_LCARS_TOP)"command status"
         end
-        if [ (tput lines) -gt $_PROMPT_EVEN_MORE_COMPACT_MODE_MAX_LINES ]
+        if [ (tput lines) -gt $_FISH_PROMPT_EVEN_MORE_COMPACT_MODE_MAX_ROWS ]
             _echo_padded \
                 "╰─── $PREVIOUS_COMMAND_TIME " \
                 (set_color $_FISH_LCARS_BOTTOM)
         end
-        if [ (tput lines) -gt $_PROMPT_COMPACT_MODE_MAX_LINES ]
+        if [ (tput lines) -gt $_FISH_PROMPT_COMPACT_MODE_MAX_ROWS ]
             echo ""
         end
     end
@@ -83,11 +83,11 @@ function fish_prompt --description 'Write out the prompt'
     if not string match -e "$FISH_VCS_PROMPT" "" > /dev/null
         set -l PREFIX (set_color $_FISH_LCARS_BOTTOM)"├─ "$FISH_VCS_PROMPT" "
         echo -n $PREFIX
-        if [ (tput lines) -gt $_PROMPT_COMPACT_MODE_MAX_LINES ]
+        if [ (tput lines) -gt $_FISH_PROMPT_COMPACT_MODE_MAX_ROWS ]
             echo ""
         end
     end
-    if [ (tput lines) -gt $_PROMPT_COMPACT_MODE_MAX_LINES ]
+    if [ (tput lines) -gt $_FISH_PROMPT_COMPACT_MODE_MAX_ROWS ]
         echo -n "├─ "
     set suffix "
 " (set_color $_FISH_LCARS_BOTTOM) "│"
@@ -106,7 +106,7 @@ end
 
 # This needs to be here to avoid an extra blank line in the prompt.
 function _fish_prompt_postexec_blank_line --on-event fish_postexec
-    if [ (tput lines) -gt $_PROMPT_COMPACT_MODE_MAX_LINES ]
+    if [ (tput lines) -gt $_FISH_PROMPT_COMPACT_MODE_MAX_ROWS ]
         echo (set_color $_FISH_LCARS_TOP)"┬"(set_color normal)
     end
 end

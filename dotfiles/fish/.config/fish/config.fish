@@ -17,23 +17,8 @@
 
 # fish 4.0 experimentation for token nav
 
-    set -l _FISH_MASTER_BIN_FOLDER "$HOME/.fish-master/bin"
-    if status is-interactive
-      if not string match --entire "$_EXPERIMENTAL_FISH_LAUNCHED" "true" > /dev/null && string match --entire "$FISH_VERSION" "3.7.1" > /dev/null
-        set -x _EXPERIMENTAL_FISH_LAUNCHED true
-        if test -f $_FISH_MASTER_BIN_FOLDER/fish
-          echo -n -e "\r"
-          echo "🐟🧪 Launching experimental fish…"
-          $_FISH_MASTER_BIN_FOLDER/fish
-          set _EXPERIMENTAL_FISH_LAUNCHED false
-          echo "Press Ctrl-D again to exit, or continue to stay in in 3.7.1"
-        end
-      else
-        echo -n -e "\r"
-        echo "🐟🧪 version: "$FISH_VERSION
-        set PATH $_FISH_MASTER_BIN_FOLDER $PATH
-      end
-    end
+    echo -n -e "\r"
+    echo "🐟🧪 version: "$FISH_VERSION
 
     # These bindings depend on `CSI u` support.
     bind alt-left backward-word
@@ -100,45 +85,6 @@
       _echo ""
 
       set -U _FISH_USER_PATHS_HAS_BEEN_SET_UP true
-    end
-
-# Completions
-
-    # TODO: https://github.com/fish-shell/fish-shell/issues/10835
-    if [ "$_FISH_MANUAL_RELOAD" = "true" -o "$_FISH_MANUAL_COMPLETIONS_HAVE_BEEN_SET_UP" != "true" ]
-      if [ "$_FISH_MANUAL_RELOAD" = "true" ]
-        _echo "Loading completions for commands…"
-      end
-
-      function _completions
-        set -l DASH_DASH $argv[1]
-        set -l EMOJI $argv[2]
-        set -l COMMAND $argv[3]
-        set -l COMMAND_COMPLETIONS_FILE_PATH $HOME/.config/fish/completions/$COMMAND.fish
-        if command -v $COMMAND > /dev/null
-          _echo "↪ $EMOJI $COMMAND"
-          command $COMMAND $DASH_DASH"completions" fish 2>/dev/null > $COMMAND_COMPLETIONS_FILE_PATH # TODO: do we need to account for path traversal?
-        else
-          rm -f $COMMAND_COMPLETIONS_FILE_PATH
-        end
-      end
-
-      # TODO: figure out how to move all of these to Homebrew
-      _completions "--" 🦀 wat
-      _completions "--" 🦀 openscad-auto
-      _completions "--" 📜 rmbranch
-      _completions "--" 📜 rmtag
-
-      # Temporary until I figure out how to compile `fish` with the Homebrew data dirs.
-      _completions "" 🦀 twsearch
-      _completions "" 🦀 twsearch-cpp-wrapper
-
-      # TODO: https://github.com/fish-shell/fish-shell/issues/10835
-      zellij setup --generate-completion fish > $HOME/.config/fish/completions/zellij.fish
-
-      _echo ""
-
-      set -U _FISH_MANUAL_COMPLETIONS_HAVE_BEEN_SET_UP true
     end
 
 # Main reload message

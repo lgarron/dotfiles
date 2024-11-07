@@ -1,17 +1,3 @@
-#!/usr/bin/env -S cargo +nightly -Zscript --quiet --
----
-[package]
-edition = "2021"
-[dependencies]
-chrono = "0.4.38"
-clap = { version = "4.5.20", features = ["derive"] }
-clap_complete = "4.5.33"
-script-helpers = "0.1.0"
-shell-quote = "0.7.1"
----
-
-// TODO: split out parts of this file into conveniences.
-
 use chrono::Local;
 use clap::{CommandFactory, Parser, ValueEnum};
 use clap_complete::generator::generate;

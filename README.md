@@ -34,7 +34,7 @@ See [`./exported/`](./exported/) for files that must be manually exported/import
 - `bash` (deprecated, except for bootstrapping)
 - `fish`
 - `bun` for TypeScript
-- `cargo +nightly -Zscript`
+- Rust
 - Homebrew
 
 ## XDG Base Directory Spec

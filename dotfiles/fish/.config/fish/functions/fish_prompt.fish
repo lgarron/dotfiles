@@ -13,7 +13,11 @@ set -g _FISH_PROMPT_FIRST_COMMAND_HAS_RUN false # var
 set -g _FISH_PROMPT_COMPACT_MODE_MAX_ROWS 15
 set -g _FISH_PROMPT_EVEN_MORE_COMPACT_MODE_MAX_ROWS 12
 
-function _echo_padded
+function _fish_prompt_is_fish_HEAD_build
+    echo $version | grep "3\.[0-9]\+\.[0-9]\+-[0-9]\+-g[0-9a-f]\{8\}" > /dev/null
+end
+
+function _fish_prompt_echo_padded
     set -l PREFIX $argv[1]
     set -l SET_COLOR_END $argv[2]
     set -l NUM_DASHES (math $COLUMNS - (string length --visible $PREFIX))
@@ -23,7 +27,7 @@ function _echo_padded
     end
     set -l DASHES (string repeat -n $NUM_DASHES "─")
     echo -n $PREFIX$DASHES$SET_COLOR_END
-    if echo $version | grep "3\.[0-9]\+\.[0-9]\+-[0-9]\+-g[0-9a-f]\{8\}" > /dev/null
+    if _fish_prompt_is_fish_HEAD_build
         echo -e "\r"
     else
         # Older `fish` has some compatibility issues around character width calculation and newlines. We fall back to a simple newline here for "close enough" functionality.
@@ -63,7 +67,7 @@ function fish_prompt --description 'Write out the prompt'
             echo "├─ ❌ $prompt_status"(set_color $_FISH_LCARS_TOP)"command status"
         end
         if [ (tput lines) -gt $_FISH_PROMPT_EVEN_MORE_COMPACT_MODE_MAX_ROWS ]
-            _echo_padded \
+            _fish_prompt_echo_padded \
                 "╰─── $PREVIOUS_COMMAND_TIME " \
                 (set_color $_FISH_LCARS_BOTTOM)
         end
@@ -80,7 +84,7 @@ function fish_prompt --description 'Write out the prompt'
     if test (string length --visible $PREFIX) -gt $COLUMNS
         set PREFIX $PREFIX_BEFORE_PWD(prompt_pwd)" "
     end
-    _echo_padded \
+    _fish_prompt_echo_padded \
         $PREFIX \
         (set_color $_FISH_LCARS_BOTTOM)
 

@@ -11,7 +11,7 @@ Linked [using GNU `stow`](http://brandon.invergo.net/news/2012-05-26-using-gnu-s
 
     # Install Homebrew
     open https://brew.sh/ # follow install instructions
-    brew install fish # needed for dotfiles
+    brew install --HEAD fish # needed for dotfiles
 
     # dotfiles
     git clone https://github.com/lgarron/dotfiles ~/Code/git/github.com/lgarron/dotfiles

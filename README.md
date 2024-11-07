@@ -35,6 +35,7 @@ See [`./exported/`](./exported/) for files that must be manually exported/import
 - `fish`
 - `bun` for TypeScript
 - `cargo +nightly -Zscript`
+- Homebrew
 
 ## XDG Base Directory Spec
 

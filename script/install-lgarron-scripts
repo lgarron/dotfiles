@@ -6,7 +6,7 @@ function install-lgarron-script {
   script="${1}"
   script_source="${2}"
   echo "Installing: ${script}"
-  curl -o "/tmp/${script}" "https://raw.githubusercontent.com/lgarron/scripts/main/${script_source}"
+  curl -o "/tmp/${script}" "https://raw.githubusercontent.com/lgarron/dotfiles/scripts/main/${script_source}"
   sudo cp "/tmp/${script}" "/usr/bin/${script}"
   sudo chmod +x "/usr/bin/${script}"
 }

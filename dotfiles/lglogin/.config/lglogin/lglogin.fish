@@ -43,7 +43,7 @@
         if test -e $NAUGHTY_PATH
             rm -rf $NAUGHTY_PATH
             /opt/homebrew/bin/bun run \
-                /Users/lgarron/Code/git/github.com/lgarron/scripts/storage/counter-file.ts \
+                /Users/lgarron/Code/git/github.com/lgarron/dotfiles/scripts/storage/counter-file.ts \
                 /Users/lgarron/.config/lglogin/naughty-list.json \
                 $NAUGHTY_PATH
         end

@@ -1,0 +1,11 @@
+{
+  "name": "dotfiles",
+  "type": "module",
+  "devDependencies": {
+    "@biomejs/biome": "latest",
+    "@types/bun": "^1.0.6",
+    "bun-types": "^1.0.24",
+    "cmd-ts": "^0.13.0",
+    "jsdom": "^24.0.0"
+  }
+}

@@ -96,7 +96,7 @@ function fish_prompt --description 'Write out the prompt'
         set suffix " │" (set_color $_FISH_LCARS_BOTTOM) ""
     end
 
-    echo -n -s (set_color $fish_color_user) "$USER" @ (set_color $color_host) (prompt_hostname) (set_color $_FISH_LCARS_BOTTOM) $suffix " "
+    echo -n -s (set_color $fish_color_user) "$USER" @ (set_color $color_host) (prompt_hostname) (set_color $_FISH_LCARS_BOTTOM) $suffix " " (set_color normal)
 end
 
 function _fish_prompt_preexec_blank_line --on-event fish_preexec

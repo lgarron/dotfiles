@@ -1,7 +1,7 @@
 # Classic + VCS, hopefully
 # TODO: Keep this in sync with `fish`, or configure semantically instead of hardcoding a snapshot.
 
-set __fish_git_prompt_show_informative_status 1
+set -g __fish_git_prompt_show_informative_status 1
 
 # TODO: these should be local, but VS Code's `fish` integration makes some bad
 # assumptions that break scope for variables declared here and used in

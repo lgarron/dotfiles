@@ -327,6 +327,7 @@
 
     abbr_anyarg hevc q "--quality"
     abbr_anyarg hevc f "--force-bit-depth"
+    abbr_anyarg fish p "--private"
 
 ## Homebrew
 

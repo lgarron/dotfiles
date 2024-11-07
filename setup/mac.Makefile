@@ -6,10 +6,11 @@ MAC_WRITE_DEFAULTS = ./setup/script/mac-write-defaults.fish
 
 # TODO: Use installation path instead of .PHONY?
 .PHONY: mac-homebrew
-mac-homebrew: ${HOMEBREW_PATH}
-
-${HOMEBREW_PATH}:
-	echo "Skipping Homebrew installation"
+mac-homebrew:
+	mkdir -p /opt/homebrew/Library/Taps/lgarron
+	ln -s \
+		/Users/lgarron/Code/git/github.com/lgarron/dotfiles \
+		/opt/homebrew/Library/Taps/lgarron/homebrew-lgarron
 
 # Main Installations
 

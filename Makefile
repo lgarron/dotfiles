@@ -82,5 +82,16 @@ include setup/rust.Makefile # TODO: Figure out Rustup vs. Homebrew so this can b
 
 .PHONY: setup
 setup:
+	@echo "Run one of the following instead:"
+	@echo ""
+	@echo "    make setup-dev-dependencies"
+	@echo ""
+	@echo "    make cargo-setup"
+	@echo "    make mac-setup"
+	@echo "    make linux-setup"
+	@echo ""
+
+.PHONY: setup-dev-dependencies
+setup-dev-dependencies:
 	@echo "Note: \`make setup\` sets up the repo for development (installing dependencies), it does not set up dotfiles themselves."
 	bun install

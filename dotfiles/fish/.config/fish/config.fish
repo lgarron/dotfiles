@@ -270,6 +270,8 @@
     abbr -a r "open -R"
     abbr -a r. "open -R ."
 
+    abbr -a zj "zellij"
+
     abbr -a - "cd -"
 
     abbr -a "md5" "openssl dgst -md5"

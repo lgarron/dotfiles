@@ -77,3 +77,10 @@ fish:
 include setup/linux.Makefile
 include setup/mac.Makefile
 include setup/rust.Makefile # TODO: Figure out Rustup vs. Homebrew so this can be added to `mac-common`.
+
+########
+
+.PHONY: setup
+setup:
+	@echo "Note: \`make setup\` sets up the repo for development (installing dependencies), it does not set up dotfiles themselves."
+	bun install

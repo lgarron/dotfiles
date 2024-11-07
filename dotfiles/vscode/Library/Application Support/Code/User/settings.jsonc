@@ -104,7 +104,7 @@
   "terminal.integrated.defaultProfile.windows": "Ubuntu (WSL)",
   "terminal.integrated.profiles.osx": {
     "apple_fish": {
-      "path": "/Users/lgarron/.fish-master/bin/fish",
+      "path": "/opt/homebrew/bin/fish",
       "icon": "heart-filled",
       "overrideName": true,
       "args": [
@@ -112,7 +112,7 @@
       ]
     },
     "apple_fish_no_history": {
-      "path": "/Users/lgarron/.fish-master/bin/fish",
+      "path": "/opt/homebrew/bin/fish",
       "icon": "heart",
       "overrideName": true,
       "args": [

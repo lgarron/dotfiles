@@ -2,7 +2,7 @@
 
 set -euo pipefail
 
-function install-scripts-bin {
+function install-lgarron-script {
   dest_bin=${1}
   src_bin=${2}
   echo "Installing: ${dest_bin}"

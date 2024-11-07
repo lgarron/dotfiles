@@ -13,13 +13,3 @@ function install-git-freeze-bin {
 command -v git-freeze || install-git-freeze-bin git-freeze
 command -v git-thaw || install-git-freeze-bin git-thaw
 command -v git-abandon || install-git-freeze-bin git-abandon
-
-function install-scripts-bin {
-  dest_bin=${1}
-  src_bin=${2}
-  echo "Installing: ${dest_bin}"
-  sudo cp "scripts/${src_bin}" "/usr/bin/${dest_bin}"
-  sudo chmod +x "/usr/bin/${dest_bin}"
-}
-
-command -v git-distance || install-scripts-bin git-distance git/git-distance.fish

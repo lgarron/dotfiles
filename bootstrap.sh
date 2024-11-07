@@ -5,10 +5,6 @@ set -euo pipefail
 # For Codespaces
 # https://docs.github.com/en/codespaces/customizing-your-codespace/personalizing-github-codespaces-for-your-account#dotfiles
 
-BOOTSTRAP_SCRIPT_FOLDER_DIR="$(dirname "$0")"
-cd "$BOOTSTRAP_SCRIPT_FOLDER_DIR"
-cd ..
-
 if ! command -v stow
 then
   echo "Installing \`stow\`."
@@ -48,6 +44,6 @@ make linux
 
 sudo chsh "$(id -un)" --shell "$(command -v fish)"
 
-"$BOOTSTRAP_SCRIPT_FOLDER_DIR/install-git-commands"
-"$BOOTSTRAP_SCRIPT_FOLDER_DIR/install-lgarron-scripts"
-"$BOOTSTRAP_SCRIPT_FOLDER_DIR/install-mak"
+./bootstrap/install-git-commands
+./bootstrap/install-lgarron-scripts
+./bootstrap/install-mak

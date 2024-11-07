@@ -304,7 +304,7 @@
 
 # Includes
 
-    load_if_exists "git" $HOME/.config/fish/abbreviations.fish
+    load_if_exists "abbreviations" $HOME/.config/fish/abbreviations.fish
     load_if_exists "git" $HOME/.config/fish/git.fish
     load_if_exists "dev" $HOME/.config/fish/dev.fish
 

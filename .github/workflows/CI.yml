@@ -11,3 +11,10 @@ jobs:
       - uses: Swatinem/rust-cache@v2
       - uses: dtolnay/rust-toolchain@nightly
       - run: scripts/app-tools/openscad-auto.rs --completions fish
+
+  bootstrap:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+      - run: ./bootstrap.sh

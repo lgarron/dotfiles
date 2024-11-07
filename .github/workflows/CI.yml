@@ -10,7 +10,7 @@ jobs:
       - uses: actions/checkout@v4
       - uses: Swatinem/rust-cache@v2
       - uses: dtolnay/rust-toolchain@nightly
-      - run: scripts/app-tools/openscad-auto.rs --completions fish
+      - run: cargo run --bin openscad-auto -- --completions fish
 
   bootstrap:
     runs-on: ubuntu-latest

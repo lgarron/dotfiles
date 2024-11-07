@@ -17,8 +17,10 @@
 
 # fish 4.0 experimentation for token nav
 
-    echo -n -e "\r"
-    echo "🐟🧪 version: "$FISH_VERSION
+    if status is-interactive
+      echo -n -e "\r"
+      echo "🐟🧪 version: "$FISH_VERSION
+    end
 
     # These bindings depend on `CSI u` support.
     bind alt-left backward-word

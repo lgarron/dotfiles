@@ -2,10 +2,10 @@
 
 class AddBiome < Formula
   desc "🛠️ Add @biomejs/biome to a JS project."
-  homepage "https://github.com/lgarron/scripts"
-  head "https://github.com/lgarron/scripts.git", :branch => "main"
+  homepage "https://github.com/lgarron/dotfiles"
+  head "https://github.com/lgarron/dotfiles.git", :branch => "main"
 
   def install
-    bin.install "web/add-biome.fish" => "add-biome"
+    bin.install "scripts/web/add-biome.fish" => "add-biome"
   end
 end

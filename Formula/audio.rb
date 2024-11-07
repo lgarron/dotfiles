@@ -2,12 +2,12 @@
 
 class Audio < Formula
   desc "🔊 Audio scripts."
-  homepage "https://github.com/lgarron/scripts"
-  head "https://github.com/lgarron/scripts.git", :branch => "main"
+  homepage "https://github.com/lgarron/dotfiles"
+  head "https://github.com/lgarron/dotfiles.git", :branch => "main"
 
   def install
-    bin.install "audio/mp3ify.bash" => "mp3ify"
-    bin.install "audio/wavify.bash" => "wavify"
-    bin.install "audio/flacify.bash" => "flacify"
+    bin.install "scripts/audio/mp3ify.bash" => "mp3ify"
+    bin.install "scripts/audio/wavify.bash" => "wavify"
+    bin.install "scripts/audio/flacify.bash" => "flacify"
   end
 end

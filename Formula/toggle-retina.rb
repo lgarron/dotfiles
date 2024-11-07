@@ -2,12 +2,12 @@
 
 class ToggleRetina < Formula
   desc "🖥️ Toggle Retina display scaling."
-  homepage "https://github.com/lgarron/scripts"
-  head "https://github.com/lgarron/scripts.git", :branch => "main"
+  homepage "https://github.com/lgarron/dotfiles"
+  head "https://github.com/lgarron/dotfiles.git", :branch => "main"
 
   depends_on "fish"
 
   def install
-    bin.install "system/toggle-retina.fish" => "toggle-retina"
+    bin.install "scripts/system/toggle-retina.fish" => "toggle-retina"
   end
 end

@@ -2,10 +2,10 @@
 
 class NpmCost < Formula
   desc "🏋️ npm-cost"
-  homepage "https://github.com/lgarron/scripts"
-  head "https://github.com/lgarron/scripts.git", :branch => "main"
+  homepage "https://github.com/lgarron/dotfiles"
+  head "https://github.com/lgarron/dotfiles.git", :branch => "main"
 
   def install
-    bin.install "web/npm-cost.fish" => "npm-cost"
+    bin.install "scripts/web/npm-cost.fish" => "npm-cost"
   end
 end

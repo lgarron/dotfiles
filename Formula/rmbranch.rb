@@ -2,13 +2,13 @@
 
 class Rmbranch < Formula
   desc "🚮 Push and update `git` branches automatically."
-  homepage "https://github.com/lgarron/scripts"
-  head "https://github.com/lgarron/scripts.git", :branch => "main"
+  homepage "https://github.com/lgarron/dotfiles"
+  head "https://github.com/lgarron/dotfiles.git", :branch => "main"
 
   depends_on "fish"
   
   def install
-    bin.install "git/rmbranch.fish" => "rmbranch"
+    bin.install "scripts/git/rmbranch.fish" => "rmbranch"
 
     generate_completions_from_executable(bin/"rmbranch", "--completions", shells: [:fish])
   end

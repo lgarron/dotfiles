@@ -2,12 +2,12 @@
 
 class TouchIdSudoConfig < Formula
   desc "🆔 Enable Touch ID for sudo in shell terminals"
-  homepage "https://github.com/lgarron/scripts"
-  head "https://github.com/lgarron/scripts.git", :branch => "main"
+  homepage "https://github.com/lgarron/dotfiles"
+  head "https://github.com/lgarron/dotfiles.git", :branch => "main"
 
   depends_on "fish"
 
   def install
-    bin.install "system/touch-id-sudo-config.fish" => "touch-id-sudo-config"
+    bin.install "scripts/system/touch-id-sudo-config.fish" => "touch-id-sudo-config"
   end
 end

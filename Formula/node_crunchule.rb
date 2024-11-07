@@ -2,10 +2,10 @@
 
 class NodeCrunchule < Formula
   desc "🗜 7-zip node_modules to avoid disck clutter"
-  homepage "https://github.com/lgarron/scripts"
-  head "https://github.com/lgarron/scripts.git", :branch => "main"
+  homepage "https://github.com/lgarron/dotfiles"
+  head "https://github.com/lgarron/dotfiles.git", :branch => "main"
 
   def install
-    bin.install "git/node_crunchule.fish" => "node_crunchule"
+    bin.install "scripts/git/node_crunchule.fish" => "node_crunchule"
   end
 end

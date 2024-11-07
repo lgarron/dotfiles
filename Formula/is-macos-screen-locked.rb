@@ -2,10 +2,10 @@
 
 class IsMacosScreenLocked < Formula
   desc "🔒❓"
-  homepage "https://github.com/lgarron/scripts"
-  head "https://github.com/lgarron/scripts.git", :branch => "main"
+  homepage "https://github.com/lgarron/dotfiles"
+  head "https://github.com/lgarron/dotfiles.git", :branch => "main"
 
   def install
-    bin.install "system/is-macos-screen-locked.fish" => "is-macos-screen-locked"
+    bin.install "scripts/system/is-macos-screen-locked.fish" => "is-macos-screen-locked"
   end
 end

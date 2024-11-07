@@ -2,10 +2,10 @@
 
 class GitDistance < Formula
   desc "📏 git-distance"
-  homepage "https://github.com/lgarron/scripts"
-  head "https://github.com/lgarron/scripts.git", :branch => "main"
+  homepage "https://github.com/lgarron/dotfiles"
+  head "https://github.com/lgarron/dotfiles.git", :branch => "main"
 
   def install
-    bin.install "git/git-distance.fish" => "git-distance"
+    bin.install "scripts/git/git-distance.fish" => "git-distance"
   end
 end

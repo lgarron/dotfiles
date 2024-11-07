@@ -2,12 +2,12 @@
 
 class Web < Formula
   desc "🌐 Web scripts"
-  homepage "https://github.com/lgarron/scripts"
-  head "https://github.com/lgarron/scripts.git", :branch => "main"
+  homepage "https://github.com/lgarron/dotfiles"
+  head "https://github.com/lgarron/dotfiles.git", :branch => "main"
 
   def install
-    bin.install "web/chrometab.bash" => "chrometab"
-    bin.install "web/safaritab.bash" => "safaritab"
-    bin.install "web/weblocify.bash" => "weblocify"
+    bin.install "scripts/web/chrometab.bash" => "chrometab"
+    bin.install "scripts/web/safaritab.bash" => "safaritab"
+    bin.install "scripts/web/weblocify.bash" => "weblocify"
   end
 end

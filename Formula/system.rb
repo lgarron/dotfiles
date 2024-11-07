@@ -2,11 +2,11 @@
 
 class System < Formula
   desc "💻 System/shell tools"
-  homepage "https://github.com/lgarron/scripts"
-  head "https://github.com/lgarron/scripts.git", :branch => "main"
+  homepage "https://github.com/lgarron/dotfiles"
+  head "https://github.com/lgarron/dotfiles.git", :branch => "main"
 
   def install
-    bin.install "system/map.bash" => "map"
-    bin.install "system/unixtime.bash" => "unixtime"
+    bin.install "scripts/system/map.bash" => "map"
+    bin.install "scripts/system/unixtime.bash" => "unixtime"
   end
 end

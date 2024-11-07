@@ -2,10 +2,10 @@
 
 class Gclone < Formula
   desc "Git clone script."
-  homepage "https://github.com/lgarron/scripts"
-  head "https://github.com/lgarron/scripts.git", :branch => "main"
+  homepage "https://github.com/lgarron/dotfiles"
+  head "https://github.com/lgarron/dotfiles.git", :branch => "main"
 
   def install
-    bin.install "git/gclone.ts" => "gclone"
+    bin.install "scripts/git/gclone.ts" => "gclone"
   end
 end

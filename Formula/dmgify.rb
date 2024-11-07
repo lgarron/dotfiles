@@ -2,10 +2,10 @@
 
 class Dmgify < Formula
   desc "📁 dmgify"
-  homepage "https://github.com/lgarron/scripts"
-  head "https://github.com/lgarron/scripts.git", :branch => "main"
+  homepage "https://github.com/lgarron/dotfiles"
+  head "https://github.com/lgarron/dotfiles.git", :branch => "main"
 
   def install
-    bin.install "storage/dmgify.fish" => "dmgify"
+    bin.install "scripts/storage/dmgify.fish" => "dmgify"
   end
 end

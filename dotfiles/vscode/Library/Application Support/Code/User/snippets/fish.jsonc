@@ -9,5 +9,14 @@
 			"#!/usr/bin/env -S fish --no-config"
 		],
 		"description": "Fish shell shebang"
+	},
+	"String comparison": {
+		"prefix": "if string match",
+		"body": [
+			"if string match --entire -- \"$1\" \"$2\" > /dev/null",
+			"    $3",
+			"end"
+		],
+		"description": "String comparison"
 	}
 }

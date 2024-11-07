@@ -1,11 +1,11 @@
 #!/usr/bin/env bun
 
-import { log } from "node:console";
 import { exit, stdout } from "node:process";
 import { $ } from "bun";
-import { oneOf, option, optional } from "cmd-ts";
 
-const { binary, command, flag, run } = await import("cmd-ts");
+const { oneOf, option, optional, binary, command, flag, run } = await import(
+  "cmd-ts"
+);
 
 const SEPARATOR = "--------";
 
@@ -20,20 +20,18 @@ const app = command({
       type: optional(oneOf(["fish"])),
       description: "Print completions",
       long: "completions",
-      defaultValue: () => "fish",
-      defaultValueIsSerializable: true,
     }),
   },
   handler: async ({ retag, completions }) => {
     if (completions === "fish") {
-      log(`
-complete -c tagpush -l help -d 'Print help.' -f
+      console.log(`complete -c tagpush -l help -d 'Print help.' -f
 complete -c tagpush -l retag -d 'Remove an existing tag and retag if if it exists.' -f
 complete -c tagpush -l completions -d 'Print completions.' -r -f -a "fish"`);
+      exit(0);
     }
 
-    const version = $`version`;
-    const previousCommitVersion = $`version --previous`;
+    const version = await $`version`.text();
+    const previousCommitVersion = await $`version --previous`.text();
 
     if (version === previousCommitVersion) {
       console.error(

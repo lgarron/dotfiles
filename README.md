@@ -39,3 +39,7 @@ See [`./exported/`](./exported/) for files that must be manually exported/import
 ## XDG Base Directory Spec
 
 Known compatibility chart: <https://wiki.archlinux.org/index.php/XDG_Base_Directory_support>
+
+## License
+
+MPL

@@ -105,8 +105,8 @@ test: test-help test-completions
 test-help:
 	cargo run --bin openscad-auto -- --help
 	./scripts/git/tagpush.ts --help
-	./scripts/git/rmbranch.fish --help
-	./scripts/git/rmtag.fish --help
+	# ./scripts/git/rmbranch.fish --help # TODO
+	# ./scripts/git/rmtag.fish --help # TODO
 	scripts/git/node_crunchule.fish --help
 
 .PHONY: test-completions

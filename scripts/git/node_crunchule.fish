@@ -3,13 +3,13 @@
 function show_help
   set SCRIPT_NAME (basename (status -f))
   echo "Usage: $SCRIPT_NAME [--help/-h] [--dry-run/-d] [--yes/y] [--extract/-x] [<path>]"
-  exit 1
+  exit $argv[1]
 end
 
-argparse --name=(basename (status -f)) "h/help" "d/dry-run" "y/yes" "x/extract" -- $argv; or show_help
+argparse --name=(basename (status -f)) "h/help" "d/dry-run" "y/yes" "x/extract" -- $argv; or show_help 1
 
 if set -q _flag_help
-  show_help
+  show_help 0
 end
 
 if set -q argv[1]

@@ -99,7 +99,15 @@ setup-dev-dependencies:
 ########
 
 .PHONY: test
-test: test-completions
+test: test-help test-completions
+
+.PHONY: test-help
+test-help:
+	cargo run --bin openscad-auto -- --help
+	./scripts/git/tagpush.ts --help
+	./scripts/git/rmbranch.fish --help
+	./scripts/git/rmtag.fish --help
+	scripts/git/node_crunchule.fish --help
 
 .PHONY: test-completions
 test-completions:

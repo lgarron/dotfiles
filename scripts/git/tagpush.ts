@@ -4,7 +4,7 @@ import { exit, stdout } from "node:process";
 import { $ } from "bun";
 
 const { oneOf, option, optional, binary, command, flag, run } = await import(
-  "cmd-ts"
+  "cmd-ts-too"
 );
 
 const SEPARATOR = "--------";
@@ -45,15 +45,15 @@ complete -c tagpush -l completions -d 'Print completions.' -r -f -a "fish"`);
       try {
         console.log($`git rev-parse ${version}`);
         console.log(SEPARATOR);
-        $`rmtag ${version}`;
+        await $`rmtag ${version}`;
         console.log(SEPARATOR);
       } catch {
         console.log("No old tag.");
       }
     }
 
-    $`git tag ${version}`;
-    $`git push origin ${version}`;
+    await $`git tag ${version}`;
+    await $`git push origin ${version}`;
   },
 });
 

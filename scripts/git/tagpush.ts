@@ -43,7 +43,7 @@ complete -c tagpush -l completions -d 'Print completions.' -r -f -a "fish"`);
     if (retag) {
       stdout.write("Tag was previously at at commit: ");
       try {
-        console.log($`git rev-parse ${version}`);
+        console.log(await $`git rev-parse ${version}`);
         console.log(SEPARATOR);
         await $`rmtag ${version}`;
         console.log(SEPARATOR);

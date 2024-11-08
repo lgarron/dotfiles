@@ -42,7 +42,7 @@ write(
     {
       files: {
         include: ["./script", "./src"],
-        ignore: [],
+        ignore: ["./dist"],
       },
       formatter: {
         indentStyle: "space",

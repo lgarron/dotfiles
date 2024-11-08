@@ -146,7 +146,7 @@
   "markdown.editor.pasteUrlAsFormattedLink.enabled": "smart",
   /******** JSONC ********/
   "[jsonc]": {
-    "editor.defaultFormatter": "vscode.json-language-features"
+    "editor.defaultFormatter": "biomejs.biome"
   },
   /******** Toggle Case ********/
   "toggleCase.case.capitalCase": false,

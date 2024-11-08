@@ -1,8 +1,8 @@
 # Lucas Garron's `dotfiles`
 
-My own personal configuration files for various commandline-based tools and apps.
+My own personal configuration files and scripts for various commandline-based tools and apps. Also serves as the `lgarron/lgarron` [Homebrew](https://brew.sh/) tap.
 
-Linked [using GNU `stow`](http://brandon.invergo.net/news/2012-05-26-using-gnu-stow-to-manage-your-dotfiles.html), because simpler is better.
+Linked [using GNU `stow`](http://brandon.invergo.net/news/2012-05-26-using-gnu-stow-to-manage-your-dotfiles.html) (for now).
 
 ## Mac
 
@@ -29,7 +29,7 @@ See [`./exported/`](./exported/) for files that must be manually exported/import
     cd ~/Code/dotfiles
     make linux-setup fish
 
-## Languages, Ecosystems, and Runtimes
+## Languages, ecosystems, and runtimes
 
 - `bash` (deprecated, except for bootstrapping)
 - `fish`

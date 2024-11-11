@@ -29,7 +29,6 @@
 
     abbr -a c "code"
     abbr -a xc "xargs code"
-    abbr -a zj "zellij"
 
     abbr -a "cv" "command -v"
     abbr -a "cva" "command -va"
@@ -42,6 +41,9 @@
     abbr -a "sha1" "openssl dgst -sha1"
     abbr -a "sha256" "openssl dgst -sha256"
     abbr -a "sha512" "openssl dgst -sha512"
+
+    abbr -a zj "zellij"
+    abbr_subcommand zellij a attach
 
 ## Arguments
 

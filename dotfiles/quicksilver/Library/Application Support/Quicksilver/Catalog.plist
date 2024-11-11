@@ -849,24 +849,79 @@
 				</dict>
 				<dict>
 					<key>ID</key>
-					<string>EE8DB84B-3776-47D8-9277-37398FF41EF5</string>
+					<string>5586B9C4-EB94-47FB-B616-96B14646E8F2</string>
 					<key>children</key>
-					<array/>
+					<array>
+						<dict>
+							<key>ID</key>
+							<string>035048AA-DFAB-4070-81FD-C3244813BF8A</string>
+							<key>children</key>
+							<array/>
+							<key>enabled</key>
+							<true/>
+							<key>name</key>
+							<string>2nd-party</string>
+							<key>settings</key>
+							<dict>
+								<key>folderDepth</key>
+								<integer>1</integer>
+								<key>parser</key>
+								<string>QSDirectoryParser</string>
+								<key>path</key>
+								<string>~/Dropbox (Maestral)/Projects/3D Printing/2nd-party</string>
+							</dict>
+							<key>source</key>
+							<string>QSFileSystemObjectSource</string>
+						</dict>
+						<dict>
+							<key>ID</key>
+							<string>EE8DB84B-3776-47D8-9277-37398FF41EF5</string>
+							<key>children</key>
+							<array/>
+							<key>enabled</key>
+							<true/>
+							<key>name</key>
+							<string>3D Printing</string>
+							<key>settings</key>
+							<dict>
+								<key>folderDepth</key>
+								<integer>1</integer>
+								<key>parser</key>
+								<string>QSDirectoryParser</string>
+								<key>path</key>
+								<string>~/Dropbox (Maestral)/Projects/3D Printing</string>
+							</dict>
+							<key>source</key>
+							<string>QSFileSystemObjectSource</string>
+						</dict>
+						<dict>
+							<key>ID</key>
+							<string>68E94794-D540-4586-B849-658416A4E6B2</string>
+							<key>children</key>
+							<array/>
+							<key>enabled</key>
+							<true/>
+							<key>name</key>
+							<string>3rd-party</string>
+							<key>settings</key>
+							<dict>
+								<key>folderDepth</key>
+								<integer>1</integer>
+								<key>parser</key>
+								<string>QSDirectoryParser</string>
+								<key>path</key>
+								<string>~/Dropbox (Maestral)/Projects/3D Printing/3rd-party</string>
+							</dict>
+							<key>source</key>
+							<string>QSFileSystemObjectSource</string>
+						</dict>
+					</array>
 					<key>enabled</key>
 					<true/>
 					<key>name</key>
-					<string>3D Printing</string>
-					<key>settings</key>
-					<dict>
-						<key>folderDepth</key>
-						<integer>1</integer>
-						<key>parser</key>
-						<string>QSDirectoryParser</string>
-						<key>path</key>
-						<string>~/Dropbox (Maestral)/Projects/3D Printing</string>
-					</dict>
+					<string>3D printing</string>
 					<key>source</key>
-					<string>QSFileSystemObjectSource</string>
+					<string>QSGroupObjectSource</string>
 				</dict>
 			</array>
 			<key>enabled</key>

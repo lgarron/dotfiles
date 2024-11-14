@@ -265,6 +265,9 @@
 
       cd-dir $argv[1]
     end
+    function cd-dir-from-iterm-base64
+      cd-dir-from-iterm (printf %s $argv[1] | base64 --decode)
+    end
     function _abbr_latest_cd_dir_path
       if not set -q _LATEST_CD_DIR_PATH
         return 1

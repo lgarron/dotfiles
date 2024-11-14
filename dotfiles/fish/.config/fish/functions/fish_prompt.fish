@@ -11,7 +11,7 @@ if not set -q _FISH_PROMPT_LCARS_TOP_COLOR; set -g _FISH_PROMPT_LCARS_TOP_COLOR 
 set -g _FISH_PROMPT_FIRST_COMMAND_HAS_RUN false # var
 
 set -g _FISH_PROMPT_COMPACT_MODE_MAX_ROWS 15
-set -g _FISH_PROMPT_EVEN_MORE_COMPACT_MODE_MAX_ROWS 12
+set -g _FISH_PROMPT_EVEN_MORE_COMPACT_MODE_MAX_ROWS 10
 
 function _fish_prompt_is_fish_HEAD_build
     echo $version | grep "3\.[0-9]\+\.[0-9]\+-[0-9]\+-g[0-9a-f]\{8\}" > /dev/null
@@ -61,6 +61,9 @@ function fish_prompt --description 'Write out the prompt'
     # LCARS
     if string match -e -- "$_FISH_PROMPT_FIRST_COMMAND_HAS_RUN" true > /dev/null
         set_color $_FISH_PROMPT_LCARS_TOP_COLOR
+        if [ (tput lines) -gt $_FISH_PROMPT_COMPACT_MODE_MAX_ROWS ]
+            echo "┬"
+        end
         # echo (set_color $_FISH_PROMPT_LCARS_TOP_COLOR)"│"
         set -l prompt_status (__fish_print_pipestatus "[" "] " "|" (set_color $_FISH_PROMPT_LCARS_TOP_COLOR) (set_color --bold red) $last_pipestatus)
         if not string match -e -- "$prompt_status" " " > /dev/null
@@ -109,13 +112,8 @@ function fish_prompt --description 'Write out the prompt'
 end
 
 function _fish_prompt_preexec_blank_line --on-event fish_preexec
-    echo (set_color $_FISH_PROMPT_LCARS_BOTTOM_COLOR)"┴"(set_color normal)
-    set _FISH_PROMPT_FIRST_COMMAND_HAS_RUN true
-end
-
-# This needs to be here to avoid an extra blank line in the prompt.
-function _fish_prompt_postexec_blank_line --on-event fish_postexec
     if [ (tput lines) -gt $_FISH_PROMPT_COMPACT_MODE_MAX_ROWS ]
-        echo (set_color $_FISH_PROMPT_LCARS_TOP_COLOR)"┬"(set_color normal)
+        echo (set_color $_FISH_PROMPT_LCARS_BOTTOM_COLOR)"┴"(set_color normal)
     end
+    set _FISH_PROMPT_FIRST_COMMAND_HAS_RUN true
 end

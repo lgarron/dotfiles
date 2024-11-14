@@ -3,9 +3,7 @@
 import { $, argv } from "bun";
 import { subcommands } from "cmd-ts-too";
 
-const { oneOf, option, optional, binary, command, flag, run } = await import(
-  "cmd-ts-too"
-);
+const { binary, command, run } = await import("cmd-ts-too");
 
 const reset = command({
   name: "reset",

@@ -136,6 +136,10 @@ Pack argument files into a `logs.7z` file. Example: `pack-logs *.log`
 
 Pack `.bmp` or `.png` files in a folder. Example: `pack-pov cube?????.png`
 
+### `macos-remap-caps-lock`
+
+Remap caps lock.
+
 ## `storage`
 
 ### `counter-file`

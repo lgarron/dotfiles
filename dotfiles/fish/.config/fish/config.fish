@@ -276,26 +276,6 @@
     end
     abbr -a _kk_abbr --regex "kk" --position anywhere --function _abbr_latest_cd_dir_path
 
-## Keyboard
-
-    # https://developer.apple.com/library/content/technotes/tn2450/_index.html
-    # Caps Lock (0x39) -> Delete Key (0x2A)
-    # Insert (0x49) -> Fn key (0x03 in table 0xFF)
-    function remap-keys
-      hidutil property --set '{"UserKeyMapping":[
-        {"HIDKeyboardModifierMappingSrc":0x700000039,"HIDKeyboardModifierMappingDst":0x070000002A},
-        {"HIDKeyboardModifierMappingSrc":0x700000049,"HIDKeyboardModifierMappingDst":0xFF00000003},
-      ]}'
-    end
-
-    function remap-keys-reset
-        hidutil property --set '{"UserKeyMapping":[]}'
-    end
-
-    function remap-keys-show
-        hidutil property --get "UserKeyMapping"
-    end
-
 # Screenshots
 
     function set-screenshot-dir

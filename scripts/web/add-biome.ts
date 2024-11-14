@@ -40,6 +40,7 @@ write(
   file(BIOME_CONFIG_FILE),
   JSON.stringify(
     {
+      $schema: "./node_modules/@biomejs/biome/configuration_schema.json",
       files: {
         include: ["./script", "./src"],
         ignore: ["./dist"],

@@ -1,4 +1,9 @@
 {
+  "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
+  "files": {
+    "include": ["./scripts/**/*.ts"],
+    "ignore": ["./dotfiles/vscode/**/*"]
+  },
   "formatter": {
     "indentStyle": "space",
     "indentWidth": 2

@@ -1,7 +1,7 @@
 {
   "name": "dotfiles",
   "devDependencies": {
-    "@biomejs/biome": "latest",
+    "@biomejs/biome": "^1.5.2",
     "@types/bun": "^1.0.6",
     "bun-types": "^1.0.24",
     "jsdom": "^24.0.0"

@@ -115,3 +115,11 @@ test-completions:
 	./scripts/git/tagpush.ts --completions fish
 	./scripts/git/rmbranch.fish --completions fish
 	./scripts/git/rmtag.fish --completions fish
+
+.PHONY: lint
+lint:
+	npx @biomejs/biome check scripts
+
+.PHONY: format
+format:
+	npx @biomejs/biome check --write scripts

@@ -10,6 +10,8 @@ defaults write com.apple.screensaver askForPasswordDelay -int 5
 defaults write com.apple.dashboard mcx-disabled -boolean true
 # Disable recent apps in the dock
 defaults write com.apple.dock show-recents -bool false
+# Dim hidden apps in the dock
+defaults write com.apple.dock showhidden -bool true
 
 # Expand save panel by default
 defaults write -g NSNavPanelExpandedStateForSaveMode -bool true

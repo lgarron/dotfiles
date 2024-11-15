@@ -4,7 +4,9 @@ function js_version
   if not test -f package.json
     return 1
   end
-  set VERSION (cat package.json | jq -r -e ".version")
+  if not set VERSION (cat package.json | jq -r -e ".version")
+    return 1
+  end
   echo -n "v$VERSION"
 end
 
@@ -13,7 +15,9 @@ function previous_js_version
     return 1
   end
 
-  set PREVIOUS_VERSION (git show HEAD~:package.json | jq -r -e ".version")
+  if not set set PREVIOUS_VERSION (git show HEAD~:package.json | jq -r -e ".version")
+    return 1
+  end
   echo -n "v$PREVIOUS_VERSION"
 end
 

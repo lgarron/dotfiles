@@ -290,6 +290,7 @@
     load_if_exists "abbreviations" $HOME/.config/fish/abbreviations.fish
     load_if_exists "git" $HOME/.config/fish/git.fish
     load_if_exists "dev" $HOME/.config/fish/dev.fish
+    load_if_exists "repo" $HOME/Code/git/github.com/lgarron/repo/repo_completions_and_abbreviations.fish # TODO: configure this load statically
 
     loading_indicator ""
 

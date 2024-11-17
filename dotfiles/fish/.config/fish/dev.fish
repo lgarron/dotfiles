@@ -17,6 +17,7 @@
     abbr -a mf "make format"
     abbr -a ms "make setup"
     abbr -a mi "make install"
+    abbr -a mun "make uninstall"
 
     # Chords
     abbr -a mcb "make clean build"
@@ -40,6 +41,7 @@
         abbr_anyarg $make_command f  format
         abbr_anyarg $make_command s  setup
         abbr_anyarg $make_command i  install
+        abbr_anyarg $make_command un uninstall
 
         # Chords
         abbr_anyarg $make_command cb "clean build"

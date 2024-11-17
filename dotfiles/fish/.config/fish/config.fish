@@ -44,9 +44,6 @@
     load_or_fail "git" $HOME/.config/fish/git.fish
     load_or_fail "dev" $HOME/.config/fish/dev.fish
     load_or_fail "cd-dir" $HOME/.config/fish/cd-dir.fish
-    if test -f $HOME/Code/git/github.com/lgarron/repo/repo_completions_and_abbreviations.fish
-      load_or_fail "repo" $HOME/Code/git/github.com/lgarron/repo/repo_completions_and_abbreviations.fish # TODO: configure this load statically
-    end
 
 # Shortcuts
 

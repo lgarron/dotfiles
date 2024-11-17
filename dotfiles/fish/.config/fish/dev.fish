@@ -147,6 +147,31 @@
     # cargo run -- h⎵ → cargo run -- --help
     abbr_subcommand_arg cargo h "--help" run
 
+## `repo`
+
+    abbr -a "p" "repo"
+
+    abbr_subcommand repo v "version"
+    abbr_subcommand_arg repo b bump version
+    abbr_subcommand repo vm "version bump minor"
+    abbr_subcommand repo vp "version bump patch"
+    abbr_subcommand repo major "version bump major"
+    abbr_subcommand repo minor "version bump minor"
+    abbr_subcommand repo patch "version bump patch"
+
+    abbr_subcommand repo p "publish"
+
+    abbr_subcommand repo b "boilerplate"
+    abbr_subcommand repo ci "boilerplate ci"
+    abbr_subcommand repo gr "boilerplate auto-publish-github-release"
+    abbr_subcommand_arg repo a add boilerplate
+    abbr_subcommand_arg repo e edit boilerplate
+    abbr_subcommand_arg repo r reveal boilerplate
+
+    abbr_subcommand repo s "setup"
+    abbr_subcommand repo d "setup dependencies"
+    abbr_subcommand_arg repo d dependencies setup
+
 ## Web
 
     # *h*ttps *h*eaders

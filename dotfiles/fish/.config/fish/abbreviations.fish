@@ -6,7 +6,11 @@
     # For this config file, `rc` will also force redefining abbreviations. See
     # the "Setup" section above.
     abbr -a rc "source $HOME/.config/fish/config.fish"
-    # TODO: why is this needed? It seems that `$_DOTFILES_FOLDER` is reset by something else between its original definition and here, when running in a codespace?
+
+    set -l _DOTFILES_FOLDER "/Users/lgarron/Code/git/github.com/lgarron/dotfiles/"
+    if [ "$CODESPACES" = "true" ]
+      set _DOTFILES_FOLDER "/workspaces/.codespaces/.persistedshare/dotfiles/"
+    end
 
     abbr -a rcu "git -C \"$_DOTFILES_FOLDER\" pull ; and source $HOME/.config/fish/config.fish"
     if [ "$CODESPACES" = "true" ]

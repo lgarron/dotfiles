@@ -232,10 +232,10 @@
 
     # 🪄 Currying ✨
 
-    set _CURRY_COUNTER 1
+    set -g _FISH_ABBR_CURRY_COUNTER 1
     function _curry
-      set -l CURRIED_FN "_curried_fn_$_CURRY_COUNTER"
-      set _CURRY_COUNTER (math $_CURRY_COUNTER + 1)
+      set -l CURRIED_FN "_curried_fn_$_FISH_ABBR_CURRY_COUNTER"
+      set _FISH_ABBR_CURRY_COUNTER (math $_FISH_ABBR_CURRY_COUNTER + 1)
 
       set -l INHERITED_ARGS $argv
       function "$CURRIED_FN" --inherit-variable INHERITED_ARGS

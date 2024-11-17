@@ -182,6 +182,10 @@ Assign an icon file to a file/folder.
 
 Print the number of watts supported by the current charger.
 
+### `macos-set-screenshot-dir`
+
+Set the screenshot directory on macOS.
+
 ### `niceplz`
 
 Script to set the nicess of processes based on `~/.config/niceplz/niceplz.json`.

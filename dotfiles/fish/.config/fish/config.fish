@@ -276,15 +276,6 @@
     end
     abbr -a _kk_abbr --regex "kk" --position anywhere --function _abbr_latest_cd_dir_path
 
-# Screenshots
-
-    function set-screenshot-dir
-      set DIR $argv[1]
-      echo "Setting screenshot dir to: $DIR"
-      defaults write com.apple.screencapture location $DIR
-      killall SystemUIServer
-    end
-
 # Includes
 
     load_if_exists "abbreviations" $HOME/.config/fish/abbreviations.fish

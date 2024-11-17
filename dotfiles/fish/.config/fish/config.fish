@@ -22,35 +22,15 @@
       echo "🐟🧪 version: "$FISH_VERSION
     end
 
-    # These bindings depend on `CSI u` support.
-    bind alt-left backward-word
-    bind alt-right forward-word
-    bind alt-backspace backward-kill-word
-    bind alt-delete kill-word
-    bind alt-\\ kill-word
+# Main reload message
 
-    bind ctrl-left backward-token
-    bind ctrl-right forward-token
-    bind ctrl-backspace backward-kill-token
-    bind ctrl-delete kill-token
-    bind ctrl-\\ kill-token
-
-    if string match --entire -- $TERM_PROGRAM vscode > /dev/null
-      # Legacy bindings
-      bind alt-b backward-word
-      bind alt-f forward-word
-      bind ctrl-w backward-kill-word
-      bind alt-d kill-word
-
-      # Legacy bindings
-      bind ctrl-h backward-kill-token
+    if [ "$_FISH_MANUAL_RELOAD" = "true" ]
+      _echo -n "🐟🔄 Reloading "
+      set_color --bold
+      _echo -n "fish"
+      set_color normal
+      _echo " files."
     end
-
-    function _add_LATEST_CD_DIR_PATH
-      commandline --insert (string escape $_LATEST_CD_DIR_PATH)
-    end
-    bind ctrl-alt-r _add_LATEST_CD_DIR_PATH
-    bind alt-r _add_LATEST_CD_DIR_PATH
 
 # Paths
 
@@ -89,31 +69,19 @@
       set -U _FISH_USER_PATHS_HAS_BEEN_SET_UP true
     end
 
-# Main reload message
-
-    if [ "$_FISH_MANUAL_RELOAD" = "true" ]
-      _echo -n "🐟🔄 Reloading "
-      set_color --bold
-      _echo -n "fish"
-      set_color normal
-      _echo " files."
-    end
-
 # Loading
 
-    function loading_indicator
+    function _echo_manual_reload
       if [ "$_FISH_MANUAL_RELOAD" = "true" ]
         _echo $argv[1]
       end
     end
 
-    loading_indicator "↪ "(status --current-filename)
+    _echo_manual_reload "↪ "(status --current-filename)
 
-    function load_if_exists
-      if test -f $argv[2]
-        loading_indicator "  ↪ 🐟 $argv[2]"
-        source $argv[2]
-      end
+    function load_or_fail
+      _echo_manual_reload "  ↪ 🐟 $argv[1]"
+      source $argv[2]
     end
 
 # Dotfiles conveniences
@@ -129,12 +97,12 @@
 
 # XDG path configuration
 
-    load_if_exists "xdg-basedir-workarounds" $HOME/.config/fish/xdg-basedir-workarounds.fish
+    load_or_fail "xdg-basedir-workarounds" $HOME/.config/fish/xdg-basedir-workarounds.fish
 
 
 # Greeting
 
-    source $HOME/.config/fish/greeting.fish
+    load_or_fail "greeting" $HOME/.config/fish/greeting.fish
 
 # Shortcuts
 
@@ -150,7 +118,7 @@
 
 ### Abbrevation definition helpers
 
-    source $HOME/.config/fish/abbr.fish
+    load_or_fail "abbr" $HOME/.config/fish/abbr.fish
 
 ### Editors
 
@@ -215,14 +183,16 @@
 
 # Includes
 
-    load_if_exists "abbreviations" $HOME/.config/fish/abbreviations.fish
-    load_if_exists "git" $HOME/.config/fish/git.fish
-    load_if_exists "dev" $HOME/.config/fish/dev.fish
-    load_if_exists "repo" $HOME/Code/git/github.com/lgarron/repo/repo_completions_and_abbreviations.fish # TODO: configure this load statically
+    load_or_fail "abbreviations" $HOME/.config/fish/abbreviations.fish
+    load_or_fail "git" $HOME/.config/fish/git.fish
+    load_or_fail "dev" $HOME/.config/fish/dev.fish
+    load_or_fail "repo" $HOME/Code/git/github.com/lgarron/repo/repo_completions_and_abbreviations.fish # TODO: configure this load statically
 
-    loading_indicator ""
+    _echo_manual_reload ""
 
 # Cleanup
+
+    functions -e _echo_manual_reload
 
     # From now on, reloads of this file are considered "manual".
     set _FISH_MANUAL_RELOAD true

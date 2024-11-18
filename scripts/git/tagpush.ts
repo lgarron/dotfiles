@@ -3,9 +3,15 @@
 import { exit, stdout } from "node:process";
 import { $ } from "bun";
 
-const { oneOf, option, optional, binary, command, flag, run } = await import(
-  "cmd-ts-too"
-);
+import {
+  binary,
+  command,
+  flag,
+  oneOf,
+  option,
+  optional,
+  run,
+} from "cmd-ts-too";
 
 const SEPARATOR = "--------";
 

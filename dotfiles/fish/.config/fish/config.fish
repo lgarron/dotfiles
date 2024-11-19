@@ -41,6 +41,7 @@
     load_or_fail "abbr" $HOME/.config/fish/abbr.fish
 
     load_or_fail "abbreviations" $HOME/.config/fish/abbreviations.fish
+    load_or_fail "bindings" $HOME/.config/fish/bindings.fish
     load_or_fail "git" $HOME/.config/fish/git.fish
     load_or_fail "dev" $HOME/.config/fish/dev.fish
     load_or_fail "cd-dir" $HOME/.config/fish/cd-dir.fish

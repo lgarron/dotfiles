@@ -18,6 +18,7 @@
     abbr -a ms "make setup"
     abbr -a mi "make install"
     abbr -a mun "make uninstall"
+    abbr -a mr "make reset"
 
     # Chords
     abbr -a mcb "make clean build"
@@ -42,6 +43,7 @@
         abbr_anyarg $make_command s  setup
         abbr_anyarg $make_command i  install
         abbr_anyarg $make_command un uninstall
+        abbr_anyarg $make_command r  reset
 
         # Chords
         abbr_anyarg $make_command cb "clean build"

@@ -28,7 +28,6 @@
       commandline --insert (string escape $_LATEST_CD_DIR_PATH)
     end
     bind ctrl-alt-r _add_LATEST_CD_DIR_PATH
-    bind alt-r _add_LATEST_CD_DIR_PATH
 
     # Restore the functionality of using `⌥_` to enter `—` on macOS.
     bind alt-_ "commandline -i —"

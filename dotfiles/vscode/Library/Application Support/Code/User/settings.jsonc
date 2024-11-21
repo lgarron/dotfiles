@@ -278,6 +278,7 @@
   "terminal.integrated.scrollback": 100000,
   "[css]": {
     "editor.defaultFormatter": "biomejs.biome"
-  }
+  },
+  "scm.graph.badges": "all"
   /****************/
 }

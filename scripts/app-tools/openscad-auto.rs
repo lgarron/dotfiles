@@ -84,7 +84,7 @@ fn main() {
 
     println!("✍️ Writing new file to: {}", target_file.to_string_lossy());
 
-    let output = Command::new("openscad")
+    let output = Command::new("/Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD")
         .args([
             "--enable",
             "lazy-union",

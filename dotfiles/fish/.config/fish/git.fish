@@ -327,6 +327,7 @@ git push --force-with-lease"
 
     abbr_subcommand_arg git p "pop" stash
     abbr_subcommand_arg git s "show" stash
+    abbr_subcommand_arg git d "drop" stash
 
 ### git status
 

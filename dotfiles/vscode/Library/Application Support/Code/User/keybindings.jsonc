@@ -232,7 +232,6 @@
   {
     "key": "cmd+enter",
     "command": "workbench.action.terminal.toggleTerminal",
-    "when": "!findWidgetVisible || terminalFocus"
   },
   {
     "key": "cmd-ctrl-enter",

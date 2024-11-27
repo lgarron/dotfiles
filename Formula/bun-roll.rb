@@ -6,6 +6,6 @@ class BunRoll < Formula
   head "https://github.com/lgarron/dotfiles.git", :branch => "main"
 
   def install
-    bin.install "scripts/scripts/web/bun-roll.fish" => "bun-roll"
+    bin.install "scripts/web/bun-roll.fish" => "bun-roll"
   end
 end

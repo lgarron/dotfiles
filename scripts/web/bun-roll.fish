@@ -40,4 +40,4 @@ echo -- " to version: v$VERSION"
 
 bun add "$NPM_PACKAGE@v$VERSION"
 git stage package.json bun.lockb
-git commit -m "`bun add $NPM_PACKAGE@v$VERSION`"
+git commit -m "`bun add $NPM_PACKAGE@^v$VERSION`"

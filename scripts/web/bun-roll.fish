@@ -31,6 +31,10 @@ cat package.json | jq -e ".dependencies[\"$NPM_PACKAGE\"]" >/dev/null; or cat pa
   exit 3
 end
 
+if cat package.json | jq -e ".devDependencies[\"$NPM_PACKAGE\"]" >/dev/null
+  set -- DEV_ARG "--development"
+end
+
 set VERSION (npm show "$NPM_PACKAGE" version)
 echo -n "Rolling "
 set_color --bold
@@ -38,6 +42,6 @@ echo -n -- "$NPM_PACKAGE"
 set_color normal
 echo -- " to version: v$VERSION"
 
-bun add "$NPM_PACKAGE@v$VERSION"
+bun add $DEV_ARG "$NPM_PACKAGE@v$VERSION"
 git stage package.json bun.lockb
 git commit -m "`bun add $NPM_PACKAGE@^v$VERSION`"

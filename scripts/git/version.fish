@@ -15,7 +15,7 @@ function previous_js_version
     return 1
   end
 
-  if not set set PREVIOUS_VERSION (git show HEAD~:package.json | jq -r -e ".version")
+  if not set PREVIOUS_VERSION (git show HEAD~:package.json | jq -r -e ".version")
     return 1
   end
   echo -n "v$PREVIOUS_VERSION"

@@ -5,6 +5,7 @@ class Wat < Formula
   homepage "https://github.com/lgarron/wat"
   head "https://github.com/lgarron/wat.git", :branch => "main"
 
+  depends_on "switchaudio-osx"
   depends_on "rust" => :build
 
   def install

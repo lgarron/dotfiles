@@ -1,3 +1,4 @@
 brew "ripgrep"
 brew "git"
 brew "gh"
+brew "oven-sh/bun/bun"

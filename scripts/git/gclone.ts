@@ -1,6 +1,7 @@
 #!/usr/bin/env bun
 
-import { existsSync } from "node:fs";
+import { spawn } from "node:child_process";
+import { existsSync, openSync } from "node:fs";
 import { mkdir } from "node:fs/promises";
 import { homedir } from "node:os";
 import { join } from "node:path";
@@ -45,8 +46,16 @@ if (existsSync(join(repo_path, ".git"))) {
   await mkdir(repo_path_parent, { recursive: true });
   console.log("Cloning from:", repo_clone_source);
   console.log("To:", repo_path);
+
   // Note: we do *not* `await` the result.
-  $`git clone ${repo_clone_source} ${repo_path}`;
+
+  const stdout = openSync("/tmp/gclone-stdout.log", "a");
+  const stderr = openSync("/tmp/gclone-stderr.log", "a");
+  const childProcess = spawn("git", ["clone", repo_clone_source, repo_path], {
+    detached: true,
+    stdio: ["ignore", stdout, stderr],
+  });
+  childProcess.unref();
 }
 
 await Promise.all([await $`open ${repo_path}`, await $`code ${repo_path}`]);

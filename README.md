@@ -9,11 +9,7 @@ Linked [using GNU `stow`](http://brandon.invergo.net/news/2012-05-26-using-gnu-s
     git clone https://github.com/lgarron/dotfiles ~/Code/git/github.com/lgarron/dotfiles
     cd ~/Code/git/github.com/lgarron/dotfiles
 
-    make mac-setup-bootstrap # Critical files for bootstrapping
-    make mac-common # Place dotfiles
-    make mac-setup # Set up most of the system
-    make mac-setup-bulk # Set up large/infrequently used apps
-    make setup-dev-dependencies # Set up the dotfiles repo for convenient dev
+    make mac-common
 
 See [`./exported/`](./exported/) for files that must be manually exported/imported.
 

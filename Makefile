@@ -6,6 +6,14 @@ auto:
 
 .PHONY: mac-common
 mac-common: \
+	mac-setup-sudo \
+	mac-common-dotfiles \
+	mac-setup \
+	mac-setup-bulk \
+	setup-dev-dependencies
+
+.PHONY: mac-common-dotfiles
+mac-common-dotfiles: \
 	set-dotfiles-repo-email \
 	compressor \
 	fish \

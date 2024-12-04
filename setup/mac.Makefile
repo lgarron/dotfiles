@@ -146,7 +146,7 @@ BREWFILE_APPS_TARGETS = \
 $(BREWFILE_APPS_TARGETS):
 	brew bundle --file=${BREWFILE_FOLDER}/$@.txt
 	make mac-app-defaults # Easiest way to ensure these get written.
-	qlmanage -rt
+	qlmanage -r
 	pkill quicklook
 
 

@@ -19,6 +19,7 @@ cask "discord"
 cask "bambu-studio"
 cask "audacity"
 cask "appcleaner"
+cask "openscad@snapshot"
 
 # Browsers
 

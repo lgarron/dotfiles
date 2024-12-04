@@ -18,7 +18,6 @@ mac-common-dotfiles: \
 	compressor \
 	fish \
 	git \
-	hushlogin \
 	karabiner \
 	lglogin \
 	minecraft \

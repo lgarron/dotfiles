@@ -17,6 +17,7 @@ cask "vmware-fusion"
 cask "whisky"
 cask "discord"
 cask "bambu-studio"
+cask "audacity"
 
 # Browsers
 

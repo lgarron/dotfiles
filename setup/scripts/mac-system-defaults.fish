@@ -43,6 +43,13 @@ end
     #### Siri Reponses …
       # Voice feedback → off
       logged defaults write "com.apple.assistant.backedup" "Use device speaker for TTS" '3'
+  ## Control Center
+    # Show battery in menu
+    defaults write "com.apple.controlcenter" "NSStatusItem Visible Battery" '1'
+    # Hide Spotlight in menu
+    defaults delete "com.apple.Spotlight" "NSStatusItem Visible Item-0"
+    # Hide Siri in menu
+    defaults write "com.apple.Siri" "StatusMenuVisible" '0'
   ## Desktop & Dock
     logged defaults write com.apple.dock show-recents -bool false
     ### Hot Corners…
@@ -82,6 +89,8 @@ end
   # Show ~/Library in Finder
   chflags nohidden ~/Library
 
+# Screen capture
+  defaults write "com.apple.screencapture" "show-thumbnail" '0'
 
 ### Unsorted/legacy
 

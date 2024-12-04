@@ -162,6 +162,7 @@ mac-dock-setup:
 	./setup/scripts/mac-dock-add-app.fish "/Applications/Visual Studio Code.app"
 	./setup/scripts/mac-dock-add-app.fish "/Applications/Google Chrome.app"
 	./setup/scripts/mac-dock-add-app.fish "/Applications/Obsidian.app"
+	test -d "/Applications/Linear.app/" && ./setup/scripts/mac-dock-add-app.fish "/Applications/Linear.app" || echo "Skipping…"
 
 	defaults write com.apple.dock persistent-apps -array-add '{"tile-type"="spacer-tile";}'
 

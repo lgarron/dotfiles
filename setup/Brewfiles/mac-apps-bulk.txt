@@ -4,7 +4,7 @@ cask "gitx"
 cask "hex-fiend"
 cask "transmit"
 cask "1password-cli"
-# cask "dictcc-en-de-dictionary-plugin" # TODO: is there an alternative without Rosetta?
+cask "dictcc-en-de-dictionary-plugin" # TODO: doesn't actually work, even with Rosetta 2 installed
 cask "font-ubuntu"
 cask "font-ubuntu-mono"
 cask "font-ubuntu-mono-nerd-font"

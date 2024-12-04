@@ -18,6 +18,7 @@ cask "whisky"
 cask "discord"
 cask "bambu-studio"
 cask "audacity"
+cask "appcleaner"
 
 # Browsers
 

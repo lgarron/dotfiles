@@ -1,0 +1,2 @@
+brew "fish"
+brew "stow"

@@ -1,4 +1,3 @@
 brew "ripgrep"
-brew "fish"
 brew "git"
-brew "stow"
+brew "gh"

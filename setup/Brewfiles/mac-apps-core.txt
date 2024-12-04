@@ -1,0 +1,5 @@
+cask "google-chrome"
+cask "rectangle-pro"
+cask "iterm2"
+cask "visual-studio-code"
+cask "1password"

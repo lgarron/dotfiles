@@ -1,46 +1,58 @@
 # Bootstrap
 
 BREWFILE_FOLDER = ./setup/Brewfiles
-MAC_ADD_SHORTCUT = ./setup/script/mac-add-shortcut.fish
-MAC_WRITE_DEFAULTS = ./setup/script/mac-write-defaults.fish
-
-# TODO: Use installation path instead of .PHONY?
-.PHONY: mac-homebrew
-mac-homebrew:
-	mkdir -p /opt/homebrew/Library/Taps/lgarron
-	ln -s \
-		/Users/lgarron/Code/git/github.com/lgarron/dotfiles \
-		/opt/homebrew/Library/Taps/lgarron/homebrew-lgarron
+MAC_ADD_SHORTCUT = ./setup/scripts/mac-add-shortcut.fish
+MAC_SYSTEM_DEFAULTS = ./setup/scripts/mac-system-defaults.fish
+MAC_APP_DEFAULTS = ./setup/scripts/mac-app-defaults.fish
 
 # Main Installations
 
 .PHONY: mac-setup
 mac-setup: \
 	mac-homebrew \
-	mac-defaults \
+	mac-setup-sudo \
+	mac-system-defaults \
 	mac-keyboard-shortcuts \
 	mac-file-defaults \
 	mac-commandline-core \
 	mac-apps-core \
+	mac-app-store-apps-core 
+
+# Frontload `sudo` operations to avoid 
+.PHONY: mac-setup-sudo
+mac-setup-sudo: \
+	mac-homebrew \
+	mac-commandline-bootstrap \
 	mac-fish-default-shell \
 	prefer-wired-over-wireless-for-SMB
+	make mac-dock-setup
 
-.PHONY: mac-setup-extra
-mac-setup-extra: \
-	mac-apps-extra \
-	mac-commandline-extra \
-	mac-quicklook
+.PHONY: mac-setup-bulk
+mac-setup-bulk: \
+	mac-apps-bulk \
+	mac-commandline-bulk \
+	mac-app-store-apps-bulk
+	make mac-dock-setup
+
+# TODO: Use installation path instead of .PHONY?
+.PHONY: mac-homebrew
+mac-homebrew:
+	./setup/scripts/install-homebrew.bash
 
 # Definitions
 
 .PHONY: mac-fish-default-shell
 mac-fish-default-shell: mac-commandline-core
 	cat /etc/shells | grep "`command -v fish`" > /dev/null || echo "`command -v fish`" | sudo tee -a /etc/shells
-	chsh -s "`command -v fish`"
+	dscl . -read /Users/${USER} UserShell | grep "fish$$" || chsh -s "`command -v fish`"
 
-.PHONY: mac-defaults
-mac-defaults:
-	${MAC_WRITE_DEFAULTS}
+.PHONY: mac-system-defaults
+mac-system-defaults:
+	${MAC_SYSTEM_DEFAULTS}
+
+.PHONY: mac-app-defaults
+mac-app-defaults:
+	${MAC_APP_DEFAULTS}
 
 .PHONY: mac-keyboard-shortcuts
 mac-keyboard-shortcuts:
@@ -115,70 +127,53 @@ mac-file-defaults:
 	-duti -s com.google.Chrome public.html all \
 		|| echo -e "\n\nCannot set HTML handler at install time. Run later or right-click an HTML file in Finder to set as default.\n\n"
 
-.PHONY: mac-commandline-core
-mac-commandline-core:
-	brew bundle --file=${BREWFILE_FOLDER}/commandline-core.txt
+BREWFILE_TARGETS = \
+	mac-app-store-apps-core \
+	mac-apps-core \
+	mac-commandline-bootstrap \
+	mac-commandline-core \
+	mac-commandline-bulk
 
-.PHONY: mac-commandline-extra
-mac-commandline-extra:
-	brew bundle --file=${BREWFILE_FOLDER}/commandline-extra.txt
-	gem install jekyll
-	pip install httpie
+.PHONY: $(BREWFILE_TARGETS)
+$(BREWFILE_TARGETS):
+	brew bundle --file=${BREWFILE_FOLDER}/$@.txt
 
-.PHONY: mac-apps-core
-mac-apps-core:
-	brew bundle --file=${BREWFILE_FOLDER}/core.txt
+BREWFILE_APPS_TARGETS = \
+	mac-app-store-apps-bulk \
+	mac-apps-bulk 
 
-#TODO: Split apps by machine?
-.PHONY: mac-apps-extra
-mac-apps-extra: mac-browsers
-	brew bundle --file=${BREWFILE_FOLDER}/extra.txt
+.PHONY: $(BREWFILE_APPS_TARGETS)
+$(BREWFILE_APPS_TARGETS):
+	brew bundle --file=${BREWFILE_FOLDER}/$@.txt
+	make mac-app-defaults # Easiest way to ensure these get written.
+	qlmanage -rt
+	pkill quicklook
 
-.PHONY: mac-quicklook
-mac-quicklook:
-	brew bundle --file=${BREWFILE_FOLDER}/quicklook.txt
-
-	# https://gregbrown.co/code/typescript-quicklook
-	@echo "Set Quicklook to handle .ts files as text (TypeScript) instead of video."
-	touch /tmp/ts-file-extension-test.ts
-	# TODO: Make this idempotent.
-	plutil \
-		-insert "CFBundleDocumentTypes.0.LSItemContentTypes.1" \
-		-string $(shell mdls -raw -name kMDItemContentType /tmp/ts-file-extension-test.ts) \
-		${HOME}/Library/QuickLook/QLColorCode.qlgenerator/Contents/Info.plist
-
-	qlmanage -r
-
-.PHONY: mac-browsers
-mac-browsers:
-	brew bundle --file=${BREWFILE_FOLDER}/browsers.txt
 
 # Dock
 
-.PHONY: mac-dock-reset
-mac-dock-reset:
+.PHONY: mac-dock-setup
+mac-dock-setup:
 	defaults write com.apple.dock persistent-apps -array "{}"
-	killall Dock
 
-.PHONY: mac-dock-right
-mac-dock-right:
-	defaults write com.apple.dock orientation right && killall Dock
+	test -d "/Applications/Toggle Screen Sharing Resolution.app/" && ./setup/scripts/mac-dock-add-app.fish "/Applications/Toggle Screen Sharing Resolution.app" || echo "Skipping…"
+	./setup/scripts/mac-dock-add-app.fish "/System/Applications/Utilities/Activity Monitor.app"
+	./setup/scripts/mac-dock-add-app.fish "/Applications/Quicksilver.app"
+	./setup/scripts/mac-dock-add-app.fish "/Applications/Visual Studio Code.app"
+	./setup/scripts/mac-dock-add-app.fish "/Applications/Google Chrome.app"
+	./setup/scripts/mac-dock-add-app.fish "/Applications/Obsidian.app"
 
-.PHONY: mac-dock-left
-mac-dock-left:
-	defaults write com.apple.dock orientation left && killall Dock
-
-.PHONY: mac-dock-bottom
-mac-dock-bottom:
-	defaults write com.apple.dock orientation bottom && killall Dock
-
-.PHONY: mac-dock-add-spacer
-mac-dock-add-spacer:
 	defaults write com.apple.dock persistent-apps -array-add '{"tile-type"="spacer-tile";}'
+
+	./setup/scripts/mac-dock-add-app.fish "/Applications/Slack.app"
+	./setup/scripts/mac-dock-add-app.fish "/Applications/Discord.app"
+
+	defaults write com.apple.dock persistent-apps -array-add '{"tile-type"="spacer-tile";}'
+
 	killall Dock
 
 # Misc
 
 .PHONY: prefer-wired-over-wireless-for-SMB
 prefer-wired-over-wireless-for-SMB:
-	echo "mc_prefer_wired=yes" | sudo tee -a /etc/nsmb.conf # https://support.apple.com/en-us/102010
+	cat /etc/nsmb.conf | grep "mc_prefer_wired=yes" || echo "mc_prefer_wired=yes" | sudo tee -a /etc/nsmb.conf # https://support.apple.com/en-us/102010

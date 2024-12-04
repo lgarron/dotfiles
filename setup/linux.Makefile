@@ -1,5 +1,5 @@
 .PHONY: linux-setup
-linux-setup: linux-fish-default-shell
+linux-setup: fish linux-fish-default-shell
 
 .PHONY: linux-fish-default-shell
 linux-fish-default-shell:

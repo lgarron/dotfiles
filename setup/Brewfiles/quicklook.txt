@@ -1,6 +1,0 @@
-cask "betterzip"
-cask "qlmarkdown"
-cask "qlstephen"
-cask "suspicious-package"
-cask "quicklook-json"
-cask "glance"

@@ -6,6 +6,7 @@ auto:
 
 .PHONY: mac-common
 mac-common: \
+	set-dotfiles-repo-email \
 	compressor \
 	fish \
 	git \
@@ -30,6 +31,7 @@ germain: \
 
 .PHONY: linux
 linux: \
+	set-dotfiles-repo-email \
 	fish \
 	xdg-basedir-workarounds \
 	zellij
@@ -94,7 +96,11 @@ setup:
 .PHONY: setup-dev-dependencies
 setup-dev-dependencies:
 	@echo "Note: \`make setup\` sets up the repo for development (installing dependencies), it does not set up dotfiles themselves."
-	bun install
+	bun install --no-save
+
+.PHONY: set-dotfiles-repo-email
+set-dotfiles-repo-email:
+	git config user.email "code@garron.net"
 
 ########
 

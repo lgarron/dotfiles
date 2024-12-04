@@ -1,0 +1,15 @@
+brew "mas"
+
+# Occasional
+mas "Screenium 3", id: 921553264
+mas "Brother iPrint&Scan", id: 1193539993
+mas "Pages", id: 409201541
+mas "Numbers", id: 409203825
+mas "Keynote", id: 409183694
+mas "BlueSee", id: 1336679524
+
+# Apple (large)
+# mas "GarageBand", id: 682658836
+mas "Compressor", id: 424390742
+mas "Final Cut Pro", id: 424389933
+mas "Xcode", id: 497799835

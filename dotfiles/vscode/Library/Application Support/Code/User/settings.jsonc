@@ -30,9 +30,7 @@
   "window.newWindowDimensions": "inherit",
   /******** Formatting ********/
   // https://marketplace.visualstudio.com/items?itemName=tombonnike.vscode-status-bar-format-toggle
-  "formattingToggle.affects": [
-    "editor.formatOnSave"
-  ],
+  "formattingToggle.affects": ["editor.formatOnSave"],
   "[json]": {
     "editor.defaultFormatter": "biomejs.biome"
   },
@@ -89,9 +87,7 @@
   // confusing and useless warning in codespaces when working in a codebase that
   // ever has PRs from `main` to another branch (e.g. `production` or
   // `release`).
-  "githubPullRequests.ignoredPullRequestBranches": [
-    "main"
-  ],
+  "githubPullRequests.ignoredPullRequestBranches": ["main"],
   /******** Live Share ********/
   "liveshare.showInStatusBar": "whileCollaborating",
   /******** Terminal ********/
@@ -107,18 +103,13 @@
       "path": "/opt/homebrew/bin/fish",
       "icon": "heart-filled",
       "overrideName": true,
-      "args": [
-        "-l"
-      ]
+      "args": ["-l"]
     },
     "apple_fish_no_history": {
       "path": "/opt/homebrew/bin/fish",
       "icon": "heart",
       "overrideName": true,
-      "args": [
-        "-l",
-        "--private"
-      ]
+      "args": ["-l", "--private"]
     }
   },
   /******** GitLens ********/

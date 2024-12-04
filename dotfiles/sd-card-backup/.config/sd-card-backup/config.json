@@ -40,7 +40,8 @@
 		"RUBY SUNDAY",
 		"DOROTHY",
 		"TIN MAN",
-		"SCARECROW"
+		"SCARECROW",
+		"SARAH JANE"
 	],
 	"folder_mapping": [
 		{ "source": "DCIM", "destination": "DCIM" },

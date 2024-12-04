@@ -16,6 +16,7 @@ cask "google-drive"
 cask "vmware-fusion"
 cask "whisky"
 cask "discord"
+cask "bambu-studio"
 
 # Browsers
 

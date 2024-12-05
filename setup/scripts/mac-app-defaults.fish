@@ -10,6 +10,7 @@ end
   logged defaults write "com.apple.Safari.SandboxBroker" "ShowDevelopMenu" '1'
 # Final Cut Pro
   logged defaults write com.apple.FinalCut FFAutoStartBGRender -bool false
+  logged defaults write "com.apple.FinalCut" "FFImportCopyToMediaFolder" '0'
 # Calendar
   # Start on Monday
   logged defaults write com.apple.iCal "first day of week" 2

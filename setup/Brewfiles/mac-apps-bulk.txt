@@ -20,6 +20,7 @@ cask "bambu-studio"
 cask "audacity"
 cask "appcleaner"
 cask "openscad@snapshot"
+cask "carbon-copy-cloner"
 
 # Browsers
 

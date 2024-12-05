@@ -21,6 +21,7 @@ cask "audacity"
 cask "appcleaner"
 cask "openscad@snapshot"
 cask "carbon-copy-cloner"
+cask "macs-fan-control"
 
 # Browsers
 

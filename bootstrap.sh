@@ -14,11 +14,10 @@ then
   # Note: we would install `fish` together with `stow`, but most default PPAs are 3 years of date. So we don't even bother, and handle `fish` separately below.
 fi
 
-function install_fish_3_6 {
+function install_fish_3_6_or_higher {
   echo "Installing updated \`fish\` for updated abbreviation support."
-  # https://software.opensuse.org/download.html?project=shells%3Afish%3Arelease%3A3&package=fish
-  echo 'deb http://download.opensuse.org/repositories/shells:/fish:/release:/3/Debian_11/ /' | sudo tee /etc/apt/sources.list.d/shells:fish:release:3.list
-  curl -fsSL https://download.opensuse.org/repositories/shells:fish:release:3/Debian_11/Release.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/shells_fish_release_3.gpg > /dev/null
+
+  sudo apt-add-repository ppa:fish-shell/release-3
   sudo apt update
   sudo apt install --yes fish
 }
@@ -26,10 +25,10 @@ function install_fish_3_6 {
 if command -v fish
 then
   echo "\`fish\` detected… testing if we're before version 3.6"
-  fish --version | grep "3.[012345]" && install_fish_3_6
+  fish --version | grep "3.[012345]" && install_fish_3_6_or_higher
 else
   echo "No \`fish\` detected."
-  install_fish_3_6
+  install_fish_3_6_or_higher
 fi
 
 if [ -n "$CODESPACES" ]

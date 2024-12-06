@@ -44,6 +44,6 @@ make linux
 
 sudo chsh "$(id -un)" --shell "$(command -v fish)"
 
-./bootstrap/install-git-commands
-./bootstrap/install-lgarron-scripts
-./bootstrap/install-mak
+./setup/bootstrap/install-git-commands
+./setup/bootstrap/install-lgarron-scripts
+./setup/bootstrap/install-mak

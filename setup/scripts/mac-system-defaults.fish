@@ -1,6 +1,6 @@
 #!/usr/bin/env -S fish --no-config
 
-# Wrapper to log commands
+# Wrapper to log commands for easy & safe copy/pasting.
 function defaults
   echo -- defaults (string escape -- $argv)
   command defaults $argv

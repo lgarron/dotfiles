@@ -63,15 +63,21 @@ end
       logged defaults write "com.apple.Displays-Settings.extension" '{showListByDefault=1;}'
   ## Privacy & Security
     ### Apple Intelligence Report
-      defaults write "com.apple.AppleIntelligenceReport" '{lastChanged="2024-12-04 13:00:03 +0000";reportDuration=0;}'
+      logged defaults write "com.apple.AppleIntelligenceReport" '{lastChanged="2024-12-04 13:00:03 +0000";reportDuration=0;}'
   ## Keyboard
-      ### Text Input → Input Sources
-        #### Edit…
-          logged defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
-          logged defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
-          logged defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
-          logged defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
-
+    ### Text Input → Input Sources
+      #### Edit…
+        logged defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
+        logged defaults write NSGlobalDomain NSAutomaticCapitalizationEnabled -bool false
+        logged defaults write NSGlobalDomain NSAutomaticPeriodSubstitutionEnabled -bool false
+        logged defaults write NSGlobalDomain NSAutomaticQuoteSubstitutionEnabled -bool false
+  ## Mouse
+    logged defaults write "Apple Global Domain" "com.apple.mouse.scaling" '"2.5"'
+  ## Trackpad
+    ### More Gestures
+      logged defaults write "com.apple.driver.AppleBluetoothMultitouch.trackpad" "TrackpadTwoFingerFromRightEdgeSwipeGesture" '0'
+      logged defaults write "com.apple.AppleMultitouchTrackpad" "TrackpadTwoFingerFromRightEdgeSwipeGesture" '0'
+      logged defaults write "com.apple.dock" "showLaunchpadGestureEnabled" '0'
 
 # Finder
   logged defaults write com.apple.finder AppleShowAllFiles YES

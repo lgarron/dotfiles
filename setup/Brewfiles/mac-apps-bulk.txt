@@ -22,17 +22,20 @@ cask "appcleaner"
 cask "openscad@snapshot"
 cask "carbon-copy-cloner"
 cask "macs-fan-control"
+cask "syncthing"
 
 # Browsers
 
-# cask "brave"
 cask "firefox"
 cask "firefox@nightly"
 cask "google-chrome" # Duplicated from `mac-apps-core`
-# cask "opera"
-# cask "vivaldi"
 cask "google-chrome@canary"
 cask "safari-technology-preview"
+# Chrome derivatives (not installed for now)
+# cask "brave"
+# cask "opera"
+# cask "vivaldi"
+# microsoft-edge
 
 # QuickLook
 cask "betterzip"

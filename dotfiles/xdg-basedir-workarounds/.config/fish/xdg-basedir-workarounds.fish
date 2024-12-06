@@ -10,6 +10,9 @@
     set -Ux XDG_CONFIG_HOME $HOME/.config
     set -Ux XDG_DATA_HOME $HOME/.data
 
+    # Workaround for https://github.com/zellij-org/zellij/issues/3708
+    set -Ux XDG_RUNTIME_DIR $HOME/.local/runtime
+
 ## XDG workarounds for specific programs.
 
     set -Ux LESSHISTFILE $XDG_DATA_HOME/lesshst

@@ -9,6 +9,9 @@ Linked [using GNU `stow`](http://brandon.invergo.net/news/2012-05-26-using-gnu-s
     git clone https://github.com/lgarron/dotfiles ~/Code/git/github.com/lgarron/dotfiles
     cd ~/Code/git/github.com/lgarron/dotfiles
 
+    # Open "Full Disk Access" and make sure the terminal app has full disk access.
+    open /System/Library/PreferencePanes/Security.prefPane
+
     make mac-common
 
 See [`./exported/`](./exported/) for files that must be manually exported/imported.

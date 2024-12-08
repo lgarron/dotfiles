@@ -91,10 +91,7 @@
                             {
                                 "from": {
                                     "key_code": "period",
-                                    "modifiers": {
-                                        "mandatory": ["control"],
-                                        "optional": ["caps_lock", "command", "option", "shift"]
-                                    }
+                                    "modifiers": { "mandatory": ["control"] }
                                 },
                                 "to": [{ "key_code": "escape" }],
                                 "type": "basic"

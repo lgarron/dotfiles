@@ -32,9 +32,10 @@ mac-common-dotfiles: \
 germain: mac-common
 
 .PHONY: pythagoras
-germain: \
+pythagoras: \
 	mac-common \
-	hushlogin # for SSH
+	mac-dock-setup-pythagoras-extras \
+	hushlogin # for SSH \
 
 .PHONY: linux
 linux: \

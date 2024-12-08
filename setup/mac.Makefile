@@ -173,6 +173,21 @@ mac-dock-setup:
 
 	killall Dock
 
+
+.PHONY: mac-dock-setup-pythagoras-extras
+mac-dock-setup-pythagoras-extras:
+
+	./setup/scripts/mac-dock-add-app.fish "/Applications/Adobe Lightroom.app"
+	./setup/scripts/mac-dock-add-app.fish "/Applications/Arq.app"
+	./setup/scripts/mac-dock-add-app.fish "/Applications/Syncthing.app"
+	./setup/scripts/mac-dock-add-app.fish "/Applications/Dropbox.app"
+	./setup/scripts/mac-dock-add-app.fish "/Applications/Google Drive.app"
+	./setup/scripts/mac-dock-add-app.fish "/Applications/OneDrive.app"
+
+	defaults write com.apple.dock persistent-apps -array-add '{"tile-type"="spacer-tile";}'
+
+	killall Dock
+
 # Misc
 
 .PHONY: prefer-wired-over-wireless-for-SMB

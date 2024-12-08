@@ -1,6 +1,13 @@
 // If you'd like to override the default keybindings completely, be sure to change "keybinds" to "keybinds clear-defaults=true"
 keybinds {
+    unbind "Alt Left"
+    unbind "Alt Right"
+
     normal {
+        // TODO: The `zellij` docs imply this should not be necessary.
+        unbind "Alt Left"
+        unbind "Alt Right"
+
         // uncomment this and adjust key if using copy_on_select=false
         // bind "Alt c" { Copy; }
     }
@@ -167,10 +174,10 @@ keybinds {
         bind "Alt n" { NewPane; }
         bind "Alt i" { MoveTab "Left"; }
         bind "Alt o" { MoveTab "Right"; }
-        bind "Alt h" "Alt Left" { MoveFocusOrTab "Left"; }
-        bind "Alt l" "Alt Right" { MoveFocusOrTab "Right"; }
-        bind "Alt j" "Alt Down" { MoveFocus "Down"; }
-        bind "Alt k" "Alt Up" { MoveFocus "Up"; }
+        bind "Alt h" "Alt Shift Left" { MoveFocusOrTab "Left"; }
+        bind "Alt l" "Alt Shift Right" { MoveFocusOrTab "Right"; }
+        bind "Alt j" "Alt Shift Down" { MoveFocus "Down"; }
+        bind "Alt k" "Alt Shift Up" { MoveFocus "Up"; }
         bind "Alt =" "Alt +" { Resize "Increase"; }
         bind "Alt -" { Resize "Decrease"; }
         bind "Alt [" { PreviousSwapLayout; }
@@ -408,4 +415,4 @@ load_plugins {
 // (Requires restart)
 // Default: true (if the host terminal supports it)
 //
-// support_kitty_keyboard_protocol false
+support_kitty_keyboard_protocol true

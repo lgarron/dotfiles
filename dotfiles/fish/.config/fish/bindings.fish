@@ -13,7 +13,7 @@
     bind ctrl-delete kill-token
     bind ctrl-\\ kill-token
 
-    if string match --entire -- $TERM_PROGRAM vscode > /dev/null
+    if string match --entire -- "$TERM_PROGRAM" vscode > /dev/null
       # Legacy bindings
       bind alt-b backward-word
       bind alt-f forward-word
@@ -21,6 +21,11 @@
       bind alt-d kill-word
 
       # Legacy bindings
+      bind ctrl-h backward-kill-token
+    end
+
+    # Workaround for https://github.com/zellij-org/zellij/issues/3852
+    if not string match --entire -- "$ZELLIJ_SESSION_NAME" "" > /dev/null
       bind ctrl-h backward-kill-token
     end
 

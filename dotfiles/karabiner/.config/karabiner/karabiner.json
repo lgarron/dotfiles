@@ -1,629 +1,611 @@
 {
-  "profiles": [
-    {
-      "complex_modifications": {
-        "rules": [
-          {
-            "description": "change F1 to END",
-            "manipulators": [
-              {
-                "from": { "key_code": "f1" },
-                "to": [{ "key_code": "end" }],
-                "type": "basic"
-              }
-            ]
-          },
-          {
-            "description": "Take shadowless window screenshot and reveal (F12)",
-            "manipulators": [
-              {
-                "from": {
-                  "key_code": "f12",
-                  "modifiers": { "mandatory": ["shift"] }
-                },
-                "to": [
-                  {
-                    "shell_command": "/opt/homebrew/bin/fish --no-config /Users/lgarron/Code/git/github.com/lgarron/dotfiles/scripts/system/app-screenshot.fish --front-window-shadowless-jpg --reveal"
-                  }
-                ],
-                "type": "basic"
-              }
-            ]
-          },
-          {
-            "description": "Change Control + h/j/k/l to Arrows (lgarron)",
-            "manipulators": [
-              {
-                "from": {
-                  "key_code": "h",
-                  "modifiers": {
-                    "mandatory": ["control"],
-                    "optional": ["caps_lock", "command", "option", "shift"]
-                  }
-                },
-                "to": [{ "key_code": "left_arrow" }],
-                "type": "basic"
-              },
-              {
-                "from": {
-                  "key_code": "j",
-                  "modifiers": {
-                    "mandatory": ["control"],
-                    "optional": ["caps_lock", "command", "option", "shift"]
-                  }
-                },
-                "to": [{ "key_code": "down_arrow" }],
-                "type": "basic"
-              },
-              {
-                "from": {
-                  "key_code": "k",
-                  "modifiers": {
-                    "mandatory": ["control"],
-                    "optional": ["caps_lock", "command", "option", "shift"]
-                  }
-                },
-                "to": [{ "key_code": "up_arrow" }],
-                "type": "basic"
-              },
-              {
-                "from": {
-                  "key_code": "l",
-                  "modifiers": {
-                    "mandatory": ["control"],
-                    "optional": ["caps_lock", "command", "option", "shift"]
-                  }
-                },
-                "to": [{ "key_code": "right_arrow" }],
-                "type": "basic"
-              }
-            ]
-          },
-          {
-            "description": "Escape using Control + Dot (lgarron)",
-            "manipulators": [
-              {
-                "from": {
-                  "key_code": ".",
-                  "modifiers": {
-                    "mandatory": ["control"],
-                    "optional": ["caps_lock", "command", "option", "shift"]
-                  }
-                },
-                "to": [{ "key_code": "escape" }],
-                "type": "basic"
-              }
-            ]
-          },
-          {
-            "description": "Take fullscreen screenshot",
-            "manipulators": [
-              {
-                "from": { "key_code": "print_screen" },
-                "to": [
-                  {
-                    "shell_command": "/opt/homebrew/bin/fish --no-config /Users/lgarron/Code/git/github.com/lgarron/dotfiles/scripts/system/app-screenshot.fish"
-                  }
-                ],
-                "type": "basic"
-              }
-            ]
-          },
-          {
-            "description": "Take fullscreen screenshot and reveal",
-            "manipulators": [
-              {
-                "from": {
-                  "key_code": "print_screen",
-                  "modifiers": { "mandatory": ["shift"] }
-                },
-                "to": [
-                  {
-                    "shell_command": "/opt/homebrew/bin/fish --no-config /Users/lgarron/Code/git/github.com/lgarron/dotfiles/scripts/system/app-screenshot.fish --reveal"
-                  }
-                ],
-                "type": "basic"
-              }
-            ]
-          },
-          {
-            "description": "Take window screenshot",
-            "manipulators": [
-              {
-                "from": {
-                  "key_code": "print_screen",
-                  "modifiers": { "mandatory": ["option"] }
-                },
-                "to": [
-                  {
-                    "shell_command": "/opt/homebrew/bin/fish --no-config /Users/lgarron/Code/git/github.com/lgarron/dotfiles/scripts/system/app-screenshot.fish --front-window-shadowed-png"
-                  }
-                ],
-                "type": "basic"
-              }
-            ]
-          },
-          {
-            "description": "Take window screenshot and reveal",
-            "manipulators": [
-              {
-                "from": {
-                  "key_code": "print_screen",
-                  "modifiers": { "mandatory": ["shift", "option"] }
-                },
-                "to": [
-                  {
-                    "shell_command": "/opt/homebrew/bin/fish --no-config /Users/lgarron/Code/git/github.com/lgarron/dotfiles/scripts/system/app-screenshot.fish --front-window-shadowed-png --reveal"
-                  }
-                ],
-                "type": "basic"
-              }
-            ]
-          },
-          {
-            "description": "Take shadowless window screenshot",
-            "manipulators": [
-              {
-                "from": { "key_code": "scroll_lock" },
-                "to": [
-                  {
-                    "shell_command": "/opt/homebrew/bin/fish --no-config /Users/lgarron/Code/git/github.com/lgarron/dotfiles/scripts/system/app-screenshot.fish --front-window-shadowless-jpg"
-                  }
-                ],
-                "type": "basic"
-              }
-            ]
-          },
-          {
-            "description": "Take shadowless window screenshot and reveal",
-            "manipulators": [
-              {
-                "from": {
-                  "key_code": "scroll_lock",
-                  "modifiers": { "mandatory": ["shift"] }
-                },
-                "to": [
-                  {
-                    "shell_command": "/opt/homebrew/bin/fish --no-config /Users/lgarron/Code/git/github.com/lgarron/dotfiles/scripts/system/app-screenshot.fish --front-window-shadowless-jpg --reveal"
-                  }
-                ],
-                "type": "basic"
-              }
-            ]
-          },
-          {
-            "description": "Suppress incorrect fn release events on fn+Function // https://github.com/pqrs-org/Karabiner-Elements/issues/3110#issuecomment-1546457142",
-            "manipulators": [
-              {
-                "from": {
-                  "key_code": "f1",
-                  "modifiers": {
-                    "mandatory": ["fn"],
-                    "optional": ["any"]
-                  }
-                },
-                "to": [
-                  {
-                    "consumer_key_code": "display_brightness_decrement",
-                    "modifiers": ["fn"]
-                  }
-                ],
-                "type": "basic"
-              },
-              {
-                "from": {
-                  "key_code": "f2",
-                  "modifiers": {
-                    "mandatory": ["fn"],
-                    "optional": ["any"]
-                  }
-                },
-                "to": [
-                  {
-                    "consumer_key_code": "display_brightness_increment",
-                    "modifiers": ["fn"]
-                  }
-                ],
-                "type": "basic"
-              },
-              {
-                "from": {
-                  "key_code": "f3",
-                  "modifiers": {
-                    "mandatory": ["fn"],
-                    "optional": ["any"]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "mission_control",
-                    "modifiers": ["fn"]
-                  }
-                ],
-                "type": "basic"
-              },
-              {
-                "from": {
-                  "key_code": "f4",
-                  "modifiers": {
-                    "mandatory": ["fn"],
-                    "optional": ["any"]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "launchpad",
-                    "modifiers": ["fn"]
-                  }
-                ],
-                "type": "basic"
-              },
-              {
-                "from": {
-                  "key_code": "f5",
-                  "modifiers": {
-                    "mandatory": ["fn"],
-                    "optional": ["any"]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "illumination_decrement",
-                    "modifiers": ["fn"]
-                  }
-                ],
-                "type": "basic"
-              },
-              {
-                "from": {
-                  "key_code": "f6",
-                  "modifiers": {
-                    "mandatory": ["fn"],
-                    "optional": ["any"]
-                  }
-                },
-                "to": [
-                  {
-                    "key_code": "illumination_increment",
-                    "modifiers": ["fn"]
-                  }
-                ],
-                "type": "basic"
-              },
-              {
-                "from": {
-                  "key_code": "f7",
-                  "modifiers": {
-                    "mandatory": ["fn"],
-                    "optional": ["any"]
-                  }
-                },
-                "to": [
-                  {
-                    "consumer_key_code": "rewind",
-                    "modifiers": ["fn"]
-                  }
-                ],
-                "type": "basic"
-              },
-              {
-                "from": {
-                  "key_code": "f8",
-                  "modifiers": {
-                    "mandatory": ["fn"],
-                    "optional": ["any"]
-                  }
-                },
-                "to": [
-                  {
-                    "consumer_key_code": "play_or_pause",
-                    "modifiers": ["fn"]
-                  }
-                ],
-                "type": "basic"
-              },
-              {
-                "from": {
-                  "key_code": "f9",
-                  "modifiers": {
-                    "mandatory": ["fn"],
-                    "optional": ["any"]
-                  }
-                },
-                "to": [
-                  {
-                    "consumer_key_code": "fast_forward",
-                    "modifiers": ["fn"]
-                  }
-                ],
-                "type": "basic"
-              },
-              {
-                "from": {
-                  "key_code": "f10",
-                  "modifiers": {
-                    "mandatory": ["fn"],
-                    "optional": ["any"]
-                  }
-                },
-                "to": [
-                  {
-                    "consumer_key_code": "mute",
-                    "modifiers": ["fn"]
-                  }
-                ],
-                "type": "basic"
-              },
-              {
-                "from": {
-                  "key_code": "f11",
-                  "modifiers": {
-                    "mandatory": ["fn"],
-                    "optional": ["any"]
-                  }
-                },
-                "to": [
-                  {
-                    "consumer_key_code": "volume_decrement",
-                    "modifiers": ["fn"]
-                  }
-                ],
-                "type": "basic"
-              },
-              {
-                "from": {
-                  "key_code": "f12",
-                  "modifiers": {
-                    "mandatory": ["fn"],
-                    "optional": ["any"]
-                  }
-                },
-                "to": [
-                  {
-                    "consumer_key_code": "volume_increment",
-                    "modifiers": ["fn"]
-                  }
-                ],
-                "type": "basic"
-              }
-            ]
-          }
-        ]
-      },
-      "devices": [
+    "profiles": [
         {
-          "identifiers": {
-            "is_keyboard": true,
-            "product_id": 1957,
-            "vendor_id": 1118
-          },
-          "manipulate_caps_lock_led": false,
-          "simple_modifications": [
-            {
-              "from": { "key_code": "application" },
-              "to": [{ "key_code": "right_option" }]
+            "complex_modifications": {
+                "rules": [
+                    {
+                        "description": "Take fullscreen screenshot",
+                        "manipulators": [
+                            {
+                                "from": { "key_code": "f12" },
+                                "to": [{ "shell_command": "/opt/homebrew/bin/fish --no-config /Users/lgarron/Code/git/github.com/lgarron/dotfiles/scripts/system/app-screenshot.fish" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "change F1 to END",
+                        "manipulators": [
+                            {
+                                "from": { "key_code": "f1" },
+                                "to": [{ "key_code": "end" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Take fullscreen screenshot and reveal (⇧F12)",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "f12",
+                                    "modifiers": { "mandatory": ["shift"] }
+                                },
+                                "to": [{ "shell_command": "/opt/homebrew/bin/fish --no-config /Users/lgarron/Code/git/github.com/lgarron/dotfiles/scripts/system/app-screenshot.fish --reveal" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Change Control + h/j/k/l to Arrows (lgarron)",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "h",
+                                    "modifiers": {
+                                        "mandatory": ["control"],
+                                        "optional": ["caps_lock", "command", "option", "shift"]
+                                    }
+                                },
+                                "to": [{ "key_code": "left_arrow" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "j",
+                                    "modifiers": {
+                                        "mandatory": ["control"],
+                                        "optional": ["caps_lock", "command", "option", "shift"]
+                                    }
+                                },
+                                "to": [{ "key_code": "down_arrow" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "k",
+                                    "modifiers": {
+                                        "mandatory": ["control"],
+                                        "optional": ["caps_lock", "command", "option", "shift"]
+                                    }
+                                },
+                                "to": [{ "key_code": "up_arrow" }],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "l",
+                                    "modifiers": {
+                                        "mandatory": ["control"],
+                                        "optional": ["caps_lock", "command", "option", "shift"]
+                                    }
+                                },
+                                "to": [{ "key_code": "right_arrow" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Escape using Control + Dot (lgarron)",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "period",
+                                    "modifiers": {
+                                        "mandatory": ["control"],
+                                        "optional": ["caps_lock", "command", "option", "shift"]
+                                    }
+                                },
+                                "to": [{ "key_code": "escape" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Take fullscreen screenshot (PrintScreen)",
+                        "manipulators": [
+                            {
+                                "from": { "key_code": "print_screen" },
+                                "to": [{ "shell_command": "/opt/homebrew/bin/fish --no-config /Users/lgarron/Code/git/github.com/lgarron/dotfiles/scripts/system/app-screenshot.fish" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Take fullscreen screenshot and reveal (⇧PrintScreen)",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "print_screen",
+                                    "modifiers": { "mandatory": ["shift"] }
+                                },
+                                "to": [{ "shell_command": "/opt/homebrew/bin/fish --no-config /Users/lgarron/Code/git/github.com/lgarron/dotfiles/scripts/system/app-screenshot.fish --reveal" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Take window screenshot (⌥PrintScreen)",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "print_screen",
+                                    "modifiers": { "mandatory": ["option"] }
+                                },
+                                "to": [{ "shell_command": "/opt/homebrew/bin/fish --no-config /Users/lgarron/Code/git/github.com/lgarron/dotfiles/scripts/system/app-screenshot.fish --front-window-shadowed-png" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Take window screenshot and reveal (⇧⌥PrintScreen)",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "print_screen",
+                                    "modifiers": { "mandatory": ["shift", "option"] }
+                                },
+                                "to": [{ "shell_command": "/opt/homebrew/bin/fish --no-config /Users/lgarron/Code/git/github.com/lgarron/dotfiles/scripts/system/app-screenshot.fish --front-window-shadowed-png --reveal" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Take shadowless window screenshot (ScrollLock)",
+                        "manipulators": [
+                            {
+                                "from": { "key_code": "scroll_lock" },
+                                "to": [{ "shell_command": "/opt/homebrew/bin/fish --no-config /Users/lgarron/Code/git/github.com/lgarron/dotfiles/scripts/system/app-screenshot.fish --front-window-shadowless-jpg" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Take shadowless window screenshot and reveal (⇧ScrollLock)",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "scroll_lock",
+                                    "modifiers": { "mandatory": ["shift"] }
+                                },
+                                "to": [{ "shell_command": "/opt/homebrew/bin/fish --no-config /Users/lgarron/Code/git/github.com/lgarron/dotfiles/scripts/system/app-screenshot.fish --front-window-shadowless-jpg --reveal" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Suppress incorrect fn release events on fn+Function // https://github.com/pqrs-org/Karabiner-Elements/issues/3110#issuecomment-1546457142",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "f1",
+                                    "modifiers": {
+                                        "mandatory": ["fn"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "consumer_key_code": "display_brightness_decrement",
+                                        "modifiers": ["fn"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "f2",
+                                    "modifiers": {
+                                        "mandatory": ["fn"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "consumer_key_code": "display_brightness_increment",
+                                        "modifiers": ["fn"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "f3",
+                                    "modifiers": {
+                                        "mandatory": ["fn"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "mission_control",
+                                        "modifiers": ["fn"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "f4",
+                                    "modifiers": {
+                                        "mandatory": ["fn"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "launchpad",
+                                        "modifiers": ["fn"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "f5",
+                                    "modifiers": {
+                                        "mandatory": ["fn"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "illumination_decrement",
+                                        "modifiers": ["fn"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "f6",
+                                    "modifiers": {
+                                        "mandatory": ["fn"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "illumination_increment",
+                                        "modifiers": ["fn"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "f7",
+                                    "modifiers": {
+                                        "mandatory": ["fn"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "consumer_key_code": "rewind",
+                                        "modifiers": ["fn"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "f8",
+                                    "modifiers": {
+                                        "mandatory": ["fn"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "consumer_key_code": "play_or_pause",
+                                        "modifiers": ["fn"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "f9",
+                                    "modifiers": {
+                                        "mandatory": ["fn"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "consumer_key_code": "fast_forward",
+                                        "modifiers": ["fn"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "f10",
+                                    "modifiers": {
+                                        "mandatory": ["fn"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "consumer_key_code": "mute",
+                                        "modifiers": ["fn"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "f11",
+                                    "modifiers": {
+                                        "mandatory": ["fn"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "consumer_key_code": "volume_decrement",
+                                        "modifiers": ["fn"]
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "f12",
+                                    "modifiers": {
+                                        "mandatory": ["fn"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "consumer_key_code": "volume_increment",
+                                        "modifiers": ["fn"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    }
+                ]
             },
-            {
-              "from": { "key_code": "f5" },
-              "to": [{ "key_code": "f14" }]
-            },
-            {
-              "from": { "key_code": "f6" },
-              "to": [{ "key_code": "f15" }]
-            },
-            {
-              "from": { "key_code": "left_command" },
-              "to": [{ "key_code": "left_option" }]
-            },
-            {
-              "from": { "key_code": "left_option" },
-              "to": [{ "key_code": "left_command" }]
-            },
-            {
-              "from": { "key_code": "right_option" },
-              "to": [{ "key_code": "right_command" }]
+            "devices": [
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "product_id": 1957,
+                        "vendor_id": 1118
+                    },
+                    "manipulate_caps_lock_led": false,
+                    "simple_modifications": [
+                        {
+                            "from": { "key_code": "application" },
+                            "to": [{ "key_code": "right_option" }]
+                        },
+                        {
+                            "from": { "key_code": "f5" },
+                            "to": [{ "key_code": "f14" }]
+                        },
+                        {
+                            "from": { "key_code": "f6" },
+                            "to": [{ "key_code": "f15" }]
+                        },
+                        {
+                            "from": { "key_code": "left_command" },
+                            "to": [{ "key_code": "left_option" }]
+                        },
+                        {
+                            "from": { "key_code": "left_option" },
+                            "to": [{ "key_code": "left_command" }]
+                        },
+                        {
+                            "from": { "key_code": "right_option" },
+                            "to": [{ "key_code": "right_command" }]
+                        }
+                    ]
+                },
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "product_id": 50475,
+                        "vendor_id": 1133
+                    },
+                    "ignore": true,
+                    "manipulate_caps_lock_led": false
+                },
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": true,
+                        "product_id": 18509,
+                        "vendor_id": 9025
+                    },
+                    "ignore": false,
+                    "manipulate_caps_lock_led": false,
+                    "simple_modifications": [
+                        {
+                            "from": { "consumer_key_code": "fastforward" },
+                            "to": [{ "key_code": "spacebar" }]
+                        },
+                        {
+                            "from": { "consumer_key_code": "volume_decrement" },
+                            "to": [{ "key_code": "vk_none" }]
+                        },
+                        {
+                            "from": { "consumer_key_code": "volume_increment" },
+                            "to": [{ "key_code": "vk_none" }]
+                        }
+                    ]
+                },
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "product_id": 2,
+                        "vendor_id": 7247
+                    },
+                    "manipulate_caps_lock_led": false,
+                    "simple_modifications": [
+                        {
+                            "from": { "key_code": "return_or_enter" },
+                            "to": [{ "key_code": "f13" }]
+                        }
+                    ]
+                },
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "product_id": 835,
+                        "vendor_id": 1452
+                    },
+                    "simple_modifications": [
+                        {
+                            "from": { "key_code": "right_option" },
+                            "to": [{ "key_code": "right_control" }]
+                        }
+                    ]
+                },
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "product_id": 666,
+                        "vendor_id": 1452
+                    },
+                    "ignore": true
+                },
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "product_id": 50504,
+                        "vendor_id": 1133
+                    },
+                    "simple_modifications": [
+                        {
+                            "from": { "pointing_button": "button5" },
+                            "to": [{ "pointing_button": "button3" }]
+                        }
+                    ]
+                },
+                {
+                    "identifiers": {
+                        "is_pointing_device": true,
+                        "product_id": 50504,
+                        "vendor_id": 1133
+                    },
+                    "ignore": false,
+                    "mouse_flip_horizontal_wheel": true,
+                    "simple_modifications": [
+                        {
+                            "from": { "pointing_button": "button5" },
+                            "to": [{ "pointing_button": "button3" }]
+                        }
+                    ]
+                },
+                {
+                    "identifiers": {
+                        "is_pointing_device": true,
+                        "product_id": 45108,
+                        "vendor_id": 1133
+                    },
+                    "simple_modifications": [
+                        {
+                            "from": { "pointing_button": "button5" },
+                            "to": [{ "pointing_button": "button3" }]
+                        }
+                    ]
+                },
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "product_id": 61138,
+                        "vendor_id": 1240
+                    },
+                    "simple_modifications": [
+                        {
+                            "from": { "key_code": "application" },
+                            "to": [{ "key_code": "right_option" }]
+                        },
+                        {
+                            "from": { "key_code": "left_alt" },
+                            "to": [{ "key_code": "left_command" }]
+                        },
+                        {
+                            "from": { "key_code": "left_command" },
+                            "to": [{ "key_code": "left_option" }]
+                        },
+                        {
+                            "from": { "key_code": "right_alt" },
+                            "to": [{ "key_code": "left_command" }]
+                        }
+                    ]
+                }
+            ],
+            "fn_function_keys": [
+                {
+                    "from": { "key_code": "f1" },
+                    "to": [{ "key_code": "f1" }]
+                },
+                {
+                    "from": { "key_code": "f2" },
+                    "to": [{ "key_code": "f2" }]
+                },
+                {
+                    "from": { "key_code": "f3" },
+                    "to": [{ "key_code": "f3" }]
+                },
+                {
+                    "from": { "key_code": "f4" },
+                    "to": [{ "key_code": "f4" }]
+                },
+                {
+                    "from": { "key_code": "f5" },
+                    "to": [{ "key_code": "f5" }]
+                },
+                {
+                    "from": { "key_code": "f7" },
+                    "to": [{ "key_code": "f7" }]
+                },
+                {
+                    "from": { "key_code": "f8" },
+                    "to": [{ "key_code": "f8" }]
+                },
+                {
+                    "from": { "key_code": "f9" },
+                    "to": [{ "key_code": "f9" }]
+                },
+                {
+                    "from": { "key_code": "f10" },
+                    "to": [{ "key_code": "f10" }]
+                },
+                {
+                    "from": { "key_code": "f11" },
+                    "to": [{ "key_code": "f11" }]
+                },
+                {
+                    "from": { "key_code": "f12" },
+                    "to": [{ "key_code": "f12" }]
+                }
+            ],
+            "name": "Default profile",
+            "selected": true,
+            "simple_modifications": [
+                {
+                    "from": { "key_code": "caps_lock" },
+                    "to": [{ "key_code": "delete_or_backspace" }]
+                },
+                {
+                    "from": { "pointing_button": "button5" },
+                    "to": [{ "pointing_button": "button3" }]
+                }
+            ],
+            "virtual_hid_keyboard": {
+                "caps_lock_delay_milliseconds": 0,
+                "country_code": 0,
+                "keyboard_type": "ansi",
+                "keyboard_type_v2": "ansi"
             }
-          ]
-        },
-        {
-          "identifiers": {
-            "is_keyboard": true,
-            "product_id": 50475,
-            "vendor_id": 1133
-          },
-          "ignore": true,
-          "manipulate_caps_lock_led": false
-        },
-        {
-          "identifiers": {
-            "is_keyboard": true,
-            "is_pointing_device": true,
-            "product_id": 18509,
-            "vendor_id": 9025
-          },
-          "ignore": false,
-          "manipulate_caps_lock_led": false,
-          "simple_modifications": [
-            {
-              "from": { "consumer_key_code": "fastforward" },
-              "to": [{ "key_code": "spacebar" }]
-            },
-            {
-              "from": { "consumer_key_code": "volume_decrement" },
-              "to": [{ "key_code": "vk_none" }]
-            },
-            {
-              "from": { "consumer_key_code": "volume_increment" },
-              "to": [{ "key_code": "vk_none" }]
-            }
-          ]
-        },
-        {
-          "identifiers": {
-            "is_keyboard": true,
-            "product_id": 2,
-            "vendor_id": 7247
-          },
-          "manipulate_caps_lock_led": false,
-          "simple_modifications": [
-            {
-              "from": { "key_code": "return_or_enter" },
-              "to": [{ "key_code": "f13" }]
-            }
-          ]
-        },
-        {
-          "identifiers": {
-            "is_keyboard": true,
-            "product_id": 835,
-            "vendor_id": 1452
-          },
-          "simple_modifications": [
-            {
-              "from": { "key_code": "right_option" },
-              "to": [{ "key_code": "right_control" }]
-            }
-          ]
-        },
-        {
-          "identifiers": {
-            "is_keyboard": true,
-            "product_id": 666,
-            "vendor_id": 1452
-          },
-          "ignore": true
-        },
-        {
-          "identifiers": {
-            "is_keyboard": true,
-            "product_id": 50504,
-            "vendor_id": 1133
-          },
-          "simple_modifications": [
-            {
-              "from": { "pointing_button": "button5" },
-              "to": [{ "pointing_button": "button3" }]
-            }
-          ]
-        },
-        {
-          "identifiers": {
-            "is_pointing_device": true,
-            "product_id": 50504,
-            "vendor_id": 1133
-          },
-          "ignore": false,
-          "mouse_flip_horizontal_wheel": true,
-          "simple_modifications": [
-            {
-              "from": { "pointing_button": "button5" },
-              "to": [{ "pointing_button": "button3" }]
-            }
-          ]
-        },
-        {
-          "identifiers": {
-            "is_pointing_device": true,
-            "product_id": 45108,
-            "vendor_id": 1133
-          },
-          "simple_modifications": [
-            {
-              "from": { "pointing_button": "button5" },
-              "to": [{ "pointing_button": "button3" }]
-            }
-          ]
-        },
-        {
-          "identifiers": {
-            "is_keyboard": true,
-            "product_id": 61138,
-            "vendor_id": 1240
-          },
-          "simple_modifications": [
-            {
-              "from": { "key_code": "application" },
-              "to": [{ "key_code": "right_option" }]
-            },
-            {
-              "from": { "key_code": "left_alt" },
-              "to": [{ "key_code": "left_command" }]
-            },
-            {
-              "from": { "key_code": "left_command" },
-              "to": [{ "key_code": "left_option" }]
-            },
-            {
-              "from": { "key_code": "right_alt" },
-              "to": [{ "key_code": "left_command" }]
-            }
-          ]
         }
-      ],
-      "fn_function_keys": [
-        {
-          "from": { "key_code": "f1" },
-          "to": [{ "key_code": "f1" }]
-        },
-        {
-          "from": { "key_code": "f2" },
-          "to": [{ "key_code": "f2" }]
-        },
-        {
-          "from": { "key_code": "f3" },
-          "to": [{ "key_code": "f3" }]
-        },
-        {
-          "from": { "key_code": "f4" },
-          "to": [{ "key_code": "f4" }]
-        },
-        {
-          "from": { "key_code": "f5" },
-          "to": [{ "key_code": "f5" }]
-        },
-        {
-          "from": { "key_code": "f7" },
-          "to": [{ "key_code": "f7" }]
-        },
-        {
-          "from": { "key_code": "f8" },
-          "to": [{ "key_code": "f8" }]
-        },
-        {
-          "from": { "key_code": "f9" },
-          "to": [{ "key_code": "f9" }]
-        },
-        {
-          "from": { "key_code": "f10" },
-          "to": [{ "key_code": "f10" }]
-        },
-        {
-          "from": { "key_code": "f11" },
-          "to": [{ "key_code": "f11" }]
-        },
-        {
-          "from": { "key_code": "f12" },
-          "to": [{ "key_code": "f12" }]
-        }
-      ],
-      "name": "Default profile",
-      "selected": true,
-      "simple_modifications": [
-        {
-          "from": { "key_code": "caps_lock" },
-          "to": [{ "key_code": "delete_or_backspace" }]
-        },
-        {
-          "from": { "pointing_button": "button5" },
-          "to": [{ "pointing_button": "button3" }]
-        }
-      ],
-      "virtual_hid_keyboard": {
-        "caps_lock_delay_milliseconds": 0,
-        "country_code": 0,
-        "keyboard_type": "ansi",
-        "keyboard_type_v2": "ansi"
-      }
-    }
-  ]
+    ]
 }

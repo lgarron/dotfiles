@@ -16,3 +16,5 @@ rm /opt/homebrew/Library/Taps/lgarron/homebrew-lgarron
 ln -s \
   /Users/lgarron/Code/git/github.com/lgarron/dotfiles \
   /opt/homebrew/Library/Taps/lgarron/homebrew-lgarron
+
+/opt/homebrew/bin/brew tap oven-sh/bun

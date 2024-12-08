@@ -79,7 +79,7 @@ fish:
 	cd dotfiles && stow --no-folding --ignore=.DS_Store -t ~/ fish
 	mkdir -p ${HOME}/.data/fish
 	mkdir -p ${HOME}/.local/share
-	ln -sf ${HOME}/.data/fish ${HOME}/.local/share/
+	ln -sf ${HOME}/.data/fish ${HOME}/.local/share/fish
 
 ########
 

@@ -6,11 +6,17 @@ Linked [using GNU `stow`](http://brandon.invergo.net/news/2012-05-26-using-gnu-s
 
 ## Mac
 
+    # Trigger Xcode commandline tool installation by trying to use `git`
+    git
+
     git clone https://github.com/lgarron/dotfiles ~/Code/git/github.com/lgarron/dotfiles
     cd ~/Code/git/github.com/lgarron/dotfiles
 
-    # Open "Full Disk Access" and make sure the terminal app has full disk access.
+    # Open "Full Disk Access" → drag & drop `Terminal.app` to give it full access.
     open /System/Library/PreferencePanes/Security.prefPane
+    open -R /System/Applications/Utilities/Terminal.app
+
+    export PATH=$PATH:/opt/homebrew/bin
 
     make mac-common
 

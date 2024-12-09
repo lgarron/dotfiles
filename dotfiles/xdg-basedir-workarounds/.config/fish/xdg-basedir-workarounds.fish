@@ -11,7 +11,7 @@
     set -Ux XDG_DATA_HOME $HOME/.data
 
     # Workaround for https://github.com/zellij-org/zellij/issues/3708
-    set -Ux XDG_RUNTIME_DIR $HOME/.cache/xdg_runtime_dir
+    set -Ux XDG_RUNTIME_DIR /Users/$USER/Library/Caches
 
 ## XDG workarounds for specific programs.
 

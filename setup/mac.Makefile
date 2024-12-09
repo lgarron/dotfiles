@@ -24,7 +24,8 @@ mac-setup-sudo: \
 	mac-homebrew \
 	mac-commandline-bootstrap \
 	mac-fish-default-shell \
-	prefer-wired-over-wireless-for-SMB
+	prefer-wired-over-wireless-for-SMB \
+	mac-set-finder-sidebar
 	make mac-dock-setup
 
 .PHONY: mac-setup-bulk
@@ -53,6 +54,10 @@ mac-system-defaults:
 .PHONY: mac-app-defaults
 mac-app-defaults:
 	${MAC_APP_DEFAULTS}
+
+.PHONY: mac-set-finder-sidebar
+mac-set-finder-sidebar:
+	./setup/scripts/mac-set-finder-sidebar.fish
 
 .PHONY: mac-keyboard-shortcuts
 mac-keyboard-shortcuts:

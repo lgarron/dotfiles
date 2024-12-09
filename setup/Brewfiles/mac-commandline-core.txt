@@ -2,4 +2,3 @@ brew "ripgrep"
 brew "git"
 brew "gh"
 brew "oven-sh/bun/bun"
-brew "mysides" # Needed to set up the Finder sidebar

@@ -3,3 +3,4 @@ cask "rectangle-pro"
 cask "iterm2"
 cask "visual-studio-code"
 cask "1password"
+cask "mysides" # Needed to set up the Finder sidebar

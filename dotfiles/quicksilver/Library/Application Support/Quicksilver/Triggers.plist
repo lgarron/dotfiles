@@ -40,6 +40,12 @@
 		<dict>
 			<key>ID</key>
 			<string>63219349-D747-4014-B999-915D34C791C2</string>
+			<key>applicationScope</key>
+			<array>
+				<string>com.apple.ScreenSharing</string>
+			</array>
+			<key>applicationScopeType</key>
+			<integer>-1</integer>
 			<key>character</key>
 			<string>X</string>
 			<key>command</key>
@@ -199,6 +205,12 @@
 		<dict>
 			<key>ID</key>
 			<string>34283043-F695-49C4-938A-040B1D341D0E</string>
+			<key>applicationScope</key>
+			<array>
+				<string>com.apple.ScreenSharing</string>
+			</array>
+			<key>applicationScopeType</key>
+			<integer>-1</integer>
 			<key>command</key>
 			<dict>
 				<key>actionID</key>
@@ -267,6 +279,12 @@
 		<dict>
 			<key>ID</key>
 			<string>7A6DEBB4-8058-4516-8E7D-4E7BF1908620</string>
+			<key>applicationScope</key>
+			<array>
+				<string>com.apple.ScreenSharing</string>
+			</array>
+			<key>applicationScopeType</key>
+			<integer>-1</integer>
 			<key>character</key>
 			<string>_</string>
 			<key>command</key>
@@ -397,6 +415,12 @@
 		<dict>
 			<key>ID</key>
 			<string>5969EBFA-0729-4086-9C47-20058F3BD9E6</string>
+			<key>applicationScope</key>
+			<array>
+				<string>com.apple.ScreenSharing</string>
+			</array>
+			<key>applicationScopeType</key>
+			<integer>-1</integer>
 			<key>command</key>
 			<dict>
 				<key>actionID</key>
@@ -462,6 +486,8 @@
 		<dict>
 			<key>ID</key>
 			<string>00BA3577-6121-422D-A5DD-9EE3FC32F2B2</string>
+			<key>applicationScopeType</key>
+			<integer>-1</integer>
 			<key>character</key>
 			<string>&lt;</string>
 			<key>command</key>
@@ -545,6 +571,12 @@
 		<dict>
 			<key>ID</key>
 			<string>79F70D9D-4A34-4CEB-A607-C47D64D5CFA4</string>
+			<key>applicationScope</key>
+			<array>
+				<string>com.apple.ScreenSharing</string>
+			</array>
+			<key>applicationScopeType</key>
+			<integer>-1</integer>
 			<key>character</key>
 			<string>Z</string>
 			<key>command</key>
@@ -658,6 +690,12 @@
 		<dict>
 			<key>ID</key>
 			<string>15904092-0CB3-4E60-AAE5-BEB29F4AF1E7</string>
+			<key>applicationScope</key>
+			<array>
+				<string>com.apple.ScreenSharing</string>
+			</array>
+			<key>applicationScopeType</key>
+			<integer>-1</integer>
 			<key>character</key>
 			<string>Q</string>
 			<key>command</key>
@@ -720,6 +758,12 @@
 		<dict>
 			<key>ID</key>
 			<string>9CB01E5C-7958-4979-B422-7600ACD587CA</string>
+			<key>applicationScope</key>
+			<array>
+				<string>com.apple.ScreenSharing</string>
+			</array>
+			<key>applicationScopeType</key>
+			<integer>-1</integer>
 			<key>character</key>
 			<string>M</string>
 			<key>command</key>
@@ -959,6 +1003,12 @@
 		<dict>
 			<key>ID</key>
 			<string>8AEC9C94-9728-4714-A23F-496C36A4B366</string>
+			<key>applicationScope</key>
+			<array>
+				<string>com.apple.ScreenSharing</string>
+			</array>
+			<key>applicationScopeType</key>
+			<integer>-1</integer>
 			<key>character</key>
 			<string> </string>
 			<key>command</key>
@@ -1144,6 +1194,12 @@
 		<dict>
 			<key>ID</key>
 			<string>A4A72D6C-7762-4103-AD95-DC003D10116F</string>
+			<key>applicationScope</key>
+			<array>
+				<string>com.apple.ScreenSharing</string>
+			</array>
+			<key>applicationScopeType</key>
+			<integer>-1</integer>
 			<key>character</key>
 			<string>&gt;</string>
 			<key>command</key>
@@ -1182,6 +1238,12 @@
 		<dict>
 			<key>ID</key>
 			<string>91404176-DD2D-46BA-8281-9E3D7CC95EED</string>
+			<key>applicationScope</key>
+			<array>
+				<string>com.apple.ScreenSharing</string>
+			</array>
+			<key>applicationScopeType</key>
+			<integer>-1</integer>
 			<key>character</key>
 			<string>C</string>
 			<key>command</key>
@@ -1220,6 +1282,12 @@
 		<dict>
 			<key>ID</key>
 			<string>AF7F08BE-FDDF-4762-9A79-C246104AF5F3</string>
+			<key>applicationScope</key>
+			<array>
+				<string>com.apple.ScreenSharing</string>
+			</array>
+			<key>applicationScopeType</key>
+			<integer>-1</integer>
 			<key>character</key>
 			<string>D</string>
 			<key>command</key>
@@ -1334,6 +1402,12 @@
 		<dict>
 			<key>ID</key>
 			<string>374FD541-3311-4898-9D01-6769BBBAE028</string>
+			<key>applicationScope</key>
+			<array>
+				<string>com.apple.ScreenSharing</string>
+			</array>
+			<key>applicationScopeType</key>
+			<integer>-1</integer>
 			<key>character</key>
 			<string>&gt;</string>
 			<key>command</key>
@@ -1376,6 +1450,12 @@
 		<dict>
 			<key>ID</key>
 			<string>8E671110-F1F5-4EB8-9581-BEDEB8EAF196</string>
+			<key>applicationScope</key>
+			<array>
+				<string>com.apple.ScreenSharing</string>
+			</array>
+			<key>applicationScopeType</key>
+			<integer>-1</integer>
 			<key>command</key>
 			<dict>
 				<key>actionID</key>
@@ -1429,6 +1509,12 @@
 		<dict>
 			<key>ID</key>
 			<string>4DF43B66-0474-4D8F-870A-FEBFE4D0DA11</string>
+			<key>applicationScope</key>
+			<array>
+				<string>com.apple.ScreenSharing</string>
+			</array>
+			<key>applicationScopeType</key>
+			<integer>-1</integer>
 			<key>character</key>
 			<string>"</string>
 			<key>command</key>
@@ -1567,6 +1653,12 @@
 		<dict>
 			<key>ID</key>
 			<string>98ADFF95-62DE-4D39-AD21-990F42EBA108</string>
+			<key>applicationScope</key>
+			<array>
+				<string>com.apple.ScreenSharing</string>
+			</array>
+			<key>applicationScopeType</key>
+			<integer>-1</integer>
 			<key>character</key>
 			<string>+</string>
 			<key>command</key>

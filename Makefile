@@ -35,6 +35,7 @@ germain: mac-common
 pythagoras: \
 	mac-common \
 	mac-dock-setup-pythagoras-extras \
+	mac-apps-server \
 	hushlogin # for SSH \
 
 .PHONY: linux

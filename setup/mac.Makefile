@@ -135,6 +135,7 @@ mac-file-defaults:
 BREWFILE_TARGETS = \
 	mac-app-store-apps-core \
 	mac-apps-core \
+	mac-apps-server \
 	mac-commandline-bootstrap \
 	mac-commandline-core \
 	mac-commandline-bulk

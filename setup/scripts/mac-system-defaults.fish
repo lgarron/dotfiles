@@ -100,6 +100,7 @@ end
   chflags nohidden ~/Library
 
 # Screen capture
+  defaults write com.apple.screencapture type heic
   defaults write "com.apple.screencapture" "show-thumbnail" '0'
 
 ### Unsorted/legacy
@@ -126,9 +127,6 @@ end
   defaults write -g NSNavPanelExpandedStateForSaveMode -bool true
   # Expand print panel by default
   defaults write -g PMPrintingExpandedStateForPrint -bool true
-
-  # Greatly reduce screenshot sizes
-  defaults write com.apple.screencapture type heic
 
   # Instantly dismiss the emoji palette (https://github.com/lgarron/first-world/issues/39)
   defaults write -g NSAutomaticWindowAnimationsEnabled -bool false

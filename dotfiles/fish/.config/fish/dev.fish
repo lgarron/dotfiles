@@ -151,6 +151,12 @@
     # cargo run -- h⎵ → cargo run -- --help
     abbr_subcommand_arg cargo h "--help" run
 
+    function install-cargo-using-rustup
+        curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+        # thank u, next
+        rm -f $HOME/.profile $HOME/.bashrc $HOME/.zshenv
+    end
+
 ## `repo`
 
     abbr -a "p" "repo"

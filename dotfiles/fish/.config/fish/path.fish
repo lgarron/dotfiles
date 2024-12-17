@@ -20,6 +20,7 @@
       add_to_path "$GOPATH/bin"
       add_to_path $HOME/.cache/.bun/bin # For zig (for building Bun) https://bun.sh/docs/project/development
       add_to_path "/usr/local/bin"
+      add_to_path "$HOME/.shared-hosting/bin" # for Dreamhost
 
       set_color --bold; echo -n "\$fish_user_paths"; set_color normal
       if [ (count $fish_user_paths) -gt 0 ]

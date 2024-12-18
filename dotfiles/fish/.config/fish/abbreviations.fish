@@ -16,6 +16,10 @@
     if [ "$CODESPACES" = "true" ]
       abbr -a rcuf "cd $_DOTFILES_FOLDER && git fetch origin main && git abandon && git reset --hard origin/main && cd - && source $HOME/.config/fish/config.fish"
     end
+    if contains "dreamhost.com" (hostname -d)
+        abbr -a rcu "git -C \"$_DOTFILES_FOLDER\" pull ; and cd $_DOTFILES_FOLDER ; and make dreamhost ; and source $HOME/.config/fish/config.fish"
+      abbr -a rcuf "cd $_DOTFILES_FOLDER && git fetch origin main && git abandon && git reset --hard origin/main && make dreamhost && cd - && source $HOME/.config/fish/config.fish"
+    end
 
     abbr -a dff "cd $_DOTFILES_FOLDER"
 

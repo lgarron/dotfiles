@@ -6,25 +6,33 @@ Linked [using GNU `stow`](http://brandon.invergo.net/news/2012-05-26-using-gnu-s
 
 ## Mac
 
+<!-- Note: Steps are spelled out instead of written as shell comments, because `zsh` (the macOS default at first launch) is bonkers and only conditionally treats it as the start of a comment. -->
+
+1. Open `Terminal.app`
+2. Trigger Xcode commandline tool installation by trying to use `git`
+
 ```shell
-# Trigger Xcode commandline tool installation by trying to use `git`
 git
 ```
+
+3. Check out the dotfiles repo.
 
 ```shell
 git clone https://github.com/lgarron/dotfiles ~/Code/git/github.com/lgarron/dotfiles
 cd ~/Code/git/github.com/lgarron/dotfiles
 ```
 
+4. Open "Full Disk Access" → drag & drop `Terminal.app` to give it full access. Reveal the panel and app like this:
+
 ```shell
-# Open "Full Disk Access" → drag & drop `Terminal.app` to give it full access.
-# Reveal the panel and app like this:
 open /System/Library/PreferencePanes/Security.prefPane
 open -R /System/Applications/Utilities/Terminal.app
 ```
 
+5. Install dotfiles:
+
 ```shell
-export PATH=$PATH:/opt/homebrew/bin # Bootstrapping env var
+export PATH=$PATH:/opt/homebrew/bin
 make mac-common
 ```
 

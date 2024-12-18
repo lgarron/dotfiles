@@ -7,7 +7,7 @@
     # the "Setup" section above.
     abbr -a rc "source $HOME/.config/fish/config.fish"
 
-    set -l _DOTFILES_FOLDER "/Users/lgarron/Code/git/github.com/lgarron/dotfiles/"
+    set -l _DOTFILES_FOLDER "$HOME/Code/git/github.com/lgarron/dotfiles/"
     if [ "$CODESPACES" = "true" ]
       set _DOTFILES_FOLDER "/workspaces/.codespaces/.persistedshare/dotfiles/"
     end

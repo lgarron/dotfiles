@@ -54,7 +54,8 @@ dreamhost:
 
 	echo "${HOME}/.shared-hosting/bin/fish" > ~/.bash_profile
 	echo "exit" >> ~/.bash_profile
-
+	
+	./setup/dreamhost/install-git-commands.bash
 
 ########
 

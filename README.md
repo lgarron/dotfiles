@@ -22,7 +22,11 @@ git clone https://github.com/lgarron/dotfiles ~/Code/git/github.com/lgarron/dotf
 cd ~/Code/git/github.com/lgarron/dotfiles
 ```
 
-4. Open "Full Disk Access" → drag & drop `Terminal.app` to give it full access. Reveal the panel and app like this:
+4. Drag & drop `Terminal.app` into the following permissions in System Settings → Privacy & Security:
+    - Full Disk Access
+    - Media and Apple Music
+
+Reveal `Privacy & Security` and `Terminal.app` like this:
 
 ```shell
 open /System/Library/PreferencePanes/Security.prefPane

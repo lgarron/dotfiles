@@ -70,6 +70,18 @@
           "│ │\/│ ││ ⊂⊃ ││ ╭──╯  │ │  │ ──┴╮│ │\/│ ││ ╭──╯" \
           "╰─╯  ╰─╯╰───╯ ╰─╯     ╰─╯  ╰────╯╰─╯  ╰─╯╰─╯   "
       end
+    else if contains "dreamhost.com" (hostname -d)
+      set -g _FISH_PROMPT_LCARS_BOTTOM_COLOR FFDD88
+      set -g _FISH_PROMPT_LCARS_TOP_COLOR FFDD88
+      function fish_greeting
+        set_color FFDD88
+        echo -n -e "\r" # Clear any pending typed text (it will still be passed to the next prompt).
+        fish_greeting_echo \
+          "╭───╮ ╭────╮╭────╮╭────╮╭─╮  ╭─╮╭─╮╭─╮╭────╮╭────╮╭─────╮" \
+          "│ ╭╮ ││ ⊂⊃ ││ ──┬╯│ ⊂⊃ ││  \/  ││ ╰╯ ││ ╭╮ ││  ──┤╰─╮ ╭─╯" \
+          "│ ╰╯ ││ \ \╯│ ──┴╮│ ╭╮ ││ │\/│ ││ ╭╮ ││ ╰╯ │├──  │  │ │  " \
+          "╰───╯ ╰─╯╰─╯╰────╯╰─╯╰─╯╰─╯  ╰─╯╰─╯╰─╯╰────╯╰────╯  ╰─╯  "
+      end
     else
       set -g _FISH_PROMPT_LCARS_BOTTOM_COLOR D0B699
       set -g _FISH_PROMPT_LCARS_TOP_COLOR D0B699

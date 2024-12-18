@@ -17,6 +17,13 @@
 
     source $HOME/.config/fish/path.fish
 
+    # Workaround for https://github.com/zellij-org/zellij/issues/3708
+    if string match --entire -- (uname) "Darwin" > /dev/null
+      if not set -q TMPDIR
+        set -x TMPDIR (dirname (mktemp))
+      end
+    end
+
 # Loading
 
     function _echo_manual_reload

@@ -174,12 +174,41 @@ const command = [
   dest,
 ];
 
+const SHELL_COMMAND_LINE_WRAP = " \\\n  ";
+function printShellCommand(
+  command: string[],
+  options?: { separateLines?: "never" | "always" | "dash-heuristic" },
+): string {
+  const parts: string[] = [];
+  let pendingNewlineAfterPart = options?.separateLines === "dash-heuristic";
+  for (let i = 0; i < command.length; i++) {
+    const part = command[i];
+    const isLastPart = i === command.length - 1;
+
+    if (part.includes("'") || part.includes(" ")) {
+      // Use single quote to reduce the need to escape (and therefore reduce the chance for bugs/security issues).
+      parts.push(`'${part.replaceAll("'", "\\'")}'`);
+    } else {
+      parts.push(part);
+    }
+    if (!isLastPart) {
+      if (pendingNewlineAfterPart || options?.separateLines === "always") {
+        parts.push(SHELL_COMMAND_LINE_WRAP);
+      } else {
+        parts.push(" ");
+      }
+    }
+
+    pendingNewlineAfterPart =
+      part.startsWith("-") && options?.separateLines === "dash-heuristic";
+  }
+  return parts.join("");
+}
+
 console.log("");
 console.log("Running command:");
 console.log("");
-console.write('"');
-console.write(command.join('" \\\n  "'));
-console.log('"');
+console.log(printShellCommand(command, { separateLines: "dash-heuristic" }));
 console.log("");
 
 if (

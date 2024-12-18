@@ -6,19 +6,27 @@ Linked [using GNU `stow`](http://brandon.invergo.net/news/2012-05-26-using-gnu-s
 
 ## Mac
 
-    # Trigger Xcode commandline tool installation by trying to use `git`
-    git
+```shell
+# Trigger Xcode commandline tool installation by trying to use `git`
+git
+```
 
-    git clone https://github.com/lgarron/dotfiles ~/Code/git/github.com/lgarron/dotfiles
-    cd ~/Code/git/github.com/lgarron/dotfiles
+```shell
+git clone https://github.com/lgarron/dotfiles ~/Code/git/github.com/lgarron/dotfiles
+cd ~/Code/git/github.com/lgarron/dotfiles
+```
 
-    # Open "Full Disk Access" → drag & drop `Terminal.app` to give it full access.
-    open /System/Library/PreferencePanes/Security.prefPane
-    open -R /System/Applications/Utilities/Terminal.app
+```shell
+# Open "Full Disk Access" → drag & drop `Terminal.app` to give it full access.
+# Reveal the panel and app like this:
+open /System/Library/PreferencePanes/Security.prefPane
+open -R /System/Applications/Utilities/Terminal.app
+```
 
-    export PATH=$PATH:/opt/homebrew/bin
-
-    make mac-common
+```shell
+export PATH=$PATH:/opt/homebrew/bin # Bootstrapping env var
+make mac-common
+```
 
 See [`./exported/`](./exported/) for files that must be manually exported/imported.
 

@@ -46,3 +46,10 @@ sudo chsh "$(id -un)" --shell "$(command -v fish)"
 ./setup/bootstrap/install-git-commands
 ./setup/bootstrap/install-lgarron-scripts
 ./setup/bootstrap/install-mak
+
+/usr/local/bin/code --install-extension GitHub.vscode-pull-request-github || echo "🤷"
+/usr/local/bin/code --install-extension craigb85.custom-window-zoom || echo "🤷"
+/usr/local/bin/code --install-extension eamodio.gitlens || echo "🤷"
+/usr/local/bin/code --install-extension stkb.rewrap || echo "🤷"
+/usr/local/bin/code --install-extension pranshuagrawal.toggle-case || echo "🤷"
+/usr/local/bin/code --install-extension bierner.markdown-preview-github-styles || echo "🤷"

@@ -45,6 +45,16 @@ linux: \
 	xdg-basedir-workarounds \
 	zellij
 
+# Sourcing symlinked `.fish` files doesn't seem to work on Dreamhst, so we have to copy all the files we want `fish` to use. 😕
+.PHONY: dreamhost
+dreamhost:
+	mkdir -p ~/.config/fish
+	cp -R ./dotfiles/fish/.config/fish/* ~/.config/fish/
+	cp -R ./dotfiles/xdg-basedir-workarounds/.config/fish/* ~/.config/fish/
+
+	echo "${HOME}/.shared-hosting/bin/fish" > ~/.bash_profile
+	echo "exit" >> ~/.bash_profile
+
 
 ########
 

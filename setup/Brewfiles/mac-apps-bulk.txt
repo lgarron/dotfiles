@@ -44,4 +44,4 @@ cask "qlmarkdown"
 cask "qlstephen"
 cask "suspicious-package"
 cask "quicklook-json"
-cask "glance"
+# cask "glance" # TODO: discontinued

@@ -23,6 +23,7 @@ cask "openscad@snapshot"
 cask "carbon-copy-cloner"
 cask "macs-fan-control"
 cask "syncthing"
+cask "handbrake"
 
 # Browsers
 

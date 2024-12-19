@@ -25,3 +25,10 @@ end
   defaults write "design.yugen.Caffeinated" "allowScreenSaver" '1'
 # BetterDisplay
   defaults write "pro.betterdisplay.BetterDisplay" "SUAutomaticallyUpdate" '1'
+# OpenSCAD
+  defaults write "org.openscad.OpenSCAD" "design.autoReload" '1'
+  defaults write "org.openscad.OpenSCAD" "advanced.renderBackend3D" 'Manifold'
+  defaults write "org.openscad.OpenSCAD" "3dview.colorscheme" '"Tomorrow Night"'
+  defaults write "org.openscad.OpenSCAD" "advanced.toolbarExport2D" 'svg'
+  defaults write "org.openscad.OpenSCAD" "feature.lazy-union" '1'
+  defaults write "org.openscad.OpenSCAD" "view.hideEditor" '1'

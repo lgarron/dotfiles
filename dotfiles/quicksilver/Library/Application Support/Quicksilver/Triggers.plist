@@ -541,7 +541,7 @@
 			<key>command</key>
 			<dict>
 				<key>actionID</key>
-				<string>[Action]:/Users/lgarron/Library/Application Support/Quicksilver/Actions/Reveal SD card backup target (DCIM).scpt</string>
+				<string>[Action]:/Users/lgarron/Library/Application Support/Quicksilver/Actions/Reveal SD Card Backup Target (DCIM).scpt</string>
 				<key>directID</key>
 				<string>QSGlobalSelectionProxy</string>
 			</dict>

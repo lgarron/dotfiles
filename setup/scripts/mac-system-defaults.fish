@@ -22,7 +22,7 @@ end
       defaults write "com.apple.chronod" "lastKnownTimes" '{timeZoneSecondsFromGMT="-28800";world="1733305454.026089";}'
   ## Accessibility
     ### Display
-      defaults write "com.apple.universalaccess" "showWindowTitlebarIcons" '0'
+      defaults write "com.apple.universalaccess" "showWindowTitlebarIcons" '1'
       defaults write NSGlobalDomain AppleMenuBarFontSize -string large
     ### Siri
       defaults write com.apple.Siri TypeToSiriEnabled -bool True

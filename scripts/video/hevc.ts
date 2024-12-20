@@ -3,6 +3,7 @@
 import { exit } from "node:process";
 import { parseArgs } from "node:util";
 import { $, file, sleep, spawn } from "bun";
+import { PrintableShellCommand } from "printable-shell-command";
 
 const HANDBRAKE_8_BIT_DEPTH_PRESET = "HEVC 8-bit (qv65)";
 const HANDBRAKE_10_BIT_DEPTH_PRESET = "HEVC 10-bit (qv65)";
@@ -160,60 +161,29 @@ if (await file(`${destPrefix}.mp4`).exists()) {
 }
 const dest = `${destPrefix}.mp4`;
 
-const command = [
-  "HandBrakeCLI",
-  "--preset-import-file",
-  "/Users/lgarron/Code/git/github.com/lgarron/dotfiles/exported/HandBrake/UserPresets.json", // TODO
-  "--preset",
-  handbrakePreset,
-  "--quality",
-  quality.toString(),
-  "-i",
-  inputFile,
-  "-o",
-  dest,
-];
-
-const SHELL_COMMAND_LINE_WRAP = " \\\n  ";
-function printShellCommand(
-  command: string[],
-  options?: { separateLines?: "never" | "always" | "dash-heuristic" },
-): string {
-  const parts: string[] = [];
-  let pendingNewlineAfterPart = options?.separateLines === "dash-heuristic";
-  for (let i = 0; i < command.length; i++) {
-    const part = command[i];
-    const isLastPart = i === command.length - 1;
-
-    if (part.includes("'") || part.includes(" ")) {
-      // Use single quote to reduce the need to escape (and therefore reduce the chance for bugs/security issues).
-      parts.push(`'${part.replaceAll("'", "\\'")}'`);
-    } else {
-      parts.push(part);
-    }
-    if (!isLastPart) {
-      if (pendingNewlineAfterPart || options?.separateLines === "always") {
-        parts.push(SHELL_COMMAND_LINE_WRAP);
-      } else {
-        parts.push(" ");
-      }
-    }
-
-    pendingNewlineAfterPart =
-      part.startsWith("-") && options?.separateLines === "dash-heuristic";
-  }
-  return parts.join("");
-}
+const command = new PrintableShellCommand("HandBrakeCLI", [
+  [
+    "--preset-import-file",
+    "/Users/lgarron/Code/git/github.com/lgarron/dotfiles/exported/HandBrake/UserPresets.json", // TODO
+  ],
+  ["--preset", handbrakePreset],
+  ["--quality", quality.toString()],
+  ["-i", inputFile],
+  ["-o", dest],
+]);
 
 console.log("");
 console.log("Running command:");
 console.log("");
-console.log(printShellCommand(command, { separateLines: "dash-heuristic" }));
+command.print();
 console.log("");
 
 if (
   // TODO: transfer HiDPI hint (e.g. for screencaps)
-  (await spawn(command, { stdout: "inherit", stderr: "inherit" }).exited) !== 0
+  (await spawn(command.forBun(), {
+    stdout: "inherit",
+    stderr: "inherit",
+  }).exited) !== 0
 ) {
   throw new Error();
 }

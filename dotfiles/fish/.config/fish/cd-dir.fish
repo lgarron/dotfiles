@@ -18,7 +18,7 @@
       echo (set_color --bold)"$argv[1]"(set_color B594E2)
       echo ""
       if string match --entire -- "$TERM_PROGRAM" "iTerm.app" > /dev/null
-          set SHORTCUT "⇧⌘R"
+          set SHORTCUT "⇧⌘↩"
         else
           set SHORTCUT "^⌥R"
       end

@@ -1527,13 +1527,79 @@
 					<string>QSObject</string>
 					<key>data</key>
 					<dict>
+						<key>org.chromium.source-url</key>
+						<data>
+						dnNjb2RlLWZpbGU6Ly92c2NvZGUt
+						YXBwL0FwcGxpY2F0aW9ucy9WaXN1
+						YWwlMjBTdHVkaW8lMjBDb2RlLmFw
+						cC9Db250ZW50cy9SZXNvdXJjZXMv
+						YXBwL291dC92cy9jb2RlL2VsZWN0
+						cm9uLXNhbmRib3gvd29ya2JlbmNo
+						L3dvcmtiZW5jaC5odG1s
+						</data>
+						<key>org.chromium.web-custom-data</key>
+						<data>
+						rAIAAAIAAAAhAAAAYQBwAHAAbABp
+						AGMAYQB0AGkAbwBuAC8AdgBuAGQA
+						LgBjAG8AZABlAC4AYwBvAHAAeQBt
+						AGUAdABhAGQAYQB0AGEAAADHAAAA
+						ewAiAGkAZAAiADoAIgA0ADIAZQAy
+						ADkAMQA4ADMALQBlADIANQAwAC0A
+						NABmADEANwAtADkAMwA5AGEALQBh
+						AGIAYwBhADMAYQAxADAAZAA0ADUA
+						ZQAiACwAIgBwAHIAbwB2AGkAZABl
+						AHIAQwBvAHAAeQBNAGkAbQBlAFQA
+						eQBwAGUAcwAiADoAWwAiAGEAcABw
+						AGwAaQBjAGEAdABpAG8AbgAvAHYA
+						bgBkAC4AYwBvAGQAZQAuAGEAZABk
+						AGkAdABpAG8AbgBhAGwALQBlAGQA
+						aQB0AG8AcgAtAGQAYQB0AGEAIgBd
+						ACwAIgBkAGUAZgBhAHUAbAB0AFAA
+						YQBzAHQAZQBQAGEAeQBsAG8AYQBk
+						ACIAOgB7ACIAbQB1AGwAdABpAGMA
+						dQByAHMAbwByAFQAZQB4AHQAIgA6
+						AG4AdQBsAGwALAAiAHAAYQBzAHQA
+						ZQBPAG4ATgBlAHcATABpAG4AZQAi
+						ADoAZgBhAGwAcwBlACwAIgBtAG8A
+						ZABlACIAOgBuAHUAbABsAH0AfQAA
+						ABIAAAB2AHMAYwBvAGQAZQAtAGUA
+						ZABpAHQAbwByAC0AZABhAHQAYQBP
+						AAAAewAiAHYAZQByAHMAaQBvAG4A
+						IgA6ADEALAAiAGkAcwBGAHIAbwBt
+						AEUAbQBwAHQAeQBTAGUAbABlAGMA
+						dABpAG8AbgAiADoAZgBhAGwAcwBl
+						ACwAIgBtAHUAbAB0AGkAYwB1AHIA
+						cwBvAHIAVABlAHgAdAAiADoAbgB1
+						AGwAbAAsACIAbQBvAGQAZQAiADoA
+						IgBmAGkAcwBoACIAfQAAAA==
+						</data>
+						<key>public.html</key>
+						<data>
+						PG1ldGEgY2hhcnNldD0ndXRmLTgn
+						PjxkaXYgc3R5bGU9ImNvbG9yOiAj
+						Y2NjY2NjO2JhY2tncm91bmQtY29s
+						b3I6ICMxZjFmMWY7Zm9udC1mYW1p
+						bHk6IE1lbmxvLCBNb25hY28sICdD
+						b3VyaWVyIE5ldycsIG1vbm9zcGFj
+						ZTtmb250LXdlaWdodDogbm9ybWFs
+						O2ZvbnQtc2l6ZTogMTJweDtsaW5l
+						LWhlaWdodDogMThweDt3aGl0ZS1z
+						cGFjZTogcHJlOyI+PGRpdj48c3Bh
+						biBzdHlsZT0iY29sb3I6ICNjZTkx
+						Nzg7Ij7ihqk8L3NwYW4+PC9kaXY+
+						PC9kaXY+
+						</data>
 						<key>public.utf8-plain-text</key>
-						<string>⏎</string>
+						<string>↩</string>
 					</dict>
 					<key>properties</key>
 					<dict>
+						<key>QSObjectCreationDate</key>
+						<date>2024-12-20T02:57:37Z</date>
 						<key>QSObjectName</key>
-						<string>⏎</string>
+						<string>↩</string>
+						<key>QSObjectSource</key>
+						<string>com.blacktree.Quicksilver</string>
 						<key>QSObjectType</key>
 						<string>public.utf8-plain-text</string>
 					</dict>

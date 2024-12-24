@@ -1091,7 +1091,7 @@
 		<key>QSPresetAddressBook</key>
 		<true/>
 		<key>QSPresetAllApplications</key>
-		<true/>
+		<false/>
 		<key>QSPresetBashHistory</key>
 		<false/>
 		<key>QSPresetClipboardContents</key>

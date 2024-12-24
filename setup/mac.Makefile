@@ -90,6 +90,7 @@ mac-keyboard-shortcuts:
 	# Misc
 	${MAC_ADD_SHORTCUT} "com.apple.Music"           "as Songs"                 "⌘2"
 	${MAC_ADD_SHORTCUT} "com.bambulab.bambu-studio" "Redo"                     "⇧⌘Z"
+	${MAC_ADD_SHORTCUT} "org.openscad.OpenSCAD"     "Reset View"               "⇧⌘R"
 
 .PHONY: mac-file-defaults
 mac-file-defaults:

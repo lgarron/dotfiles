@@ -1,6 +1,7 @@
 #!/usr/bin/env -S fish --no-config
 
-set shortcut (echo $argv[3]| tr "[:upper:]" "[:lower:]" | sed "s/⌘/@/g" | sed "s/⇧/\$/g" | sed "s/⌥/~/g")
+set SHORTCUT_UTF8 (printf %s $argv[3] | iconv -f "UTF-8" -t "ISO-8859-1") # TODO: wat
+set shortcut (echo $SHORTCUT_UTF8| tr "[:upper:]" "[:lower:]" | sed "s/⌘/@/g" | sed "s/⇧/\$/g" | sed "s/⌥/~/g")
 
 # From https://github.com/lgarron/dotfiles/blob/d61bf45f8901c985f55522330412c13d54afccf2/dotfiles/fish/.config/fish/config.fish#L126-L140
 function echo-alternate-background
@@ -22,7 +23,7 @@ end
 echo-alternate-background \
     "Setting shortcut for " "$argv[1]" \
     " > " "$argv[2]" \
-    " to " "$argv[3]" " (decoded to: " "$shortcut" ")"
+    " to " "$SHORTCUT_UTF8" " (decoded to: " "$shortcut" ")"
 
 function uh_oh_permissions
   echo "Try `mac-add-shortcut` in a terminal app?"

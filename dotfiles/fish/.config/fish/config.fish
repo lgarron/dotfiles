@@ -2,7 +2,7 @@
 
 # Setup
 
-    # Only print if we're a TTY.
+    # Only load the config if we're a TTY.
     # This prevents `protocol error: bad line length character` in git.
     if not status is-interactive
       exit 0

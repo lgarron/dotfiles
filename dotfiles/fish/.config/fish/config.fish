@@ -85,6 +85,11 @@
       end
     end
 
+# Theme
+
+    # Restore blue color for commands.
+    set -g fish_color_command blue
+
 # Cleanup
 
     _echo_manual_reload ""

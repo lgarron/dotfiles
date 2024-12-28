@@ -91,6 +91,9 @@ end
   defaults write NSGlobalDomain AppleShowAllExtensions YES
   defaults write com.apple.finder _FXShowPosixPathInTitle YES
   defaults write com.apple.finder ShowStatusBar -bool true
+  # Avoid `.DS_Store`, improve perf, respect display defaults more often.
+  defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool TRUE
+  defaults write com.apple.desktopservices DSDontWriteUSBStores -bool TRUE
   # Disable the warning when changing a file extension
   defaults write com.apple.finder FXEnableExtensionChangeWarning -bool false
   # When performing a search: Search the Current Folder

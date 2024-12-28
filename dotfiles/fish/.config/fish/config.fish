@@ -8,11 +8,6 @@
       exit 0
     end
 
-# fish 4.0 experimentation for token nav
-
-    echo -n -e "\r"
-    echo "🐟🧪 version: "$FISH_VERSION
-
 # Path
 
     source $HOME/.config/fish/path.fish

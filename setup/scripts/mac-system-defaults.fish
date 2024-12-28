@@ -30,7 +30,10 @@ end
     ### Battery
     ### Menu Bar Only
       #### Clock → Clock Options…
-        defaults write "com.apple.menuextra.clock" "ShowSeconds" '1'
+        defaults write "com.apple.menuextra.clock" "ShowDate" -int 1
+        defaults write "com.apple.menuextra.clock" "ShowDayOfWeek" -bool True
+        defaults write "com.apple.menuextra.clock" "ShowSeconds" -bool True
+        # defaults write "com.apple.menuextra.clock" "DateFormat" "EEE MMM — H:mm:ss" # TODO: is this officially unsupported now?
       #### Spotlight
         defaults delete "com.apple.Spotlight" "NSStatusItem Visible Item-0" # don't show in menu bar
   ## Siri & Spotlight
@@ -104,10 +107,6 @@ end
   defaults write "com.apple.screencapture" "show-thumbnail" '0'
 
 ### Unsorted/legacy
-
-  # Menu clock
-  # This might not work anymore?
-  defaults write com.apple.menuextra.clock "DateFormat" "EEE MMM d — H:mm:ss"
 
   # Doesn't work?
   defaults write "com.apple.WindowManager" "EnableTilingByEdgeDrag" '0'

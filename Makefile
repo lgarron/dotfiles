@@ -14,6 +14,7 @@ mac-common: \
 
 .PHONY: mac-common-dotfiles
 mac-common-dotfiles: \
+	mac-text-encoding \
 	set-dotfiles-repo-email \
 	compressor \
 	fish \
@@ -63,6 +64,7 @@ PACKAGES  =
 PACKAGES += git
 PACKAGES += hushlogin
 PACKAGES += lglogin
+PACKAGES += mac-text-encoding
 PACKAGES += minecraft
 PACKAGES += povray
 PACKAGES += sd-card-backup

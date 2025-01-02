@@ -74,10 +74,11 @@
     abbr -a s "ssh"
     abbr -a "sp" "sshping -H"
 
-    for ssh_like_command in ssh mosh sshping
+    for dns_connecting_command in ssh mosh sshping ping
       # TODO: share abbreviation functions between these?
-      abbr_anyarg $ssh_like_command pt Pythagoras.tlb
-      abbr_anyarg $ssh_like_command pw Pythagoras-ts.wyvern-climb.ts.net
+      abbr_anyarg $dns_connecting_command pt Pythagoras.tlb
+      abbr_anyarg $dns_connecting_command pw Pythagoras-ts.wyvern-climb.ts.net
+      abbr_anyarg $dns_connecting_command g garron.net
     end
 
 ## Homebrew

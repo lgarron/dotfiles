@@ -14,6 +14,10 @@ end
   defaults write "com.apple.FinalCut" "FFImportCopyToMediaFolder" -int 0
   # Settings → General → Color Correction (sets default UI for color correction)
   defaults write "com.apple.FinalCut" "FFDefaultColorCorrectionID" '"FxPlug:52A68C6D-B49C-41AA-B3EA-03945D0C8EB4_wrapper"'
+  # TODO: Here, we would:
+  # - set the default color space for libaries to "Wide Gamut HDR" and
+  # - set the default color space for new projects (at least when created from an HDR clip) to Rec. 2020 HLG.
+  # But that doesn't seem possible at the moment.
 # Calendar
   # Start on Monday
   defaults write com.apple.iCal "first day of week" 2

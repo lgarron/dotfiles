@@ -11,7 +11,7 @@ end
   defaults write "com.apple.Safari.SandboxBroker" "ShowDevelopMenu" '1'
 # Final Cut Pro
   defaults write com.apple.FinalCut FFAutoStartBGRender -bool false
-  defaults write "com.apple.FinalCut" "FFImportCopyToMediaFolder" '0'
+  defaults write "com.apple.FinalCut" "FFImportCopyToMediaFolder" -int 0
   # Settings → General → Color Correction (sets default UI for color correction)
   defaults write "com.apple.FinalCut" "FFDefaultColorCorrectionID" '"FxPlug:52A68C6D-B49C-41AA-B3EA-03945D0C8EB4_wrapper"'
 # Calendar

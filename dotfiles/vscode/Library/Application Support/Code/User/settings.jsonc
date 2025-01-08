@@ -59,7 +59,7 @@
   /******** JavaScript ********/
   "javascript.validate.enable": false,
   "javascript.updateImportsOnFileMove.enabled": "always",
-  "biome.requireConfiguration": true,
+  "biome.requireConfigFile": true,
   /******** TypeScript ********/
   "typescript.updateImportsOnFileMove.enabled": "always",
   "typescript.inlayHints.enumMemberValues.enabled": true,
@@ -199,7 +199,7 @@
     "javascript.validate.enable",
     /******** TypeScript ********/
     "javascript.updateImportsOnFileMove.enabled",
-    "biome.requireConfiguration",
+    "biome.requireConfigFile",
     "typescript.updateImportsOnFileMove.enabled",
     "typescript.inlayHints.enumMemberValues.enabled",
     "typescript.inlayHints.functionLikeReturnTypes.enabled",
@@ -270,6 +270,6 @@
   "[css]": {
     "editor.defaultFormatter": "biomejs.biome"
   },
-  "scm.graph.badges": "all"
+  "scm.graph.badges": "all",
   /****************/
 }

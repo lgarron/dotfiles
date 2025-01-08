@@ -4,21 +4,65 @@
             "complex_modifications": {
                 "rules": [
                     {
-                        "description": "Take fullscreen screenshot",
+                        "description": "Whisky: Remap ⌘Q to Alt-F4",
                         "manipulators": [
                             {
-                                "from": { "key_code": "f12" },
-                                "to": [{ "shell_command": "/opt/homebrew/bin/fish --no-config /Users/lgarron/Code/git/github.com/lgarron/dotfiles/scripts/system/app-screenshot.fish" }],
+                                "conditions": [
+                                    {
+                                        "file_paths": ["/wine64-preloader$"],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "q",
+                                    "modifiers": {
+                                        "mandatory": ["command"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "f4",
+                                        "modifiers": ["command"]
+                                    }
+                                ],
                                 "type": "basic"
                             }
                         ]
                     },
                     {
-                        "description": "change F1 to END",
+                        "description": "Whisky: Remap F1 to End",
                         "manipulators": [
                             {
-                                "from": { "key_code": "f1" },
-                                "to": [{ "key_code": "end" }],
+                                "conditions": [
+                                    {
+                                        "file_paths": ["/wine64-preloader$"],
+                                        "type": "frontmost_application_if"
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "f1",
+                                    "modifiers": {
+                                        "mandatory": [],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "end",
+                                        "modifiers": []
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Take fullscreen screenshot",
+                        "manipulators": [
+                            {
+                                "from": { "key_code": "f12" },
+                                "to": [{ "shell_command": "/opt/homebrew/bin/fish --no-config /Users/lgarron/Code/git/github.com/lgarron/dotfiles/scripts/system/app-screenshot.fish" }],
                                 "type": "basic"
                             }
                         ]

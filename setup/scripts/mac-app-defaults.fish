@@ -21,21 +21,29 @@ end
   # But that doesn't seem possible at the moment.
 # Calendar
   # Start on Monday
-  defaults write com.apple.iCal "first day of week" 2
+  defaults write "com.apple.iCal" "first day of week" -int 2
 
 # Pixelmator Pro settings
   ## Editing
     # Open Images in → Original Format
     defaults write "com.pixelmatorteam.pixelmator.x" "PXMKitDocumentLossyImageFormatsOpeningBehaviour" 'openInOriginalFormat'
-    defaults write "com.pixelmatorteam.pixelmator.x" "PXMKitDocumentProSidecarSupportIsEnabled" '0'
+    defaults write "com.pixelmatorteam.pixelmator.x" "PXMKitDocumentProSidecarSupportIsEnabled" -boolean 0
 # Caffeinated
-  defaults write "design.yugen.Caffeinated" "allowScreenSaver" '1'
-# BetterDisplay
-  defaults write "pro.betterdisplay.BetterDisplay" "SUAutomaticallyUpdate" '1'
+  defaults write "design.yugen.Caffeinated" "allowScreenSaver" -bool true
 # OpenSCAD
-  defaults write "org.openscad.OpenSCAD" "design.autoReload" '1'
-  defaults write "org.openscad.OpenSCAD" "advanced.renderBackend3D" 'Manifold'
-  defaults write "org.openscad.OpenSCAD" "3dview.colorscheme" '"Tomorrow Night"'
-  defaults write "org.openscad.OpenSCAD" "advanced.toolbarExport2D" 'svg'
-  defaults write "org.openscad.OpenSCAD" "feature.lazy-union" '1'
-  defaults write "org.openscad.OpenSCAD" "view.hideEditor" '1'
+  ## Menu
+    defaults write "org.openscad.OpenSCAD" "design.autoReload" -bool true
+    defaults write "org.openscad.OpenSCAD" "view.hideEditor" -bool true
+  ## Setings
+    ### 3D View
+      defaults write "org.openscad.OpenSCAD" "3dview.colorscheme" '"Tomorrow Night"'
+    ### Editor
+      defaults write "org.openscad.OpenSCAD" "editor.fontfamily" -string '"Ubuntu Mono"'
+    ### Features
+      defaults write "org.openscad.OpenSCAD" "feature.lazy-union" -bool true
+    ### Advanced
+      defaults write "org.openscad.OpenSCAD" "advanced.renderBackend3D" -string 'Manifold'
+      defaults write "org.openscad.OpenSCAD" "advanced.consoleFontFamily" -string '"Ubuntu Mono"'
+      defaults write "org.openscad.OpenSCAD" "advanced.customizerFontFamily" -string '"Ubuntu Mono"'
+      defaults write "org.openscad.OpenSCAD" "advanced.toolbarExport3D" -string 'binstl'
+      defaults write "org.openscad.OpenSCAD" "advanced.toolbarExport2D" -string 'svg'

@@ -40,7 +40,6 @@ end
     defaults write "com.apple.assistant.support" "Assistant Enabled" -boolean true
     # Note: changing the voice trigger settings changes two defaults
     defaults write "com.apple.Siri" "VoiceTriggerUserEnabled" -boolean false
-    # Note: changing the voice trigger settings changes two defaults
     defaults write "com.apple.voicetrigger" "VoiceTrigger Enabled" -boolean false
     # Keyboard shortcut → Hold Option Space
     defaults write com.apple.symbolichotkeys AppleSymbolicHotKeys -dict-add 176 '<dict><key>enabled</key><true /><key>value</key><dict><key>parameters</key><array><integer>32</integer><integer>49</integer><integer>2148007936</integer></array><key>type</key><string>modifier</string></dict></dict>'

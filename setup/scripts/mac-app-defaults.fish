@@ -8,7 +8,8 @@ end
 
 # Safari
   defaults write com.apple.Safari IncludeDevelopMenu -bool true
-  defaults write "com.apple.Safari.SandboxBroker" "ShowDevelopMenu" '1'
+  defaults write "com.apple.Safari" "IncludeDevelopMenu" -bool true
+  defaults write "com.apple.Safari.SandboxBroker" "ShowDevelopMenu" -bool true
 # Final Cut Pro
   defaults write com.apple.FinalCut FFAutoStartBGRender -bool false
   defaults write "com.apple.FinalCut" "FFImportCopyToMediaFolder" -int 0

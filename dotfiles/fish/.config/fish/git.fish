@@ -75,18 +75,27 @@
     end
     abbr -a _abbr_rmbranch_lastbranch --regex b- --position anywhere --function _abbr_rmbranch_lastbranch_fn
 
+    function _fish_branchhist_expansion
+        set branch_abbreviation $argv[1]
+        set ref "@"
+        if [ "$branch_abbreviation" != "b" ]
+            set ref $ref"{-"(string trim --left --chars=b $argv[1])"}"
+        end
+        echo (git rev-parse --abbrev-ref $ref 2>/dev/null); or return 1
+    end
+
     #  b⎵ → (expansion of current branch name)
     # b1⎵ → (expansion of last branch name)
     # b3⎵ → (expansion of three branch names ago)
     function _abbr_git_branchhist_fn
-        set ref "@"
-        if [ "$argv[1]" != "b" ]
-            set ref $ref"{-"(string trim --left --chars=b $argv[1])"}"
-        end
-        set expanded_branch (git rev-parse --abbrev-ref $ref 2>/dev/null); or return 1
-        _abbr_expand_exceptsubcommand_arg git _ $expanded_branch commit
+        _abbr_expand_exceptsubcommand_arg git _ (_fish_branchhist_expansion $argv[1]) commit
     end
     abbr -a _abbr_git_branchhist --regex "b[0-9]*" --position anywhere --function _abbr_git_branchhist_fn
+
+    function _abbr_rmbranch_branchhist_fn
+        _abbr_expand_anyarg rmbranch _ (_fish_branchhist_expansion $argv[1])
+    end
+    abbr -a _abbr_rmbranch_branchhist --regex "b[0-9]*" --position anywhere --function _abbr_rmbranch_branchhist_fn
 
     #   h⎵ → HEAD
     #  h1⎵ → HEAD~1

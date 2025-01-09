@@ -21,7 +21,7 @@ Timelapse a video by averaging frames.
   exit(1);
 }
 
-const timeFactor = parseInt(positionals[0]);
+const timeFactor = Number.parseInt(positionals[0]);
 const inputFileName = positionals[1];
 if (!file(inputFileName).exists()) {
   console.error("Input file does not exist");

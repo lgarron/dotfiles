@@ -37,7 +37,7 @@ if (positionals.length < 1) {
 }
 let quality: number;
 try {
-  quality = parseInt(options.quality);
+  quality = Number.parseInt(options.quality);
 } catch {
   console.error("Invalid `--quality` argument.");
   exit(1);

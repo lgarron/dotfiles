@@ -2,7 +2,7 @@
 
 import { homedir } from "node:os";
 import { join } from "node:path";
-import { $, BunFile, file } from "bun";
+import { $, type BunFile, file } from "bun";
 
 // const PNICE_FISH = new URL("./pnice.fish", import.meta.url).pathname;
 // const PNICE_BIN = (await file(PNICE_FISH).exists()) ? PNICE_FISH : "pnice";

@@ -71,7 +71,7 @@
     abbr -a _abbr_git_lastbranch --regex b- --position anywhere --function _abbr_git_lastbranch_fn
 
     function _abbr_rmbranch_lastbranch_fn
-        _abbr_expand_exceptsubcommand_arg rmbranch b- (git rev-parse --abbrev-ref @{-1}) commit
+        _abbr_expand_anyarg rmbranch b- (git rev-parse --abbrev-ref @{-1})
     end
     abbr -a _abbr_rmbranch_lastbranch --regex b- --position anywhere --function _abbr_rmbranch_lastbranch_fn
 

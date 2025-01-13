@@ -27,7 +27,7 @@ end
   ## Editing
     # Open Images in → Original Format
     defaults write "com.pixelmatorteam.pixelmator.x" "PXMKitDocumentLossyImageFormatsOpeningBehaviour" 'openInOriginalFormat'
-    defaults write "com.pixelmatorteam.pixelmator.x" "PXMKitDocumentProSidecarSupportIsEnabled" -boolean 0
+    defaults write "com.pixelmatorteam.pixelmator.x" "PXMKitDocumentProSidecarSupportIsEnabled" -boolean false
 # Caffeinated
   defaults write "design.yugen.Caffeinated" "allowScreenSaver" -bool true
 # OpenSCAD

@@ -36,5 +36,5 @@
 
     # Restore the functionality of using `⌥_` to enter `—` on macOS.
     bind alt-_ "commandline -i —"
-    # Use ⌥' to enter `\"`
-    bind alt-\' "commandline -i '\\\"'"
+    # Use ⇧⌥' to enter `\"`
+    bind alt-\" "commandline -i '\\\"'"

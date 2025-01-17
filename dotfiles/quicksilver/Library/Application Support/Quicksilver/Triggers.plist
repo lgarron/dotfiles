@@ -1516,7 +1516,7 @@
 			<key>applicationScopeType</key>
 			<integer>-1</integer>
 			<key>character</key>
-			<string>"</string>
+			<string>'</string>
 			<key>command</key>
 			<dict>
 				<key>actionID</key>
@@ -1610,7 +1610,7 @@
 			<key>keyCode</key>
 			<integer>39</integer>
 			<key>modifiers</key>
-			<integer>655650</integer>
+			<integer>524576</integer>
 			<key>onPress</key>
 			<true/>
 			<key>type</key>

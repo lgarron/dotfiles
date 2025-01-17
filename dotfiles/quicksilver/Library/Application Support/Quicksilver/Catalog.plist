@@ -402,7 +402,7 @@
 					<key>enabled</key>
 					<true/>
 					<key>name</key>
-					<string>Germain Screenshots 2024</string>
+					<string>Germain Screenshots 2025</string>
 					<key>settings</key>
 					<dict>
 						<key>folderDepth</key>
@@ -410,7 +410,7 @@
 						<key>parser</key>
 						<string>QSDirectoryParser</string>
 						<key>path</key>
-						<string>~/Dropbox (Maestral)/Screenshots/Germain Screenshots/Germain Screenshots 2024</string>
+						<string>~/Dropbox (Maestral)/Screenshots/Germain Screenshots/Germain Screenshots 2025</string>
 					</dict>
 					<key>source</key>
 					<string>QSFileSystemObjectSource</string>
@@ -425,13 +425,13 @@
 					<key>modificationDate</key>
 					<real>702530695.58016205</real>
 					<key>name</key>
-					<string>Pythagoras Screenshots 2024</string>
+					<string>Pythagoras Screenshots 2025</string>
 					<key>settings</key>
 					<dict>
 						<key>folderDepth</key>
 						<integer>1</integer>
 						<key>path</key>
-						<string>/Volumes/Samos/Pythagoras/Users/lgarron/Dropbox/Screenshots/Pythagoras Screenshots/Pythagoras Screenshots 2024</string>
+						<string>/Volumes/Samos/Pythagoras/Users/lgarron/Dropbox/Screenshots/Pythagoras Screenshots/Pythagoras Screenshots 2025</string>
 					</dict>
 					<key>source</key>
 					<string>QSFileSystemObjectSource</string>
@@ -946,13 +946,13 @@
 					<key>modificationDate</key>
 					<real>731013295.92342103</real>
 					<key>name</key>
-					<string>Trenzalore → Video Editing → 2024</string>
+					<string>Trenzalore → Video Editing → 2025</string>
 					<key>settings</key>
 					<dict>
 						<key>name</key>
-						<string>Trenzalore → Video Editing → 2024</string>
+						<string>Trenzalore → Video Editing → 2025</string>
 						<key>target</key>
-						<string>/Volumes/Trenzalore/Video Editing/2024</string>
+						<string>/Volumes/Trenzalore/Video Editing/2025</string>
 						<key>targetType</key>
 						<string>public.data</string>
 					</dict>
@@ -969,13 +969,13 @@
 					<key>modificationDate</key>
 					<real>731013117.78778994</real>
 					<key>name</key>
-					<string>Trenzalore → Video Editing → 2024 (direct entry)</string>
+					<string>Trenzalore → Video Editing → 2025 (direct entry)</string>
 					<key>settings</key>
 					<dict>
 						<key>folderDepth</key>
 						<integer>1</integer>
 						<key>path</key>
-						<string>/Volumes/Trenzalore/Video Editing/2024</string>
+						<string>/Volumes/Trenzalore/Video Editing/2025</string>
 					</dict>
 					<key>source</key>
 					<string>QSFileSystemObjectSource</string>

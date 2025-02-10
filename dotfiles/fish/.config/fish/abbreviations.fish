@@ -73,6 +73,7 @@
 
     abbr -a s "ssh"
     abbr -a "sp" "sshping -H"
+    abbr -a "sshping" "sshping -H"
 
     for dns_connecting_command in ssh mosh sshping ping
       # TODO: share abbreviation functions between these?

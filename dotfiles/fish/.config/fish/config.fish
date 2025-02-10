@@ -8,6 +8,9 @@
       exit 0
     end
 
+    # Erase all abbreviations (helps `rc` match a fresh shell)
+    abbr --erase (abbr --list)
+
 # Path
 
     source $HOME/.config/fish/path.fish
@@ -35,7 +38,7 @@
     _echo_manual_reload "🐟🔄 Reloading "(set_color --bold)"fish"(set_color normal)" files."
     _echo_manual_reload "↪ 🐟 "(status --current-filename)
 
-# XDG path configuration
+# Imports
 
     load_or_fail "greeting" $HOME/.config/fish/greeting.fish
 

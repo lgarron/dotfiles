@@ -2,9 +2,6 @@
 
     # Reloads the fish config file. `rc` is chosen because the config file for
     # other shells is often known as the `rc` file, and `rc` is easy to type.
-    #
-    # For this config file, `rc` will also force redefining abbreviations. See
-    # the "Setup" section above.
     abbr -a rc "source $HOME/.config/fish/config.fish"
 
     set -l _DOTFILES_FOLDER "$HOME/Code/git/github.com/lgarron/dotfiles/"

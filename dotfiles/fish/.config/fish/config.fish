@@ -8,9 +8,6 @@
       exit 0
     end
 
-    # Erase all abbreviations (helps `rc` match a fresh shell)
-    abbr --erase (abbr --list)
-
 # Path
 
     source $HOME/.config/fish/path.fish
@@ -24,19 +21,23 @@
 
 # Loading
 
-    function _echo_manual_reload
-      if [ "$_FISH_MANUAL_RELOAD" = "true" ]
-        echo $argv[1]
+    if [ "$_FISH_MANUAL_RELOAD" = "true" ]
+      echo "🐟🔄 Resetting all abbreviations."
+      echo ""
+      abbr --erase (abbr --list)
+
+      echo "🐟🔄 Reloading "(set_color --bold)"fish"(set_color normal)" files."
+      echo "↪ 🐟 "(status --current-filename)
+
+      function load_or_fail
+        echo "  ↪ 🐟 $argv[1]"
+        source $argv[2]
+      end
+    else
+      function load_or_fail
+        source $argv[2]
       end
     end
-
-    function load_or_fail
-      _echo_manual_reload "  ↪ 🐟 $argv[1]"
-      source $argv[2]
-    end
-
-    _echo_manual_reload "🐟🔄 Reloading "(set_color --bold)"fish"(set_color normal)" files."
-    _echo_manual_reload "↪ 🐟 "(status --current-filename)
 
 # Imports
 
@@ -113,9 +114,6 @@
     set -g fish_color_command blue
 
 # Cleanup
-
-    _echo_manual_reload ""
-    functions -e _echo_manual_reload
 
     # From now on, reloads of this file are considered "manual".
     set _FISH_MANUAL_RELOAD true

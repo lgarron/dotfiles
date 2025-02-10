@@ -8,8 +8,10 @@
     set -x "GOPATH" "$HOME/Code/gopath"
 
     if [ "$_FISH_MANUAL_RELOAD" = "true" -o "$_FISH_USER_PATHS_HAS_BEEN_SET_UP" != "true" ]
+      set -l _FISH_MANUAL_RELOAD_EMOJI ""
       if [ "$_FISH_MANUAL_RELOAD" = "true" ]
         echo ""
+        set _FISH_MANUAL_RELOAD_EMOJI "🔄"
       end
       set -e fish_user_paths
 
@@ -22,7 +24,11 @@
       add_to_path "/usr/local/bin"
       add_to_path "$HOME/.shared-hosting/bin" # for Dreamhost
 
-      set_color --bold; echo -n "\$fish_user_paths"; set_color normal
+      set_color --bold
+      echo -n "🐟"$_FISH_MANUAL_RELOAD_EMOJI
+      echo -n " \$fish_user_paths"
+      set_color normal
+
       if [ (count $fish_user_paths) -gt 0 ]
         echo " has been set to the following order:"
         for path in $fish_user_paths

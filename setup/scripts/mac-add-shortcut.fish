@@ -1,6 +1,6 @@
 #!/usr/bin/env -S fish --no-config
 
-set SHORTCUT_UTF8 $argv[3]
+set SHORTCUT_UTF8 (printf %s $argv[3] | iconv -f "UTF-8" -t "ISO-8859-1") # TODO: wat
 set shortcut (echo $SHORTCUT_UTF8| tr "[:upper:]" "[:lower:]" | sed "s/⌘/@/g" | sed "s/⇧/\$/g" | sed "s/⌥/~/g")
 
 # From https://github.com/lgarron/dotfiles/blob/d61bf45f8901c985f55522330412c13d54afccf2/dotfiles/fish/.config/fish/config.fish#L126-L140

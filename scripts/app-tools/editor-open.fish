@@ -1,6 +1,6 @@
 #!/usr/bin/env -S fish --no-config
 
-set PATH_UTF8 $argv[1]
+set PATH_UTF8 (printf %s $argv[1] | iconv -f "UTF-8" -t "ISO-8859-1")
 echo $PATH_UTF8 >> ~/Downloads/debug.txt
 set REALPATH (realpath $PATH_UTF8)
 set PREFIX "$HOME/Library/Mobile Documents/iCloud~md~obsidian/Documents/"

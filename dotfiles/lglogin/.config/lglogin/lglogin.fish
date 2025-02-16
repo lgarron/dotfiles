@@ -57,7 +57,6 @@
     rm_and_log $HOME/.docker
     rm_and_log $HOME/.dts
     rm_and_log $HOME/.gnupg
-    rm_and_log $HOME/.gk
     rm_and_log $HOME/.gradle # Gradle (Java)
     rm_and_log $HOME/.npm
     rm_and_log $HOME/.oracle_jre_usage

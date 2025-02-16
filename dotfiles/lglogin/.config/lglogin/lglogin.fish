@@ -67,7 +67,7 @@
     rm_and_log $HOME/.swiftpm
     rm_and_log $HOME/.step
     rm_and_log $HOME/.terraform.d
-    rm_and_log $HOME/.thumbnails
+    rm_and_log $HOME/.thumbnails # Blender (among others)
     rm_and_log $HOME/.yarn
     rm_and_log $HOME/.yarnrc
     rm_and_log $HOME/.vscode-cli

@@ -118,7 +118,7 @@ setup:
 .PHONY: setup-dev-dependencies
 setup-dev-dependencies:
 	@echo "Note: \`make setup\` sets up the repo for development (installing dependencies), it does not set up dotfiles themselves."
-	bun install --no-save
+	bun install --frozen-lockfile
 
 .PHONY: set-dotfiles-repo-email
 set-dotfiles-repo-email:

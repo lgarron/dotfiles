@@ -4,12 +4,12 @@ import { default as assert } from "node:assert";
 import { spawn } from "bun";
 import {
   binary,
-  command,
   number as cmdNumber,
+  string as cmdString,
+  command,
   option,
   positional,
   run,
-  string as cmdString,
 } from "cmd-ts-too";
 import { PrintableShellCommand } from "printable-shell-command";
 

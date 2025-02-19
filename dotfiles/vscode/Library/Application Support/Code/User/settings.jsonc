@@ -280,5 +280,6 @@
     "editor.defaultFormatter": "biomejs.biome"
   },
   "scm.graph.badges": "all",
+  "editor.fontFamily": "\"Comic Mono\", Menlo, Monaco, 'Courier New', monospace"
   /****************/
 }

@@ -74,6 +74,7 @@
     rm_and_log $HOME/.vscode-server
     rm_and_log $HOME/.vscode-remote-containers
     rm_and_log $HOME/.wasmer
+    rm_and_log $HOME/bin # Something Python-related?
     rm_and_log $HOME/go
 
     # chruby

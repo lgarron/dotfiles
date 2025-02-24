@@ -32,7 +32,7 @@ const app = command({
       long: "frames-window",
     }),
     fps: option({
-      description: "Remove an existing tag and retag if if it exists.",
+      description: "Frames per second.",
       type: cmdNumber,
       long: "fps",
       defaultValue: () => 60,

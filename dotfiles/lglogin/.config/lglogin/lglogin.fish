@@ -44,7 +44,7 @@
             rm -rf $NAUGHTY_PATH
             /opt/homebrew/bin/bun run \
                 /Users/lgarron/Code/git/github.com/lgarron/dotfiles/scripts/storage/counter-file.ts \
-                /Users/lgarron/.config/lglogin/naughty-list.json \
+                /Users/lgarron/.config/lglogin/naughty-list.(date "+%Y-%m").json \
                 $NAUGHTY_PATH
         end
     end

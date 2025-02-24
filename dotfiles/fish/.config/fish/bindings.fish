@@ -34,7 +34,7 @@
     end
     bind ctrl-alt-r _add_LATEST_CD_DIR_PATH
 
-    # Restore the functionality of using `⌥_` to enter `—` on macOS.
+    # Restore the functionality of using `⌥⇧-` to enter `—` on macOS.
     bind alt-_ "commandline -i —"
     # Use ⇧⌥' to enter `\"`
     bind alt-\" "commandline -i '\\\"'"

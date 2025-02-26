@@ -1,0 +1,15 @@
+{
+	"Add tests": {
+		"prefix": "tests",
+		"body": [
+			"#[cfg(test)]",
+			"mod tests {",
+			"    #[test]",
+			"    fn my_test() -> Result<(), String> {",
+			"        Ok(())",
+			"    }",
+			"}"
+		],
+		"description": "Add a section for tests."
+	}
+}

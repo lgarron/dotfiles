@@ -122,7 +122,7 @@ setup-dev-dependencies:
 
 .PHONY: set-dotfiles-repo-email
 set-dotfiles-repo-email:
-	git config user.email "code@garron.net"
+	# git config user.email "code@garron.net"
 
 ########
 

@@ -11,7 +11,7 @@ test -d "${HOME}/.config/binaries" || git clone https://github.com/lgarron/binar
 chmod +x "${HOME}/.config/binaries/linux-x86/"*
 export PATH="$PATH:${HOME}/.config/binaries/linux-x86"
 
-bun install --frozen-lockfile
+make setup-dev-dependencies
 
 if [ -n "$CODESPACES" ]
 then

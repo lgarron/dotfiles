@@ -28,7 +28,7 @@ cask "handbrake"
 # Browsers
 
 cask "firefox"
-cask "firefox@nightly"
+# cask "firefox@nightly" # Breaks when Firefox self-updates
 cask "google-chrome" # Duplicated from `mac-apps-core`
 cask "google-chrome@canary"
 cask "safari-technology-preview"

@@ -32,3 +32,4 @@
 
     abbr -a "jgp" "jj git push"
     abbr_subcommand jj gp "git push"
+    abbr -a "jp" "jj git push"

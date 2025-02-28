@@ -228,7 +228,7 @@
         bierner.markdown-preview-github-styles
         for extension_id in $_CODESPACES_COMMON_EXTENSIONS
             echo "Installing codespaces extension: $extension_id"
-            nohup code --install-extension $extension_id &
+            nohup code --install-extension $extension_id &> /dev/null &
         end
         set -Ux _CODESPACES_COMMON_EXTENSIONS_HAVE_BEEN_INSTALLED true
     end

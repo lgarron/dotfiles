@@ -94,7 +94,7 @@ fish:
 	bun x lstow -- --no-folding ./dotfiles/$@ ~/
 	mkdir -p ${HOME}/.data/fish
 	mkdir -p ${HOME}/.local/share
-	ln -sf ${HOME}/.data/fish ${HOME}/.local/share/fish
+	ln -sf ${HOME}/.data/fish ${HOME}/.local/share/
 
 ########
 

@@ -17,3 +17,4 @@
     abbr -a "jl" "jj log"
     abbr_subcommand jj l log
 
+    abbr -a "gg" "open -a gg ."

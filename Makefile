@@ -122,7 +122,16 @@ setup-dev-dependencies:
 
 .PHONY: set-dotfiles-repo-email
 set-dotfiles-repo-email:
-	# git config user.email "code@garron.net"
+	if test -d .git; \
+	then \
+		git config user.email "code@garron.net"; \
+	fi
+	if test -d .jj; \
+	then \
+		jj config set --repo user.name "Lucas Garron"; \
+		jj config set --repo user.email code@garron.net; \
+	fi
+	# TODO: When do we need to run `jj describe --reset-author --no-edit`?
 
 ########
 

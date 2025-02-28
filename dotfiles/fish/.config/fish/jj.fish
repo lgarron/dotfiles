@@ -2,8 +2,17 @@
 
     abbr -a j "jj"
 
+    # m⎵ → main
+    abbr_exceptsubcommand_arg jj m main
+
     abbr -a "jb" "jj bookmark"
     abbr_subcommand jj b bookmark
+    abbr_subcommand jj bs "bookmark set"
+    abbr_subcommand_arg jj s set bookmark
+    abbr -a "jbs" "jj bookmark set"
+
+    abbr -a "je" "jj edit"
+    abbr_subcommand jj e edit
 
     abbr -a "js" "jj status"
     abbr_subcommand jj s status

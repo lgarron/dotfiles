@@ -10,6 +10,7 @@
     abbr_subcommand jj bs "bookmark set"
     abbr_subcommand_arg jj s set bookmark
     abbr -a "jbs" "jj bookmark set"
+    abbr -a "jm" "jj bookmark set main"
 
     abbr -a "je" "jj edit"
     abbr_subcommand jj e edit

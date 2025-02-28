@@ -75,6 +75,7 @@ PACKAGES += zellij
 
 .PHONY: $(PACKAGES)
 $(PACKAGES):
+	echo "Path:" ${PATH}
 	cd dotfiles && stow --no-folding --ignore=.DS_Store -t ~/ $@
 
 PACKAGES_FOLDING  =

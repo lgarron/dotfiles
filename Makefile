@@ -75,7 +75,7 @@ PACKAGES += zellij
 
 .PHONY: $(PACKAGES)
 $(PACKAGES):
-	bun run ./setup/jstow.ts --no-folding ./dotfiles/$@ ~/
+	bun x lstow -- --no-folding ./dotfiles/$@ ~/
 
 PACKAGES_FOLDING  =
 PACKAGES_FOLDING += compressor
@@ -85,13 +85,13 @@ PACKAGES_FOLDING += quicksilver
 .PHONY: $(PACKAGES_FOLDING)
 $(PACKAGES_FOLDING):
 	# Link the entire folder to work around https://github.com/pqrs-org/Karabiner-Elements/issues/3248
-	bun run ./setup/jstow.ts ./dotfiles/$@ ~/
+	bun x lstow -- ./dotfiles/$@ ~/
 
 ########
 
 .PHONY: fish
 fish:
-	bun run ./setup/jstow.ts --no-folding ./dotfiles/$@ ~/
+	bun x lstow -- --no-folding ./dotfiles/$@ ~/
 	mkdir -p ${HOME}/.data/fish
 	mkdir -p ${HOME}/.local/share
 	ln -sf ${HOME}/.data/fish ${HOME}/.local/share/fish

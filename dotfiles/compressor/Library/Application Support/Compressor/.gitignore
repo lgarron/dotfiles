@@ -9,3 +9,4 @@
 /*.jobcache.db
 !/.gitignore
 !Settings
+/.config/lstow.json

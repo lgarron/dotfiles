@@ -11,6 +11,7 @@ import {
   symlink,
 } from "node:fs/promises";
 import { basename, join } from "node:path";
+import { file } from "bun";
 import {
   binary,
   string as cmdString,
@@ -20,13 +21,13 @@ import {
   run,
 } from "cmd-ts-too";
 
+interface DirConfig {
+  fold?: boolean;
+}
+
 const app = command({
   name: "jstow",
   args: {
-    noFolding: flag({
-      description: "",
-      long: "no-folding",
-    }),
     sourceDir: positional({
       type: cmdString,
       displayName: "Source dir",
@@ -36,8 +37,7 @@ const app = command({
       displayName: "Destination dir",
     }),
   },
-  handler: async ({ noFolding, sourceDir, destinationDir }) => {
-    const folding = !noFolding;
+  handler: async ({ sourceDir, destinationDir }) => {
     async function traverse(relativePathPrefix: string) {
       const dirPath = join(sourceDir, relativePathPrefix);
       for (const relativePathSuffix of await readdir(dirPath)) {
@@ -51,25 +51,41 @@ const app = command({
         const destinationPath = join(destinationDir, relativePath);
         const sourceIsFile = !(await lstat(sourcePath)).isDirectory();
         const sourceIsSymlink = (await lstat(sourcePath)).isSymbolicLink();
+
+        const fold = await (async () => {
+          if (sourceIsFile) {
+            return false;
+          }
+          const lstowFilePath = join(sourcePath, ".config", "lstow.json");
+          if (!(await exists(lstowFilePath))) {
+            return false;
+          }
+          // TODO: Check that it's a file
+          const dirConfid: DirConfig = await file(lstowFilePath).json();
+          return !!dirConfid.fold;
+        })();
+        const foldingDisplayInfo = fold ? " (fold)" : "";
+        const foldingEmoji = fold ? "📄" : "";
+
         if (await exists(destinationPath)) {
           const destinationIsSymlink = (
             await lstat(destinationPath)
           ).isSymbolicLink();
           if (!sourceIsSymlink && destinationIsSymlink) {
-            assert(sourceIsFile || folding);
+            assert(sourceIsFile || fold);
           }
           const destinationRealpathIsFile = !(
             await lstat(await realpath(destinationPath))
           ).isDirectory();
           assert.equal(sourceIsFile, destinationRealpathIsFile);
-          console.log(`🆗 ${sourcePath}
+          console.log(`🆗${foldingEmoji} ${sourcePath}${foldingDisplayInfo}
 ↪ ${destinationPath}`);
           if (!sourceIsFile) {
             await traverse(relativePath);
           }
         } else {
-          if (sourceIsFile || folding) {
-            console.log(`🆙 ${sourcePath}
+          if (sourceIsFile || fold) {
+            console.log(`🆙${foldingEmoji} ${sourcePath}${foldingDisplayInfo}
 ↪ ${destinationPath}`);
             if (sourceIsSymlink) {
               await cp(sourcePath, destinationPath);

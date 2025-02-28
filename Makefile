@@ -75,7 +75,7 @@ PACKAGES += zellij
 
 .PHONY: $(PACKAGES)
 $(PACKAGES):
-	bun run ./scripts/system/lstow.ts -- --no-folding ./dotfiles/$@ ~/
+	bun run ./scripts/system/lstow.ts -- ./dotfiles/$@ ~/
 
 PACKAGES_FOLDING  =
 PACKAGES_FOLDING += compressor
@@ -91,7 +91,7 @@ $(PACKAGES_FOLDING):
 
 .PHONY: fish
 fish:
-	bun run ./scripts/system/lstow.ts -- --no-folding ./dotfiles/$@ ~/
+	bun run ./scripts/system/lstow.ts -- ./dotfiles/$@ ~/
 	mkdir -p ${HOME}/.data/fish
 	mkdir -p ${HOME}/.local/share
 	ln -sf ${HOME}/.data/fish ${HOME}/.local/share/

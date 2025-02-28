@@ -19,6 +19,7 @@ mac-common-dotfiles: \
 	compressor \
 	fish \
 	git \
+	jj \
 	karabiner \
 	lglogin \
 	minecraft \
@@ -63,6 +64,7 @@ dreamhost:
 PACKAGES  =
 PACKAGES += git
 PACKAGES += hushlogin
+PACKAGES += jj
 PACKAGES += lglogin
 PACKAGES += mac-text-encoding
 PACKAGES += minecraft

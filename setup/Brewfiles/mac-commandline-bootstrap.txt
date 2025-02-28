@@ -1,1 +1,1 @@
-brew "fish-shell/fish-beta-4/fish"
+brew "fish"

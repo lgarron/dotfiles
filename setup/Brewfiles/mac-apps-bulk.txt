@@ -24,6 +24,7 @@ cask "carbon-copy-cloner"
 cask "macs-fan-control"
 cask "syncthing"
 cask "handbrake"
+cask "betterdisplay"
 
 # Browsers
 

@@ -7,7 +7,6 @@
   "type": "module",
   "dependencies": {
     "cmd-ts-too": "^0.14.1",
-    "lstow": "^0.1.0",
     "printable-shell-command": "^0.1.1"
   }
 }

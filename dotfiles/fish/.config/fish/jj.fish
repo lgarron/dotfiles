@@ -28,3 +28,5 @@
 
     _fish_abbr_jj_subcommand "de" "describe"
     abbr -a jdd --set-cursor "jj describe --message \"%" # Special shortened abbreviation
+
+    abbr -a "jpp" "jj bookmark set main && jj git push"

@@ -2,6 +2,9 @@
 
     abbr -a j "jj"
 
+    abbr -a "jb" "jj bookmark"
+    abbr_subcommand jj b bookmark
+
     abbr -a "js" "jj status"
     abbr_subcommand jj s status
 

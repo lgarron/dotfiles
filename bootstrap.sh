@@ -8,8 +8,8 @@ set -euo pipefail
 mkdir -p "${HOME}/.config"
 test -d "${HOME}/.config/binaries" || git clone https://github.com/lgarron/binaries "${HOME}/.config/binaries"
 
-chmod +x "${HOME}/.config/binaries/linux-x86/"*
-export PATH="$PATH:${HOME}/.config/binaries/linux-x86"
+chmod +x "${HOME}/.config/binaries/linux-x64/"*
+export PATH="$PATH:${HOME}/.config/binaries/linux-x64"
 
 make setup-dev-dependencies
 

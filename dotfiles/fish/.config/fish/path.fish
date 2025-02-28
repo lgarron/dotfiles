@@ -23,7 +23,7 @@
       add_to_path $HOME/.cache/.bun/bin # For zig (for building Bun) https://bun.sh/docs/project/development
       add_to_path "/usr/local/bin"
       add_to_path "$HOME/.shared-hosting/bin" # for Dreamhost
-      add_to_path "$HOME/.config/binaries/linux-x86" # for Codespaces
+      add_to_path "$HOME/.config/binaries/linux-x64" # for Codespaces
 
       set_color --bold
       echo -n "🐟"$_FISH_MANUAL_RELOAD_EMOJI

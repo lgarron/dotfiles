@@ -6,13 +6,12 @@ set -euo pipefail
 # https://docs.github.com/en/codespaces/customizing-your-codespace/personalizing-github-codespaces-for-your-account#dotfiles
 
 mkdir -p "${HOME}/.config"
-git clone https://github.com/lgarron/binaries "${HOME}/.config/binaries"
+test -d "${HOME}/.config/binaries" || git clone https://github.com/lgarron/binaries "${HOME}/.config/binaries"
 
 chmod +x "${HOME}/.config/binaries/linux-x86/"*
 export PATH="$PATH:${HOME}/.config/binaries/linux-x86"
 
-echo "Path: $PATH"
-command -v stow
+bun install --frozen-lockfile
 
 if [ -n "$CODESPACES" ]
 then
@@ -24,6 +23,3 @@ make linux
 
 sudo chsh "$(id -un)" --shell "$(command -v fish)"
 
-echo "<code>"
-ls /vscode/bin/linux-x64/*/bin/remote-cli/code
-echo "</code>"

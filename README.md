@@ -2,8 +2,6 @@
 
 My own personal configuration files and scripts for various commandline-based tools and apps. Also serves as the `lgarron/lgarron` [Homebrew](https://brew.sh/) tap.
 
-Linked [using GNU `stow`](http://brandon.invergo.net/news/2012-05-26-using-gnu-stow-to-manage-your-dotfiles.html) (for now).
-
 ## Mac
 
 <!-- Note: Steps are spelled out instead of written as shell comments, because `zsh` (the macOS default at first launch) is bonkers and only conditionally treats it as the start of a comment. -->
@@ -44,7 +42,8 @@ See [`./exported/`](./exported/) for files that must be manually exported/import
 
 ## Ubuntu/Linux
 
-    sudo apt install git make stow
+    sudo apt install git make
+    # Install `bun` from: https://bun.sh/
 
     git clone https://github.com/lgarron/dotfiles ~/Code/git/github.com/lgarron/dotfiles
     cd ~/Code/git/github.com/lgarron/dotfiles

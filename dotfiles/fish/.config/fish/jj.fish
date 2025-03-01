@@ -13,7 +13,6 @@
     abbr_exceptsubcommand_arg jj m main
 
     _fish_abbr_jj_subcommand "a" "abandon"
-    _fish_abbr_jj_subcommand "d" "diff"
     _fish_abbr_jj_subcommand "e" "edit"
     _fish_abbr_jj_subcommand "gp" "git push"
     _fish_abbr_jj_subcommand "l" "log"
@@ -30,3 +29,7 @@
     abbr -a jdd --set-cursor "jj describe --message \"%" # Special shortened abbreviation
 
     abbr -a "jpp" "jj bookmark set main && jj git push"
+
+    _fish_abbr_jj_subcommand "d" "diff"
+    abbr_subcommand_arg jj no --name-only diff
+    abbr -a jdno --set-cursor "jj diff --name-only --to \"fork_point(%)\"" # Special shortened abbreviation

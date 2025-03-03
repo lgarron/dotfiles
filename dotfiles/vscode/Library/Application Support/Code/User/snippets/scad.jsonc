@@ -65,5 +65,11 @@
 		"body": [
 			"include <./node_modules/scad/filament_color.scad>",
 		],
+	},
+	"Include `scad` package file: engraving": {
+		"prefix": "include <engraving",
+		"body": [
+			"include <./node_modules/scad/engraving.scad>",
+		],
 	}
 }

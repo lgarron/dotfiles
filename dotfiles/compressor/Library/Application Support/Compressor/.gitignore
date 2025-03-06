@@ -10,3 +10,4 @@
 !/.gitignore
 !Settings
 /.config/lstow.json
+.DS_Store

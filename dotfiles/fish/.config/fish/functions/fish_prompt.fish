@@ -99,6 +99,7 @@ function fish_prompt --description 'Write out the prompt'
             echo ""
         end
     end
+    set_color $_FISH_PROMPT_LCARS_BOTTOM_COLOR
     if [ (tput lines) -gt $_FISH_PROMPT_COMPACT_MODE_MAX_ROWS ]
         echo -n "├─ "
     set suffix "

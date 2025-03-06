@@ -93,7 +93,7 @@ function fish_prompt --description 'Write out the prompt'
 
     set FISH_VCS_PROMPT (fish_vcs_prompt "%s")
     if not string match -e "$FISH_VCS_PROMPT" "" > /dev/null
-        set -l PREFIX (set_color $_FISH_PROMPT_LCARS_BOTTOM_COLOR)"├─ "$FISH_VCS_PROMPT" "
+        set -l PREFIX (set_color $_FISH_PROMPT_LCARS_BOTTOM_COLOR)"├─ "(set_color normal)$FISH_VCS_PROMPT" "
         echo -n $PREFIX
         if [ (tput lines) -gt $_FISH_PROMPT_COMPACT_MODE_MAX_ROWS ]
             echo ""

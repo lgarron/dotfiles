@@ -25,6 +25,13 @@
     abbr_subcommand_arg jj s set bookmark
     abbr_subcommand_arg jj l list bookmark
 
+    _fish_abbr_jj_subcommand "r" "rebase"
+    _fish_abbr_jj_subcommand "rd" "rebase --destination"
+    abbr_subcommand_arg jj d --destination rebase
+
+    abbr_subcommand_arg jj ii --ignore-immutable edit squash
+    abbr_subcommand_arg jj r --revision bookmark
+
     _fish_abbr_jj_subcommand "de" "describe"
     abbr -a jdd --set-cursor "jj describe --message \"%" # Special shortened abbreviation
 

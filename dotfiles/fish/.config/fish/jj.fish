@@ -43,3 +43,9 @@
     _fish_abbr_jj_subcommand "d" "diff"
     abbr_subcommand_arg jj no --name-only diff
     abbr -a jdno --set-cursor "jj diff --name-only --to \"fork_point(%)\"" # Special shortened abbreviation
+
+    function gg
+        /Applications/gg.app/Contents/MacOS/gg $argv &> /dev/null &
+        disown
+        osascript -e 'tell application "System Events" to tell process "gg" to set frontmost to true'
+    end

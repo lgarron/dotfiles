@@ -163,7 +163,7 @@
     # Legacy
     abbr -a gcane "git commit --amend --no-edit"
 
-    abbr -a gg "git commit --amend --no-edit && git push --force-with-lease"
+    abbr -a ggg "git commit --amend --no-edit && git push --force-with-lease"
     abbr -a gggg "git status && read -p \"echo \\\"Press enter to continue (Ctrl-C to abort)\\\"\" &&
 git stage . &&
 git commit --amend --no-edit &&

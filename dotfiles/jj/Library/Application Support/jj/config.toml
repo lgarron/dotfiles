@@ -1,3 +1,3 @@
 [revsets]
 # Adapted from: https://willhbr.net/2024/08/18/understanding-revsets-for-a-better-jj-log-output/
-log = "@ | ancestors(trunk()..(visible_heads() & mine()), 5) | trunk()"
+log = "@ | ancestors(visible_heads(), 5)"

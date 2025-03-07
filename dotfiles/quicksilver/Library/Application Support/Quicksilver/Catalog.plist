@@ -198,7 +198,7 @@
 					<key>modificationDate</key>
 					<real>639107747.18431902</real>
 					<key>name</key>
-					<string>github.com</string>
+					<string>github.com (git)</string>
 					<key>settings</key>
 					<dict>
 						<key>folderDepth</key>
@@ -257,6 +257,52 @@
 						<string>QSDirectoryParser</string>
 						<key>path</key>
 						<string>~/Code/git/bitbucket.org</string>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
+				<dict>
+					<key>ID</key>
+					<string>BDFAF598-D99F-4100-BFB5-07D44B2EFD2A</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>modificationDate</key>
+					<real>763262314.36240804</real>
+					<key>name</key>
+					<string>jj</string>
+					<key>settings</key>
+					<dict>
+						<key>folderDepth</key>
+						<integer>2</integer>
+						<key>parser</key>
+						<string>QSDirectoryParser</string>
+						<key>path</key>
+						<string>~/Code/jj</string>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
+				<dict>
+					<key>ID</key>
+					<string>C4115724-62A5-4977-92D5-698E56865490</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>modificationDate</key>
+					<real>763262320.67815602</real>
+					<key>name</key>
+					<string>github.com (jj)</string>
+					<key>settings</key>
+					<dict>
+						<key>folderDepth</key>
+						<integer>2</integer>
+						<key>parser</key>
+						<string>QSDirectoryParser</string>
+						<key>path</key>
+						<string>~/Code/jj/github.com</string>
 					</dict>
 					<key>source</key>
 					<string>QSFileSystemObjectSource</string>

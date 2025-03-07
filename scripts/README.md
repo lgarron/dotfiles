@@ -58,6 +58,10 @@ Automatically set the full screen resolution for Civilization (with hardcoded va
 
 Clone the given URL to `~/Code/git/github.com/[user]/[repo]/`. Useful to combine with `chrometab`, or [using QS](https://github.com/lgarron/dotfiles/blob/f5b435e3701988b070920ef1f31ef6afb2384ca8/Quicksilver%20Triggers/Google/Clone%20GitHub%20Repo%20from%20Chrome.applescript).
 
+### `jclone`
+
+Clone the given URL to `~/Code/git/github.com/[user]/[repo]/` using jj. Useful to combine with `chrometab`, or using QS.
+
 ### `git-distance`
 
 Calculate the distance from the current branch (or any branch) to another branch, in terms of # of unique commits on each since the last common ancestor.

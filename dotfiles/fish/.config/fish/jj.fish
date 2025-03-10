@@ -54,4 +54,4 @@
     # Note that this implementing this for `j ci` and `j c i` would require
     # rewriting the commandline (to add the `env` invocation at the beginning)
     # rather than a simple expansion. So we just define `jci` for now.
-    abbr -a "jci" 'env VISUAL="cat" jj commit --interactive'
+    _fish_abbr_jj_subcommand "ci" 'commit --interactive --config=ui.editor=\'"true"\''

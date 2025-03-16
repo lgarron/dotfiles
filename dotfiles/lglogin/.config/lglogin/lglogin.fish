@@ -89,6 +89,9 @@
     rm_and_log $HOME/.flutter-devtools
     rm_and_log $HOME/.pub-cache
 
+    # See: https://github.com/lgarron/first-world/issues/239
+    rm_and_log "$HOME/Library/Application Support/Google/Chrome/OptGuideOnDeviceModel/"
+
 # Avoid Time Machine slowdown
 
     # Commented out to avoid a Touch ID prompt.

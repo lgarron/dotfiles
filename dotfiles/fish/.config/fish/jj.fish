@@ -18,6 +18,7 @@
     _fish_abbr_jj_subcommand "m" "bookmark set main"
     _fish_abbr_jj_subcommand "n" "new"
     _fish_abbr_jj_subcommand "s" "status"
+    _fish_abbr_jj_subcommand "st" "status"
     _fish_abbr_jj_subcommand "sq" "squash"
 
     _fish_abbr_jj_subcommand "b" "bookmark"
@@ -40,6 +41,8 @@
     _fish_abbr_jj_subcommand "p" "git push"
     _fish_abbr_jj_subcommand "gp" "git push"
     abbr -a "jpp" "jj bookmark set main && jj git push"
+    _fish_abbr_jj_subcommand "gr" "git remote"
+    _fish_abbr_jj_subcommand "grl" "git remote list"
 
     _fish_abbr_jj_subcommand "d" "diff"
     abbr_subcommand_arg jj no --name-only diff

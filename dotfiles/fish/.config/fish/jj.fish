@@ -31,7 +31,7 @@
     _fish_abbr_jj_subcommand "rd" "rebase --destination"
     abbr_subcommand_arg jj d --destination rebase
 
-    abbr_subcommand_arg jj ii --ignore-immutable edit squash
+    abbr_subcommand_arg jj ii --ignore-immutable edit squash describe
     abbr_subcommand_arg jj r --revision bookmark
 
     _fish_abbr_jj_subcommand "de" "describe"

@@ -40,7 +40,7 @@
     _fish_abbr_jj_subcommand "gf" "git fetch"
     _fish_abbr_jj_subcommand "p" "git push"
     _fish_abbr_jj_subcommand "gp" "git push"
-    abbr -a "jpp" "jj bookmark set main && jj git push"
+    abbr -a "jpp" "jj bookmark set --revision (jj@@) main && jj git push"
     _fish_abbr_jj_subcommand "gr" "git remote"
     _fish_abbr_jj_subcommand "grl" "git remote list"
 
@@ -58,3 +58,12 @@
     # rewriting the commandline (to add the `env` invocation at the beginning)
     # rather than a simple expansion. So we just define `jci` for now.
     _fish_abbr_jj_subcommand "ci" 'commit --interactive --config=ui.editor=\'"true"\''
+
+    # https://github.com/jj-vcs/jj/discussions/4012#discussioncomment-12665936
+    function jj@@
+        if [ (jj diff --name-only --to "@-" | wc -l) -eq 0 ]
+            echo "@-"
+        else
+            echo "@"
+        end
+    end

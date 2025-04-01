@@ -48,6 +48,8 @@
     abbr_subcommand_arg jj no --name-only diff
     abbr -a jdno --set-cursor "jj diff --name-only --to \"fork_point(%)\"" # Special shortened abbreviation
 
+    abbr -a "jgv" 'open --url (jj git remote list | grep "^origin" | awk "{print \$2}" | tr -d "\n"; and echo -n "/commit/"; echo -- (jj log --ignore-working-copy --limit 1 -r (jj@@) --no-graph -T "commit_id"))'
+
     function gg
         /Applications/gg.app/Contents/MacOS/gg $argv &> /dev/null &
         disown

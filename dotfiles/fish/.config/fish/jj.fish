@@ -11,6 +11,7 @@
 
     # m⎵ → main
     abbr_exceptsubcommand_arg jj m main
+    abbr_exceptsubcommand_arg jj h here
 
     _fish_abbr_jj_subcommand "a" "abandon"
     _fish_abbr_jj_subcommand "e" "edit"

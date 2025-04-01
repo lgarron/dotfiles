@@ -2,11 +2,15 @@
 keybinds {
     unbind "Alt Left"
     unbind "Alt Right"
+    unbind "Alt Up"
+    unbind "Alt Down"
 
     normal {
         // TODO: The `zellij` docs imply this should not be necessary.
         unbind "Alt Left"
         unbind "Alt Right"
+        unbind "Alt Up"
+        unbind "Alt Down"
 
         // uncomment this and adjust key if using copy_on_select=false
         // bind "Alt c" { Copy; }

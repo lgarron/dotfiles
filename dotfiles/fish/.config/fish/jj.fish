@@ -25,8 +25,11 @@
     _fish_abbr_jj_subcommand "b" "bookmark"
     _fish_abbr_jj_subcommand "bs" "bookmark set"
     _fish_abbr_jj_subcommand "bl" "bookmark list"
+    _fish_abbr_jj_subcommand "bd" "bookmark delete"
     abbr_subcommand_arg jj s set bookmark
     abbr_subcommand_arg jj l list bookmark
+    abbr_subcommand_arg jj d delete bookmark
+    abbr_subcommand_arg jj ab --allow-backwards bookmark # TODO: can we scope this to `jj bookmark set`?
 
     _fish_abbr_jj_subcommand "r" "rebase"
     _fish_abbr_jj_subcommand "rd" "rebase --destination"
@@ -44,9 +47,13 @@
     abbr -a "jpp" "jj bookmark set --revision here main && jj git push"
     _fish_abbr_jj_subcommand "gr" "git remote"
     _fish_abbr_jj_subcommand "grl" "git remote list"
+    abbr_subcommand_arg jj an --allow-new git # TODO: can we scope this to `jj git push`?
+    abbr_subcommand_arg jj b --bookmark git # TODO: can we scope this to `jj git push`?
 
     _fish_abbr_jj_subcommand "d" "diff"
     abbr_subcommand_arg jj no --name-only diff
+    _fish_abbr_jj_subcommand "dt" "diff --to"
+    abbr_subcommand_arg jj t --to diff
     abbr -a jdno --set-cursor "jj diff --name-only --to \"fork_point(%)\"" # Special shortened abbreviation
 
     abbr -a "jgv" 'open --url (jj git remote list | grep "^origin" | awk "{print \$2}" | tr -d "\n"; and echo -n "/commit/"; echo -- (jj log --ignore-working-copy --limit 1 --revisions here --no-graph -T "commit_id"))'

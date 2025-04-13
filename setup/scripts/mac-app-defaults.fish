@@ -47,3 +47,8 @@ end
       defaults write "org.openscad.OpenSCAD" "advanced.customizerFontFamily" -string '"Ubuntu Mono"'
       defaults write "org.openscad.OpenSCAD" "advanced.toolbarExport3D" -string 'binstl'
       defaults write "org.openscad.OpenSCAD" "advanced.toolbarExport2D" -string 'svg'
+
+# TODO: this requires `sudo` and a reboot?
+# https://www.reddit.com/r/MacOS/comments/16wzdk9/is_there_a_way_to_turn_off_the_new_emoji/
+# https://mastodon.social/@stroughtonsmith/112216657091717306
+# defaults write /Library/Preferences/FeatureFlags/Domain/UIKit.plist emoji_enhancements -dict-add Enabled -bool NO

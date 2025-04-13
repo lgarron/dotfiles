@@ -1,7 +1,12 @@
 [revsets]
 # Adapted from: https://willhbr.net/2024/08/18/understanding-revsets-for-a-better-jj-log-output/
-log = "@ | ancestors(visible_heads(), 5)"
+log = "@ | ancestors(visible_heads() | tracked_remote_bookmarks(), 5)"
 
 [revset-aliases]
 # Adapted from https://github.com/jj-vcs/jj/discussions/4012#discussioncomment-12685567
-'here' = 'coalesce(@ ~ empty(), @-)'
+'closest_ancestor_bookmark(to)' = 'heads(::to & bookmarks())'
+'closest_pushable_ancestor(to)' = 'heads(::to & ~description(exact:"") & (~empty() | merges()))'
+'here' = 'closest_pushable_ancestor(@)'
+
+[aliases]
+tug = ["bookmark", "move", "--from", "closest_ancestor_bookmark(@)", "--to", "closest_pushable_ancestor(@)"]

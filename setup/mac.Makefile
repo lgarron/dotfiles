@@ -91,6 +91,11 @@ mac-keyboard-shortcuts:
 	${MAC_ADD_SHORTCUT} "com.apple.Music"           "as Songs"                 "⌘2"
 	${MAC_ADD_SHORTCUT} "com.bambulab.bambu-studio" "Redo"                     "⇧⌘Z"
 	${MAC_ADD_SHORTCUT} "org.openscad.OpenSCAD"     "Reset View"               "⇧⌘R"
+	# TODO: we need to specify a longer menu path, as there are multiple menu item (leaves) named `Local`.
+	# The settings UI supports this, but passing the same string here doesn't work (even with extra quoting).
+	# ${MAC_ADD_SHORTCUT} "com.wolfram.Mathematica"   "Evaluation->Quit Kernel->Local"                    "^D"
+	${MAC_ADD_SHORTCUT} "com.wolfram.Mathematica"   "Evaluate Initialization Cells"                    "^⌘I"
+	
 
 .PHONY: mac-file-defaults
 mac-file-defaults:

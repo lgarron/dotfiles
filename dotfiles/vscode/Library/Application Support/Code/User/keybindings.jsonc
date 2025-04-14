@@ -14,7 +14,7 @@
     "command": "editor.action.insertSnippet",
     "when": "editorHasSelection && editorTextFocus",
     "args": {
-      "snippet": "`${0:${TM_SELECTED_TEXT}}`"
+  	    "snippet": "`${0:${TM_SELECTED_TEXT}}`"
     }
   },
   {
@@ -22,7 +22,7 @@
     "command": "workbench.action.terminal.sendSequence",
     "when": "terminalFocus",
     "args": {
-      "text": "\"${relativeFile}\""
+  	    "text": "'${relativeFile}'"
     }
   },
   {
@@ -30,7 +30,7 @@
     "command": "workbench.action.terminal.sendSequence",
     "when": "terminalFocus",
     "args": {
-      "text": "\"${file}\""
+  	    "text": "'${file}'"
     }
   },
   {
@@ -38,7 +38,7 @@
     "command": "workbench.action.terminal.sendSequence",
     "when": "terminalFocus",
     "args": {
-      "text": "[${fileBasename}] "
+  	    "text": "[${fileBasename}] "
     }
   },
   {
@@ -89,7 +89,7 @@
     "key": "cmd+ctrl+space",
     "command": "workbench.action.terminal.sendSequence",
     "args": {
-      "text": "\u000B\u0015qs \"${file}\"\u000D"
+  	    "text": "\u000B\u0015qs '${file}'\u000D"
     }
   },
   {
@@ -187,7 +187,7 @@
     "key": "shift-cmd+v",
     "command": "editor.action.pasteAs",
     "args": {
-      "id": "text"
+  	    "id": "text"
     },
     "when": "inputFocus && editorHasSelection"
   },
@@ -202,7 +202,7 @@
   {
     "key": "cmd+r",
     "command": "workbench.files.action.showActiveFileInExplorer",
-    "when": "!terminalFocus",
+    "when": "!terminalFocus"
   },
   {
     "key": "ctrl+shift+cmd+p",
@@ -231,7 +231,7 @@
   },
   {
     "key": "cmd+enter",
-    "command": "workbench.action.terminal.toggleTerminal",
+    "command": "workbench.action.terminal.toggleTerminal"
   },
   {
     "key": "cmd-ctrl-enter",

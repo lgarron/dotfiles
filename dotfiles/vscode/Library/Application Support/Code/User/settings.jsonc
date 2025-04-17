@@ -1,276 +1,276 @@
 {
-  /******** Dynamic ********/
-  "editor.formatOnSave": true,
-  "window.zoomLevel": 0.75,
-  /******** Main VSCode settings ********/
-  "editor.formatOnPaste": false,
-  "editor.tabSize": 2,
-  "editor.renderWhitespace": "boundary",
-  "editor.formatOnType": false,
-  "editor.columnSelection": false,
-  "editor.inlineSuggest.enabled": true,
-  "editor.suggest.showStatusBar": true,
-  "editor.suggestSelection": "first",
-  "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
-  "files.insertFinalNewline": true,
-  "explorer.fileNesting.enabled": true,
-  "explorer.confirmDragAndDrop": false,
-  "editor.guides.bracketPairs": true,
-  "editor.stickyScroll.enabled": true,
-  "editor.acceptSuggestionOnCommitCharacter": false,
-  "diffEditor.hideUnchangedRegions.enabled": true,
-  "editor.accessibilitySupport": "off", // Setting regularly added by VS Code after asking if I'm using a screen reader.
-  "window.title": "${rootName}${separator}${activeEditorShort}${separator}${profileName}${separator}branch: ${activeRepositoryBranchName}",
-  /******** Window ********/
-  "window.commandCenter": false,
-  "customWindowZoom.zoomLevelChangeValue": 0.25,
-  "workbench.sideBar.location": "left",
-  "workbench.startupEditor": "newUntitledFile",
-  "workbench.editor.empty.hint": "hidden",
-  "window.newWindowDimensions": "inherit",
-  /******** Formatting ********/
-  // https://marketplace.visualstudio.com/items?itemName=tombonnike.vscode-status-bar-format-toggle
-  "formattingToggle.affects": ["editor.formatOnSave"],
-  "[json]": {
-    "editor.defaultFormatter": "biomejs.biome"
-  },
-  "[javascript][typescript]": {
-    "editor.defaultFormatter": "biomejs.biome",
-    "editor.codeActionsOnSave": {
-      "source.organizeImports.biome": "explicit"
-    }
-  },
-  "[markdown]": {
-    "editor.formatOnType": false
-  },
-  "[makefile]": {
-    "editor.insertSpaces": false,
-    "editor.detectIndentation": false
-  },
-  "[html]": {
-    "editor.defaultFormatter": "vscode.html-language-features"
-  },
-  "[python]": {
-    "editor.codeActionsOnSave": {
-      "source.organizeImports": "explicit"
-    },
-    "editor.defaultFormatter": "charliermarsh.ruff"
-  },
-  /******** JavaScript ********/
-  "javascript.validate.enable": false,
-  "javascript.updateImportsOnFileMove.enabled": "always",
-  "biome.requireConfigFile": true,
-  /******** TypeScript ********/
-  "typescript.updateImportsOnFileMove.enabled": "always",
-  "typescript.inlayHints.enumMemberValues.enabled": true,
-  "typescript.inlayHints.functionLikeReturnTypes.enabled": true,
-  "typescript.inlayHints.propertyDeclarationTypes.enabled": true,
-  "typescript.inlayHints.parameterTypes.enabled": true,
-  "typescript.inlayHints.variableTypes.enabled": true,
-  /******** Go ********/
-  "go.useLanguageServer": true,
-  "go.toolsGopath": "/Users/lgarron/Code/gopath",
-  "go.toolsManagement.autoUpdate": true,
-  /******** Remote SSH ********/
-  "remote.SSH.useLocalServer": false,
-  "remote.SSH.remotePlatform": {
-    "Pythagoras.tlb": "macOS",
-    "Pythagoras-ts.wyvern-climb.ts.net": "macOS"
-  },
-  "remote.SSH.serverInstallPath": {
-    "Pythagoras.tlb": "/Users/lgarron/.cache/vscode-server",
-    "Pythagoras-ts.wyvern-climb.ts.net": "/Users/lgarron/.cache/vscode-server"
-  },
-  /******** Codespaces ********/
-  "github.codespaces.createCodespaceInNewWindow": true,
-  // The following is not necessarily specific to codespaces, but prevents a
-  // confusing and useless warning in codespaces when working in a codebase that
-  // ever has PRs from `main` to another branch (e.g. `production` or
-  // `release`).
-  "githubPullRequests.ignoredPullRequestBranches": ["main"],
-  /******** Live Share ********/
-  "liveshare.showInStatusBar": "whileCollaborating",
-  /******** Terminal ********/
-  "terminal.integrated.tabs.enabled": true,
-  "terminal.integrated.tabs.location": "right",
-  "terminal.integrated.macOptionIsMeta": true,
-  "terminal.integrated.stickyScroll.enabled": true,
-  "terminal.integrated.defaultProfile.osx": "apple_fish",
-  "terminal.integrated.defaultProfile.linux": "fish",
-  "terminal.integrated.defaultProfile.windows": "Ubuntu (WSL)",
-  "terminal.integrated.profiles.osx": {
-    "apple_fish": {
-      "path": "/opt/homebrew/bin/fish",
-      "icon": "heart-filled",
-      "overrideName": true,
-      "args": ["-l"]
-    },
-    "apple_fish_no_history": {
-      "path": "/opt/homebrew/bin/fish",
-      "icon": "heart",
-      "overrideName": true,
-      "args": ["-l", "--private"]
-    }
-  },
-  /******** GitLens ********/
-  "gitlens.rebaseEditor.ordering": "asc",
-  "githubPullRequests.pullBranch": "never",
-  "workbench.editorAssociations": {
-    "git-rebase-todo": "default"
-  },
-  /******** Python ********/
-  "python.analysis.autoImportCompletions": true,
-  "python.analysis.autoImportUserSymbols": true,
-  "python.analysis.indexing": true,
-  "terminal.integrated.enableMultiLinePasteWarning": "never",
-  // This works around a bug with the Django template extension where it tries
-  // to take over all HTML files in all repositories.
-  "files.associations": {
-    "*.html": "html"
-  },
-  /******** Rust ********/
-  "rust-analyzer.check.command": "clippy",
-  "rust-analyzer.showUnlinkedFileNotification": false,
-  /******** Zig ********/
-  "zig.zls.path": "/Users/lgarron/Library/Application Support/Code/User/globalStorage/ziglang.vscode-zig/zls_install/zls",
-  /******** Markdown ********/
-  "markdown.editor.pasteUrlAsFormattedLink.enabled": "smart",
-  /******** JSONC ********/
-  "[jsonc]": {
-    "editor.defaultFormatter": "biomejs.biome"
-  },
-  /******** Toggle Case ********/
-  "toggleCase.case.capitalCase": false,
-  "toggleCase.case.dotCase": false,
-  "toggleCase.case.headerCase": false,
-  "toggleCase.case.kebabCase": false,
-  "toggleCase.case.lowerCase": false,
-  "toggleCase.case.pathCase": false,
-  "toggleCase.case.sentenceCase": false,
-  "toggleCase.case.titleCase": false,
-  "toggleCase.case.upperCase": false,
-  "toggleCase.notification.notifyOnChange": false,
-  /******* Apply to all profiles *********/
-  "workbench.settings.applyToAllProfiles": [
-    /******** Dynamic ********/
-    // "editor.formatOnSave",
-    // "editor.formatOnPaste",
-    // "window.zoomLevel",
-    /******** Main VSCode settings ********/
-    "editor.tabSize",
-    "editor.renderWhitespace",
-    "editor.formatOnType",
-    "editor.columnSelection",
-    "editor.inlineSuggest.enabled",
-    "editor.suggest.showStatusBar",
-    "editor.suggestSelection",
-    "vsintellicode.modify.editor.suggestSelection",
-    "files.insertFinalNewline",
-    "explorer.fileNesting.enabled",
-    "explorer.confirmDragAndDrop",
-    "editor.guides.bracketPairs",
-    "editor.stickyScroll.enabled",
-    "diffEditor.hideUnchangedRegions.enabled",
-    "editor.accessibilitySupport",
-    /******** Window ********/
-    "window.commandCenter",
-    "workbench.colorTheme",
-    "customWindowZoom.zoomLevelChangeValue",
-    "workbench.sideBar.location",
-    "workbench.startupEditor",
-    "workbench.editor.untitled.hint",
-    "window.newWindowDimensions",
-    "editor.acceptSuggestionOnCommitCharacter",
-    /******** Formatting ********/
-    "formattingToggle.affects",
-    "[json].editor.defaultFormatter",
-    "[markdown].editor.formatOnType",
-    "[makefile].editor.insertSpaces",
-    "[makefile].editor.detectIndentation",
-    "[html].editor.defaultFormatter",
-    "[javascript].editor.defaultFormatter",
-    "[javascript].editor.codeActionsOnSave",
-    "[typescript].editor.defaultFormatter",
-    "[typescript].editor.codeActionsOnSave",
-    "[python].editor.codeActionsOnSave",
-    /******** JavaScript ********/
-    "source.organizeImports",
-    "editor.defaultFormatter",
-    "javascript.validate.enable",
-    /******** TypeScript ********/
-    "javascript.updateImportsOnFileMove.enabled",
-    "biome.requireConfigFile",
-    "typescript.updateImportsOnFileMove.enabled",
-    "typescript.inlayHints.enumMemberValues.enabled",
-    "typescript.inlayHints.functionLikeReturnTypes.enabled",
-    "typescript.inlayHints.propertyDeclarationTypes.enabled",
-    "typescript.inlayHints.parameterTypes.enabled",
-    "typescript.inlayHints.variableTypes.enabled",
-    /******** Go ********/
-    "go.useLanguageServer",
-    "go.toolsGopath",
-    "go.toolsManagement.autoUpdate",
-    /******** Remote SSH ********/
-    "remote.SSH.useLocalServer",
-    "remote.SSH.remotePlatform",
-    "remote.SSH.serverInstallPath",
-    /******** Codespaces ********/
-    "github.codespaces.createCodespaceInNewWindow",
-    "githubPullRequests.ignoredPullRequestBranches",
-    /******** Live Share ********/
-    "liveshare.showInStatusBar",
-    /******** Terminal ********/
-    "terminal.integrated.tabs.enabled",
-    "terminal.integrated.tabs.location",
-    "terminal.integrated.macOptionIsMeta",
-    "terminal.integrated.stickyScroll.enabled",
-    // "terminal.integrated.defaultProfile.linux",
-    // "terminal.integrated.defaultProfile.osx",
-    "terminal.integrated.defaultProfile.windows",
-    "terminal.integrated.profiles.osx",
-    /******** GitLens ********/
-    "gitlens.rebaseEditor.ordering",
-    "githubPullRequests.pullBranch",
-    "workbench.editorAssociations",
-    "workbench.editorAssociations.git-rebase-todo",
-    /******** Python ********/
-    "python.analysis.autoImportCompletions",
-    "python.analysis.autoImportUserSymbols",
-    "python.analysis.indexing",
-    /******** Rust ********/
-    "terminal.integrated.enableMultiLinePasteWarning",
-    "files.associations",
-    "rust-analyzer.check.command",
-    /******** Zig ********/
-    "zig.zls.path",
-    /******** C++ ********/
-    "[cpp].editor.defaultFormatter",
-    "C_Cpp.autoAddFileAssociations",
-    /******** Markdown ********/
-    "markdown.editor.pasteUrlAsFormattedLink.enabled",
-    /******* Toggle Case *********/
-    "toggleCase.case.camelCase",
-    "toggleCase.case.capitalCase",
-    "toggleCase.case.dotCase",
-    "toggleCase.case.headerCase",
-    "toggleCase.case.kebabCase",
-    "toggleCase.case.pascalCase",
-    "toggleCase.case.pathCase",
-    "toggleCase.case.sentenceCase",
-    "toggleCase.case.titleCase",
-    "toggleCase.case.snakeCase",
-    "toggleCase.case.upperCase",
-    "toggleCase.notification.notifyOnChange",
-    /******* Apply to all profiles *********/
-    "workbench.settings.applyToAllProfiles"
-  ],
-  "window.openFilesInNewWindow": "default",
-  "scm.experimental.showHistoryGraph": true,
-  "terminal.integrated.scrollback": 100000,
-  "[css]": {
-    "editor.defaultFormatter": "biomejs.biome"
-  },
-  "scm.graph.badges": "all"
-  // "editor.fontFamily": "\"Comic Mono\", Menlo, Monaco, 'Courier New', monospace"
-  /****************/
+	/******** Dynamic ********/
+	"editor.formatOnSave": true,
+	"window.zoomLevel": 1.75,
+	/******** Main VSCode settings ********/
+	"editor.formatOnPaste": false,
+	"editor.tabSize": 2,
+	"editor.renderWhitespace": "boundary",
+	"editor.formatOnType": false,
+	"editor.columnSelection": false,
+	"editor.inlineSuggest.enabled": true,
+	"editor.suggest.showStatusBar": true,
+	"editor.suggestSelection": "first",
+	"vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+	"files.insertFinalNewline": true,
+	"explorer.fileNesting.enabled": true,
+	"explorer.confirmDragAndDrop": false,
+	"editor.guides.bracketPairs": true,
+	"editor.stickyScroll.enabled": true,
+	"editor.acceptSuggestionOnCommitCharacter": false,
+	"diffEditor.hideUnchangedRegions.enabled": true,
+	"editor.accessibilitySupport": "off", // Setting regularly added by VS Code after asking if I'm using a screen reader.
+	"window.title": "${rootName}${separator}${activeEditorShort}${separator}${profileName}${separator}branch: ${activeRepositoryBranchName}",
+	/******** Window ********/
+	"window.commandCenter": false,
+	"customWindowZoom.zoomLevelChangeValue": 0.25,
+	"workbench.sideBar.location": "left",
+	"workbench.startupEditor": "newUntitledFile",
+	"workbench.editor.empty.hint": "hidden",
+	"window.newWindowDimensions": "inherit",
+	/******** Formatting ********/
+	// https://marketplace.visualstudio.com/items?itemName=tombonnike.vscode-status-bar-format-toggle
+	"formattingToggle.affects": ["editor.formatOnSave"],
+	"[json]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"[javascript][typescript]": {
+		"editor.defaultFormatter": "biomejs.biome",
+		"editor.codeActionsOnSave": {
+			"source.organizeImports.biome": "explicit"
+		}
+	},
+	"[markdown]": {
+		"editor.formatOnType": false
+	},
+	"[makefile]": {
+		"editor.insertSpaces": false,
+		"editor.detectIndentation": false
+	},
+	"[html]": {
+		"editor.defaultFormatter": "vscode.html-language-features"
+	},
+	"[python]": {
+		"editor.codeActionsOnSave": {
+			"source.organizeImports": "explicit"
+		},
+		"editor.defaultFormatter": "charliermarsh.ruff"
+	},
+	/******** JavaScript ********/
+	"javascript.validate.enable": false,
+	"javascript.updateImportsOnFileMove.enabled": "always",
+	"biome.requireConfigFile": true,
+	/******** TypeScript ********/
+	"typescript.updateImportsOnFileMove.enabled": "always",
+	"typescript.inlayHints.enumMemberValues.enabled": true,
+	"typescript.inlayHints.functionLikeReturnTypes.enabled": true,
+	"typescript.inlayHints.propertyDeclarationTypes.enabled": true,
+	"typescript.inlayHints.parameterTypes.enabled": true,
+	"typescript.inlayHints.variableTypes.enabled": true,
+	/******** Go ********/
+	"go.useLanguageServer": true,
+	"go.toolsGopath": "/Users/lgarron/Code/gopath",
+	"go.toolsManagement.autoUpdate": true,
+	/******** Remote SSH ********/
+	"remote.SSH.useLocalServer": false,
+	"remote.SSH.remotePlatform": {
+		"Pythagoras.tlb": "macOS",
+		"Pythagoras-ts.wyvern-climb.ts.net": "macOS"
+	},
+	"remote.SSH.serverInstallPath": {
+		"Pythagoras.tlb": "/Users/lgarron/.cache/vscode-server",
+		"Pythagoras-ts.wyvern-climb.ts.net": "/Users/lgarron/.cache/vscode-server"
+	},
+	/******** Codespaces ********/
+	"github.codespaces.createCodespaceInNewWindow": true,
+	// The following is not necessarily specific to codespaces, but prevents a
+	// confusing and useless warning in codespaces when working in a codebase that
+	// ever has PRs from `main` to another branch (e.g. `production` or
+	// `release`).
+	"githubPullRequests.ignoredPullRequestBranches": ["main"],
+	/******** Live Share ********/
+	"liveshare.showInStatusBar": "whileCollaborating",
+	/******** Terminal ********/
+	"terminal.integrated.tabs.enabled": true,
+	"terminal.integrated.tabs.location": "right",
+	"terminal.integrated.macOptionIsMeta": true,
+	"terminal.integrated.stickyScroll.enabled": true,
+	"terminal.integrated.defaultProfile.osx": "apple_fish",
+	"terminal.integrated.defaultProfile.linux": "fish",
+	"terminal.integrated.defaultProfile.windows": "Ubuntu (WSL)",
+	"terminal.integrated.profiles.osx": {
+		"apple_fish": {
+			"path": "/opt/homebrew/bin/fish",
+			"icon": "heart-filled",
+			"overrideName": true,
+			"args": ["-l"]
+		},
+		"apple_fish_no_history": {
+			"path": "/opt/homebrew/bin/fish",
+			"icon": "heart",
+			"overrideName": true,
+			"args": ["-l", "--private"]
+		}
+	},
+	/******** GitLens ********/
+	"gitlens.rebaseEditor.ordering": "asc",
+	"githubPullRequests.pullBranch": "never",
+	"workbench.editorAssociations": {
+		"git-rebase-todo": "default"
+	},
+	/******** Python ********/
+	"python.analysis.autoImportCompletions": true,
+	"python.analysis.autoImportUserSymbols": true,
+	"python.analysis.indexing": true,
+	"terminal.integrated.enableMultiLinePasteWarning": "never",
+	// This works around a bug with the Django template extension where it tries
+	// to take over all HTML files in all repositories.
+	"files.associations": {
+		"*.html": "html"
+	},
+	/******** Rust ********/
+	"rust-analyzer.check.command": "clippy",
+	"rust-analyzer.showUnlinkedFileNotification": false,
+	/******** Zig ********/
+	"zig.zls.path": "/Users/lgarron/Library/Application Support/Code/User/globalStorage/ziglang.vscode-zig/zls_install/zls",
+	/******** Markdown ********/
+	"markdown.editor.pasteUrlAsFormattedLink.enabled": "smart",
+	/******** JSONC ********/
+	"[jsonc]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	/******** Toggle Case ********/
+	"toggleCase.case.capitalCase": false,
+	"toggleCase.case.dotCase": false,
+	"toggleCase.case.headerCase": false,
+	"toggleCase.case.kebabCase": false,
+	"toggleCase.case.lowerCase": false,
+	"toggleCase.case.pathCase": false,
+	"toggleCase.case.sentenceCase": false,
+	"toggleCase.case.titleCase": false,
+	"toggleCase.case.upperCase": false,
+	"toggleCase.notification.notifyOnChange": false,
+	/******* Apply to all profiles *********/
+	"workbench.settings.applyToAllProfiles": [
+		/******** Dynamic ********/
+		// "editor.formatOnSave",
+		// "editor.formatOnPaste",
+		// "window.zoomLevel",
+		/******** Main VSCode settings ********/
+		"editor.tabSize",
+		"editor.renderWhitespace",
+		"editor.formatOnType",
+		"editor.columnSelection",
+		"editor.inlineSuggest.enabled",
+		"editor.suggest.showStatusBar",
+		"editor.suggestSelection",
+		"vsintellicode.modify.editor.suggestSelection",
+		"files.insertFinalNewline",
+		"explorer.fileNesting.enabled",
+		"explorer.confirmDragAndDrop",
+		"editor.guides.bracketPairs",
+		"editor.stickyScroll.enabled",
+		"diffEditor.hideUnchangedRegions.enabled",
+		"editor.accessibilitySupport",
+		/******** Window ********/
+		"window.commandCenter",
+		"workbench.colorTheme",
+		"customWindowZoom.zoomLevelChangeValue",
+		"workbench.sideBar.location",
+		"workbench.startupEditor",
+		"workbench.editor.untitled.hint",
+		"window.newWindowDimensions",
+		"editor.acceptSuggestionOnCommitCharacter",
+		/******** Formatting ********/
+		"formattingToggle.affects",
+		"[json].editor.defaultFormatter",
+		"[markdown].editor.formatOnType",
+		"[makefile].editor.insertSpaces",
+		"[makefile].editor.detectIndentation",
+		"[html].editor.defaultFormatter",
+		"[javascript].editor.defaultFormatter",
+		"[javascript].editor.codeActionsOnSave",
+		"[typescript].editor.defaultFormatter",
+		"[typescript].editor.codeActionsOnSave",
+		"[python].editor.codeActionsOnSave",
+		/******** JavaScript ********/
+		"source.organizeImports",
+		"editor.defaultFormatter",
+		"javascript.validate.enable",
+		/******** TypeScript ********/
+		"javascript.updateImportsOnFileMove.enabled",
+		"biome.requireConfigFile",
+		"typescript.updateImportsOnFileMove.enabled",
+		"typescript.inlayHints.enumMemberValues.enabled",
+		"typescript.inlayHints.functionLikeReturnTypes.enabled",
+		"typescript.inlayHints.propertyDeclarationTypes.enabled",
+		"typescript.inlayHints.parameterTypes.enabled",
+		"typescript.inlayHints.variableTypes.enabled",
+		/******** Go ********/
+		"go.useLanguageServer",
+		"go.toolsGopath",
+		"go.toolsManagement.autoUpdate",
+		/******** Remote SSH ********/
+		"remote.SSH.useLocalServer",
+		"remote.SSH.remotePlatform",
+		"remote.SSH.serverInstallPath",
+		/******** Codespaces ********/
+		"github.codespaces.createCodespaceInNewWindow",
+		"githubPullRequests.ignoredPullRequestBranches",
+		/******** Live Share ********/
+		"liveshare.showInStatusBar",
+		/******** Terminal ********/
+		"terminal.integrated.tabs.enabled",
+		"terminal.integrated.tabs.location",
+		"terminal.integrated.macOptionIsMeta",
+		"terminal.integrated.stickyScroll.enabled",
+		// "terminal.integrated.defaultProfile.linux",
+		// "terminal.integrated.defaultProfile.osx",
+		"terminal.integrated.defaultProfile.windows",
+		"terminal.integrated.profiles.osx",
+		/******** GitLens ********/
+		"gitlens.rebaseEditor.ordering",
+		"githubPullRequests.pullBranch",
+		"workbench.editorAssociations",
+		"workbench.editorAssociations.git-rebase-todo",
+		/******** Python ********/
+		"python.analysis.autoImportCompletions",
+		"python.analysis.autoImportUserSymbols",
+		"python.analysis.indexing",
+		/******** Rust ********/
+		"terminal.integrated.enableMultiLinePasteWarning",
+		"files.associations",
+		"rust-analyzer.check.command",
+		/******** Zig ********/
+		"zig.zls.path",
+		/******** C++ ********/
+		"[cpp].editor.defaultFormatter",
+		"C_Cpp.autoAddFileAssociations",
+		/******** Markdown ********/
+		"markdown.editor.pasteUrlAsFormattedLink.enabled",
+		/******* Toggle Case *********/
+		"toggleCase.case.camelCase",
+		"toggleCase.case.capitalCase",
+		"toggleCase.case.dotCase",
+		"toggleCase.case.headerCase",
+		"toggleCase.case.kebabCase",
+		"toggleCase.case.pascalCase",
+		"toggleCase.case.pathCase",
+		"toggleCase.case.sentenceCase",
+		"toggleCase.case.titleCase",
+		"toggleCase.case.snakeCase",
+		"toggleCase.case.upperCase",
+		"toggleCase.notification.notifyOnChange",
+		/******* Apply to all profiles *********/
+		"workbench.settings.applyToAllProfiles"
+	],
+	"window.openFilesInNewWindow": "default",
+	"scm.experimental.showHistoryGraph": true,
+	"terminal.integrated.scrollback": 100000,
+	"[css]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	"scm.graph.badges": "all",
+	"editor.fontFamily": "\"Comic Mono\", Menlo, Monaco, monospace"
+	/****************/
 }

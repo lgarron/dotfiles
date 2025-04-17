@@ -13,7 +13,7 @@ export PATH="$PATH:${HOME}/.config/binaries/linux-x64"
 
 make setup-dev-dependencies
 
-if [ -n "$CODESPACES" ]
+if [ -n "${CODESPACES:-}" ]
 then
   rm -rf \
     ~/.config/fish/config.fish \

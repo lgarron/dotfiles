@@ -4,12 +4,12 @@
             "complex_modifications": {
                 "rules": [
                     {
-                        "description": "Whisky: Remap ⌘Q to Alt-F4",
+                        "description": "Windows games: Remap ⌘Q to Alt-F4",
                         "manipulators": [
                             {
                                 "conditions": [
                                     {
-                                        "file_paths": ["/wine64-preloader$"],
+                                        "file_paths": ["/wine64-preloader$", "/Trackmania\\.exe$"],
                                         "type": "frontmost_application_if"
                                     }
                                 ],
@@ -31,12 +31,12 @@
                         ]
                     },
                     {
-                        "description": "Whisky: Remap F1 to End",
+                        "description": "Windows games: Remap F1 to End",
                         "manipulators": [
                             {
                                 "conditions": [
                                     {
-                                        "file_paths": ["/wine64-preloader$"],
+                                        "file_paths": ["/wine64-preloader$", "/Trackmania\\.exe$"],
                                         "type": "frontmost_application_if"
                                     }
                                 ],

@@ -1131,6 +1131,33 @@
 			<key>source</key>
 			<string>QSSpotlightObjectSource</string>
 		</dict>
+		<dict>
+			<key>ID</key>
+			<string>E54D3A11-1A25-48CD-AB75-E79B928A4E5D</string>
+			<key>children</key>
+			<array/>
+			<key>enabled</key>
+			<true/>
+			<key>modificationDate</key>
+			<real>766747660.64736104</real>
+			<key>name</key>
+			<string>CrossOver</string>
+			<key>settings</key>
+			<dict>
+				<key>folderDepth</key>
+				<integer>1</integer>
+				<key>folderTypes</key>
+				<array/>
+				<key>parser</key>
+				<string>QSDirectoryParser</string>
+				<key>path</key>
+				<string>~/Applications/CrossOver</string>
+				<key>skipItem</key>
+				<true/>
+			</dict>
+			<key>source</key>
+			<string>QSFileSystemObjectSource</string>
+		</dict>
 	</array>
 	<key>enabledPresets</key>
 	<dict>
@@ -1203,6 +1230,7 @@
 	</dict>
 	<key>omittedItems</key>
 	<array>
+		<string>/Users/lgarron/Applications/CrossOver/Ubisoft</string>
 		<string>/Users/lgarron/Library/Mobile Documents/iCloud~md~obsidian/Documents</string>
 	</array>
 </dict>

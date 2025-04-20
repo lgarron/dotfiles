@@ -158,8 +158,8 @@ test-completions:
 
 .PHONY: lint
 lint:
-	npx @biomejs/biome check scripts
+	npx @biomejs/biome check
 
 .PHONY: format
 format:
-	npx @biomejs/biome check --write scripts
+	npx @biomejs/biome check --write

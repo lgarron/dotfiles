@@ -11,7 +11,7 @@ test -d "${HOME}/.config/binaries" || git clone --depth=1 https://github.com/lga
 chmod +x "${HOME}/.config/binaries/linux-x64/"*
 export PATH="$PATH:${HOME}/.config/binaries/linux-x64"
 
-make setup-dev-dependencies
+make setup-dev
 
 if [ -n "${CODESPACES:-}" ]
 then

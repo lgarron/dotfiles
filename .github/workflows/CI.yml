@@ -11,7 +11,7 @@ jobs:
       - uses: Swatinem/rust-cache@v2
       - uses: oven-sh/setup-bun@v1
       - uses: fish-actions/install-fish@v1
-      - run: make setup-dev-dependencies
+      - run: make setup-dev
       - run: make test-completions
       - run: make lint
 

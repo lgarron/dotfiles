@@ -16,7 +16,6 @@ import {
   binary,
   string as cmdString,
   command,
-  flag,
   positional,
   run,
 } from "cmd-ts-too";

@@ -53,8 +53,18 @@ interface FFprobeStream {
   color_primaries: string;
 }
 
-const { streams }: { streams: FFprobeStream[] } =
-  await $`ffprobe -v quiet -output_format json -show_format -show_streams ${inputFile}`.json();
+const ffprobeCommand = new PrintableShellCommand("ffprobe", [
+  ["-v", "quiet"],
+  ["-output_format", "json"],
+  "-show_format",
+  "-show_streams",
+  inputFile,
+]);
+console.log("Analyzing input using command:");
+ffprobeCommand.print();
+const { streams }: { streams: FFprobeStream[] } = await new Response(
+  Bun.spawn(ffprobeCommand.forBun()).stdout,
+).json();
 
 const videoStream: FFprobeStream = (() => {
   for (const stream of streams) {
@@ -69,7 +79,7 @@ const videoStream: FFprobeStream = (() => {
 // const codec_fingerprint = `${videoStream.codec_name}/${videoStream.pix_fmt}/${videoStream.color_space}/${videoStream.color_primaries}/${videoStream.color_transfer}`;
 const simplifiedCodecFingerprint = `${videoStream.pix_fmt}/${videoStream.color_transfer}`;
 
-console.log(simplifiedCodecFingerprint);
+console.log(`Codev fingerprint: ${simplifiedCodecFingerprint}`);
 
 const forcedBitDepth: 8 | 10 | null = (() => {
   const { "force-bit-depth": forceBitDepth } = options;

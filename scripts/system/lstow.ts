@@ -79,7 +79,7 @@ const app = command({
           assert.equal(sourceIsFile, destinationRealpathIsFile);
           console.log(`🆗${foldingEmoji} ${sourcePath}${foldingDisplayInfo}
 ↪ ${destinationPath}`);
-          if (!sourceIsFile) {
+          if (!(sourceIsFile || fold)) {
             await traverse(relativePath);
           }
         } else {

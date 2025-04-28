@@ -157,8 +157,15 @@ test-completions:
 	./scripts/git/rmtag.fish --completions fish
 
 .PHONY: lint
-lint:
+lint: lint-ts-biome lint-ts-tsc
+
+.PHONY: lint-ts-biome
+lint-ts-biome:
 	npx @biomejs/biome check
+
+.PHONY: lint-ts-tsc
+lint-ts-tsc:
+	bun x tsc --project .
 
 .PHONY: format
 format:

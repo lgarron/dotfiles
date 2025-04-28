@@ -1,9 +1,10 @@
 {
   "compilerOptions": {
-    "lib": ["ESNext", "DOM"],
-    "target": "ESNext",
-    "module": "NodeNext",
-    "moduleResolution": "NodeNext",
+    "lib": ["ESNext"],
+    "target": "es2022",
+    "module": "es2022",
+    "moduleResolution": "bundler",
+    "noEmit": true,
     "types": ["@types/bun"]
   },
   "include": ["./scripts"]

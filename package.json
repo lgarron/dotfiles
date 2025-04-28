@@ -2,7 +2,8 @@
   "name": "dotfiles",
   "devDependencies": {
     "@biomejs/biome": "^1.9.4",
-    "@types/bun": "^1.0.6"
+    "@types/bun": "^1.0.6",
+    "typescript": "^5.8.3"
   },
   "type": "module",
   "dependencies": {

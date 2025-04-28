@@ -11,12 +11,16 @@ import {
   symlink,
 } from "node:fs/promises";
 import { basename, join } from "node:path";
+import { exit } from "node:process";
 import { file } from "bun";
 import {
   binary,
   string as cmdString,
   command,
   flag,
+  oneOf,
+  option,
+  optional,
   positional,
   run,
 } from "cmd-ts-too";
@@ -32,6 +36,14 @@ const app = command({
       description: "Dry run",
       long: "dry-run",
     }),
+    mkdirDestinationIfMissing: option({
+      description:
+        "Create a folder hierarchy to the target directory it it doesn't exist.",
+      long: "mkdir-destination-root-if-missing",
+      type: optional(oneOf(["true", "false"])),
+      defaultValue: () => "true",
+      defaultValueIsSerializable: true,
+    }),
     sourceDir: positional({
       type: cmdString,
       displayName: "Source dir",
@@ -41,7 +53,38 @@ const app = command({
       displayName: "Destination dir",
     }),
   },
-  handler: async ({ sourceDir, destinationDir, dryRun }) => {
+  handler: async ({
+    sourceDir,
+    destinationDir,
+    dryRun,
+    mkdirDestinationIfMissing,
+  }) => {
+    if (!(await exists(sourceDir))) {
+      throw new Error(`Source dir does not exist: ${sourceDir}`);
+    }
+    if (!(await lstat(sourceDir)).isDirectory()) {
+      throw new Error(`Source path is not a directory: ${sourceDir}`);
+    }
+    if (!(await exists(destinationDir))) {
+      if (mkdirDestinationIfMissing === "true") {
+        console.error(
+          `Destination directory does not exist. Creating it at: ${destinationDir}`,
+        );
+        await mkdir(destinationDir, { recursive: true });
+      } else {
+        console.error(
+          "Destination directory does not exist and `--mkdir-destination-root-if-missing` is set to `false`. Exiting without performing any file system changes.",
+        );
+        exit(1);
+      }
+    } else {
+      if (!(await lstat(destinationDir)).isDirectory()) {
+        throw new Error(
+          `Destination path exists but is not a directory: ${sourceDir}`,
+        );
+      }
+    }
+
     async function traverse(relativePathPrefix: string) {
       const dirPath = join(sourceDir, relativePathPrefix);
       for (const relativePathSuffix of await readdir(dirPath)) {

@@ -7,11 +7,13 @@ import {
   lstat,
   mkdir,
   readdir,
+  readlink,
   realpath,
   symlink,
 } from "node:fs/promises";
-import { basename, join } from "node:path";
+import { basename, join, resolve } from "node:path";
 import { exit } from "node:process";
+import { fileURLToPath } from "node:url";
 import { file } from "bun";
 import {
   binary,
@@ -121,6 +123,13 @@ const app = command({
           if (!sourceIsSymlink && destinationIsSymlink) {
             assert(sourceIsFile || fold);
           }
+          if (destinationIsSymlink) {
+            // Figure out how to do a better comparison (with exactly one level of symlink dereferencing on the destination side).
+            assert.equal(
+              await realpath(destinationPath),
+              await realpath(sourcePath),
+            );
+          }
           const destinationRealpathIsFile = !(
             await lstat(await realpath(destinationPath))
           ).isDirectory();
@@ -134,7 +143,6 @@ const app = command({
           if (sourceIsFile || fold) {
             console.log(`🆙${foldingEmoji} ${sourcePath}${foldingDisplayInfo}
 ↪ ${destinationPath}`);
-            // TODO: check if the symlink is to the correct location
             if (sourceIsSymlink) {
               if (!dryRun) {
                 await cp(sourcePath, destinationPath);

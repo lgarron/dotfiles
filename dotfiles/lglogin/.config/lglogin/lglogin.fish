@@ -92,11 +92,6 @@
     # See: https://github.com/lgarron/first-world/issues/239
     rm_and_log "$HOME/Library/Application Support/Google/Chrome/OptGuideOnDeviceModel/"
 
-# Avoid Time Machine slowdown
-
-    # Commented out to avoid a Touch ID prompt.
-    # sudo sysctl debug.lowpri_throttle_enabled=0
-
 # niceplz
 
     /opt/homebrew/bin/niceplz-sudo

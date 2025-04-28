@@ -16,6 +16,7 @@ import {
   binary,
   string as cmdString,
   command,
+  flag,
   positional,
   run,
 } from "cmd-ts-too";
@@ -27,6 +28,10 @@ interface DirConfig {
 const app = command({
   name: "jstow",
   args: {
+    dryRun: flag({
+      description: "Dry run",
+      long: "dry-run",
+    }),
     sourceDir: positional({
       type: cmdString,
       displayName: "Source dir",
@@ -36,7 +41,7 @@ const app = command({
       displayName: "Destination dir",
     }),
   },
-  handler: async ({ sourceDir, destinationDir }) => {
+  handler: async ({ sourceDir, destinationDir, dryRun }) => {
     async function traverse(relativePathPrefix: string) {
       const dirPath = join(sourceDir, relativePathPrefix);
       for (const relativePathSuffix of await readdir(dirPath)) {
@@ -86,13 +91,20 @@ const app = command({
           if (sourceIsFile || fold) {
             console.log(`🆙${foldingEmoji} ${sourcePath}${foldingDisplayInfo}
 ↪ ${destinationPath}`);
+            // TODO: check if the symlink is to the correct location
             if (sourceIsSymlink) {
-              await cp(sourcePath, destinationPath);
+              if (!dryRun) {
+                await cp(sourcePath, destinationPath);
+              }
             } else {
-              await symlink(await realpath(sourcePath), destinationPath);
+              if (!dryRun) {
+                await symlink(await realpath(sourcePath), destinationPath);
+              }
             }
           } else {
-            await mkdir(destinationPath, { recursive: true });
+            if (!dryRun) {
+              await mkdir(destinationPath, { recursive: true });
+            }
             traverse(relativePath);
           }
         }

@@ -125,7 +125,8 @@
 	"gitlens.rebaseEditor.ordering": "asc",
 	"githubPullRequests.pullBranch": "never",
 	"workbench.editorAssociations": {
-		"git-rebase-todo": "default"
+		"git-rebase-todo": "default",
+		"*.svg": "default"
 	},
 	/******** Python ********/
 	"python.analysis.autoImportCompletions": true,

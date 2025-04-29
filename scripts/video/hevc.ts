@@ -62,9 +62,9 @@ const ffprobeCommand = new PrintableShellCommand("ffprobe", [
 ]);
 console.log("Analyzing input using command:");
 ffprobeCommand.print();
-const { streams }: { streams: FFprobeStream[] } = await new Response(
+const { streams } = (await new Response(
   Bun.spawn(ffprobeCommand.forBun()).stdout,
-).json();
+).json()) as { streams: FFprobeStream[] };
 
 const videoStream: FFprobeStream = (() => {
   for (const stream of streams) {

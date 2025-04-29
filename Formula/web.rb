@@ -6,8 +6,8 @@ class Web < Formula
   head "https://github.com/lgarron/dotfiles.git", :branch => "main"
 
   def install
-    bin.install "scripts/web/chrometab.bash" => "chrometab"
-    bin.install "scripts/web/safaritab.bash" => "safaritab"
-    bin.install "scripts/web/weblocify.bash" => "weblocify"
+    bin.install "scripts/web/chrometab.fish" => "chrometab"
+    bin.install "scripts/web/safaritab.fish" => "safaritab"
+    bin.install "scripts/web/weblocify.ts" => "weblocify"
   end
 end

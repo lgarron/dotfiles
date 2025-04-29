@@ -2,7 +2,7 @@
 
 import { exit } from "node:process";
 import { parseArgs } from "node:util";
-import { $, file, sleep, spawn } from "bun";
+import { file, sleep, spawn } from "bun";
 import { PrintableShellCommand } from "printable-shell-command";
 
 const HANDBRAKE_8_BIT_DEPTH_PRESET = "HEVC 8-bit (qv65)";

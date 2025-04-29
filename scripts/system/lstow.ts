@@ -7,13 +7,11 @@ import {
   lstat,
   mkdir,
   readdir,
-  readlink,
   realpath,
   symlink,
 } from "node:fs/promises";
-import { basename, join, resolve } from "node:path";
+import { basename, join } from "node:path";
 import { exit } from "node:process";
-import { fileURLToPath } from "node:url";
 import { file } from "bun";
 import {
   binary,

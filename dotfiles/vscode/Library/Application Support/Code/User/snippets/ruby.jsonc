@@ -1,0 +1,9 @@
+{
+	"depends_on \"\"": {
+		"prefix": "depends_on",
+		"body": [
+			"depends_on \"${0:oven-sh/bun/bun}\""
+		],
+		"description": "Depends on˘ (Homebrew)"
+	}
+}

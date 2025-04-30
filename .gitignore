@@ -4,3 +4,6 @@
 
 # Prevent `.jj` objects from being indexed and searched in VS Code
 /.jj
+
+# Prevent temporary files from being accidentally indexed.
+/.temp

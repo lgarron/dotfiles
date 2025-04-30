@@ -8,6 +8,8 @@ class Xdig < Formula
   depends_on "oven-sh/bun/bun"
 
   def install
-    bin.install "scripts/system/xdig.ts" => "xdig"
+    system "bun", "install", "--frozen-lockfile"
+    system "bun", "build", "--target", "bun", "--outfile", "./.temp/bin/xdig", "scripts/system/xdig.ts"
+    bin.install "./.temp/bin/xdig" => "xdig"
   end
 end

@@ -91,14 +91,24 @@ function fish_prompt --description 'Write out the prompt'
         $PREFIX \
         (set_color $_FISH_PROMPT_LCARS_BOTTOM_COLOR)
 
-    set FISH_VCS_PROMPT (fish_vcs_prompt "%s")
-    if not string match -e "$FISH_VCS_PROMPT" "" > /dev/null
-        set -l PREFIX (set_color $_FISH_PROMPT_LCARS_BOTTOM_COLOR)"├─ "(set_color normal)$FISH_VCS_PROMPT" "
+    set FISH_JJ_PROMPT (fish_jj_prompt "%s")
+    if not string match -e "$FISH_JJ_PROMPT" "" > /dev/null
+        set -l PREFIX (set_color $_FISH_PROMPT_LCARS_BOTTOM_COLOR)"├─ (jj) "(set_color normal)$FISH_JJ_PROMPT" "
         echo -n $PREFIX
         if [ (tput lines) -gt $_FISH_PROMPT_COMPACT_MODE_MAX_ROWS ]
             echo ""
         end
     end
+
+    set FISH_GIT_PROMPT (fish_git_prompt "%s")
+    if not string match -e "$FISH_GIT_PROMPT" "" > /dev/null
+        set -l PREFIX (set_color $_FISH_PROMPT_LCARS_BOTTOM_COLOR)"├─ (git) "(set_color normal)$FISH_GIT_PROMPT" "
+        echo -n $PREFIX
+        if [ (tput lines) -gt $_FISH_PROMPT_COMPACT_MODE_MAX_ROWS ]
+            echo ""
+        end
+    end
+
     set_color $_FISH_PROMPT_LCARS_BOTTOM_COLOR
     if [ (tput lines) -gt $_FISH_PROMPT_COMPACT_MODE_MAX_ROWS ]
         echo -n "├─ "

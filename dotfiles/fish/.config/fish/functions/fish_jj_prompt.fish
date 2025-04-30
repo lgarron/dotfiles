@@ -35,11 +35,5 @@ function fish_jj_prompt
             '
     )"
     or return 1
-    if test -n "$info"
-        set -l PLUS_GIT ""
-        if git rev-parse --show-prefix &> /dev/null
-            set PLUS_GIT "+git"
-        end
-        printf "(jj%s) %s" $PLUS_GIT $info
-    end
+    printf "%s" $info
 end

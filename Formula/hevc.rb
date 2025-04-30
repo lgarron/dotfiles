@@ -10,6 +10,8 @@ class Hevc < Formula
   # depends_on cask: "handbrake"
 
   def install
-    bin.install "scripts/video/hevc.ts" => "hevc"
+    system "bun", "install", "--frozen-lockfile"
+    system "bun", "build", "--target", "bun", "--outfile", "./.temp/bin/hevc", "scripts/video/hevc.ts"
+    bin.install "./.temp/bin/hevc" => "hevc"
   end
 end

@@ -8,6 +8,8 @@ class TimelapseBlur < Formula
   depends_on "oven-sh/bun/bun"
 
   def install
-    bin.install "scripts/video/timelapse-blur.ts" => "timelapse-blur"
+    system "bun", "install", "--frozen-lockfile"
+    system "bun", "build", "--target", "bun", "--outfile", "./.temp/bin/timelapse-blur", "scripts/video/timelapse-blur.ts"
+    bin.install "./.temp/bin/timelapse-blur" => "timelapse-blur"
   end
 end

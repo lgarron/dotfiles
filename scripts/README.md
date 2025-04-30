@@ -218,10 +218,6 @@ Run `kill -9` for any processes using a given port. Example: `portkill 8000`
 
 Set the remote screen sharing resolution for a given computer automatically. Hardcoded to a 5K monitor and the 16-inch MacBook Pro.
 
-### `symlink-replace`
-
-Replace a symlink with its target.
-
 ### `tailscale-exit-node`
 
 Print the current Tailscale exit node if there is one, else exit with an error.

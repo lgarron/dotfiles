@@ -570,6 +570,36 @@
 		</dict>
 		<dict>
 			<key>ID</key>
+			<string>FD961421-062B-492B-9F79-C0E4F2144BC5</string>
+			<key>applicationScope</key>
+			<array>
+				<string>com.blacktree.Quicksilver</string>
+				<string>com.apple.ScreenSharing</string>
+			</array>
+			<key>applicationScopeType</key>
+			<integer>-1</integer>
+			<key>character</key>
+			<string>|</string>
+			<key>command</key>
+			<dict>
+				<key>actionID</key>
+				<string>[Action]:/Users/lgarron/Library/Application Support/Quicksilver/Actions/Open folder in editor.scpt</string>
+				<key>directID</key>
+				<string>QSGlobalSelectionProxy</string>
+			</dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyCode</key>
+			<integer>42</integer>
+			<key>modifiers</key>
+			<integer>1442059</integer>
+			<key>onPress</key>
+			<true/>
+			<key>type</key>
+			<string>QSHotKeyTrigger</string>
+		</dict>
+		<dict>
+			<key>ID</key>
 			<string>79F70D9D-4A34-4CEB-A607-C47D64D5CFA4</string>
 			<key>applicationScope</key>
 			<array>

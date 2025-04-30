@@ -1,0 +1,5 @@
+{
+  "defaultPrefixArgs": [
+    "+noall", "+answer", "+stats"
+  ]
+}

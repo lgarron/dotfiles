@@ -35,6 +35,12 @@
     "body": "(() => { ${0:$TM_SELECTED_TEXT} })()",
     "description": "Immediately invoked function expression (IIFE)"
   },
+  "Awaited async IIFE": {
+    "scope": "javascript,typescript",
+    "prefix": "aaiife",
+    "body": "await (async () => { ${0:$TM_SELECTED_TEXT} })()",
+    "description": "Awaited async immediately invoked function expression (IIFE)"
+  },
   "Async IIFE": {
     "scope": "javascript,typescript",
     "prefix": "aiife",

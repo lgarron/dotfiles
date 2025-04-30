@@ -9,6 +9,7 @@
   "dependencies": {
     "cmd-ts-too": "^0.14.1",
     "comment-json": "^4.2.5",
-    "printable-shell-command": "^0.1.1"
+    "printable-shell-command": "^0.1.1",
+    "xdg-basedir": "^5.1.0"
   }
 }

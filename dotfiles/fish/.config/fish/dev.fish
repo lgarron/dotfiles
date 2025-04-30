@@ -210,6 +210,7 @@
     abbr -a "sm" "script/manage"
     abbr -a "disk-speed-test" '"/Applications/Blackmagic Disk Speed Test.app/Contents/MacOS/DiskSpeedTest" --cmd --dir'
     abbr -a "oa" 'openscad-auto'
+    abbr -a "unixtime" 'date "+%s"'
 
     abbr -a serve "open http://localhost:8000; caddy file-server --listen :8000 --browse --root ."
 

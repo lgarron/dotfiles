@@ -269,11 +269,3 @@ Get the current open Safari tab.
 ### `weblocify`
 
 Create a `.webloc` file for the given URL. Example (using `chrometab` in `fish`): `weblocify (chrometab) bookmark-file.webloc`
-
-### `ytflac`
-
-Use `youtube-dl` to get a `.flac` file for a URL.
-
-### `ytmp3`
-
-Use `youtube-dl` to get a `.mp3` file for a URL.

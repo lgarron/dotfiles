@@ -4,7 +4,7 @@ import { binary, command, positional, run } from "cmd-ts-too";
 import { HttpUrl } from "cmd-ts-too/batteries/url";
 
 const app = command({
-  name: "tagpush",
+  name: "weblocify",
   args: {
     url: positional({
       type: HttpUrl,

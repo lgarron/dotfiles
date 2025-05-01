@@ -24,7 +24,7 @@ async function listenersForPort(port: number): Promise<number[]> {
 }
 
 const app = command({
-  name: "tagpush",
+  name: "portkill",
   args: {
     ports: restPositionals({
       type: number,

@@ -5,7 +5,7 @@ import { File } from "cmd-ts-too/batteries/fs";
 import { PrintableShellCommand } from "printable-shell-command";
 
 const app = command({
-  name: "tagpush",
+  name: "flacify",
   args: {
     inputFile: positional({
       type: File,

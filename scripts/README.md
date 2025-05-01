@@ -178,10 +178,6 @@ Run `niceplz` without `sudo`ing every time.
 
 Take a macOS screenshot and save it with with a folder and file name based on the current foreground app. (Currently hardcoded to my own Dropbox path.)
 
-### `assign-icon`
-
-Assign an icon file to a file/folder.
-
 ### `macos-charging-watts`
 
 Print the number of watts supported by the current charger.

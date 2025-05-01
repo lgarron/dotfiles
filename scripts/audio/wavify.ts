@@ -1,6 +1,13 @@
 #!/usr/bin/env bun
 
-import { binary, command, optional, positional, run } from "cmd-ts-too";
+import {
+  binary,
+  string as cmdString,
+  command,
+  optional,
+  positional,
+  run,
+} from "cmd-ts-too";
 import { File } from "cmd-ts-too/batteries/fs";
 import { PrintableShellCommand } from "printable-shell-command";
 
@@ -12,7 +19,7 @@ const app = command({
       displayName: "input-file",
     }),
     outputFile: positional({
-      type: optional(File),
+      type: optional(cmdString),
       displayName: "output-file",
     }),
   },
@@ -26,6 +33,7 @@ const app = command({
       outputFile,
     ]);
     cmd.print();
+    // TODO: fix the overwrite prompt?
     await cmd.spawnBun().success;
   },
 });

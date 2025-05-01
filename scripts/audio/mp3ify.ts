@@ -2,7 +2,14 @@
 
 import { extname } from "node:path";
 import { $ } from "bun";
-import { binary, command, optional, positional, run } from "cmd-ts-too";
+import {
+  binary,
+  string as cmdString,
+  command,
+  optional,
+  positional,
+  run,
+} from "cmd-ts-too";
 import { File } from "cmd-ts-too/batteries/fs";
 import { PrintableShellCommand } from "printable-shell-command";
 
@@ -14,7 +21,7 @@ const app = command({
       displayName: "input-file",
     }),
     outputFile: positional({
-      type: optional(File),
+      type: optional(cmdString),
       displayName: "output-file",
     }),
   },
@@ -27,6 +34,7 @@ const app = command({
         outputFile,
       ]);
       cmd.print();
+      // TODO: add overwrite prompt?
       await cmd.spawnBun().success;
       return;
     }
@@ -45,6 +53,7 @@ const app = command({
       `${ffmpegCommand.getPrintableCommand()} \\
   | ${lameCommand.getPrintableCommand({ argIndentation: "    " })}`,
     );
+    // TODO: add overwrite prompt?
     await $`ffmpeg -i ${inputFile} -ab 320k -f wav - | lame --preset extreme - ${outputFile}`;
   },
 });

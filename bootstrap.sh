@@ -21,5 +21,6 @@ then
 fi
 make linux
 
-sudo chsh "$(id -un)" --shell "$(command -v fish)"
+sudo chsh "$(id -un)" --shell "${HOME}/.config/binaries/linux-x64/fish"
 
+echo yes | "${HOME}/.config/binaries/linux-x64/fish" --install

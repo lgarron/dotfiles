@@ -9,8 +9,15 @@ class Audio < Formula
   depends_on "oven-sh/bun/bun"
 
   def install
-    bin.install "scripts/audio/mp3ify.ts" => "mp3ify"
-    bin.install "scripts/audio/wavify.ts" => "wavify"
-    bin.install "scripts/audio/flacify.ts" => "flacify"
+    system "bun", "install", "--frozen-lockfile"
+
+    system "bun", "build", "--target", "bun", "--outfile", "./.temp/bin/mp3ify", "scripts/audio/mp3ify.ts"
+    bin.install "./.temp/bin/mp3ify" => "mp3ify"
+
+    system "bun", "build", "--target", "bun", "--outfile", "./.temp/bin/wavify", "scripts/audio/wavify.ts"
+    bin.install "./.temp/bin/wavify" => "wavify"
+
+    system "bun", "build", "--target", "bun", "--outfile", "./.temp/bin/flacify", "scripts/audio/flacify.ts"
+    bin.install "./.temp/bin/flacify" => "flacify"
   end
 end

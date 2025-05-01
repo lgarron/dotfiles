@@ -8,6 +8,17 @@
       exit 0
     end
 
+# Codespaces workaround
+
+    # Codespaces ships an outdated `fish` by default. The easiest way to get the
+    # interactive shell to use the correct `fish` is to invoke it ourselves
+    # here.
+    if echo $FISH_VERSION | grep "^3" > /dev/null
+      if $HOME/.config/binaries/linux-x64/fish
+        $HOME/.config/binaries/linux-x64/fish
+      end
+    end
+
 # Path
 
     source $HOME/.config/fish/path.fish

@@ -18,10 +18,6 @@ Launch `fish` in the directory of the specified path.
 
 Run `openscad` to convert `.scad` file to `.3mf` or `.stl` file with defaults.
 
-### `restart-qs`
-
-Restart [Quicksilver](https://qsapp.com/).
-
 ## `audio`
 
 ### `flacify`

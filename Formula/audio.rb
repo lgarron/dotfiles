@@ -9,7 +9,7 @@ class Audio < Formula
   depends_on "oven-sh/bun/bun"
 
   def install
-    bin.install "scripts/audio/mp3ify.bash" => "mp3ify"
+    bin.install "scripts/audio/mp3ify.ts" => "mp3ify"
     bin.install "scripts/audio/wavify.ts" => "wavify"
     bin.install "scripts/audio/flacify.ts" => "flacify"
   end

@@ -84,14 +84,6 @@ Get the current or previous project version.
 
 ## `graphics`
 
-### `jpeg-optimize`
-
-Optimise a single file using `jpeg-recompress`.
-
-### `jpeg-optimize-all`
-
-Optimise all `.jpg` files in the current folder using `jpeg-recompress`.
-
 ### `jpegrescan`
 
 A script to optimize JPEGs, by Loren Merritt

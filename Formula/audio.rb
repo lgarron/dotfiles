@@ -8,6 +8,6 @@ class Audio < Formula
   def install
     bin.install "scripts/audio/mp3ify.bash" => "mp3ify"
     bin.install "scripts/audio/wavify.bash" => "wavify"
-    bin.install "scripts/audio/flacify.bash" => "flacify"
+    bin.install "scripts/audio/flacify.ts" => "flacify"
   end
 end

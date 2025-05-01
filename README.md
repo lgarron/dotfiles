@@ -51,11 +51,12 @@ See [`./exported/`](./exported/) for files that must be manually exported/import
 
 ## Languages, ecosystems, and runtimes
 
-- `bash` (deprecated, except for bootstrapping)
 - `fish`
 - `bun` for TypeScript
 - Rust
 - Homebrew
+
+In addition, `bash` is needed for a small number of bootstrapping scripts.
 
 ## XDG Base Directory Spec
 

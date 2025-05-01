@@ -6,6 +6,8 @@ class Repo < Formula
   head "https://github.com/lgarron/repo.git", :branch => "main"
 
   depends_on "rust" => :build
+  depends_on "toml2json"
+  # TODO: we need to install `cargo-bump` as well.
 
   def install
     system "cargo", "install", *std_cargo_args()

@@ -50,6 +50,7 @@
     _fish_abbr_jj_subcommand "grl" "git remote list"
     abbr_subcommand_arg jj an --allow-new git # TODO: can we scope this to `jj git push`?
     abbr_subcommand_arg jj b --bookmark git # TODO: can we scope this to `jj git push`?
+    abbr_subcommand_arg jj bm "--bookmark main" git # TODO: can we scope this to `jj git push`?
 
     _fish_abbr_jj_subcommand "d" "diff"
     abbr_subcommand_arg jj no --name-only diff

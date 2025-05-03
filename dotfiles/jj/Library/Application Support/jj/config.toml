@@ -4,9 +4,21 @@ log = "@ | ancestors(visible_heads() | tracked_remote_bookmarks(), 5)"
 
 [revset-aliases]
 # Adapted from https://github.com/jj-vcs/jj/discussions/4012#discussioncomment-12685567
+'closest_nonempty_ancestor(to)' = 'heads(::to & (~empty() ))'
 'closest_ancestor_bookmark(to)' = 'heads(::to & bookmarks())'
+# TODO: add `mutable()`? https://github.com/jj-vcs/jj/discussions/5568#discussioncomment-13007551
 'closest_pushable_ancestor(to)' = 'heads(::to & ~description(exact:"") & (~empty() | merges()))'
 'here' = 'closest_pushable_ancestor(@)'
 
 [aliases]
-tug = ["bookmark", "move", "--from", "closest_ancestor_bookmark(@)", "--to", "closest_pushable_ancestor(@)"]
+tug = [
+  "bookmark",
+  "move",
+  "--from",
+  "closest_ancestor_bookmark(@)",
+  "--to",
+  "closest_pushable_ancestor(@)",
+]
+
+[git]
+push-new-bookmarks = true

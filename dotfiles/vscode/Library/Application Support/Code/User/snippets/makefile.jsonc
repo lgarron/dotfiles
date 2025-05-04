@@ -12,5 +12,26 @@
       "\tbun x @cubing/deploy"
     ],
     "description": "Deploy using @cubing/deploy"
+  },
+  "setup (using `bun install`)": {
+    "prefix": "setup",
+    "body": [
+      ".PHONY: setup\nsetup:\n\tbun install --frozen-lockfile"
+    ],
+    "description": "Setup using `bun install`"
+  },
+  "lint (using `biome`)": {
+    "prefix": "lint",
+    "body": [
+      ".PHONY: lint\nlint:\n\tbun x @biomejs/biome check"
+    ],
+    "description": "Lint using `biome`"
+  },
+  "format (using `biome`)": {
+    "prefix": "format",
+    "body": [
+      ".PHONY: format\nformat:\n\tbun x @biomejs/biome check --write"
+    ],
+    "description": "Format using `biome`"
   }
 }

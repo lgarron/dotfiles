@@ -11,7 +11,6 @@ function fish_jj_prompt
             --template '
                     separate(
                         " ",
-                        bookmarks.join(", "),
                         "@=" ++ change_id.shortest(),
                         "#=" ++ commit_id.shortest(),
                         if(conflict, label("conflict", "×")),
@@ -46,49 +45,36 @@ function fish_jj_prompt
             --revisions "closest_ancestor_bookmark(@)" \
             --template 'bookmarks.join("/")'
     )
-    set -l closest_bookmark_to_at_distance (
+    set -l closest_bookmark_to_here_distance (
         jj log 2>/dev/null \
             --no-graph \
             --ignore-working-copy \
             --color=always \
-            --revisions "closest_ancestor_bookmark(@)..@" \
+            --revisions "closest_ancestor_bookmark(@)..here" \
             --template "'.'" \
             | wc -c \
             | tr -d " "
     )
-    set -l closest_bookmark_suffix ""
-    if not test 0 -eq $closest_bookmark_to_at_distance
-        set -l closest_bookmark_to_here_distance (
-            jj log 2>/dev/null \
-                --no-graph \
-                --ignore-working-copy \
-                --color=always \
-                --revisions "closest_ancestor_bookmark(@)..here" \
-                --template "'.'" \
-                | wc -c \
-                | tr -d " "
-        )
-        set -l here_to_nonempty_distance (
-            jj log 2>/dev/null \
-                --no-graph \
-                --ignore-working-copy \
-                --color=always \
-                --revisions "here..closest_nonempty_ancestor(@)" \
-                --template "'.'" \
-                | wc -c \
-                | tr -d " "
-        )
-        set -l nonempty_to_at_distance (
-            jj log 2>/dev/null \
-                --no-graph \
-                --ignore-working-copy \
-                --color=always \
-                --revisions "closest_nonempty_ancestor(@)..@" \
-                --template "'.'" \
-                | wc -c \
-                | tr -d " "
-        )
-        set closest_bookmark_suffix " ($closest_bookmark +$closest_bookmark_to_here_distance pushable +$here_to_nonempty_distance undescribed +$nonempty_to_at_distance empty)"
-    end
+    set -l here_to_nonempty_distance (
+        jj log 2>/dev/null \
+            --no-graph \
+            --ignore-working-copy \
+            --color=always \
+            --revisions "here..closest_nonempty_ancestor(@)" \
+            --template "'.'" \
+            | wc -c \
+            | tr -d " "
+    )
+    set -l nonempty_to_at_distance (
+        jj log 2>/dev/null \
+            --no-graph \
+            --ignore-working-copy \
+            --color=always \
+            --revisions "closest_nonempty_ancestor(@)..@" \
+            --template "'.'" \
+            | wc -c \
+            | tr -d " "
+    )
+    set closest_bookmark_suffix " ($closest_bookmark +$closest_bookmark_to_here_distance pushable +$here_to_nonempty_distance undescribed +$nonempty_to_at_distance empty)"
     printf "%s%s" $info $closest_bookmark_suffix
 end

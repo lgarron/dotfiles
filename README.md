@@ -56,7 +56,10 @@ See [`./exported/`](./exported/) for files that must be manually exported/import
 - Rust
 - Homebrew
 
-In addition, `bash` is needed for a small number of bootstrapping scripts.
+In addition:
+
+- `bash` is needed for a small number of bootstrapping scripts.
+- Swift is used for macOS scripts where it is difficult to implement an alternative correctly and safely.
 
 ## XDG Base Directory Spec
 

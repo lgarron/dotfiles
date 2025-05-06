@@ -55,7 +55,7 @@ function fish_jj_prompt
             --ignore-working-copy \
             --color=always \
             --revisions "closest_ancestor_bookmark(@)" \
-            --template 'bookmarks.join("/")'
+            --template 'bookmarks.join(", ")'
     )
     set -l closest_bookmark_to_here_distance (__fish_jj_num_commits_from_to "closest_ancestor_bookmark(@)" "here")
     set -l here_to_nonempty_distance (__fish_jj_num_commits_from_to "here" "closest_nonempty_ancestor(@)")

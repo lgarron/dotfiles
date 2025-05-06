@@ -1,3 +1,14 @@
+function __fish_jj_num_commits_from_to
+    jj log 2>/dev/null \
+        --no-graph \
+        --ignore-working-copy \
+        --color=always \
+        --revisions $argv[1]".."$argv[2] \
+        --template "'.'" \
+        | wc -c \
+        | tr -d " "
+end
+
 # From https://github.com/fish-shell/fish-shell/issues/11183#issuecomment-2699601115
 # Based on fish_jj_prompt and https://gist.github.com/hroi/d0dc0e95221af858ee129fd66251897e
 function fish_jj_prompt
@@ -46,36 +57,9 @@ function fish_jj_prompt
             --revisions "closest_ancestor_bookmark(@)" \
             --template 'bookmarks.join("/")'
     )
-    set -l closest_bookmark_to_here_distance (
-        jj log 2>/dev/null \
-            --no-graph \
-            --ignore-working-copy \
-            --color=always \
-            --revisions "closest_ancestor_bookmark(@)..here" \
-            --template "'.'" \
-            | wc -c \
-            | tr -d " "
-    )
-    set -l here_to_nonempty_distance (
-        jj log 2>/dev/null \
-            --no-graph \
-            --ignore-working-copy \
-            --color=always \
-            --revisions "here..closest_nonempty_ancestor(@)" \
-            --template "'.'" \
-            | wc -c \
-            | tr -d " "
-    )
-    set -l nonempty_to_at_distance (
-        jj log 2>/dev/null \
-            --no-graph \
-            --ignore-working-copy \
-            --color=always \
-            --revisions "closest_nonempty_ancestor(@)..@" \
-            --template "'.'" \
-            | wc -c \
-            | tr -d " "
-    )
+    set -l closest_bookmark_to_here_distance (__fish_jj_num_commits_from_to "closest_ancestor_bookmark(@)" "here")
+    set -l here_to_nonempty_distance (__fish_jj_num_commits_from_to "here" "closest_nonempty_ancestor(@)")
+    set -l nonempty_to_at_distance (__fish_jj_num_commits_from_to "closest_nonempty_ancestor(@)" "@")
     set closest_bookmark_suffix " ($closest_bookmark +$closest_bookmark_to_here_distance pushable +$here_to_nonempty_distance undescribed +$nonempty_to_at_distance empty)"
     printf "%s%s" $info $closest_bookmark_suffix
 end

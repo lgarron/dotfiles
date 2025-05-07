@@ -45,7 +45,9 @@ function fish_jj_prompt
             ' \
             | string collect
     )
-    or return 1
+    if test $pipestatus[1] -ne 0
+        return 1
+    end
     # TODO: fold into the implementation above and improve perf.
     # TODO: implement narrow viewport mode.
     # TODO: select just the bookmark that `jj tug` would oeprate on?

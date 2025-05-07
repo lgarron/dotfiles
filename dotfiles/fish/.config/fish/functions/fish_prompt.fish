@@ -6,15 +6,19 @@ set -g __fish_git_prompt_show_informative_status 1
 # TODO: these should be local, but VS Code's `fish` integration makes some bad
 # assumptions that break scope for variables declared here and used in
 # `fish_prompt` below.
-if not set -q _FISH_PROMPT_LCARS_BOTTOM_COLOR; set -g _FISH_PROMPT_LCARS_BOTTOM_COLOR F19E4C; end
-if not set -q _FISH_PROMPT_LCARS_TOP_COLOR; set -g _FISH_PROMPT_LCARS_TOP_COLOR B594E2; end
+if not set -q _FISH_PROMPT_LCARS_BOTTOM_COLOR
+    set -g _FISH_PROMPT_LCARS_BOTTOM_COLOR F19E4C
+end
+if not set -q _FISH_PROMPT_LCARS_TOP_COLOR
+    set -g _FISH_PROMPT_LCARS_TOP_COLOR B594E2
+end
 set -g _FISH_PROMPT_FIRST_COMMAND_HAS_RUN false # var
 
 set -g _FISH_PROMPT_COMPACT_MODE_MAX_ROWS 15
 set -g _FISH_PROMPT_EVEN_MORE_COMPACT_MODE_MAX_ROWS 10
 
 function _fish_prompt_is_fish_HEAD_build
-    echo $version | grep "3\.[0-9]\+\.[0-9]\+-[0-9]\+-g[0-9a-f]\{8\}" > /dev/null
+    echo $version | grep "3\.[0-9]\+\.[0-9]\+-[0-9]\+-g[0-9a-f]\{8\}" >/dev/null
 end
 
 function _fish_prompt_echo_padded
@@ -59,14 +63,14 @@ function fish_prompt --description 'Write out the prompt'
     set -l PREVIOUS_COMMAND_TIME "⏱️ "(math $CMD_DURATION / 1000)s
 
     # LCARS
-    if string match -e -- "$_FISH_PROMPT_FIRST_COMMAND_HAS_RUN" true > /dev/null
+    if string match --quiet --entire -- "$_FISH_PROMPT_FIRST_COMMAND_HAS_RUN" true
         set_color $_FISH_PROMPT_LCARS_TOP_COLOR
         if [ (tput lines) -gt $_FISH_PROMPT_COMPACT_MODE_MAX_ROWS ]
             echo "┬"
         end
         # echo (set_color $_FISH_PROMPT_LCARS_TOP_COLOR)"│"
         set -l prompt_status (__fish_print_pipestatus "[" "] " "|" (set_color $_FISH_PROMPT_LCARS_TOP_COLOR) (set_color --bold red) $last_pipestatus)
-        if not string match -e -- "$prompt_status" " " > /dev/null
+        if not string match -e -- "$prompt_status" " " >/dev/null
             echo "├─ ❌ $prompt_status"(set_color $_FISH_PROMPT_LCARS_TOP_COLOR)"command status"
         end
         if [ (tput lines) -gt $_FISH_PROMPT_EVEN_MORE_COMPACT_MODE_MAX_ROWS ]
@@ -80,7 +84,7 @@ function fish_prompt --description 'Write out the prompt'
     end
 
     set -l PREFIX_BEFORE_PWD (set_color $_FISH_PROMPT_LCARS_BOTTOM_COLOR)"╭─── "
-    if string match -e "$EXPERIMENTAL_FISH_LAUNCHED" "true" > /dev/null
+    if string match --quiet --entire "$EXPERIMENTAL_FISH_LAUNCHED" true
         set -l PREFIX_BEFORE_PWD "🐠🧪 "
     end
     set -l PREFIX "$PREFIX_BEFORE_PWD"(pwd)" "
@@ -92,7 +96,7 @@ function fish_prompt --description 'Write out the prompt'
         (set_color $_FISH_PROMPT_LCARS_BOTTOM_COLOR)
 
     set FISH_JJ_PROMPT (fish_jj_prompt "%s")
-    if not string match -e "$FISH_JJ_PROMPT" "" > /dev/null
+    if not string match -e "$FISH_JJ_PROMPT" "" >/dev/null
         set -l PREFIX (set_color $_FISH_PROMPT_LCARS_BOTTOM_COLOR)"├─ (jj) "(set_color normal)$FISH_JJ_PROMPT" "
         echo -n $PREFIX
         if [ (tput lines) -gt $_FISH_PROMPT_COMPACT_MODE_MAX_ROWS ]
@@ -101,7 +105,7 @@ function fish_prompt --description 'Write out the prompt'
     end
 
     set FISH_GIT_PROMPT (fish_git_prompt "%s")
-    if not string match -e "$FISH_GIT_PROMPT" "" > /dev/null
+    if not string match -e "$FISH_GIT_PROMPT" "" >/dev/null
         set -l PREFIX (set_color $_FISH_PROMPT_LCARS_BOTTOM_COLOR)"├─ (git) "(set_color normal)$FISH_GIT_PROMPT" "
         echo -n $PREFIX
         if [ (tput lines) -gt $_FISH_PROMPT_COMPACT_MODE_MAX_ROWS ]
@@ -112,7 +116,7 @@ function fish_prompt --description 'Write out the prompt'
     set_color $_FISH_PROMPT_LCARS_BOTTOM_COLOR
     if [ (tput lines) -gt $_FISH_PROMPT_COMPACT_MODE_MAX_ROWS ]
         echo -n "├─ "
-    set suffix "
+        set suffix "
 " (set_color $_FISH_PROMPT_LCARS_BOTTOM_COLOR) "│"
     else
         echo -n "│ "

@@ -62,6 +62,11 @@
     abbr -a "jgv" 'open --url (jj git remote list | grep "^origin" | awk "{print \$2}" | tr -d "\n"; and echo -n "/commit/"; echo -- (jj log --ignore-working-copy --limit 1 --revisions here --no-graph -T "commit_id"))'
 
     function gg
+        killall "gg"
+        ggn
+    end
+
+    function ggn
         /Applications/gg.app/Contents/MacOS/gg $argv &> /dev/null &
         disown
         osascript -e 'tell application "System Events" to tell process "gg" to set frontmost to true'

@@ -65,6 +65,19 @@ In addition:
 
 Known compatibility chart: <https://wiki.archlinux.org/index.php/XDG_Base_Directory_support>
 
+## Homebrew tap
+
+This repo serves as the Homebrew tap `lgarron/lgarron`, so it can be used to install my scripts (from inside this repo) and programs (from various repos):
+
+```shell
+# Example
+brew install --HEAD lgarron/lgarron/sd-card-backup
+```
+
+This uses a trick: Homebrew accepts repository redirect, and <https://github.com/lgarron/Homebrew-lgarron> redirects to <https://github.com/lgarron/dotfiles> (due to moving the repo from the latter to the former and back).
+
+Scripts are listed [in the `./scripts` folder](./scripts/README.md).
+
 ## License
 
 MPL

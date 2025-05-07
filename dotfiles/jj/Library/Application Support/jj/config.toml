@@ -19,6 +19,15 @@ tug = [
   "--to",
   "closest_pushable_ancestor(@)",
 ]
+here = [
+  "log",
+  "--no-graph",
+  "--ignore-working-copy",
+  "--revisions",
+  "here",
+  "--template",
+  "commit_id",
+]
 
 [git]
 push-new-bookmarks = true

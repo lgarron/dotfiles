@@ -104,6 +104,7 @@ include setup/rust.Makefile # TODO: Figure out Rustup vs. Homebrew so this can b
 
 ########
 
+# We match the convention from https://github.com/lgarron/Makefile-convention
 .PHONY: setup
 setup:
 	@echo "Note: \`make setup\` sets up the repo for development (installing dependencies), it does not set up dotfiles themselves."
@@ -124,6 +125,18 @@ set-dotfiles-repo-email:
 		jj config set --repo user.email code@garron.net; \
 	fi
 	# TODO: When do we need to run `jj describe --reset-author --no-edit`?
+
+# We match the convention from https://github.com/lgarron/Makefile-convention
+.PHONY: clean
+clean:
+	@echo "Note: \`make clean\` cleans up the repo itself, it does not affect configured files."
+	rm -rf ./.temp
+
+# We match the convention from https://github.com/lgarron/Makefile-convention
+.PHONY: reset
+reset: clean
+	@echo "Note: \`make reset\` resets up the repo itself, it does not affect configured files."
+	rm -rf ./node_modules ./target
 
 ########
 

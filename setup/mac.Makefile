@@ -205,7 +205,8 @@ mac-dock-setup-pythagoras-extras:
 
 .PHONY: prefer-wired-over-wireless-for-SMB
 prefer-wired-over-wireless-for-SMB:
-	cat /etc/nsmb.conf | grep "mc_prefer_wired=yes" || echo "mc_prefer_wired=yes" | sudo tee -a /etc/nsmb.conf # https://support.apple.com/en-us/102010
+	# TODO: turn this into a config script with auto `sudo`.
+	cat /etc/nsmb.conf | grep "mc_prefer_wired=yes" || echo "[default]\nmc_prefer_wired=yes" | sudo tee -a /etc/nsmb.conf # https://support.apple.com/en-us/102010
 
 .PHONY: watch-for-plist-changes
 watch-for-plist-changes:

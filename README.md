@@ -58,7 +58,7 @@ See [`./exported/`](./exported/) for files that must be manually exported/import
 
 In addition:
 
-- `bash` is needed for a small number of bootstrapping scripts.
+- `bash` is needed for two bootstrapping scripts (one for macOS and one for Linux).
 - Ruby is needed for Homebrew formulas.
 - Swift is used for macOS scripts where it is difficult to implement an alternative correctly and safely.
 

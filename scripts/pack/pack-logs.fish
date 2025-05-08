@@ -2,10 +2,10 @@
 
 set archive_file logs.7z
 set concat_file $archive_file.concat.txt
-echo "" > $concat_file # idempotence
+echo "" >$concat_file # idempotence
 for file in $argv
-  echo -e "\n## $file\n" >> $concat_file
-  cat $file >> $concat_file
+    printf "\n## %s\n" $file >>$concat_file
+    cat -- $file >>$concat_file
 end
 7z a $archive_file $argv
 

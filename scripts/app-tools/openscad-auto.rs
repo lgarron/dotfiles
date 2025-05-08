@@ -4,6 +4,8 @@ use clap_complete::generator::generate;
 use clap_complete::Shell;
 use script_helpers::{back_up_existing_file, sha256_hash_file_to_string};
 use shell_quote::{Bash, QuoteRefExt};
+use std::env::var;
+use std::fs::read_to_string;
 use std::fs::OpenOptions;
 use std::io::stdout;
 use std::io::BufRead;
@@ -69,6 +71,36 @@ fn get_args() -> Args {
     args
 }
 
+const START_AUTO_INCLUDED_VARIANTS: &str = "START_AUTO_INCLUDED_VARIANTS";
+const END_AUTO_INCLUDED_VARIANTS: &str = "END_AUTO_INCLUDED_VARIANTS";
+
+fn variants_from_file(file: &PathBuf) -> Option<Vec<Option<String>>> {
+    let contents = read_to_string(file).expect("Could not find source file.");
+    // TODO: turn this into a reader?
+    let mut json_lines: Vec<&str> = vec![];
+
+    let mut in_range = false;
+    for line in contents.lines() {
+        if line == START_AUTO_INCLUDED_VARIANTS {
+            in_range = true;
+            continue;
+        }
+        if line == END_AUTO_INCLUDED_VARIANTS {
+            break;
+        }
+        if in_range {
+            json_lines.push(line);
+        }
+    }
+    if !in_range {
+        return None;
+    }
+    let json = json_lines.join("\n");
+    let variants: Vec<Option<String>> =
+        serde_json::from_str(&json).expect("Invalid listing of variants.");
+    Some(variants)
+}
+
 fn main() {
     let args = get_args();
     let Some(source_file) = args.source else {
@@ -76,12 +108,17 @@ fn main() {
         exit(1);
     };
 
-    let sha256_hash = sha256_hash_file_to_string(&source_file);
+    // We parse this unconditionally, so that passing `--variants` doesn't mask a syntax error.
+    let variants = variants_from_file(&source_file);
 
     let variants: Vec<Option<String>> = match args.variants.len() {
-        0 => vec![None],
+        0 => variants.unwrap_or(vec![None]),
         _ => args.variants.into_iter().map(Some).collect(),
     };
+
+    println!("Rendering variants: {:?}", variants);
+
+    let sha256_hash = sha256_hash_file_to_string(&source_file);
 
     for variant in variants {
         let variant_suffix = match &variant {

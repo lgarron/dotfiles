@@ -4,7 +4,6 @@ use clap_complete::generator::generate;
 use clap_complete::Shell;
 use script_helpers::{back_up_existing_file, sha256_hash_file_to_string};
 use shell_quote::{Bash, QuoteRefExt};
-use std::env::var;
 use std::fs::read_to_string;
 use std::fs::OpenOptions;
 use std::io::stdout;

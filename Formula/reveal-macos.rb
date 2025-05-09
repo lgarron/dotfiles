@@ -9,5 +9,6 @@ class RevealMacos < Formula
 
   def install
     bin.install "scripts/system/reveal-macos.swift" => "reveal-macos"
+    bin.install "scripts/system/reveal-macos-stdin.swift" => "reveal-macos-stdin"
   end
 end

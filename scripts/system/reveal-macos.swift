@@ -2,10 +2,17 @@
 
 import AppKit
 
-let thePaths = String(data: FileHandle.standardInput.readDataToEndOfFile(), encoding: .utf8)!.split(whereSeparator: \.isNewline)
-let thePath = String(thePaths[0])
-let theURL = URL(fileURLWithPath: thePath)
+func toURL(s: String) -> URL {
+    // Using the relative URLs should work, but it runs into a `Pasteboard
+    // contained types (), but service expects types (…)` error later on.
+    // Absolute URLs work mroe reliably and work fine for our use case.
+    return URL(fileURLWithPath: s).absoluteURL
+}
 
-NSWorkspace.shared.activateFileViewerSelecting([theURL])
-// Print the path so we can pass through a file to `stdin` of another command.
-print(thePath, terminator: "")
+let theFilePaths = CommandLine.arguments[1...].map({ String($0) })
+let theURLs = theFilePaths.map(toURL)
+
+NSWorkspace.shared.activateFileViewerSelecting(theURLs)
+
+// Print the paths so we can pass through a file to `stdin` of another command.
+print(theFilePaths.joined(separator: "\n"), terminator: "")

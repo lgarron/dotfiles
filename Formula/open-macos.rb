@@ -9,5 +9,6 @@ class OpenMacos < Formula
 
   def install
     bin.install "scripts/system/open-macos.swift" => "open-macos"
+    bin.install "scripts/system/open-macos-stdin.swift" => "open-macos-stdin"
   end
 end

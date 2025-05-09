@@ -4,16 +4,17 @@
 # Hardcoded to a 5K monitor and the 16-inch MacBook Pro.
 
 if [ (count $argv) -gt 0 ]
-  set REMOTE $argv[1]
-  if /Applications/RDM.app/Contents/MacOS/RDM -l | grep 2560 > /dev/null
-    nohup ssh $REMOTE "/Applications/RDM.app/Contents/MacOS/RDM -w 2560 -h 1440 -s 2" &; disown
-  else if /Applications/RDM.app/Contents/MacOS/RDM -l | grep 1440 > /dev/null
-    nohup ssh $REMOTE "/Applications/RDM.app/Contents/MacOS/RDM -w 1440 -h 900 -s 2" &; disown
-  else
-    nohup ssh $REMOTE "/Applications/RDM.app/Contents/MacOS/RDM -w 1728 -h 1080 -s 2" &; disown
-  end
+    set REMOTE $argv[1]
+    if /Applications/RDM.app/Contents/MacOS/RDM -l | grep 2560 >/dev/null
+        nohup ssh $REMOTE "betterdisplaycli set --name=\"LG UltraFine\" --connected=off ; /Applications/RDM.app/Contents/MacOS/RDM -w 2560 -h 1440 -s 2" &
+        disown
+    else if /Applications/RDM.app/Contents/MacOS/RDM -l | grep 1440 >/dev/null
+        nohup ssh $REMOTE "betterdisplaycli set --name=\"LG UltraFine\" --connected=off ; /Applications/RDM.app/Contents/MacOS/RDM -w 1440 -h 900 -s 2" &
+        disown
+    else
+        nohup ssh $REMOTE "betterdisplaycli set --name=\"LG UltraFine\" --connected=off ; /Applications/RDM.app/Contents/MacOS/RDM -w 1728 -h 1080 -s 2" &
+        disown
+    end
 else
-  echo "Please specify a remote server."
+    echo "Please specify a remote server."
 end
-
-

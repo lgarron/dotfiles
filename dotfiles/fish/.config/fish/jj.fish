@@ -45,7 +45,7 @@
     _fish_abbr_jj_subcommand "gf" "git fetch"
     _fish_abbr_jj_subcommand "p" "git push"
     _fish_abbr_jj_subcommand "gp" "git push"
-    abbr -a "jpp" "jj bookmark set --revision here main && jj git push"
+    abbr -a "jpp" "jj bookmark set --revision here main && jj git push && git switch main"
     _fish_abbr_jj_subcommand "gr" "git remote"
     _fish_abbr_jj_subcommand "grl" "git remote list"
     abbr_subcommand_arg jj an --allow-new git # TODO: can we scope this to `jj git push`?

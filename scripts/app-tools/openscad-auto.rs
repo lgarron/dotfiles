@@ -17,24 +17,46 @@ const BIN_NAME: &str = "openscad-auto"; // TODO: get this from `clap`
 
 const DEFAULT_VARIANT: &str = "default";
 
+// TODO: why does a program description alter the way individual flag help is printed??
+/// `openscad-auto`` converts files using the `openscad` CLI, with some
+/// conveniences.
+///
+/// - Multiple variants can be specified in the source file, and `openscad-auto`
+///   will render each variant by setting the `VARIANT` variable.
+///   - Variants are specified by a JSON object between a `START_AUTO_INCLUDED_VARIANTS` line and `END_AUTO_INCLUDED_VARIANTS` line.
+/// - The `lazy-union` feature and `manifold` backend are used.
+/// - Upon rendering, the program can:
+///   - Reveal the output file(s) (default)
+///   - Show a notification (opt-in)
 #[derive(Parser, Debug)]
-#[clap(version)]
+#[clap(version, verbatim_doc_comment)]
 struct Args {
-    #[clap(verbatim_doc_comment, group = "task")]
+    // Source OpenSCAD file.
+    #[clap(group = "task")]
     source: Option<PathBuf>,
 
+    /// The generated output format.
     #[clap(long, default_value = "3mf")]
     format: OutputFormat,
 
+    /// Print completions for the given shell (instead of running the command normally).
+    /// These can be loaded/stored permanently (e.g. when using Homebrew), but they can also be sourced directly, e.g.:
+    ///
+    ///  openscad-auto --completions fish | source # fish
+    ///  source <(openscad-auto --completions zsh) # zsh
     #[clap(long, group = "task", id = "SHELL")]
     completions: Option<Shell>,
 
+    /// Notify upon completion using `terminal-notifier` (macOS)
     #[clap(long)]
     notify: bool,
 
+    /// Do not reveal the generated output file(s) upon completions.
     #[clap(long)]
     no_reveal: bool,
 
+    /// A comma-separated list of variants.
+    /// Example: `--variants small,small-unengraved,large`
     #[clap(long, value_delimiter = ',')]
     variants: Vec<String>,
 }
@@ -73,6 +95,7 @@ fn get_args() -> Args {
 const START_AUTO_INCLUDED_VARIANTS: &str = "START_AUTO_INCLUDED_VARIANTS";
 const END_AUTO_INCLUDED_VARIANTS: &str = "END_AUTO_INCLUDED_VARIANTS";
 
+// TODO: read variants from the `VARIANT` variable assignment once I'm using a formatter that doesn't break this.
 fn variants_from_file(file: &PathBuf) -> Option<Vec<Option<String>>> {
     let contents = read_to_string(file).expect("Could not find source file.");
     // TODO: turn this into a reader?

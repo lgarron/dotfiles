@@ -7,6 +7,7 @@ class OpenscadAuto < Formula
 
   depends_on "rust" => :build
   depends_on "lgarron/lgarron/reveal-macos"
+  depends_on "terminal-notifier"
 
   def install
     system "cargo", "install", "--bin", "openscad-auto", *std_cargo_args()

@@ -115,7 +115,17 @@ fn main() {
         _ => args.variants.into_iter().map(Some).collect(),
     };
 
-    println!("Rendering variants: {:?}", variants);
+    println!(
+        "Rendering variants:
+
+{}
+",
+        variants
+            .iter()
+            .map(|v| format!("- {}", v.clone().unwrap_or("(default)".to_owned())))
+            .collect::<Vec<String>>()
+            .join("\n")
+    );
 
     let sha256_hash = sha256_hash_file_to_string(&source_file);
 

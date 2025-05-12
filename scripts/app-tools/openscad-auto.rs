@@ -119,6 +119,8 @@ fn main() {
 
     let sha256_hash = sha256_hash_file_to_string(&source_file);
 
+    let mut files_to_reveal: Vec<String> = vec![];
+
     for variant in variants {
         let variant_suffix = match &variant {
             Some(variant) => format!(".{}", variant),
@@ -189,6 +191,7 @@ fn main() {
         .expect("Could not write comment to target file.");
 
         let quoted_target_file: String = (target_file.to_string_lossy()).quoted(Bash);
+        // TODO: notify only once for all variants?
         if args.notify {
             Command::new("terminal-notifier")
                 .args(vec![
@@ -210,14 +213,14 @@ fn main() {
                 .unwrap();
         }
 
-        // TODO: reveal all at once?
-        if !args.no_reveal {
-            Command::new("open")
-                .args(vec!["-R", &target_file.to_string_lossy()])
-                .spawn()
-                .unwrap()
-                .wait()
-                .unwrap();
-        }
+        files_to_reveal.push(target_file.to_string_lossy().to_string());
+    }
+    if !args.no_reveal {
+        Command::new("reveal-macos")
+            .args(files_to_reveal)
+            .spawn()
+            .unwrap()
+            .wait()
+            .unwrap();
     }
 }

@@ -6,6 +6,7 @@ class OpenscadAuto < Formula
   head "https://github.com/lgarron/dotfiles.git", :branch => "main"
 
   depends_on "rust" => :build
+  depends_on "lgarron/lgarron/reveal-macos"
 
   def install
     system "cargo", "install", "--bin", "openscad-auto", *std_cargo_args()

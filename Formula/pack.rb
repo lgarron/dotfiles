@@ -5,6 +5,8 @@ class Pack < Formula
   homepage "https://github.com/lgarron/dotfiles"
   head "https://github.com/lgarron/dotfiles.git", :branch => "main"
 
+  depends_on "lgarron/lgarron/reveal-macos"
+
   def install
     bin.install "scripts/pack/pack-pov.fish" => "pack-pov"
     bin.install "scripts/pack/pack-logs.fish" => "pack-logs"

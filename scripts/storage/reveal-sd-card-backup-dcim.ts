@@ -64,7 +64,7 @@ if (parts[2] === configBackupDrive) {
 
   const targetPath = targetParts.join("/");
   // console.log(targetPath);
-  await $`open -R ${targetPath}`;
+  await $`reveal-macos ${targetPath}`;
 
   exit(0);
 }
@@ -162,4 +162,4 @@ const targetParts = [
 
 const targetPath = targetParts.join("/");
 // console.log(targetPath);
-await $`open -R ${targetPath}`;
+await $`reveal-macos ${targetPath}`;

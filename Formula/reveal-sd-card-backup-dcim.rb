@@ -6,6 +6,7 @@ class RevealSdCardBackupDcim < Formula
   head "https://github.com/lgarron/dotfiles.git", :branch => "main"
 
   depends_on "oven-sh/bun/bun"
+  depends_on "lgarron/lgarron/reveal-macos"
 
   def install
     bin.install "scripts/storage/reveal-sd-card-backup-dcim.ts" => "reveal-sd-card-backup-dcim"

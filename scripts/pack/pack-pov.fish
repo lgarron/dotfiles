@@ -17,4 +17,4 @@ ffmpeg \
   -pix_fmt yuv420p \
   $target_folder.zip.mp4
 zip -r $target_folder.zip $target_folder
-open -R $target_folder.zip $target_folder
+reveal-macos $target_folder.zip $target_folder

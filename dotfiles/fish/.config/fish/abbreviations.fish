@@ -27,8 +27,8 @@
     abbr -a dlf "cd ~/Downloads"
     abbr -a - "cd -"
 
-    abbr -a r "open -R"
-    abbr -a r. "open -R ."
+    abbr -a r "reveal-macos"
+    abbr -a r. "reveal-macos ."
 
 ## Programs and commands
 

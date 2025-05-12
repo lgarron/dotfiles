@@ -58,10 +58,10 @@ mv $TEMP_FILE $FILE_NAME
 
 # TODO: better arg handling
 if [ "$argv[1]" = "--reveal" ]
-  open -R $FILE_NAME
+  reveal-macos $FILE_NAME
 end
 if [ "$argv[2]" = "--reveal" ]
-  open -R $FILE_NAME
+  reveal-macos $FILE_NAME
 end
 # /Applications/ImageOptim.app/Contents/MacOS/ImageOptim $FILE_NAME &
 

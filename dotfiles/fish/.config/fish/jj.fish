@@ -59,7 +59,7 @@
     abbr -a jdno --set-cursor "jj diff --name-only --to \"fork_point(%)\"" # Special shortened abbreviation
 
     # TODO: truncate `.git` from GitHub repo URLs if needed.
-    abbr -a "jgv" 'open --url (jj git remote list | grep "^origin" | awk "{print \$2}" | tr -d "\n"; and echo -n "/commit/"; echo -- (jj log --ignore-working-copy --limit 1 --revisions here --no-graph -T "commit_id"))'
+    abbr -a "jgv" 'open --url (jj git remote list | grep "^origin" | awk "{print \$2}" | tr -d "\n" | sed "s#\.git\$##"; and echo -n "/commit/"; echo -- (jj log --ignore-working-copy --limit 1 --revisions here --no-graph -T "commit_id"))'
 
     function gg
         killall "gg"

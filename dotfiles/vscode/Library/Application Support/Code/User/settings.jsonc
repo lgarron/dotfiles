@@ -12,7 +12,6 @@
 	"editor.inlineSuggest.enabled": true,
 	"editor.suggest.showStatusBar": true,
 	"editor.suggestSelection": "first",
-	"vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
 	"files.insertFinalNewline": true,
 	"explorer.fileNesting.enabled": true,
 	"explorer.confirmDragAndDrop": false,
@@ -29,6 +28,7 @@
 	"workbench.startupEditor": "newUntitledFile",
 	"workbench.editor.empty.hint": "hidden",
 	"window.newWindowDimensions": "inherit",
+	"window.openFilesInNewWindow": "default",
 	/******** Formatting ********/
 	// https://marketplace.visualstudio.com/items?itemName=tombonnike.vscode-status-bar-format-toggle
 	"formattingToggle.affects": [
@@ -42,6 +42,9 @@
 		"editor.codeActionsOnSave": {
 			"source.organizeImports.biome": "explicit"
 		}
+	},
+	"[css]": {
+		"editor.defaultFormatter": "biomejs.biome"
 	},
 	"[markdown]": {
 		"editor.formatOnType": false
@@ -70,6 +73,8 @@
 	"typescript.inlayHints.propertyDeclarationTypes.enabled": true,
 	"typescript.inlayHints.parameterTypes.enabled": true,
 	"typescript.inlayHints.variableTypes.enabled": true,
+	// Show all problems in the workspace.
+	"typescript.tsserver.experimental.enableProjectDiagnostics": true,
 	/******** Go ********/
 	"go.useLanguageServer": true,
 	"go.toolsGopath": "/Users/lgarron/Code/gopath",
@@ -100,6 +105,7 @@
 	"terminal.integrated.tabs.location": "right",
 	"terminal.integrated.macOptionIsMeta": true,
 	"terminal.integrated.stickyScroll.enabled": true,
+	"terminal.integrated.scrollback": 100000,
 	"terminal.integrated.defaultProfile.osx": "apple_fish",
 	"terminal.integrated.defaultProfile.linux": "fish",
 	"terminal.integrated.defaultProfile.windows": "Ubuntu (WSL)",
@@ -142,8 +148,6 @@
 	/******** Rust ********/
 	"rust-analyzer.check.command": "clippy",
 	"rust-analyzer.showUnlinkedFileNotification": false,
-	/******** Zig ********/
-	"zig.zls.path": "/Users/lgarron/Library/Application Support/Code/User/globalStorage/ziglang.vscode-zig/zls_install/zls",
 	/******** Markdown ********/
 	"markdown.editor.pasteUrlAsFormattedLink.enabled": "smart",
 	/******** JSONC ********/
@@ -161,6 +165,11 @@
 	"toggleCase.case.titleCase": false,
 	"toggleCase.case.upperCase": false,
 	"toggleCase.notification.notifyOnChange": false,
+	/******* VCS (SCM) *********/
+	"scm.graph.badges": "all",
+	"scm.experimental.showHistoryGraph": true,
+	/******* SCAD *********/
+	"scad-lsp.fmtExePath": "/opt/homebrew/bin/openscad-lsp-topiary",
 	/******* Apply to all profiles *********/
 	"workbench.settings.applyToAllProfiles": [
 		/******** Dynamic ********/
@@ -274,13 +283,6 @@
 		"toggleCase.notification.notifyOnChange",
 		/******* Apply to all profiles *********/
 		"workbench.settings.applyToAllProfiles"
-	],
-	"window.openFilesInNewWindow": "default",
-	"scm.experimental.showHistoryGraph": true,
-	"terminal.integrated.scrollback": 100000,
-	"[css]": {
-		"editor.defaultFormatter": "biomejs.biome"
-	},
-	"scm.graph.badges": "all"
+	]
 	/****************/
 }

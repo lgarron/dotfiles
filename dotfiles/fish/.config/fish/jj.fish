@@ -67,9 +67,36 @@
     end
 
     function ggn
-        /Applications/gg.app/Contents/MacOS/gg $argv &> /dev/null &
+        /Applications/gg.app/Contents/MacOS/gg $argv &>/dev/null &
         disown
-        osascript -e 'tell application "System Events" to tell process "gg" to set frontmost to true'
+        # TODO: actually detect displays
+        osascript -e '
+tell application "Image Events"
+    launch
+        set numDisplays to count displays
+    quit
+end tell
+
+if numDisplays is greater than 1
+    tell application "System Events"
+        tell process "gg"
+            set frontmost to true
+            repeat 10 times
+                set theWindows to get windows
+                if theWindows is not {} then
+                    exit repeat
+                end if
+                delay 0.2
+            end repeat
+
+            tell window 1
+                set size to {1080, 947}
+                set position to {-1080, 973}
+            end tell
+        end tell
+    end tell
+end if
+'
     end
 
     # Note that this implementing this for `j ci` and `j c i` would require

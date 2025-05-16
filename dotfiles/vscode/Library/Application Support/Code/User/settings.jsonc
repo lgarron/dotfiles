@@ -170,6 +170,8 @@
 	"scm.experimental.showHistoryGraph": true,
 	/******* SCAD *********/
 	"scad-lsp.fmtExePath": "/opt/homebrew/bin/openscad-lsp-topiary",
+	/******* Disable AI upsell garbage I didn't ask for *********/
+	"terminal.integrated.initialHint": false,
 	/******* Apply to all profiles *********/
 	"workbench.settings.applyToAllProfiles": [
 		/******** Dynamic ********/

@@ -23,7 +23,8 @@ const DEFAULT_VARIANT: &str = "default";
 ///
 /// - Multiple variants can be specified in the source file, and `openscad-auto`
 ///   will render each variant by setting the `VARIANT` variable.
-///   - Variants are specified by a JSON object between a `START_AUTO_INCLUDED_VARIANTS` line and `END_AUTO_INCLUDED_VARIANTS` line.
+///   - Variants are specified by a JSON list on a line after `VARIANT = "default"; //`.
+///     - This is designed to be compatible with the customizer: https://en.wikibooks.org/wiki/OpenSCAD_User_Manual/Customizer
 /// - The `lazy-union` feature and `manifold` backend are used.
 /// - Upon rendering, the program can:
 ///   - Reveal the output file(s) (default)
@@ -92,35 +93,28 @@ fn get_args() -> Args {
     args
 }
 
-const START_AUTO_INCLUDED_VARIANTS: &str = "START_AUTO_INCLUDED_VARIANTS";
-const END_AUTO_INCLUDED_VARIANTS: &str = "END_AUTO_INCLUDED_VARIANTS";
+const VARIANT_ASSIGNMENT_HEURISTIC: &str = "VARIANT";
+const VARIANT_ASSIGNMENT_PREFIX: &str = "VARIANT = \"default\"; // ";
 
 // TODO: read variants from the `VARIANT` variable assignment once I'm using a formatter that doesn't break this.
 fn variants_from_file(file: &PathBuf) -> Option<Vec<Option<String>>> {
     let contents = read_to_string(file).expect("Could not find source file.");
-    // TODO: turn this into a reader?
-    let mut json_lines: Vec<&str> = vec![];
-
-    let mut in_range = false;
-    for line in contents.lines() {
-        if line == START_AUTO_INCLUDED_VARIANTS {
-            in_range = true;
-            continue;
+    for (line_index, line) in contents.lines().enumerate() {
+        if line.starts_with(VARIANT_ASSIGNMENT_PREFIX) {
+            let json = line
+                .split_once("//")
+                .expect("Missing // after `VARIANT = \"default\"; // `")
+                .1;
+            let variants: Vec<Option<String>> =
+                serde_json::from_str(json).expect("Invalid listing of variants.");
+            return Some(variants);
         }
-        if line == END_AUTO_INCLUDED_VARIANTS {
-            break;
-        }
-        if in_range {
-            json_lines.push(line);
+        if line.starts_with(VARIANT_ASSIGNMENT_HEURISTIC) {
+            let line_number = line_index + 1;
+            eprintln!("⚠️ WARNING: detected a possible `VARIANT` assignment, but it was not formatted in a way so that variants could be read from it. At: {}:{}", file.to_string_lossy(), line_number);
         }
     }
-    if !in_range {
-        return None;
-    }
-    let json = json_lines.join("\n");
-    let variants: Vec<Option<String>> =
-        serde_json::from_str(&json).expect("Invalid listing of variants.");
-    Some(variants)
+    None
 }
 
 fn main() {

@@ -463,13 +463,13 @@
 				</dict>
 				<dict>
 					<key>ID</key>
-					<string>6E4DE642-5402-467F-93BF-D75758500342</string>
+					<string>DF1169F2-0CB5-489D-B222-138B1940116C</string>
 					<key>children</key>
 					<array/>
 					<key>enabled</key>
 					<true/>
 					<key>modificationDate</key>
-					<real>702530695.58016205</real>
+					<real>768645669.29909396</real>
 					<key>name</key>
 					<string>Pythagoras Screenshots 2025</string>
 					<key>settings</key>
@@ -477,7 +477,7 @@
 						<key>folderDepth</key>
 						<integer>1</integer>
 						<key>path</key>
-						<string>/Volumes/Samos/Pythagoras/Users/lgarron/Dropbox/Screenshots/Pythagoras Screenshots/Pythagoras Screenshots 2025</string>
+						<string>/Volumes/Samos/.CloudStorage/Data/Dropbox/Screenshots/Pythagoras Screenshots/Pythagoras Screenshots 2025</string>
 					</dict>
 					<key>source</key>
 					<string>QSFileSystemObjectSource</string>
@@ -664,31 +664,21 @@
 		</dict>
 		<dict>
 			<key>ID</key>
-			<string>C5006CAC-ED7C-40BE-9CAA-F23BB484E072</string>
+			<string>93A55DE4-72C5-4983-BDCD-C2E5CE661172</string>
 			<key>children</key>
 			<array/>
 			<key>enabled</key>
 			<true/>
-			<key>modificationDate</key>
-			<real>702530624.09897804</real>
 			<key>name</key>
 			<string>Dropbox</string>
 			<key>settings</key>
 			<dict>
 				<key>folderDepth</key>
 				<integer>1</integer>
-				<key>folderTypes</key>
-				<array>
-					<string>public.folder</string>
-				</array>
 				<key>parser</key>
 				<string>QSDirectoryParser</string>
 				<key>path</key>
-				<string>/Volumes/Samos/Pythagoras/Users/lgarron/Dropbox</string>
-				<key>skipItem</key>
-				<false/>
-				<key>watchTarget</key>
-				<false/>
+				<string>/Volumes/Samos/.CloudStorage/Data/Dropbox</string>
 			</dict>
 			<key>source</key>
 			<string>QSFileSystemObjectSource</string>

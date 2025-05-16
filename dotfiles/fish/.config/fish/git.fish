@@ -431,8 +431,7 @@ git push --force-with-lease"
 
 ## GitX
 
-    if which gitx > /dev/null
-        abbr -a gx "gitx"
-    else
-        abbr -a gx "open -a GitX ."
+    function gx
+        open -a GitX . & ; disown
+        $HOME/Code/git/github.com/lgarron/dotfiles/scripts/system/dell-display-position-app-on-bottom.fish GitX
     end

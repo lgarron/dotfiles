@@ -25,6 +25,7 @@ cask "macs-fan-control"
 cask "syncthing"
 cask "handbrake"
 cask "betterdisplay"
+brew "waydabber/betterdisplay/betterdisplaycli"
 
 # Browsers
 

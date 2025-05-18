@@ -34,6 +34,7 @@ mac-setup-bulk: \
 	mac-commandline-bulk \
 	mac-app-store-apps-bulk
 	make mac-dock-setup
+	make mac-setup-builtin-display-auto-brightness
 
 # TODO: Use installation path instead of .PHONY?
 .PHONY: mac-homebrew
@@ -212,3 +213,8 @@ prefer-wired-over-wireless-for-SMB:
 watch-for-plist-changes:
 	command -v plistwatch || go install github.com/catilac/plistwatch@latest
 	plistwatch | grep -v "ContextStoreAgent"
+
+.PHONY:
+mac-setup-builtin-display-auto-brightness: mac-apps-bulk
+	@echo "Note: configuring the built-in display auto brightness requires the built-in display to be currently connected."
+	betterdisplaycli set --name="Built-in Display" --autoBrightness=off

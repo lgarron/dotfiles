@@ -1,0 +1,50 @@
+#!/usr/bin/env bun
+
+import { dirname, join } from "node:path";
+import { exit } from "node:process";
+import { $, Glob, file } from "bun";
+
+const VOLUMES_DIR = "/Volumes/";
+
+interface DiskMetadata {
+  name: string;
+}
+
+let exitCode = 0;
+
+const reset = "\x1B[0m";
+
+let numVolumesTotal = 0;
+let numVolumeNamesFixes = 0;
+for await (const path of new Glob("*/.config/disk-metadata.json").scan({
+  cwd: VOLUMES_DIR,
+  dot: true,
+})) {
+  numVolumesTotal++;
+  // TODO: is this safe?
+  const currentVolumeName = dirname(dirname(path));
+
+  const diskMetadata: DiskMetadata = await file(join(VOLUMES_DIR, path)).json();
+  const expectedName = diskMetadata.name;
+  if (!expectedName) {
+    console.error("Missing name at: ", path);
+    exitCode = 1;
+  }
+
+  if (currentVolumeName !== expectedName) {
+    console.log(
+      `Renaming from: ${Bun.color("blue", "ansi")}${currentVolumeName}${reset}`,
+    );
+    console.log(
+      `Renaming to: ${Bun.color("blue", "ansi")}${expectedName}${reset}`,
+    );
+    await $`diskutil rename ${currentVolumeName} ${expectedName}`;
+    console.log("Success!");
+    numVolumeNamesFixes += 1;
+  }
+}
+
+console.log(
+  `Found ${numVolumesTotal} volumes with disk metadata, fixed the names of ${numVolumeNamesFixes} of them.`,
+);
+exit(exitCode);

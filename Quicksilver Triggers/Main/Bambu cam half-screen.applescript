@@ -37,10 +37,17 @@ tell application "System Events"
 	tell theProcess
 		-- Try to avoid a flash of unsized window.
 		set frontmost to false
-		-- We would add a delay or check here to make sure the application is actually no longer frontmost, but I don't know of any way to avoid UI lag.
+			repeat while frontmost is not false
+				delay 0.1
+			end
+		-- macOS lies to us, so we add a bit of extra delay.
+			delay 0.2
 		tell window 1
 		-- We move the landscape temporarily screen because macOS is reluctant to extend the window past the screen (unless it already does). TODO: is there any way around this?
 			set position to {0, 0}
+			repeat while position is not {0, 0}
+				delay 0.1
+			end
 			set size to {1932, 1014}
 			set position to {-1310, 973}
 		end tell

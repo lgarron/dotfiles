@@ -75,36 +75,172 @@
 	"Include `variants` boilerplate": {
 		"prefix": "include <variants",
 		"body": [
-"VARIANT = \"default\"; // [\"default\", \"no-version\", \"mini\", \"mini.normal-height\"]",
-"",
-"// This empty block prevents any following `CONSTANT_CASE` variables from being settable in the customizer.",
-"// This prevents pathological interactions with persisted customizer values that are meant to be controlled exclusively by `VARIANT`.",
-"{};",
-"",
-"VARIANT_DATA = [",
-"  [",
-"    \"default\",",
-"    [",
-"      [",
-"        [\"TOTAL_HEIGHT\", 5],",
-"        [\"INCLUDE_VERSION_ENGRAVING\", true],",
-"      ],",
-"    ],",
-"  ],",
-"  [",
-"    \"no-version\",",
-"    [",
-"      [",
-"        [\"INCLUDE_VERSION_ENGRAVING\", false],",
-"      ],",
-"    ],",
-"  ]",
-"];",
-"",
-"include <./node_modules/scad/variants.scad>",
-"",
-"TOTAL_HEIGHT = get_parameter(\"TOTAL_HEIGHT\");",
-"INCLUDE_VERSION_ENGRAVING = get_parameter(\"INCLUDE_VERSION_ENGRAVING\");"
+			"VARIANT = \"default\"; // [\"default\", \"no-version\", \"mini\", \"mini.normal-height\"]",
+			"",
+			"// This empty block prevents any following `CONSTANT_CASE` variables from being settable in the customizer.",
+			"// This prevents pathological interactions with persisted customizer values that are meant to be controlled exclusively by `VARIANT`.",
+			"{};",
+			"",
+			"VARIANT_DATA = [",
+			"  [",
+			"    \"default\",",
+			"    [",
+			"      [",
+			"        [\"TOTAL_HEIGHT\", 5],",
+			"        [\"INCLUDE_VERSION_ENGRAVING\", true],",
+			"      ],",
+			"    ],",
+			"  ],",
+			"  [",
+			"    \"no-version\",",
+			"    [",
+			"      [",
+			"        [\"INCLUDE_VERSION_ENGRAVING\", false],",
+			"      ],",
+			"    ],",
+			"  ]",
+			"];",
+			"",
+			"include <./node_modules/scad/variants.scad>",
+			"",
+			"TOTAL_HEIGHT = get_parameter(\"TOTAL_HEIGHT\");",
+			"INCLUDE_VERSION_ENGRAVING = get_parameter(\"INCLUDE_VERSION_ENGRAVING\");"
 		]
-	}
+	},
+	// To update, run from the repo root:
+	//
+	//    bun run 'repo-script/vscode-snippets-update-scad-filaments.ts
+	//
+	"FILAMENT_COLOR__BAMBU__PETG_CF__BLACK": {
+		"prefix": "FILAMENT_COLOR__BAMBU__PETG_CF__BLACK",
+		"body": [
+			"FILAMENT_COLOR__BAMBU__PETG_CF__BLACK"
+		]
+	},
+	"FILAMENT_COLOR__BAMBU__PETG_HF__CREAM": {
+		"prefix": "FILAMENT_COLOR__BAMBU__PETG_HF__CREAM",
+		"body": [
+			"FILAMENT_COLOR__BAMBU__PETG_HF__CREAM"
+		]
+	},
+	"FILAMENT_COLOR__BAMBU__PLA_BASIC__BLACK": {
+		"prefix": "FILAMENT_COLOR__BAMBU__PLA_BASIC__BLACK",
+		"body": [
+			"FILAMENT_COLOR__BAMBU__PLA_BASIC__BLACK"
+		]
+	},
+	"FILAMENT_COLOR__BAMBU__PLA_BASIC__GREEN": {
+		"prefix": "FILAMENT_COLOR__BAMBU__PLA_BASIC__GREEN",
+		"body": [
+			"FILAMENT_COLOR__BAMBU__PLA_BASIC__GREEN"
+		]
+	},
+	"FILAMENT_COLOR__BAMBU__PLA_BASIC__RED": {
+		"prefix": "FILAMENT_COLOR__BAMBU__PLA_BASIC__RED",
+		"body": [
+			"FILAMENT_COLOR__BAMBU__PLA_BASIC__RED"
+		]
+	},
+	"FILAMENT_COLOR__BAMBU__PLA_BASIC__SILVER": {
+		"prefix": "FILAMENT_COLOR__BAMBU__PLA_BASIC__SILVER",
+		"body": [
+			"FILAMENT_COLOR__BAMBU__PLA_BASIC__SILVER"
+		]
+	},
+	"FILAMENT_COLOR__BAMBU__PLA_BASIC__WHITE": {
+		"prefix": "FILAMENT_COLOR__BAMBU__PLA_BASIC__WHITE",
+		"body": [
+			"FILAMENT_COLOR__BAMBU__PLA_BASIC__WHITE"
+		]
+	},
+	"FILAMENT_COLOR__BAMBU__PLA_CF__BURGUNDY": {
+		"prefix": "FILAMENT_COLOR__BAMBU__PLA_CF__BURGUNDY",
+		"body": [
+			"FILAMENT_COLOR__BAMBU__PLA_CF__BURGUNDY"
+		]
+	},
+	"FILAMENT_COLOR__BAMBU__PLA_CF__JEANS_BLUE": {
+		"prefix": "FILAMENT_COLOR__BAMBU__PLA_CF__JEANS_BLUE",
+		"body": [
+			"FILAMENT_COLOR__BAMBU__PLA_CF__JEANS_BLUE"
+		]
+	},
+	"FILAMENT_COLOR__BAMBU__PLA_CF__LAVA_GRAY": {
+		"prefix": "FILAMENT_COLOR__BAMBU__PLA_CF__LAVA_GRAY",
+		"body": [
+			"FILAMENT_COLOR__BAMBU__PLA_CF__LAVA_GRAY"
+		]
+	},
+	"FILAMENT_COLOR__BAMBU__PLA_CF__MATCHA_GREEN": {
+		"prefix": "FILAMENT_COLOR__BAMBU__PLA_CF__MATCHA_GREEN",
+		"body": [
+			"FILAMENT_COLOR__BAMBU__PLA_CF__MATCHA_GREEN"
+		]
+	},
+	"FILAMENT_COLOR__BAMBU__PLA_CF__PURPLE": {
+		"prefix": "FILAMENT_COLOR__BAMBU__PLA_CF__PURPLE",
+		"body": [
+			"FILAMENT_COLOR__BAMBU__PLA_CF__PURPLE"
+		]
+	},
+	"FILAMENT_COLOR__BAMBU__PLA_CF__BLACK": {
+		"prefix": "FILAMENT_COLOR__BAMBU__PLA_CF__BLACK",
+		"body": [
+			"FILAMENT_COLOR__BAMBU__PLA_CF__BLACK"
+		]
+	},
+	"FILAMENT_COLOR__BAMBU__PLA_MARBLE__WHITE": {
+		"prefix": "FILAMENT_COLOR__BAMBU__PLA_MARBLE__WHITE",
+		"body": [
+			"FILAMENT_COLOR__BAMBU__PLA_MARBLE__WHITE"
+		]
+	},
+	"FILAMENT_COLOR__BAMBU__PLA_MATTE__DARK_BLUE": {
+		"prefix": "FILAMENT_COLOR__BAMBU__PLA_MATTE__DARK_BLUE",
+		"body": [
+			"FILAMENT_COLOR__BAMBU__PLA_MATTE__DARK_BLUE"
+		]
+	},
+	"FILAMENT_COLOR__BAMBU__PLA_SILK__BLUE_MAGENTA": {
+		"prefix": "FILAMENT_COLOR__BAMBU__PLA_SILK__BLUE_MAGENTA",
+		"body": [
+			"FILAMENT_COLOR__BAMBU__PLA_SILK__BLUE_MAGENTA"
+		]
+	},
+	"FILAMENT_COLOR__BAMBU__PLA_SILK__PINK_GOLD": {
+		"prefix": "FILAMENT_COLOR__BAMBU__PLA_SILK__PINK_GOLD",
+		"body": [
+			"FILAMENT_COLOR__BAMBU__PLA_SILK__PINK_GOLD"
+		]
+	},
+	"FILAMENT_COLOR__CREALITY__PLA__WOOD": {
+		"prefix": "FILAMENT_COLOR__CREALITY__PLA__WOOD",
+		"body": [
+			"FILAMENT_COLOR__CREALITY__PLA__WOOD"
+		]
+	},
+	"FILAMENT_COLOR__ELEGOO__PLA_PLUS__PINK": {
+		"prefix": "FILAMENT_COLOR__ELEGOO__PLA_PLUS__PINK",
+		"body": [
+			"FILAMENT_COLOR__ELEGOO__PLA_PLUS__PINK"
+		]
+	},
+	"FILAMENT_COLOR__ELEGOO__PLA_PLUS__GALAXY_PEACOCK": {
+		"prefix": "FILAMENT_COLOR__ELEGOO__PLA_PLUS__GALAXY_PEACOCK",
+		"body": [
+			"FILAMENT_COLOR__ELEGOO__PLA_PLUS__GALAXY_PEACOCK"
+		]
+	},
+	"FILAMENT_COLOR__ELEGOO__PLA_PLUS__GALAXY_PURPLE": {
+		"prefix": "FILAMENT_COLOR__ELEGOO__PLA_PLUS__GALAXY_PURPLE",
+		"body": [
+			"FILAMENT_COLOR__ELEGOO__PLA_PLUS__GALAXY_PURPLE"
+		]
+	},
+	"FILAMENT_COLOR__ELEGOO__SILK_PLA__CORAL": {
+		"prefix": "FILAMENT_COLOR__ELEGOO__SILK_PLA__CORAL",
+		"body": [
+			"FILAMENT_COLOR__ELEGOO__SILK_PLA__CORAL"
+		]
+	},
 }

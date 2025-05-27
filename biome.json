@@ -4,7 +4,8 @@
     "include": [
       "./.config/**/*.ts",
       "./scripts/**/*.ts",
-      "./scripts/**/*.json"
+      "./scripts/**/*.json",
+      "./repo-script/**/*.ts"
     ],
     "ignore": ["./.temp", "./dotfiles/vscode/**/*"]
   },

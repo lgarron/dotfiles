@@ -583,9 +583,26 @@
 			<key>command</key>
 			<dict>
 				<key>actionID</key>
-				<string>[Action]:/Users/lgarron/Library/Application Support/Quicksilver/Actions/Open folder in editor.scpt</string>
+				<string>[Action]:/Users/lgarron/Library/Application Support/Quicksilver/Actions/Open file inside workspace in editor.scpt</string>
 				<key>directID</key>
 				<string>QSGlobalSelectionProxy</string>
+				<key>indirectArchive</key>
+				<dict>
+					<key>class</key>
+					<string>QSObject</string>
+					<key>data</key>
+					<dict>
+						<key>QSTextProxyType</key>
+						<string></string>
+					</dict>
+					<key>properties</key>
+					<dict>
+						<key>QSObjectName</key>
+						<string></string>
+						<key>QSObjectType</key>
+						<string>QSTextProxyType</string>
+					</dict>
+				</dict>
 			</dict>
 			<key>enabled</key>
 			<true/>

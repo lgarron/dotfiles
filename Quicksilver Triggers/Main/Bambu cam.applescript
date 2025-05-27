@@ -1,3 +1,5 @@
+set loopLimit to 20
+
 tell application "System Events"
 	-- TODO: why can't we place this inside a function?
 	-- TODO: why can't we get `frontmost` from the query after making it?
@@ -7,7 +9,7 @@ tell application "System Events"
 		if manyProcesses is {} then
 			tell application "BambuStudio" to launch
 			
-			repeat 20 times
+			repeat loopLimit times
 				set theProcesses to application processes whose name is "BambuStudio"
 				if theProcesses is not {} then
 					exit repeat
@@ -17,7 +19,7 @@ tell application "System Events"
 			
 			tell process "BambuStudio"
 				set frontmost to true
-				repeat 20 times
+				repeat loopLimit times
 					set theWindows to get windows
 					if theWindows is not {} then
 						exit repeat
@@ -37,17 +39,23 @@ tell application "System Events"
 	tell theProcess
 		-- Try to avoid a flash of unsized window.
 		set frontmost to false
-			repeat while frontmost is not false
+			repeat loopLimit times
+				if frontmost is false
+					exit repeat
+				end if
 				delay 0.1
-			end
+			end repeat
 		-- macOS lies to us, so we add a bit of extra delay.
 			delay 0.2
 		tell window 1
 		-- We move the landscape temporarily screen because macOS is reluctant to extend the window past the screen (unless it already does). TODO: is there any way around this?
 			set position to {0, 0}
-			repeat while position is not {0, 0}
+			repeat loopLimit times
+				if position is {0, 0}
+					exit repeat
+				end if
 				delay 0.1
-			end
+			end repeat
 			set size to {1932, 1088}
 			set position to {-1310, 882}
 		end tell

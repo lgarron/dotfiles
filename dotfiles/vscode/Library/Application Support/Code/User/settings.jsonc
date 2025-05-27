@@ -62,6 +62,7 @@
 		},
 		"editor.defaultFormatter": "charliermarsh.ruff"
 	},
+	"biome.suggestInstallingGlobally": false,
 	/******** JavaScript ********/
 	"javascript.validate.enable": false,
 	"javascript.updateImportsOnFileMove.enabled": "always",
@@ -285,6 +286,6 @@
 		"toggleCase.notification.notifyOnChange",
 		/******* Apply to all profiles *********/
 		"workbench.settings.applyToAllProfiles"
-	]
+	],
 	/****************/
 }

@@ -200,6 +200,11 @@
     complete -c arqc -n "__fish_seen_subcommand_from latestBackupActivityLog latestBackupActivityJSON startBackupPlan stopBackupPlan" \
         -a "(arqc listBackupPlans 2> /dev/null | grep \"^UUID=\" | sed \"s/^UUID=//g\")" # We can just allow the first tab of `listBackupPlans` to be interpreted by `fish` as a separator between value and description.
 
+## openscad-auto
+
+    abbr -a oa openscad-auto
+    abbr -a oad 'openscad-auto --variants default'
+    abbr_subcommand openscad-auto d "--variants default"
 
 ## Misc
 
@@ -209,7 +214,6 @@
     abbr -a "tf" "terraform"
     abbr -a "sm" "script/manage"
     abbr -a "disk-speed-test" '"/Applications/Blackmagic Disk Speed Test.app/Contents/MacOS/DiskSpeedTest" --cmd --dir'
-    abbr -a "oa" 'openscad-auto'
     abbr -a "unixtime" 'date "+%s"'
 
     abbr -a serve "open http://localhost:8000; caddy file-server --listen :8000 --browse --root ."

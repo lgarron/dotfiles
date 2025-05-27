@@ -14,10 +14,11 @@ interface DiskMetadata {
 
 let exitCode = 0;
 
-// TODO: https://github.com/oven-sh/bun/issues/17807
-const reset = "\x1B[0m";
-function formattedDiskName(s: string): string {
-  return styleText("blue", s);
+function formattedDiskName(
+  s: string,
+  options?: { markAsIncorrect?: boolean },
+): string {
+  return styleText(options?.markAsIncorrect ? "red" : "blue", s);
 }
 
 console.log("Checking disk names…");
@@ -45,7 +46,7 @@ for await (const path of new Glob(
     console.log(`✅ ${formattedDiskName(currentVolumeName)}`);
   } else {
     console.log(
-      `➡️ ${formattedDiskName(currentVolumeName)} → ${formattedDiskName(expectedName)}`,
+      `➡️ ${formattedDiskName(currentVolumeName, { markAsIncorrect: true })} → ${formattedDiskName(expectedName)}`,
     );
     await $`diskutil rename ${currentVolumeName} ${expectedName}`;
     console.log("Success!");

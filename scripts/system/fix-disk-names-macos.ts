@@ -2,6 +2,7 @@
 
 import { dirname, join } from "node:path";
 import { exit } from "node:process";
+import { styleText } from "node:util";
 import { $, Glob, file } from "bun";
 
 const VOLUMES_DIR = "/Volumes/";
@@ -16,7 +17,7 @@ let exitCode = 0;
 // TODO: https://github.com/oven-sh/bun/issues/17807
 const reset = "\x1B[0m";
 function formattedDiskName(s: string): string {
-  return `${Bun.color("#08F", "ansi")}${s}${reset}`;
+  return styleText("blue", s);
 }
 
 console.log("Checking disk names…");

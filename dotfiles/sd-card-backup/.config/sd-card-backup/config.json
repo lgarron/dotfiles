@@ -54,5 +54,6 @@
     { "source": "CRM", "destination": "CRM" },
     { "source": "ipcam", "destination": "ipcam" },
     { "source": "timelapse", "destination": "timelapse" }
-  ]
+  ],
+  "command_to_run_before": ["fix-disk-names-macos"]
 }

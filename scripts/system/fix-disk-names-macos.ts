@@ -12,6 +12,7 @@ interface DiskMetadata {
 
 let exitCode = 0;
 
+// TODO: https://github.com/oven-sh/bun/issues/17807
 const reset = "\x1B[0m";
 
 let numVolumesTotal = 0;

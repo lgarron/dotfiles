@@ -41,6 +41,7 @@ abbr_subcommand_arg jj r --revision bookmark
 
 _fish_abbr_jj_subcommand de describe
 abbr -a jdd --set-cursor "jj describe --message \"%" # Special shortened abbreviation
+abbr_subcommand_arg jj m --message describe
 
 _fish_abbr_jj_subcommand gf "git fetch"
 _fish_abbr_jj_subcommand p "git push"

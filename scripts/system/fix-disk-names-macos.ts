@@ -45,6 +45,6 @@ for await (const path of new Glob("*/.config/disk-metadata.json").scan({
 }
 
 console.log(
-  `Found ${numVolumesTotal} volumes with disk metadata, fixed the names of ${numVolumeNamesFixes} of them.`,
+  `Found ${numVolumesTotal} volumes with disk metadata, ${numVolumeNamesFixes} needed a name fix.`,
 );
 exit(exitCode);

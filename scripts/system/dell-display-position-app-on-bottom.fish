@@ -1,6 +1,5 @@
 #!/usr/bin/env -S fish --no-config
 
-
 # TODO: AppleScript's quoting almost certainly does not line up with `fish`, so there's probably an injection.
 # Perhaps limit to ASCII for now?
 set QUOTED_PROCESS '"'(string escape --no-quoted --style=script $argv[1])'"'

@@ -1,7 +1,11 @@
 {
   "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
   "files": {
-    "include": ["./.config/**/*.ts", "./scripts/**/*.ts"],
+    "include": [
+      "./.config/**/*.ts",
+      "./scripts/**/*.ts",
+      "./scripts/**/*.json"
+    ],
     "ignore": ["./.temp", "./dotfiles/vscode/**/*"]
   },
   "formatter": {

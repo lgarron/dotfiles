@@ -49,7 +49,7 @@ for await (const path of new Glob(
       `➡️ ${formattedDiskName(currentVolumeName, { markAsIncorrect: true })} → ${formattedDiskName(expectedName)}`,
     );
     await $`diskutil rename ${currentVolumeName} ${expectedName}`;
-    console.log("Success!");
+    console.log("Successfully renamed!");
     numVolumeNamesFixes += 1;
   }
 }

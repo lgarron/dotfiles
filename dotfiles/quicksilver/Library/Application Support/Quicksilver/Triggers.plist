@@ -617,6 +617,35 @@
 		</dict>
 		<dict>
 			<key>ID</key>
+			<string>B41C12B3-8F45-4AAE-800D-9DB56431F3AD</string>
+			<key>applicationScope</key>
+			<array>
+				<string>com.blacktree.Quicksilver</string>
+			</array>
+			<key>applicationScopeType</key>
+			<integer>1</integer>
+			<key>character</key>
+			<string>|</string>
+			<key>command</key>
+			<dict>
+				<key>actionID</key>
+				<string>[Action]:/Users/lgarron/Library/Application Support/Quicksilver/Actions/Open file inside workspace in editor.scpt</string>
+				<key>directID</key>
+				<string>com.blacktree.Quicksilver</string>
+			</dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyCode</key>
+			<integer>42</integer>
+			<key>modifiers</key>
+			<integer>1442059</integer>
+			<key>onPress</key>
+			<true/>
+			<key>type</key>
+			<string>QSHotKeyTrigger</string>
+		</dict>
+		<dict>
+			<key>ID</key>
 			<string>79F70D9D-4A34-4CEB-A607-C47D64D5CFA4</string>
 			<key>applicationScope</key>
 			<array>
@@ -981,6 +1010,58 @@
 			<integer>124</integer>
 			<key>modifiers</key>
 			<integer>10486016</integer>
+			<key>onPress</key>
+			<true/>
+			<key>type</key>
+			<string>QSHotKeyTrigger</string>
+		</dict>
+		<dict>
+			<key>ID</key>
+			<string>EF50F1B9-8EB7-43AE-BADD-379F404BEA91</string>
+			<key>applicationScope</key>
+			<array>
+				<string>com.blacktree.Quicksilver</string>
+			</array>
+			<key>applicationScopeType</key>
+			<integer>1</integer>
+			<key>character</key>
+			<string>C</string>
+			<key>command</key>
+			<dict>
+				<key>actionID</key>
+				<string>[Action]:/Users/lgarron/Library/Application Support/Quicksilver/Actions/Copy file path to clipboard.scpt</string>
+				<key>directID</key>
+				<string>com.blacktree.Quicksilver</string>
+				<key>indirectArchive</key>
+				<dict>
+					<key>class</key>
+					<string>QSObject</string>
+					<key>data</key>
+					<dict>
+						<key>public.utf8-plain-text</key>
+						<string>public.zip-archive</string>
+						<key>qs.filecompressortype</key>
+						<string>public.zip-archive</string>
+					</dict>
+					<key>properties</key>
+					<dict>
+						<key>QSObjectDetails</key>
+						<string>Zip archive</string>
+						<key>QSObjectIconName</key>
+						<string>com.apple.archiveutility</string>
+						<key>QSObjectName</key>
+						<string>zip</string>
+						<key>QSObjectType</key>
+						<string>qs.filecompressortype</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyCode</key>
+			<integer>8</integer>
+			<key>modifiers</key>
+			<integer>1179914</integer>
 			<key>onPress</key>
 			<true/>
 			<key>type</key>

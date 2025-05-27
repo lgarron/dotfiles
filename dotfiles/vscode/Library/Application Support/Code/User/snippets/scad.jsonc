@@ -71,5 +71,40 @@
 		"body": [
 			"include <./node_modules/scad/engraving.scad>",
 		],
+	},
+	"Include `variants` boilerplate": {
+		"prefix": "include <variants",
+		"body": [
+"VARIANT = \"default\"; // [\"default\", \"no-version\", \"mini\", \"mini.normal-height\"]",
+"",
+"// This empty block prevents any following `CONSTANT_CASE` variables from being settable in the customizer.",
+"// This prevents pathological interactions with persisted customizer values that are meant to be controlled exclusively by `VARIANT`.",
+"{};",
+"",
+"VARIANT_DATA = [",
+"  [",
+"    \"default\",",
+"    [",
+"      [",
+"        [\"TOTAL_HEIGHT\", 5],",
+"        [\"INCLUDE_VERSION_ENGRAVING\", true],",
+"      ],",
+"    ],",
+"  ],",
+"  [",
+"    \"no-version\",",
+"    [",
+"      [",
+"        [\"INCLUDE_VERSION_ENGRAVING\", false],",
+"      ],",
+"    ],",
+"  ]",
+"];",
+"",
+"include <./node_modules/scad/variants.scad>",
+"",
+"TOTAL_HEIGHT = get_parameter(\"TOTAL_HEIGHT\");",
+"INCLUDE_VERSION_ENGRAVING = get_parameter(\"INCLUDE_VERSION_ENGRAVING\");"
+		]
 	}
 }

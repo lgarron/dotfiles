@@ -5,6 +5,7 @@ import { exit } from "node:process";
 import { $, Glob, file } from "bun";
 
 const VOLUMES_DIR = "/Volumes/";
+const WELL_KNOWN_DISK_METADATA_JSON_PATH = ".well-known/disk-metadata.json";
 
 interface DiskMetadata {
   name: string;
@@ -14,10 +15,17 @@ let exitCode = 0;
 
 // TODO: https://github.com/oven-sh/bun/issues/17807
 const reset = "\x1B[0m";
+function formattedDiskName(s: string): string {
+  return `${Bun.color("#08F", "ansi")}${s}${reset}`;
+}
+
+console.log("Checking disk names…");
 
 let numVolumesTotal = 0;
 let numVolumeNamesFixes = 0;
-for await (const path of new Glob("*/.well-known/disk-metadata.json").scan({
+for await (const path of new Glob(
+  join("*", WELL_KNOWN_DISK_METADATA_JSON_PATH),
+).scan({
   cwd: VOLUMES_DIR,
   dot: true,
 })) {
@@ -32,12 +40,11 @@ for await (const path of new Glob("*/.well-known/disk-metadata.json").scan({
     exitCode = 1;
   }
 
-  if (currentVolumeName !== expectedName) {
+  if (currentVolumeName === expectedName) {
+    console.log(`✅ ${formattedDiskName(currentVolumeName)}`);
+  } else {
     console.log(
-      `Renaming from: ${Bun.color("blue", "ansi")}${currentVolumeName}${reset}`,
-    );
-    console.log(
-      `Renaming to: ${Bun.color("blue", "ansi")}${expectedName}${reset}`,
+      `➡️ ${formattedDiskName(currentVolumeName)} → ${formattedDiskName(expectedName)}`,
     );
     await $`diskutil rename ${currentVolumeName} ${expectedName}`;
     console.log("Success!");
@@ -45,7 +52,4 @@ for await (const path of new Glob("*/.well-known/disk-metadata.json").scan({
   }
 }
 
-console.log(
-  `Found ${numVolumesTotal} volumes with disk metadata, ${numVolumeNamesFixes} needed a name fix.`,
-);
 exit(exitCode);

@@ -16,7 +16,7 @@ const reset = "\x1B[0m";
 
 let numVolumesTotal = 0;
 let numVolumeNamesFixes = 0;
-for await (const path of new Glob("*/.config/disk-metadata.json").scan({
+for await (const path of new Glob("*/.well-known/disk-metadata.json").scan({
   cwd: VOLUMES_DIR,
   dot: true,
 })) {

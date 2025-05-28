@@ -2,10 +2,9 @@
 
 import { exit } from "node:process";
 import { $, argv } from "bun";
-import { determineWorkspaceRootDir } from "./determine-workspace-root.lib";
 
 const path = argv[2];
-const workspaceRootDir = await determineWorkspaceRootDir(path);
+const workspaceRootDir = await $`repo workspace root`.text();
 
 await $`code ${workspaceRootDir} && code --reuse-window ${path}`;
 

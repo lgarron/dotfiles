@@ -10,10 +10,12 @@ set DATE_STRING (date "+%Y-%m-%d — %H-%M-%S")
 
 set WINDOW_ID_ARG ""
 if [ "$argv[1]" = --front-window-shadowed-png ]
+    # TODO: why can't we find the window ID of apps like VS Code and Bambu Studio?
     set WINDOW_ID (osascript -e 'tell application (path to frontmost application as text) to id of window 1')
     set EXTENSION heic
     set WINDOW_ID_ARG -l$WINDOW_ID
 else if [ "$argv[1]" = --front-window-shadowless-jpg ]
+    # TODO: why can't we find the window ID of apps like VS Code and Bambu Studio?
     set WINDOW_ID (osascript -e 'tell application (path to frontmost application as text) to id of window 1')
     set EXTENSION heic
     set WINDOW_ID_ARG -l$WINDOW_ID
@@ -49,7 +51,7 @@ set APP_NAME (osascript -e 'tell application "System Events"
 	end if
 	appName
 end tell')
-if string match --quiet -entire $APP_NAME java
+if string match --quiet --entire $APP_NAME java
     set APP_NAME Minecraft
 end
 echo $APP_NAME

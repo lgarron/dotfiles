@@ -7,6 +7,7 @@ keybinds {
 
     normal {
         // TODO: The `zellij` docs imply this should not be necessary.
+        // https://github.com/zellij-org/zellij/issues/3850#issuecomment-2913515976
         unbind "Alt Left"
         unbind "Alt Right"
         unbind "Alt Up"

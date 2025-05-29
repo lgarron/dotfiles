@@ -3,8 +3,8 @@
 class OpenscadLspTopiary < Formula
   desc "jj clone script."
   homepage "https://github.com/lgarron/dotfiles"
-  url "https://github.com/Leathong/openscad-LSP/releases/download/v1.3.0/openscad-lsp-mac.zip"
-  sha256 "d058a5f93e2b7176289e0b3225028a6e26074f8c6179378e1da41a76bc5e8403"
+  url "https://github.com/Leathong/openscad-LSP/releases/download/v2.0.1/openscad-lsp-aarch64-apple-darwin.tar.xz"
+  sha256 "3d9a2656097c6775ae60094fcd84162032c86bdfda719baae3fa2efeb33f223f"
 
   def install
     bin.install "topiary" => "openscad-lsp-topiary"

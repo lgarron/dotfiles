@@ -9,7 +9,7 @@ const path = argv[2];
 const dir = (await lstat(path)).isDirectory ? dirname(path) : path;
 const workspaceRootDir = await (async () => {
   try {
-    await $`cd ${dir} && repo workspace root`.text();
+    return await $`cd ${dir} && repo workspace root`.text();
   } catch {
     return dir;
   }

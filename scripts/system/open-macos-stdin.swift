@@ -17,7 +17,7 @@ let theURLs = theFilePaths.map(toURL)
 func open(url: URL) {
     NSWorkspace.shared.open(url);
 }
-theURLs.map(open);
+let _ = theURLs.map(open);
 
 // Print the paths so we can pass through a file to `stdin` of another command.
 print(theFilePaths.joined(separator: "\n"), terminator: "")

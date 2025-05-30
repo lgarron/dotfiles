@@ -8,7 +8,12 @@ class OpenMacos < Formula
   depends_on :xcode
 
   def install
-    bin.install "scripts/system/open-macos.swift" => "open-macos"
-    bin.install "scripts/system/open-macos-stdin.swift" => "open-macos-stdin"
+    system "mkdir", "-p", "./.temp"
+
+    system "swiftc", "-o", "./.temp/open-macos", "scripts/system/open-macos.swift"
+    bin.install "./.temp/open-macos" => "open-macos"
+
+    system "swiftc", "-o", "./.temp/open-macos-stdin", "scripts/system/open-macos.swift"
+    bin.install "./.temp/open-macos-stdin" => "open-macos-stdin"
   end
 end

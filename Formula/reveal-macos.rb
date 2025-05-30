@@ -8,7 +8,12 @@ class RevealMacos < Formula
   depends_on :xcode
 
   def install
-    bin.install "scripts/system/reveal-macos.swift" => "reveal-macos"
-    bin.install "scripts/system/reveal-macos-stdin.swift" => "reveal-macos-stdin"
+    system "mkdir", "-p", "./.temp"
+
+    system "swiftc", "-o", "./.temp/reveal-macos", "scripts/system/reveal-macos.swift"
+    bin.install "./.temp/reveal-macos" => "reveal-macos"
+
+    system "swiftc", "-o", "./.temp/reveal-macos-stdin", "scripts/system/reveal-macos.swift"
+    bin.install "./.temp/reveal-macos-stdin" => "reveal-macos-stdin"
   end
 end

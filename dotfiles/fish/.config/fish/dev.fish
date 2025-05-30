@@ -203,6 +203,8 @@
 ## openscad-auto
 
     abbr -a oa openscad-auto
+    abbr -a oav 'openscad-auto --variants'
+    abbr_subcommand openscad-auto v "--variants"
     abbr -a oad 'openscad-auto --variants default'
     abbr_subcommand openscad-auto d "--variants default"
 

@@ -9,7 +9,10 @@ func toURL(s: String) -> URL {
     return URL(fileURLWithPath: s).absoluteURL
 }
 
-let theFilePaths = CommandLine.arguments[1...].map({ String($0) })
+var theFilePaths = CommandLine.arguments[1...].map({ String($0) })
+if theFilePaths.count == 0 {
+    theFilePaths = ["."]
+}
 let theURLs = theFilePaths.map(toURL)
 
 // There is an API call that opens multiple files, but it requires specifying an application: https://developer.apple.com/documentation/appkit/nsworkspace/open(_:withapplicationat:configuration:completionhandler:)

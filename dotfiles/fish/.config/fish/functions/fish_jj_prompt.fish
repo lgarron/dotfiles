@@ -56,12 +56,28 @@ function fish_jj_prompt
             --no-graph \
             --ignore-working-copy \
             --color=always \
-            --revisions "closest_ancestor_bookmark(@)" \
+            --revisions "closest_ancestor_bookmark(@, 10)" \
             --template 'bookmarks.join(", ")'
     )
-    set -l closest_bookmark_to_here_distance (__fish_jj_num_commits_from_to "closest_ancestor_bookmark(@)" "here")
-    set -l here_to_nonempty_distance (__fish_jj_num_commits_from_to "here" "closest_nonempty_ancestor(@)")
-    set -l nonempty_to_at_distance (__fish_jj_num_commits_from_to "closest_nonempty_ancestor(@)" "@")
+    set -l closest_bookmark_commit (
+        jj log 2>/dev/null \
+            --no-graph \
+            --ignore-working-copy \
+            --color=always \
+            --revisions "closest_ancestor_bookmark(@, 10)" \
+            --template 'commit_id'
+    )
+    set -l closest_nonempty_ancestor_commit (
+        jj log 2>/dev/null \
+            --no-graph \
+            --ignore-working-copy \
+            --color=always \
+            --revisions "closest_nonempty_ancestor(@, 10)" \
+            --template 'commit_id'
+    )
+    set -l closest_bookmark_to_here_distance (__fish_jj_num_commits_from_to $closest_bookmark_commit "here(10)")
+    set -l here_to_nonempty_distance (__fish_jj_num_commits_from_to "here" $closest_nonempty_ancestor_commit)
+    set -l nonempty_to_at_distance (__fish_jj_num_commits_from_to $closest_nonempty_ancestor_commit "@")
     set closest_bookmark_suffix " ($closest_bookmark +$closest_bookmark_to_here_distance pushable +$here_to_nonempty_distance undescribed +$nonempty_to_at_distance empty)"
     printf "%s%s" $info $closest_bookmark_suffix
 end

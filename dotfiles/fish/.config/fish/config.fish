@@ -105,14 +105,6 @@
     end
     abbr -a tt --position anywhere --function tt_paste
 
-    function o
-      if [ (count $argv) = 0 ]
-        open .
-      else
-        open $argv
-      end
-    end
-
 # Theme
 
     # Restore blue color for commands.

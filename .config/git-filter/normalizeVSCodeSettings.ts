@@ -4,7 +4,7 @@ import { stdin } from "bun";
 import { type CommentObject, parse, stringify } from "comment-json";
 
 const WINDOW_ZOOM_LEVEL = "window.zoomLevel";
-const WINDOW_ZOOM_LEVEL_NORMALIZED = 2;
+const WINDOW_ZOOM_LEVEL_NORMALIZED = 1;
 
 const EDITOR_FORMAT_ON_SAVE = "editor.formatOnSave";
 const EDITOR_FORMAT_ON_SAVE_NORMALIZED = true;

@@ -8,6 +8,7 @@ import {
   mkdir,
   readdir,
   realpath,
+  rm,
   symlink,
 } from "node:fs/promises";
 import { basename, join } from "node:path";
@@ -96,11 +97,11 @@ const app = command({
 
         const sourcePath = join(sourceDir, relativePath);
         const destinationPath = join(destinationDir, relativePath);
-        const sourceIsFile = !(await lstat(sourcePath)).isDirectory();
+        const sourceIsNotDir = !(await lstat(sourcePath)).isDirectory();
         const sourceIsSymlink = (await lstat(sourcePath)).isSymbolicLink();
 
         const fold = await (async () => {
-          if (sourceIsFile) {
+          if (sourceIsNotDir) {
             return false;
           }
           const lstowFilePath = join(sourcePath, ".config", "lstow.json");
@@ -119,7 +120,7 @@ const app = command({
             await lstat(destinationPath)
           ).isSymbolicLink();
           if (!sourceIsSymlink && destinationIsSymlink) {
-            assert(sourceIsFile || fold);
+            assert(sourceIsNotDir || fold);
           }
           if (destinationIsSymlink) {
             // Figure out how to do a better comparison (with exactly one level of symlink dereferencing on the destination side).
@@ -131,18 +132,24 @@ const app = command({
           const destinationRealpathIsFile = !(
             await lstat(await realpath(destinationPath))
           ).isDirectory();
-          assert.equal(sourceIsFile, destinationRealpathIsFile);
+          assert.equal(sourceIsNotDir, destinationRealpathIsFile);
           console.log(`🆗${foldingEmoji} ${sourcePath}${foldingDisplayInfo}
 ↪ ${destinationPath}`);
-          if (!(sourceIsFile || fold)) {
+          if (!(sourceIsNotDir || fold)) {
             await traverse(relativePath);
           }
         } else {
-          if (sourceIsFile || fold) {
+          if (sourceIsNotDir || fold) {
             console.log(`🆙${foldingEmoji} ${sourcePath}${foldingDisplayInfo}
 ↪ ${destinationPath}`);
             if (sourceIsSymlink) {
               if (!dryRun) {
+                console.log("hmm", sourcePath, destinationPath, {
+                  force: true,
+                });
+                // TODO: for some reason, `cp(…, {"force": true})` does not work. Why?
+                // For now, we `rm` the destination manually instead.
+                await rm(destinationPath);
                 await cp(sourcePath, destinationPath);
               }
             } else {

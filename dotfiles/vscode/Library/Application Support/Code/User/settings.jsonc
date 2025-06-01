@@ -286,6 +286,6 @@
 		"toggleCase.notification.notifyOnChange",
 		/******* Apply to all profiles *********/
 		"workbench.settings.applyToAllProfiles"
-	],
+	]
 	/****************/
 }

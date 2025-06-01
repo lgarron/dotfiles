@@ -236,7 +236,7 @@ Slow down a 120Hz video to 30hz.
 
 Speed up a 30Hz video from 120Hz.
 
-### `timelapse`
+### `timelapse-blur`
 
 Timelapse a video by averaging frames.
 

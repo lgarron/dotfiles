@@ -1,5 +1,6 @@
 #!/usr/bin/env bun
 
+import { existsSync } from "node:fs";
 import { exit } from "node:process";
 import { parseArgs } from "node:util";
 import { file, sleep, spawn } from "bun";
@@ -10,6 +11,7 @@ const HANDBRAKE_10_BIT_DEPTH_PRESET = "HEVC 10-bit (qv65)";
 
 const { values: options, positionals } = parseArgs({
   options: {
+    poll: { type: "string" },
     quality: { type: "string", default: "65" },
     "force-bit-depth": { type: "string" },
     help: { type: "boolean" },
@@ -18,8 +20,9 @@ const { values: options, positionals } = parseArgs({
 });
 
 function printHelp() {
-  console.info(`Usage: hevc [--quality VALUE] [--force-bit-depth VALUE] <INPUT-FILE>
+  console.info(`Usage: hevc [--poll auto/true/false] [--quality VALUE] [--force-bit-depth VALUE] <INPUT-FILE>
 
+--poll polls the source until it is ready.
 Default quality is 65.
 Forced bit depth can be 8 or 10.
 `);
@@ -62,9 +65,66 @@ const ffprobeCommand = new PrintableShellCommand("ffprobe", [
 ]);
 console.log("Analyzing input using command:");
 ffprobeCommand.print();
-const { streams } = (await new Response(
-  Bun.spawn(ffprobeCommand.forBun()).stdout,
-).json()) as { streams: FFprobeStream[] };
+
+const pollStartTime = performance.now();
+const MILLISECONDS_PER_SECOND = 1000;
+// Custom backoff algorithm.
+function numSecondsToWait(): number {
+  const secondsSoFar = Math.floor(
+    (performance.now() - pollStartTime) / MILLISECONDS_PER_SECOND,
+  );
+  globalThis.process.stdout.write(
+    `Polled for ${secondsSoFar} second${secondsSoFar === 1 ? "" : "s"} so far. `,
+  );
+  if (secondsSoFar < 10) {
+    return 1;
+  }
+  if (secondsSoFar < 60) {
+    return 5;
+  }
+  if (secondsSoFar < 60 * 10) {
+    return 15;
+  }
+  if (secondsSoFar > 24 * 60 * 60) {
+    console.error("Polling has taken more than 24 hours. Exiting.");
+    exit(2);
+  }
+  return 60;
+}
+
+const poll: "auto" | "true" | "false" =
+  ({ true: "true", false: "false" } as const)[options.poll] ?? "auto";
+
+const { streams } = await (async () => {
+  while (true) {
+    const command = Bun.spawn(ffprobeCommand.forBun());
+    if ((await command.exited) !== 0) {
+      if (poll === "false") {
+        console.error(
+          "Could not get source info and polling is set to `false`. Exiting.",
+        );
+        exit(1);
+      }
+      if (poll === "auto") {
+        if (!existsSync(inputFile)) {
+          console.error(
+            "Source file does not exist and polling is set to `auto`. Exiting.",
+          );
+          exit(1);
+        }
+      }
+      const numSeconds = numSecondsToWait();
+      console.info(
+        `Waiting ${numSeconds} second${numSeconds === 1 ? "" : "s"} to poll source again…`,
+      );
+      await sleep(numSeconds * MILLISECONDS_PER_SECOND);
+      continue;
+    }
+    return (await new Response(command.stdout).json()) as {
+      streams: FFprobeStream[];
+    };
+  }
+})();
 
 const videoStream: FFprobeStream = (() => {
   for (const stream of streams) {
@@ -73,7 +133,7 @@ const videoStream: FFprobeStream = (() => {
     }
   }
   console.error("No video stream found.");
-  exit(1);
+  exit(3);
 })();
 
 // const codec_fingerprint = `${videoStream.codec_name}/${videoStream.pix_fmt}/${videoStream.color_space}/${videoStream.color_primaries}/${videoStream.color_transfer}`;
@@ -89,7 +149,7 @@ const forcedBitDepth: 8 | 10 | null = (() => {
   const parsedForceBitDepth = Number.parseInt(forceBitDepth);
   if (![8, 10].includes(parsedForceBitDepth)) {
     console.log("Invalid forced bit depth specified.");
-    exit(1);
+    exit(4);
   }
   return parsedForceBitDepth as 8 | 10;
 })();
@@ -128,7 +188,7 @@ let bitDepth: 8 | 10 = await (async () => {
       console.warn(
         "Detected an input with 10-bit encoding for BT.709 video data. You must specify the --force-bit-depth option.",
       );
-      exit(1);
+      exit(5);
       break; // Workaround for: https://github.com/biomejs/biome/issues/3235
     }
     case "yuv422p10le/undefined": {

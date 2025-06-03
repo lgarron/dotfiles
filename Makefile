@@ -94,6 +94,7 @@ fish:
 	bun run ./scripts/system/lstow.ts -- ./dotfiles/$@ ~/
 	mkdir -p ${HOME}/.data/fish
 	mkdir -p ${HOME}/.local/share
+	rm -rf ${HOME}/.local/share/fish
 	ln -sf ${HOME}/.data/fish ${HOME}/.local/share/
 
 ########

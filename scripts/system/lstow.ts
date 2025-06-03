@@ -1,6 +1,7 @@
 #!/usr/bin/env bun
 
 import { default as assert } from "node:assert";
+import { existsSync } from "node:fs";
 import {
   cp,
   exists,
@@ -144,12 +145,11 @@ const app = command({
 ↪ ${destinationPath}`);
             if (sourceIsSymlink) {
               if (!dryRun) {
-                console.log("hmm", sourcePath, destinationPath, {
-                  force: true,
-                });
                 // TODO: for some reason, `cp(…, {"force": true})` does not work. Why?
                 // For now, we `rm` the destination manually instead.
-                await rm(destinationPath);
+                if (existsSync(destinationPath)) {
+                  await rm(destinationPath);
+                }
                 await cp(sourcePath, destinationPath);
               }
             } else {

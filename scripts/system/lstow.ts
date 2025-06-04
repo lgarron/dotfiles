@@ -144,12 +144,9 @@ const app = command({
 ↪ ${destinationPath}`);
             if (sourceIsSymlink) {
               if (!dryRun) {
-                console.log("hmm", sourcePath, destinationPath, {
-                  force: true,
-                });
                 // TODO: for some reason, `cp(…, {"force": true})` does not work. Why?
                 // For now, we `rm` the destination manually instead.
-                await rm(destinationPath);
+                await rm(destinationPath, { force: true });
                 await cp(sourcePath, destinationPath);
               }
             } else {

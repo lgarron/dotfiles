@@ -1,6 +1,7 @@
 #!/usr/bin/env bun
 
 import { default as assert } from "node:assert";
+import { existsSync } from "node:fs";
 import {
   cp,
   exists,
@@ -146,7 +147,9 @@ const app = command({
               if (!dryRun) {
                 // TODO: for some reason, `cp(…, {"force": true})` does not work. Why?
                 // For now, we `rm` the destination manually instead.
-                await rm(destinationPath, { force: true });
+                if (existsSync(destinationPath)) {
+                  await rm(destinationPath);
+                }
                 await cp(sourcePath, destinationPath);
               }
             } else {

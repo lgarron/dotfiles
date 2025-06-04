@@ -13,7 +13,6 @@ cask "keycastr"
 cask "obs"
 cask "vlc"
 cask "iina"
-cask "vmware-fusion"
 cask "whisky"
 cask "discord"
 cask "bambu-studio"
@@ -25,8 +24,6 @@ cask "macs-fan-control"
 cask "syncthing"
 cask "handbrake"
 cask "betterdisplay"
-brew "waydabber/betterdisplay/betterdisplaycli"
-
 # Browsers
 
 cask "firefox"

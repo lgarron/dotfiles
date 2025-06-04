@@ -1,0 +1,6 @@
+brew "mas"
+# This technically duplicates the `mac-app-store-apps-bulk` entry, but that's okay.
+mas "Xcode", id: 497799835
+
+tap "waydabber/betterdisplay"
+brew "waydabber/betterdisplay/betterdisplaycli"

@@ -34,7 +34,10 @@ open -R /System/Applications/Utilities/Terminal.app
 5. Install dotfiles:
 
 ```shell
-export PATH=$PATH:/opt/homebrew/bin
+# Pre-emptively place Homebrew in the path (so that its binaries can be used as soon as it is installed).
+export PATH="$PATH:/opt/homebrew/bin"
+
+# Install everything.
 make mac-common
 ```
 
@@ -42,12 +45,14 @@ See [`./exported/`](./exported/) for files that must be manually exported/import
 
 ## Ubuntu/Linux
 
-    sudo apt install git make
-    # Install `bun` from: https://bun.sh/
+```shell
+sudo apt install git make
+# Install `bun` from: https://bun.sh/
 
-    git clone https://github.com/lgarron/dotfiles ~/Code/git/github.com/lgarron/dotfiles
-    cd ~/Code/git/github.com/lgarron/dotfiles
-    make linux-setup
+git clone https://github.com/lgarron/dotfiles ~/Code/git/github.com/lgarron/dotfiles
+cd ~/Code/git/github.com/lgarron/dotfiles
+make linux-setup
+```
 
 ## Languages, ecosystems, and runtimes
 

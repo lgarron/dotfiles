@@ -25,16 +25,17 @@ mac-setup-sudo: \
 	mac-commandline-bootstrap \
 	mac-fish-default-shell \
 	prefer-wired-over-wireless-for-SMB \
-	mac-set-finder-sidebar
-	make mac-dock-setup
+	mac-set-finder-sidebar \
+	mac-dock-setup
 
 .PHONY: mac-setup-bulk
 mac-setup-bulk: \
 	mac-apps-bulk \
 	mac-commandline-bulk \
-	mac-app-store-apps-bulk
-	make mac-dock-setup
-	make mac-setup-builtin-display-auto-brightness
+	mac-app-store-apps-bulk \
+	mac-dock-setup \
+	mac-commandline-requiring-xcode \
+	mac-setup-builtin-display-auto-brightness
 
 # TODO: Use installation path instead of .PHONY?
 .PHONY: mac-homebrew
@@ -145,7 +146,8 @@ BREWFILE_TARGETS = \
 	mac-apps-server \
 	mac-commandline-bootstrap \
 	mac-commandline-core \
-	mac-commandline-bulk
+	mac-commandline-bulk \
+	mac-commandline-requiring-xcode
 
 .PHONY: $(BREWFILE_TARGETS)
 $(BREWFILE_TARGETS):
@@ -153,7 +155,7 @@ $(BREWFILE_TARGETS):
 
 BREWFILE_APPS_TARGETS = \
 	mac-app-store-apps-bulk \
-	mac-apps-bulk 
+	mac-apps-bulk
 
 .PHONY: $(BREWFILE_APPS_TARGETS)
 $(BREWFILE_APPS_TARGETS):
@@ -215,6 +217,6 @@ watch-for-plist-changes:
 	plistwatch | grep -v "ContextStoreAgent"
 
 .PHONY:
-mac-setup-builtin-display-auto-brightness: mac-apps-bulk
+mac-setup-builtin-display-auto-brightness: mac-commandline-requiring-xcode
 	@echo "Note: configuring the built-in display auto brightness requires the built-in display to be currently connected."
 	betterdisplaycli set --name="Built-in Display" --autoBrightness=off

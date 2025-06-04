@@ -217,4 +217,4 @@ watch-for-plist-changes:
 .PHONY:
 mac-setup-builtin-display-auto-brightness: mac-apps-bulk
 	@echo "Note: configuring the built-in display auto brightness requires the built-in display to be currently connected."
-	betterdisplaycli set --name="Built-in Display" --autoBrightness=off
+	# betterdisplaycli set --name="Built-in Display" --autoBrightness=off

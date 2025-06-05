@@ -1,6 +1,6 @@
 # Path
 
-    function add_to_path
+    function _add_to_path
       set NEW_PATH_COMPONENT $argv[1]
       fish_add_path --append $NEW_PATH_COMPONENT
     end
@@ -15,15 +15,15 @@
       end
       set -e fish_user_paths
 
-      add_to_path "$HOME/.cache/cargo/bin" # For Rust
-      add_to_path /opt/homebrew/bin # macOS (Apple Silicon)
-      add_to_path /home/linuxbrew/.linuxbrew/bin # for codespaces
-      add_to_path /home/linuxbrew/.linuxbrew/sbin # for codespaces
-      add_to_path "$GOPATH/bin"
-      add_to_path $HOME/.cache/.bun/bin # For zig (for building Bun) https://bun.sh/docs/project/development
-      add_to_path "/usr/local/bin"
-      add_to_path "$HOME/.shared-hosting/bin" # for Dreamhost
-      add_to_path "$HOME/.config/binaries/linux-x64" # for Codespaces
+      _add_to_path "$HOME/.cache/cargo/bin" # For Rust
+      _add_to_path /opt/homebrew/bin # macOS (Apple Silicon)
+      _add_to_path /home/linuxbrew/.linuxbrew/bin # for codespaces
+      _add_to_path /home/linuxbrew/.linuxbrew/sbin # for codespaces
+      _add_to_path "$GOPATH/bin"
+      _add_to_path $HOME/.cache/.bun/bin # For zig (for building Bun) https://bun.sh/docs/project/development
+      _add_to_path "/usr/local/bin"
+      _add_to_path "$HOME/.shared-hosting/bin" # for Dreamhost
+      _add_to_path "$HOME/.config/binaries/linux-x64" # for Codespaces
 
       set_color --bold
       echo -n "🐟"$_FISH_MANUAL_RELOAD_EMOJI

@@ -75,7 +75,6 @@
     # TODO: https://github.com/microsoft/vscode/issues/139634
     set -xg "VISUAL" (command -v code)" -w --"
     set -xg "EDITOR" (command -v code)" -w --"
-    # set -xg EDITOR "open -b com.microsoft.VSCode"
 
 # Theme
 

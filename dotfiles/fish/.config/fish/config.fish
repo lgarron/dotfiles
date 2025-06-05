@@ -33,31 +33,30 @@
 
       echo "🐟🔄 Reloading "(set_color --bold)"fish"(set_color normal)" files."
       echo "↪ 🐟 "(status --current-filename)
+    end
 
-      function load_or_fail
-        echo "  ↪ 🐟 $argv[1]"
-        source $argv[2]
+    function _load_or_fail_dotfile_import
+      set -l file $HOME/.config/fish/$argv[1].fish
+      if [ "$_FISH_MANUAL_RELOAD" = "true" ]
+        echo "  ↪ 🐟 $file"
       end
-    else
-      function load_or_fail
-        source $argv[2]
-      end
+      source $file
     end
 
 # Imports
 
-    load_or_fail "greeting" $HOME/.config/fish/greeting.fish
+    _load_or_fail_dotfile_import "greeting"
 
-    load_or_fail "xdg-basedir-workarounds" $HOME/.config/fish/xdg-basedir-workarounds.fish
-    load_or_fail "abbr" $HOME/.config/fish/abbr.fish
+    _load_or_fail_dotfile_import "xdg-basedir-workarounds"
+    _load_or_fail_dotfile_import "abbr"
 
-    load_or_fail "abbreviations" $HOME/.config/fish/abbreviations.fish
-    load_or_fail "bindings" $HOME/.config/fish/bindings.fish
-    load_or_fail "git" $HOME/.config/fish/git.fish
-    load_or_fail "jj" $HOME/.config/fish/jj.fish
-    load_or_fail "dev" $HOME/.config/fish/dev.fish
-    load_or_fail "cd-dir" $HOME/.config/fish/cd-dir.fish
-    load_or_fail "tee" $HOME/.config/fish/tee.fish
+    _load_or_fail_dotfile_import "abbreviations"
+    _load_or_fail_dotfile_import "bindings"
+    _load_or_fail_dotfile_import "git"
+    _load_or_fail_dotfile_import "jj"
+    _load_or_fail_dotfile_import "dev"
+    _load_or_fail_dotfile_import "cd-dir"
+    _load_or_fail_dotfile_import "tee"
 
 # Shortcuts
 

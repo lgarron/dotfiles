@@ -40,6 +40,7 @@
       end
       echo ""
 
+      # LSP override: This is intentionally setting a universal variable to avoid running more than needed.
       # @fish-lsp-disable-next-line 2003
       set -U _FISH_USER_PATHS_HAS_BEEN_SET_UP true
     end

@@ -33,6 +33,8 @@
     # Font: https://www.npmjs.com/package/stalwart-ascii-font?activeTab=readme
     set -l _CURRENT_HOSTNAME (hostname -s)
     if contains $_CURRENT_HOSTNAME $GERMAIN
+      # LSP override: This is an "exported" function (meant to be used outside this file). In particular, it is invoked by `fish` itself.
+      # @fish-lsp-disable-next-line 4004
       function fish_greeting
         set_color B594E2
         echo -n -e "\r" # Clear any pending typed text (it will still be passed to the next prompt).
@@ -47,6 +49,8 @@
     else if contains $_CURRENT_HOSTNAME $PYTHAGORAS
       set -g _FISH_PROMPT_LCARS_BOTTOM_COLOR 44CCAA
       set -g _FISH_PROMPT_LCARS_TOP_COLOR 66AAFF
+      # LSP override: This is an "exported" function (meant to be used outside this file). In particular, it is invoked by `fish` itself.
+      # @fish-lsp-disable-next-line 4004
       function fish_greeting
         set_color 66AAFF
         echo -n -e "\r" # Clear any pending typed text (it will still be passed to the next prompt).
@@ -61,6 +65,8 @@
     else if contains "dreamhost.com" (hostname -d)
       set -g _FISH_PROMPT_LCARS_BOTTOM_COLOR FFDD88
       set -g _FISH_PROMPT_LCARS_TOP_COLOR FFDD88
+      # LSP override: This is an "exported" function (meant to be used outside this file). In particular, it is invoked by `fish` itself.
+      # @fish-lsp-disable-next-line 4004
       function fish_greeting
         set_color FFDD88
         echo -n -e "\r" # Clear any pending typed text (it will still be passed to the next prompt).
@@ -73,6 +79,8 @@
     else
       set -g _FISH_PROMPT_LCARS_BOTTOM_COLOR D0B699
       set -g _FISH_PROMPT_LCARS_TOP_COLOR D0B699
+      # LSP override: This is an "exported" function (meant to be used outside this file). In particular, it is invoked by `fish` itself.
+      # @fish-lsp-disable-next-line 4004
       function fish_greeting
         echo -n "🐟 Welcome to "
         set_color --bold; echo (hostname -s)

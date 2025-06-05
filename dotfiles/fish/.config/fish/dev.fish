@@ -86,11 +86,6 @@
 
     abbr -a "es2020" "npx esbuild --format=esm --target=es2020 --bundle --splitting --sourcemap --outdir=dist/esm-bundle"
 
-    function bump-version
-      # /usr/bin/env echo -n v
-      npm version --no-git-tag-version $argv[1]
-    end
-
     # https://github.com/cubing/cubing.js/blob/3597fba81b65a1c87e42c4297a2d9ef5fdc3a8e3/script/build/targets.js#L44
     set -xg "EXPERIMENTAL_CUBING_JS_RELOAD_CHROME_MACOS" "1"
 
@@ -150,12 +145,6 @@
     abbr_subcommand_arg cargo q "--quiet" run
     # cargo run -- h⎵ → cargo run -- --help
     abbr_subcommand_arg cargo h "--help" run
-
-    function install-cargo-using-rustup
-        curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-        # thank u, next
-        rm -f $HOME/.profile $HOME/.bashrc $HOME/.zshenv
-    end
 
 ## `repo`
 
@@ -237,6 +226,9 @@
             echo "Installing codespaces extension: $extension_id"
             nohup code --install-extension $extension_id &> /dev/null &
         end
+        # LSP override: This is intentionally setting a universal variable to avoid running automatically more than once per codespace.
+        # Note that extensions can't be installed when dotfiles are set up, which is why we do it here.
+        # @fish-lsp-disable-next-line 2003
         set -Ux _CODESPACES_COMMON_EXTENSIONS_HAVE_BEEN_INSTALLED true
     end
     if set -q CODESPACES

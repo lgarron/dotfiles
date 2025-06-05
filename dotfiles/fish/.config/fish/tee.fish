@@ -1,4 +1,4 @@
-# LSP override: This is meant to be used outside this file.
+# LSP override: This is an "exported" function (meant to be used outside this file).
 # @fish-lsp-disable-next-line 4004
 function 📋
     # TODO: pipe?
@@ -10,7 +10,7 @@ function 📋
 end
 abbr -a t "📋"
 
-# LSP override: This is meant to be used outside this file.
+# LSP override: This is an "exported" function (meant to be used outside this file).
 # @fish-lsp-disable-next-line 4004
 function tt
     if set --query _FISH_SHELL_PASTEBOARD_FILE
@@ -20,7 +20,7 @@ function tt
     cat > $_FISH_SHELL_PASTEBOARD_FILE
     cat $_FISH_SHELL_PASTEBOARD_FILE
 end
-# LSP override: False positive
+# TODO: remove this `@fish-lsp-disable` after false positives are reduced (https://github.com/ndonfris/fish-lsp/issues/80).
 # @fish-lsp-disable-next-line 4004
 function tt_paste
     set -l cmd (commandline -op)

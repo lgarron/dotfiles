@@ -117,6 +117,8 @@ function fish_prompt --description 'Write out the prompt'
     echo -n -s (set_color $fish_color_user) "$USER" @ (set_color $color_host) (prompt_hostname) (set_color $_FISH_PROMPT_LCARS_BOTTOM_COLOR) $suffix " " (set_color normal)
 end
 
+# TODO: remove this `@fish-lsp-disable` after false positives are reduced (https://github.com/ndonfris/fish-lsp/issues/80).
+# @fish-lsp-disable-next-line 4004
 function _fish_prompt_preexec_blank_line --on-event fish_preexec
     if [ (tput lines) -gt $_FISH_PROMPT_COMPACT_MODE_MAX_ROWS ]
         echo (set_color $_FISH_PROMPT_LCARS_BOTTOM_COLOR)"┴"(set_color normal)

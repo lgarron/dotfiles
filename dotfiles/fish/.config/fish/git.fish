@@ -1,3 +1,6 @@
+# TODO: remove this `@fish-lsp-disable` after false positives are reduced (https://github.com/ndonfris/fish-lsp/issues/80).
+# @fish-lsp-disable 4004
+
 ## Git
 
     abbr -a g "git"

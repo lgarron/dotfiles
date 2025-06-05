@@ -29,12 +29,12 @@
 
       cd-dir $argv[1]
     end
-    # LSP override: This is meant to be used outside this file.
+    # LSP override: This is an "exported" function (meant to be used outside this file).
     # @fish-lsp-disable-next-line 4004
     function cd-dir-from-iterm-base64
       cd-dir-from-iterm (printf %s $argv[1] | base64 --decode)
     end
-    # LSP override: False positive
+    # TODO: remove this `@fish-lsp-disable` after false positives are reduced (https://github.com/ndonfris/fish-lsp/issues/80).
     # @fish-lsp-disable-next-line 4004
     function _abbr_latest_cd_dir_path
       if not set -q _LATEST_CD_DIR_PATH

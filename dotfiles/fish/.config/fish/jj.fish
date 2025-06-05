@@ -62,6 +62,8 @@ abbr -a jdno --set-cursor "jj diff --name-only --to \"fork_point(%)\"" # Special
 # TODO: truncate `.git` from GitHub repo URLs if needed.
 abbr -a jgv 'open --url (jj git remote list | grep "^origin" | awk "{print \$2}" | tr -d "\n" | sed "s#\.git\$##"; and echo -n "/commit/"; echo -- (jj log --ignore-working-copy --limit 1 --revisions here --no-graph -T "commit_id"))'
 
+# LSP override: This is an "exported" function (meant to be used outside this file).
+# @fish-lsp-disable-next-line 4004
 function gg
     killall gg
     ggn
@@ -81,6 +83,8 @@ _fish_abbr_jj_subcommand ci 'commit --interactive --config=ui.editor=\'"true"\''
 
 # See: https://github.com/jj-vcs/jj/discussions/6224#discussioncomment-12713147
 # NOTE: This has severe limitations.
+# LSP override: This is an "exported" function (meant to be used outside this file).
+# @fish-lsp-disable-next-line 4004
 function jj_soft_reset_accidentally_modified_change
     set TARGET_PARENT_REVISION $argv[1]
     if [ (count $argv) -gt 1 ]

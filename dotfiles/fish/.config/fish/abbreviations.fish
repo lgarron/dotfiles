@@ -100,5 +100,9 @@
     abbr_subcommand brew s search
 
     # Expand `lgarron/lgarron` tap args.
+    # TODO: remove this `@fish-lsp-disable` after false positives are reduced (https://github.com/ndonfris/fish-lsp/issues/80).
+    # @fish-lsp-disable-next-line 4004
     function abbr_brew_l_fn; _abbr_expand_anyarg brew l "--HEAD lgarron/lgarron/%" commit; end; abbr -a abbr_brew_l --regex l --position anywhere --function abbr_brew_l_fn --set-cursor
+    # TODO: remove this `@fish-lsp-disable` after false positives are reduced (https://github.com/ndonfris/fish-lsp/issues/80).
+    # @fish-lsp-disable-next-line 4004
     function abbr_brew_ll_fn; _abbr_expand_anyarg brew ll "lgarron/lgarron/%" commit; end; abbr -a abbr_brew_ll --regex ll --position anywhere --function abbr_brew_ll_fn --set-cursor

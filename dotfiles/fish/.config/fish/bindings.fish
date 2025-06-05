@@ -13,7 +13,7 @@
     bind ctrl-delete kill-token
     bind ctrl-\\ kill-token
 
-    if string match --entire -- "$TERM_PROGRAM" vscode > /dev/null
+    if string match --quiet --entire -- "$TERM_PROGRAM" vscode > /dev/null
       # Legacy bindings
       bind alt-b backward-word
       bind alt-f forward-word
@@ -29,6 +29,8 @@
       bind ctrl-h backward-kill-token
     end
 
+    # TODO: remove this `@fish-lsp-disable` after false positives are reduced (https://github.com/ndonfris/fish-lsp/issues/80).
+    # @fish-lsp-disable 4004
     function _add_LATEST_CD_DIR_PATH
       commandline --insert (string escape $_LATEST_CD_DIR_PATH)
     end

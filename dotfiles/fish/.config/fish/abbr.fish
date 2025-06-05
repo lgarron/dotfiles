@@ -33,9 +33,13 @@
     #     abbr_anyarg make b build
     #     abbr_anyarg make c clean
     #
+    # LSP override: This is an "exported" function (meant to be used outside this file).
+    # @fish-lsp-disable-next-line 4004
     function abbr_anyarg
       _curry_abbr _abbr_expand_anyarg $argv
     end
+    # LSP override: This is a false positive.
+    # @fish-lsp-disable-next-line 4004
     function _abbr_expand_anyarg
         set -l main_command $argv[1] # TODO: allow this to a function invocation, to allow defining for multiple commands?
         # set -l command_abbreviation $argv[2] # unused
@@ -64,18 +68,22 @@
     #     abbr_subcommand git p push
     #     abbr_subcommand git m merge
     #
+    # LSP override: This is an "exported" function (meant to be used outside this file).
+    # @fish-lsp-disable-next-line 4004
     function abbr_subcommand
       _curry_abbr _abbr_expand_subcommand $argv
     end
 
+    # LSP override: This is a false positive.
+    # @fish-lsp-disable-next-line 4004
     function _abbr_expand_subcommand
       set -l main_command $argv[1]
       set -l sub_command_abbreviation $argv[2]
       set -l expansion $argv[3]
       set -l cmd (commandline -op)
-      if string match -e -- "$cmd[1]" "$main_command" > /dev/null
+      if string match --quiet --entire -- "$cmd[1]" "$main_command"
         if test (count $cmd) -eq 2
-          if string match -e -- "$cmd[2]" "$sub_command_abbreviation" > /dev/null
+          if string match --quiet --entire -- "$cmd[2]" "$sub_command_abbreviation"
             echo $expansion
             return 0
           end
@@ -108,10 +116,14 @@
     # To implement an argument for *all* subcommands of a given command, use
     # `abbr_anysubcommand_arg` (see below).
     #
+    # LSP override: This is an "exported" function (meant to be used outside this file).
+    # @fish-lsp-disable-next-line 4004
     function abbr_subcommand_arg
       _curry_abbr _abbr_expand_subcommand_arg $argv
     end
 
+    # LSP override: This is a false positive.
+    # @fish-lsp-disable-next-line 4004
     function _abbr_expand_subcommand_arg
       set -l cmd (commandline -op)
       if [ (count $cmd) -lt 3 ]
@@ -123,7 +135,7 @@
       set -l arg_expansion $argv[3]
       set -l sub_commands $argv[4..-1]
 
-      if string match -e -- "$cmd[1]" "$main_command" > /dev/null
+      if string match --quiet -e -- "$cmd[1]" "$main_command"
         if contains -- "$cmd[2]" $sub_commands
           echo $arg_expansion
           return 0
@@ -142,10 +154,14 @@
     #
     #     abbr_subcommand_firstarg git m "--move" branch
     #
+    # LSP override: This is an "exported" function (meant to be used outside this file).
+    # @fish-lsp-disable-next-line 4004
     function abbr_subcommand_firstarg
       _curry_abbr _abbr_expand_subcommand_firstarg $argv
     end
 
+    # LSP override: This is a false positive.
+    # @fish-lsp-disable-next-line 4004
     function _abbr_expand_subcommand_firstarg
         set -l cmd (commandline -op)
         if [ (count $cmd) -lt 3 ]
@@ -157,9 +173,9 @@
         set -l arg_expansion $argv[3]
         set -l sub_commands $argv[4..-1]
 
-        if string match -e -- "$cmd[1]" "$main_command" > /dev/null
+        if string match --quiet --entire -- "$cmd[1]" "$main_command"
           if test (count $cmd) = 3
-            if string match -e -- "$cmd[3]" "$arg_abbreviation" > /dev/null
+            if string match --quiet --entire -- "$cmd[3]" "$arg_abbreviation"
               if contains -- "$cmd[2]" $sub_commands
                   echo $arg_expansion
                   return 0
@@ -195,11 +211,15 @@
     # Note: If you combine this with the `abbr_subcommand_firstarg git m "--move" branch` example from above,
     # then you can expand `git branch m⎵ m⎵` to `git branch --move main`.
     #
+    # LSP override: This is an "exported" function (meant to be used outside this file).
+    # @fish-lsp-disable-next-line 4004
     function abbr_exceptsubcommand_arg
       _curry_abbr _abbr_expand_exceptsubcommand_arg $argv
     end
 
     # Convenience
+    # LSP override: This is an "exported" function (meant to be used outside this file).
+    # @fish-lsp-disable-next-line 4004
     function abbr_anysubcommand_arg
       if test (count $argv) -gt 3
         echo "ERROR: abbr_anysubcommand_arg does not take denylist arguments"
@@ -208,6 +228,8 @@
       _curry_abbr _abbr_expand_exceptsubcommand_arg $argv[1..3]
     end
 
+    # LSP override: This is a false positive.
+    # @fish-lsp-disable-next-line 4004
     function _abbr_expand_exceptsubcommand_arg
       set -l cmd (commandline -op)
       if [ (count $cmd) -lt 3 ]
@@ -219,7 +241,7 @@
       set -l arg_expansion $argv[3]
       set -l excluded_sub_commands $argv[4..-1]
 
-      if string match -e -- "$cmd[1]" "$main_command" > /dev/null
+      if string match --quiet --entire -- "$cmd[1]" "$main_command"
         if test (count $cmd) -gt 2
           if not contains -- "$cmd[2]" $excluded_sub_commands
             echo $arg_expansion
@@ -238,6 +260,8 @@
       set _FISH_ABBR_CURRY_COUNTER (math $_FISH_ABBR_CURRY_COUNTER + 1)
 
       set -l INHERITED_ARGS $argv
+      # LSP override: dude
+      # @fish-lsp-disable-next-line 4004
       function "$CURRIED_FN" --inherit-variable INHERITED_ARGS
         $INHERITED_ARGS $argv
       end

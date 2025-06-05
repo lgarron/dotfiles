@@ -40,5 +40,6 @@
       end
       echo ""
 
+      # @fish-lsp-disable-next-line 2003
       set -U _FISH_USER_PATHS_HAS_BEEN_SET_UP true
     end

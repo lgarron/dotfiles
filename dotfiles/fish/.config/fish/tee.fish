@@ -1,4 +1,5 @@
-# abbr -a t "tee >(pbcopy)"
+# LSP override: This is meant to be used outside this file.
+# @fish-lsp-disable-next-line 4004
 function 📋
     # TODO: pipe?
     set -l TEMP_FILE (mktemp -t "pbcopy")
@@ -9,6 +10,8 @@ function 📋
 end
 abbr -a t "📋"
 
+# LSP override: This is meant to be used outside this file.
+# @fish-lsp-disable-next-line 4004
 function tt
     if set --query _FISH_SHELL_PASTEBOARD_FILE
     rm -f $_FISH_SHELL_PASTEBOARD_FILE &
@@ -17,6 +20,8 @@ function tt
     cat > $_FISH_SHELL_PASTEBOARD_FILE
     cat $_FISH_SHELL_PASTEBOARD_FILE
 end
+# LSP override: False positive
+# @fish-lsp-disable-next-line 4004
 function tt_paste
     set -l cmd (commandline -op)
     if [ (count $cmd) -lt 2 ]

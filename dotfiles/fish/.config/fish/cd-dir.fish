@@ -17,7 +17,7 @@
       echo ""
       echo (set_color --bold)"$argv[1]"(set_color B594E2)
       echo ""
-      if string match --entire -- "$TERM_PROGRAM" "iTerm.app" > /dev/null
+      if string match --quiet --entire -- "$TERM_PROGRAM" "iTerm.app" > /dev/null
           set SHORTCUT "⇧⌘↩"
         else
           set SHORTCUT "^⌥R"
@@ -29,9 +29,13 @@
 
       cd-dir $argv[1]
     end
+    # LSP override: This is meant to be used outside this file.
+    # @fish-lsp-disable-next-line 4004
     function cd-dir-from-iterm-base64
       cd-dir-from-iterm (printf %s $argv[1] | base64 --decode)
     end
+    # LSP override: False positive
+    # @fish-lsp-disable-next-line 4004
     function _abbr_latest_cd_dir_path
       if not set -q _LATEST_CD_DIR_PATH
         return 1

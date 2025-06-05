@@ -90,8 +90,8 @@
     abbr -a t "📋"
 
     function tt
-      if set SHELL_PASTEBOARD_FILE
-        rm -f $_FISH_SHELL_PASTEBOARD_FILE
+      if set --query _FISH_SHELL_PASTEBOARD_FILE
+        rm -f $_FISH_SHELL_PASTEBOARD_FILE &
       end
       set -gx _FISH_SHELL_PASTEBOARD_FILE (mktemp -t "pasteboard")
       cat > $_FISH_SHELL_PASTEBOARD_FILE

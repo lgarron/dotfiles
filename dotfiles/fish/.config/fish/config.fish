@@ -16,6 +16,7 @@
     if echo $FISH_VERSION | grep "^3" > /dev/null
       if test -f $HOME/.config/binaries/linux-x64/fish
         $HOME/.config/binaries/linux-x64/fish
+        exit
       end
     end
 

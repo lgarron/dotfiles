@@ -207,6 +207,8 @@
     abbr -a "disk-speed-test" '"/Applications/Blackmagic Disk Speed Test.app/Contents/MacOS/DiskSpeedTest" --cmd --dir'
     abbr -a "unixtime" 'date "+%s"'
 
+    abbr -a lldb "env HOME=/Users/lgarron/.data/lldb-workaround/ lldb"
+
     abbr -a serve "open http://localhost:8000; caddy file-server --listen :8000 --browse --root ."
 
     abbr_subcommand alg p parse

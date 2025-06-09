@@ -2,7 +2,7 @@
 	/******** Dynamic ********/
 	"editor.formatOnSave": true,
 	"window.zoomLevel": 1,
-	"editor.fontFamily": "\"Comic Mono\", Menlo, Monaco, monospace",
+	"editor.fontFamily": "\"SeriousShanns Nerd Font Mono\", Menlo, Monaco, monospace",
 	/******** Main VSCode settings ********/
 	"editor.formatOnPaste": false,
 	"editor.tabSize": 2,

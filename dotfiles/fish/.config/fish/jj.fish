@@ -22,6 +22,7 @@ _fish_abbr_jj_subcommand s status
 _fish_abbr_jj_subcommand st status
 _fish_abbr_jj_subcommand sq squash
 _fish_abbr_jj_subcommand u undo
+_fish_abbr_jj_subcommand t tug
 
 _fish_abbr_jj_subcommand b bookmark
 _fish_abbr_jj_subcommand bs "bookmark set"

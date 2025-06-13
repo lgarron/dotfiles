@@ -1173,7 +1173,7 @@
 		<key>QSPresetAllApplications</key>
 		<false/>
 		<key>QSPresetAppleMusicGroup</key>
-		<true/>
+		<false/>
 		<key>QSPresetAppleMusicSongs</key>
 		<true/>
 		<key>QSPresetBashHistory</key>

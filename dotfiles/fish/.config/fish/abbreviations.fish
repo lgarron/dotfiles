@@ -53,6 +53,7 @@
 ## Arguments
 
     abbr -a _hh_abbr --regex "hh" --position anywhere -- "--help"
+    abbr -a _vv_abbr --regex "vv" --position anywhere -- "--version"
 
     abbr_anyarg hevc q "--quality"
     abbr_anyarg hevc f "--force-bit-depth"

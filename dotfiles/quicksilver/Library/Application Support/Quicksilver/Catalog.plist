@@ -1241,8 +1241,8 @@
 	</dict>
 	<key>omittedItems</key>
 	<array>
-		<string>/Users/lgarron/Applications/CrossOver/Ubisoft</string>
 		<string>/Users/lgarron/Library/Mobile Documents/iCloud~md~obsidian/Documents</string>
+		<string>/Users/lgarron/Applications/CrossOver/Ubisoft</string>
 	</array>
 </dict>
 </plist>

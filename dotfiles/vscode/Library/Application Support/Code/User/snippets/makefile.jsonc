@@ -33,5 +33,23 @@
       ".PHONY: format\nformat:\n\tbun x @biomejs/biome check --write"
     ],
     "description": "Format using `biome`"
+  },
+  "clean": {
+    "prefix": "clean",
+    "body": [
+      ".PHONY: clean",
+      "clean:",
+      "\t#rm -rf ./dist"
+    ],
+    "description": "clean (JS)"
+  },
+  "reset": {
+    "prefix": "reset",
+    "body": [
+      ".PHONY: reset",
+      "reset: clean",
+      "\t#rm -rf ./node_modules ./target"
+    ],
+    "description": "reset"
   }
 }

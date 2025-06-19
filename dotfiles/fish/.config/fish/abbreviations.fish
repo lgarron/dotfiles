@@ -9,12 +9,12 @@
       set _DOTFILES_FOLDER "/workspaces/.codespaces/.persistedshare/dotfiles/"
     end
 
-    abbr -a rcu "git -C \"$_DOTFILES_FOLDER\" pull ; and source $HOME/.config/fish/config.fish"
+    abbr -a rcu "git -C \"$_DOTFILES_FOLDER\" pull && make fish && source $HOME/.config/fish/config.fish"
     if [ "$CODESPACES" = "true" ]
-      abbr -a rcuf "cd $_DOTFILES_FOLDER && git fetch origin main && git abandon && git reset --hard origin/main && cd - && source $HOME/.config/fish/config.fish"
+      abbr -a rcuf "cd $_DOTFILES_FOLDER && git fetch origin main && git abandon && git reset --hard origin/main && cd - && make fish && source $HOME/.config/fish/config.fish"
     end
     if contains "dreamhost.com" (hostname -d)
-        abbr -a rcu "git -C \"$_DOTFILES_FOLDER\" pull ; and cd $_DOTFILES_FOLDER ; and make dreamhost ; and source $HOME/.config/fish/config.fish"
+        abbr -a rcu "git -C \"$_DOTFILES_FOLDER\" pull && cd $_DOTFILES_FOLDER && make dreamhost && source $HOME/.config/fish/config.fish"
       abbr -a rcuf "cd $_DOTFILES_FOLDER && git fetch origin main && git abandon && git reset --hard origin/main && make dreamhost && cd - && source $HOME/.config/fish/config.fish"
     end
 

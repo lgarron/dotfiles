@@ -1,0 +1,9 @@
+{
+	"color-mix": {
+		"prefix": "color-mix(in oklab",
+		"body": [
+			"color-mix(in oklab, ${1:$TM_SELECTED_TEXT} ${3:50%}, ${2:transparent})"
+		],
+		"description": "color-mix(in oklab)"
+	}
+}

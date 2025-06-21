@@ -9,7 +9,7 @@
       set _DOTFILES_FOLDER "/workspaces/.codespaces/.persistedshare/dotfiles/"
     end
 
-    abbr -a rcu "git -C \"$_DOTFILES_FOLDER\" pull && make fish && source $HOME/.config/fish/config.fish"
+    abbr -a rcu "cd $_DOTFILES_FOLDER && git pull && make fish && source $HOME/.config/fish/config.fish"
     if [ "$CODESPACES" = "true" ]
       abbr -a rcuf "cd $_DOTFILES_FOLDER && git fetch origin main && git abandon && git reset --hard origin/main && cd - && make fish && source $HOME/.config/fish/config.fish"
     end

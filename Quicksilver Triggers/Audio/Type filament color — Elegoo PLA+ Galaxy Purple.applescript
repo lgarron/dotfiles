@@ -1,4 +1,4 @@
 tell application "System Events"
-	keystroke "E46857"
+	keystroke "2A1967"
 	keystroke return
 end tell

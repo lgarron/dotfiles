@@ -4,6 +4,7 @@ use clap_complete::generator::generate;
 use clap_complete::Shell;
 use script_helpers::{back_up_existing_file, sha256_hash_file_to_string};
 use shell_quote::{Bash, QuoteRefExt};
+use std::fs::create_dir_all;
 use std::fs::read_to_string;
 use std::fs::OpenOptions;
 use std::io::stdout;
@@ -60,6 +61,10 @@ struct Args {
     /// Example: `--variants small,small-unengraved,large`
     #[clap(long, value_delimiter = ',')]
     variants: Vec<String>,
+
+    /// Place files in the specified folder.
+    #[clap(long)]
+    output_folder: Option<PathBuf>,
 }
 
 #[derive(Clone, Debug, ValueEnum)]
@@ -160,6 +165,13 @@ fn main() {
             args.format.file_extension(),
         );
         let target_file = Path::new(&target_file_string);
+        let target_file = match &args.output_folder {
+            Some(output_folder) => {
+                create_dir_all(output_folder).expect("Could not create output folder.");
+                &output_folder.join(target_file)
+            }
+            None => target_file,
+        };
 
         back_up_existing_file(target_file, args.format.file_extension());
 

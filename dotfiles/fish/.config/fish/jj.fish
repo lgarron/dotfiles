@@ -112,9 +112,7 @@ function jj_soft_reset_accidentally_modified_change
 end
 
 function gg-refresh
-    echo "Refreshing gg…"
-    /Users/lgarron/Code/git/github.com/lgarron/dotfiles/scripts/app-tools/gg-refresh.swift &
-    disown
+    bun run /Users/lgarron/Code/git/github.com/lgarron/dotfiles/scripts/app-tools/gg-refresh.ts
 end
 
 function jj

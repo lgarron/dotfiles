@@ -10,7 +10,8 @@ const EDITOR_FORMAT_ON_SAVE = "editor.formatOnSave";
 const EDITOR_FORMAT_ON_SAVE_NORMALIZED = true;
 
 const EDITOR_FONT_FAMILY = "editor.fontFamily";
-const EDITOR_FONT_FAMILY_NORMALIZED = '"Comic Mono", Menlo, Monaco, monospace';
+const EDITOR_FONT_FAMILY_NORMALIZED =
+  '"SeriousShanns Nerd Font Mono", Menlo, Monaco, monospace';
 
 const parsed: CommentObject = parse(await stdin.text()) as CommentObject;
 

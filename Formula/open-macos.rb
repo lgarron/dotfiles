@@ -13,7 +13,7 @@ class OpenMacos < Formula
     system "swiftc", "-o", "./.temp/open-macos", "scripts/system/open-macos.swift"
     bin.install "./.temp/open-macos" => "open-macos"
 
-    system "swiftc", "-o", "./.temp/open-macos-stdin", "scripts/system/open-macos.swift"
+    system "swiftc", "-o", "./.temp/open-macos-stdin", "scripts/system/open-macos-stdin.swift"
     bin.install "./.temp/open-macos-stdin" => "open-macos-stdin"
   end
 end

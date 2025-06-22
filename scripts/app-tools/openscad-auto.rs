@@ -64,7 +64,7 @@ struct Args {
 
     /// Place files in the specified folder.
     #[clap(long)]
-    output_folder: Option<PathBuf>,
+    output_dir: Option<PathBuf>,
 }
 
 #[derive(Clone, Debug, ValueEnum)]
@@ -165,10 +165,14 @@ fn main() {
             args.format.file_extension(),
         );
         let target_file = Path::new(&target_file_string);
-        let target_file = match &args.output_folder {
-            Some(output_folder) => {
-                create_dir_all(output_folder).expect("Could not create output folder.");
-                &output_folder.join(target_file)
+        let target_file = match &args.output_dir {
+            Some(output_dir) => {
+                create_dir_all(output_dir).expect("Could not create output folder.");
+                &output_dir.join(
+                    target_file
+                        .file_name()
+                        .expect("Could not calculate target file name."),
+                )
             }
             None => target_file,
         };

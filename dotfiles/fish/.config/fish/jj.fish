@@ -110,3 +110,14 @@ function jj_soft_reset_accidentally_modified_change
     jj rebase --destination $TARGET_PARENT_REVISION
     jj abandon $FROM_COMMIT_ID
 end
+
+function gg-refresh
+    echo "Refreshing gg…"
+    /Users/lgarron/Code/git/github.com/lgarron/dotfiles/scripts/app-tools/gg-refresh.swift &
+    disown
+end
+
+function jj
+    command jj $argv
+    gg-refresh
+end

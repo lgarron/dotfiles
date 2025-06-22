@@ -1,5 +1,5 @@
 function __fish_jj_num_commits_from_to
-    jj log 2>/dev/null \
+    command jj log 2>/dev/null \
         --no-graph \
         --ignore-working-copy \
         --color=always \
@@ -18,7 +18,7 @@ function fish_jj_prompt
         return 1
     end
     set -l info (
-        jj log 2>/dev/null --no-graph --ignore-working-copy --color=always --revisions @ \
+        command jj log 2>/dev/null --no-graph --ignore-working-copy --color=always --revisions @ \
             --template '
                     separate(
                         " ",
@@ -52,7 +52,7 @@ function fish_jj_prompt
     # TODO: implement narrow viewport mode.
     # TODO: select just the bookmark that `jj tug` would oeprate on?
     set -l closest_bookmark (
-        jj log 2>/dev/null \
+        command jj log 2>/dev/null \
             --no-graph \
             --ignore-working-copy \
             --color=always \
@@ -60,7 +60,7 @@ function fish_jj_prompt
             --template 'bookmarks.join(", ")'
     )
     set -l closest_bookmark_commit (
-        jj log 2>/dev/null \
+        command jj log 2>/dev/null \
             --no-graph \
             --ignore-working-copy \
             --color=always \
@@ -68,7 +68,7 @@ function fish_jj_prompt
             --template 'commit_id'
     )
     set -l closest_nonempty_ancestor_commit (
-        jj log 2>/dev/null \
+        command jj log 2>/dev/null \
             --no-graph \
             --ignore-working-copy \
             --color=always \

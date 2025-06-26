@@ -112,11 +112,11 @@ function jj_soft_reset_accidentally_modified_change
     jj abandon $FROM_COMMIT_ID
 end
 
-function gg-refresh
-    bun run /Users/lgarron/Code/git/github.com/lgarron/dotfiles/scripts/app-tools/gg-refresh.ts
-end
-
 function jj
     command jj $argv
-    gg-refresh
+    if command -v gg-refresh
+        gg-refresh
+    else
+        echo "⚠️ Could not refresh `gg`."
+    end
 end

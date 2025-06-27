@@ -18,6 +18,8 @@ function tt_paste
     if [ (count $cmd) -lt 2 ]
     return 1
     end
-    cat $_FISH_SHELL_PASTEBOARD_FILE
+    echo -n '"'
+    cat $_FISH_SHELL_PASTEBOARD_FILE | string escape --style script
+    echo -n '"'
 end
 abbr -a tt --position anywhere --function tt_paste

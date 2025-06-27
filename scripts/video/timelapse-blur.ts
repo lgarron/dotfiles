@@ -47,7 +47,7 @@ const app = command({
     async function blur(
       framesWindow: number,
       sourceFile: string,
-      qv: number,
+      _qv: number, // TODO
     ): Promise<string> {
       const outputFileName = `${sourceFile}.${framesWindow}×-blur.mp4`;
       const command = new PrintableShellCommand("time", [

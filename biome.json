@@ -1,13 +1,14 @@
 {
   "$schema": "./node_modules/@biomejs/biome/configuration_schema.json",
   "files": {
-    "include": [
-      "./.config/**/*.ts",
-      "./scripts/**/*.ts",
-      "./scripts/**/*.json",
-      "./repo-script/**/*.ts"
-    ],
-    "ignore": ["./.temp", "./dotfiles/vscode/**/*"]
+    "includes": [
+      ".config/**/*.ts",
+      "scripts/**/*.ts",
+      "scripts/**/*.json",
+      "repo-script/**/*.ts",
+      "!.temp",
+      "!dotfiles/vscode/**/*"
+    ]
   },
   "formatter": {
     "indentStyle": "space",
@@ -22,6 +23,18 @@
       },
       "correctness": {
         "noUnusedImports": "error"
+      },
+      "style": {
+        "noParameterAssign": "error",
+        "useAsConstAssertion": "error",
+        "useDefaultParameterLast": "error",
+        "useEnumInitializers": "error",
+        "useSelfClosingElements": "error",
+        "useSingleVarDeclarator": "error",
+        "noUnusedTemplateLiteral": "error",
+        "useNumberNamespace": "error",
+        "noInferrableTypes": "error",
+        "noUselessElse": "error"
       }
     }
   }

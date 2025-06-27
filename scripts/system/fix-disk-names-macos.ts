@@ -3,7 +3,7 @@
 import { dirname, join } from "node:path";
 import { exit } from "node:process";
 import { styleText } from "node:util";
-import { $, Glob, file } from "bun";
+import { $, file, Glob } from "bun";
 
 const VOLUMES_DIR = "/Volumes/";
 const WELL_KNOWN_DISK_METADATA_JSON_PATH = ".well-known/disk-metadata.json";
@@ -23,15 +23,15 @@ function formattedDiskName(
 
 console.log("Checking disk names…");
 
-let numVolumesTotal = 0;
-let numVolumeNamesFixes = 0;
+// let numVolumesTotal = 0;
+// let numVolumeNamesFixes = 0;
 for await (const path of new Glob(
   join("*", WELL_KNOWN_DISK_METADATA_JSON_PATH),
 ).scan({
   cwd: VOLUMES_DIR,
   dot: true,
 })) {
-  numVolumesTotal++;
+  // numVolumesTotal++;
   // TODO: is this safe?
   const currentVolumeName = dirname(dirname(path));
 
@@ -50,7 +50,7 @@ for await (const path of new Glob(
     );
     await $`diskutil rename ${currentVolumeName} ${expectedName}`;
     console.log("Successfully renamed!");
-    numVolumeNamesFixes += 1;
+    // numVolumeNamesFixes += 1;
   }
 }
 

@@ -1,12 +1,18 @@
 # LSP override: This is an "exported" function (meant to be used outside this file).
 # @fish-lsp-disable-next-line 4004
 function 📋
-    # TODO: pipe?
-    set -l TEMP_FILE (mktemp -t "pbcopy")
-    cat > $TEMP_FILE
-    cat $TEMP_FILE
-    cat $TEMP_FILE | pbcopy
-    rm $TEMP_FILE
+    set DIR (mktemp -d -t pipe)
+
+    mkfifo $DIR/PIPE $DIR/CLIPBOARD
+
+    cat - | tee $DIR/PIPE $DIR/CLIPBOARD | cat >/dev/null &
+    cat $DIR/PIPE &
+
+    # Adapated from: https://jvns.ca/blog/2025/06/24/new-zine--the-secret-rules-of-the-terminal/#i-learned-a-surprising-amount-writing-this-zine
+    printf "\033]52;c;%s\007" (cat $DIR/CLIPBOARD | base64 | tr -d '\n') &
+    wait
+
+    rm -rf $DIR
 end
 abbr -a t "📋"
 

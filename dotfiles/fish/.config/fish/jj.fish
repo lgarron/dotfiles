@@ -45,6 +45,7 @@ abbr -a jdd --set-cursor "jj describe --message \"%" # Special shortened abbrevi
 abbr_subcommand_arg jj m --message describe
 
 _fish_abbr_jj_subcommand gf "git fetch"
+_fish_abbr_jj_subcommand gfm "git fetch && jj new main@origin"
 _fish_abbr_jj_subcommand p "git push"
 _fish_abbr_jj_subcommand gp "git push"
 abbr -a jpp "jj bookmark set --revision here main && jj git push && git switch main"

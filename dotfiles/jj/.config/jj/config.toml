@@ -32,6 +32,16 @@ here = [
   "--template",
   "commit_id",
 ]
+guess-branch = [
+  "log",
+  "--no-graph",
+  "--ignore-working-copy",
+  "--color=never",
+  "--revisions",
+  "closest_ancestor_bookmark(@)",
+  "--template",
+  "bookmarks.map(|b| b.name()).join(\"\n\")",
+]
 
 [git]
 push-new-bookmarks = true

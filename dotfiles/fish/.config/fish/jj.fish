@@ -115,7 +115,7 @@ end
 
 function jj
     command jj $argv
-    if command -v gg-refresh
+    if command -qv gg-refresh
         gg-refresh
     else
         echo "⚠️ Could not refresh `gg`."

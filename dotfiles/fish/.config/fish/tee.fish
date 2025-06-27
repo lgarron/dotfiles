@@ -26,6 +26,7 @@ function tt
     cat > $_FISH_SHELL_PASTEBOARD_FILE
     cat $_FISH_SHELL_PASTEBOARD_FILE
 end
+
 # TODO: remove this `@fish-lsp-disable` after false positives are reduced (https://github.com/ndonfris/fish-lsp/issues/80).
 # @fish-lsp-disable-next-line 4004
 function tt_paste

@@ -1,4 +1,4 @@
-abbr -a t "📋"
+abbr -a t --position anywhere "| 📋"
 
 # LSP override: This is an "exported" function (meant to be used outside this file).
 # @fish-lsp-disable-next-line 4004

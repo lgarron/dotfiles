@@ -7,5 +7,6 @@ class BunRoll < Formula
 
   def install
     bin.install "scripts/web/bun-roll.fish" => "bun-roll"
+    bin.install "scripts/web/bun-roll-jj.fish" => "bun-roll-jj"
   end
 end

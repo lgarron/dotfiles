@@ -64,6 +64,7 @@
     rm_and_log $HOME/.oracle_jre_usage
     rm_and_log $HOME/.pnpm-state
     rm_and_log $HOME/.python_history
+    rm_and_log $HOME/.rnd
     rm_and_log $HOME/.rustup
     rm_and_log "$HOME/.sentry "
     rm_and_log $HOME/.swiftpm

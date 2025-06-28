@@ -288,6 +288,14 @@
 		"workbench.settings.applyToAllProfiles"
 	],
 	"explorer.sortOrder": "mixed",
-	"editor.mouseWheelZoom": true
+	"editor.mouseWheelZoom": true,
+	"javascript.preferences.autoImportSpecifierExcludeRegexes": [
+		"^node:console$"
+	],
+	"typescript.preferences.autoImportSpecifierExcludeRegexes": [
+		"^node:console$"
+	],
+	"editor.suggest.showKeywords": false,
+	"editor.suggest.snippetsPreventQuickSuggestions": false
 	/****************/
 }

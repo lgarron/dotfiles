@@ -683,7 +683,7 @@
 			<key>applicationScopeType</key>
 			<integer>-1</integer>
 			<key>character</key>
-			<string>Z</string>
+			<string>S</string>
 			<key>command</key>
 			<dict>
 				<key>actionID</key>
@@ -743,9 +743,38 @@
 			<key>enabled</key>
 			<true/>
 			<key>keyCode</key>
-			<integer>6</integer>
+			<integer>1</integer>
 			<key>modifiers</key>
 			<integer>655650</integer>
+			<key>onPress</key>
+			<true/>
+			<key>type</key>
+			<string>QSHotKeyTrigger</string>
+		</dict>
+		<dict>
+			<key>ID</key>
+			<string>AE8B4F32-5526-4F48-A4DF-FAFA23051AA7</string>
+			<key>applicationScope</key>
+			<array>
+				<string>com.apple.finder</string>
+			</array>
+			<key>applicationScopeType</key>
+			<integer>1</integer>
+			<key>character</key>
+			<string></string>
+			<key>command</key>
+			<dict>
+				<key>actionID</key>
+				<string>FileToTrashAction</string>
+				<key>directID</key>
+				<string>QSGlobalSelectionProxy</string>
+			</dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyCode</key>
+			<integer>51</integer>
+			<key>modifiers</key>
+			<integer>1048840</integer>
 			<key>onPress</key>
 			<true/>
 			<key>type</key>
@@ -1091,6 +1120,46 @@
 			<integer>8</integer>
 			<key>modifiers</key>
 			<integer>1179914</integer>
+			<key>onPress</key>
+			<true/>
+			<key>type</key>
+			<string>QSHotKeyTrigger</string>
+		</dict>
+		<dict>
+			<key>ID</key>
+			<string>4EFBCD60-489C-4A6A-ABA1-405BA5E5806E</string>
+			<key>applicationScopeType</key>
+			<integer>-1</integer>
+			<key>character</key>
+			<string>Z</string>
+			<key>command</key>
+			<dict>
+				<key>actionID</key>
+				<string>QSTextTypeAction</string>
+				<key>directArchive</key>
+				<dict>
+					<key>class</key>
+					<string>QSObject</string>
+					<key>data</key>
+					<dict>
+						<key>public.utf8-plain-text</key>
+						<string>⌃</string>
+					</dict>
+					<key>properties</key>
+					<dict>
+						<key>QSObjectName</key>
+						<string>⌃</string>
+						<key>QSObjectType</key>
+						<string>public.utf8-plain-text</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyCode</key>
+			<integer>6</integer>
+			<key>modifiers</key>
+			<integer>655650</integer>
 			<key>onPress</key>
 			<true/>
 			<key>type</key>

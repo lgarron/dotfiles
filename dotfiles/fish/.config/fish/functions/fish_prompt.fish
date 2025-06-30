@@ -1,5 +1,4 @@
-# Classic + VCS, hopefully
-# TODO: Keep this in sync with `fish`, or configure semantically instead of hardcoding a snapshot.
+# LCARS (Ster Trek) inspired `fish` prompt.
 
 set -g __fish_git_prompt_show_informative_status 1
 
@@ -19,12 +18,13 @@ set -g _FISH_PROMPT_COMPACT_MODE_MAX_ROWS 15
 function _fish_prompt_echo_padded
     set -l PREFIX $argv[1]
     set -l SET_COLOR_END $argv[2]
-    set -l NUM_DASHES (math $COLUMNS - (string length --visible $PREFIX))
-    if test $NUM_DASHES -lt 0
+    set -l PADDING_CHARACTER $argv[3]
+    set -l NUM_PADDING_CHARACTERS (math $COLUMNS - (string length --visible $PREFIX))
+    if test $NUM_PADDING_CHARACTERS -lt 0
         echo $PREFIX$SET_COLOR_END
         return
     end
-    set -l DASHES (string repeat -n $NUM_DASHES "─")
+    set -l DASHES (string repeat -n $NUM_PADDING_CHARACTERS $PADDING_CHARACTER)
     echo -n $PREFIX$DASHES$SET_COLOR_END
     echo -e "\r"
 end
@@ -57,7 +57,8 @@ function fish_prompt --description 'Write out the prompt'
     end
     _fish_prompt_echo_padded \
         $PREFIX \
-        (set_color $_FISH_PROMPT_LCARS_HEADER_COLOR)
+        (set_color $_FISH_PROMPT_LCARS_HEADER_COLOR) \
+        "─"
 
     set FISH_JJ_PROMPT (fish_jj_prompt "%s")
     if not string match -e "$FISH_JJ_PROMPT" "" >/dev/null
@@ -106,10 +107,13 @@ function _fish_prompt_postexec_lcars --on-event fish_postexec
     set -l saved_status $statuses[1]
     set -l saved_pipestatus $statuses[2]
 
-    # Write pipestatus
     set -l PREVIOUS_COMMAND_TIME "⏱️ "(math $CMD_DURATION / 1000)s
 
-    # LCARS
+    # Indicator for the lack of a trailing newline.
+    # See: https://www.vidarholen.net/contents/blog/?p=878
+    echo -n "⏎"(string repeat -n (math $COLUMNS-1) " ")
+    echo -ne "\r"
+
     if string match --quiet --entire -- "$_FISH_PROMPT_FIRST_COMMAND_HAS_RUN" true
         set_color $_FISH_PROMPT_LCARS_TRAILER_COLOR
         if [ (tput lines) -gt $_FISH_PROMPT_COMPACT_MODE_MAX_ROWS ]
@@ -137,7 +141,8 @@ function _fish_prompt_postexec_lcars --on-event fish_postexec
         if _fish_is_true $final_trailer_is_time
             _fish_prompt_echo_padded \
                 "╰─── $PREVIOUS_COMMAND_TIME " \
-                (set_color $_FISH_PROMPT_LCARS_HEADER_COLOR)
+                (set_color $_FISH_PROMPT_LCARS_HEADER_COLOR) \
+                "─"
         else
             echo "├─ $PREVIOUS_COMMAND_TIME "
         end
@@ -151,7 +156,8 @@ function _fish_prompt_postexec_lcars --on-event fish_postexec
         if not _fish_is_true $final_trailer_is_time
             _fish_prompt_echo_padded \
                 "╰───" \
-                (set_color $_FISH_PROMPT_LCARS_HEADER_COLOR)
+                (set_color $_FISH_PROMPT_LCARS_HEADER_COLOR) \
+                "─"
         end
 
         if [ (tput lines) -gt $_FISH_PROMPT_COMPACT_MODE_MAX_ROWS ]
@@ -182,7 +188,8 @@ function _fish_cancel_lcars --on-event fish_cancel
     echo ""
     _fish_prompt_echo_padded \
         "╰─── ⌃C (command input cleared) " \
-        (set_color $_FISH_PROMPT_LCARS_HEADER_COLOR)
+        (set_color $_FISH_PROMPT_LCARS_HEADER_COLOR) \
+        "─"
     if [ (tput lines) -gt $_FISH_PROMPT_COMPACT_MODE_MAX_ROWS ]
         echo ""
     end

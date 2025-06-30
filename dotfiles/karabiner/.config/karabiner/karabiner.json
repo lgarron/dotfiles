@@ -4,6 +4,32 @@
             "complex_modifications": {
                 "rules": [
                     {
+                        "description": "Type long date using ⌃⌥⌘A",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "a",
+                                    "modifiers": { "mandatory": ["left_command", "left_control", "left_option"] }
+                                },
+                                "to": [{ "shell_command": "osascript -e \"tell application \\\"System Events\\\" to keystroke \\\"$(date $@ '+%B %d, %Y')\\\"\"" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "Type ISO-8601 date using ⌃⌥⌘S",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "s",
+                                    "modifiers": { "mandatory": ["left_command", "left_control", "left_option"] }
+                                },
+                                "to": [{ "shell_command": "osascript -e \"tell application \\\"System Events\\\" to keystroke \\\"$(date $@ '+%Y-%m-%d')\\\"\"" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Windows games: Remap ⌘Q to Alt-F4",
                         "manipulators": [
                             {

@@ -219,7 +219,7 @@
 				<string>/Users/lgarron/Code/git/github.com/lgarron/dotfiles/Quicksilver Triggers/Date/Set Clipboard to Long Date.applescript</string>
 			</dict>
 			<key>enabled</key>
-			<true/>
+			<false/>
 			<key>keyCode</key>
 			<integer>0</integer>
 			<key>modifiers</key>
@@ -429,7 +429,7 @@
 				<string>/Users/lgarron/Code/git/github.com/lgarron/dotfiles/Quicksilver Triggers/Date/Set Clipboard to Long Date and Time.applescript</string>
 			</dict>
 			<key>enabled</key>
-			<true/>
+			<false/>
 			<key>keyCode</key>
 			<integer>2</integer>
 			<key>modifiers</key>
@@ -1690,7 +1690,7 @@
 				<string>/Users/lgarron/Code/git/github.com/lgarron/dotfiles/Quicksilver Triggers/Date/Set Clipboard to Date.applescript</string>
 			</dict>
 			<key>enabled</key>
-			<true/>
+			<false/>
 			<key>keyCode</key>
 			<integer>1</integer>
 			<key>modifiers</key>

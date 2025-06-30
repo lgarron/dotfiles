@@ -31,8 +31,6 @@ function _fish_prompt_echo_padded
 end
 
 function fish_prompt --description 'Write out the prompt'
-    set -l last_pipestatus $pipestatus
-    set -l last_status $status
     set -l normal (set_color normal)
 
     # TODO: can we avoid overwring globals here while still taking updated colors into account?
@@ -48,30 +46,6 @@ function fish_prompt --description 'Write out the prompt'
     set -l color_host $fish_color_host
     if set -q SSH_TTY
         set color_host $fish_color_host_remote
-    end
-
-    # Write pipestatus
-    set -l PREVIOUS_COMMAND_TIME "⏱️ "(math $CMD_DURATION / 1000)s
-
-    # LCARS
-    if string match --quiet --entire -- "$_FISH_PROMPT_FIRST_COMMAND_HAS_RUN" true
-        set_color $_FISH_PROMPT_LCARS_TOP_COLOR
-        if [ (tput lines) -gt $_FISH_PROMPT_COMPACT_MODE_MAX_ROWS ]
-            echo "┬"
-        end
-        # echo (set_color $_FISH_PROMPT_LCARS_TOP_COLOR)"│"
-        set -l prompt_status (__fish_print_pipestatus "[" "] " "|" (set_color $_FISH_PROMPT_LCARS_TOP_COLOR) (set_color --bold red) $last_pipestatus)
-        if not string match -e -- "$prompt_status" " " >/dev/null
-            echo "├─ ❌ $prompt_status"(set_color $_FISH_PROMPT_LCARS_TOP_COLOR)"command status"
-        end
-        if [ (tput lines) -gt $_FISH_PROMPT_EVEN_MORE_COMPACT_MODE_MAX_ROWS ]
-            _fish_prompt_echo_padded \
-                "╰─── $PREVIOUS_COMMAND_TIME " \
-                (set_color $_FISH_PROMPT_LCARS_BOTTOM_COLOR)
-        end
-        if [ (tput lines) -gt $_FISH_PROMPT_COMPACT_MODE_MAX_ROWS ]
-            echo ""
-        end
     end
 
     set -l PREFIX_BEFORE_PWD (set_color $_FISH_PROMPT_LCARS_BOTTOM_COLOR)"╭─── "
@@ -125,3 +99,46 @@ function _fish_prompt_preexec_blank_line --on-event fish_preexec
     end
     set _FISH_PROMPT_FIRST_COMMAND_HAS_RUN true
 end
+
+# TODO: remove this `@fish-lsp-disable` after false positives are reduced (https://github.com/ndonfris/fish-lsp/issues/80).
+# @fish-lsp-disable-next-line 4004
+function _fish_prompt_postexec_lcars --on-event fish_postexec
+    set -l statuses $status $pipestatus
+    set -l saved_status $statuses[1]
+    set -l saved_pipestatus $statuses[2]
+
+    # Write pipestatus
+    set -l PREVIOUS_COMMAND_TIME "⏱️ "(math $CMD_DURATION / 1000)s
+
+    # LCARS
+    if string match --quiet --entire -- "$_FISH_PROMPT_FIRST_COMMAND_HAS_RUN" true
+        set_color $_FISH_PROMPT_LCARS_TOP_COLOR
+        if [ (tput lines) -gt $_FISH_PROMPT_COMPACT_MODE_MAX_ROWS ]
+            echo "┬"
+        end
+        # echo (set_color $_FISH_PROMPT_LCARS_TOP_COLOR)"│"
+        # TODO: this doesn't work in `fish_postexec`
+        set -l prompt_status (__fish_print_pipestatus "[" "] " " | " (set_color $_FISH_PROMPT_LCARS_TOP_COLOR) (set_color --bold red) $saved_pipestatus)
+        if not string match -e -- "$prompt_status" " " >/dev/null
+            echo "├─ ❌ $prompt_status"(set_color $_FISH_PROMPT_LCARS_TOP_COLOR)"command status"
+        end
+        if [ (tput lines) -gt $_FISH_PROMPT_EVEN_MORE_COMPACT_MODE_MAX_ROWS ]
+            _fish_prompt_echo_padded \
+                "╰─── $PREVIOUS_COMMAND_TIME " \
+                (set_color $_FISH_PROMPT_LCARS_BOTTOM_COLOR)
+        end
+        if [ (tput lines) -gt $_FISH_PROMPT_COMPACT_MODE_MAX_ROWS ]
+            echo ""
+        end
+    end
+
+    # Try to tell VS Code that *here* is actually the end of the command.
+    # For some reason, this does not work.
+    # See: https://github.com/fish-shell/fish-shell/issues/11634
+    if functions -q __vsc_esc
+        __vsc_esc D $saved_status
+    end
+    functions -e __vsc_cmd_finished
+end
+
+functions -e __vsc_cmd_finished

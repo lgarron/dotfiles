@@ -115,17 +115,31 @@ function jj_soft_reset_accidentally_modified_change
 end
 
 # Interacts with the `fish` prompt `postexec`.
-set -g _FISH_JJ_WAS_RUN_DURING_COMMAND no
-set -g _FISH_OVERRIDE_DO_NOT_RUN_GG_REFRESH_IN_POSTEXEC no
+set -g _FISH_JJ_WAS_RUN_DURING_COMMAND false
+set -g _FISH_OVERRIDE_DO_NOT_RUN_GG_REFRESH_IN_POSTEXEC false
 function jj
     command jj $argv
-    set -g _FISH_JJ_WAS_RUN_DURING_COMMAND yes
+    set -g _FISH_JJ_WAS_RUN_DURING_COMMAND true
 end
 
-function _fish_postexec_refresh_gg_if_needed
-    if string match --entire --quiet "$_FISH_JJ_WAS_RUN_DURING_COMMAND" yes
-        if not string match --entire --quiet "$_FISH_OVERRIDE_DO_NOT_RUN_GG_REFRESH_IN_POSTEXEC" yes
+function _fish_postexec_refresh_gg_calculate_if_needed
+    if _fish_is_true "$_FISH_JJ_WAS_RUN_DURING_COMMAND"
+        if not _fish_is_true "$_FISH_OVERRIDE_DO_NOT_RUN_GG_REFRESH_IN_POSTEXEC"
+            echo -n true
+            return
+        end
+    end
+    echo -n false
+end
+
+function _fish_postexec_refresh_gg_if_needed_and_reset
+    if _fish_is_true "$_FISH_JJ_WAS_RUN_DURING_COMMAND"
+        if not _fish_is_true "$_FISH_OVERRIDE_DO_NOT_RUN_GG_REFRESH_IN_POSTEXEC"
             if command -qv gg-refresh
+                if _fish_strings_are_identical $argv[1] --fancy
+                    # Overflowing is unlikely and not the end of the world, so allow it in order to get unbuffered `gg-refresh` output.
+                    echo -n "├─ "
+                end
                 gg-refresh
             else
                 echo "⚠️ Could not refresh `gg`."

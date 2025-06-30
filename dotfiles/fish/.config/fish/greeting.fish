@@ -47,8 +47,8 @@
           "╰──                                          ──╯"
       end
     else if contains $_CURRENT_HOSTNAME $PYTHAGORAS
-      set -g _FISH_PROMPT_LCARS_BOTTOM_COLOR 44CCAA
-      set -g _FISH_PROMPT_LCARS_TOP_COLOR 66AAFF
+      set -g _FISH_PROMPT_LCARS_HEADER_COLOR 44CCAA
+      set -g _FISH_PROMPT_LCARS_TRAILER_COLOR 66AAFF
       # LSP override: This is an "exported" function (meant to be used outside this file). In particular, it is invoked by `fish` itself.
       # @fish-lsp-disable-next-line 4004
       function fish_greeting
@@ -63,8 +63,8 @@
           "╰──                                                              ──╯"
       end
     else if contains "dreamhost.com" (hostname -d)
-      set -g _FISH_PROMPT_LCARS_BOTTOM_COLOR FFDD88
-      set -g _FISH_PROMPT_LCARS_TOP_COLOR FFDD88
+      set -g _FISH_PROMPT_LCARS_HEADER_COLOR FFDD88
+      set -g _FISH_PROMPT_LCARS_TRAILER_COLOR FFDD88
       # LSP override: This is an "exported" function (meant to be used outside this file). In particular, it is invoked by `fish` itself.
       # @fish-lsp-disable-next-line 4004
       function fish_greeting
@@ -77,8 +77,8 @@
           "╰───╯ ╰─╯╰─╯╰────╯╰─╯╰─╯╰─╯  ╰─╯╰─╯╰─╯╰────╯╰────╯  ╰─╯  "
       end
     else
-      set -g _FISH_PROMPT_LCARS_BOTTOM_COLOR D0B699
-      set -g _FISH_PROMPT_LCARS_TOP_COLOR D0B699
+      set -g _FISH_PROMPT_LCARS_HEADER_COLOR D0B699
+      set -g _FISH_PROMPT_LCARS_TRAILER_COLOR D0B699
       # LSP override: This is an "exported" function (meant to be used outside this file). In particular, it is invoked by `fish` itself.
       # @fish-lsp-disable-next-line 4004
       function fish_greeting

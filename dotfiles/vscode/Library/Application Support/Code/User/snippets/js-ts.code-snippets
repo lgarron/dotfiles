@@ -55,9 +55,9 @@
   },
   "console.log": {
     "scope": "javascript,typescript",
-    "prefix": "cl",
+    "prefix": "log",
     "body": "console.log(${0:$TM_SELECTED_TEXT});",
-    "description": "Log to the console"
+    "description": "Log to the console (custom)"
   },
   "debug log": {
     "scope": "javascript,typescript",

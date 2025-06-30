@@ -107,6 +107,11 @@ function _fish_prompt_postexec_lcars --on-event fish_postexec
     set -l saved_status $statuses[1]
     set -l saved_pipestatus $statuses[2]
 
+    # Interacts with the `jj` wrapper functionn.
+    if functions -qv _fish_postexec_refresh_gg_if_needed
+        _fish_postexec_refresh_gg_if_needed
+    end
+
     # Write pipestatus
     set -l PREVIOUS_COMMAND_TIME "⏱️ "(math $CMD_DURATION / 1000)s
 

@@ -114,11 +114,24 @@ function jj_soft_reset_accidentally_modified_change
     jj abandon $FROM_COMMIT_ID
 end
 
+# Interacts with the `fish` prompt `postexec`.
+set -g _FISH_JJ_WAS_RUN_DURING_COMMAND no
+set -g _FISH_OVERRIDE_DO_NOT_RUN_GG_REFRESH_IN_POSTEXEC no
 function jj
     command jj $argv
-    if command -qv gg-refresh
-        gg-refresh
-    else
-        echo "⚠️ Could not refresh `gg`."
+    set -g _FISH_JJ_WAS_RUN_DURING_COMMAND yes
+end
+
+function _fish_postexec_refresh_gg_if_needed
+    if string match --entire --quiet "$_FISH_JJ_WAS_RUN_DURING_COMMAND" yes
+        if not string match --entire --quiet "$_FISH_OVERRIDE_DO_NOT_RUN_GG_REFRESH_IN_POSTEXEC" yes
+            if command -qv gg-refresh
+                gg-refresh
+            else
+                echo "⚠️ Could not refresh `gg`."
+            end
+        end
+        set -g _FISH_JJ_WAS_RUN_DURING_COMMAND no
+        set -g _FISH_OVERRIDE_DO_NOT_RUN_GG_REFRESH_IN_POSTEXEC no
     end
 end

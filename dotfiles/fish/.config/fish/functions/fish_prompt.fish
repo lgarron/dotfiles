@@ -174,3 +174,16 @@ function _fish_prompt_postexec_lcars --on-event fish_postexec
 end
 
 functions -e __vsc_cmd_finished
+
+# TODO: remove this `@fish-lsp-disable` after false positives are reduced (https://github.com/ndonfris/fish-lsp/issues/80).
+# @fish-lsp-disable-next-line 4004
+function _fish_cancel_lcars --on-event fish_cancel
+    set_color red
+    echo ""
+    _fish_prompt_echo_padded \
+        "╰─── ⌃C (command input cleared) " \
+        (set_color $_FISH_PROMPT_LCARS_HEADER_COLOR)
+    if [ (tput lines) -gt $_FISH_PROMPT_COMPACT_MODE_MAX_ROWS ]
+        echo ""
+    end
+end

@@ -15,7 +15,7 @@ end
 set -g _FISH_PROMPT_FIRST_COMMAND_HAS_RUN false # var
 
 set -g _FISH_PROMPT_COMPACT_MODE_MAX_ROWS 15
-set -g _FISH_PROMPT_EVEN_MORE_COMPACT_MODE_MAX_ROWS 10
+set -g _FISH_PROMPT_EVEN_MORE_COMPACT_MODE_MAX_ROWS 6
 
 function _fish_prompt_echo_padded
     set -l PREFIX $argv[1]

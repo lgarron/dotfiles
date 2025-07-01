@@ -1232,6 +1232,8 @@
 		<true/>
 		<key>QSPresetTransmitFavorites</key>
 		<true/>
+		<key>QSPresetUserApplications</key>
+		<true/>
 		<key>QSPresetUserScripts</key>
 		<true/>
 		<key>QSPresetiTunesEQPresets</key>
@@ -1241,8 +1243,8 @@
 	</dict>
 	<key>omittedItems</key>
 	<array>
-		<string>/Users/lgarron/Library/Mobile Documents/iCloud~md~obsidian/Documents</string>
 		<string>/Users/lgarron/Applications/CrossOver/Ubisoft</string>
+		<string>/Users/lgarron/Library/Mobile Documents/iCloud~md~obsidian/Documents</string>
 	</array>
 </dict>
 </plist>

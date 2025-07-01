@@ -1109,6 +1109,44 @@
 		</dict>
 		<dict>
 			<key>ID</key>
+			<string>B88B1010-12D0-4362-83B2-AA05B50215C7</string>
+			<key>character</key>
+			<string>}</string>
+			<key>command</key>
+			<dict>
+				<key>actionID</key>
+				<string>QSTextTypeAction</string>
+				<key>directArchive</key>
+				<dict>
+					<key>class</key>
+					<string>QSObject</string>
+					<key>data</key>
+					<dict>
+						<key>public.utf8-plain-text</key>
+						<string>⌫</string>
+					</dict>
+					<key>properties</key>
+					<dict>
+						<key>QSObjectName</key>
+						<string>⌫</string>
+						<key>QSObjectType</key>
+						<string>public.utf8-plain-text</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyCode</key>
+			<integer>30</integer>
+			<key>modifiers</key>
+			<integer>655650</integer>
+			<key>onPress</key>
+			<true/>
+			<key>type</key>
+			<string>QSHotKeyTrigger</string>
+		</dict>
+		<dict>
+			<key>ID</key>
 			<string>EF50F1B9-8EB7-43AE-BADD-379F404BEA91</string>
 			<key>applicationScope</key>
 			<array>

@@ -215,6 +215,23 @@
 			<dict>
 				<key>actionID</key>
 				<string>AppleScriptRunAction</string>
+				<key>directArchive</key>
+				<dict>
+					<key>class</key>
+					<string>QSObject</string>
+					<key>data</key>
+					<dict>
+						<key>public.utf8-plain-text</key>
+						<string>/Users/lgarron/Code/git/github.com/lgarron/dotfiles/Quicksilver Triggers/Date/Set Clipboard to Long Date.applescript</string>
+					</dict>
+					<key>properties</key>
+					<dict>
+						<key>QSObjectName</key>
+						<string>/Users/lgarron/Code/git/github.com/lgarron/dotfiles/Quicksilver Triggers/Date/Set Clipboard to Long Date.applescript</string>
+						<key>QSObjectType</key>
+						<string>public.utf8-plain-text</string>
+					</dict>
+				</dict>
 				<key>directID</key>
 				<string>/Users/lgarron/Code/git/github.com/lgarron/dotfiles/Quicksilver Triggers/Date/Set Clipboard to Long Date.applescript</string>
 			</dict>
@@ -425,6 +442,23 @@
 			<dict>
 				<key>actionID</key>
 				<string>AppleScriptRunAction</string>
+				<key>directArchive</key>
+				<dict>
+					<key>class</key>
+					<string>QSObject</string>
+					<key>data</key>
+					<dict>
+						<key>public.utf8-plain-text</key>
+						<string>/Users/lgarron/Code/git/github.com/lgarron/dotfiles/Quicksilver Triggers/Date/Set Clipboard to Long Date and Time.applescript</string>
+					</dict>
+					<key>properties</key>
+					<dict>
+						<key>QSObjectName</key>
+						<string>/Users/lgarron/Code/git/github.com/lgarron/dotfiles/Quicksilver Triggers/Date/Set Clipboard to Long Date and Time.applescript</string>
+						<key>QSObjectType</key>
+						<string>public.utf8-plain-text</string>
+					</dict>
+				</dict>
 				<key>directID</key>
 				<string>/Users/lgarron/Code/git/github.com/lgarron/dotfiles/Quicksilver Triggers/Date/Set Clipboard to Long Date and Time.applescript</string>
 			</dict>
@@ -770,7 +804,7 @@
 				<string>QSGlobalSelectionProxy</string>
 			</dict>
 			<key>enabled</key>
-			<true/>
+			<false/>
 			<key>keyCode</key>
 			<integer>51</integer>
 			<key>modifiers</key>
@@ -1686,6 +1720,23 @@
 			<dict>
 				<key>actionID</key>
 				<string>AppleScriptRunAction</string>
+				<key>directArchive</key>
+				<dict>
+					<key>class</key>
+					<string>QSObject</string>
+					<key>data</key>
+					<dict>
+						<key>public.utf8-plain-text</key>
+						<string>/Users/lgarron/Code/git/github.com/lgarron/dotfiles/Quicksilver Triggers/Date/Set Clipboard to Date.applescript</string>
+					</dict>
+					<key>properties</key>
+					<dict>
+						<key>QSObjectName</key>
+						<string>/Users/lgarron/Code/git/github.com/lgarron/dotfiles/Quicksilver Triggers/Date/Set Clipboard to Date.applescript</string>
+						<key>QSObjectType</key>
+						<string>public.utf8-plain-text</string>
+					</dict>
+				</dict>
 				<key>directID</key>
 				<string>/Users/lgarron/Code/git/github.com/lgarron/dotfiles/Quicksilver Triggers/Date/Set Clipboard to Date.applescript</string>
 			</dict>

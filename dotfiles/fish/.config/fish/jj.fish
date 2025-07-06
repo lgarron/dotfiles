@@ -69,6 +69,11 @@ abbr -a jgv 'open --url (jj git remote list | grep "^origin" | awk "{print \$2}"
 # LSP override: This is an "exported" function (meant to be used outside this file).
 # @fish-lsp-disable-next-line 4004
 function gg
+    if string match --entire -- (repo vcs kind) git >/dev/null
+        echo "This repo uses `git` but not `jj`. Opening GitX instead."
+        gx
+        return
+    end
     killall gg
     ggn
 end

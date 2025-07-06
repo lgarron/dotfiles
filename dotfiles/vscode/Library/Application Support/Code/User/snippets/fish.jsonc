@@ -13,7 +13,7 @@
 	"String comparison": {
 		"prefix": "if string match",
 		"body": [
-			"if string match --entire -- \"$1\" \"$2\" > /dev/null",
+			"if string match --quiet --entire -- \"$1\" \"$2\"",
 			"    $3",
 			"end"
 		],

@@ -141,7 +141,11 @@ const extension = extname(filePath).toLowerCase();
 if (imageExtensions[extension]) {
   targetClassificationFolder = "Images";
 } else if (videoExtensions[extension]) {
-  targetClassificationFolder = "Videos";
+  if (DCIM_OR_CRM === "CRM") {
+    targetClassificationFolder = "RAW Video";
+  } else {
+    targetClassificationFolder = "Videos";
+  }
 } else if (audioExtensions[extension]) {
   targetClassificationFolder = "Audio";
 }

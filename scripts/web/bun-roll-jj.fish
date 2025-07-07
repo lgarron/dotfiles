@@ -38,5 +38,5 @@ echo -n -- "$NPM_PACKAGE"
 set_color normal
 echo -- " to version: v$VERSION"
 
-bun add $DEV_ARG "$NPM_PACKAGE@v$VERSION"
+bun add $DEV_ARG "$NPM_PACKAGE@^v$VERSION"
 jj describe --message "`bun add $DEV_ARG $NPM_PACKAGE@^v$VERSION`"

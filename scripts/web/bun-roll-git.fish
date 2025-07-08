@@ -1,9 +1,5 @@
 #!/usr/bin/env -S fish --no-config
 
-# TODO:
-# - Port to JS (or into `repo`)
-# - Combine with `bun-roll.fish`
-
 if test (count $argv) = 0
     echo "Usage: bun-roll [npm package name]"
     exit 255
@@ -14,7 +10,15 @@ if not test -e package.json
     exit 1
 end
 
-jj new 'heads(::@ & (~empty() | ~description(exact:"")))'
+set STATUS (git status --porcelain)
+if test -n "$STATUS"
+    echo -n "⚠️ "
+    set_color --bold
+    echo -n "git status"
+    set_color normal
+    echo " must be clean"
+    exit 2
+end
 
 set NPM_PACKAGE $argv[1]
 
@@ -39,5 +43,5 @@ set_color normal
 echo -- " to version: v$VERSION"
 
 bun add $DEV_ARG "$NPM_PACKAGE@^v$VERSION"
-jj describe --message "`bun add $DEV_ARG $NPM_PACKAGE@^v$VERSION`"
-jj new
+git stage package.json bun.lock || git stage package.json bun.lockb
+git commit -m "`bun add $DEV_ARG $NPM_PACKAGE@^v$VERSION`"

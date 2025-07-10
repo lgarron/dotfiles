@@ -50,14 +50,9 @@ function fish_jj_prompt
     end
     # TODO: fold into the implementation above and improve perf.
     # TODO: implement narrow viewport mode.
-    # TODO: select just the bookmark that `jj tug` would oeprate on?
+    # TODO: Handle when the closest bookmark/ancestor/non-empty ancestor are different lines.
     set -l closest_bookmark (
-        command jj log 2>/dev/null \
-            --no-graph \
-            --ignore-working-copy \
-            --color=always \
-            --revisions "closest_ancestor_bookmark(@, 10)" \
-            --template 'bookmarks.join(", ")'
+        jj guess-branch --color=always
     )
     set -l closest_bookmark_commit (
         command jj log 2>/dev/null \

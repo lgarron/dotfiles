@@ -38,8 +38,7 @@
     function abbr_anyarg
       _curry_abbr _abbr_expand_anyarg $argv
     end
-    # LSP override: This is a false positive.
-    # @fish-lsp-disable-next-line 4004
+    
     function _abbr_expand_anyarg
         set -l main_command $argv[1] # TODO: allow this to a function invocation, to allow defining for multiple commands?
         # set -l command_abbreviation $argv[2] # unused
@@ -74,8 +73,6 @@
       _curry_abbr _abbr_expand_subcommand $argv
     end
 
-    # LSP override: This is a false positive.
-    # @fish-lsp-disable-next-line 4004
     function _abbr_expand_subcommand
       set -l main_command $argv[1]
       set -l sub_command_abbreviation $argv[2]
@@ -122,8 +119,6 @@
       _curry_abbr _abbr_expand_subcommand_arg $argv
     end
 
-    # LSP override: This is a false positive.
-    # @fish-lsp-disable-next-line 4004
     function _abbr_expand_subcommand_arg
       set -l cmd (commandline -op)
       if [ (count $cmd) -lt 3 ]
@@ -160,8 +155,6 @@
       _curry_abbr _abbr_expand_subcommand_firstarg $argv
     end
 
-    # LSP override: This is a false positive.
-    # @fish-lsp-disable-next-line 4004
     function _abbr_expand_subcommand_firstarg
         set -l cmd (commandline -op)
         if [ (count $cmd) -lt 3 ]
@@ -228,8 +221,6 @@
       _curry_abbr _abbr_expand_exceptsubcommand_arg $argv[1..3]
     end
 
-    # LSP override: This is a false positive.
-    # @fish-lsp-disable-next-line 4004
     function _abbr_expand_exceptsubcommand_arg
       set -l cmd (commandline -op)
       if [ (count $cmd) -lt 3 ]

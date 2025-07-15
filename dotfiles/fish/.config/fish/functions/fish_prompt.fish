@@ -92,16 +92,16 @@ function fish_prompt --description 'Write out the prompt'
 end
 
 # TODO: remove this `@fish-lsp-disable` after false positives are reduced (https://github.com/ndonfris/fish-lsp/issues/80).
-# @fish-lsp-disable-next-line 4004
+# @fish-lsp-disable-next-line 4004 4007
 function _fish_prompt_preexec_blank_line --on-event fish_preexec
     if [ (tput lines) -gt $_FISH_PROMPT_COMPACT_MODE_MAX_ROWS ]
         echo (set_color $_FISH_PROMPT_LCARS_HEADER_COLOR)"┴"(set_color normal)
     end
-    set _FISH_PROMPT_FIRST_COMMAND_HAS_RUN true
+    set -g _FISH_PROMPT_FIRST_COMMAND_HAS_RUN true
 end
 
 # TODO: remove this `@fish-lsp-disable` after false positives are reduced (https://github.com/ndonfris/fish-lsp/issues/80).
-# @fish-lsp-disable-next-line 4004
+# @fish-lsp-disable-next-line 4004 4007
 function _fish_prompt_postexec_lcars --on-event fish_postexec
     set -l statuses $status $pipestatus
     set -l saved_status $statuses[1]
@@ -182,7 +182,7 @@ end
 functions -e __vsc_cmd_finished
 
 # TODO: remove this `@fish-lsp-disable` after false positives are reduced (https://github.com/ndonfris/fish-lsp/issues/80).
-# @fish-lsp-disable-next-line 4004
+# @fish-lsp-disable-next-line 4004 4007
 function _fish_cancel_lcars --on-event fish_cancel
     set_color red
     echo ""

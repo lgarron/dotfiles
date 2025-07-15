@@ -52,7 +52,7 @@ function fish_jj_prompt
     # TODO: implement narrow viewport mode.
     # TODO: Handle when the closest bookmark/ancestor/non-empty ancestor are different lines.
     set -l closest_bookmark (
-        jj guess-branch --color=always
+        command jj guess-branch --color=always
     )
     set -l closest_bookmark_commit (
         command jj log 2>/dev/null \

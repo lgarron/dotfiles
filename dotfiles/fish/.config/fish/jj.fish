@@ -150,7 +150,7 @@ function _fish_postexec_refresh_gg_if_needed_and_reset
                 echo "⚠️ Could not refresh `gg`."
             end
         end
-        set -g _FISH_JJ_WAS_RUN_DURING_COMMAND no
-        set -g _FISH_OVERRIDE_DO_NOT_RUN_GG_REFRESH_IN_POSTEXEC no
+        set -g _FISH_JJ_WAS_RUN_DURING_COMMAND false
     end
+    set -g _FISH_OVERRIDE_DO_NOT_RUN_GG_REFRESH_IN_POSTEXEC false
 end

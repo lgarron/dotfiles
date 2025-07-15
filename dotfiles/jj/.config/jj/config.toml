@@ -40,6 +40,15 @@ guess-branch = [
   "--revisions",
   "closest_ancestor_bookmark(@)",
   "--template",
+  "bookmarks.map(|b| b.name())",
+]
+guess-branch-maybe-divergent = [
+  "log",
+  "--no-graph",
+  "--ignore-working-copy",
+  "--revisions",
+  "closest_ancestor_bookmark(@)",
+  "--template",
   "bookmarks",
 ]
 

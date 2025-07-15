@@ -54,6 +54,10 @@ function fish_jj_prompt
     set -l closest_bookmark (
         command jj guess-branch --color=always
     )
+    # TODO: Find a semantically safe way to avoid having to run this separately.
+    set -l closest_bookmark_maybe_divergent (
+        command jj guess-branch-maybe-divergent --color=always
+    )
     set -l closest_bookmark_commit (
         command jj log 2>/dev/null \
             --no-graph \
@@ -73,6 +77,6 @@ function fish_jj_prompt
     set -l closest_bookmark_to_here_distance (__fish_jj_num_commits_from_to $closest_bookmark_commit "here(10)")
     set -l here_to_nonempty_distance (__fish_jj_num_commits_from_to "here" $closest_nonempty_ancestor_commit)
     set -l nonempty_to_at_distance (__fish_jj_num_commits_from_to $closest_nonempty_ancestor_commit "@")
-    set closest_bookmark_suffix " ($closest_bookmark +$closest_bookmark_to_here_distance pushable +$here_to_nonempty_distance undescribed +$nonempty_to_at_distance empty)"
+    set closest_bookmark_suffix " ($closest_bookmark_maybe_divergent +$closest_bookmark_to_here_distance pushable +$here_to_nonempty_distance undescribed +$nonempty_to_at_distance empty)"
     printf "%s%s" $info $closest_bookmark_suffix
 end

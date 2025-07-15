@@ -63,7 +63,7 @@ function fish_jj_prompt
             --no-graph \
             --ignore-working-copy \
             --color=always \
-            --revisions "closest_ancestor_bookmark(@, 10)" \
+            --revisions "closest_ancestor_bookmark(@)" \
             --template 'commit_id'
     )
     set -l closest_nonempty_ancestor_commit (
@@ -71,10 +71,10 @@ function fish_jj_prompt
             --no-graph \
             --ignore-working-copy \
             --color=always \
-            --revisions "closest_nonempty_ancestor(@, 10)" \
+            --revisions "closest_nonempty_ancestor(@)" \
             --template 'commit_id'
     )
-    set -l closest_bookmark_to_here_distance (__fish_jj_num_commits_from_to $closest_bookmark_commit "here(10)")
+    set -l closest_bookmark_to_here_distance (__fish_jj_num_commits_from_to $closest_bookmark_commit "here")
     set -l here_to_nonempty_distance (__fish_jj_num_commits_from_to "here" $closest_nonempty_ancestor_commit)
     set -l nonempty_to_at_distance (__fish_jj_num_commits_from_to $closest_nonempty_ancestor_commit "@")
     set closest_bookmark_suffix " ($closest_bookmark_maybe_divergent +$closest_bookmark_to_here_distance pushable +$here_to_nonempty_distance undescribed +$nonempty_to_at_distance empty)"

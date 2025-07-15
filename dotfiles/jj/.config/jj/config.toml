@@ -6,14 +6,10 @@ log = "@ | ancestors(visible_heads() | tracked_remote_bookmarks(), 20)"
 # TODO: make the ancestor hierarchy consistent.
 # Adapted from https://github.com/jj-vcs/jj/discussions/4012#discussioncomment-12685567
 'closest_nonempty_ancestor(to)' = 'latest(heads(::to & (~empty() )))'
-'closest_nonempty_ancestor(to, max_depth)' = 'latest(heads(ancestors(to, max_depth) & ~empty()))'
 'closest_ancestor_bookmark(to)' = 'latest(heads(::to & bookmarks()))'
-'closest_ancestor_bookmark(to, max_depth)' = 'latest(heads(ancestors(to, max_depth) & bookmarks()))'
 # TODO: add `mutable()`? https://github.com/jj-vcs/jj/discussions/5568#discussioncomment-13007551
 'closest_pushable_ancestor(to)' = 'latest(heads(::to & ~description(exact:"") & (~empty() | merges())))'
-'closest_pushable_ancestor(to, max_depth)' = 'latest(heads(ancestors(to, max_depth) & ~description(exact:"") & (~empty() | merges())))'
 'here' = 'closest_pushable_ancestor(@)'
-'here(max_depth)' = 'closest_pushable_ancestor(@, max_depth)'
 
 [aliases]
 tug = [

@@ -1,9 +1,9 @@
-function __fish_jj_num_commits_from_to
+function __fish_jj_num_commits
     command jj log 2>/dev/null \
         --no-graph \
         --ignore-working-copy \
         --color=always \
-        --revisions $argv[1]".."$argv[2] \
+        --revisions $argv[1] \
         --template "'.'" \
         | wc -c \
         | tr -d " "
@@ -48,35 +48,14 @@ function fish_jj_prompt
     if test $pipestatus[1] -ne 0
         return 1
     end
-    # TODO: fold into the implementation above and improve perf.
-    # TODO: implement narrow viewport mode.
-    # TODO: Handle when the closest bookmark/ancestor/non-empty ancestor are different lines.
-    set -l closest_bookmark (
-        command jj guess-branch --color=always
-    )
     # TODO: Find a semantically safe way to avoid having to run this separately.
     set -l closest_bookmark_maybe_divergent (
         command jj guess-branch-maybe-divergent --color=always
     )
-    set -l closest_bookmark_commit (
-        command jj log 2>/dev/null \
-            --no-graph \
-            --ignore-working-copy \
-            --color=always \
-            --revisions "closest_ancestor_bookmark(@)" \
-            --template 'commit_id'
-    )
-    set -l closest_nonempty_ancestor_commit (
-        command jj log 2>/dev/null \
-            --no-graph \
-            --ignore-working-copy \
-            --color=always \
-            --revisions "closest_nonempty_ancestor(@)" \
-            --template 'commit_id'
-    )
-    set -l closest_bookmark_to_here_distance (__fish_jj_num_commits_from_to $closest_bookmark_commit "here")
-    set -l here_to_nonempty_distance (__fish_jj_num_commits_from_to "here" $closest_nonempty_ancestor_commit)
-    set -l nonempty_to_at_distance (__fish_jj_num_commits_from_to $closest_nonempty_ancestor_commit "@")
-    set closest_bookmark_suffix " ($closest_bookmark_maybe_divergent +$closest_bookmark_to_here_distance pushable +$here_to_nonempty_distance undescribed +$nonempty_to_at_distance empty)"
+    set -l pushable_stack_bookhere (__fish_jj_num_commits "pushable_stack_bookhere")
+    set -l undescribed_stack_bookhere (__fish_jj_num_commits "undescribed_stack_bookhere")
+    set -l empty_stack_bookhere (__fish_jj_num_commits "empty_stack_bookhere")
+    set -l disordered_bookhere (__fish_jj_num_commits "disordered_bookhere")
+    set closest_bookmark_suffix " ($closest_bookmark_maybe_divergent +$pushable_stack_bookhere pushable +$undescribed_stack_bookhere undescribed +$empty_stack_bookhere empty +$disordered_bookhere disordered)"
     printf "%s%s" $info $closest_bookmark_suffix
 end

@@ -3,22 +3,49 @@
 log = "@ | ancestors(visible_heads() | tracked_remote_bookmarks(), 20)"
 
 [revset-aliases]
-# TODO: make the ancestor hierarchy consistent.
-# Adapted from https://github.com/jj-vcs/jj/discussions/4012#discussioncomment-12685567
-'closest_nonempty_ancestor(to)' = 'latest(heads(::to & (~empty() )))'
-'closest_ancestor_bookmark(to)' = 'latest(heads(::to & bookmarks()))'
-# TODO: add `mutable()`? https://github.com/jj-vcs/jj/discussions/5568#discussioncomment-13007551
-'closest_pushable_ancestor(to)' = 'latest(heads(::to & ~description(exact:"") & (~empty() | merges())))'
-'here' = 'closest_pushable_ancestor(@)'
+'ancestor_bookmarks(to)' = 'heads(::to & bookmarks())'
+'single_latest_ancestor_bookmark(to)' = 'latest(ancestor_bookmarks(to))'
+'bookhere' = 'single_latest_ancestor_bookmark(@)'
+
+# Levels:
+# - Pushable: described and (non-empty or merge)
+# - Undescribed: non-empty or merge, not pushable
+# - Empty: Empty, undescribed
+'empty_nonmerges' = '(empty() & ~merges())'
+'undescribed' = 'description(exact:"")'
+'undescribed_nonempty' = 'undescribed & ~empty_nonmerges'
+'undescribed_empty' = 'undescribed & empty_nonmerges'
+'individually_pushable' = '~undescribed & ~empty_nonmerges'
+# TODO: is it safe to use `heads(from)+::@`?
+'descendants(from)' = 'from+::@'
+#'continuous(condition)' = 'condition & ~((~(condition))::@)'
+
+'pushable_bookhere' = 'descendants(bookhere) & individually_pushable'
+'pushable_bookhere_descendants' = 'descendants(pushable_bookhere)'
+'undescribed_nonempty_bookhere' = 'descendants(bookhere) & undescribed_nonempty'
+'undescribed_nonempty_bookhere_descendants' = 'descendants(undescribed_nonempty_bookhere)'
+'empty_bookhere' = 'descendants(bookhere) & undescribed_empty'
+'empty_bookhere_descendants' = 'descendants(empty_bookhere)'
+
+'pushable_orphans_bookhere' = 'pushable_bookhere & undescribed_nonempty_bookhere_descendants'
+'undescribed_orphans_bookhere' = 'undescribed_nonempty_bookhere & empty_bookhere_descendants'
+
+'pushable_stack_bookhere' = 'pushable_bookhere & ~undescribed_nonempty_bookhere_descendants'
+'undescribed_stack_bookhere' = 'undescribed_nonempty_bookhere & ~empty_bookhere_descendants'
+'empty_stack_bookhere' = 'empty_bookhere & ~(descendants(pushable_orphans_bookhere)) & ~(descendants(undescribed_orphans_bookhere))'
+'disordered_bookhere' = 'descendants(bookhere) & ~pushable_stack_bookhere & ~undescribed_stack_bookhere & ~empty_stack_bookhere'
+
+#'single_closest_pushable_ancestor(to)' = 'latest(pushable_in_range(::to))'
+'here' = 'latest(pushable_stack_bookhere)'
 
 [aliases]
 tug = [
   "bookmark",
   "move",
   "--from",
-  "closest_ancestor_bookmark(@)",
+  "single_latest_ancestor_bookmark(@)",
   "--to",
-  "closest_pushable_ancestor(@)",
+  "here",
 ]
 here = [
   "log",
@@ -34,7 +61,7 @@ guess-branch = [
   "--no-graph",
   "--ignore-working-copy",
   "--revisions",
-  "closest_ancestor_bookmark(@)",
+  "single_latest_ancestor_bookmark(@)",
   "--template",
   "bookmarks.map(|b| b.name())",
 ]
@@ -43,7 +70,7 @@ guess-branch-maybe-divergent = [
   "--no-graph",
   "--ignore-working-copy",
   "--revisions",
-  "closest_ancestor_bookmark(@)",
+  "single_latest_ancestor_bookmark(@)",
   "--template",
   "bookmarks",
 ]

@@ -43,7 +43,7 @@ function fish_jj_prompt
     set -l draft_bookhere (__fish_jj_num_commits "draft_bookhere")
     set -l blank_fringe_bookhere (__fish_jj_num_commits "blank_fringe_bookhere")
     set closest_bookmark_suffix "$closest_bookmark_maybe_divergent" "+$pushable_stack_bookhere pushable"
-    if [ "$draft_bookhere" -gt 0 ] || [ "$blank_fringe_bookhere" -gt 0 ]
+    if [ "$draft_bookhere" -gt 0 ]
         set closest_bookmark_suffix $closest_bookmark_suffix (set_color yellow)"+$draft_bookhere unpushable"(set_color normal)
     end
     if [ "$blank_fringe_bookhere" -gt 0 ]

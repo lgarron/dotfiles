@@ -151,7 +151,9 @@ function _fish_prompt_postexec_lcars --on-event fish_postexec
             echo "├─ ❌ $prompt_status"(set_color $_FISH_PROMPT_LCARS_TRAILER_COLOR)"command status"
         end
 
-        _fish_postexec_refresh_gg_if_needed_and_reset --fancy
+        if functions -qv _fish_postexec_refresh_gg_if_needed
+            _fish_postexec_refresh_gg_if_needed --fancy
+        end
 
         if not _fish_is_true $final_trailer_is_time
             _fish_prompt_echo_padded \
@@ -166,8 +168,8 @@ function _fish_prompt_postexec_lcars --on-event fish_postexec
     end
 
     # Interacts with the `jj` wrapper functionn.
-    if functions -qv _fish_postexec_refresh_gg_if_needed_and_reset
-        _fish_postexec_refresh_gg_if_needed_and_reset
+    if functions -qv _fish_postexec_refresh_gg_reset
+        _fish_postexec_refresh_gg_reset
     end
 
     # Try to tell VS Code that *here* is actually the end of the command.

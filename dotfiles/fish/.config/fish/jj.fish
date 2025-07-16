@@ -69,7 +69,7 @@ abbr -a jgv 'open --url (jj git remote list | grep "^origin" | awk "{print \$2}"
 # LSP override: This is an "exported" function (meant to be used outside this file).
 # @fish-lsp-disable-next-line 4004
 function gg
-    if string match --entire -- (repo vcs kind) git >/dev/null
+    if string match --quiet --entire -- (repo vcs kind) git
         echo "This repo uses `git` but not `jj`. Opening GitX instead."
         gx
         return
@@ -127,6 +127,8 @@ function jj
     set -g _FISH_JJ_WAS_RUN_DURING_COMMAND true
 end
 
+# LSP override: This is an "exported" function (meant to be used outside this file).
+# @fish-lsp-disable-next-line 4004
 function _fish_postexec_refresh_gg_calculate_if_needed
     if _fish_is_true "$_FISH_JJ_WAS_RUN_DURING_COMMAND"
         if not _fish_is_true "$_FISH_OVERRIDE_DO_NOT_RUN_GG_REFRESH_IN_POSTEXEC"
@@ -137,7 +139,9 @@ function _fish_postexec_refresh_gg_calculate_if_needed
     echo -n false
 end
 
-function _fish_postexec_refresh_gg_if_needed_and_reset
+# LSP override: This is an "exported" function (meant to be used outside this file).
+# @fish-lsp-disable-next-line 4004
+function _fish_postexec_refresh_gg_if_needed
     if _fish_is_true "$_FISH_JJ_WAS_RUN_DURING_COMMAND"
         if not _fish_is_true "$_FISH_OVERRIDE_DO_NOT_RUN_GG_REFRESH_IN_POSTEXEC"
             if command -qv gg-refresh
@@ -150,7 +154,12 @@ function _fish_postexec_refresh_gg_if_needed_and_reset
                 echo "⚠️ Could not refresh `gg`."
             end
         end
-        set -g _FISH_JJ_WAS_RUN_DURING_COMMAND false
     end
+end
+
+# LSP override: This is an "exported" function (meant to be used outside this file).
+# @fish-lsp-disable-next-line 4004
+function _fish_postexec_refresh_gg_reset
+    set -g _FISH_JJ_WAS_RUN_DURING_COMMAND false
     set -g _FISH_OVERRIDE_DO_NOT_RUN_GG_REFRESH_IN_POSTEXEC false
 end

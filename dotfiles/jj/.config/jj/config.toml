@@ -8,7 +8,6 @@ log = "@ | ancestors(visible_heads() | tracked_remote_bookmarks(), 20)"
 [revset-aliases]
 'ancestor_bookmarks(to)' = 'heads(::to & bookmarks())'
 'single_latest_ancestor_bookmark(to)' = 'latest(ancestor_bookmarks(to))'
-# TODO: prefer `main`?
 'single_latest_ancestor_bookmark_or_fork_point(to)' = 'latest(coalesce(ancestor_bookmarks(to), fork_point(to | main), fork_point(to | trunk())))'
 
 # promptanchor
@@ -18,7 +17,7 @@ log = "@ | ancestors(visible_heads() | tracked_remote_bookmarks(), 20)"
 'promptanchor_descendants_to(to)' = 'promptanchor+::to'
 'promptanchor_individually_pushable' = 'promptanchor_descendants_to_working_copy & individually_pushable'
 
-# Helpers for `promptanchor` and prompt.
+# Helpers for prompt.
 'blank' = '(empty() & ~merges())'
 'undescribed' = 'description(exact:"")'
 'individually_pushable' = '~undescribed & ~blank'
@@ -48,7 +47,7 @@ here = [
   "--template",
   "commit_id",
 ]
-# - Never includes trailing `*
+# - Never includes trailing `*`.
 # - Prioritizes `main` over other branch names. (`master` is not treated specially.)
 guess-branch = [
   "log",
@@ -59,7 +58,7 @@ guess-branch = [
   "--template",
   "if(bookmarks.filter(|b| b.name() == \"main\"), \"main\", stringify(bookmarks.map(|b| b.name()).join(\"\n\")).first_line())",
 ]
-# - Never includes trailing `*
+# - May include trailing `*`.
 # - Prioritizes `main` over other branch names. (`master` is not treated specially.)
 guess-branch-pretty = [
   "log",
@@ -70,7 +69,7 @@ guess-branch-pretty = [
   "--template",
   "if(bookmarks.filter(|b| b.name() == \"main\"), label(\"bookmark\", stringify(bookmarks.filter(|b| b.name() == \"main\").join(\"\n\")).first_line()), label(\"bookmark\", stringify(bookmarks.join(\"\n\")).first_line()))",
 ]
-# - Never includes trailing `*
+# - Never includes trailing `*`.
 # - Prioritizes `main` over other branch names. (`master` is not treated specially.)
 prompt-anchor = [
   "log",
@@ -81,7 +80,7 @@ prompt-anchor = [
   "--template",
   "if(bookmarks.len() > 0, if(bookmarks.filter(|b| b.name() == \"main\"), \"main\", stringify(bookmarks.map(|b| b.name()).join(\"\n\")).first_line()), change_id.shortest())",
 ]
-# - May include trailing `*
+# - May include trailing `*`.
 # - Prioritizes `main` over other branch names. (`master` is not treated specially.)
 prompt-anchor-pretty = [
   "log",

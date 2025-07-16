@@ -160,7 +160,7 @@ test-completions:
 	./scripts/git/rmtag.fish --completions fish
 
 .PHONY: lint
-lint: lint-ts-biome lint-ts-tsc
+lint: lint-ts-biome lint-ts-tsc lint-rust
 
 .PHONY: lint-ts-biome
 lint-ts-biome:
@@ -170,6 +170,19 @@ lint-ts-biome:
 lint-ts-tsc:
 	bun x tsc --project .
 
+.PHONY: lint-rust
+lint-rust:
+	cargo clippy -- --deny warnings
+	cargo fmt --check
+
 .PHONY: format
-format:
+format: format-ts-biome format-rust
+
+.PHONY: format-ts-biome
+format-ts-biome:
 	npx @biomejs/biome check --write
+
+.PHONY: format-rust
+format-rust:
+	cargo clippy --fix --allow-no-vcs
+	cargo fmt

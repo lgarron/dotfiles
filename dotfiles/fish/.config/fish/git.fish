@@ -1,6 +1,3 @@
-# TODO: remove this `@fish-lsp-disable` after false positives are reduced (https://github.com/ndonfris/fish-lsp/issues/80).
-# @fish-lsp-disable 4004
-
 ## Git
 
     abbr -a g "git"
@@ -434,6 +431,8 @@ git push --force-with-lease"
 
 ## GitX
 
+    # LSP override: This is an "exported" function (meant to be used outside this file).
+    # @fish-lsp-disable-next-line 4004
     function gx
         open -a GitX . & ; disown
         $HOME/Code/git/github.com/lgarron/dotfiles/scripts/system/dell-display-position-app-on-bottom.fish GitX

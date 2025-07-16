@@ -2,7 +2,6 @@
 
     set -l GERMAIN Germain germain Germain.local
     set -l PYTHAGORAS Pythagoras pythagoras Pythagoras.local
-    set -l MBPTEMP mbptemp mbptemp.local
 
 # MOTD
 

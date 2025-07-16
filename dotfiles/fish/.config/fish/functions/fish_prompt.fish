@@ -92,7 +92,7 @@ function fish_prompt --description 'Write out the prompt'
 end
 
 # TODO: remove this `@fish-lsp-disable` after false positives are reduced (https://github.com/ndonfris/fish-lsp/issues/80).
-# @fish-lsp-disable-next-line 4004 4007
+# @fish-lsp-disable-next-line 
 function _fish_prompt_preexec_blank_line --on-event fish_preexec
     if [ (tput lines) -gt $_FISH_PROMPT_COMPACT_MODE_MAX_ROWS ]
         echo (set_color $_FISH_PROMPT_LCARS_HEADER_COLOR)"┴"(set_color normal)

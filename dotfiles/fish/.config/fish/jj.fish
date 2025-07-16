@@ -64,8 +64,10 @@ _fish_abbr_jj_subcommand dt "diff --to"
 abbr_subcommand_arg jj t --to diff
 abbr -a jdno --set-cursor "jj diff --name-only --to \"fork_point(%)\"" # Special shortened abbreviation
 
-# TODO: truncate `.git` from GitHub repo URLs if needed.
-abbr -a jgv 'open --url (jj git remote list | grep "^origin" | awk "{print \$2}" | tr -d "\n" | sed "s#\.git\$##"; and echo -n "/commit/"; echo -- (jj log --ignore-working-copy --limit 1 --revisions here --no-graph -T "commit_id"))'
+# "jj GitHub view"
+abbr -a jgv 'open --url (jj git remote list | grep "^origin" | awk "{print \$2}" | tr -d "\n" | sed "s#\.git\$##"; and echo -n "/commit/"; echo -- (jj here))'
+# "jj GitHub (view) branch"
+abbr -a jgb 'open --url (jj git remote list | grep "^origin" | awk "{print \$2}" | tr -d "\n" | sed "s#\.git\$##"; and echo -n "/commit/"; echo -- (jj guess-branch))'
 
 # LSP override: This is an "exported" function (meant to be used outside this file).
 # @fish-lsp-disable-next-line 4004

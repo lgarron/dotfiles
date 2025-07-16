@@ -34,7 +34,7 @@ tug = [
   "bookmark",
   "move",
   "--from",
-  "single_latest_ancestor_bookmark_or_fork_point(@)",
+  "single_latest_ancestor_bookmark(@)",
   "--to",
   "here",
 ]

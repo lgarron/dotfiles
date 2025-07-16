@@ -8,7 +8,7 @@ log = "@ | ancestors(visible_heads() | tracked_remote_bookmarks(), 20)"
 [revset-aliases]
 'ancestor_bookmarks(to)' = 'heads(::to & bookmarks())'
 'single_latest_ancestor_bookmark(to)' = 'latest(ancestor_bookmarks(to))'
-'single_latest_ancestor_bookmark_or_fork_point(to)' = 'latest(coalesce(ancestor_bookmarks(to), fork_point(to | main), fork_point(to | trunk())))'
+'single_latest_ancestor_bookmark_or_fork_point(to)' = 'latest(coalesce(ancestor_bookmarks(to), fork_point(to | bookmarks(exact:"main")), fork_point(to | trunk())))'
 
 # promptanchor
 'promptanchor' = 'single_latest_ancestor_bookmark_or_fork_point(@)'

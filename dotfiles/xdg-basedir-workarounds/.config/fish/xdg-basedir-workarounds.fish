@@ -88,3 +88,7 @@
     # AWS
     set -Ux AWS_SHARED_CREDENTIALS_FILE $XDG_CONFIG_HOME/aws/credentials
     set -Ux AWS_CONFIG_FILE $XDG_CONFIG_HOME/aws/config
+
+    # OpenSSL?
+    set -Ux RANDFILE "$XDG_DATA_HOME/RANDFILE/.rnd"
+    mkdir -p $XDG_DATA_HOME/RANDFILE &

@@ -36,6 +36,10 @@
     launchctl setenv PYTHONSTARTUP $XDG_CONFIG_HOME/python/pythonrc
     mkdir -p $XDG_DATA_HOME/python
 
+    # OpenSSL?
+    launchctl setenv RANDFILE "$XDG_DATA_HOME/RANDFILE/.rnd"
+    mkdir -p $XDG_DATA_HOME/RANDFILE
+
 # The Naughty List
 
     function rm_and_log

@@ -49,5 +49,5 @@ function fish_jj_prompt
     if [ "$blank_fringe_bookhere" -gt 0 ]
         set closest_bookmark_suffix $closest_bookmark_suffix (set_color brgreen)"+$blank_fringe_bookhere empty"(set_color normal)
     end
-    printf "%s(%s)" $info (string join " " -- $closest_bookmark_suffix)
+    printf "%s (%s)" $info (string join " " -- $closest_bookmark_suffix)
 end

@@ -27,7 +27,7 @@ log = "@ | ancestors(visible_heads() | tracked_remote_bookmarks(), 20)"
 'prompt_blank_fringe' = 'promptanchor_descendants_to_working_copy & blank & ~promptanchor_descendants_to(~blank)'
 'prompt_draft' = 'promptanchor_descendants_to_working_copy & ~prompt_pushable_stack & ~prompt_blank_fringe'
 
-'here' = 'latest(promptanchor | prompt_pushable_stack)'
+'here' = 'latest(heads(promptanchor | prompt_pushable_stack))'
 
 [aliases]
 tug = [

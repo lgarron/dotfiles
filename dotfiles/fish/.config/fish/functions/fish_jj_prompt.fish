@@ -24,7 +24,7 @@ function fish_jj_prompt
         return 1
     end
     # If `jj` can't find a root, we're probably not in a `jj` repo.
-    if not jj root &>/dev/null
+    if not command jj root &>/dev/null
         return 1
     end
     set -l info (

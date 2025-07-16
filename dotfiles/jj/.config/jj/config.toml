@@ -1,3 +1,6 @@
+[git]
+push-new-bookmarks = true
+
 [revsets]
 # Adapted from: https://willhbr.net/2024/08/18/understanding-revsets-for-a-better-jj-log-output/
 log = "@ | ancestors(visible_heads() | tracked_remote_bookmarks(), 20)"
@@ -5,32 +8,34 @@ log = "@ | ancestors(visible_heads() | tracked_remote_bookmarks(), 20)"
 [revset-aliases]
 'ancestor_bookmarks(to)' = 'heads(::to & bookmarks())'
 'single_latest_ancestor_bookmark(to)' = 'latest(ancestor_bookmarks(to))'
+# TODO: prefer `main`?
+'single_latest_ancestor_bookmark_or_fork_point(to)' = 'latest(coalesce(ancestor_bookmarks(to), fork_point(to | main), fork_point(to | trunk())))'
 
-# bookhere
-'bookhere' = 'single_latest_ancestor_bookmark(@)'
-'bookhere_descendants_to_working_copy' = 'bookhere+::@'
-'bookhere_descendants_to_working_copy(from)' = '(bookhere_descendants_to_working_copy & from)+::@'
-'bookhere_descendants_to(to)' = 'bookhere+::to'
-'pushable_bookhere' = 'bookhere_descendants_to_working_copy & individually_pushable'
+# promptanchor
+'promptanchor' = 'single_latest_ancestor_bookmark_or_fork_point(@)'
+'promptanchor_descendants_to_working_copy' = 'promptanchor+::@'
+'promptanchor_descendants_to_working_copy(from)' = '(promptanchor_descendants_to_working_copy & from)+::@'
+'promptanchor_descendants_to(to)' = 'promptanchor+::to'
+'promptanchor_individually_pushable' = 'promptanchor_descendants_to_working_copy & individually_pushable'
 
-# Helpers for `bookhere` and prompt.
+# Helpers for `promptanchor` and prompt.
 'blank' = '(empty() & ~merges())'
 'undescribed' = 'description(exact:"")'
 'individually_pushable' = '~undescribed & ~blank'
 
 # For prompt
-'pushable_stack_bookhere' = 'pushable_bookhere & ~bookhere_descendants_to_working_copy(~individually_pushable)'
-'blank_fringe_bookhere' = 'bookhere_descendants_to_working_copy & blank & ~bookhere_descendants_to(~blank)'
-'draft_bookhere' = 'bookhere_descendants_to_working_copy & ~pushable_stack_bookhere & ~blank_fringe_bookhere'
+'prompt_pushable_stack' = 'promptanchor_individually_pushable & ~promptanchor_descendants_to_working_copy(~individually_pushable)'
+'prompt_blank_fringe' = 'promptanchor_descendants_to_working_copy & blank & ~promptanchor_descendants_to(~blank)'
+'prompt_draft' = 'promptanchor_descendants_to_working_copy & ~prompt_pushable_stack & ~prompt_blank_fringe'
 
-'here' = 'latest(pushable_stack_bookhere)'
+'here' = 'latest(promptanchor | prompt_pushable_stack)'
 
 [aliases]
 tug = [
   "bookmark",
   "move",
   "--from",
-  "single_latest_ancestor_bookmark(@)",
+  "single_latest_ancestor_bookmark_or_fork_point(@)",
   "--to",
   "here",
 ]
@@ -43,6 +48,8 @@ here = [
   "--template",
   "commit_id",
 ]
+# - Never includes trailing `*
+# - Prioritizes `main` over other branch names. (`master` is not treated specially.)
 guess-branch = [
   "log",
   "--no-graph",
@@ -50,17 +57,38 @@ guess-branch = [
   "--revisions",
   "single_latest_ancestor_bookmark(@)",
   "--template",
-  "bookmarks.map(|b| b.name())",
+  "if(bookmarks.filter(|b| b.name() == \"main\"), \"main\", stringify(bookmarks.map(|b| b.name()).join(\"\n\")).first_line())",
 ]
-guess-branch-maybe-divergent = [
+# - Never includes trailing `*
+# - Prioritizes `main` over other branch names. (`master` is not treated specially.)
+guess-branch-pretty = [
   "log",
   "--no-graph",
   "--ignore-working-copy",
   "--revisions",
   "single_latest_ancestor_bookmark(@)",
   "--template",
-  "bookmarks",
+  "if(bookmarks.filter(|b| b.name() == \"main\"), label(\"bookmark\", stringify(bookmarks.filter(|b| b.name() == \"main\").join(\"\n\")).first_line()), label(\"bookmark\", stringify(bookmarks.join(\"\n\")).first_line()))",
 ]
-
-[git]
-push-new-bookmarks = true
+# - Never includes trailing `*
+# - Prioritizes `main` over other branch names. (`master` is not treated specially.)
+prompt-anchor = [
+  "log",
+  "--no-graph",
+  "--ignore-working-copy",
+  "--revisions",
+  "single_latest_ancestor_bookmark_or_fork_point(@)",
+  "--template",
+  "if(bookmarks.len() > 0, if(bookmarks.filter(|b| b.name() == \"main\"), \"main\", stringify(bookmarks.map(|b| b.name()).join(\"\n\")).first_line()), change_id.shortest())",
+]
+# - May include trailing `*
+# - Prioritizes `main` over other branch names. (`master` is not treated specially.)
+prompt-anchor-pretty = [
+  "log",
+  "--no-graph",
+  "--ignore-working-copy",
+  "--revisions",
+  "single_latest_ancestor_bookmark_or_fork_point(@)",
+  "--template",
+  "if(bookmarks.len() > 0, if(bookmarks.filter(|b| b.name() == \"main\"), label(\"bookmark\", stringify(bookmarks.filter(|b| b.name() == \"main\").join(\"\n\")).first_line()), label(\"bookmark\", stringify(bookmarks.join(\"\n\")).first_line())), change_id.shortest())",
+]

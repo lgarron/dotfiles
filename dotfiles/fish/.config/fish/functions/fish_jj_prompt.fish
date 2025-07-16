@@ -36,18 +36,21 @@ function fish_jj_prompt
         return 1
     end
     # TODO: Find a semantically safe way to avoid having to run this separately.
-    set -l closest_bookmark_maybe_divergent (
-        command jj guess-branch-maybe-divergent --color=always
+    set -l prompt_anchor_pretty (
+        command jj prompt-anchor-pretty --color=always
     )
-    set -l pushable_stack_bookhere (__fish_jj_num_commits "pushable_stack_bookhere")
-    set -l draft_bookhere (__fish_jj_num_commits "draft_bookhere")
-    set -l blank_fringe_bookhere (__fish_jj_num_commits "blank_fringe_bookhere")
-    set closest_bookmark_suffix "$closest_bookmark_maybe_divergent" "+$pushable_stack_bookhere pushable"
-    if [ "$draft_bookhere" -gt 0 ]
-        set closest_bookmark_suffix $closest_bookmark_suffix (set_color yellow)"+$draft_bookhere unpushable"(set_color normal)
+    set -l prompt_pushable_stack (__fish_jj_num_commits "prompt_pushable_stack")
+    set -l prompt_draft (__fish_jj_num_commits "prompt_draft")
+    set -l prompt_blank_fringe (__fish_jj_num_commits "prompt_blank_fringe")
+
+    # TODO: if the anchor is not a bookmark, show the distance to `trunk()` / `main`.
+    set anchor_suffix "$prompt_anchor_pretty" "+$prompt_pushable_stack pushable"
+    if [ "$prompt_draft" -gt 0 ]
+        set anchor_suffix $anchor_suffix (set_color yellow)"+$prompt_draft unpushable"(set_color normal)
     end
-    if [ "$blank_fringe_bookhere" -gt 0 ]
-        set closest_bookmark_suffix $closest_bookmark_suffix (set_color brgreen)"+$blank_fringe_bookhere empty"(set_color normal)
+    if [ "$prompt_blank_fringe" -gt 0 ]
+        set anchor_suffix $anchor_suffix (set_color brgreen)"+$prompt_blank_fringe empty"(set_color normal)
     end
-    printf "%s (%s)" $info (string join " " -- $closest_bookmark_suffix)
+
+    printf "%s (%s)" $info (string join " " -- $anchor_suffix)
 end

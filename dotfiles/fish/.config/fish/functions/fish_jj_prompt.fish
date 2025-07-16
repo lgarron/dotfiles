@@ -28,19 +28,6 @@ function fish_jj_prompt
                         if(divergent, label("divergent", "??")),
                         if(hidden, label("hidden prefix", "(hidden)")),
                         if(immutable, label("node immutable", "◆")),
-                        coalesce(
-                            if(
-                                empty,
-                                coalesce(
-                                    if(
-                                        parents.len() > 1,
-                                        label("empty", "(merged)"),
-                                    ),
-                                    label("empty", "(empty)"),
-                                ),
-                            ),
-                            label("description placeholder", "*")
-                        )
                     )
             ' \
             | string collect
@@ -55,10 +42,12 @@ function fish_jj_prompt
     set -l pushable_stack_bookhere (__fish_jj_num_commits "pushable_stack_bookhere")
     set -l draft_bookhere (__fish_jj_num_commits "draft_bookhere")
     set -l blank_fringe_bookhere (__fish_jj_num_commits "blank_fringe_bookhere")
-    set closest_bookmark_suffix " ($closest_bookmark_maybe_divergent +$pushable_stack_bookhere pushable +$draft_bookhere unpushable"
-    if [ "$blank_fringe_bookhere" -gt 0 ]
-        set closest_bookmark_suffix $closest_bookmark_suffix" +$blank_fringe_bookhere empty"
+    set closest_bookmark_suffix "$closest_bookmark_maybe_divergent" "+$pushable_stack_bookhere pushable"
+    if [ "$draft_bookhere" -gt 0 ] || [ "$blank_fringe_bookhere" -gt 0 ]
+        set closest_bookmark_suffix $closest_bookmark_suffix (set_color yellow)"+$draft_bookhere unpushable"(set_color normal)
     end
-    set closest_bookmark_suffix $closest_bookmark_suffix")"
-    printf "%s%s" $info $closest_bookmark_suffix
+    if [ "$blank_fringe_bookhere" -gt 0 ]
+        set closest_bookmark_suffix $closest_bookmark_suffix (set_color brgreen)"+$blank_fringe_bookhere empty"(set_color normal)
+    end
+    printf "%s(%s)" $info (string join " " -- $closest_bookmark_suffix)
 end

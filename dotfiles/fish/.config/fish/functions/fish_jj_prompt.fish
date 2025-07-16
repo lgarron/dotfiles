@@ -38,6 +38,7 @@ function fish_jj_prompt
                         if(divergent, label("divergent", "??")),
                         if(hidden, label("hidden prefix", "(hidden)")),
                         if(immutable, label("node immutable", "◆")),
+                        "±files=" ++ diff.files().len()
                     )
             ' || printf "%s" $TIMED_OUT
     )

@@ -164,7 +164,7 @@ lint: lint-ts-biome lint-ts-tsc lint-rust
 
 .PHONY: lint-ts-biome
 lint-ts-biome:
-	npx @biomejs/biome check
+	bun x @biomejs/biome check
 
 .PHONY: lint-ts-tsc
 lint-ts-tsc:
@@ -180,7 +180,7 @@ format: format-ts-biome format-rust
 
 .PHONY: format-ts-biome
 format-ts-biome:
-	npx @biomejs/biome check --write
+	bun x @biomejs/biome check --write
 
 .PHONY: format-rust
 format-rust:

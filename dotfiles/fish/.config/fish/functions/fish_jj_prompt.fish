@@ -57,7 +57,7 @@ function fish_jj_prompt
     set -l blank_fringe_bookhere (__fish_jj_num_commits "blank_fringe_bookhere")
     set closest_bookmark_suffix " ($closest_bookmark_maybe_divergent +$pushable_stack_bookhere pushable +$draft_bookhere unpushable"
     if [ "$blank_fringe_bookhere" -gt 0 ]
-        set closest_bookmark_suffix $closest_bookmark_suffix" (+$blank_fringe_bookhere empty"
+        set closest_bookmark_suffix $closest_bookmark_suffix" +$blank_fringe_bookhere empty"
     end
     set closest_bookmark_suffix $closest_bookmark_suffix")"
     printf "%s%s" $info $closest_bookmark_suffix

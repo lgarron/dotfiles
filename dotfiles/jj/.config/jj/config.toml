@@ -5,37 +5,24 @@ log = "@ | ancestors(visible_heads() | tracked_remote_bookmarks(), 20)"
 [revset-aliases]
 'ancestor_bookmarks(to)' = 'heads(::to & bookmarks())'
 'single_latest_ancestor_bookmark(to)' = 'latest(ancestor_bookmarks(to))'
+
+# bookhere
 'bookhere' = 'single_latest_ancestor_bookmark(@)'
+'bookhere_descendants_to_working_copy' = 'bookhere+::@'
+'bookhere_descendants_to_working_copy(from)' = '(bookhere_descendants_to_working_copy & from)+::@'
+'bookhere_descendants_to(to)' = 'bookhere+::to'
+'pushable_bookhere' = 'bookhere_descendants_to_working_copy & individually_pushable'
 
-# Levels:
-# - Pushable: described and (non-empty or merge)
-# - Undescribed: non-empty or merge, not pushable
-# - Empty: Empty, undescribed
-'empty_nonmerges' = '(empty() & ~merges())'
+# Helpers for `bookhere` and prompt.
+'blank' = '(empty() & ~merges())'
 'undescribed' = 'description(exact:"")'
-'undescribed_nonempty' = 'undescribed & ~empty_nonmerges'
-'undescribed_empty' = 'undescribed & empty_nonmerges'
-'individually_pushable' = '~undescribed & ~empty_nonmerges'
-# TODO: is it safe to use `heads(from)+::@`?
-'descendants(from)' = 'from+::@'
-#'continuous(condition)' = 'condition & ~((~(condition))::@)'
+'individually_pushable' = '~undescribed & ~blank'
 
-'pushable_bookhere' = 'descendants(bookhere) & individually_pushable'
-'pushable_bookhere_descendants' = 'descendants(pushable_bookhere)'
-'undescribed_nonempty_bookhere' = 'descendants(bookhere) & undescribed_nonempty'
-'undescribed_nonempty_bookhere_descendants' = 'descendants(undescribed_nonempty_bookhere)'
-'empty_bookhere' = 'descendants(bookhere) & undescribed_empty'
-'empty_bookhere_descendants' = 'descendants(empty_bookhere)'
+# For prompt
+'pushable_stack_bookhere' = 'pushable_bookhere & ~bookhere_descendants_to_working_copy(~individually_pushable)'
+'blank_fringe_bookhere' = 'bookhere_descendants_to_working_copy & blank & ~bookhere_descendants_to(~blank)'
+'draft_bookhere' = 'bookhere_descendants_to_working_copy & ~pushable_stack_bookhere & ~blank_fringe_bookhere'
 
-'pushable_orphans_bookhere' = 'pushable_bookhere & undescribed_nonempty_bookhere_descendants'
-'undescribed_orphans_bookhere' = 'undescribed_nonempty_bookhere & empty_bookhere_descendants'
-
-'pushable_stack_bookhere' = 'pushable_bookhere & ~undescribed_nonempty_bookhere_descendants'
-'undescribed_stack_bookhere' = 'undescribed_nonempty_bookhere & ~empty_bookhere_descendants'
-'empty_stack_bookhere' = 'empty_bookhere & ~(descendants(pushable_orphans_bookhere)) & ~(descendants(undescribed_orphans_bookhere))'
-'disordered_bookhere' = 'descendants(bookhere) & ~pushable_stack_bookhere & ~undescribed_stack_bookhere & ~empty_stack_bookhere'
-
-#'single_closest_pushable_ancestor(to)' = 'latest(pushable_in_range(::to))'
 'here' = 'latest(pushable_stack_bookhere)'
 
 [aliases]

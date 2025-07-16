@@ -53,9 +53,12 @@ function fish_jj_prompt
         command jj guess-branch-maybe-divergent --color=always
     )
     set -l pushable_stack_bookhere (__fish_jj_num_commits "pushable_stack_bookhere")
-    set -l undescribed_stack_bookhere (__fish_jj_num_commits "undescribed_stack_bookhere")
-    set -l empty_stack_bookhere (__fish_jj_num_commits "empty_stack_bookhere")
-    set -l disordered_bookhere (__fish_jj_num_commits "disordered_bookhere")
-    set closest_bookmark_suffix " ($closest_bookmark_maybe_divergent +$pushable_stack_bookhere pushable +$undescribed_stack_bookhere undescribed +$empty_stack_bookhere empty +$disordered_bookhere disordered)"
+    set -l draft_bookhere (__fish_jj_num_commits "draft_bookhere")
+    set -l blank_fringe_bookhere (__fish_jj_num_commits "blank_fringe_bookhere")
+    set closest_bookmark_suffix " ($closest_bookmark_maybe_divergent +$pushable_stack_bookhere pushable +$draft_bookhere unpushable"
+    if [ "$blank_fringe_bookhere" -gt 0 ]
+        set closest_bookmark_suffix $closest_bookmark_suffix" (+$blank_fringe_bookhere empty"
+    end
+    set closest_bookmark_suffix $closest_bookmark_suffix")"
     printf "%s%s" $info $closest_bookmark_suffix
 end

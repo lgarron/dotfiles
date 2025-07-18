@@ -17,6 +17,7 @@ end
 function fish_jj_prompt
     # This doesn't work if we set it locally outside the function.
     set -l TIMED_OUT "(timed out)"
+    set -l SKIPPED_DUE_TO_ENV_VAR "(skipped due to env var)"
 
     # If jj isn't installed, there's nothing we can do
     # Return 1 so the calling prompt can deal with it
@@ -50,15 +51,24 @@ function fish_jj_prompt
         timeout --preserve-status 1s jj prompt-anchor-pretty --color=always || printf "%s" $TIMED_OUT
     )
     set -l prompt_pushable_stack (__fish_jj_num_commits "prompt_pushable_stack" || printf "%s" $TIMED_OUT)
-    set -l prompt_draft (__fish_jj_num_commits "prompt_draft" || printf "%s" $TIMED_OUT)
-    set -l prompt_blank_fringe (__fish_jj_num_commits "prompt_blank_fringe" || printf "%s" $TIMED_OUT)
+    # TODO: add heuristics for slow repos? (And also optimize queries.)
+    if contains "$_FISH_PROMPT_SKIP_UNPUSHABLE" "true"
+        set prompt_draft $SKIPPED_DUE_TO_ENV_VAR
+    else
+        set prompt_draft (__fish_jj_num_commits "prompt_draft" || printf "%s" $TIMED_OUT)
+    end
+     if contains "$_FISH_PROMPT_SKIP_BLANK" "true"
+        set prompt_blank_fringe $SKIPPED_DUE_TO_ENV_VAR
+    else
+        set prompt_blank_fringe (__fish_jj_num_commits "prompt_blank_fringe" || printf "%s" $TIMED_OUT)
+    end
 
     # TODO: if the anchor is not a bookmark, show the distance to `trunk()` / `main`.
     set anchor_suffix "$prompt_anchor_pretty" "+$prompt_pushable_stack pushable"
-    if string match --quiet --entire -- "$prompt_draft" "$TIMED_OUT" || [ "$prompt_draft" -gt 0 ]
+    if contains "$prompt_draft" "$TIMED_OUT" "$SKIPPED_DUE_TO_ENV_VAR" || [ "$prompt_draft" -gt 0 ]
         set anchor_suffix $anchor_suffix (set_color yellow)"+$prompt_draft unpushable"(set_color normal)
     end
-    if string match --quiet --entire -- "$prompt_blank_fringe" "$TIMED_OUT" || [ "$prompt_blank_fringe" -gt 0 ]
+    if contains "$prompt_blank_fringe" "$TIMED_OUT" "$SKIPPED_DUE_TO_ENV_VAR" || [ "$prompt_blank_fringe" -gt 0 ]
         set anchor_suffix $anchor_suffix (set_color brgreen)"+$prompt_blank_fringe empty"(set_color normal)
     end
 

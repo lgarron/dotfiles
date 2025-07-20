@@ -77,9 +77,9 @@
 		"body": [
 			"VARIANT = \"default\"; // [\"default\", \"no-version\"]",
 			"",
-			"// This empty block prevents any following `CONSTANT_CASE` variables from being settable in the customizer.",
+			"// This prevents any following `CONSTANT_CASE` variables from being settable in the customizer.",
 			"// This prevents pathological interactions with persisted customizer values that are meant to be controlled exclusively by `VARIANT`.",
-			"{};",
+			"/* [Hidden] */",
 			"",
 			"VARIANT_DATA = [",
 			"  [",

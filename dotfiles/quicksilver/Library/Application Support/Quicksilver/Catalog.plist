@@ -456,7 +456,7 @@
 						<key>parser</key>
 						<string>QSDirectoryParser</string>
 						<key>path</key>
-						<string>~/Dropbox (Maestral)/Screenshots/Germain Screenshots/Germain Screenshots 2025</string>
+						<string>~/Dropbox/Screenshots/Germain Screenshots/Germain Screenshots 2025</string>
 					</dict>
 					<key>source</key>
 					<string>QSFileSystemObjectSource</string>
@@ -725,7 +725,7 @@
 						<key>parser</key>
 						<string>QSDirectoryParser</string>
 						<key>path</key>
-						<string>~/Dropbox (Maestral)/Code</string>
+						<string>~/Dropbox/Code</string>
 					</dict>
 					<key>source</key>
 					<string>QSFileSystemObjectSource</string>
@@ -746,7 +746,7 @@
 						<key>parser</key>
 						<string>QSDirectoryParser</string>
 						<key>path</key>
-						<string>~/Dropbox (Maestral)/Cubing</string>
+						<string>~/Dropbox/Cubing</string>
 					</dict>
 					<key>source</key>
 					<string>QSFileSystemObjectSource</string>
@@ -767,7 +767,7 @@
 						<key>parser</key>
 						<string>QSDirectoryParser</string>
 						<key>path</key>
-						<string>~/Dropbox (Maestral)/Events</string>
+						<string>~/Dropbox/Events</string>
 					</dict>
 					<key>source</key>
 					<string>QSFileSystemObjectSource</string>
@@ -788,7 +788,7 @@
 						<key>parser</key>
 						<string>QSDirectoryParser</string>
 						<key>path</key>
-						<string>~/Dropbox (Maestral)/Graphics</string>
+						<string>~/Dropbox/Graphics</string>
 					</dict>
 					<key>source</key>
 					<string>QSFileSystemObjectSource</string>
@@ -809,7 +809,7 @@
 						<key>parser</key>
 						<string>QSDirectoryParser</string>
 						<key>path</key>
-						<string>~/Dropbox (Maestral)/Internet Scrapbook</string>
+						<string>~/Dropbox/Internet Scrapbook</string>
 					</dict>
 					<key>source</key>
 					<string>QSFileSystemObjectSource</string>
@@ -830,7 +830,7 @@
 						<key>parser</key>
 						<string>QSDirectoryParser</string>
 						<key>path</key>
-						<string>~/Dropbox (Maestral)/Logistics</string>
+						<string>~/Dropbox/Logistics</string>
 					</dict>
 					<key>source</key>
 					<string>QSFileSystemObjectSource</string>
@@ -845,7 +845,7 @@
 					<key>modificationDate</key>
 					<real>706726040.57823896</real>
 					<key>name</key>
-					<string>Dropbox (Maestral)</string>
+					<string>Dropbox</string>
 					<key>settings</key>
 					<dict>
 						<key>folderDepth</key>
@@ -857,7 +857,7 @@
 						<key>parser</key>
 						<string>QSDirectoryParser</string>
 						<key>path</key>
-						<string>~/Dropbox (Maestral)</string>
+						<string>~/Dropbox</string>
 					</dict>
 					<key>source</key>
 					<string>QSFileSystemObjectSource</string>
@@ -878,7 +878,7 @@
 						<key>parser</key>
 						<string>QSDirectoryParser</string>
 						<key>path</key>
-						<string>~/Dropbox (Maestral)/Projects</string>
+						<string>~/Dropbox/Projects</string>
 					</dict>
 					<key>source</key>
 					<string>QSFileSystemObjectSource</string>
@@ -904,7 +904,7 @@
 								<key>parser</key>
 								<string>QSDirectoryParser</string>
 								<key>path</key>
-								<string>~/Dropbox (Maestral)/3D Printing/2nd-party</string>
+								<string>~/Dropbox/3D Printing/2nd-party</string>
 							</dict>
 							<key>source</key>
 							<string>QSFileSystemObjectSource</string>
@@ -925,7 +925,7 @@
 								<key>parser</key>
 								<string>QSDirectoryParser</string>
 								<key>path</key>
-								<string>~/Dropbox (Maestral)/3D Printing</string>
+								<string>~/Dropbox/3D Printing</string>
 							</dict>
 							<key>source</key>
 							<string>QSFileSystemObjectSource</string>
@@ -946,7 +946,7 @@
 								<key>parser</key>
 								<string>QSDirectoryParser</string>
 								<key>path</key>
-								<string>~/Dropbox (Maestral)/3D Printing/3rd-party</string>
+								<string>~/Dropbox/3D Printing/3rd-party</string>
 							</dict>
 							<key>source</key>
 							<string>QSFileSystemObjectSource</string>
@@ -963,7 +963,7 @@
 			<key>enabled</key>
 			<true/>
 			<key>name</key>
-			<string>Dropbox (Maestral)</string>
+			<string>Dropbox</string>
 			<key>source</key>
 			<string>QSGroupObjectSource</string>
 		</dict>

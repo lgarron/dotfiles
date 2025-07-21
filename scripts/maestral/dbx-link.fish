@@ -1,7 +1,7 @@
 #!/usr/bin/env -S fish --no-config
 
 set REALPATH (realpath $argv[1])
-if string match "$HOME/Dropbox (Maestral)/*" $REALPATH > /dev/null
+if string match "$HOME/Dropbox/*" $REALPATH >/dev/null
 
     function print_path
         set_color --bold blue
@@ -12,7 +12,7 @@ if string match "$HOME/Dropbox (Maestral)/*" $REALPATH > /dev/null
 
     echo "[Absolute path]"
     print_path "$REALPATH"
-    set DROPBOX_PATH (string replace "$HOME/Dropbox (Maestral)/" "" $REALPATH)
+    set DROPBOX_PATH (string replace "$HOME/Dropbox/" "" $REALPATH)
     echo "[Dropbox relative path]"
     print_path "$DROPBOX_PATH"
     echo ""
@@ -37,7 +37,7 @@ if string match "$HOME/Dropbox (Maestral)/*" $REALPATH > /dev/null
 
     # Note: We need to try to create the link first, in case the only existing links are for parent folders.
     # If (and only if) this errors due to an existing link, that means there is an existing link for the path itself, and so we can copy that.
-    create_copy ; or list_copy
+    create_copy; or list_copy
 else
     echo "Not in the Maestral Dropbox folder: $REALPATH"
 end

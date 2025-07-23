@@ -5,4 +5,5 @@
 defaults write com.apple.screencapture location "'/Users/lgarron/Dropbox/Screenshots/Germain Screenshots/Germain Screenshots 2025'"
 killall SystemUIServer
 
-osascript -e 'quit app "Audio Hijack"'
+osascript -e 'quit app "Audio Hijack"' &>/dev/null &
+disown

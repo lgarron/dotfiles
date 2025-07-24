@@ -6,6 +6,8 @@ class Wat < Formula
   head "https://github.com/lgarron/wat.git", :branch => "main"
 
   depends_on "switchaudio-osx"
+  depends_on "lgarron/lgarron/thirdparty-faketty"
+  depends_on "lgarron/lgarron/thirdparty-sshping"
   depends_on "rust" => :build
 
   def install

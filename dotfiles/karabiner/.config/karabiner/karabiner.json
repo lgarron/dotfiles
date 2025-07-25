@@ -30,6 +30,19 @@
                         ]
                     },
                     {
+                        "description": "Type ISO-8601 date and time using ⌃⌥⌘D",
+                        "manipulators": [
+                            {
+                                "from": {
+                                    "key_code": "d",
+                                    "modifiers": { "mandatory": ["left_command", "left_control", "left_option"] }
+                                },
+                                "to": [{ "shell_command": "osascript -e \"tell application \\\"System Events\\\" to keystroke \\\"$(date $@ '+%Y-%m-%dT%H-%M-%S')\\\"\"" }],
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
                         "description": "Windows games: Remap ⌘Q to Alt-F4",
                         "manipulators": [
                             {

@@ -49,6 +49,8 @@
 
     abbr -a zj "zellij"
     abbr_subcommand zellij a attach
+    abbr_subcommand_arg zellij c --create attach
+    abbr -a za "zellij attach --create"
 
 ## Arguments
 

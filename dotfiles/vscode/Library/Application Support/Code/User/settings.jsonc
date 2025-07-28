@@ -290,10 +290,12 @@
 	"explorer.sortOrder": "mixed",
 	"editor.mouseWheelZoom": true,
 	"javascript.preferences.autoImportSpecifierExcludeRegexes": [
-		"^node:console$"
+		"^node:console$",
+		"^console$"
 	],
 	"typescript.preferences.autoImportSpecifierExcludeRegexes": [
-		"^node:console$"
+		"^node:console$",
+		"^console$"
 	],
 	"editor.suggest.showKeywords": false,
 	"editor.suggest.snippetsPreventQuickSuggestions": false,

@@ -42,6 +42,7 @@ echo -n -- "$NPM_PACKAGE"
 set_color normal
 echo -- " to version: v$VERSION"
 
+bun pm cache rm
 bun add $DEV_ARG "$NPM_PACKAGE@^$VERSION"
 git stage package.json bun.lock || git stage package.json bun.lockb
 git commit -m "`bun add $DEV_ARG $NPM_PACKAGE@^$VERSION`"

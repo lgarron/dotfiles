@@ -296,6 +296,8 @@
 		"^node:console$"
 	],
 	"editor.suggest.showKeywords": false,
-	"editor.suggest.snippetsPreventQuickSuggestions": false
+	"editor.suggest.snippetsPreventQuickSuggestions": false,
+	"chat.commandCenter.enabled": false,
+	"chat.agent.enabled": false
 	/****************/
 }

@@ -290,12 +290,18 @@
 	"explorer.sortOrder": "mixed",
 	"editor.mouseWheelZoom": true,
 	"javascript.preferences.autoImportSpecifierExcludeRegexes": [
+		// log
 		"^node:console$",
-		"^console$"
+		"^console$",
+		"^three/webgpu$",
+		"^three/src/"
 	],
 	"typescript.preferences.autoImportSpecifierExcludeRegexes": [
+		// log
 		"^node:console$",
-		"^console$"
+		"^console$",
+		"^three/webgpu$",
+		"^three/src/"
 	],
 	"editor.suggest.showKeywords": false,
 	"editor.suggest.snippetsPreventQuickSuggestions": false,

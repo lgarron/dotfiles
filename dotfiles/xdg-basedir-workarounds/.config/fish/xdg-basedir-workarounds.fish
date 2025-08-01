@@ -88,3 +88,7 @@
     # AWS
     set -Ux AWS_SHARED_CREDENTIALS_FILE $XDG_CONFIG_HOME/aws/credentials
     set -Ux AWS_CONFIG_FILE $XDG_CONFIG_HOME/aws/config
+
+    # ripgrep
+    # (Doesn't have a default path, so it must be set explicitly.)
+    set -Ux RIPGREP_CONFIG_PATH $XDG_CONFIG_HOME/ripgrep/ripgrep-config.txt

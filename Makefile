@@ -28,7 +28,8 @@ mac-common-dotfiles: \
 	sd-card-backup \
 	xdg-basedir-workarounds \
 	vscode \
-	zellij
+	zellij \
+	ripgrep
 
 .PHONY: germain
 germain: mac-common
@@ -45,7 +46,8 @@ linux: \
 	set-dotfiles-repo-email \
 	fish \
 	xdg-basedir-workarounds \
-	zellij
+	zellij \
+	ripgrep
 
 # Sourcing symlinked `.fish` files doesn't seem to work on Dreamhst, so we have to copy all the files we want `fish` to use. 😕
 .PHONY: dreamhost
@@ -72,6 +74,7 @@ PACKAGES += vscode
 PACKAGES += xdg-basedir-workarounds
 PACKAGES += niceplz
 PACKAGES += zellij
+PACKAGES += ripgrep
 
 .PHONY: $(PACKAGES)
 $(PACKAGES):

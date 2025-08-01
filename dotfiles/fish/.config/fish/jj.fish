@@ -131,6 +131,11 @@ function jj
     set -g _FISH_JJ_WAS_RUN_DURING_COMMAND true
 end
 
+function bun-roll
+    command bun-roll $argv
+    set -g _FISH_JJ_WAS_RUN_DURING_COMMAND true
+end
+
 # LSP override: This is an "exported" function (meant to be used outside this file).
 # @fish-lsp-disable-next-line 4004
 function _fish_postexec_refresh_gg_calculate_if_needed

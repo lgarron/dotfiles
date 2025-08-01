@@ -40,5 +40,6 @@ echo -- " to version: v$VERSION"
 
 bun pm cache rm
 bun add $DEV_ARG "$NPM_PACKAGE@^$VERSION"
+# TODO: avoid double space if dev arg is empty.
 jj describe --message "`bun add $DEV_ARG $NPM_PACKAGE@^$VERSION`"
 jj new

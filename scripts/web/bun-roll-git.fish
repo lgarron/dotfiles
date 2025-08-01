@@ -45,4 +45,5 @@ echo -- " to version: v$VERSION"
 bun pm cache rm
 bun add $DEV_ARG "$NPM_PACKAGE@^$VERSION"
 git stage package.json bun.lock || git stage package.json bun.lockb
+# TODO: avoid double space if dev arg is empty.
 git commit -m "`bun add $DEV_ARG $NPM_PACKAGE@^$VERSION`"

@@ -1,6 +1,6 @@
 # This file contains hacks to make programs respect the XDG basedir
 # specification. The main purpose of this is to get them to stop pollluting
-# $HOME with dotfiles.
+# `$HOME` with dotfiles.
 
 ## Env vars
 
@@ -14,7 +14,7 @@
 
     set -Ux LESSHISTFILE $XDG_DATA_HOME/lesshst
 
-    # GnPG
+    # GnuPG
     # See `lglogin.fish` for `launchctl setenv`
     set -Ux GNUPGHOME $XDG_CONFIG_HOME/gnupg
 
@@ -22,7 +22,7 @@
     # Workaround from https://github.com/jakubroztocil/httpie/issues/145#issuecomment-54704487
     set -Ux HTTPIE_CONFIG_DIR $XDG_CONFIG_HOME/httpie
 
-    # bash
+    # `bash`
     # Folder is created in `lglogin.fish`
     set -Ux HISTFILE $XDG_DATA_HOME/bash/history
     mkdir -p (dirname $HISTFILE) &
@@ -38,10 +38,10 @@
     # Wine
     set -Ux WINEPREFIX $XDG_DATA_HOME/wine
 
-    # wget
+    # `wget`
     set -Ux WGETRC $XDG_CONFIG_HOME/wget/wgetrc
 
-    # xauth
+    # `xauth`
     set -Ux XAUTHORITY $XDG_CACHE_DIR/xauth/Xauthority
 
     # Bundler (Ruby)
@@ -55,11 +55,11 @@
     # VSCode
     # set -Ux VSCODE_EXTENSIONS $XDG_DATA_HOME/vscode/extensions
 
-    # rbenv
+    # `rbenv`
     # https://github.com/rbenv/rbenv/issues/811
     set -Ux RBENV_ROOT $XDG_DATA_HOME/rbenv
 
-    # zsh
+    # `zsh`
     set -Ux ZDOTDIR $XDG_CONFIG_HOME/zsh
     # TODO: why does using `$ZDOTDIR` fail here? 😳
     mkdir -p $XDG_CONFIG_HOME/zsh &
@@ -89,6 +89,6 @@
     set -Ux AWS_SHARED_CREDENTIALS_FILE $XDG_CONFIG_HOME/aws/credentials
     set -Ux AWS_CONFIG_FILE $XDG_CONFIG_HOME/aws/config
 
-    # ripgrep
+    # ripgrep (`rg`)
     # (Doesn't have a default path, so it must be set explicitly.)
     set -Ux RIPGREP_CONFIG_PATH $XDG_CONFIG_HOME/ripgrep/ripgrep-config.txt

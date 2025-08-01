@@ -43,7 +43,10 @@ set_color normal
 echo -- " to version: v$VERSION"
 
 bun pm cache rm
-bun add $DEV_ARG "$NPM_PACKAGE@^$VERSION"
+set BUN_COMMAND bun add $DEV_ARG "$NPM_PACKAGE@^$VERSION"
+command $BUN_COMMAND
 git stage package.json bun.lock || git stage package.json bun.lockb
-# TODO: avoid double space if dev arg is empty.
-git commit -m "`bun add $DEV_ARG $NPM_PACKAGE@^$VERSION`"
+
+# TODO: escaping?
+set COMMIT_MESSAGE_COMMAND_STRING (string join " " -- $BUN_COMMAND)
+git commit -m "`$COMMIT_MESSAGE_COMMAND_STRING`"

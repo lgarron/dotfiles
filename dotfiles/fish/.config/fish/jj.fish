@@ -16,7 +16,7 @@ abbr_exceptsubcommand_arg jj h here
 _fish_abbr_jj_subcommand a abandon
 _fish_abbr_jj_subcommand e edit
 _fish_abbr_jj_subcommand l log
-_fish_abbr_jj_subcommand m "bookmark set main"
+_fish_abbr_jj_subcommand m "bookmark set --revision here main"
 _fish_abbr_jj_subcommand n new
 _fish_abbr_jj_subcommand s status
 _fish_abbr_jj_subcommand st status

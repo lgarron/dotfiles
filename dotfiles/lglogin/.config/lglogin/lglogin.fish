@@ -24,7 +24,7 @@
     # VSCode
     # launchctl setenv VSCODE_EXTENSIONS "$XDG_DATA_HOME"/vscode/extensions
 
-    # zsh
+    # `zsh`
     set ZDOTDIR "$XDG_CONFIG_HOME"/zsh
     mkdir -p $ZDOTDIR
     launchctl setenv ZDOTDIR $ZDOTDIR
@@ -79,10 +79,6 @@
     rm_and_log $HOME/.wasmer
     rm_and_log $HOME/bin # Something Python-related?
     rm_and_log $HOME/go
-
-    # chruby
-    rm_and_log $HOME/.rubies
-    rm_and_log $HOME/src
 
     # Flutter
     rm_and_log $HOME/.dart

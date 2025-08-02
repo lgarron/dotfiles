@@ -14,6 +14,7 @@ import {
   positional,
   run,
 } from "cmd-ts-too";
+import { ErgonomicDate } from "ergonomic-date";
 import { PrintableShellCommand } from "printable-shell-command";
 
 const HANDBRAKE_8_BIT_DEPTH_PRESET = "HEVC 8-bit (qv65)";
@@ -218,9 +219,7 @@ const app = command({
 
     let destPrefix = `${sourceFile}.hevc.qv${quality}`;
     if (await file(`${destPrefix}.mp4`).exists()) {
-      destPrefix = `${sourceFile}.hevc${bitDepthFileComponent}.qv${quality}.${new Date()
-        .toISOString()
-        .replaceAll(":", "-")}`;
+      destPrefix = `${sourceFile}.hevc${bitDepthFileComponent}.qv${quality}.bak.${new ErgonomicDate().multipurposeTimestamp}`;
     }
     const dest = `${destPrefix}.mp4`;
 

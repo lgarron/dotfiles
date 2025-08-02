@@ -206,6 +206,10 @@ Set the remote screen sharing resolution for a given computer automatically. Har
 
 Print the current Tailscale exit node if there is one, else exit with an error.
 
+### `toggle-display`
+
+Toggle display (connect/disconnect). Requires [betterdisplaycli`](https://github.com/waydabber/betterdisplaycli) to be installed.
+
 ### `toggle-retina`
 
 Toggle Retina display scaling. Requires [RDM](https://github.com/avibrazil/RDM) to be installed.

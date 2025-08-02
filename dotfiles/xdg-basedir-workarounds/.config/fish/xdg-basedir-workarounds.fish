@@ -18,10 +18,6 @@
     # See `lglogin.fish` for `launchctl setenv`
     set -Ux GNUPGHOME $XDG_CONFIG_HOME/gnupg
 
-    # HTTPie
-    # Workaround from https://github.com/jakubroztocil/httpie/issues/145#issuecomment-54704487
-    set -Ux HTTPIE_CONFIG_DIR $XDG_CONFIG_HOME/httpie
-
     # `bash`
     # Folder is created in `lglogin.fish`
     set -Ux HISTFILE $XDG_DATA_HOME/bash/history

@@ -5,9 +5,13 @@ class ToggleRetina < Formula
   homepage "https://github.com/lgarron/dotfiles"
   head "https://github.com/lgarron/dotfiles.git", :branch => "main"
 
-  depends_on "fish"
+  depends_on "oven-sh/bun/bun"
+  depends_on "betterdisplaycli"
 
   def install
-    bin.install "scripts/system/toggle-retina.fish" => "toggle-retina"
+    system "bun", "install", "--frozen-lockfile"
+
+    system "bun", "build", "--target", "bun", "--outfile", "./.temp/bin/toggle-retina", "scripts/system/toggle-retina.ts"
+    bin.install "./.temp/bin/toggle-retina" => "toggle-retina"
   end
 end

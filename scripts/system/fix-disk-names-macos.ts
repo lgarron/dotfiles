@@ -1,4 +1,4 @@
-#!/usr/bin/env bun
+#!/usr/bin/env bun run --
 
 import { dirname, join } from "node:path";
 import { exit } from "node:process";

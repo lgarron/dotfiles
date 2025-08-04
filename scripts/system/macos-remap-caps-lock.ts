@@ -1,4 +1,4 @@
-#!/usr/bin/env bun
+#!/usr/bin/env bun run --
 
 import { $, argv } from "bun";
 import { subcommands } from "cmd-ts-too";

@@ -1,4 +1,4 @@
-#!/usr/bin/env bun
+#!/usr/bin/env bun run --
 
 import { exit, stdout } from "node:process";
 import { $ } from "bun";

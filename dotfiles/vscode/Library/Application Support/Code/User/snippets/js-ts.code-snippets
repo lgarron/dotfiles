@@ -98,7 +98,7 @@
   "bun shebang": {
     "prefix": "#!",
     "body": [
-      "#!/usr/bin/env bun"
+      "#!/usr/bin/env bun run --"
     ],
     "description": "bun shebang"
   },

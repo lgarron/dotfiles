@@ -1,4 +1,4 @@
-#!/usr/bin/env bun
+#!/usr/bin/env bun run --
 
 import { stdin } from "bun";
 import { type CommentObject, parse, stringify } from "comment-json";

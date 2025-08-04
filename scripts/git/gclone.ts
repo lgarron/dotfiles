@@ -1,4 +1,4 @@
-#!/usr/bin/env bun
+#!/usr/bin/env bun run --
 
 import { spawn } from "node:child_process";
 import { existsSync, openSync } from "node:fs";

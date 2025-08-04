@@ -1,4 +1,4 @@
-#!/usr/bin/env bun
+#!/usr/bin/env bun run --
 
 import { existsSync } from "node:fs";
 import { exit } from "node:process";

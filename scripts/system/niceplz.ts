@@ -1,4 +1,4 @@
-#!/usr/bin/env bun
+#!/usr/bin/env bun run --
 
 import { homedir } from "node:os";
 import { join } from "node:path";

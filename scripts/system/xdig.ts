@@ -1,4 +1,4 @@
-#!/usr/bin/env bun
+#!/usr/bin/env bun run --
 
 import assert from "node:assert";
 import { join } from "node:path";

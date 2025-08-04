@@ -1,4 +1,4 @@
-#!/usr/bin/env bun
+#!/usr/bin/env bun run --
 
 import { exit, kill } from "node:process";
 import { spawn } from "bun";

@@ -38,3 +38,7 @@
 	ignoreRevsFile = .git-blame-ignore-revs
 [branch]
 	sort = -taggerdate
+# Heuristic to detect macOS.
+[includeIf "gitdir:/Users/"]
+	path = ~/.config/git/config-git-credential-for-ssh-on-macOS
+

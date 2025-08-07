@@ -5,7 +5,12 @@ class Gclone < Formula
   homepage "https://github.com/lgarron/dotfiles"
   head "https://github.com/lgarron/dotfiles.git", :branch => "main"
 
+  depends_on "oven-sh/bun/bun"
+
   def install
-    bin.install "scripts/git/gclone.ts" => "gclone"
+    system "bun", "install", "--frozen-lockfile"
+
+    system "bun", "build", "--target", "bun", "--outfile", "./.temp/bin/gclone", "scripts/git/gclone.ts"
+    bin.install "./.temp/bin/gclone" => "gclone"
   end
 end

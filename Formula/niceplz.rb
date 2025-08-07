@@ -5,6 +5,9 @@ class Niceplz < Formula
   homepage "https://github.com/lgarron/dotfiles"
   head "https://github.com/lgarron/dotfiles.git", :branch => "main"
 
+  depends_on "oven-sh/bun/bun"
+  depends_on "fish"
+
   def install
     bin.install "scripts/system/pnice.fish" => "pnice"
     bin.install "scripts/system/pnicest.fish" => "pnicest"

@@ -5,7 +5,12 @@ class Jclone < Formula
   homepage "https://github.com/lgarron/dotfiles"
   head "https://github.com/lgarron/dotfiles.git", :branch => "main"
 
+  depends_on "oven-sh/bun/bun"
+
   def install
-    bin.install "scripts/git/jclone.ts" => "jclone"
+    system "bun", "install", "--frozen-lockfile"
+
+    system "bun", "build", "--target", "bun", "--outfile", "./.temp/bin/jclone", "scripts/git/jclone.ts"
+    bin.install "./.temp/bin/jclone" => "jclone"
   end
 end

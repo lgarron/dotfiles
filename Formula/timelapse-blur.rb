@@ -9,6 +9,7 @@ class TimelapseBlur < Formula
 
   def install
     system "bun", "install", "--frozen-lockfile"
+
     system "bun", "build", "--target", "bun", "--outfile", "./.temp/bin/timelapse-blur", "scripts/video/timelapse-blur.ts"
     bin.install "./.temp/bin/timelapse-blur" => "timelapse-blur"
   end

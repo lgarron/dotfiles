@@ -9,6 +9,7 @@ class Xdig < Formula
 
   def install
     system "bun", "install", "--frozen-lockfile"
+
     system "bun", "build", "--target", "bun", "--outfile", "./.temp/bin/xdig", "scripts/system/xdig.ts"
     bin.install "./.temp/bin/xdig" => "xdig"
   end

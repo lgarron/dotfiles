@@ -1,4 +1,4 @@
-#!/usr/bin/env bun run --
+#!/usr/bin/env -S bun run --
 
 // Hardcoded for my own `sd-card-backup` configuration.
 

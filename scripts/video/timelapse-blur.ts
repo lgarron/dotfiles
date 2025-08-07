@@ -1,4 +1,4 @@
-#!/usr/bin/env bun run --
+#!/usr/bin/env -S bun run --
 
 import { default as assert } from "node:assert";
 import { spawn } from "bun";

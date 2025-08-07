@@ -1,4 +1,4 @@
-#!/usr/bin/env bun run --
+#!/usr/bin/env -S bun run --
 
 import { lstat } from "node:fs/promises";
 import { dirname } from "node:path";

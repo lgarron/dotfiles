@@ -1,4 +1,4 @@
-#!/usr/bin/env bun run --
+#!/usr/bin/env -S bun run --
 
 import { extname } from "node:path";
 import { $ } from "bun";

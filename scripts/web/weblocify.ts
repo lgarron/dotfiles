@@ -1,4 +1,4 @@
-#!/usr/bin/env bun run --
+#!/usr/bin/env -S bun run --
 
 import { binary, command, positional, run } from "cmd-ts-too";
 import { HttpUrl } from "cmd-ts-too/batteries/url";

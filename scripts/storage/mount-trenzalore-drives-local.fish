@@ -6,4 +6,7 @@ tell application "Finder"
 	mount volume "smb://Pythagoras.tlb/Trenzalore CRM Videos"
 end tell'
 
-reveal-macos /Volumes/Trenzalore/
+terminal-notifier \
+    -title "Mount Trenzalore drives (local)" \
+    -message "Mounted successfully" \
+    -execute "reveal-macos "(string escape /Volumes/Trenzalore/)

@@ -65,7 +65,6 @@ PACKAGES  =
 PACKAGES += git
 PACKAGES += hushlogin
 PACKAGES += jj
-PACKAGES += lglogin
 PACKAGES += mac-text-encoding
 PACKAGES += minecraft
 PACKAGES += povray
@@ -99,6 +98,18 @@ fish:
 	mkdir -p ${HOME}/.local/share
 	rm -rf ${HOME}/.local/share/fish
 	ln -sf ${HOME}/.data/fish ${HOME}/.local/share/
+
+.PHONY: lglogin
+lglogin:
+	bun run ./scripts/system/lstow.ts -- ./dotfiles/$@ ~/
+	launchctl print gui/501/net.garron.mac.lglogin > /dev/null 2> /dev/null || \
+		launchctl bootstrap gui/$(shell id -u) /Users/lgarron/Library/LaunchAgents/net.garron.mac.lglogin.plist
+
+.PHONY: lglogin-uninstall-daemon
+lglogin-uninstall-daemon:
+	launchctl print gui/501/net.garron.mac.lglogin > /dev/null 2> /dev/null && \
+		launchctl bootout gui/$(shell id -u) /Users/lgarron/Library/LaunchAgents/net.garron.mac.lglogin.plist \
+		|| echo "Already uninstalled"
 
 ########
 

@@ -1,6 +1,5 @@
-tell application "Finder"
-	mount volume "smb://Pythagoras-ts.wyvern-climb.ts.net/Trenzalore"
-	mount volume "smb://Pythagoras-ts.wyvern-climb.ts.net/Trenzalore CRM Videos"
-end tell
+on shell(command)
+	do shell script "env PATH=\"$PATH:/opt/homebrew/bin\" " & command
+end shell
 
-shell("/opt/homebrew/bin/reveal-macos /Volumes/Trenzalore/")
+shell("nohup /Users/lgarron/Code/git/github.com/lgarron/dotfiles/scripts/storage/mount-trenzalore-drives-tailscale.fish > /dev/null 2> /dev/null &")

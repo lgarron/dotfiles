@@ -1,1 +1,9 @@
+# Treat an all-lowercase input as case-insensitive.
+--smart-case
+# Avoid terrifying amounts of line wrapping in large JSON files.
+--max-columns
+1000
+# Include files/folders that start with `.`, except known VCS directories (that I use).
 --hidden
+--iglob=!.git
+--iglob=!.jj

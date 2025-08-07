@@ -5,6 +5,7 @@
       ".config/**/*.ts",
       "scripts/**/*.ts",
       "scripts/**/*.json",
+      "mirrored/**/*.ts",
       "repo-script/**/*.ts",
       "!.temp",
       "!dotfiles/vscode/**/*"

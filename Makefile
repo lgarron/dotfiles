@@ -28,6 +28,7 @@ mac-common-dotfiles: \
 	sd-card-backup \
 	xdg-basedir-workarounds \
 	vscode \
+	vscode-settings-macos \
 	zellij \
 	ripgrep
 
@@ -99,6 +100,8 @@ fish:
 	rm -rf ${HOME}/.local/share/fish
 	ln -sf ${HOME}/.data/fish ${HOME}/.local/share/
 
+# Daemons
+
 .PHONY: lglogin
 lglogin:
 	bun run ./scripts/system/lstow.ts -- ./dotfiles/$@ ~/
@@ -109,6 +112,18 @@ lglogin:
 lglogin-uninstall-daemon:
 	launchctl print gui/501/net.garron.mac.lglogin > /dev/null 2> /dev/null && \
 		launchctl bootout gui/$(shell id -u) /Users/lgarron/Library/LaunchAgents/net.garron.mac.lglogin.plist \
+		|| echo "Already uninstalled"
+
+.PHONY: vscode-settings-macos
+vscode-settings-macos:
+	bun run ./scripts/system/lstow.ts -- ./dotfiles/$@ ~/
+	launchctl print gui/501/net.garron.mac.dotfiles.mirror.vscode-settings-macos > /dev/null 2> /dev/null || \
+		launchctl bootstrap gui/$(shell id -u) /Users/lgarron/Library/LaunchAgents/net.garron.mac.dotfiles.mirror.vscode-settings-macos.plist
+
+.PHONY: vscode-settings-macos-uninstall-daemon
+vscode-settings-macos-uninstall-daemon:
+	launchctl print gui/501/net.garron.mac.dotfiles.mirror.vscode-settings-macos > /dev/null 2> /dev/null && \
+		launchctl bootout gui/$(shell id -u) /Users/lgarron/Library/LaunchAgents/net.garron.mac.dotfiles.mirror.vscode-settings-macos.plist \
 		|| echo "Already uninstalled"
 
 ########

@@ -10,9 +10,11 @@ class Tagpush < Formula
   depends_on "oven-sh/bun/bun"
 
   def install
-    bin.install "scripts/git/tagpush.ts" => "tagpush"
+    system "bun", "install", "--frozen-lockfile"
 
-    # TODO: why can't `bin/"tagpush"` load deps when run directly?
-    # generate_completions_from_executable("bun", bin/"tagpush", "--completions", shells: [:fish])
+    system "bun", "build", "--target", "bun", "--outfile", "./.temp/bin/tagpush", "scripts/git/tagpush.ts"
+    bin.install "./.temp/bin/tagpush" => "tagpush"
+
+    generate_completions_from_executable("bun", "scripts/git/tagpush.ts", "--completions", shells: [:fish])
   end
 end

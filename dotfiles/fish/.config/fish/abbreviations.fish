@@ -32,13 +32,13 @@
 
 ## Programs and commands
 
-    abbr -a c "code"
-    abbr -a xc "xargs code"
+    abbr -a c "code --"
+    abbr -a xc "xargs code --"
 
     abbr -a "cv" "command -v"
     abbr -a "cva" "command -va"
     abbr -a "which" "# Try: cv"
-    abbr -a ccv --set-cursor "code (command -v %)"
+    abbr -a ccv --set-cursor "code -- (command -v %)"
 
     abbr -a "date-iso-8601" "date \"+%Y-%m-%d\""
 

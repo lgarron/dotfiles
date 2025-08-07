@@ -248,7 +248,7 @@ fn main() {
                         total_rendering_time_string
                     ),
                     "-execute",
-                    &format!("open -R {}", quoted_target_file),
+                    &format!("reveal-macos {}", quoted_target_file),
                 ])
                 .spawn()
                 .unwrap()

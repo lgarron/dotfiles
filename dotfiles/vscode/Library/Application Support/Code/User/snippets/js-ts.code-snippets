@@ -91,7 +91,7 @@
   "node shebang": {
     "prefix": "#!",
     "body": [
-      "#!/usr/bin/env node"
+      "#!/usr/bin/env node --"
     ],
     "description": "node shebang"
   },

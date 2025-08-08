@@ -126,6 +126,18 @@ vscode-settings-macos-uninstall-daemon:
 		launchctl bootout gui/$(shell id -u) /Users/lgarron/Library/LaunchAgents/net.garron.mac.dotfiles.mirror.vscode-settings-macos.plist \
 		|| echo "Already uninstalled"
 
+.PHONY: obsidian-backup-macos
+obsidian-backup-macos:
+	bun run ./scripts/system/lstow.ts -- ./dotfiles/$@ ~/
+	launchctl print gui/501/net.garron.mac.dotfiles.mirror.obsidian-backup-macos > /dev/null 2> /dev/null || \
+		launchctl bootstrap gui/$(shell id -u) /Users/lgarron/Library/LaunchAgents/net.garron.mac.dotfiles.mirror.obsidian-backup-macos.plist
+
+.PHONY: obsidian-backup-macos-uninstall-daemon
+obsidian-backup-macos-uninstall-daemon:
+	launchctl print gui/501/net.garron.mac.dotfiles.mirror.obsidian-backup-macos > /dev/null 2> /dev/null && \
+		launchctl bootout gui/$(shell id -u) /Users/lgarron/Library/LaunchAgents/net.garron.mac.dotfiles.mirror.obsidian-backup-macos.plist \
+		|| echo "Already uninstalled"
+
 ########
 
 include setup/linux.Makefile

@@ -11,6 +11,7 @@
     "cmd-ts-too": "^0.15.3",
     "comment-json": "^4.2.5",
     "ergonomic-date": "^0.1.0",
+    "lockfile-mutex": "^0.2.4",
     "printable-shell-command": "v1.1.0",
     "xdg-basedir": "^5.1.0"
   }

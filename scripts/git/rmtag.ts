@@ -1,6 +1,7 @@
 #!/usr/bin/env -S bun run --
 
 import { exit } from "node:process";
+import { styleText } from "node:util";
 import { $ } from "bun";
 import {
   binary,
@@ -37,6 +38,7 @@ const app = command({
     // TODO: allow multiple `--remote` args?
     remote: option({
       long: "remote",
+      // TODO: allow no remote (either explicitly, or when `origin` does not exist)
       defaultValue: () => "origin",
       defaultValueIsSerializable: true,
     }),
@@ -80,18 +82,12 @@ complete -c ${binaryName} -l completions -d 'Print completions for the given she
       exit(1);
     }
 
-    // We could specify which tags to fetch, but if a subset of tags is missing
-    // then `git` doesn't fail gracefully. So we fetch all.
-    await $`git fetch --tags origin`;
+    /**************** Local ****************/
 
     const tagsToRemoveLocally: string[] = [];
-    const tagsToRemoveFromRemote: string[] = [];
     for (const tag of tags) {
       if (await doesTagExistLocally(tag)) {
         tagsToRemoveLocally.push(tag);
-      }
-      if (await doesTagExistOnRemote(tag, remote)) {
-        tagsToRemoveFromRemote.push(tag);
       }
     }
 
@@ -103,6 +99,32 @@ complete -c ${binaryName} -l completions -d 'Print completions for the given she
       ]).shellOutBun();
     }
 
+    /**************** Remote tag ****************/
+
+    const remoteURL: string = await (async () => {
+      try {
+        return (await $`git remote get-url ${remote}`.text()).trim();
+      } catch {
+        console.error(
+          `Could not get remote URL. Does this remote exist?
+
+Name of missing remote: ${styleText("bold", remote)}`,
+        );
+        exit(2);
+      }
+    })();
+
+    // We could specify which tags to fetch, but if a subset of tags is missing
+    // then `git` doesn't fail gracefully. So we fetch all.
+    await $`git fetch --tags ${remote}`;
+
+    const tagsToRemoveFromRemote: string[] = [];
+    for (const tag of tags) {
+      if (await doesTagExistOnRemote(tag, remote)) {
+        tagsToRemoveFromRemote.push(tag);
+      }
+    }
+
     if (tagsToRemoveFromRemote.length > 0) {
       await new PrintableShellCommand("git", [
         "push",
@@ -111,9 +133,11 @@ complete -c ${binaryName} -l completions -d 'Print completions for the given she
       ]).shellOutBun();
     }
 
-    const remoteURL: string = (
-      await $`git remote get-url origin`.text()
-    ).trim();
+    /**************** Remote releases ****************/
+
+    // TODO: Interleave with remote tag removal using the `--cleanup-tag` arg to
+    // `gh release delete`, to reduce the number of remote calls?
+
     const remoteReleases = new Set(
       await (async () => {
         const json: { tagName: string }[] =

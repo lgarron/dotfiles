@@ -22,6 +22,10 @@
 
       # Legacy bindings
       bind ctrl-h backward-kill-token
+
+      # *sigh*
+      # https://github.com/microsoft/vscode/issues/183268
+      bind ctrl-up history-token-search-backward
     end
 
     # Workaround for https://github.com/zellij-org/zellij/issues/3852

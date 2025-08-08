@@ -113,6 +113,7 @@ lglogin-uninstall-daemon:
 	launchctl print gui/501/net.garron.mac.lglogin > /dev/null 2> /dev/null && \
 		launchctl bootout gui/$(shell id -u) /Users/lgarron/Library/LaunchAgents/net.garron.mac.lglogin.plist \
 		|| echo "Already uninstalled"
+	rm -f /Users/lgarron/Library/LaunchAgents/net.garron.mac.lglogin.plist
 
 .PHONY: vscode-settings-macos
 vscode-settings-macos:
@@ -125,6 +126,7 @@ vscode-settings-macos-uninstall-daemon:
 	launchctl print gui/501/net.garron.mac.dotfiles.mirror.vscode-settings-macos > /dev/null 2> /dev/null && \
 		launchctl bootout gui/$(shell id -u) /Users/lgarron/Library/LaunchAgents/net.garron.mac.dotfiles.mirror.vscode-settings-macos.plist \
 		|| echo "Already uninstalled"
+	rm -f /Users/lgarron/Library/LaunchAgents/net.garron.mac.dotfiles.mirror.vscode-settings-macos.plist
 
 .PHONY: obsidian-backup-macos
 obsidian-backup-macos:
@@ -137,6 +139,7 @@ obsidian-backup-macos-uninstall-daemon:
 	launchctl print gui/501/net.garron.mac.dotfiles.mirror.obsidian-backup-macos > /dev/null 2> /dev/null && \
 		launchctl bootout gui/$(shell id -u) /Users/lgarron/Library/LaunchAgents/net.garron.mac.dotfiles.mirror.obsidian-backup-macos.plist \
 		|| echo "Already uninstalled"
+	rm -f /Users/lgarron/Library/LaunchAgents/net.garron.mac.dotfiles.mirror.obsidian-backup-macos.plist
 
 ########
 

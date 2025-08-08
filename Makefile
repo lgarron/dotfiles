@@ -198,7 +198,7 @@ test-completions:
 	cargo run --bin openscad-auto -- --completions fish
 	./scripts/git/tagpush.ts --completions fish
 	./scripts/git/rmbranch.fish --completions fish
-	./scripts/git/rmtag.fish --completions fish
+	./scripts/git/rmtag.ts --completions fish
 
 .PHONY: lint
 lint: lint-ts-biome lint-ts-tsc lint-rust

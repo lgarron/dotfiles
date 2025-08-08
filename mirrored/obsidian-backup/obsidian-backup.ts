@@ -80,40 +80,40 @@ const DAY = HOUR * 24;
 
 interface Era {
   afterThisLongAgo: number;
-  thisFarApart: number;
+  atLeastThisFarApart: number;
 }
 const eras: Era[] = [
   {
     afterThisLongAgo: 0 * SECOND,
-    thisFarApart: 1 * SECOND,
+    atLeastThisFarApart: 1 * SECOND,
   },
   {
     afterThisLongAgo: 10 * MINUTE,
-    thisFarApart: 15 * SECOND,
+    atLeastThisFarApart: 15 * SECOND,
   },
   {
     afterThisLongAgo: 1 * HOUR,
-    thisFarApart: 1 * MINUTE,
+    atLeastThisFarApart: 1 * MINUTE,
   },
   {
     afterThisLongAgo: 1 * DAY,
-    thisFarApart: 10 * MINUTE,
+    atLeastThisFarApart: 10 * MINUTE,
   },
   {
     afterThisLongAgo: 7 * DAY,
-    thisFarApart: 1 * HOUR,
+    atLeastThisFarApart: 1 * HOUR,
   },
   {
     afterThisLongAgo: 30 * DAY,
-    thisFarApart: 6 * HOUR,
+    atLeastThisFarApart: 6 * HOUR,
   },
   {
     afterThisLongAgo: 90 * DAY,
-    thisFarApart: 2 * DAY,
+    atLeastThisFarApart: 2 * DAY,
   },
   {
     afterThisLongAgo: 365 * DAY,
-    thisFarApart: 7 * DAY,
+    atLeastThisFarApart: 7 * DAY,
   },
 ];
 
@@ -191,7 +191,7 @@ async function garbageCollect(): Promise<void> {
       !isAtLeastThisLongBetween(
         commit.ergonomicDate,
         childCommit.ergonomicDate,
-        era.thisFarApart,
+        era.atLeastThisFarApart,
       )
     ) {
       console.log(`❌ Pruning: ${commit.info.change_id}`);

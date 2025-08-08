@@ -206,6 +206,7 @@ async function garbageCollect(): Promise<void> {
 
     childCommit = commit;
   }
+  await $`cd ${DIR} && ${JJ} op abandon ..@-`; // TODO: does this actually enable garbage collection of objects properly?
   await $`cd ${DIR} && ${JJ} util gc --expire=now`;
   if (numPruned > 0) {
     await debugLog(`Pruned ${numPruned} commit${numPruned === 1 ? "" : "s"}.`);

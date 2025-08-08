@@ -8,6 +8,9 @@ class Lstow < Formula
   depends_on "oven-sh/bun/bun"
 
   def install
-    bin.install "scripts/system/lstow.ts" => "lstow"
+    system "bun", "install", "--frozen-lockfile"
+
+    system "bun", "build", "--target", "bun", "--outfile", "./.temp/bin/lstow", "scripts/system/lstow.ts"
+    bin.install "./.temp/bin/lstow" => "lstow"
   end
 end

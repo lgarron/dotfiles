@@ -9,6 +9,9 @@ class RevealSdCardBackupDcim < Formula
   depends_on "lgarron/lgarron/reveal-macos"
 
   def install
-    bin.install "scripts/storage/reveal-sd-card-backup-dcim.ts" => "reveal-sd-card-backup-dcim"
+    system "bun", "install", "--frozen-lockfile"
+
+    system "bun", "build", "--target", "bun", "--outfile", "./.temp/bin/reveal-sd-card-backup-dcim", "scripts/storage/reveal-sd-card-backup-dcim.ts"
+    bin.install "./.temp/bin/reveal-sd-card-backup-dcim" => "reveal-sd-card-backup-dcim"
   end
 end

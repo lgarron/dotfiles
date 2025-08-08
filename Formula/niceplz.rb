@@ -9,9 +9,13 @@ class Niceplz < Formula
   depends_on "fish"
 
   def install
+    system "bun", "install", "--frozen-lockfile"
+
+    system "bun", "build", "--target", "bun", "--outfile", "./.temp/bin/niceplz", "scripts/system/niceplz.ts"
+    bin.install "./.temp/bin/niceplz" => "niceplz"
+
     bin.install "scripts/system/pnice.fish" => "pnice"
     bin.install "scripts/system/pnicest.fish" => "pnicest"
-    bin.install "scripts/system/niceplz.ts" => "niceplz"
     bin.install "scripts/sudo/niceplz-sudo.fish" => "niceplz-sudo"
   end
 end

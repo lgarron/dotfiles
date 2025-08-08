@@ -64,14 +64,12 @@ async function* removeFinal<T>(iterable: AsyncIterable<T>): AsyncIterable<T> {
 // }
 
 // Skips empty lines (such as taht after a trailing newline).
-async function* parse(
-  iterable: AsyncIterable<string>,
-): AsyncIterable<CommitInfo> {
+async function* parse(iterable: AsyncIterable<string>): AsyncIterable<Commit> {
   for await (const t of iterable) {
     if (t === "") {
       continue;
     }
-    yield JSON.parse(t);
+    yield new Commit(JSON.parse(t));
   }
 }
 
@@ -139,6 +137,23 @@ function isAtLeastThisLongBetween(
   );
 }
 
+class Commit {
+  constructor(public info: CommitInfo) {}
+
+  get ergonomicDate(): ErgonomicDate {
+    return parseErgonomicDate(this.info.message);
+  }
+
+  get numSquashed(): number {
+    const match = this.info.message.match(/\((\d+) squashed commits?\)/);
+    if (!match) {
+      return 1;
+    }
+    const [_, n, ...__] = match;
+    return Number.parseInt(n);
+  }
+}
+
 async function garbageCollect(): Promise<void> {
   console.log("🚮🚮🚮🚮🚮🚮🚮🚮");
   console.write("Garbage collecting at operation: ");
@@ -161,29 +176,35 @@ async function garbageCollect(): Promise<void> {
   }
 
   // `undefined` until we've seen the first commit
-  let childAnchor: ErgonomicDate | undefined;
+  let childCommit: Commit | undefined;
   let numPruned = 0;
-  for await (const info of removeFinal(parse(commits))) {
+  for await (const commit of removeFinal(parse(commits))) {
     // console.log("---");
     // console.log(info.change_id);
-    const date = parseErgonomicDate(info.message);
-    if (!childAnchor) {
-      childAnchor = date;
+    if (!childCommit) {
+      childCommit = commit;
       continue;
     }
-    const era = findEra(parseErgonomicDate(info.message));
+    const era = findEra(commit.ergonomicDate);
     // console.log(era);
-    if (!isAtLeastThisLongBetween(date, childAnchor, era.thisFarApart)) {
-      console.log(`❌ Pruning: ${info.change_id}`);
+    if (
+      !isAtLeastThisLongBetween(
+        commit.ergonomicDate,
+        childCommit.ergonomicDate,
+        era.thisFarApart,
+      )
+    ) {
+      console.log(`❌ Pruning: ${commit.info.change_id}`);
       // TODO: record total squashes
-      const message = `${childAnchor.multipurposeTimestamp} (squashed)`;
-      await $`cd ${DIR} && ${JJ} squash --from ${info.change_id}+ --into ${info.change_id} --message ${message}`;
+      const numSquashed = childCommit.numSquashed + commit.numSquashed;
+      const message = `${childCommit.ergonomicDate.multipurposeTimestamp} (${numSquashed} squashed commit${numSquashed === 1 ? "" : "s"})`;
+      await $`cd ${DIR} && ${JJ} squash --from ${childCommit.info.change_id} --into ${commit.info.change_id} --message ${message}`;
       numPruned++;
     } else {
-      console.log(`✅ Keeping: ${info.change_id}`);
+      console.log(`✅ Keeping: ${commit.info.change_id}`);
     }
 
-    childAnchor = date;
+    childCommit = commit;
   }
   await $`cd ${DIR} && ${JJ} util gc --expire=now`;
   if (numPruned > 0) {

@@ -197,6 +197,7 @@ async function garbageCollect(): Promise<void> {
       console.log(`❌ Pruning: ${commit.info.change_id}`);
       // TODO: record total squashes
       const numSquashed = childCommit.numSquashed + commit.numSquashed;
+      // TODO: also record the oldest timestamp that has been squashed into this commit.
       const message = `${childCommit.ergonomicDate.multipurposeTimestamp} (${numSquashed} squashed commit${numSquashed === 1 ? "" : "s"})`;
       await $`cd ${DIR} && ${JJ} squash --from ${childCommit.info.change_id} --into ${commit.info.change_id} --message ${message}`;
       numPruned++;

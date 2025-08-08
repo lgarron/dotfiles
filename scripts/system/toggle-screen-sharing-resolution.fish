@@ -1,7 +1,7 @@
 #!/usr/bin/env -S fish --no-config
 
-if /Applications/RDM.app/Contents/MacOS/RDM -l | grep 2560 > /dev/null
-  /Applications/RDM.app/Contents/MacOS/RDM -w 1728 -h 1080 -s 2
+if contains -- 1728x1080 (betterdisplaycli get --name="Screen Sharing" --resolution)
+    betterdisplaycli set --name="Screen Sharing" --resolution="2560x1440"
 else
-  /Applications/RDM.app/Contents/MacOS/RDM -w 2560 -h 1440 -s 2
+    betterdisplaycli set --name="Screen Sharing" --resolution="1728x1080"
 end

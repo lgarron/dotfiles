@@ -212,11 +212,11 @@ Toggle display (connect/disconnect). Requires [betterdisplaycli`](https://github
 
 ### `toggle-retina`
 
-Toggle Retina display scaling. Requires [betterdisplaycli`](https://github.com/waydabber/betterdisplaycli) to be 
+Toggle Retina display scaling. Requires [betterdisplaycli`](https://github.com/waydabber/betterdisplaycli) to be installed.
 
 ### `toggle-screen-sharing-resolution`
 
-Toggle resolution for screen sharing. Requires [RDM](https://github.com/avibrazil/RDM) to be installed.
+Toggle resolution for screen sharing. Requires [betterdisplaycli`](https://github.com/waydabber/betterdisplaycli) to be installed.
 
 ### `unixtime`
 

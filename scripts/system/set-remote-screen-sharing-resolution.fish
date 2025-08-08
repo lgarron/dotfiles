@@ -5,14 +5,12 @@
 
 if [ (count $argv) -gt 0 ]
     set REMOTE $argv[1]
-    if /Applications/RDM.app/Contents/MacOS/RDM -l | grep 2560 >/dev/null
-        nohup ssh $REMOTE "betterdisplaycli set --name=\"LG UltraFine\" --connected=off ; /Applications/RDM.app/Contents/MacOS/RDM -w 2560 -h 1440 -s 2" &
-        disown
-    else if /Applications/RDM.app/Contents/MacOS/RDM -l | grep 1440 >/dev/null
-        nohup ssh $REMOTE "betterdisplaycli set --name=\"LG UltraFine\" --connected=off ; /Applications/RDM.app/Contents/MacOS/RDM -w 1440 -h 900 -s 2" &
+    set CURRENT_RESOLUTION (betterdisplaycli get --displayWithMainStatus --resolution)
+    if contains -- 2560x1440 $CURRENT_RESOLUTION
+        nohup ssh $REMOTE 'betterdisplaycli set --name="LG UltraFine" --connected=off ; betterdisplaycli set --name="Screen Sharing" --resolution="2560x1440"' &
         disown
     else
-        nohup ssh $REMOTE "betterdisplaycli set --name=\"LG UltraFine\" --connected=off ; /Applications/RDM.app/Contents/MacOS/RDM -w 1728 -h 1080 -s 2" &
+        nohup ssh $REMOTE 'betterdisplaycli set --name="LG UltraFine" --connected=off ; betterdisplaycli set --name="Screen Sharing" --resolution="1728x1080"' &
         disown
     end
 else

@@ -2,11 +2,5 @@
 
 osascript -e '
 tell application "Finder"
-	mount volume "smb://Pythagoras.tlb/Trenzalore"
-	mount volume "smb://Pythagoras.tlb/Trenzalore CRM Videos"
+	mount volume "smb://Gallifrey/Pythagoras Arq Germain"
 end tell'
-
-terminal-notifier \
-    -title "Mount Trenzalore drives (local)" \
-    -message "Mounted successfully" \
-    -execute "reveal-macos "(string escape /Volumes/Trenzalore/)

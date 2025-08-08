@@ -58,7 +58,8 @@ const app = command({
       switch (completions) {
         // biome-ignore lint/suspicious/noFallthroughSwitchClause: False positive (the return type of `exit(…)` is `never`).
         case "fish": {
-          console.log(`complete -c ${binaryName} -a \"(git tag --list)\"
+          console.log(`complete -c ${binaryName} -f
+complete -c ${binaryName} -a \"(git tag --list)\"
 complete -c ${binaryName} -l remote -d 'The remote to use. (Default: origin)' -r
 complete -c ${binaryName} -l completions -d 'Print completions for the given shell (instead of running the command normally). These can be loaded/stored permanently (e.g. when using Homebrew), but they can also be sourced directly, e.g.:' -r -f -a "{fish\t''}"
 `);

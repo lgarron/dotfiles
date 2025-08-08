@@ -175,7 +175,9 @@ async function garbageCollect(): Promise<void> {
     // console.log(era);
     if (!isAtLeastThisLongBetween(date, childAnchor, era.thisFarApart)) {
       console.log(`❌ Pruning: ${info.change_id}`);
-      await $`cd ${DIR} && ${JJ} squash --from ${info.change_id} --into ${info.change_id}+ --use-destination-message`;
+      // TODO: record total squashes
+      const message = `${childAnchor.multipurposeTimestamp} (squashed)`;
+      await $`cd ${DIR} && ${JJ} squash --from ${info.change_id}+ --into ${info.change_id} --message ${message}`;
       numPruned++;
     } else {
       console.log(`✅ Keeping: ${info.change_id}`);

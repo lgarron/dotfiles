@@ -151,8 +151,14 @@ include setup/rust.Makefile # TODO: Figure out Rustup vs. Homebrew so this can b
 
 # We match the convention from https://github.com/lgarron/Makefile-convention
 .PHONY: setup
-setup:
+setup: setup-caveat setup-npm-packages
+
+.PHONY: setup-caveat
+setup-caveat:
 	@echo "Note: \`make setup\` sets up the repo for development (installing dependencies), it does not set up dotfiles themselves."
+
+.PHONY: setup-npm-packages
+setup-npm-packages:
 	bun install --frozen-lockfile
 
 .PHONY: set-dotfiles-repo-email
@@ -204,11 +210,11 @@ test-completions:
 lint: lint-ts-biome lint-ts-tsc lint-rust
 
 .PHONY: lint-ts-biome
-lint-ts-biome:
+lint-ts-biome: setup-npm-packages
 	bun x @biomejs/biome check
 
 .PHONY: lint-ts-tsc
-lint-ts-tsc:
+lint-ts-tsc: setup-npm-packages
 	bun x tsc --project .
 
 .PHONY: lint-rust
@@ -220,7 +226,7 @@ lint-rust:
 format: format-ts-biome format-rust
 
 .PHONY: format-ts-biome
-format-ts-biome:
+format-ts-biome: setup-npm-packages
 	bun x @biomejs/biome check --write
 
 .PHONY: format-rust

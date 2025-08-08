@@ -15,6 +15,11 @@ import {
 } from "cmd-ts-too";
 import { PrintableShellCommand } from "printable-shell-command";
 
+const styleTextFormat: Parameters<typeof styleText>[0] = [
+  "gray",
+  "bold",
+] as const;
+
 async function doesTagExistLocally(tag: string): Promise<boolean> {
   return (await $`git tag --list ${tag}`.text()).trim() !== "";
 }
@@ -97,7 +102,9 @@ complete -c ${binaryName} -l completions -d 'Print completions for the given she
         "tag",
         "--delete",
         ...tagsToRemoveLocally,
-      ]).shellOutBun();
+      ])
+        .print({ styleTextFormat })
+        .spawnBunInherit().success;
     }
 
     /**************** Remote tag ****************/
@@ -131,7 +138,9 @@ Name of missing remote: ${styleText("bold", remote)}`,
         "push",
         remote,
         ...tagsToRemoveFromRemote.map((tag) => `:${tag}`),
-      ]).shellOutBun();
+      ])
+        .print({ styleTextFormat })
+        .spawnBunInherit().success;
     }
 
     /**************** Remote releases ****************/
@@ -156,7 +165,9 @@ Name of missing remote: ${styleText("bold", remote)}`,
           "--yes",
           "--repo",
           remoteURL,
-        ]).shellOutBun();
+        ])
+          .print({ styleTextFormat })
+          .spawnBunInherit().success;
       }
     }
 

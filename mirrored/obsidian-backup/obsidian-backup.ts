@@ -1,11 +1,29 @@
 #!/opt/homebrew/bin/bun run --
 
-import { exists, type FileChangeInfo, stat, watch } from "node:fs/promises";
+import {
+  appendFile,
+  exists,
+  type FileChangeInfo,
+  mkdir,
+  stat,
+  watch,
+} from "node:fs/promises";
 import { basename, join } from "node:path";
 import { $ } from "bun";
 import { ErgonomicDate } from "ergonomic-date";
 import { LockfileMutex } from "lockfile-mutex";
 import { xdgData } from "xdg-basedir";
+
+const LOG_FOLDER = "/Users/lgarron/.data/obsidian-backup/log/";
+async function debugLog(s: string, date: ErgonomicDate = new ErgonomicDate()) {
+  await mkdir(join(LOG_FOLDER, date.localYearMonth), { recursive: true });
+  await appendFile(
+    join(LOG_FOLDER, date.localYearMonth, `${date.localYearMonthDay}.log`),
+    `[${process.pid}][${date.multipurposeTimestamp}] ${s}\n`,
+  );
+}
+
+await debugLog("Starting daemon…");
 
 const JJ = "/opt/homebrew/bin/jj";
 
@@ -129,7 +147,7 @@ async function garbageCollect(): Promise<void> {
 
   // TODO: this assumes linear history with well-formatted commit messages.
   const commits =
-    $`cd ${DIR} && ${JJ} log --color=never --no-graph --revisions ".. & ~empty()" --template '"{ \"change_id\": " ++ json(self.change_id()) ++ ", \"message\": " ++ json(self.description()) ++ " }\n"'`.lines();
+    $`cd ${DIR} && ${JJ} log --color=never --no-graph --revisions "..@ & ~empty()" --template '"{ \"change_id\": " ++ json(self.change_id()) ++ ", \"message\": " ++ json(self.description()) ++ " }\n"'`.lines();
 
   const now = new ErgonomicDate();
 
@@ -144,6 +162,7 @@ async function garbageCollect(): Promise<void> {
 
   // `undefined` until we've seen the first commit
   let childAnchor: ErgonomicDate | undefined;
+  let numPruned = 0;
   for await (const info of removeFinal(parse(commits))) {
     // console.log("---");
     // console.log(info.change_id);
@@ -157,6 +176,7 @@ async function garbageCollect(): Promise<void> {
     if (!isAtLeastThisLongBetween(date, childAnchor, era.thisFarApart)) {
       console.log(`❌ Pruning: ${info.change_id}`);
       await $`cd ${DIR} && ${JJ} squash --from ${info.change_id} --into ${info.change_id}+ --use-destination-message`;
+      numPruned++;
     } else {
       console.log(`✅ Keeping: ${info.change_id}`);
     }
@@ -164,6 +184,9 @@ async function garbageCollect(): Promise<void> {
     childAnchor = date;
   }
   await $`cd ${DIR} && ${JJ} util gc --expire=now`;
+  if (numPruned > 0) {
+    await debugLog(`Pruned ${numPruned} commit${numPruned === 1 ? "" : "s"}.`);
+  }
 }
 
 async function maybeCommit(): Promise<void> {
@@ -176,7 +199,9 @@ async function maybeCommit(): Promise<void> {
     if (changed) {
       console.log("----------------");
       // console.log(changed);
-      await $`cd ${DIR} && ${JJ} commit --message ${new ErgonomicDate().multipurposeTimestamp}`;
+      const date = new ErgonomicDate();
+      await $`cd ${DIR} && ${JJ} commit --message ${date.multipurposeTimestamp}`;
+      await debugLog("Added commit.", date);
       // TODO: run garbage collection on a timer instead.
       await garbageCollect();
     }

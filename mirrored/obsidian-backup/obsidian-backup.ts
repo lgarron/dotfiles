@@ -124,7 +124,7 @@ function isAtLeastThisLongBetween(
 async function garbageCollect(): Promise<void> {
   console.log("🚮🚮🚮🚮🚮🚮🚮🚮");
   console.write("Garbage collecting at operation: ");
-  await $`jj op log --no-graph --limit 1 --template "self.id()"`;
+  await $`cd ${DIR} && ${JJ} op log --no-graph --limit 1 --template "self.id()"`;
   console.log();
 
   // TODO: this assumes linear history with well-formatted commit messages.

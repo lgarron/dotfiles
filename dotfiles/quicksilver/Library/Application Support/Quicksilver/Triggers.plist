@@ -613,7 +613,7 @@
 			<key>applicationScopeType</key>
 			<integer>-1</integer>
 			<key>character</key>
-			<string>|</string>
+			<string></string>
 			<key>command</key>
 			<dict>
 				<key>actionID</key>
@@ -641,7 +641,7 @@
 			<key>enabled</key>
 			<true/>
 			<key>keyCode</key>
-			<integer>42</integer>
+			<integer>36</integer>
 			<key>modifiers</key>
 			<integer>1442059</integer>
 			<key>onPress</key>
@@ -659,7 +659,7 @@
 			<key>applicationScopeType</key>
 			<integer>1</integer>
 			<key>character</key>
-			<string>|</string>
+			<string></string>
 			<key>command</key>
 			<dict>
 				<key>actionID</key>
@@ -670,7 +670,7 @@
 			<key>enabled</key>
 			<true/>
 			<key>keyCode</key>
-			<integer>42</integer>
+			<integer>36</integer>
 			<key>modifiers</key>
 			<integer>1442059</integer>
 			<key>onPress</key>

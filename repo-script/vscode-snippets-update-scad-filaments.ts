@@ -1,3 +1,4 @@
+import assert from "node:assert";
 import { homedir } from "node:os";
 import { join } from "node:path";
 import { file } from "bun";
@@ -18,7 +19,11 @@ const jsoncFile = file(
 );
 let jsonc = await jsoncFile.text();
 
-const existingDOM = parseTree(jsonc);
+const existingDOM = (() => {
+  const existingDOM = parseTree(jsonc);
+  assert(existingDOM);
+  return existingDOM;
+})();
 
 function insertFilament(filamentName: string) {
   // `jconc-parser`… does not have a very ergonomic API. So we have to do this check ourselves.

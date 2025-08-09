@@ -91,62 +91,63 @@ const monthString = (statResult.birthtime.getMonth() + 1)
 const dayString = statResult.birthtime.getDate().toString().padStart(2, "0");
 const dateString = [yearString, monthString, dayString].join("-");
 
-const imageExtensions = {
-  ".arw": true,
-  ".bmp": true,
-  ".cr2": true,
-  ".cr3": true,
-  ".dng": true,
-  ".gif": true,
-  ".jpeg": true,
-  ".jpg": true,
-  ".nef": true,
-  ".png": true,
-  ".raw": true,
-  ".tif": true,
-  ".webm": true,
-};
+// TODO: turn this into a `Set`.
+const imageExtensions = new Set([
+  ".arw",
+  ".bmp",
+  ".cr2",
+  ".cr3",
+  ".dng",
+  ".gif",
+  ".jpeg",
+  ".jpg",
+  ".nef",
+  ".png",
+  ".raw",
+  ".tif",
+  ".webm",
+]);
 
 // TODO: This is currently conservative. A more robust approach using file(1) or
 // `http.DetectContentType` would be nice, although both are hacky.
-const videoExtensions = {
-  ".avi": true,
-  ".m4v": true,
-  ".mkv": true,
-  ".mov": true,
-  ".mp4": true,
-  ".mpeg:": true,
-  ".mpg:": true,
-  ".mts": true,
-  ".mxf": true,
-  ".crm": true, // Canon raw movie
-};
+const videoExtensions = new Set([
+  ".avi",
+  ".m4v",
+  ".mkv",
+  ".mov",
+  ".mp4",
+  ".mpeg:",
+  ".mpg:",
+  ".mts",
+  ".mxf",
+  ".crm", // Canon raw movie
+]);
 
 // TODO: This is currently conservative. A more robust approach using file(1) or
 // `http.DetectContentType` would be nice, although both are hacky.
-const audioExtensions = {
-  ".aac": true,
-  ".aif": true,
-  ".aiff": true,
-  ".flac": true,
-  ".m4a": true,
-  ".mp3": true,
-  ".ogg": true,
-  ".wav": true,
-  ".wma": true,
-};
+const audioExtensions = new Set([
+  ".aac",
+  ".aif",
+  ".aiff",
+  ".flac",
+  ".m4a",
+  ".mp3",
+  ".ogg",
+  ".wav",
+  ".wma",
+]);
 
 let targetClassificationFolder = "Unsorted";
 const extension = extname(filePath).toLowerCase();
-if (imageExtensions[extension]) {
+if (imageExtensions.has(extension)) {
   targetClassificationFolder = "Images";
-} else if (videoExtensions[extension]) {
+} else if (videoExtensions.has(extension)) {
   if (DCIM_OR_CRM === "CRM") {
     targetClassificationFolder = "RAW Video";
   } else {
     targetClassificationFolder = "Videos";
   }
-} else if (audioExtensions[extension]) {
+} else if (audioExtensions.has(extension)) {
   targetClassificationFolder = "Audio";
 }
 

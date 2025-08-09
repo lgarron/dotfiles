@@ -1,5 +1,6 @@
 #!/opt/homebrew/bin/bun run --
 
+import assert from "node:assert";
 import {
   appendFile,
   exists,
@@ -27,6 +28,7 @@ await debugLog("Starting daemon…");
 
 const JJ = "/opt/homebrew/bin/jj";
 
+assert(xdgData);
 LockfileMutex.locked(join(xdgData, "obsidian-backup", "lockfile"));
 
 const DIR =
@@ -38,14 +40,13 @@ interface CommitInfo {
 }
 
 async function* removeFinal<T>(iterable: AsyncIterable<T>): AsyncIterable<T> {
-  let isFirst = true;
-  let last: T | undefined;
+  // Note that `undefined` may be a valid value for `T`, so we need to store this in a way that allows us to support that case cleanly.
+  let last: { t: T } | undefined;
   for await (const t of iterable) {
-    if (!isFirst) {
-      yield last;
+    if (last) {
+      yield last.t;
     }
-    last = t;
-    isFirst = false;
+    last = { t };
   }
 }
 
@@ -118,7 +119,9 @@ const eras: Era[] = [
 ];
 
 function parseErgonomicDate(s: string): ErgonomicDate {
-  const [_, secondsString, ...__] = s.match(/unixtime-(\d+)\.localtime/);
+  const match = s.match(/unixtime-(\d+)\.localtime/);
+  assert(match);
+  const [_, secondsString, ...__] = match;
   return new ErgonomicDate(Number.parseInt(secondsString) * 1000);
 }
 
@@ -172,7 +175,8 @@ async function garbageCollect(): Promise<void> {
         return eras[i];
       }
     }
-    return eras.at(-1);
+    // biome-ignore lint/style/noNonNullAssertion: False positive.
+    return eras.at(-1)!;
   }
 
   // `undefined` until we've seen the first commit
@@ -236,6 +240,7 @@ async function maybeCommit(): Promise<void> {
 }
 
 async function callback(change: FileChangeInfo<string>) {
+  assert(change.filename);
   const fileBasename = basename(change.filename);
   if (change.filename.startsWith(".jj/")) {
     // TODO: semantic check?

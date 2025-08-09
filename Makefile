@@ -189,7 +189,7 @@ reset: clean
 ########
 
 .PHONY: test
-test: test-help test-completions
+test: test-help test-completions test-bun
 
 .PHONY: test-help
 test-help:
@@ -233,3 +233,7 @@ format-ts-biome: setup-npm-packages
 format-rust:
 	cargo clippy --fix --allow-no-vcs
 	cargo fmt
+
+.PHONY: test-bun
+test-bun:
+	bun test

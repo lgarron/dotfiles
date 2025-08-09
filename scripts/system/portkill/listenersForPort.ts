@@ -1,6 +1,7 @@
 import { spawn } from "bun";
 
-export function parseListenersForPort(s: string): number[] {
+function parseListenersForPort(s: string): number[] {
+  // TODO: is it possible to get more than one in practice?
   return (
     s
       .trim()
@@ -23,3 +24,5 @@ export async function listenersForPort(port: number): Promise<number[]> {
   }
   return parseListenersForPort(await new Response(subprocess.stdout).text());
 }
+
+export const exportsForTestings = { parseListenersForPort };

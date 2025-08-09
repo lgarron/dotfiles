@@ -122,7 +122,7 @@ function parseErgonomicDate(s: string): ErgonomicDate {
   const match = s.match(/unixtime-(\d+)\.localtime/);
   assert(match);
   const [_, secondsString, ...__] = match;
-  return new ErgonomicDate(Number.parseInt(secondsString) * 1000);
+  return new ErgonomicDate(parseInt(secondsString) * 1000);
 }
 
 function isAtLeastThisLongBetween(
@@ -153,7 +153,7 @@ class Commit {
       return 1;
     }
     const [_, n, ...__] = match;
-    return Number.parseInt(n);
+    return parseInt(n);
   }
 }
 

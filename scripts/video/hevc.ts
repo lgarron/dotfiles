@@ -52,8 +52,7 @@ const app = command({
     const forceBitDepth: 8 | 10 | undefined =
       typeof forceBitDepthString === "undefined"
         ? undefined
-        : // biome-ignore lint/style/useNumberNamespace: Deprdcated Biome rule.
-          (parseInt(forceBitDepthString) as 8 | 10);
+        : (parseInt(forceBitDepthString) as 8 | 10);
 
     interface FFprobeStream {
       codec_type: "video" | "audio" | string;

@@ -1,27 +1,8 @@
 #!/usr/bin/env -S bun run --
 
 import { exit, kill } from "node:process";
-import { spawn } from "bun";
 import { binary, command, number, restPositionals, run } from "cmd-ts-too";
-
-async function listenersForPort(port: number): Promise<number[]> {
-  const subprocess = spawn({
-    cmd: ["lsof", "-t", "-i", `tcp:${port}`],
-  });
-  // Checking `exited` allow is to distinguish program launch errors (e.g. the
-  // `lsof` binary not being found) from subprocess runtime errors.
-  if ((await subprocess.exited) === 1) {
-    // TODO: can we distinguish this from general errors?
-    return [];
-  }
-  return [
-    ...(await new Response(subprocess.stdout).text())
-      .trim()
-      .split("\n")
-      .map(Number.parseInt),
-    4321,
-  ];
-}
+import { listenersForPort } from "./portkill/listenersForPort";
 
 const app = command({
   name: "portkill",

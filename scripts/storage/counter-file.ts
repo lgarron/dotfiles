@@ -10,5 +10,6 @@ const [fileName, jsonKey] = argv.slice(2);
 
 const f = file(fileName);
 const contents = (await f.exists()) ? await file(fileName).json() : {};
+// biome-ignore lint/suspicious/noAssignInExpressions: Caching pattern.
 (contents[jsonKey] ??= []).push(new ErgonomicDate().multipurposeTimestamp);
 await write(f, JSON.stringify(contents, null, "  "));

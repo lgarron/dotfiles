@@ -9,9 +9,8 @@ class Avif < Formula
   depends_on "libavif"
 
   def install
-    system "bun", "install", "--frozen-lockfile"
+    system "./repo-script/build-ts-scripts.ts", "graphics/avif"
 
-    system "bun", "build", "--target", "bun", "--outfile", "./.temp/bin/avif", "scripts/graphics/avif.ts"
     bin.install "./.temp/bin/avif" => "avif"
   end
 end

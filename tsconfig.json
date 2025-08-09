@@ -1,7 +1,15 @@
 {
-  "schema": "https://json.schemastore.org/tsconfig",
-  "extends": "./tsconfig.jsonc",
   "compilerOptions": {
-    "skipLibCheck": true
-  }
+    "lib": ["ESNext"],
+    "target": "es2022",
+    "module": "es2022",
+    "moduleResolution": "bundler",
+    "noEmit": true
+  },
+  "include": [
+    "./.config/**/*.ts",
+    "./scripts",
+    "./mirrored/**/*.ts",
+    "./repo-script"
+  ]
 }

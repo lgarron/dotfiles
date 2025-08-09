@@ -2,9 +2,9 @@
   "name": "dotfiles",
   "devDependencies": {
     "@biomejs/biome": "^2.1.4",
-    "@types/bun": "v1.2.17",
+    "@types/bun": "^1.2.19",
     "jsonc-parser": "^3.3.1",
-    "typescript": "^5.8.3"
+    "typescript": "^5.9.2"
   },
   "type": "module",
   "dependencies": {
@@ -14,5 +14,8 @@
     "lockfile-mutex": "^0.2.4",
     "printable-shell-command": "^1.1.2",
     "xdg-basedir": "^5.1.0"
+  },
+  "resolutions": {
+    "bun-types": "1.2.20-canary.20250808T140839"
   }
 }

@@ -94,7 +94,7 @@
 
     abbr -a bi "bun install;"
     abbr -a ba "bun add"
-    abbr -a br "bun run"
+    abbr -a br "bun run --"
     abbr -a bt "bun test"
     abbr -a bx "bun x"
     abbr -a bl "bun link"

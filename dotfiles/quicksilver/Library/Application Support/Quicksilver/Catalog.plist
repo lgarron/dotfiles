@@ -1094,6 +1094,27 @@
 					<key>source</key>
 					<string>QSFileSystemObjectSource</string>
 				</dict>
+				<dict>
+					<key>ID</key>
+					<string>7885A05C-5CDD-46B5-BF98-DDC8EA7E62BA</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>name</key>
+					<string>Dropbox</string>
+					<key>settings</key>
+					<dict>
+						<key>folderDepth</key>
+						<integer>1</integer>
+						<key>parser</key>
+						<string>QSDirectoryParser</string>
+						<key>path</key>
+						<string>/Volumes/Samos/.CloudStorage/Data/Dropbox</string>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
 			</array>
 			<key>enabled</key>
 			<true/>
@@ -1243,8 +1264,8 @@
 	</dict>
 	<key>omittedItems</key>
 	<array>
-		<string>/Users/lgarron/Applications/CrossOver/Ubisoft</string>
 		<string>/Users/lgarron/Library/Mobile Documents/iCloud~md~obsidian/Documents</string>
+		<string>/Users/lgarron/Applications/CrossOver/Ubisoft</string>
 	</array>
 </dict>
 </plist>

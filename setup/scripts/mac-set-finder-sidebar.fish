@@ -25,7 +25,7 @@ else if contains $_CURRENT_HOSTNAME "Pythagoras"
   sfltool clear com.apple.LSSharedFileList.FavoriteItems
 
   mysides add "lgarron" "file:///Users/lgarron/"
-  mysides add "Dropbox" "file:///Volumes/Samos/Pythagoras/Users/lgarron/Dropbox/"
+  mysides add "Dropbox" "file:///Volumes/Samos/.CloudStorage/Data/Dropbox/"
   mysides add "Google Drive" "file:///Users/lgarron/Google%20Drive/"
   mysides add "OneDrive-Personal" "file:///Users/lgarron/Library/CloudStorage/OneDrive-Personal/"
   mysides add "Downloads" "file:///Users/lgarron/Downloads/"

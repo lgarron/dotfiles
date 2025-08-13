@@ -17,7 +17,7 @@
       end
       set -e fish_user_paths
 
-      _add_to_path "$HOME/.cache/cargo/bin" # For Rust
+      _add_to_path "$HOME/.data/cargo/bin" # For Rust
       _add_to_path /opt/homebrew/bin # macOS (Apple Silicon)
       _add_to_path /home/linuxbrew/.linuxbrew/bin # for codespaces
       _add_to_path /home/linuxbrew/.linuxbrew/sbin # for codespaces

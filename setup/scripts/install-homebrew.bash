@@ -11,10 +11,5 @@ echo "Installing Homebrew…"
 # https://brew.sh/
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
-mkdir -p /opt/homebrew/Library/Taps/lgarron
-rm /opt/homebrew/Library/Taps/lgarron/homebrew-lgarron
-ln -s \
-  /Users/lgarron/Code/git/github.com/lgarron/dotfiles \
-  /opt/homebrew/Library/Taps/lgarron/homebrew-lgarron
-
+/opt/homebrew/bin/brew tap lgarron/lgarron
 /opt/homebrew/bin/brew tap oven-sh/bun

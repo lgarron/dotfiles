@@ -1,7 +1,5 @@
 #!/usr/bin/env -S bun run --
 
-import { extname } from "node:path";
-import { $ } from "bun";
 import {
   binary,
   string as cmdString,
@@ -27,34 +25,20 @@ const app = command({
   },
   handler: async ({ inputFile, outputFile: outputFileArg }) => {
     const outputFile = outputFileArg ?? `${inputFile}.mp3`;
-    if (extname(inputFile) === ".wav") {
-      const cmd = new PrintableShellCommand("lame", [
-        ["--preset", "extreme"],
-        inputFile,
-        outputFile,
-      ]);
-      cmd.print();
-      // TODO: add overwrite prompt?
-      await cmd.spawnBun().success;
-      return;
-    }
+    // TODO: overwrite prompt?
     const ffmpegCommand = new PrintableShellCommand("ffmpeg", [
       ["-i", inputFile],
-      ["-ab", "320k"],
-      ["-f", "wav"],
-      "-",
-    ]);
-    const lameCommand = new PrintableShellCommand("lame", [
-      ["--preset", "extreme"],
-      "-",
+      ["-f", "mp3"],
+      ["-codec:a", "libmp3lame"],
+      // 170-210 kbps: https://trac.ffmpeg.org/wiki/Encode/MP3#VBREncoding
+      //
+      // This is a bit higher than needed for any real-world playback, but can
+      // help preserve quality if the output file is edited again in the future.
+      "-q:a 2",
       outputFile,
     ]);
-    console.log(
-      `${ffmpegCommand.getPrintableCommand()} \\
-  | ${lameCommand.getPrintableCommand({ argIndentation: "    " })}`,
-    );
-    // TODO: add overwrite prompt?
-    await $`ffmpeg -i ${inputFile} -ab 320k -f wav - | lame --preset extreme - ${outputFile}`;
+
+    await ffmpegCommand.shellOutNode();
   },
 });
 

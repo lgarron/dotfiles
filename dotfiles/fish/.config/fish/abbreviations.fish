@@ -35,9 +35,11 @@
     abbr -a c "code --"
     abbr -a xc "xargs code --"
 
-    abbr -a "cv" "command -v"
-    abbr -a "cva" "command -va"
-    abbr -a "which" "# Try: cv"
+    abbr -a "cs" "command --search"
+    abbr -a "csa" "command --search --all"
+    abbr -a "cv" "# Try: cs"
+    abbr -a "cva" "# Try: csa"
+    abbr -a "which" "# Try: cs"
     abbr -a ccv --set-cursor "code -- (command -v %)"
 
     abbr -a "date-iso-8601" "date \"+%Y-%m-%d\""

@@ -23,6 +23,7 @@ cask "macs-fan-control"
 cask "syncthing"
 cask "handbrake"
 cask "betterdisplay"
+cask "gg"
 # Browsers
 
 cask "firefox"

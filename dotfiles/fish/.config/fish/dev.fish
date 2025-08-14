@@ -174,6 +174,8 @@
     abbr_subcommand repo d "setup dependencies"
     abbr_subcommand_arg repo d dependencies setup
 
+    abbr -a pub "tagpush && make publish && repo version bump --commit dev"
+
 ## Web
 
     # *h*ttps *h*eaders

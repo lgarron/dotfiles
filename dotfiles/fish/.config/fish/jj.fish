@@ -26,12 +26,12 @@ _fish_abbr_jj_subcommand t tug
 _fish_abbr_jj_subcommand re restore
 
 _fish_abbr_jj_subcommand b bookmark
-_fish_abbr_jj_subcommand bs "bookmark set"
-_fish_abbr_jj_subcommand bl "bookmark list"
-_fish_abbr_jj_subcommand bd "bookmark delete"
-abbr_subcommand_arg jj s set bookmark
+_fish_abbr_jj_subcommand bs "bookmark set --revision here"
+abbr_subcommand_arg jj s "set --revision here" bookmark
 abbr_subcommand_arg jj l list bookmark
+_fish_abbr_jj_subcommand bl "bookmark list"
 abbr_subcommand_arg jj d delete bookmark
+_fish_abbr_jj_subcommand bd "bookmark delete"
 abbr_subcommand_arg jj ab --allow-backwards bookmark # TODO: can we scope this to `jj bookmark set`?
 
 _fish_abbr_jj_subcommand r rebase

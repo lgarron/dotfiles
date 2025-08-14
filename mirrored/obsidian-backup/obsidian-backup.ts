@@ -119,8 +119,17 @@ const eras: Era[] = [
 ];
 
 function parseErgonomicDate(s: string): ErgonomicDate {
-  const match = s.match(/unixtime-(\d+)\.localtime/);
+  const match = s.match(/^unixtime-(\d+)\.localtime/);
   assert(match);
+  const [_, secondsString, ...__] = match;
+  return new ErgonomicDate(parseInt(secondsString) * 1000);
+}
+
+function parseErgonomicDateOldestSquashed(s: string): ErgonomicDate | null {
+  const match = s.match(/Oldest squashed commit: unixtime-(\d+)\.localtime/);
+  if (!match) {
+    return match;
+  }
   const [_, secondsString, ...__] = match;
   return new ErgonomicDate(parseInt(secondsString) * 1000);
 }
@@ -154,6 +163,12 @@ class Commit {
     }
     const [_, n, ...__] = match;
     return parseInt(n);
+  }
+
+  get oldestSquashedDate(): ErgonomicDate {
+    return (
+      parseErgonomicDateOldestSquashed(this.info.message) ?? this.ergonomicDate
+    );
   }
 }
 
@@ -202,7 +217,13 @@ async function garbageCollect(): Promise<void> {
       // TODO: record total squashes
       const numSquashed = childCommit.numSquashed + commit.numSquashed;
       // TODO: also record the oldest timestamp that has been squashed into this commit.
-      const message = `${childCommit.ergonomicDate.multipurposeTimestamp} (${numSquashed} squashed commit${numSquashed === 1 ? "" : "s"})`;
+
+      // TODO: check (and warn?) if the current commit's oldest squashed date is older.
+      // This should not happen if commits remain ordered, but who knows?
+      const oldestSquashedCommitChildDate = childCommit.oldestSquashedDate;
+      const message = `${childCommit.ergonomicDate.multipurposeTimestamp} (${numSquashed} squashed commit${numSquashed === 1 ? "" : "s"})
+
+Oldest squashed commit: ${oldestSquashedCommitChildDate.multipurposeTimestamp}`;
       await $`cd ${DIR} && ${JJ} squash --from ${childCommit.info.change_id} --into ${commit.info.change_id} --message ${message}`;
       numPruned++;
     } else {

@@ -7,7 +7,7 @@
         "cmd-ts-too": "^0.15.3",
         "comment-json": "^4.2.5",
         "ergonomic-date": "^0.1.0",
-        "lockfile-mutex": "^0.2.4",
+        "lockfile-mutex": "^0.3.3",
         "printable-shell-command": "^1.1.3",
         "xdg-basedir": "^5.1.0",
       },
@@ -129,7 +129,7 @@
 
     "jsonc-parser": ["jsonc-parser@3.3.1", "", {}, "sha512-HUgH65KyejrUFPvHFPbqOY0rsFip3Bo5wb4ngvdi1EpCYWUQDC5V+Y7mZws+DLkr4M//zQJoanu1SP+87Dv1oQ=="],
 
-    "lockfile-mutex": ["lockfile-mutex@0.2.4", "", { "dependencies": { "node-cleanup": "^2.1.2" } }, "sha512-CByyNAVaFCd8XYpVtdVKXRru1ccP6otX5ym6is6Gs+2koKQoRxAL3k9eGcE9u78CeE2yamQQSBsPBiG7iK622w=="],
+    "lockfile-mutex": ["lockfile-mutex@0.3.3", "", { "dependencies": { "node-cleanup": "^2.1.2" } }, "sha512-bLpsMKr7wTNhZCvg5HHHne4GOigDCjD4GTV2wuna3w0f98YfdG2ln4Rc/CyPxP9pIkqB51bXc9BYpKK2OFYOxA=="],
 
     "ms": ["ms@2.1.3", "", {}, "sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA=="],
 

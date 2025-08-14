@@ -69,7 +69,6 @@ abbr_subcommand_arg jj b --bookmark git # TODO: can we scope this to `jj git pus
 abbr_subcommand_arg jj bm "--bookmark main" git # TODO: can we scope this to `jj git push`?
 abbr -a jpbm "jj git push --bookmark main"
 
-abbr -a jdd "# try: jd"
 _fish_abbr_jj_subcommand di diff
 abbr_subcommand_arg jj no --name-only diff
 _fish_abbr_jj_subcommand dt "diff --to"

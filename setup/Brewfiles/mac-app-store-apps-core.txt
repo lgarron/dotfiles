@@ -1,6 +1,5 @@
 brew "mas"
 
-mas "Tailscale", id: 1475387142
 mas "Velja", id: 1607635845
 # mas "ResolutionTab", id: 5401415955
 mas "Caffeinated", id: 1362171212

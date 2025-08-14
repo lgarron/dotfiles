@@ -30,7 +30,7 @@ mac-setup-sudo: \
 
 .PHONY: mac-setup-bulk
 mac-setup-bulk: \
-	mac-apps-bulk \
+	mac-apps-bulk-with-workarounds \
 	mac-commandline-bulk \
 	mac-app-store-apps-bulk \
 	mac-dock-setup \
@@ -164,6 +164,15 @@ $(BREWFILE_APPS_TARGETS):
 	qlmanage -r
 	pkill quicklook
 
+.PHONY: mac-apps-bulk-with-workarounds
+mac-apps-bulk-with-workarounds: mac-apps-bulk mac-apps-bulk-workarounds
+
+.PHONY: mac-apps-bulk-workarounds
+mac-apps-bulk-workarounds:
+	mkdir -p ~/.config/fish/completions/
+	echo "# Workaround for: https://github.com/Homebrew/homebrew-cask/pull/223049" > ~/.config/fish/completions/tailscale.fish
+	echo "" >> ~/.config/fish/completions/tailscale.fish
+	tailscale completion fish >> ~/.config/fish/completions/tailscale.fish
 
 # Dock
 

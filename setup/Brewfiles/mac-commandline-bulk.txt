@@ -1,4 +1,3 @@
-brew "tailscale"
 brew "ffmpeg"
 brew "fpp"
 brew "go"

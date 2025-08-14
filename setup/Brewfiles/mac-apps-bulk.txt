@@ -24,6 +24,7 @@ cask "syncthing"
 cask "handbrake"
 cask "betterdisplay"
 cask "gg"
+cask "tailscale-app"
 # Browsers
 
 cask "firefox"

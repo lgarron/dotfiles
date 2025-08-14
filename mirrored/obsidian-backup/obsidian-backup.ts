@@ -29,7 +29,7 @@ await debugLog("Starting daemon…");
 const JJ = "/opt/homebrew/bin/jj";
 
 assert(xdgData);
-LockfileMutex.locked(join(xdgData, "obsidian-backup", "lockfile"));
+LockfileMutex.newLocked(join(xdgData, "obsidian-backup", "lockfile"));
 
 const DIR =
   "/Users/lgarron/Library/Mobile Documents/iCloud~md~obsidian/Documents";

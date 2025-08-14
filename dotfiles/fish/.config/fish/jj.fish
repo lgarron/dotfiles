@@ -60,8 +60,32 @@ _fish_abbr_jj_subcommand gf "git fetch"
 _fish_abbr_jj_subcommand gfm "git fetch && jj new main@origin"
 _fish_abbr_jj_subcommand p "git push"
 _fish_abbr_jj_subcommand gp "git push"
-abbr -a jpm "jj bookmark set --revision here main && jj git push && git switch main || jj new main"
-abbr -a jpt "set FIRST_BOOKMARK (jj guess-branch) && jj bookmark set --revision here \$FIRST_BOOKMARK && jj git push --bookmark \$FIRST_BOOKMARK && git switch \$FIRST_BOOKMARK || jj new \$FIRST_BOOKMARK"
+
+function _in_git_repo
+    git rev-parse --show-toplevel &>/dev/null
+end
+
+function _abbr_jpt_for_bookmark
+    set FIRST_BOOKMARK $argv[1]
+    echo "jj bookmark set --revision here $FIRST_BOOKMARK &&"
+    echo "jj git push --bookmark $FIRST_BOOKMARK &&"
+    if _in_git_repo
+        echo "git switch $FIRST_BOOKMARK"
+    else
+        echo "jj new $FIRST_BOOKMARK"
+    end
+end
+
+function _abbr_jpt
+    _abbr_jpt_for_bookmark (jj guess-branch)
+end
+abbr -a jpt --function _abbr_jpt
+
+function _abbr_jpm
+    _abbr_jpt_for_bookmark (jj guess-branch)
+end
+abbr -a jpm --function _abbr_jpm
+
 _fish_abbr_jj_subcommand gr "git remote"
 _fish_abbr_jj_subcommand grl "git remote list"
 abbr_subcommand_arg jj an --allow-new git # TODO: can we scope this to `jj git push`?

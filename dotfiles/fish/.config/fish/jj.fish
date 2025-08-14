@@ -46,6 +46,16 @@ _fish_abbr_jj_subcommand de describe
 abbr -a jd --set-cursor "jj describe --message \"%" # Special shortened abbreviation
 abbr_subcommand_arg jj m --message describe
 
+# Also see: `gdv` (in `git.fish`)
+function abbr_jdv
+    echo "jj describe --message \""(repo version get)
+    echo ""
+    echo "Release notes:"
+    echo ""
+    echo "- %"
+end
+abbr -a jdv --function abbr_jdv --set-cursor
+
 _fish_abbr_jj_subcommand gf "git fetch"
 _fish_abbr_jj_subcommand gfm "git fetch && jj new main@origin"
 _fish_abbr_jj_subcommand p "git push"

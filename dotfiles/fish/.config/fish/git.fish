@@ -184,8 +184,9 @@ git push --force-with-lease"
     # git commit !!!!⎵ → git commit --message "`[third-to-last command]`" ( TODO: remove the second space?)
     function _abbr_git_commit_thirdlast_command_fn; _abbr_expand_subcommand_arg git !!! "--message \"`"(string replace --all "\"" "\\\"" $history[3])"`\"" commit; end; abbr -a _abbr_git_commit_thirdlast_command --regex !!! --position anywhere --function _abbr_git_commit_thirdlast_command_fn
 
+    # Also see: `jdv` (in `jj.fish`)
     function abbr_gcv
-        echo "git commit --message \""(version)
+        echo "git commit --message \""(repo version get)
         echo ""
         echo "Release notes:"
         echo ""

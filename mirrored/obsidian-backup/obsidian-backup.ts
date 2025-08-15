@@ -223,6 +223,8 @@ async function garbageCollect(): Promise<void> {
       const oldestSquashedCommitChildDate = childCommit.oldestSquashedDate;
       const message = `${childCommit.ergonomicDate.multipurposeTimestamp} (${numSquashed} squashed commit${numSquashed === 1 ? "" : "s"})
 
+Last squashed at: ${now.multipurposeTimestamp}
+
 Oldest squashed commit: ${oldestSquashedCommitChildDate.multipurposeTimestamp}`;
       await $`cd ${DIR} && ${JJ} squash --from ${childCommit.info.change_id} --into ${commit.info.change_id} --message ${message}`;
       numPruned++;

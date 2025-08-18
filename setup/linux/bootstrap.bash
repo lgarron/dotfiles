@@ -11,6 +11,10 @@ test -d "${HOME}/.config/binaries" || git clone --depth=1 https://github.com/lga
 chmod +x "${HOME}/.config/binaries/linux-x64/"*
 export PATH="$PATH:${HOME}/.config/binaries/linux-x64"
 
+touch ~/.bashrc
+echo "~/.config/binaries/linux-x64/fish" >> ~/.bashrc
+
+
 make setup
 
 if [ -n "${CODESPACES:-}" ]

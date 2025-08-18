@@ -36,8 +36,9 @@ abbr_subcommand_arg jj ab --allow-backwards bookmark # TODO: can we scope this t
 
 _fish_abbr_jj_subcommand r rebase
 _fish_abbr_jj_subcommand rd "rebase --destination"
+abbr_subcommand_arg jj b --branch rebase
+abbr_subcommand_arg jj s "# try: `b` (branch) or `--source` explicitly" rebase
 abbr_subcommand_arg jj d --destination rebase
-abbr_subcommand_arg jj s --source rebase
 
 abbr_subcommand_arg jj ii --ignore-immutable edit squash describe rebase
 abbr_subcommand_arg jj r --revision bookmark

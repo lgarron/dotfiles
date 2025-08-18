@@ -218,14 +218,14 @@ async function garbageCollect(): Promise<void> {
       const numSquashed = childCommit.numSquashed + commit.numSquashed;
       // TODO: also record the oldest timestamp that has been squashed into this commit.
 
-      // TODO: check (and warn?) if the current commit's oldest squashed date is older.
+      // TODO: check (and warn?) if the child commit's oldest squashed date is older.
       // This should not happen if commits remain ordered, but who knows?
-      const oldestSquashedCommitChildDate = childCommit.oldestSquashedDate;
+      const oldestSquashedCommitDate = commit.oldestSquashedDate;
       const message = `${childCommit.ergonomicDate.multipurposeTimestamp} (${numSquashed} squashed commit${numSquashed === 1 ? "" : "s"})
 
 Last squashed at: ${now.multipurposeTimestamp}
 
-Oldest squashed commit: ${oldestSquashedCommitChildDate.multipurposeTimestamp}`;
+Oldest squashed commit: ${oldestSquashedCommitDate.multipurposeTimestamp}`;
       await $`cd ${DIR} && ${JJ} squash --from ${childCommit.info.change_id} --into ${commit.info.change_id} --message ${message}`;
       numPruned++;
     } else {

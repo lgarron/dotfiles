@@ -89,7 +89,7 @@
     rm_and_log $HOME/.pub-cache
 
     # See: https://github.com/lgarron/first-world/issues/239
-    # This is currently commented because I'm teting out using a locked folder instead.
+    # This is currently commented because I'm testing out using a locked folder instead.
     # rm_and_log "$HOME/Library/Application Support/Google/Chrome/OptGuideOnDeviceModel/"
 
 # niceplz

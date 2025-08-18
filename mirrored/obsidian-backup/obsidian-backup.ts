@@ -118,13 +118,6 @@ const eras: Era[] = [
   },
 ];
 
-function parseErgonomicDate(s: string): ErgonomicDate {
-  const match = s.match(/^unixtime-(\d+)\.localtime/);
-  assert(match);
-  const [_, secondsString, ...__] = match;
-  return new ErgonomicDate(parseInt(secondsString) * 1000);
-}
-
 function parseErgonomicDateOldestSquashed(s: string): ErgonomicDate | null {
   const match = s.match(/Oldest squashed commit: unixtime-(\d+)\.localtime/);
   if (!match) {
@@ -153,7 +146,13 @@ class Commit {
   constructor(public info: CommitInfo) {}
 
   get ergonomicDate(): ErgonomicDate {
-    return parseErgonomicDate(this.info.message);
+    // TODO: technically if this is a long string we are creating an unnecessary
+    // copy of everything but the first line. But this is unlikely to be a
+    // performance issue, especially given that we have almost certainly written
+    // the commit message from the template in this file.
+    return ErgonomicDate.parseMultipurposeDateOrTimestamp(
+      this.info.message.split("\n", 1)[0].split(" (", 1)[0],
+    );
   }
 
   get numSquashed(): number {
@@ -218,14 +217,20 @@ async function garbageCollect(): Promise<void> {
       const numSquashed = childCommit.numSquashed + commit.numSquashed;
       // TODO: also record the oldest timestamp that has been squashed into this commit.
 
-      // TODO: check (and warn?) if the child commit's oldest squashed date is older.
-      // This should not happen if commits remain ordered, but who knows?
-      const oldestSquashedCommitDate = commit.oldestSquashedDate;
+      // biome-ignore lint/style/noNonNullAssertion: `null` cannot occur for non-empty (validly typed) lists.
+      const oldestSquashedDate = ErgonomicDate.earliest([
+        commit.oldestSquashedDate,
+        childCommit.oldestSquashedDate,
+      ])!;
+      if (oldestSquashedDate !== commit.oldestSquashedDate) {
+        console.warn("Misordered commits???");
+      }
+
       const message = `${childCommit.ergonomicDate.multipurposeTimestamp} (${numSquashed} squashed commit${numSquashed === 1 ? "" : "s"})
 
 Last squashed at: ${now.multipurposeTimestamp}
 
-Oldest squashed commit: ${oldestSquashedCommitDate.multipurposeTimestamp}`;
+Oldest squashed commit: ${oldestSquashedDate.multipurposeTimestamp}`;
       await $`cd ${DIR} && ${JJ} squash --from ${childCommit.info.change_id} --into ${commit.info.change_id} --message ${message}`;
       numPruned++;
     } else {

@@ -6,7 +6,7 @@
       "dependencies": {
         "cmd-ts-too": "^0.15.3",
         "comment-json": "^4.2.5",
-        "ergonomic-date": "^0.1.0",
+        "ergonomic-date": "^0.1.1",
         "lockfile-mutex": "^0.3.3",
         "printable-shell-command": "^1.1.3",
         "xdg-basedir": "^5.1.0",
@@ -119,7 +119,7 @@
 
     "didyoumean": ["didyoumean@1.2.2", "", {}, "sha512-gxtyfqMg7GKyhQmb056K7M3xszy/myH8w+B4RT+QXBQsvAOdc3XymqDDPHx1BgPgsdAA5SIifona89YtRATDzw=="],
 
-    "ergonomic-date": ["ergonomic-date@0.1.0", "", {}, "sha512-v7uzXROvhQZf8guRtSm4AGyJfREDhWbMc4yyAR+CJNg3rdINSaFjRdlDkK4IXEpryLBMcIlKNtCOLvsY/T990Q=="],
+    "ergonomic-date": ["ergonomic-date@0.1.1", "", {}, "sha512-JIltaPOl7PvZBl/T5dwPT/WTy4lLUqadAumHKKJTZ3P+ZBLzhc7XX2F5g7XXvZlHvp2xIWa04W2rwMXVY8hMKw=="],
 
     "esbuild": ["esbuild@0.25.8", "", { "optionalDependencies": { "@esbuild/aix-ppc64": "0.25.8", "@esbuild/android-arm": "0.25.8", "@esbuild/android-arm64": "0.25.8", "@esbuild/android-x64": "0.25.8", "@esbuild/darwin-arm64": "0.25.8", "@esbuild/darwin-x64": "0.25.8", "@esbuild/freebsd-arm64": "0.25.8", "@esbuild/freebsd-x64": "0.25.8", "@esbuild/linux-arm": "0.25.8", "@esbuild/linux-arm64": "0.25.8", "@esbuild/linux-ia32": "0.25.8", "@esbuild/linux-loong64": "0.25.8", "@esbuild/linux-mips64el": "0.25.8", "@esbuild/linux-ppc64": "0.25.8", "@esbuild/linux-riscv64": "0.25.8", "@esbuild/linux-s390x": "0.25.8", "@esbuild/linux-x64": "0.25.8", "@esbuild/netbsd-arm64": "0.25.8", "@esbuild/netbsd-x64": "0.25.8", "@esbuild/openbsd-arm64": "0.25.8", "@esbuild/openbsd-x64": "0.25.8", "@esbuild/openharmony-arm64": "0.25.8", "@esbuild/sunos-x64": "0.25.8", "@esbuild/win32-arm64": "0.25.8", "@esbuild/win32-ia32": "0.25.8", "@esbuild/win32-x64": "0.25.8" }, "bin": { "esbuild": "bin/esbuild" } }, "sha512-vVC0USHGtMi8+R4Kz8rt6JhEWLxsv9Rnu/lGYbPR8u47B+DCBksq9JarW0zOO7bs37hyOK1l2/oqtbciutL5+Q=="],
 

@@ -11,7 +11,7 @@
   "dependencies": {
     "cmd-ts-too": "^0.15.3",
     "comment-json": "^4.2.5",
-    "ergonomic-date": "^0.1.0",
+    "ergonomic-date": "^0.1.1",
     "lockfile-mutex": "^0.3.3",
     "printable-shell-command": "^1.1.3",
     "xdg-basedir": "^5.1.0"

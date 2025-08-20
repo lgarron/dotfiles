@@ -4,6 +4,12 @@ Many scripts can be installed using: <https://github.com/lgarron/homebrew-lgarro
 
 Many scripts are also written in [`fish`](https://fishshell.com/).
 
+## `api`
+
+### `pushover`
+
+Sends a notification to Pushover.
+
 ## `app-tools`
 
 ### `editor-open`

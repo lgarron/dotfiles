@@ -43,12 +43,23 @@ const app = command({
       type: optional(oneOf(["8", "10"])),
       long: "force-bit-depth",
     }),
+    height: option({
+      description: "Height",
+      type: optional(cmdNumber),
+      long: "height",
+    }),
     sourceFile: positional({
       type: cmdString,
       displayName: "Source file",
     }),
   },
-  handler: async ({ poll, quality, forceBitDepthString, sourceFile }) => {
+  handler: async ({
+    poll,
+    quality,
+    forceBitDepthString,
+    height,
+    sourceFile,
+  }) => {
     const forceBitDepth: 8 | 10 | undefined =
       typeof forceBitDepthString === "undefined"
         ? undefined
@@ -216,11 +227,19 @@ const app = command({
       }
     })();
 
-    let destPrefix = `${sourceFile}.hevc.qv${quality}`;
+    let destPrefix = `${sourceFile}.hevc${bitDepthFileComponent}`;
+    if (height) {
+      destPrefix += `.${height}p`;
+    }
+    destPrefix += `.qv${quality}`;
     if (await file(`${destPrefix}.mp4`).exists()) {
-      destPrefix = `${sourceFile}.hevc${bitDepthFileComponent}.qv${quality}.bak.${new ErgonomicDate().multipurposeTimestamp}`;
+      destPrefix = `${destPrefix}.${new ErgonomicDate().multipurposeTimestamp}`;
     }
     const dest = `${destPrefix}.mp4`;
+
+    const heightParams: [string, string][] = height
+      ? [["--height", height.toString()]]
+      : [];
 
     const command = new PrintableShellCommand("HandBrakeCLI", [
       [
@@ -229,6 +248,7 @@ const app = command({
       ],
       ["--preset", handbrakePreset],
       ["--quality", quality.toString()],
+      ...heightParams,
       ["-i", sourceFile],
       ["-o", dest],
     ]);

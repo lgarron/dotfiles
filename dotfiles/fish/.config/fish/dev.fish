@@ -200,6 +200,7 @@
     abbr -a "unixtime" 'date "+%s"'
     abbr -a po "pushover 'Command done' (status current-commandline)"
     abbr -a po1 "pushover 'Command done' (history | head -n 1)"
+    abbr -a ds "diskutil"
 
     abbr -a lldb "env HOME=/Users/lgarron/.data/lldb-workaround/ lldb"
 

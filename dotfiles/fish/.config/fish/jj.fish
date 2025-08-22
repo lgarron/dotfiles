@@ -88,6 +88,21 @@ function _abbr_jpm
 end
 abbr -a jpm --function _abbr_jpm
 
+function _abbr_jbt_for_bookmark
+    set FIRST_BOOKMARK $argv[1]
+    echo "jj bookmark set --revision here $FIRST_BOOKMARK"
+end
+
+function _abbr_jbt
+    _abbr_jbt_for_bookmark (jj guess-branch)
+end
+abbr -a jbt --function _abbr_jbt
+
+function _abbr_jbm
+    _abbr_jbm_for_bookmark main
+end
+abbr -a jbm --function _abbr_jbm
+
 _fish_abbr_jj_subcommand gr "git remote"
 _fish_abbr_jj_subcommand grl "git remote list"
 abbr_subcommand_arg jj an --allow-new git # TODO: can we scope this to `jj git push`?

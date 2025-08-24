@@ -40,7 +40,8 @@ pythagoras: \
 	mac-common \
 	mac-dock-setup-pythagoras-extras \
 	mac-apps-server \
-	hushlogin # for SSH \
+	pythagoras-screenshots-macos \
+	hushlogin # for SSH
 
 .PHONY: linux
 linux: \
@@ -140,6 +141,19 @@ obsidian-backup-macos-uninstall-daemon:
 		launchctl bootout gui/$(shell id -u) /Users/lgarron/Library/LaunchAgents/net.garron.mac.dotfiles.mirror.obsidian-backup-macos.plist \
 		|| echo "Already uninstalled"
 	rm -f /Users/lgarron/Library/LaunchAgents/net.garron.mac.dotfiles.mirror.obsidian-backup-macos.plist
+
+.PHONY: pythagoras-screenshots-macos
+pythagoras-screenshots-macos:
+	bun run ./scripts/system/lstow.ts -- ./dotfiles/$@ ~/
+	launchctl print gui/501/net.garron.mac.dotfiles.mirror.pythagoras-screenshots-macos > /dev/null 2> /dev/null || \
+		launchctl bootstrap gui/$(shell id -u) /Users/lgarron/Library/LaunchAgents/net.garron.mac.dotfiles.mirror.pythagoras-screenshots-macos.plist
+
+.PHONY: pythagoras-screenshots-macos-uninstall-daemon
+pythagoras-screenshots-macos-uninstall-daemon:
+	launchctl print gui/501/net.garron.mac.dotfiles.mirror.pythagoras-screenshots-macos > /dev/null 2> /dev/null && \
+		launchctl bootout gui/$(shell id -u) /Users/lgarron/Library/LaunchAgents/net.garron.mac.dotfiles.mirror.pythagoras-screenshots-macos.plist \
+		|| echo "Already uninstalled"
+	rm -f /Users/lgarron/Library/LaunchAgents/net.garron.mac.dotfiles.mirror.pythagoras-screenshots-macos.plist
 
 ########
 

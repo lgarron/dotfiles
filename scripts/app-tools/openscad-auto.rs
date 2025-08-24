@@ -155,7 +155,7 @@ fn main() {
 
     for variant in variants {
         let variant_suffix = match &variant {
-            Some(variant) => format!(".{}", variant),
+            Some(variant) => format!(".{variant}"),
             None => "".to_owned(),
         };
         let target_file_string = format!(
@@ -203,7 +203,7 @@ fn main() {
 
         let mut total_rendering_time_string = Option::<String>::default();
         for line in output.stderr.lines().map_while(Result::ok) {
-            eprintln!("{}", line);
+            eprintln!("{line}");
             if line.starts_with("Total rendering time") {
                 total_rendering_time_string = Some(
                     line.splitn(2, ": ")
@@ -248,7 +248,7 @@ fn main() {
                         total_rendering_time_string
                     ),
                     "-execute",
-                    &format!("reveal-macos {}", quoted_target_file),
+                    &format!("reveal-macos {quoted_target_file}"),
                 ])
                 .spawn()
                 .unwrap()

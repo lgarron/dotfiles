@@ -84,7 +84,7 @@ end
 abbr -a jpt --function _abbr_jpt
 
 function _abbr_jpm
-    _abbr_jpt_for_bookmark (jj guess-branch)
+    _abbr_jpt_for_bookmark main
 end
 abbr -a jpm --function _abbr_jpm
 

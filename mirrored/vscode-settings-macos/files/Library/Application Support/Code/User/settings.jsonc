@@ -306,6 +306,8 @@
 	"editor.suggest.showKeywords": false,
 	"editor.suggest.snippetsPreventQuickSuggestions": false,
 	"chat.commandCenter.enabled": false,
-	"chat.agent.enabled": false
+	"chat.agent.enabled": false,
+	// Prevent VS Code from creating `~/.npm`. 😡
+	"typescript.disableAutomaticTypeAcquisition": true
 	/****************/
 }

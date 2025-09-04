@@ -10,12 +10,15 @@ import {
   watch,
 } from "node:fs/promises";
 import { basename, join } from "node:path";
-import { $ } from "bun";
+import { $, file } from "bun";
 import { ErgonomicDate } from "ergonomic-date";
 import { LockfileMutex } from "lockfile-mutex";
 import { xdgData } from "xdg-basedir";
+import { exit } from "node:process";
 
-const LOG_FOLDER = "/Users/lgarron/.data/obsidian-backup/log/";
+const DATA_ROOT_DIR = "/Users/lgarron/.data/obsidian-backup"
+
+const LOG_FOLDER = join(DATA_ROOT_DIR, "log/");
 async function debugLog(s: string, date: ErgonomicDate = new ErgonomicDate()) {
   await mkdir(join(LOG_FOLDER, date.localYearMonth), { recursive: true });
   await appendFile(
@@ -30,6 +33,32 @@ const JJ = "/opt/homebrew/bin/jj";
 
 assert(xdgData);
 LockfileMutex.newLocked(join(xdgData, "obsidian-backup", "lockfile"));
+
+/****************/
+
+
+const REPO_PARENT_DIR = join(DATA_ROOT_DIR, "data");
+const GIT_REPO = join(REPO_PARENT_DIR, "obsidian.git");
+const JJ_REPO = join(REPO_PARENT_DIR, "obsidian.jj");
+
+await mkdir(REPO_PARENT_DIR, {recursive: true})
+
+if (!(await exists(GIT_REPO))) {
+  await $`git --git-dir ${GIT_REPO} status || git init --bare ${GIT_REPO}`;
+}
+if (!(await exists(JJ_REPO))) {
+  await $`jj git init --git-repo ${GIT_REPO} ${REPO_PARENT_DIR}`;
+  await $`cd ${REPO_PARENT_DIR} && jj config set --repo snapshot.max-new-file-size 10000000 && jj config set --user user.name "Lucas Garron" && jj config set --user user.email code@garron.net`;
+  await $`mv ${join(REPO_PARENT_DIR, ".jj")} ${JJ_REPO}`;
+  
+  const JJ_ICLOUD_FOLDER = join("/Users/lgarron/Library/Mobile Documents/iCloud~md~obsidian/Documents/.jj");
+  await mkdir(JJ_ICLOUD_FOLDER, {recursive: true});
+  await file(join(JJ_ICLOUD_FOLDER, "repo")).write(join(JJ_REPO, "repo"));
+  await $`ln -s "/Users/lgarron/.data/obsidian-backup/data/obsidian.jj/working_copy" "/Users/lgarron/Library/Mobile Documents/iCloud~md~obsidian/Documents/.jj/working_copy"`
+}
+
+
+/****************/
 
 const DIR =
   "/Users/lgarron/Library/Mobile Documents/iCloud~md~obsidian/Documents";

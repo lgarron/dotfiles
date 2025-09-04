@@ -3,7 +3,7 @@ cask "arq"
 cask "grandperspective"
 cask "gitx"
 cask "hex-fiend"
-cask "transmit"
+# cask "transmit" # TODO: broken
 cask "1password-cli"
 # cask "dictcc-en-de-dictionary-plugin" # TODO: doesn't actually work, even with Rosetta 2 installed
 cask "font-ubuntu"

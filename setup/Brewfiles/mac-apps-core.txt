@@ -1,3 +1,4 @@
+cask "quicksilver"
 cask "google-chrome"
 cask "rectangle-pro"
 cask "iterm2"

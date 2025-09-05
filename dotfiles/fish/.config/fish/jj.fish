@@ -61,6 +61,7 @@ _fish_abbr_jj_subcommand gf "git fetch"
 _fish_abbr_jj_subcommand gfm "git fetch && jj new main@origin"
 _fish_abbr_jj_subcommand p "git push"
 _fish_abbr_jj_subcommand gp "git push"
+abbr_subcommand_arg jj r --remote git # TODO: can we scope this to `jj git push`?
 
 function _in_git_repo
     git rev-parse --show-toplevel &>/dev/null

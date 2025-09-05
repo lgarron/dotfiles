@@ -1,6 +1,5 @@
 #!/usr/bin/env -S bun run --
 
-import { default as assert } from "node:assert";
 import { $ } from "bun";
 
 import {
@@ -12,6 +11,7 @@ import {
   optional,
   flag,
 } from "cmd-ts-too";
+import { exit } from "node:process";
 
 const app = command({
   name: "toggle-display",
@@ -34,8 +34,17 @@ const app = command({
       const names = json.filter(data => data.deviceType !== "DisplayGroup").map(data => data.name);
       console.log(names.join("\n"));
       return;
+    } 
+    if (!displayName) {
+      // TODO: Is this a stable way to call `.printHelp(…)`?
+      console.log(
+        app.printHelp(
+          { nodes: [], visitedNodes: new Set() }, // minimal blank data
+        ),
+      );
+      exit(1);
     }
-    assert(displayName);
+
     const on =
       (
         await $`betterdisplaycli get --name="${displayName}" --connected`.text()

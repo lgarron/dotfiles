@@ -23,7 +23,7 @@ const app = command({
       displayName: "Display name",
     }),
     listDisplays: flag({
-      description: "List displays (instead of toggling any).",
+      description: "List displays, one per line (instead of toggling any).",
       long: "list-displays"
     }),
   },

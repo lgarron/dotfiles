@@ -224,6 +224,7 @@ lint: lint-ts-biome lint-ts-tsc lint-rust
 
 .PHONY: lint-ts-biome
 lint-ts-biome: setup-npm-packages
+	bun x @biomejs/biome --version
 	bun x @biomejs/biome check
 
 .PHONY: lint-ts-tsc

@@ -256,10 +256,6 @@ Timelapse a video by averaging frames.
 
 Install and configure [`biome`](https://biomejs.dev/) for a JS repo with my legacy defaults.
 
-### `bun-roll`
-
-Roll a dependency to the latest version and add using `bun`.
-
 ### `chrometab`
 
 Get the current open Chrome tab.
@@ -267,10 +263,6 @@ Get the current open Chrome tab.
 ### `npm-cost`
 
 Calculate the cost of a given `npm` module by number of files and disk size, without modifying the current folder.
-
-### `npm-roll`
-
-Roll a dependency to the latest version and install using `npm`.
 
 ### `safaritab`
 

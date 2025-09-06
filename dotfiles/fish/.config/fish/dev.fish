@@ -90,6 +90,11 @@
     set -xg "EXPERIMENTAL_CUBING_JS_RELOAD_CHROME_MACOS" "1"
     set -xg "EXPERIMENTAL_RELOAD_CHROME_MACOS" "1"
 
+
+    function npm-roll
+        repo dependencies --package-manager npm roll --commit $argv
+    end
+
     abbr -a b "bun"
 
     abbr -a bi "bun install;"

@@ -185,7 +185,7 @@ function jj
 end
 
 function bun-roll
-    command bun-roll $argv
+    repo dependencies --package-manager bun roll --commit $argv
     set -g _FISH_JJ_WAS_RUN_DURING_COMMAND true
 end
 

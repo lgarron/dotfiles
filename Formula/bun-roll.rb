@@ -5,9 +5,10 @@ class BunRoll < Formula
   homepage "https://github.com/lgarron/dotfiles"
   head "https://github.com/lgarron/dotfiles.git", :branch => "main"
 
+  depends_on "lgarron/lgarron/repo"
+  depends_on "oven-sh/bun/bun"
+
   def install
     bin.install "scripts/web/bun-roll.fish" => "bun-roll"
-    bin.install "scripts/web/bun-roll-git.fish" => "bun-roll-git"
-    bin.install "scripts/web/bun-roll-jj.fish" => "bun-roll-jj"
   end
 end

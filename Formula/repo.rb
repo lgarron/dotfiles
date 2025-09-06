@@ -6,6 +6,9 @@ class Repo < Formula
   head "https://github.com/lgarron/repo.git", :branch => "main"
 
   depends_on "rust" => :build
+  depends_on "rust"
+  depends_on "node"
+  depends_on "oven-sh/bun/bun"
   depends_on "toml2json"
   # TODO: we need to install `cargo-bump` as well.
 

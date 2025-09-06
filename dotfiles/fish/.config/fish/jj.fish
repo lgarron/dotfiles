@@ -40,7 +40,7 @@ abbr_subcommand_arg jj b --branch rebase
 abbr_subcommand_arg jj s "# try: `b` (branch) or `--source` explicitly" rebase
 abbr_subcommand_arg jj d --destination rebase
 
-abbr_subcommand_arg jj ii --ignore-immutable edit squash describe rebase
+abbr_subcommand_arg jj ii --ignore-immutable edit squash describe rebase abandon
 abbr_subcommand_arg jj r --revision bookmark
 
 _fish_abbr_jj_subcommand de describe

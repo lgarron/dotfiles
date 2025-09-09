@@ -308,6 +308,7 @@
 	"chat.commandCenter.enabled": false,
 	"chat.agent.enabled": false,
 	// Prevent VS Code from creating `~/.npm`. 😡
-	"typescript.disableAutomaticTypeAcquisition": true
+	"typescript.disableAutomaticTypeAcquisition": true,
+	"gitlens.plusFeatures.enabled": false
 	/****************/
 }

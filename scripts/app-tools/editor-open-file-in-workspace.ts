@@ -1,22 +1,15 @@
 #!/usr/bin/env -S bun run --
 
 import { lstat } from "node:fs/promises";
-import { dirname } from "node:path";
 import { exit } from "node:process";
 import { $, argv } from "bun";
 
 const path = argv[2];
 const isDirectory = (await lstat(path)).isDirectory();
-const dir = isDirectory ? path : dirname(path);
-const workspaceRootDir = await (async () => {
-  try {
-    return await $`repo workspace root --path ${dir}`.text();
-  } catch {
-    return dir;
-  }
-})();
+const workspaceRootDir =
+  await $`repo workspace root --fallback closest-dir --path ${path}`.text();
 
-await $`code ${workspaceRootDir} `;
+await $`code ${workspaceRootDir}`;
 if (!isDirectory) {
   await $`code --reuse-window ${path}`;
 }

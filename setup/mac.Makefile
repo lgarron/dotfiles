@@ -25,6 +25,7 @@ mac-setup-sudo: \
 	mac-commandline-bootstrap \
 	mac-fish-default-shell \
 	prefer-wired-over-wireless-for-SMB \
+	mac-disable-emoji-suggestions \
 	mac-set-finder-sidebar \
 	mac-dock-setup
 
@@ -219,6 +220,14 @@ mac-dock-setup-pythagoras-extras:
 prefer-wired-over-wireless-for-SMB:
 	# TODO: turn this into a config script with auto `sudo`.
 	cat /etc/nsmb.conf | grep "mc_prefer_wired=yes" || echo "[default]\nmc_prefer_wired=yes" | sudo tee -a /etc/nsmb.conf # https://support.apple.com/en-us/102010
+
+# This is separate from `defaults` because it's `sudo`.
+# https://www.reddit.com/r/MacOS/comments/16wzdk9/is_there_a_way_to_turn_off_the_new_emoji/
+# https://mastodon.social/@stroughtonsmith/112216657091717306
+# TODO: may require a reboot?
+.PHONY: mac-disable-emoji-suggestions
+mac-disable-emoji-suggestions:
+	sudo defaults write /Library/Preferences/FeatureFlags/Domain/UIKit.plist emoji_enhancements -dict-add Enabled -bool NO
 
 .PHONY: watch-for-plist-changes
 watch-for-plist-changes:

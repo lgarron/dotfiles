@@ -33,6 +33,7 @@ mac-setup-sudo: \
 mac-setup-bulk: \
 	mac-apps-bulk-with-workarounds \
 	mac-commandline-bulk \
+	mac-setup-homebrew-lgarron-lgarron \
 	mac-app-store-apps-bulk \
 	mac-dock-setup \
 	mac-commandline-requiring-xcode \
@@ -174,6 +175,10 @@ mac-apps-bulk-workarounds:
 	echo "# Workaround for: https://github.com/Homebrew/homebrew-cask/pull/223049" > ~/.config/fish/completions/tailscale.fish
 	echo "" >> ~/.config/fish/completions/tailscale.fish
 	tailscale completion fish >> ~/.config/fish/completions/tailscale.fish
+
+.PHONY: mac-setup-homebrew-lgarron-lgarron
+mac-setup-homebrew-lgarron-lgarron:
+	./setup/scripts/mac-homebrew-install-all-lgarron-lgarron.fish
 
 # Dock
 

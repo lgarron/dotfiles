@@ -47,10 +47,12 @@ if (existsSync(join(repo_path, ".git"))) {
   console.log("Cloning from:", repo_clone_source);
   console.log("To:", repo_path);
 
-  // Note: we do *not* `await` the result.
+  const DATA_DIR = join(homedir(), ".data", "gclone");
+  await mkdir(DATA_DIR, { recursive: true });
+  const stdout = openSync(join(DATA_DIR, "stdout.log"), "a");
+  const stderr = openSync(join(DATA_DIR, "stderr.log"), "a");
 
-  const stdout = openSync("/tmp/gclone-stdout.log", "a");
-  const stderr = openSync("/tmp/gclone-stderr.log", "a");
+  // Note: we do *not* `await` the result.
   const childProcess = spawn("git", ["clone", repo_clone_source, repo_path], {
     detached: true,
     stdio: ["ignore", stdout, stderr],
@@ -58,4 +60,7 @@ if (existsSync(join(repo_path, ".git"))) {
   childProcess.unref();
 }
 
-await Promise.all([await $`open ${repo_path}`, await $`code ${repo_path}`]);
+await Promise.all([
+  await $`open-macos ${repo_path}`,
+  await $`code ${repo_path}`,
+]);

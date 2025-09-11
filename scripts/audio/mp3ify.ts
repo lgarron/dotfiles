@@ -34,7 +34,7 @@ const app = command({
       //
       // This is a bit higher than needed for any real-world playback, but can
       // help preserve quality if the output file is edited again in the future.
-      "-q:a 2",
+      ["-q:a", "2"],
       outputFile,
     ]);
 

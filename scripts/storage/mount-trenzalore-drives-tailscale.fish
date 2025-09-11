@@ -2,8 +2,8 @@
 
 osascript -e '
 tell application "Finder"
-	mount volume "smb://Pythagoras.tlb/Trenzalore"
-	mount volume "smb://Pythagoras.tlb/Trenzalore CRM Videos"
+	mount volume "smb://Pythagoras.local/Trenzalore"
+	mount volume "smb://Pythagoras.local/Trenzalore CRM Videos"
 end tell'
 
 terminal-notifier \

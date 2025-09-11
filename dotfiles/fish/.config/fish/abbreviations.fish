@@ -79,7 +79,7 @@
 
     for dns_connecting_command in ssh mosh sshping ping host
       # TODO: share abbreviation functions between these?
-      abbr_anyarg $dns_connecting_command pt Pythagoras.tlb
+      abbr_anyarg $dns_connecting_command pl Pythagoras.local
       abbr_anyarg $dns_connecting_command pw Pythagoras-ts.wyvern-climb.ts.net
       abbr_anyarg $dns_connecting_command g garron.net
     end

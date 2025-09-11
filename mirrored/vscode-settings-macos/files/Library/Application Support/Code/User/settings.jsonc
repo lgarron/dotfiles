@@ -83,11 +83,11 @@
 	/******** Remote SSH ********/
 	"remote.SSH.useLocalServer": false,
 	"remote.SSH.remotePlatform": {
-		"Pythagoras.tlb": "macOS",
+		"Pythagoras.local": "macOS",
 		"Pythagoras-ts.wyvern-climb.ts.net": "macOS"
 	},
 	"remote.SSH.serverInstallPath": {
-		"Pythagoras.tlb": "/Users/lgarron/.cache/vscode-server",
+		"Pythagoras.local": "/Users/lgarron/.cache/vscode-server",
 		"Pythagoras-ts.wyvern-climb.ts.net": "/Users/lgarron/.cache/vscode-server"
 	},
 	/******** Codespaces ********/

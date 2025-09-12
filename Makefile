@@ -64,31 +64,24 @@ dreamhost:
 ########
 
 PACKAGES  =
+PACKAGES += compressor
 PACKAGES += git
 PACKAGES += hushlogin
 PACKAGES += jj
+PACKAGES += karabiner
 PACKAGES += mac-text-encoding
 PACKAGES += minecraft
+PACKAGES += niceplz
 PACKAGES += povray
+PACKAGES += quicksilver
+PACKAGES += ripgrep
 PACKAGES += sd-card-backup
 PACKAGES += vscode
 PACKAGES += xdg-basedir-workarounds
-PACKAGES += niceplz
 PACKAGES += zellij
-PACKAGES += ripgrep
 
 .PHONY: $(PACKAGES)
 $(PACKAGES):
-	bun run ./scripts/system/lstow.ts -- ./dotfiles/$@ ~/
-
-PACKAGES_FOLDING  =
-PACKAGES_FOLDING += compressor
-PACKAGES_FOLDING += karabiner
-PACKAGES_FOLDING += quicksilver
-
-.PHONY: $(PACKAGES_FOLDING)
-$(PACKAGES_FOLDING):
-	# Link the entire folder to work around https://github.com/pqrs-org/Karabiner-Elements/issues/3248
 	bun run ./scripts/system/lstow.ts -- ./dotfiles/$@ ~/
 
 ########

@@ -4,13 +4,20 @@
 <dict>
     <key>Label</key>
     <string>net.garron.mac.dotfiles.mirror.vscode-settings-macos</string>
+    <key>Program</key>
+    <string>/Users/lgarron/Code/git/github.com/lgarron/dotfiles/setup/scripts/trampoline.fish</string>
     <key>ProgramArguments</key>
     <array>
+        <string>/Users/lgarron/Code/git/github.com/lgarron/dotfiles/setup/scripts/trampoline.fish</string>
         <string>/Users/lgarron/Code/git/github.com/lgarron/dotfiles/mirrored/vscode-settings-macos/mirror-vscode-settings-macos.ts</string>
     </array>
     <key>RunAtLoad</key>
     <true/>
     <key>KeepAlive</key>
     <true/>
+    <key>StandardErrorPath</key>
+    <string>/Users/lgarron/.data/mirror-vscode-settings-macos/launchd.stderr.txt</string>
+    <key>StandardOutPath</key>
+    <string>/Users/lgarron/.data/mirror-vscode-settings-macos/launchd.stdout.txt</string> 
 </dict>
 </plist>

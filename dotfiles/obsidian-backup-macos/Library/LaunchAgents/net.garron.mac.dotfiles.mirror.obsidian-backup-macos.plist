@@ -6,6 +6,7 @@
     <string>net.garron.mac.dotfiles.mirror.obsidian-backup-macos</string>
     <key>ProgramArguments</key>
     <array>
+        <string>/Users/lgarron/Code/git/github.com/lgarron/dotfiles/setup/scripts/trampoline.fish</string>
         <string>/Users/lgarron/Code/git/github.com/lgarron/dotfiles/mirrored/obsidian-backup/obsidian-backup.ts</string>
     </array>
     <key>RunAtLoad</key>

@@ -1,3 +1,5 @@
+LSTOW = bun run ./scripts/system/lstow/lstow.ts
+
 .PHONY: auto
 auto:
 	make "$$(hostname -s | tr '[:upper:]' '[:lower:]')"
@@ -82,13 +84,13 @@ PACKAGES += zellij
 
 .PHONY: $(PACKAGES)
 $(PACKAGES):
-	bun run ./scripts/system/lstow.ts -- ./dotfiles/$@ ~/
+	${LSTOW} -- ./dotfiles/$@ ~/
 
 ########
 
 .PHONY: fish
 fish:
-	bun run ./scripts/system/lstow.ts -- ./dotfiles/$@ ~/
+	${LSTOW} -- ./dotfiles/$@ ~/
 	mkdir -p ${HOME}/.data/fish
 	mkdir -p ${HOME}/.local/share
 	rm -rf ${HOME}/.local/share/fish
@@ -98,7 +100,7 @@ fish:
 
 .PHONY: lglogin
 lglogin:
-	bun run ./scripts/system/lstow.ts -- ./dotfiles/$@ ~/
+	${LSTOW} -- ./dotfiles/$@ ~/
 	launchctl print gui/501/net.garron.mac.lglogin > /dev/null 2> /dev/null || \
 		launchctl bootstrap gui/$(shell id -u) /Users/lgarron/Library/LaunchAgents/net.garron.mac.lglogin.plist
 
@@ -111,7 +113,7 @@ lglogin-uninstall-daemon:
 
 .PHONY: vscode-settings-macos
 vscode-settings-macos:
-	bun run ./scripts/system/lstow.ts -- ./dotfiles/$@ ~/
+	${LSTOW} -- ./dotfiles/$@ ~/
 	launchctl print gui/501/net.garron.mac.dotfiles.mirror.vscode-settings-macos > /dev/null 2> /dev/null || \
 		launchctl bootstrap gui/$(shell id -u) /Users/lgarron/Library/LaunchAgents/net.garron.mac.dotfiles.mirror.vscode-settings-macos.plist
 
@@ -124,7 +126,7 @@ vscode-settings-macos-uninstall-daemon:
 
 .PHONY: obsidian-backup-macos
 obsidian-backup-macos:
-	bun run ./scripts/system/lstow.ts -- ./dotfiles/$@ ~/
+	${LSTOW} -- ./dotfiles/$@ ~/
 	launchctl print gui/501/net.garron.mac.dotfiles.mirror.obsidian-backup-macos > /dev/null 2> /dev/null || \
 		launchctl bootstrap gui/$(shell id -u) /Users/lgarron/Library/LaunchAgents/net.garron.mac.dotfiles.mirror.obsidian-backup-macos.plist
 
@@ -137,7 +139,7 @@ obsidian-backup-macos-uninstall-daemon:
 
 .PHONY: pythagoras-screenshots-macos
 pythagoras-screenshots-macos:
-	bun run ./scripts/system/lstow.ts -- ./dotfiles/$@ ~/
+	${LSTOW} -- ./dotfiles/$@ ~/
 	launchctl print gui/501/net.garron.mac.dotfiles.mirror.pythagoras-screenshots-macos > /dev/null 2> /dev/null || \
 		launchctl bootstrap gui/$(shell id -u) /Users/lgarron/Library/LaunchAgents/net.garron.mac.dotfiles.mirror.pythagoras-screenshots-macos.plist
 

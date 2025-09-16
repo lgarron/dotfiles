@@ -7,7 +7,7 @@
 
     # LSP override: This is an intentionally exported variable.
     # @fish-lsp-disable-next-line 4004
-    set -x "GOPATH" "$HOME/Code/gopath"
+    set -x "GOPATH" "$HOME/.data/gopath"
 
     if [ "$_FISH_MANUAL_RELOAD" = "true" -o "$_FISH_USER_PATHS_HAS_BEEN_SET_UP" != "true" ]
       set -l _FISH_MANUAL_RELOAD_EMOJI ""

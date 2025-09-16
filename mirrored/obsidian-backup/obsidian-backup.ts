@@ -6,6 +6,7 @@ import {
   exists,
   type FileChangeInfo,
   mkdir,
+  rmdir,
   stat,
   watch,
 } from "node:fs/promises";
@@ -45,9 +46,11 @@ if (!(await exists(GIT_REPO))) {
   await $`git --git-dir ${GIT_REPO} status || git init --bare ${GIT_REPO}`;
 }
 if (!(await exists(JJ_REPO))) {
-  await $`jj git init --git-repo ${GIT_REPO} ${REPO_PARENT_DIR}`;
-  await $`cd ${REPO_PARENT_DIR} && jj config set --repo snapshot.max-new-file-size 10000000 && jj config set --user user.name "Lucas Garron" && jj config set --user user.email code@garron.net && jj config set --repo revsets.log ".."`;
-  await $`mv ${join(REPO_PARENT_DIR, ".jj")} ${JJ_REPO}`;
+  const JJ_REPO_TEMP_DIR = join(REPO_PARENT_DIR, "jj-temp");
+
+  await $`jj git init --git-repo ${GIT_REPO} ${JJ_REPO_TEMP_DIR}`;
+  await $`cd ${JJ_REPO_TEMP_DIR} && jj config set --repo snapshot.max-new-file-size 10000000 && jj config set --user user.name "Lucas Garron" && jj config set --user user.email code@garron.net && jj config set --repo revsets.log ".."`;
+  await $`mv ${join(JJ_REPO_TEMP_DIR, ".jj")} ${JJ_REPO}`;
 
   const JJ_ICLOUD_FOLDER = join(
     "/Users/lgarron/Library/Mobile Documents/iCloud~md~obsidian/Documents/.jj",
@@ -55,6 +58,7 @@ if (!(await exists(JJ_REPO))) {
   await mkdir(JJ_ICLOUD_FOLDER, { recursive: true });
   await file(join(JJ_ICLOUD_FOLDER, "repo")).write(join(JJ_REPO, "repo"));
   await $`ln -s "/Users/lgarron/.data/obsidian-backup/data/obsidian.jj/working_copy" "/Users/lgarron/Library/Mobile Documents/iCloud~md~obsidian/Documents/.jj/working_copy"`;
+  await rmdir(JJ_REPO_TEMP_DIR);
 }
 
 /****************/

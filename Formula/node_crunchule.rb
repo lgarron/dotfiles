@@ -5,6 +5,8 @@ class NodeCrunchule < Formula
   homepage "https://github.com/lgarron/dotfiles"
   head "https://github.com/lgarron/dotfiles.git", :branch => "main"
 
+  depends_on "p7zip"
+
   def install
     bin.install "scripts/git/node_crunchule.fish" => "node_crunchule"
   end

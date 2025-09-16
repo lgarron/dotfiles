@@ -275,7 +275,7 @@
 			<key>onPress</key>
 			<true/>
 			<key>showWindow</key>
-			<false/>
+			<true/>
 			<key>type</key>
 			<string>QSHotKeyTrigger</string>
 		</dict>

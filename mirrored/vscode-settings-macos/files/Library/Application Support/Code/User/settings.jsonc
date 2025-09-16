@@ -78,7 +78,7 @@
 	"typescript.tsserver.experimental.enableProjectDiagnostics": true,
 	/******** Go ********/
 	"go.useLanguageServer": true,
-	"go.toolsGopath": "/Users/lgarron/.data/gopath",
+	"go.toolsGopath": "/Users/lgarron/Code/gopath",
 	"go.toolsManagement.autoUpdate": true,
 	/******** Remote SSH ********/
 	"remote.SSH.useLocalServer": false,

@@ -39,7 +39,7 @@
 
 # The Naughty List
 
-    /opt/homebrew/bin/naughty-list
+    /opt/homebrew/bin/naughty-list-auto
 
 # niceplz
 

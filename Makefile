@@ -25,6 +25,7 @@ mac-common-dotfiles: \
 	karabiner \
 	lglogin \
 	minecraft \
+	naughty-list \
 	niceplz \
 	quicksilver \
 	sd-card-backup \
@@ -73,6 +74,7 @@ PACKAGES += jj
 PACKAGES += karabiner
 PACKAGES += mac-text-encoding
 PACKAGES += minecraft
+PACKAGES += naughty-list
 PACKAGES += niceplz
 PACKAGES += povray
 PACKAGES += quicksilver

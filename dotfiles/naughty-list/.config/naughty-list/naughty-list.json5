@@ -1,0 +1,57 @@
+{
+  "$schema": "https://raw.githubusercontent.com/lgarron/naughty-list/44e8a279d266950f310edef10ad56b6dfb5c46eb/src/schema.json",
+  "paths": {
+    "ignore": [
+      ".cache",
+      ".CFUserTextEncoding",
+      ".config",
+      ".data",
+      ".DS_Store", // *sigh*
+      ".local",
+      ".ssh",
+      ".state",
+      ".Trash",
+      ".vscode", // grrrrrr: https://github.com/microsoft/vscode/issues/3884
+    ],
+    "delete": [
+      ".angular-config.json",
+      ".biome",
+      ".bundle", // Ruby Gems
+      ".cargo",
+      ".cups",
+      ".docker",
+      ".dts",
+      ".gnupg",
+      ".gradle", // Gradle (Java)
+      ".hugindata",
+      ".lldb",
+      ".npm",
+      ".oracle_jre_usage",
+      ".pnpm-state",
+      ".profile", // Created by `rustup`
+      ".python_history",
+      ".rnd",
+      ".rustup",
+      ".sentry ",
+      ".swiftpm",
+      ".step",
+      ".terraform.d",
+      ".thumbnails", // Blender (among others)
+      ".yarn",
+      ".yarnrc",
+      ".vscode-cli",
+      ".vscode-server",
+      ".vscode-remote-containers",
+      ".wasmer",
+      // Flutter
+      ".dart",
+      ".dart-tool",
+      ".flutter",
+      ".flutter-devtools",
+      ".pub-cache",
+      // wat (alpine???
+      ".mailcap",
+      ".mime.types",
+    ]
+  }
+}

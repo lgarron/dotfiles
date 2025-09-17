@@ -89,6 +89,10 @@
     rm_and_log $HOME/.flutter-devtools
     rm_and_log $HOME/.pub-cache
 
+    # wat (alpine???)
+    rm_and_log $HOME/.mailcap
+    rm_and_log $HOME/.mime.types
+
     # See: https://github.com/lgarron/first-world/issues/239
     # This is currently commented because I'm testing out using a locked folder instead.
     # rm_and_log "$HOME/Library/Application Support/Google/Chrome/OptGuideOnDeviceModel/"

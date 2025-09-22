@@ -100,7 +100,7 @@ end
 abbr -a jbt --function _abbr_jbt
 
 function _abbr_jbm
-    _abbr_jbm_for_bookmark main
+    _abbr_jbt_for_bookmark main
 end
 abbr -a jbm --function _abbr_jbm
 

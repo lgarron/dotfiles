@@ -37,13 +37,32 @@ complete -c tagpush -l completions -d 'Print completions.' -r -f -a "fish"`);
     }
 
     const version = await $`version`.text();
-    const previousCommitVersion = await $`version --previous`.text();
 
-    if (version === previousCommitVersion) {
-      console.error(
-        "Project version did not change since last commit. Halting `tagpush`.",
-      );
-      exit(1);
+    // TODO: does this work properly for merge commits?
+    const hasPreviousCommit = await (async () => {
+      try {
+        return (await $`git cat-file -t HEAD~`.text()) === "commit";
+        // biome-ignore lint/suspicious/noExplicitAny: TypeScript limitation.
+      } catch (e: any) {
+        // TODO: there is no porcelain for this command. Can we find something more stable?
+        if (e.stderr.includes("fatal: Not a valid object name HEAD~")) {
+          return false;
+        }
+        throw e;
+      }
+    })();
+
+    if (hasPreviousCommit) {
+      const previousCommitVersion = await $`version --previous`.text();
+
+      if (version === previousCommitVersion) {
+        console.error(
+          "Project version did not change since last commit. Halting `tagpush`.",
+        );
+        exit(1);
+      }
+    } else {
+      console.warn("Previous commit does not seem to exist. Ignoring…");
     }
 
     if (retag) {

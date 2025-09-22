@@ -88,6 +88,14 @@ complete -c ${binaryName} -l completions -d 'Print completions for the given she
       exit(1);
     }
 
+    /**************** Fetch ****************/
+
+    // We could specify which tags to fetch, but if a subset of tags is missing
+    // then `git` doesn't fail gracefully. So we fetch all.
+    // We also need to need to do this before deleting the local tag, to avoid the fetch restoring it.
+    // TODO: handle when there is no remote?
+    await $`git fetch --tags ${remote}`;
+
     /**************** Local ****************/
 
     const tagsToRemoveLocally: string[] = [];
@@ -121,10 +129,6 @@ Name of missing remote: ${styleText("bold", remote)}`,
         exit(2);
       }
     })();
-
-    // We could specify which tags to fetch, but if a subset of tags is missing
-    // then `git` doesn't fail gracefully. So we fetch all.
-    await $`git fetch --tags ${remote}`;
 
     const tagsToRemoveFromRemote: string[] = [];
     for (const tag of tags) {

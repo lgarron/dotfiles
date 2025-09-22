@@ -8,11 +8,10 @@ class Rmtag < Formula
   depends_on "oven-sh/bun/bun"
 
   def install
-    system "bun", "install", "--frozen-lockfile"
+    system "./repo-script/build-ts-scripts.ts", "git/rmtag"
 
-    system "bun", "build", "--target", "bun", "--outfile", "./.temp/bin/rmtag", "scripts/git/rmtag.ts"
     bin.install "./.temp/bin/rmtag" => "rmtag"
-
+  
     generate_completions_from_executable(bin/"rmtag", "--completions", shells: [:fish])
   end
 end

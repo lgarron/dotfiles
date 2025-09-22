@@ -317,4 +317,9 @@
     "key": "cmd+k s",
     "command": "-workbench.action.files.saveWithoutFormatting"
   },
+  {
+    "key": "shift+alt+i",
+    "command": "-angelscript.addImportTo",
+    "when": "editorTextFocus"
+  },
 ]

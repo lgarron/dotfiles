@@ -317,6 +317,7 @@
 	"editor.suggest.snippetsPreventQuickSuggestions": false,
 	"chat.commandCenter.enabled": false,
 	"chat.agent.enabled": false,
+	"chat.disableAIFeatures": true,
 	// Prevent VS Code from creating `~/.npm`. 😡
 	"typescript.disableAutomaticTypeAcquisition": true,
 	"gitlens.plusFeatures.enabled": false

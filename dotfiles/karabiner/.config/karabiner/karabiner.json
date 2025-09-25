@@ -48,7 +48,7 @@
                             {
                                 "conditions": [
                                     {
-                                        "file_paths": ["/wine64-preloader$", "\\.exe$"],
+                                        "file_paths": ["/wine64-preloader$", "exe$"],
                                         "type": "frontmost_application_if"
                                     }
                                 ],

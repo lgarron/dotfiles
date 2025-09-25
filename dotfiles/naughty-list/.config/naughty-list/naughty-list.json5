@@ -24,6 +24,7 @@
       ".cups",
       ".docker",
       ".dts",
+      ".gk",
       ".gnupg",
       ".gradle", // Gradle (Java)
       ".hugindata",

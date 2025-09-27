@@ -77,7 +77,7 @@
     abbr -a "sp" "sshping -H"
     abbr -a "sshping" "sshping -H"
 
-    for dns_connecting_command in ssh mosh sshping ping host
+    for dns_connecting_command in ssh mosh sshping ping host iperf3
       # TODO: share abbreviation functions between these?
       abbr_anyarg $dns_connecting_command pl Pythagoras.local
       abbr_anyarg $dns_connecting_command pw Pythagoras-ts.wyvern-climb.ts.net

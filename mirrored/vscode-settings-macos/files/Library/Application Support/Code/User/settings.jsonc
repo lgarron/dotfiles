@@ -299,7 +299,9 @@
 		"^node$",
 		"^(assert(/strict)?|async_hooks|buffer|child_process|cluster|console|constants|crypto|dgram|diagnostics_channel|dns(/promises)?|domain|events|fs(/promises)?|http|http2|https|inspector(/promises)?|module|net|os|path(/(posix|win32))?|perf_hooks|process|querystring|readline(/promises)?|repl|stream(/(consumers|promises|web))?|string_decoder|timers(/promises)?|tls|trace_events|tty|url|util(/types)?|v8|vm|wasi|worker_threads|zlib)$",
 		"^node:fs$", // Do not complete `node:fs` by default (in favor of `node:fs/promises`).
-		"^node:path/(posix|win32)$" // Do not complete platform-specific path APIs by default.
+		"^node:path/(posix|win32)$", // Do not complete platform-specific path APIs by default.
+		// `err` (TODO: https://github.com/lgarron/cmd-ts-too/issues/10)
+		"^cmd-ts-too/dist/lib/cmd-ts-too/Result$"
 	],
 	"typescript.preferences.autoImportSpecifierExcludeRegexes": [
 		// log
@@ -311,7 +313,9 @@
 		"^node$",
 		"^(assert(/strict)?|async_hooks|buffer|child_process|cluster|console|constants|crypto|dgram|diagnostics_channel|dns(/promises)?|domain|events|fs(/promises)?|http|http2|https|inspector(/promises)?|module|net|os|path(/(posix|win32))?|perf_hooks|process|querystring|readline(/promises)?|repl|stream(/(consumers|promises|web))?|string_decoder|timers(/promises)?|tls|trace_events|tty|url|util(/types)?|v8|vm|wasi|worker_threads|zlib)$",
 		"^node:fs$", // Do not complete `node:fs` by default (in favor of `node:fs/promises`).
-		"^node:path/(posix|win32)$" // Do not complete platform-specific path APIs by default.
+		"^node:path/(posix|win32)$", // Do not complete platform-specific path APIs by default.
+		// `err` (TODO: https://github.com/lgarron/cmd-ts-too/issues/10)
+		"^cmd-ts-too/dist/lib/cmd-ts-too/Result$"
 	],
 	"editor.suggest.showKeywords": false,
 	"editor.suggest.snippetsPreventQuickSuggestions": false,

@@ -20,7 +20,7 @@ class Tag3dPrints < Formula
     bin.install "./.temp/tag-3d-print-as-successful" => "tag-3d-print-as-successful"
     
     system "swiftc", "-o", "./.temp/tag-3d-print-as-unsuccessful", "./scripts/tags/tag-3d-print-as-unsuccessful.swift"
-    bin.install "./.temp/tag-3d-print-as-unsuccessful" => "tag-3d-print-as-failed"
+    bin.install "./.temp/tag-3d-print-as-unsuccessful" => "tag-3d-print-as-unsuccessful"
 
   end
 end

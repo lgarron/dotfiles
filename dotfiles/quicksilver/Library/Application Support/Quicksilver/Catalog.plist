@@ -664,7 +664,7 @@
 		</dict>
 		<dict>
 			<key>ID</key>
-			<string>93A55DE4-72C5-4983-BDCD-C2E5CE661172</string>
+			<string>20E5C03E-70A2-416A-BBBD-DCB6BE5E759F</string>
 			<key>children</key>
 			<array/>
 			<key>enabled</key>
@@ -678,7 +678,7 @@
 				<key>parser</key>
 				<string>QSDirectoryParser</string>
 				<key>path</key>
-				<string>/Volumes/Samos/.CloudStorage/Data/Dropbox</string>
+				<string>/Volumes/Samos/Pythagoras/Users/lgarron/Dropbox</string>
 			</dict>
 			<key>source</key>
 			<string>QSFileSystemObjectSource</string>

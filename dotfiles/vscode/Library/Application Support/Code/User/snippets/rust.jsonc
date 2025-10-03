@@ -11,5 +11,21 @@
 			"}"
 		],
 		"description": "Add a section for tests."
+	},
+	"Derive": {
+		"prefix": "#[derive]",
+		"body": [
+			"#[derive(${1})]"
+		],
+		"description": "Derive trait."
+	},
+	"struct": {
+		"prefix": "struct",
+		"body": [
+			"struct ${1:StructName} {",
+			"  ${2:field}: ${3:Type},",
+			"}"
+		],
+		"description": "struct"
 	}
 }

@@ -2,6 +2,8 @@ use chrono::Local;
 use clap::{CommandFactory, Parser, ValueEnum};
 use clap_complete::generator::generate;
 use clap_complete::Shell;
+use printable_shell_command::PrintableShellCommand;
+use printable_shell_command::ShellPrintable;
 use script_helpers::{back_up_existing_file, sha256_hash_file_to_string};
 use shell_quote::{Bash, QuoteRefExt};
 use std::fs::create_dir_all;
@@ -181,25 +183,25 @@ fn main() {
 
         println!("✍️ Writing new file to: {}", target_file.to_string_lossy());
 
-        let output = Command::new("/Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD")
-            .args([
-                "--enable",
-                "lazy-union",
-                "--backend",
-                "Manifold",
-                "-D",
-                // TODO: what are OpenSCAD's escaping rules?
-                &format!(
-                    "VARIANT = {:?};",
-                    variant.unwrap_or(DEFAULT_VARIANT.to_owned())
-                ),
-                "-o",
-                &target_file.to_string_lossy(),
-                &source_file.to_string_lossy(),
-            ])
-            .env("FONTCONFIG_PATH", "/opt/homebrew/etc/fonts")
-            .output()
-            .expect("Could not invoke `openscad`.");
+        let output =
+            PrintableShellCommand::new("/Applications/OpenSCAD.app/Contents/MacOS/OpenSCAD")
+                .args(["--enable", "lazy-union"])
+                .args(["--backend", "Manifold"])
+                .args([
+                    "-D",
+                    // TODO: what are OpenSCAD's escaping rules?
+                    &format!(
+                        "VARIANT = {:?};",
+                        variant.unwrap_or(DEFAULT_VARIANT.to_owned())
+                    ),
+                ])
+                .args(["-o", &target_file.to_string_lossy()])
+                .arg(&*source_file.to_string_lossy())
+                .print_invocation()
+                .unwrap()
+                .env("FONTCONFIG_PATH", "/opt/homebrew/etc/fonts")
+                .output()
+                .expect("Could not invoke `openscad`.");
 
         let mut total_rendering_time_string = Option::<String>::default();
         for line in output.stderr.lines().map_while(Result::ok) {

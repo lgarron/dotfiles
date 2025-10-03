@@ -218,6 +218,9 @@
     abbr_subcommand alg i invert
     abbr_anysubcommand_arg alg s --stdin
 
+    # Help me catch issues with https://github.com/lgarron/repo
+    set -Ux DEBUG_PRINT_SHELL_COMMANDS true
+
     # Workaround for VS Code not using `dev.containers.defaultExtensionsIfInstalledLocally` for codespaces created outside its (interactive ⇒ very slow) UI.
     function codespaces-install-common-extensions
         set -l _CODESPACES_COMMON_EXTENSIONS \

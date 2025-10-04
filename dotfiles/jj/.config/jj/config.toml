@@ -92,5 +92,11 @@ prompt-anchor-pretty = [
   "if(bookmarks.len() > 0, if(bookmarks.filter(|b| b.name() == \"main\"), label(\"bookmark\", stringify(bookmarks.filter(|b| b.name() == \"main\").join(\"\n\")).first_line()), label(\"bookmark\", stringify(bookmarks.join(\"\n\")).first_line())), change_id.shortest())",
 ]
 
+# TODO: figure out why `repo version bump --commit dev` has a tendency to cause this. Maybe a race condition with `gg.app`?
+sweep = [
+  "abandon",
+  "empty() & ~merges() & description(exact:\"\") & ~bookmarks() & ~root() & ~@",
+]
+
 [ui]
 diff-editor = ":builtin"

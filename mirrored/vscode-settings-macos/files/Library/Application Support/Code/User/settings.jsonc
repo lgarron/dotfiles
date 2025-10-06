@@ -319,11 +319,13 @@
 	],
 	"editor.suggest.showKeywords": false,
 	"editor.suggest.snippetsPreventQuickSuggestions": false,
+	// Prevent VS Code from creating `~/.npm`. 😡
+	"typescript.disableAutomaticTypeAcquisition": true,
+	/******** Disable unsolicited slop ********/
 	"chat.commandCenter.enabled": false,
 	"chat.agent.enabled": false,
 	"chat.disableAIFeatures": true,
-	// Prevent VS Code from creating `~/.npm`. 😡
-	"typescript.disableAutomaticTypeAcquisition": true,
-	"gitlens.plusFeatures.enabled": false
+	"gitlens.plusFeatures.enabled": false,
+	"gitlens.ai.enabled": false
 	/****************/
 }

@@ -2,17 +2,20 @@
 
 import Foundation
 
-let REMOVE_TAGS: Set<String> = []
-let ADD_TAGS: Set<String> = ["3D: Printing"]
+/******** Start of common lib code ********/
 
-func toURL(s: String) -> URL {
+// Note: this file duplicates significant logic with other Swift scripts.
+// This is because sharing code between Swift scripts involves significant changes to code organization and compilation.
+// Functions that are shared with other files should be prefixed with `lib…`.
+
+func libToURL(s: String) -> URL {
     return URL(fileURLWithPath: s).absoluteURL
 }
 
-func updateTags(theFilePath: String) {
+func libUpdateTags(theFilePath: String) {
   print("----------------")
   print(theFilePath)
-  let theURL = toURL(s: theFilePath)
+  let theURL = libToURL(s: theFilePath)
 
   do {
       let oldTags = Set(try theURL.resourceValues(forKeys: [.tagNamesKey]).tagNames ?? [])
@@ -36,9 +39,18 @@ func updateTags(theFilePath: String) {
   }
 }
 
-let theFilePaths = CommandLine.arguments[1...].map({ String($0) })
-if theFilePaths.count == 0 {
-  fputs("Pass files to tag them.\n", stderr)
-} else {
-  let _ = theFilePaths.map(updateTags)
+func libHandleArguments() {
+  let theFilePaths = CommandLine.arguments[1...].map({ String($0) })
+  if theFilePaths.count == 0 {
+    fputs("Pass files to tag them.\n", stderr)
+  } else {
+    let _ = theFilePaths.map(libUpdateTags)
+  }
 }
+
+/******** End of common lib code ********/
+
+let REMOVE_TAGS: Set<String> = []
+let ADD_TAGS: Set<String> = ["3D: Printing"]
+
+libHandleArguments()

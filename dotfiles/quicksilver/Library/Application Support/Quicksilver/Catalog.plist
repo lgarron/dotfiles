@@ -1186,6 +1186,29 @@
 			<key>source</key>
 			<string>QSFileSystemObjectSource</string>
 		</dict>
+		<dict>
+			<key>ID</key>
+			<string>E694C0C8-6928-4B1E-8C67-10E0E42B1B3F</string>
+			<key>children</key>
+			<array/>
+			<key>enabled</key>
+			<true/>
+			<key>modificationDate</key>
+			<real>781551349.49542105</real>
+			<key>name</key>
+			<string>Replays</string>
+			<key>settings</key>
+			<dict>
+				<key>folderDepth</key>
+				<integer>1</integer>
+				<key>parser</key>
+				<string>QSDirectoryParser</string>
+				<key>path</key>
+				<string>~/Documents/Trackmania/Replays</string>
+			</dict>
+			<key>source</key>
+			<string>QSFileSystemObjectSource</string>
+		</dict>
 	</array>
 	<key>enabledPresets</key>
 	<dict>
@@ -1264,8 +1287,8 @@
 	</dict>
 	<key>omittedItems</key>
 	<array>
-		<string>/Users/lgarron/Applications/CrossOver/Ubisoft</string>
 		<string>/Users/lgarron/Library/Mobile Documents/iCloud~md~obsidian/Documents</string>
+		<string>/Users/lgarron/Applications/CrossOver/Ubisoft</string>
 	</array>
 </dict>
 </plist>

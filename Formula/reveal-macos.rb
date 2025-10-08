@@ -5,15 +5,16 @@ class RevealMacos < Formula
   homepage "https://github.com/lgarron/dotfiles"
   head "https://github.com/lgarron/dotfiles.git", :branch => "main"
 
-  depends_on :xcode
+  depends_on :macos
+  depends_on :xcode => :build
 
   def install
-    system "mkdir", "-p", "./.temp"
+    # TODO: look up conventions for building Swift using Homebrew.
 
-    system "swiftc", "-o", "./.temp/reveal-macos", "scripts/system/reveal-macos.swift"
-    bin.install "./.temp/reveal-macos" => "reveal-macos"
+    system "swift", "build", "--disable-sandbox", "--configuration", "release", "--package-path", "./scripts/swift/", "--product", "reveal-macos"
+    bin.install "./scripts/swift/.build/arm64-apple-macosx/release/reveal-macos" => "reveal-macos"
 
-    system "swiftc", "-o", "./.temp/reveal-macos-stdin", "scripts/system/reveal-macos-stdin.swift"
-    bin.install "./.temp/reveal-macos-stdin" => "reveal-macos-stdin"
+    system "swift", "build", "--disable-sandbox", "--configuration", "release", "--package-path", "./scripts/swift/", "--product", "reveal-macos-stdin"
+    bin.install "./scripts/swift/.build/arm64-apple-macosx/release/reveal-macos-stdin" => "reveal-macos-stdin"
   end
 end

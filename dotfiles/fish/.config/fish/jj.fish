@@ -41,7 +41,7 @@ abbr_subcommand_arg jj s "# try: `b` (branch) or `--source` explicitly" rebase
 abbr_subcommand_arg jj d --destination rebase
 
 abbr_subcommand_arg jj ii --ignore-immutable edit squash describe rebase abandon
-abbr_subcommand_arg jj r --revision bookmark
+abbr_subcommand_arg jj r --revision bookmark squash
 
 _fish_abbr_jj_subcommand de describe
 abbr -a jd --set-cursor "jj describe --message \"%" # Special shortened abbreviation

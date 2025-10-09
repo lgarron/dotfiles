@@ -188,13 +188,13 @@ set-dotfiles-repo-email:
 .PHONY: clean
 clean:
 	@echo "Note: \`make clean\` cleans up the repo itself, it does not affect configured files."
-	rm -rf ./.temp
+	rm -rf ./.temp/
 
 # We match the convention from https://github.com/lgarron/Makefile-convention
 .PHONY: reset
 reset: clean
 	@echo "Note: \`make reset\` resets the repo itself, it does not affect configured files."
-	rm -rf ./node_modules ./target
+	rm -rf ./node_modules/ ./target/ ./scripts/swift/.build/
 
 ########
 

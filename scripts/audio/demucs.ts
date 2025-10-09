@@ -43,12 +43,9 @@ dependencies = [
 ]
 `);
     }
-    await new PrintableShellCommand("uv", [
-      "venv",
-      "--allow-existing",
-    ]).shellOutNode({
-      cwd,
-    });
+    await new PrintableShellCommand("uv", ["venv", "--allow-existing"])
+      .print({ styleTextFormat: "gray" })
+      .spawnNodeInherit({ cwd }).success;
     await new PrintableShellCommand("uv", [
       ["run", "demucs"],
       sourceFile,
@@ -57,7 +54,9 @@ dependencies = [
         outputFolder ??
           new Path(sourceFile).extendBasename(".stems").toString(),
       ],
-    ]).shellOutNode({ cwd });
+    ])
+      .print({ styleTextFormat: "gray" })
+      .spawnNodeInherit({ cwd }).success;
   },
 });
 

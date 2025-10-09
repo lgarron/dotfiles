@@ -193,7 +193,7 @@ clean:
 # We match the convention from https://github.com/lgarron/Makefile-convention
 .PHONY: reset
 reset: clean
-	@echo "Note: \`make reset\` resets up the repo itself, it does not affect configured files."
+	@echo "Note: \`make reset\` resets the repo itself, it does not affect configured files."
 	rm -rf ./node_modules ./target
 
 ########

@@ -1,0 +1,6 @@
+{
+	"tsconfig schema": {
+		"prefix": "\"$schema\"",
+		"body": "\"$schema\": \"https://json.schemastore.org/tsconfig\",",
+	},
+}

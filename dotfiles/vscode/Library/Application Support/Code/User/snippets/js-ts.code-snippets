@@ -155,5 +155,19 @@
       "",
       "await run(binary(app), process.argv);",
     ]
+  },
+  "test (bun)": {
+    "prefix": "test",
+    "body": [
+      "test(\"${1:…}\", async () => {",
+      "  ${2}",
+      "});",
+    ]
+  },
+  "expect (bun)": {
+    "prefix": "expect",
+    "body": [
+      "expect(${1}).${2:toBe(true)};",
+    ]
   }
 }

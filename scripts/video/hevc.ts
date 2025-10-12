@@ -198,6 +198,12 @@ const app = command({
           return 10;
         }
         default: {
+          if (forceBitDepth) {
+            console.log(`Unknown simplifiedCodecFingerprint: ${simplifiedCodecFingerprint}
+
+A forced bit depth of ${forceBitDepth} was specified, and will be used.`);
+            break;
+          }
           throw new Error(
             `Unknown simplifiedCodecFingerprint: ${simplifiedCodecFingerprint}`,
           );

@@ -175,6 +175,7 @@
     abbr_subcommand_arg repo a add boilerplate
     abbr_subcommand_arg repo e edit boilerplate
     abbr_subcommand_arg repo r reveal boilerplate
+    abbr_subcommand_arg repo b bunfig boilerplate
 
     abbr_subcommand repo s "setup"
     abbr_subcommand repo d "setup dependencies"

@@ -171,6 +171,8 @@
 	"scm.experimental.showHistoryGraph": true,
 	/******* SCAD *********/
 	"scad-lsp.fmtExePath": "/opt/homebrew/bin/openscad-lsp-topiary",
+	/******* Zig *********/
+	"zig.zls.enabled": "on",
 	/******* Disable AI upsell garbage I didn't ask for *********/
 	"terminal.integrated.initialHint": false,
 	/******* Apply to all profiles *********/

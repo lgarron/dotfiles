@@ -95,7 +95,7 @@ prompt-anchor-pretty = [
 # TODO: figure out why `repo version bump --commit dev` has a tendency to cause this. Maybe a race condition with `gg.app`?
 sweep = [
   "abandon",
-  "empty() & ~merges() & description(exact:\"\") & ~bookmarks() & ~root() & ~@",
+  "empty() & ~merges() & description(exact:\"\") & ~bookmarks() & ~immutable() & ~root() & ~@",
 ]
 
 [ui]

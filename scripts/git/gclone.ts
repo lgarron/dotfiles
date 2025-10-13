@@ -8,6 +8,7 @@ import { argv, exit } from "node:process";
 import { $, sleep } from "bun";
 import { Path } from "path-class";
 import { Temporal } from "temporal-ponyfill";
+import { monotonicNow } from "../lib/monotonic-now";
 
 const gitReposURL = Path.homedir.join("Code/git");
 const repoURLString: string | undefined = argv[2];
@@ -46,8 +47,8 @@ if (await repoPath.join(".git").exists()) {
   console.log(repoPath);
 } else {
   await repoPathParent.mkdir();
-  console.log("Cloning from:", repoCloneSource);
-  console.log("To:", repoPath);
+  console.log(`Cloning from: ${repoCloneSource}`);
+  console.log(`To: ${repoPath}`);
 
   const DATA_DIR = Path.homedir.join(".data", "gclone");
   await mkdir(DATA_DIR.toString(), { recursive: true });
@@ -68,16 +69,20 @@ if (await repoPath.join(".git").exists()) {
   // `git` insists on creating instead of inheriting a folder. We could clone
   // the repo in another folder and move the `.git` repo to the correct place,
   // but this causes other issues. So we wait for `git` to create the folder.
-  const start = Temporal.Instant.fromEpochMilliseconds(performance.now());
-  while (
-    Temporal.Instant.fromEpochMilliseconds(performance.now()).since(start)
-      .seconds < 5
-  ) {
-    if (await repoPath.exists()) {
-      throw new Error("Did not observe the ");
+  const start = monotonicNow();
+  (async () => {
+    while (monotonicNow().since(start).total({ unit: "seconds" }) < 5) {
+      if (await repoPath.exists()) {
+        return;
+      }
+      await sleep(
+        Temporal.Duration.from({ milliseconds: 100 }).total({
+          unit: "milliseconds",
+        }),
+      );
     }
-    await sleep(Temporal.Duration.from({ milliseconds: 100 }).milliseconds);
-  }
+    throw new Error("Did not observe `git` creating the repo folder.");
+  })();
 }
 
 await Promise.all([await $`open-macos ${repoPath}`, await $`code ${repoPath}`]);

@@ -17,6 +17,7 @@ import {
 import { ErgonomicDate } from "ergonomic-date";
 import { PrintableShellCommand } from "printable-shell-command";
 import { Temporal } from "temporal-ponyfill";
+import { monotonicNow } from "../lib/monotonic-now";
 
 const HANDBRAKE_8_BIT_DEPTH_PRESET = "HEVC 8-bit (qv65)";
 const HANDBRAKE_10_BIT_DEPTH_PRESET = "HEVC 10-bit (qv65)";
@@ -87,14 +88,12 @@ const app = command({
     console.log("Analyzing input using command:");
     ffprobeCommand.print();
 
-    const pollStartTime = Temporal.Instant.fromEpochMilliseconds(
-      performance.now(),
-    );
+    const pollStartTime = monotonicNow();
     // Custom backoff algorithm.
     function numSecondsToWait(): Temporal.Duration {
-      const secondsSoFar = Temporal.Instant.fromEpochMilliseconds(
-        performance.now(),
-      ).since(pollStartTime).seconds;
+      const secondsSoFar = Math.floor(
+        monotonicNow().since(pollStartTime).total({ unit: "seconds" }),
+      );
       globalThis.process.stdout.write(
         `Polled for ${secondsSoFar} second${secondsSoFar === 1 ? "" : "s"} so far. `,
       );
@@ -133,10 +132,11 @@ const app = command({
             }
           }
           const durationToWait = numSecondsToWait();
+          const seconds = Math.floor(durationToWait.total({ unit: "seconds" }));
           console.info(
-            `Waiting ${durationToWait.seconds} second${durationToWait.seconds === 1 ? "" : "s"} to poll source again…`,
+            `Waiting ${seconds} second${seconds === 1 ? "" : "s"} to poll source again…`,
           );
-          await sleep(durationToWait.milliseconds);
+          await sleep(durationToWait.total({ unit: "milliseconds" }));
           continue;
         }
         return (await new Response(command.stdout).json()) as {
@@ -184,11 +184,12 @@ const app = command({
               `Detected an input with 10-bit encoding for BT.709 video data. Using an output bit depth of ${forceBitDepth} from the specified --force-bit-depth option.`,
             );
             console.write("Continuing in 2 seconds");
-            for (let i = 0; i < 3; i++) {
-              await sleep(HALF_SECOND.milliseconds);
-              console.write(".");
+            for (let i = 0; i < 4; i++) {
+              if (i !== 0) {
+                console.write(".");
+              }
+              await sleep(HALF_SECOND.total({ unit: "seconds" }));
             }
-            await sleep(HALF_SECOND.milliseconds);
             return forceBitDepth;
           }
           console.warn(

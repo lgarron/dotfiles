@@ -11,6 +11,7 @@
         "naughty-list": "0.3.0",
         "path-class": "^0.3.1",
         "printable-shell-command": "^1.2.0",
+        "temporal-ponyfill": "^0.1.0",
         "xdg-basedir": "^5.1.0",
       },
       "devDependencies": {
@@ -254,6 +255,12 @@
     "strip-ansi": ["strip-ansi@7.1.0", "", { "dependencies": { "ansi-regex": "^6.0.1" } }, "sha512-iq6eVVI64nQQTRYq2KtEg2d2uU7LElhTJwsH4YzIHZshxlgZms/wIc4VoDQTlG/IvVIrBKG06CrZnp0qv7hkcQ=="],
 
     "strip-final-newline": ["strip-final-newline@2.0.0", "", {}, "sha512-BrpvfNAE3dcvq7ll3xVumzjKjZQ5tI1sEUIKr3Uoks0XUl45St3FlatVqef9prk4jRDzhW6WZg+3bk93y6pLjA=="],
+
+    "temporal-polyfill": ["temporal-polyfill@0.3.0", "", { "dependencies": { "temporal-spec": "0.3.0" } }, "sha512-qNsTkX9K8hi+FHDfHmf22e/OGuXmfBm9RqNismxBrnSmZVJKegQ+HYYXT+R7Ha8F/YSm2Y34vmzD4cxMu2u95g=="],
+
+    "temporal-ponyfill": ["temporal-ponyfill@0.1.0", "", { "dependencies": { "temporal-polyfill": "^0.3.0" } }, "sha512-AZF/995Ku4LpWsWuXMLOGPHU6Eddnw2W02SYIRT9AxrtS7cOuIVHXKEu3RtlrG8YBAqnpoEvubhsmDAh0uDMAw=="],
+
+    "temporal-spec": ["temporal-spec@0.3.0", "", {}, "sha512-n+noVpIqz4hYgFSMOSiINNOUOMFtV5cZQNCmmszA6GiVFVRt3G7AqVyhXjhCSmowvQn+NsGn+jMDMKJYHd3bSQ=="],
 
     "to-regex-range": ["to-regex-range@5.0.1", "", { "dependencies": { "is-number": "^7.0.0" } }, "sha512-65P7iz6X5yEr1cwcgvQxbbIw7Uk3gOy5dIdtZ4rDveLqhrdJP+Li/Hx6tyK0NEb+2GCyneCMJiGqrADCSNk8sQ=="],
 

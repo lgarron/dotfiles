@@ -16,9 +16,12 @@ import {
 } from "cmd-ts-too";
 import { ErgonomicDate } from "ergonomic-date";
 import { PrintableShellCommand } from "printable-shell-command";
+import { Temporal } from "temporal-ponyfill";
 
 const HANDBRAKE_8_BIT_DEPTH_PRESET = "HEVC 8-bit (qv65)";
 const HANDBRAKE_10_BIT_DEPTH_PRESET = "HEVC 10-bit (qv65)";
+
+const HALF_SECOND = Temporal.Duration.from({ milliseconds: 500 });
 
 const app = command({
   name: "hevc",
@@ -87,7 +90,7 @@ const app = command({
     const pollStartTime = performance.now();
     const MILLISECONDS_PER_SECOND = 1000;
     // Custom backoff algorithm.
-    function numSecondsToWait(): number {
+    function numSecondsToWait(): Temporal.Duration {
       const secondsSoFar = Math.floor(
         (performance.now() - pollStartTime) / MILLISECONDS_PER_SECOND,
       );
@@ -95,19 +98,19 @@ const app = command({
         `Polled for ${secondsSoFar} second${secondsSoFar === 1 ? "" : "s"} so far. `,
       );
       if (secondsSoFar < 10) {
-        return 1;
+        return Temporal.Duration.from({ seconds: 1 });
       }
       if (secondsSoFar < 60) {
-        return 5;
+        return Temporal.Duration.from({ seconds: 5 });
       }
       if (secondsSoFar < 60 * 10) {
-        return 15;
+        return Temporal.Duration.from({ seconds: 15 });
       }
       if (secondsSoFar > 24 * 60 * 60) {
         console.error("Polling has taken more than 24 hours. Exiting.");
         exit(2);
       }
-      return 60;
+      return Temporal.Duration.from({ seconds: 60 });
     }
 
     const { streams } = await (async () => {
@@ -128,11 +131,11 @@ const app = command({
               exit(1);
             }
           }
-          const numSeconds = numSecondsToWait();
+          const durationToWait = numSecondsToWait();
           console.info(
-            `Waiting ${numSeconds} second${numSeconds === 1 ? "" : "s"} to poll source again…`,
+            `Waiting ${durationToWait.seconds} second${durationToWait.seconds === 1 ? "" : "s"} to poll source again…`,
           );
-          await sleep(numSeconds * MILLISECONDS_PER_SECOND);
+          await sleep(durationToWait.milliseconds);
           continue;
         }
         return (await new Response(command.stdout).json()) as {
@@ -181,10 +184,10 @@ const app = command({
             );
             console.write("Continuing in 2 seconds");
             for (let i = 0; i < 3; i++) {
-              await sleep(500);
+              await sleep(HALF_SECOND.milliseconds);
               console.write(".");
             }
-            await sleep(500);
+            await sleep(HALF_SECOND.milliseconds);
             return forceBitDepth;
           }
           console.warn(

@@ -16,6 +16,7 @@
     "naughty-list": "0.3.0",
     "path-class": "^0.3.1",
     "printable-shell-command": "^1.2.0",
+    "temporal-ponyfill": "^0.1.0",
     "xdg-basedir": "^5.1.0"
   }
 }

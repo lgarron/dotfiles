@@ -8,17 +8,17 @@ import { join } from "node:path";
 import { argv, exit } from "node:process";
 import { $ } from "bun";
 
-const git_repos_root = join(homedir(), "Code/jj");
-const repo_url_string: string | undefined = argv[2];
+const gitReposURL = join(homedir(), "Code/jj");
+const repoURLString: string | undefined = argv[2];
 
-if (!repo_url_string) {
+if (!repoURLString) {
   const newLocal = "Usage: jclone https://github.com/account/repo";
   console.log(newLocal);
   exit(1);
 }
 
 // console.log(github_path, repo_url_string);
-const url = new URL(repo_url_string);
+const url = new URL(repoURLString);
 if (url.protocol !== "https:") {
   console.error(`Invalid protocol (${url.protocol})`);
   exit(1);
@@ -32,20 +32,20 @@ if (!user || !repo) {
   exit(1);
 }
 
-const repo_clone_source = new URL(join("/", user, repo), url).toString();
-const repo_path_parent = join(git_repos_root, url.hostname, user);
-const repo_path = join(repo_path_parent, repo);
+const repoCloneSource = new URL(join("/", user, repo), url).toString();
+const repoPathParent = join(gitReposURL, url.hostname, user);
+const repoPath = join(repoPathParent, repo);
 
-if (existsSync(join(repo_path, ".jj"))) {
+if (existsSync(join(repoPath, ".jj"))) {
   console.log("Repo already checked out!");
-  console.log(repo_path);
-} else if (existsSync(repo_path)) {
+  console.log(repoPath);
+} else if (existsSync(repoPath)) {
   console.log("Repo folder exists but is not a jj repo?");
-  console.log(repo_path);
+  console.log(repoPath);
 } else {
-  await mkdir(repo_path, { recursive: true });
-  console.log("Cloning from:", repo_clone_source);
-  console.log("To:", repo_path);
+  await mkdir(repoPath, { recursive: true });
+  console.log("Cloning from:", repoCloneSource);
+  console.log("To:", repoPath);
 
   // Note: we do *not* `await` the result.
 
@@ -53,7 +53,7 @@ if (existsSync(join(repo_path, ".jj"))) {
   const stderr = openSync("/tmp/gclone-stderr.log", "a");
   const childProcess = spawn(
     "jj",
-    ["git", "clone", repo_clone_source, repo_path],
+    ["git", "clone", repoCloneSource, repoPath],
     {
       detached: true,
       stdio: ["ignore", stdout, stderr],
@@ -62,4 +62,4 @@ if (existsSync(join(repo_path, ".jj"))) {
   childProcess.unref();
 }
 
-await Promise.all([await $`open ${repo_path}`, await $`code ${repo_path}`]);
+await Promise.all([await $`open ${repoPath}`, await $`code ${repoPath}`]);

@@ -1,14 +1,15 @@
 #!/usr/bin/env -S bun run --
 
 import { spawn } from "node:child_process";
-import { existsSync, openSync } from "node:fs";
+import { openSync } from "node:fs";
 import { mkdir } from "node:fs/promises";
-import { homedir } from "node:os";
 import { join } from "node:path";
 import { argv, exit } from "node:process";
-import { $ } from "bun";
+import { $, sleep } from "bun";
+import { Path } from "path-class";
+import { Temporal } from "temporal-ponyfill";
 
-const git_repos_root = join(homedir(), "Code/git");
+const git_repos_root = Path.homedir.join("Code/git");
 const repo_url_string: string | undefined = argv[2];
 
 if (!repo_url_string) {
@@ -33,31 +34,50 @@ if (!user || !repo) {
 }
 
 const repo_clone_source = new URL(join("/", user, repo), url).toString();
-const repo_path_parent = join(git_repos_root, url.hostname, user);
-const repo_path = join(repo_path_parent, repo);
+const repo_path_parent = git_repos_root.join(url.hostname, user);
+const repo_path = repo_path_parent.join(repo);
 
-if (existsSync(join(repo_path, ".git"))) {
+// Note: `.git` can be a file *or* a folder.
+if (await repo_path.join(".git").exists()) {
   console.log("Repo already checked out!");
   console.log(repo_path);
-} else if (existsSync(repo_path)) {
+} else if (await repo_path.exists()) {
   console.log("Repo folder exists but is not a git repo?");
   console.log(repo_path);
 } else {
-  await mkdir(repo_path_parent, { recursive: true });
+  await repo_path_parent.mkdir();
   console.log("Cloning from:", repo_clone_source);
   console.log("To:", repo_path);
 
-  const DATA_DIR = join(homedir(), ".data", "gclone");
-  await mkdir(DATA_DIR, { recursive: true });
-  const stdout = openSync(join(DATA_DIR, "stdout.log"), "a");
-  const stderr = openSync(join(DATA_DIR, "stderr.log"), "a");
+  const DATA_DIR = Path.homedir.join(".data", "gclone");
+  await mkdir(DATA_DIR.toString(), { recursive: true });
+  const stdout = openSync(join(DATA_DIR.toString(), "stdout.log"), "a");
+  const stderr = openSync(join(DATA_DIR.toString(), "stderr.log"), "a");
 
   // Note: we do *not* `await` the result.
-  const childProcess = spawn("git", ["clone", repo_clone_source, repo_path], {
-    detached: true,
-    stdio: ["ignore", stdout, stderr],
-  });
+  const childProcess = spawn(
+    "git",
+    ["clone", repo_clone_source, repo_path.toString()],
+    {
+      detached: true,
+      stdio: ["ignore", stdout, stderr],
+    },
+  );
   childProcess.unref();
+
+  // `git` insists on creating instead of inheriting a folder. We could clone
+  // the repo in another folder and move the `.git` repo to the correct place,
+  // but this causes other issues. So we wait for `git` to create the folder.
+  const start = Temporal.Instant.fromEpochMilliseconds(performance.now());
+  while (
+    Temporal.Instant.fromEpochMilliseconds(performance.now()).since(start)
+      .seconds < 5
+  ) {
+    if (await repo_path.exists()) {
+      throw new Error("Did not observe the ");
+    }
+    await sleep(Temporal.Duration.from({ milliseconds: 100 }).milliseconds);
+  }
 }
 
 await Promise.all([

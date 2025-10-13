@@ -202,7 +202,7 @@ const app = command({
             console.log(`Unknown simplifiedCodecFingerprint: ${simplifiedCodecFingerprint}
 
 A forced bit depth of ${forceBitDepth} was specified, and will be used.`);
-            break;
+            return forceBitDepth;
           }
           throw new Error(
             `Unknown simplifiedCodecFingerprint: ${simplifiedCodecFingerprint}`,

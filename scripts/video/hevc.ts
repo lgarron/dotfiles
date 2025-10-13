@@ -87,13 +87,14 @@ const app = command({
     console.log("Analyzing input using command:");
     ffprobeCommand.print();
 
-    const pollStartTime = performance.now();
-    const MILLISECONDS_PER_SECOND = 1000;
+    const pollStartTime = Temporal.Instant.fromEpochMilliseconds(
+      performance.now(),
+    );
     // Custom backoff algorithm.
     function numSecondsToWait(): Temporal.Duration {
-      const secondsSoFar = Math.floor(
-        (performance.now() - pollStartTime) / MILLISECONDS_PER_SECOND,
-      );
+      const secondsSoFar = Temporal.Instant.fromEpochMilliseconds(
+        performance.now(),
+      ).since(pollStartTime).seconds;
       globalThis.process.stdout.write(
         `Polled for ${secondsSoFar} second${secondsSoFar === 1 ? "" : "s"} so far. `,
       );

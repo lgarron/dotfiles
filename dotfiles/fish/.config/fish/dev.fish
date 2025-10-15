@@ -158,9 +158,14 @@
 
     abbr_subcommand repo v "version"
     abbr_subcommand_arg repo b bump version
+    # We don't have an abbreviation for `repo version bump major`, because it's
+    # relatively rare to use and therefore more of a footgun.
     abbr_subcommand repo vm "version bump minor"
+    abbr -a "pvm" "repo version bump minor"
     abbr_subcommand repo vp "version bump patch"
+    abbr -a "pvp" "repo version bump patch"
     abbr_subcommand repo vd "version bump --commit dev"
+    abbr -a "pvd" "repo version bump --commit dev"
     abbr_subcommand repo major "version bump major"
     abbr_subcommand repo minor "version bump minor"
     abbr_subcommand repo patch "version bump patch"

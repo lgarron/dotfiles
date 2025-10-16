@@ -5,24 +5,24 @@ import {
   appendFile,
   exists,
   type FileChangeInfo,
-  mkdir,
   rmdir,
   stat,
   watch,
 } from "node:fs/promises";
 import { basename, join } from "node:path";
-import { $, file } from "bun";
+import { $ } from "bun";
 import { ErgonomicDate } from "ergonomic-date";
 import { LockfileMutex } from "lockfile-mutex";
+import { Path } from "path-class";
 import { xdgData } from "xdg-basedir";
 
-const DATA_ROOT_DIR = "/Users/lgarron/.data/obsidian-backup";
+const DATA_ROOT_DIR = Path.xdg.data.join("obsidian-backup");
 
-const LOG_FOLDER = join(DATA_ROOT_DIR, "log/");
+const LOG_FOLDER = DATA_ROOT_DIR.join("log");
 async function debugLog(s: string, date: ErgonomicDate = new ErgonomicDate()) {
-  await mkdir(join(LOG_FOLDER, date.localYearMonth), { recursive: true });
+  await LOG_FOLDER.join(date.localYearMonth).mkdir();
   await appendFile(
-    join(LOG_FOLDER, date.localYearMonth, `${date.localYearMonthDay}.log`),
+    LOG_FOLDER.join(date.localYearMonth, `${date.localYearMonthDay}.log`).path,
     `[${process.pid}][${date.multipurposeTimestamp}] ${s}\n`,
   );
 }
@@ -32,33 +32,34 @@ await debugLog("Starting daemon…");
 const JJ = "/opt/homebrew/bin/jj";
 
 assert(xdgData);
-LockfileMutex.newLocked(join(xdgData, "obsidian-backup", "lockfile"));
+LockfileMutex.newLocked(DATA_ROOT_DIR.join("lockfile").path);
 
 /****************/
 
-const REPO_PARENT_DIR = join(DATA_ROOT_DIR, "data");
-const GIT_REPO = join(REPO_PARENT_DIR, "obsidian.git");
-const JJ_REPO = join(REPO_PARENT_DIR, "obsidian.jj");
+const REPO_PARENT_DIR = DATA_ROOT_DIR.join("data");
+const GIT_REPO = REPO_PARENT_DIR.join("obsidian.git");
+const JJ_REPO = REPO_PARENT_DIR.join("obsidian.jj");
 
-await mkdir(REPO_PARENT_DIR, { recursive: true });
+await REPO_PARENT_DIR.mkdir();
 
-if (!(await exists(GIT_REPO))) {
+if (!(await GIT_REPO.exists())) {
   await $`git --git-dir ${GIT_REPO} status || git init --bare ${GIT_REPO}`;
 }
-if (!(await exists(JJ_REPO))) {
-  const JJ_REPO_TEMP_DIR = join(REPO_PARENT_DIR, "jj-temp");
+if (!(await JJ_REPO.exists())) {
+  const JJ_REPO_TEMP_DIR = REPO_PARENT_DIR.join("jj-temp");
 
   await $`jj git init --git-repo ${GIT_REPO} ${JJ_REPO_TEMP_DIR}`;
   await $`cd ${JJ_REPO_TEMP_DIR} && jj config set --repo snapshot.max-new-file-size 10000000 && jj config set --user user.name "Lucas Garron" && jj config set --user user.email code@garron.net && jj config set --repo revsets.log "::"`;
-  await $`mv ${join(JJ_REPO_TEMP_DIR, ".jj")} ${JJ_REPO}`;
+  await JJ_REPO_TEMP_DIR.join(".jj").rename(JJ_REPO);
 
-  const JJ_ICLOUD_FOLDER = join(
+  const JJ_ICLOUD_FOLDER = new Path(
     "/Users/lgarron/Library/Mobile Documents/iCloud~md~obsidian/Documents/.jj",
   );
-  await mkdir(JJ_ICLOUD_FOLDER, { recursive: true });
-  await file(join(JJ_ICLOUD_FOLDER, "repo")).write(join(JJ_REPO, "repo"));
-  await $`ln -s "/Users/lgarron/.data/obsidian-backup/data/obsidian.jj/working_copy" "/Users/lgarron/Library/Mobile Documents/iCloud~md~obsidian/Documents/.jj/working_copy"`;
-  await rmdir(JJ_REPO_TEMP_DIR);
+  await JJ_ICLOUD_FOLDER.mkdir();
+  await JJ_ICLOUD_FOLDER.join("repo").write(JJ_REPO.join("repo").path);
+  // TODO: avoid creating nested alias (i.e. don't link if the destination exists, to avoid `ln`s functionality of placing a link inside a folder if it exists.)
+  await $`ln -s "/Users/lgarron/.local/share/obsidian-backup/data/obsidian.jj/working_copy" "/Users/lgarron/Library/Mobile Documents/iCloud~md~obsidian/Documents/.jj/working_copy"`;
+  await rmdir(JJ_REPO_TEMP_DIR.path);
 }
 
 /****************/

@@ -16,8 +16,8 @@
     <key>KeepAlive</key>
     <true/>
     <key>StandardErrorPath</key>
-    <string>/Users/lgarron/.data/mirror-vscode-settings-macos/launchd.stderr.txt</string>
+    <string>/Users/lgarron/.local/share/mirror-vscode-settings-macos/launchd.stderr.txt</string>
     <key>StandardOutPath</key>
-    <string>/Users/lgarron/.data/mirror-vscode-settings-macos/launchd.stdout.txt</string> 
+    <string>/Users/lgarron/.local/share/mirror-vscode-settings-macos/launchd.stdout.txt</string> 
 </dict>
 </plist>

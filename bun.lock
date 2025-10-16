@@ -9,7 +9,7 @@
         "ergonomic-date": "^0.1.1",
         "lockfile-mutex": "^0.3.3",
         "naughty-list": "0.3.0",
-        "path-class": "^0.3.1",
+        "path-class": "^0.3.4",
         "printable-shell-command": "^1.2.0",
         "temporal-ponyfill": "^0.1.0",
         "xdg-basedir": "^5.1.0",
@@ -216,7 +216,7 @@
 
     "p-map": ["p-map@7.0.3", "", {}, "sha512-VkndIv2fIB99swvQoA65bm+fsmt6UNdGeIB0oxBs+WhAhdh08QA04JXpI7rbB9r08/nkbysKoya9rtDERYOYMA=="],
 
-    "path-class": ["path-class@0.3.1", "", { "dependencies": { "@types/node": "^24.7.1", "trash": "^10.0.0", "typescript": "^5.9.3", "xdg-basedir": "^5.1.0" } }, "sha512-YMBJ4rEqGM/8f05K9NlMA0tWpZDp1GQUMXVuzOz8xrxatXvV5aosEGgYNJF8pCNyN4onEeiI21Jq7MEhN3Hszw=="],
+    "path-class": ["path-class@0.3.4", "", { "dependencies": { "@types/node": "^24.7.1", "trash": "^10.0.0", "typescript": "^5.9.3", "xdg-basedir": "^5.1.0" } }, "sha512-TTHKgMNfPObJRXtWm4PPVtA+nh0iMtkEbcreb7dNY6UZHjiY3raG4ziLHGmqMMMIJTo+EdmY4nAPAxLfdwDeYA=="],
 
     "path-exists": ["path-exists@5.0.0", "", {}, "sha512-RjhtfwJOxzcFmNOi6ltcbcu4Iu+FL3zEj83dk4kAS+fVpTxXLO1b38RvJgT/0QwvV/L3aY9TAnyv0EOqW4GoMQ=="],
 

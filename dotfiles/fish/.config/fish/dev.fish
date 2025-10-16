@@ -216,7 +216,7 @@
     abbr -a ds "diskutil"
     abbr_subcommand diskutil l list
 
-    abbr -a lldb "env HOME=/Users/lgarron/.data/lldb-workaround/ lldb"
+    abbr -a lldb "env HOME=/Users/lgarron/.local/share/lldb-workaround/ lldb"
 
     abbr -a serve "open http://localhost:8000; caddy file-server --listen :8000 --browse --root ."
 

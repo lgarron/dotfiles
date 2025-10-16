@@ -7,7 +7,7 @@
 
     # LSP override: This is an intentionally exported variable.
     # @fish-lsp-disable-next-line 4004
-    set -x "GOPATH" "$HOME/.data/gopath"
+    set -x "GOPATH" "$HOME/.local/share/gopath"
 
     if [ "$_FISH_MANUAL_RELOAD" = "true" -o "$_FISH_USER_PATHS_HAS_BEEN_SET_UP" != "true" ]
       set -l _FISH_MANUAL_RELOAD_EMOJI ""
@@ -17,7 +17,7 @@
       end
       set -e fish_user_paths
 
-      _add_to_path "$HOME/.data/cargo/bin" # For Rust
+      _add_to_path "$HOME/.local/share/cargo/bin" # For Rust
       _add_to_path /opt/homebrew/bin # macOS (Apple Silicon)
       _add_to_path /home/linuxbrew/.linuxbrew/bin # for codespaces
       _add_to_path /home/linuxbrew/.linuxbrew/sbin # for codespaces

@@ -228,7 +228,9 @@ async function garbageCollect(): Promise<void> {
   // `undefined` until we've seen the first commit
   let childCommit: Commit | undefined;
   let numPruned = 0;
+  let count = 1; // Count the final commit (which is removed from the iterator.)
   for await (const commit of removeFinal(parse(commits))) {
+    count++;
     // console.log("---");
     // console.log(info.change_id);
     if (!childCommit) {
@@ -274,7 +276,9 @@ Oldest squashed commit: ${oldestSquashedDate.multipurposeTimestamp}`;
   await $`cd ${DIR} && ${JJ} op abandon ..@-`; // TODO: does this actually enable garbage collection of objects properly?
   await $`cd ${DIR} && ${JJ} util gc --expire=now`;
   if (numPruned > 0) {
-    await debugLog(`Pruned ${numPruned} commit${numPruned === 1 ? "" : "s"}.`);
+    await debugLog(
+      `Pruned ${numPruned} commit${numPruned === 1 ? "" : "s"} out of ${count} commit${count === 1 ? "" : "s"} (leaving ${count - numPruned} commit ${count - numPruned === 1 ? "" : "s"}).`,
+    );
   }
 }
 

@@ -3,13 +3,12 @@
 import assert from "node:assert";
 import {
   appendFile,
-  exists,
   type FileChangeInfo,
   rmdir,
   stat,
   watch,
 } from "node:fs/promises";
-import { basename, join } from "node:path";
+import { basename } from "node:path";
 import { $ } from "bun";
 import { ErgonomicDate } from "ergonomic-date";
 import { LockfileMutex } from "lockfile-mutex";
@@ -64,8 +63,9 @@ if (!(await JJ_REPO.exists())) {
 
 /****************/
 
-const DIR =
-  "/Users/lgarron/Library/Mobile Documents/iCloud~md~obsidian/Documents";
+const DIR = new Path(
+  "/Users/lgarron/Library/Mobile Documents/iCloud~md~obsidian/Documents",
+);
 
 interface CommitInfo {
   change_id: string;
@@ -247,7 +247,7 @@ async function garbageCollect(): Promise<void> {
         era.atLeastThisFarApart,
       )
     ) {
-      console.log(`❌ Pruning: ${commit.info.change_id}`);
+      console.log(`✂️ Pruning: ${commit.info.change_id}`);
       // TODO: record total squashes
       const numSquashed = childCommit.numSquashed + commit.numSquashed;
       // TODO: also record the oldest timestamp that has been squashed into this commit.
@@ -315,15 +315,15 @@ async function callback(change: FileChangeInfo<string>) {
     return;
   }
   if (
-    (await exists(join(DIR, change.filename))) &&
-    (await stat(join(DIR, change.filename))).isDirectory()
+    (await DIR.join(change.filename).exists()) &&
+    (await stat(DIR.join(change.filename).path)).isDirectory()
   ) {
     return;
   }
   console.log(change.filename);
   await maybeCommit();
 }
-const watcher = watch(DIR, { recursive: true });
+const watcher = watch(DIR.path, { recursive: true });
 
 await maybeCommit();
 await garbageCollect(); // TODO?

@@ -79,8 +79,8 @@
 ### Editors
 
     # TODO: https://github.com/microsoft/vscode/issues/139634
-    set -xg "VISUAL" (command -v code)" -w --"
-    set -xg "EDITOR" (command -v code)" -w --"
+    set -xg "VISUAL" (command -v code)" --wait --"
+    set -xg "EDITOR" (command -v code)" --wait --"
 
 # Theme
 

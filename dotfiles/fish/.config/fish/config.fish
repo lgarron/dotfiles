@@ -85,7 +85,7 @@
 # Theme
 
     # Restore blue color for commands.
-    set -g fish_color_command blue
+    set -g fish_color_command blue --bold
 
 # Cleanup
 

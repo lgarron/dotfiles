@@ -9,4 +9,4 @@ end tell'
 terminal-notifier \
     -title "Mount Trenzalore drives (local)" \
     -message "Mounted successfully" \
-    -execute "reveal-macos "(string escape /Volumes/Trenzalore/)
+    -execute "/opt/homebrew/bin/reveal-macos "(string escape /Volumes/Trenzalore/)

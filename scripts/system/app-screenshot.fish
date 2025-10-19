@@ -7,7 +7,7 @@ if not test -d $PARENT_FOLDER
 end
 
 # We use an absolute path because we're invoked by `Karabiner-Elements` without the normal Homebrew path.
-set REVEAL_MACOS $HOME/Code/git/github.com/lgarron/dotfiles/scripts/system/reveal-macos.swift
+set REVEAL_MACOS /opt/homebrew/bin/reveal-macos
 
 set DATE_STRING (date "+%Y-%m-%d — %H-%M-%S")
 

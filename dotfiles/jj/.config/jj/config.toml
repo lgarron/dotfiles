@@ -100,3 +100,12 @@ sweep = [
 
 [ui]
 diff-editor = ":builtin"
+
+[user]
+name = "Lucas Garron"
+email = "code@garron.net"
+
+[[--scope]]
+--when.repositories = ["~/Code/git/github.com/thewca/"]
+[--scope.user]
+email = "lgarron@worldcubeassociation.org"

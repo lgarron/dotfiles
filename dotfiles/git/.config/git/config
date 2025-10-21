@@ -42,3 +42,9 @@
 [includeIf "gitdir:/Users/"]
 	path = ~/.config/git/config-git-credential-for-ssh-on-macOS
 
+# Email routing
+[user]
+	email = code@garron.net
+[includeIf "gitdir:~/Code/git/github.com/thewca/"]
+	path = ~/.config/git/config-wca
+

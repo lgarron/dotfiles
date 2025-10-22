@@ -65,8 +65,6 @@ mac-set-finder-sidebar:
 
 .PHONY: mac-keyboard-shortcuts
 mac-keyboard-shortcuts:
-	# Global
-	${MAC_ADD_SHORTCUT} "NSGlobalDomain"            "Emoji & Symbols"          "^⇧⌘ "
 	# Chrome
 	${MAC_ADD_SHORTCUT} "com.google.Chrome"         "Extensions"               "⇧⌘E"
 	${MAC_ADD_SHORTCUT} "com.google.Chrome.canary"  "Extensions"               "⇧⌘E"

@@ -328,6 +328,11 @@
 	"chat.agent.enabled": false,
 	"chat.disableAIFeatures": true,
 	"gitlens.plusFeatures.enabled": false,
-	"gitlens.ai.enabled": false
+	"gitlens.ai.enabled": false,
+	"github.copilot.chat.reviewAgent.enabled": false,
+	"github.copilot.chat.summarizeAgentConversationHistory.enabled": false,
+	"githubPullRequests.codingAgent.autoCommitAndPush": false,
+	"githubPullRequests.codingAgent.enabled": false,
+	"github.copilot.chat.newWorkspaceCreation.enabled": false
 	/****************/
 }

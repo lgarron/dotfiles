@@ -107,3 +107,4 @@
     # Expand `lgarron/lgarron` tap args.
     function abbr_brew_l_fn; _abbr_expand_anyarg brew l "--HEAD lgarron/lgarron/%" commit; end; abbr -a abbr_brew_l --regex l --position anywhere --function abbr_brew_l_fn --set-cursor
     function abbr_brew_ll_fn; _abbr_expand_anyarg brew ll "lgarron/lgarron/%" commit; end; abbr -a abbr_brew_ll --regex ll --position anywhere --function abbr_brew_ll_fn --set-cursor
+    function abbr_brew_cc_fn; _abbr_expand_anyarg brew cc "cubing/cubing/%" commit; end; abbr -a abbr_brew_cc --regex cc --position anywhere --function abbr_brew_cc_fn --set-cursor

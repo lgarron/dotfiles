@@ -11,27 +11,6 @@
 			<array>
 				<dict>
 					<key>ID</key>
-					<string>DE8DE557-A781-4BCA-B160-39A44667590E</string>
-					<key>children</key>
-					<array/>
-					<key>enabled</key>
-					<true/>
-					<key>name</key>
-					<string>Safari.app</string>
-					<key>settings</key>
-					<dict>
-						<key>folderDepth</key>
-						<integer>1</integer>
-						<key>parser</key>
-						<string>QSDirectoryParser</string>
-						<key>path</key>
-						<string>/Applications/Safari.app</string>
-					</dict>
-					<key>source</key>
-					<string>QSFileSystemObjectSource</string>
-				</dict>
-				<dict>
-					<key>ID</key>
 					<string>111F357D-22C9-4436-AD7A-4614CEF57751</string>
 					<key>children</key>
 					<array/>
@@ -1287,8 +1266,8 @@
 	</dict>
 	<key>omittedItems</key>
 	<array>
-		<string>/Users/lgarron/Library/Mobile Documents/iCloud~md~obsidian/Documents</string>
 		<string>/Users/lgarron/Applications/CrossOver/Ubisoft</string>
+		<string>/Users/lgarron/Library/Mobile Documents/iCloud~md~obsidian/Documents</string>
 	</array>
 </dict>
 </plist>

@@ -250,3 +250,10 @@
             codespaces-install-common-extensions
         end
     end
+
+    # TODO: make this ab abbrevation instead?
+    function repo-HEAD
+        set COMMAND cargo run --manifest-path /Users/lgarron/Code/git/github.com/lgarron/repo/Cargo.toml -- $argv
+        string join -- " " (string escape -- $COMMAND)
+        command $COMMAND
+    end

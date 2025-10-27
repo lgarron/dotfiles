@@ -3,7 +3,7 @@
 # Full `fish` path is hardcoded so it works outside the shell (e.g. using Karabiner). Note that a symlink at `$HOME/Dropbox` doesn't seem to work for this.
 set PARENT_FOLDER "$HOME/Dropbox/Screenshots/Germain Screenshots/Germain App Screenshots/"
 if not test -d $PARENT_FOLDER
-    set PARENT_FOLDER "/Volumes/Samos/.CloudStorage/Data/Dropbox/Screenshots/Pythagoras Screenshots/Pythagoras App Screenshots/"
+    set PARENT_FOLDER "/Volumes/Samos/Pythagoras/Users/lgarron/Dropbox/Screenshots/Pythagoras Screenshots/Pythagoras App Screenshots/"
 end
 
 # We use an absolute path because we're invoked by `Karabiner-Elements` without the normal Homebrew path.

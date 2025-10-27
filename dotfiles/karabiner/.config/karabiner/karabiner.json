@@ -449,6 +449,27 @@
                                 "type": "basic"
                             }
                         ]
+                    },
+                    {
+                        "description": "Reconnect all displays (calculator key)",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "product_id": 1957,
+                                                "vendor_id": 14145
+                                            }
+                                        ],
+                                        "type": "device_if"
+                                    }
+                                ],
+                                "from": { "consumer_key_code": "al_calculator" },
+                                "to": [{ "shell_command": "osascript -e beep && /Users/lgarron/Code/git/github.com/lgarron/dotfiles/setup/scripts/trampoline.fish /Users/lgarron/Code/git/github.com/lgarron/dotfiles/scripts/system/connect-all-displays.ts" }],
+                                "type": "basic"
+                            }
+                        ]
                     }
                 ]
             },
@@ -679,6 +700,14 @@
                             "to": [{ "key_code": "right_command" }]
                         }
                     ]
+                },
+                {
+                    "identifiers": {
+                        "is_consumer": true,
+                        "product_id": 1957,
+                        "vendor_id": 14145
+                    },
+                    "ignore": false
                 }
             ],
             "fn_function_keys": [

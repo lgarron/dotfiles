@@ -47,6 +47,10 @@ _fish_abbr_jj_subcommand de describe
 abbr -a jd --set-cursor "jj describe --message \"%" # Special shortened abbreviation
 abbr_subcommand_arg jj m --message describe
 
+_fish_abbr_jj_subcommand c commit
+abbr -a jc --set-cursor "jj commit --message \"%" # Special shortened abbreviation
+abbr_subcommand_arg jj m --message commit
+
 # Also see: `gdv` (in `git.fish`)
 function _abbr_jdv
     echo "jj describe --message \""(repo version get)

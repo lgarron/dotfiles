@@ -1,8 +1,9 @@
 class ChromiumBisectBuilds < Formula
   desc ""
   homepage ""
-  url "https://chromium.googlesource.com/chromium/src/+/HEAD/tools/bisect-builds.py?format=TEXT", using: :nounzip
+  url "https://chromium.googlesource.com/chromium/src/+/41e9c4d36e8bb573ee22c5647b78cf93e7ed694e/tools/bisect-builds.py?format=TEXT", using: :nounzip
   version "HEAD"
+  sha256 "f5e6cafb6ef9681d92dc0159d606d09c1da26960e9682fe907eae2386b8a68e6"
 
   depends_on "uv"
 

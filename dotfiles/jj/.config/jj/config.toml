@@ -98,6 +98,8 @@ sweep = [
   "empty() & ~merges() & description(exact:\"\") & ~bookmarks() & ~immutable() & ~root() & ~@",
 ]
 
+at = ["log", "--no-graph", "--revisions", "@", "--template", "change_id"]
+
 [ui]
 diff-editor = ":builtin"
 
@@ -109,3 +111,4 @@ email = "code@garron.net"
 --when.repositories = ["~/Code/git/github.com/thewca/"]
 [--scope.user]
 email = "lgarron@worldcubeassociation.org"
+# TODO: figure out why `repo version bump --commit dev` has a tendency to cause this. Maybe a race condition with `gg.app`?

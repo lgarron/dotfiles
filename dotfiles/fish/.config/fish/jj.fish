@@ -17,13 +17,15 @@ _fish_abbr_jj_subcommand a abandon
 _fish_abbr_jj_subcommand e edit
 _fish_abbr_jj_subcommand l log
 _fish_abbr_jj_subcommand m "bookmark set --revision here main"
-_fish_abbr_jj_subcommand n new
 _fish_abbr_jj_subcommand s status
 _fish_abbr_jj_subcommand st status
 _fish_abbr_jj_subcommand sq squash
 _fish_abbr_jj_subcommand u undo
 _fish_abbr_jj_subcommand t tug
 _fish_abbr_jj_subcommand re restore
+
+_fish_abbr_jj_subcommand n new
+abbr_subcommand_arg jj b --insert-before new
 
 _fish_abbr_jj_subcommand b bookmark
 _fish_abbr_jj_subcommand bs "bookmark set --revision here"

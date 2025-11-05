@@ -10,7 +10,7 @@ import { Path } from "path-class";
 import { Temporal } from "temporal-ponyfill";
 import { monotonicNow } from "../lib/monotonic-now";
 
-const gitReposURL = Path.homedir.join("Code/git");
+const gitReposRootPath = Path.homedir.join("Code/git");
 const repoURLString: string | undefined = argv[2];
 
 if (!repoURLString) {
@@ -35,7 +35,7 @@ if (!user || !repo) {
 }
 
 const repoCloneSource = new URL(join("/", user, repo), url).toString();
-const repoPathParent = gitReposURL.join(url.hostname, user);
+const repoPathParent = gitReposRootPath.join(url.hostname, user);
 const repoPath = repoPathParent.join(repo);
 
 // Note: `.git` can be a file *or* a folder.

@@ -50,7 +50,7 @@ if (await repoPath.join(".git").exists()) {
   console.log(`Cloning from: ${repoCloneSource}`);
   console.log(`To: ${repoPath}`);
 
-  const DATA_DIR = Path.homedir.join(".data", "gclone");
+  const DATA_DIR = Path.xdg.data.join("gclone");
   await mkdir(DATA_DIR.toString(), { recursive: true });
   const stdout = openSync(join(DATA_DIR.toString(), "stdout.log"), "a");
   const stderr = openSync(join(DATA_DIR.toString(), "stderr.log"), "a");

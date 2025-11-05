@@ -195,7 +195,7 @@ reset: clean
 ########
 
 .PHONY: test
-test: test-help test-completions test-bun
+test: test-help test-completions test-bun cargo-test
 
 .PHONY: test-help
 test-help:
@@ -243,3 +243,7 @@ format-rust:
 .PHONY: test-bun
 test-bun:
 	bun test
+
+.PHONY: cargo-test
+cargo-test:
+	cargo test

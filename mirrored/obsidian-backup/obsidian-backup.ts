@@ -278,7 +278,7 @@ Oldest squashed commit: ${oldestSquashedDate.multipurposeTimestamp}`;
   await $`cd ${DIR} && ${JJ} util gc --expire=now`;
   if (numPruned > 0) {
     await debugLog(
-      `Pruned ${numPruned} commit${numPruned === 1 ? "" : "s"} out of ${count} commit${count === 1 ? "" : "s"} (leaving ${count - numPruned} commit ${count - numPruned === 1 ? "" : "s"}).`,
+      `Pruned ${numPruned} commit${numPruned === 1 ? "" : "s"} out of ${count} commit${count === 1 ? "" : "s"} (leaving ${count - numPruned} commit${count - numPruned === 1 ? "" : "s"}).`,
     );
   }
 }

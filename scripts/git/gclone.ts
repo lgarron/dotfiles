@@ -1,12 +1,11 @@
 #!/usr/bin/env -S bun run --
 
-import { spawn } from "node:child_process";
 import { openSync } from "node:fs";
-import { mkdir } from "node:fs/promises";
 import { join } from "node:path";
 import { argv, exit } from "node:process";
 import { $, sleep } from "bun";
 import { Path } from "path-class";
+import { PrintableShellCommand } from "printable-shell-command";
 import { Temporal } from "temporal-ponyfill";
 import { monotonicNow } from "../lib/monotonic-now";
 
@@ -51,20 +50,17 @@ if (await repoPath.join(".git").exists()) {
   console.log(`To: ${repoPath}`);
 
   const DATA_DIR = Path.xdg.data.join("gclone");
-  await mkdir(DATA_DIR.toString(), { recursive: true });
-  const stdout = openSync(join(DATA_DIR.toString(), "stdout.log"), "a");
-  const stderr = openSync(join(DATA_DIR.toString(), "stderr.log"), "a");
+  await DATA_DIR.mkdir();
+  const stdout = openSync(DATA_DIR.join("stdout.log").path, "a");
+  const stderr = openSync(DATA_DIR.join("stderr.log").path, "a");
 
-  // Note: we do *not* `await` the result.
-  const childProcess = spawn(
-    "git",
-    ["clone", repoCloneSource, repoPath.toString()],
-    {
-      detached: true,
-      stdio: ["ignore", stdout, stderr],
-    },
-  );
-  childProcess.unref();
+  new PrintableShellCommand("git", [
+    "clone",
+    repoCloneSource,
+    repoPath.path,
+  ]).spawnDetached({
+    stdio: ["ignore", stdout, stderr],
+  });
 
   // `git` insists on creating instead of inheriting a folder. We could clone
   // the repo in another folder and move the `.git` repo to the correct place,

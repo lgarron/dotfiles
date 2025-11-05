@@ -3,13 +3,11 @@
   "extends": ["./node_modules/@cubing/dev-config/biome/biome.json"],
   "files": {
     "includes": [
-      ".config/**/*.ts",
-      "scripts/**/*.ts",
-      "scripts/**/*.json",
-      "mirrored/**/*.ts",
-      "repo-script/**/*.ts",
+      "**",
       "!.temp",
-      "!dotfiles/vscode/**/*"
+      "!dotfiles/vscode/**/*",
+      "!exported",
+      "!mirrored/vscode-settings-macos"
     ]
   }
 }

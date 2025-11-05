@@ -31,7 +31,7 @@ await debugLog("Starting daemon…");
 const JJ = "/opt/homebrew/bin/jj";
 
 assert(xdgData);
-LockfileMutex.newLocked(DATA_ROOT_DIR.join("lockfile").path);
+LockfileMutex.newLocked(DATA_ROOT_DIR.join("lockfile"));
 
 /****************/
 

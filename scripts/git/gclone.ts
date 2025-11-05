@@ -57,7 +57,7 @@ if (await repoPath.join(".git").exists()) {
   new PrintableShellCommand("git", [
     "clone",
     repoCloneSource,
-    repoPath.path,
+    repoPath,
   ]).spawnDetached({
     stdio: ["ignore", stdout, stderr],
   });

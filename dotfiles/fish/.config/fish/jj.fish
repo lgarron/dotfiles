@@ -188,8 +188,10 @@ function jj
     set -g _FISH_JJ_WAS_RUN_DURING_COMMAND true
 end
 
-abbr -a bun-roll "set -g _FISH_JJ_WAS_RUN_DURING_COMMAND true &&
+set -l BUN_ROLL "set -g _FISH_JJ_WAS_RUN_DURING_COMMAND true &&
 repo dependencies --package-manager bun roll --commit"
+abbr -a bun-roll $BUN_ROLL
+abbr -a brr $BUN_ROLL
 
 # LSP override: This is an "exported" function (meant to be used outside this file).
 # @fish-lsp-disable-next-line 4004

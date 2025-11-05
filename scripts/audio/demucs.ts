@@ -45,7 +45,7 @@ dependencies = [
     }
     await new PrintableShellCommand("uv", ["venv", "--allow-existing"])
       .print({ argumentLineWrapping: "inline", styleTextFormat: "gray" })
-      .spawnNodeInherit({ cwd }).success;
+      .spawnInherit({ cwd }).success;
     await new PrintableShellCommand("uv", [
       ["run", "demucs"],
       sourceFile,
@@ -56,7 +56,7 @@ dependencies = [
       ],
     ])
       .print({ skipLineWrapBeforeFirstArg: true, styleTextFormat: "gray" })
-      .spawnNodeInherit({ cwd }).success;
+      .spawnInherit({ cwd }).success;
   },
 });
 

@@ -47,7 +47,7 @@ class ScriptSource {
       this.sourcePath,
     ])
       .print({ styleTextFormat })
-      .spawnBunInherit().success;
+      .spawnInherit().success;
   }
 }
 
@@ -75,7 +75,7 @@ const app = command({
     );
     await new PrintableShellCommand("bun", ["install", "--frozen-lockfile"])
       .print({ styleTextFormat })
-      .spawnBunInherit().success;
+      .spawnInherit().success;
     await Promise.all(
       scriptSources.map((scriptSource) => scriptSource.build()),
     );

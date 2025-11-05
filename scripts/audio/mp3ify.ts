@@ -38,7 +38,7 @@ const app = command({
       outputFile,
     ]);
 
-    await ffmpegCommand.shellOutNode();
+    await ffmpegCommand.shellOut();
   },
 });
 

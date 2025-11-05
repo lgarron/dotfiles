@@ -39,7 +39,7 @@ const app = command({
       outputFileName,
     ]);
     command.print();
-    await command.shellOutBun();
+    await command.shellOut();
   },
 });
 

@@ -50,7 +50,7 @@ Skips known volumes from: ~/.config/sd-card-backup/known-non-sd-card-volumes.jso
 
     {
       const [command, ...args] = knownNonSDCardVolumesConfig.commandToRunBefore;
-      await new PrintableShellCommand(command, args).shellOutNode();
+      await new PrintableShellCommand(command, args).shellOut();
     }
 
     const knownSDCardNames = new Set(sdCardJSONConfig.sd_card_names);

@@ -112,7 +112,7 @@ complete -c ${binaryName} -l completions -d 'Print completions for the given she
         ...tagsToRemoveLocally,
       ])
         .print({ styleTextFormat })
-        .spawnBunInherit().success;
+        .spawnInherit().success;
     }
 
     /**************** Remote tag ****************/
@@ -144,7 +144,7 @@ Name of missing remote: ${styleText("bold", remote)}`,
         ...tagsToRemoveFromRemote.map((tag) => `:${tag}`),
       ])
         .print({ styleTextFormat })
-        .spawnBunInherit().success;
+        .spawnInherit().success;
     }
 
     /**************** Remote releases ****************/
@@ -171,7 +171,7 @@ Name of missing remote: ${styleText("bold", remote)}`,
           remoteURL,
         ])
           .print({ styleTextFormat })
-          .spawnBunInherit().success;
+          .spawnInherit().success;
       }
     }
 

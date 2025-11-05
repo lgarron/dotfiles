@@ -54,7 +54,7 @@ const app = command({
       inputImage,
       ["-scale", innnerDimension.toString()],
       preSizedPNG,
-    ]).shellOutNode();
+    ]).shellOut();
 
     await writeFile(
       join(iconPackagePath, "icon.json"),
@@ -107,7 +107,7 @@ const app = command({
       "824",
       "2",
       tempInnerPNG,
-    ]).shellOutNode();
+    ]).shellOut();
 
     const output = outputImage ?? `${inputImage}.app-icon.png`;
     // TODO: launder the icon through a stub app instead.
@@ -117,7 +117,7 @@ const app = command({
       ["-gravity", "center"],
       ["-extent", "2048x2048"],
       output,
-    ]).shellOutNode();
+    ]).shellOut();
 
     await $`reveal-macos ${output}`;
   },

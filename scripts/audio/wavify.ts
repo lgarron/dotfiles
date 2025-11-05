@@ -26,15 +26,12 @@ const app = command({
   handler: async ({ inputFile, outputFile: outputFileArg }) => {
     const outputFile = outputFileArg ?? `${inputFile}.wav`;
 
-    const cmd = new PrintableShellCommand("ffmpeg", [
+    await new PrintableShellCommand("ffmpeg", [
       ["-i", inputFile],
       ["-f", "wav"],
       ["-qscale:a", "0"],
       outputFile,
-    ]);
-    cmd.print();
-    // TODO: fix the overwrite prompt?
-    await cmd.spawnBun().success;
+    ]).shellOut();
   },
 });
 

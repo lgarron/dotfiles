@@ -8,7 +8,7 @@
         "cmd-ts-too": "^0.15.3",
         "comment-json": "^4.2.5",
         "ergonomic-date": "^0.1.1",
-        "lockfile-mutex": "^0.3.3",
+        "lockfile-mutex": "^0.3.4",
         "naughty-list": "^1.0.0",
         "path-class": "^0.3.4",
         "printable-shell-command": "^2.3.0",
@@ -187,7 +187,7 @@
 
     "jsonschema": ["jsonschema@1.5.0", "", {}, "sha512-K+A9hhqbn0f3pJX17Q/7H6yQfD/5OXgdrR5UE12gMXCiN9D5Xq2o5mddV2QEcX/bjla99ASsAAQUyMCCRWAEhw=="],
 
-    "lockfile-mutex": ["lockfile-mutex@0.3.3", "", { "dependencies": { "node-cleanup": "^2.1.2" } }, "sha512-bLpsMKr7wTNhZCvg5HHHne4GOigDCjD4GTV2wuna3w0f98YfdG2ln4Rc/CyPxP9pIkqB51bXc9BYpKK2OFYOxA=="],
+    "lockfile-mutex": ["lockfile-mutex@0.3.4", "", { "dependencies": { "node-cleanup": "^2.1.2", "path-class": "^0.4.0" } }, "sha512-NeF4pGj1EeiJsdUc8Z1iCmle1Mc9HuYmRGlH0mVTZcvKCNpS6dQgpdq3pqJoA2e+vFm6+yycgbwNJAmN1Gf0CQ=="],
 
     "merge-stream": ["merge-stream@2.0.0", "", {}, "sha512-abv/qOcuPfk3URPfDzmZU1LKmuw8kT+0nIHvKrKgFrwifol/doWcdA4ZqsWQ8ENrFKkd67Mfpo/LovbIUsbt3w=="],
 
@@ -291,11 +291,11 @@
 
     "bun-types/@types/node": ["@types/node@24.2.0", "", { "dependencies": { "undici-types": "~7.10.0" } }, "sha512-3xyG3pMCq3oYCNg7/ZP+E1ooTaGB4cG8JWRsqqOYQdbWNY4zbaV0Ennrd7stjiJEFZCaybcIgpTjJWHRfBSIDw=="],
 
+    "lockfile-mutex/path-class": ["path-class@0.4.2", "", { "dependencies": { "@types/node": "^24.7.1", "xdg-basedir": "^5.1.0" } }, "sha512-ywh99ZOo1w4CL0GQwgO18LV9EC+z0Jp5ISiRcjKEDZUgy8kyTE8LFcPuzmoNudY62Fa7pjZvV9rDtWXeU+GM4A=="],
+
     "mount-point/@sindresorhus/df": ["@sindresorhus/df@1.0.1", "", {}, "sha512-1Hyp7NQnD/u4DSxR2DGW78TF9k7R0wZ8ev0BpMAIzA6yTQSHqNb5wTuvtcPYf4FWbVse2rW7RgDsyL8ua2vXHw=="],
 
     "naughty-list/esbuild": ["esbuild@0.25.12", "", { "optionalDependencies": { "@esbuild/aix-ppc64": "0.25.12", "@esbuild/android-arm": "0.25.12", "@esbuild/android-arm64": "0.25.12", "@esbuild/android-x64": "0.25.12", "@esbuild/darwin-arm64": "0.25.12", "@esbuild/darwin-x64": "0.25.12", "@esbuild/freebsd-arm64": "0.25.12", "@esbuild/freebsd-x64": "0.25.12", "@esbuild/linux-arm": "0.25.12", "@esbuild/linux-arm64": "0.25.12", "@esbuild/linux-ia32": "0.25.12", "@esbuild/linux-loong64": "0.25.12", "@esbuild/linux-mips64el": "0.25.12", "@esbuild/linux-ppc64": "0.25.12", "@esbuild/linux-riscv64": "0.25.12", "@esbuild/linux-s390x": "0.25.12", "@esbuild/linux-x64": "0.25.12", "@esbuild/netbsd-arm64": "0.25.12", "@esbuild/netbsd-x64": "0.25.12", "@esbuild/openbsd-arm64": "0.25.12", "@esbuild/openbsd-x64": "0.25.12", "@esbuild/openharmony-arm64": "0.25.12", "@esbuild/sunos-x64": "0.25.12", "@esbuild/win32-arm64": "0.25.12", "@esbuild/win32-ia32": "0.25.12", "@esbuild/win32-x64": "0.25.12" }, "bin": { "esbuild": "bin/esbuild" } }, "sha512-bbPBYYrtZbkt6Os6FiTLCTFxvq4tt3JKall1vRwshA3fdVztsLAatFaZobhkBC8/BrPetoa0oksYoKXoG4ryJg=="],
-
-    "naughty-list/lockfile-mutex": ["lockfile-mutex@0.3.4", "", { "dependencies": { "node-cleanup": "^2.1.2", "path-class": "^0.4.0" } }, "sha512-NeF4pGj1EeiJsdUc8Z1iCmle1Mc9HuYmRGlH0mVTZcvKCNpS6dQgpdq3pqJoA2e+vFm6+yycgbwNJAmN1Gf0CQ=="],
 
     "naughty-list/printable-shell-command": ["printable-shell-command@2.1.2", "", { "dependencies": { "path-class": "^0.3.3", "type-fest": "^5.1.0" }, "optionalDependencies": { "@types/bun": "^1.2.20", "@types/node": "^24.2.0" } }, "sha512-CzsXuTwIstYkSkrrXW0WlCXPXU+/5Kw2jAV9/Z7IWaFJu2LBBdRW2UP4Ra/sp88gYpTuWRkCmMDJJFbH/s0oZw=="],
 
@@ -358,7 +358,5 @@
     "naughty-list/esbuild/@esbuild/win32-ia32": ["@esbuild/win32-ia32@0.25.12", "", { "os": "win32", "cpu": "ia32" }, "sha512-HkqnmmBoCbCwxUKKNPBixiWDGCpQGVsrQfJoVGYLPT41XWF8lHuE5N6WhVia2n4o5QK5M4tYr21827fNhi4byQ=="],
 
     "naughty-list/esbuild/@esbuild/win32-x64": ["@esbuild/win32-x64@0.25.12", "", { "os": "win32", "cpu": "x64" }, "sha512-alJC0uCZpTFrSL0CCDjcgleBXPnCrEAhTBILpeAp7M/OFgoqtAetfBzX0xM00MUsVVPpVjlPuMbREqnZCXaTnA=="],
-
-    "naughty-list/lockfile-mutex/path-class": ["path-class@0.4.2", "", { "dependencies": { "@types/node": "^24.7.1", "xdg-basedir": "^5.1.0" } }, "sha512-ywh99ZOo1w4CL0GQwgO18LV9EC+z0Jp5ISiRcjKEDZUgy8kyTE8LFcPuzmoNudY62Fa7pjZvV9rDtWXeU+GM4A=="],
   }
 }

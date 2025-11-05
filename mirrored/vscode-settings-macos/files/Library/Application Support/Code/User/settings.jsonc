@@ -20,7 +20,7 @@
 	"editor.acceptSuggestionOnCommitCharacter": false,
 	"diffEditor.hideUnchangedRegions.enabled": true,
 	"editor.accessibilitySupport": "off", // Setting regularly added by VS Code after asking if I'm using a screen reader.
-	"window.title": "${rootName}${separator}${activeEditorShort}${separator}${profileName}${separator}branch: ${activeRepositoryBranchName}",
+	"window.title": "${rootName}${separator}${activeEditorShort}${separator}${profileName}",
 	/******** Window ********/
 	"window.commandCenter": false,
 	"customWindowZoom.zoomLevelChangeValue": 0.25,

@@ -67,7 +67,7 @@ const app = command({
     const forceBitDepth: 8 | 10 | undefined =
       typeof forceBitDepthString === "undefined"
         ? undefined
-        : (parseInt(forceBitDepthString) as 8 | 10);
+        : (parseInt(forceBitDepthString, 10) as 8 | 10);
 
     interface FFprobeStream {
       codec_type: "video" | "audio" | string;

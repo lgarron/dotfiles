@@ -157,7 +157,7 @@ function parseErgonomicDateOldestSquashed(s: string): ErgonomicDate | null {
     return match;
   }
   const [_, secondsString, ...__] = match;
-  return new ErgonomicDate(parseInt(secondsString) * 1000);
+  return new ErgonomicDate(parseInt(secondsString, 10) * 1000);
 }
 
 function isAtLeastThisLongBetween(
@@ -194,7 +194,7 @@ class Commit {
       return 1;
     }
     const [_, n, ...__] = match;
-    return parseInt(n);
+    return parseInt(n, 10);
   }
 
   get oldestSquashedDate(): ErgonomicDate {

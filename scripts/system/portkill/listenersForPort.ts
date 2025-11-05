@@ -8,7 +8,7 @@ function parseListenersForPort(s: string): number[] {
       .split("\n")
       // Note that passing in `.map(parseInt)` (or even `.map(Number.parseInt)`)
       // would produce a famous bug. We need to wrap it in a single-argument function.
-      .map((v) => parseInt(v))
+      .map((v) => parseInt(v, 10))
   );
 }
 

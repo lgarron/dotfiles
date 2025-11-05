@@ -10,7 +10,7 @@
         "lockfile-mutex": "^0.3.3",
         "naughty-list": "^1.0.0",
         "path-class": "^0.3.4",
-        "printable-shell-command": "^1.2.0",
+        "printable-shell-command": "^2.1.2",
         "temporal-ponyfill": "^0.1.0",
         "xdg-basedir": "^5.1.0",
       },
@@ -232,7 +232,7 @@
 
     "pinkie-promise": ["pinkie-promise@2.0.1", "", { "dependencies": { "pinkie": "^2.0.0" } }, "sha512-0Gni6D4UcLTbv9c57DfxDGdr41XfgUjqWZu492f0cIGr16zDU06BWP/RAEvOuo7CQ0CNjHaLlM59YJJFm3NWlw=="],
 
-    "printable-shell-command": ["printable-shell-command@1.2.0", "", { "optionalDependencies": { "@types/bun": "^1.2.20", "@types/node": "^24.2.0" } }, "sha512-nqgdsK6tixfSOV1q1AGKXD+uPAvIMGLyje824yq20Q15Z/weKXwbMnd1APfvVsbHQDmLgG4hTQoQ5WBl2QrMMw=="],
+    "printable-shell-command": ["printable-shell-command@2.1.2", "", { "dependencies": { "path-class": "^0.3.3", "type-fest": "^5.1.0" }, "optionalDependencies": { "@types/bun": "^1.2.20", "@types/node": "^24.2.0" } }, "sha512-CzsXuTwIstYkSkrrXW0WlCXPXU+/5Kw2jAV9/Z7IWaFJu2LBBdRW2UP4Ra/sp88gYpTuWRkCmMDJJFbH/s0oZw=="],
 
     "pump": ["pump@3.0.3", "", { "dependencies": { "end-of-stream": "^1.1.0", "once": "^1.3.1" } }, "sha512-todwxLMY7/heScKmntwQG8CXVkWUOdYxIvY2s0VWAAMh/nd8SoYiRaKjlr7+iCs984f2P8zvrfWcDDYVb73NfA=="],
 
@@ -294,11 +294,7 @@
 
     "naughty-list/lockfile-mutex": ["lockfile-mutex@0.3.4", "", { "dependencies": { "node-cleanup": "^2.1.2", "path-class": "^0.4.0" } }, "sha512-NeF4pGj1EeiJsdUc8Z1iCmle1Mc9HuYmRGlH0mVTZcvKCNpS6dQgpdq3pqJoA2e+vFm6+yycgbwNJAmN1Gf0CQ=="],
 
-    "naughty-list/printable-shell-command": ["printable-shell-command@2.1.2", "", { "dependencies": { "path-class": "^0.3.3", "type-fest": "^5.1.0" }, "optionalDependencies": { "@types/bun": "^1.2.20", "@types/node": "^24.2.0" } }, "sha512-CzsXuTwIstYkSkrrXW0WlCXPXU+/5Kw2jAV9/Z7IWaFJu2LBBdRW2UP4Ra/sp88gYpTuWRkCmMDJJFbH/s0oZw=="],
-
     "path-class/typescript": ["typescript@5.9.3", "", { "bin": { "tsc": "bin/tsc", "tsserver": "bin/tsserver" } }, "sha512-jl1vZzPDinLr9eUt3J/t7V6FgNEw9QjvBPdysz9KfQDD41fQrC2Y4vKQdiaUpFT4bXlb1RHhLpp8wtm6M5TgSw=="],
-
-    "printable-shell-command/@types/node": ["@types/node@24.7.0", "", { "dependencies": { "undici-types": "~7.14.0" } }, "sha512-IbKooQVqUBrlzWTi79E8Fw78l8k1RNtlDDNWsFZs7XonuQSJ8oNYfEeclhprUldXISRMLzBpILuKgPlIxm+/Yw=="],
 
     "xdg-trashdir/xdg-basedir": ["xdg-basedir@4.0.0", "", {}, "sha512-PSNhEJDejZYV7h50BohL09Er9VaIefr2LMAf3OEmpCkjOi34eYyQYAXUTjEQtZJTKcF0E2UKTh+osDLsgNim9Q=="],
 

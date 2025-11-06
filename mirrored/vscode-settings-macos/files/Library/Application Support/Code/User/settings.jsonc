@@ -290,7 +290,6 @@
 		"workbench.settings.applyToAllProfiles"
 	],
 	"explorer.sortOrder": "mixed",
-	"editor.mouseWheelZoom": true,
 	"javascript.preferences.autoImportSpecifierExcludeRegexes": [
 		// log
 		"^node:console$",

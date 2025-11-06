@@ -322,4 +322,16 @@
     "command": "-angelscript.addImportTo",
     "when": "editorTextFocus"
   },
+  {
+    "key": "ctrl+cmd+=",
+    "command": "editor.action.fontZoomIn"
+  },
+  {
+    "key": "ctrl+cmd+-",
+    "command": "editor.action.fontZoomOut"
+  },
+  {
+    "key": "ctrl+cmd+0",
+    "command": "editor.action.fontZoomReset"
+  },
 ]

@@ -1,10 +1,8 @@
 #!/usr/bin/env bun
 
 import { readdir } from "node:fs/promises";
-import { homedir } from "node:os";
-import { join } from "node:path";
 import { exit } from "node:process";
-import { $, file } from "bun";
+import { $ } from "bun";
 import {
   binary,
   command,
@@ -14,14 +12,21 @@ import {
   optional,
   run,
 } from "cmd-ts-too";
+import { Path } from "path-class";
 import { PrintableShellCommand } from "printable-shell-command";
+
+const SD_CARD_CONFIG_ROOT_DIR = Path.xdg.config.join("sd-card-backup");
+const CONFIG_JSON_PATH = SD_CARD_CONFIG_ROOT_DIR.join("config.json");
+const KNOWN_NON_SD_CARD_VOLUMES_PATH_JSON = SD_CARD_CONFIG_ROOT_DIR.join(
+  "known-non-sd-card-volumes.json",
+);
 
 const app = command({
   name: "eject-all-cards",
   description: `Eject all cards
 
-Ejects known cards from: ~/.config/sd-card-backup/config.json
-Skips known volumes from: ~/.config/sd-card-backup/known-non-sd-card-volumes.json
+Ejects known cards from: ${CONFIG_JSON_PATH}
+Skips known volumes from: ${KNOWN_NON_SD_CARD_VOLUMES_PATH_JSON}
   `,
   args: {
     printSkippedKnownVolumes: flag({
@@ -34,19 +39,15 @@ Skips known volumes from: ~/.config/sd-card-backup/known-non-sd-card-volumes.jso
     }),
   },
   handler: async ({ printSkippedKnownVolumes, onUnknownVolume }) => {
-    const sdCardBackupDir = join(homedir(), ".config/sd-card-backup");
-
     const sdCardJSONConfig: {
       sd_card_names: string[];
       sd_card_mount_point: string;
-    } = await file(join(sdCardBackupDir, "/config.json")).json();
+    } = await CONFIG_JSON_PATH.readJSON();
 
     const knownNonSDCardVolumesConfig: {
       volumes: Record<string, string[]>;
       commandToRunBefore: string[];
-    } = await file(
-      join(sdCardBackupDir, "/known-non-sd-card-volumes.json"),
-    ).json();
+    } = await KNOWN_NON_SD_CARD_VOLUMES_PATH_JSON.readJSON();
 
     {
       const [command, ...args] = knownNonSDCardVolumesConfig.commandToRunBefore;

@@ -53,7 +53,7 @@
       ".flutter",
       ".flutter-devtools",
       ".pub-cache",
-      // wat (alpine???
+      // CrossOver?
       ".mailcap",
       ".mime.types",
     ]

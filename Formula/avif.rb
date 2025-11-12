@@ -9,7 +9,6 @@ class Avif < Formula
   depends_on "libavif"
 
   def install
-    system "make", "setup-npm-packages"
     system "./repo-script/build-ts-scripts.ts", "graphics/avif"
 
     bin.install "./.temp/bin/avif" => "avif"

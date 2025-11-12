@@ -8,7 +8,6 @@ class EjectAllCards < Formula
   depends_on "oven-sh/bun/bun"
 
   def install
-    system "make", "setup-npm-packages"
     system "./repo-script/build-ts-scripts.ts", "system/eject-all-cards"
 
     bin.install "./.temp/bin/eject-all-cards" => "eject-all-cards"

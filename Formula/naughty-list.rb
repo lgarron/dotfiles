@@ -10,6 +10,7 @@ class NaughtyList < Formula
   def install
     # TODO: install properly from `npm` instead?
   
+    system "make", "setup-npm-packages"
     system "./repo-script/build-ts-scripts.ts", "system/naughty-list"
 
     bin.install "./.temp/bin/naughty-list" => "naughty-list"

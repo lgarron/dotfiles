@@ -8,6 +8,7 @@ class Rmtag < Formula
   depends_on "oven-sh/bun/bun"
 
   def install
+    system "make", "setup-npm-packages"
     system "./repo-script/build-ts-scripts.ts", "git/rmtag"
 
     bin.install "./.temp/bin/rmtag" => "rmtag"

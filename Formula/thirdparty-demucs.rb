@@ -10,6 +10,7 @@ class ThirdpartyDemucs < Formula
   depends_on "ffmpeg"
 
   def install
+    system "make", "setup-npm-packages"
     system "./repo-script/build-ts-scripts.ts", "audio/demucs"
 
     bin.install "./.temp/bin/demucs" => "demucs"

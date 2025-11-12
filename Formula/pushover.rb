@@ -8,6 +8,7 @@ class Pushover < Formula
   depends_on "oven-sh/bun/bun"
 
   def install
+    system "make", "setup-npm-packages"
     system "./repo-script/build-ts-scripts.ts", "api/pushover"
 
     bin.install "./.temp/bin/pushover" => "pushover"

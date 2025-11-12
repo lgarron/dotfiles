@@ -8,6 +8,7 @@ class Appiconify < Formula
   depends_on "oven-sh/bun/bun"
 
   def install
+    system "make", "setup-npm-packages"
     system "./repo-script/build-ts-scripts.ts", "graphics/appiconify"
 
     bin.install "./.temp/bin/appiconify" => "appiconify"

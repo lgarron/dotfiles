@@ -1,5 +1,13 @@
 #!/usr/bin/env -S bun run --
 
+import { $ } from "bun";
+
+/**
+ * Set up deps so they can be imported below.
+ * This allows this script to be called directly from formulas, instead of requiring a previous and separate call to `make`.
+ */
+$`bun install --frozen-lockfile`;
+
 import { join } from "node:path";
 import { exit } from "node:process";
 import type { styleText } from "node:util";
@@ -73,9 +81,6 @@ const app = command({
     const scriptSources = scriptIDs.map(
       (scriptID) => new ScriptSource(scriptID),
     );
-    await new PrintableShellCommand("bun", ["install", "--frozen-lockfile"])
-      .print({ styleTextFormat })
-      .spawnInherit().success;
     await Promise.all(
       scriptSources.map((scriptSource) => scriptSource.build()),
     );

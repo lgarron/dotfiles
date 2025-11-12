@@ -104,6 +104,7 @@
     abbr -a bx "bun x"
     abbr -a bl "bun link"
     abbr -a bup "bun update"
+    abbr -a bw "bun why"
 
     abbr -a bad "# Try: ba d"
     abbr -a bis "# Try: ba"
@@ -115,6 +116,7 @@
     abbr_subcommand bun t test
     abbr_subcommand bun l link
     abbr_subcommand bun up update
+    abbr_subcommand bun w why
 
     # bun add d⎵ → bun add --development
     abbr_subcommand_arg bun d --development add

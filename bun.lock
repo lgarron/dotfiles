@@ -1,5 +1,6 @@
 {
   "lockfileVersion": 1,
+  "configVersion": 0,
   "workspaces": {
     "": {
       "name": "dotfiles",
@@ -8,8 +9,8 @@
         "cmd-ts-too": "^0.15.3",
         "comment-json": "^4.2.5",
         "ergonomic-date": "^0.1.1",
-        "lockfile-mutex": "^0.3.4",
-        "naughty-list": "^1.0.2",
+        "lockfile-mutex": ">=0.3.5",
+        "naughty-list": "=1.0.2",
         "path-class": "^0.6.1",
         "printable-shell-command": "^2.3.0",
         "temporal-ponyfill": "^0.1.0",

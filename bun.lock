@@ -286,8 +286,6 @@
 
     "xdg-trashdir": ["xdg-trashdir@3.1.0", "", { "dependencies": { "@sindresorhus/df": "^3.1.1", "mount-point": "^3.0.0", "user-home": "^2.0.0", "xdg-basedir": "^4.0.0" } }, "sha512-N1XQngeqMBoj9wM4ZFadVV2MymImeiFfYD+fJrNlcVcOHsJFFQe7n3b+aBoTPwARuq2HQxukfzVpQmAk1gN4sQ=="],
 
-    "lockfile-mutex/path-class": ["path-class@0.6.1", "", { "dependencies": { "@types/node": "^24.7.1", "xdg-basedir": "^5.1.0" } }, "sha512-38ZYmRh38kFSKivJCHk9S4ZHOK4Wf6ocxHfYBdDmVN7GWVOXrYsxwMBQpjhGyPNBdiPo4W3X91x2TzGmxHBlUg=="],
-
     "mount-point/@sindresorhus/df": ["@sindresorhus/df@1.0.1", "", {}, "sha512-1Hyp7NQnD/u4DSxR2DGW78TF9k7R0wZ8ev0BpMAIzA6yTQSHqNb5wTuvtcPYf4FWbVse2rW7RgDsyL8ua2vXHw=="],
 
     "xdg-trashdir/xdg-basedir": ["xdg-basedir@4.0.0", "", {}, "sha512-PSNhEJDejZYV7h50BohL09Er9VaIefr2LMAf3OEmpCkjOi34eYyQYAXUTjEQtZJTKcF0E2UKTh+osDLsgNim9Q=="],

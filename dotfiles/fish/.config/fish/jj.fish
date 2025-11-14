@@ -160,7 +160,7 @@ end
 function ggn
     /Applications/gg.app/Contents/MacOS/gg $argv &>/dev/null &
     disown
-    $HOME/Code/git/github.com/lgarron/dotfiles/scripts/system/dell-display-position-app-on-bottom.fish gg
+    $HOME/Code/git/github.com/lgarron/dotfiles/scripts/system/dell-display-position-app-on-bottom.ts gg
     open -a gg # Foreground.
 end
 

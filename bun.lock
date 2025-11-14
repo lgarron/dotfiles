@@ -10,7 +10,7 @@
         "comment-json": "^4.2.5",
         "ergonomic-date": "^0.1.1",
         "lockfile-mutex": ">=0.3.5",
-        "naughty-list": "=1.0.2",
+        "naughty-list": "^1.0.3",
         "path-class": ">=0.7.0",
         "printable-shell-command": "^2.4.0",
         "temporal-ponyfill": "^0.1.0",
@@ -202,7 +202,7 @@
 
     "ms": ["ms@2.1.3", "", {}, "sha512-6FlzubTLZG3J2a/NVCAleEhjzq5oxgHyaCU9yYXvcLsvoVaHJq/s5xXI6/XXP6tz7R9xAOtHnSO/tXtF3WRTlA=="],
 
-    "naughty-list": ["naughty-list@1.0.2", "", { "dependencies": { "cmd-ts-too": "0.15.3", "ergonomic-date": "0.1.1", "esbuild": "^0.25.12", "json5": "^2.2.3", "jsonschema": "^1.5.0", "lockfile-mutex": ">=0.3.4", "path-class": ">=0.7.0", "printable-shell-command": ">=2.3.2", "trash": "^10.0.0" }, "bin": { "naughty-list": "dist/naughty-list/bin/main.js" } }, "sha512-v9OlrAW2pPeJH9RH7OeTlO2+u1FU2OXwgEBfN53LYW+R4iixWEl/99blbsJ/gnfXWhUv8sgIq08z2tWoYKrBSw=="],
+    "naughty-list": ["naughty-list@1.0.3", "", { "dependencies": { "cmd-ts-too": "0.15.3", "ergonomic-date": "0.1.1", "esbuild": "^0.25.12", "json5": "^2.2.3", "jsonschema": "^1.5.0", "lockfile-mutex": ">=0.3.4", "path-class": ">=0.7.0", "printable-shell-command": ">=2.3.2", "trash": "^10.0.0" }, "bin": { "naughty-list": "dist/naughty-list/bin/main.js" } }, "sha512-L9nK7z8Cl82f9kVYREDuqR1ovPObJOwzqvgdP91xtQaHjd/kH2YFHZpO4SzcU6jJpK23W69S6dUk53AsdfbZyw=="],
 
     "node-cleanup": ["node-cleanup@2.1.2", "", {}, "sha512-qN8v/s2PAJwGUtr1/hYTpNKlD6Y9rc4p8KSmJXyGdYGZsDGKXrGThikLFP9OCHFeLeEpQzPwiAtdIvBLqm//Hw=="],
 

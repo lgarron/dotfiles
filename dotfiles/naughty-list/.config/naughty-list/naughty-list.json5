@@ -10,6 +10,7 @@
       ".config",
       ".data",
       ".DS_Store", // *sigh*
+      ".hushlogin", // TODO: Pythagoras-only
       ".local",
       ".ssh",
       ".state",

@@ -13,6 +13,9 @@ class Tag3dPrints < Formula
     system "swiftc", "-o", "./.temp/tag-3d-print-as-queued", "./scripts/tags/tag-3d-print-as-queued.swift"
     bin.install "./.temp/tag-3d-print-as-queued" => "tag-3d-print-as-queued"
 
+    system "swiftc", "-o", "./.temp/tag-3d-print-as-unqueued", "./scripts/tags/tag-3d-print-as-unqueued.swift"
+    bin.install "./.temp/tag-3d-print-as-unqueued" => "tag-3d-print-as-unqueued"
+
     system "swiftc", "-o", "./.temp/tag-3d-print-as-printing", "./scripts/tags/tag-3d-print-as-printing.swift"
     bin.install "./.temp/tag-3d-print-as-printing" => "tag-3d-print-as-printing"
 

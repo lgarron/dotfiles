@@ -1,18 +1,14 @@
 #!/opt/homebrew/bin/bun run --
 
 import { watchFile } from "node:fs";
-import { homedir } from "node:os";
-import { join } from "node:path";
-import { file } from "bun";
-import { type CommentObject, parse, stringify } from "comment-json";
+import { type CommentObject,  stringify } from "comment-json";
+import { Path } from "path-class";
 
-const VSCODE_SETTINGS_PATH = join(
-  homedir(),
+const VSCODE_SETTINGS_PATH =  Path.homedir.join(
   "Library/Application Support/Code/User/settings.json",
 );
 
-const DOTFILES_SETTINGS_PATH = join(
-  homedir(),
+const DOTFILES_SETTINGS_PATH = Path.homedir.join(
   "Code/git/github.com/lgarron/dotfiles/mirrored/vscode-settings-macos/files/Library/Application Support/Code/User/settings.jsonc",
 );
 
@@ -28,9 +24,7 @@ const EDITOR_FONT_FAMILY_NORMALIZED =
 
 async function mirror() {
   try {
-    const parsed: CommentObject = parse(
-      await file(VSCODE_SETTINGS_PATH).text(),
-    ) as CommentObject;
+    const parsed: CommentObject = await VSCODE_SETTINGS_PATH.readJSON();
 
     if (EDITOR_FORMAT_ON_SAVE in parsed) {
       parsed[EDITOR_FORMAT_ON_SAVE] = EDITOR_FORMAT_ON_SAVE_NORMALIZED;
@@ -44,11 +38,11 @@ async function mirror() {
       parsed[EDITOR_FONT_FAMILY] = EDITOR_FONT_FAMILY_NORMALIZED;
     }
 
-    await file(DOTFILES_SETTINGS_PATH).write(stringify(parsed, null, "\t"));
+    await (DOTFILES_SETTINGS_PATH).write(stringify(parsed, null, "\t"));
   } catch {
     // TODO: Log error to file?
   }
 }
 
-watchFile(VSCODE_SETTINGS_PATH, mirror);
+watchFile(VSCODE_SETTINGS_PATH.path, mirror);
 await mirror();

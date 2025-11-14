@@ -40,7 +40,7 @@ if numDisplays is greater than 1
 end if
 `,
     ],
-  ]).shellOut();
+  ]).spawn().success;
 } else {
   console.log("Did not find the expected display. Not moving window.");
 }

@@ -9,6 +9,7 @@
       ".CFUserTextEncoding",
       ".config",
       ".data",
+      ".dropbox", // TODO: Pythagoras-only 😡
       ".DS_Store", // *sigh*
       ".hushlogin", // TODO: Pythagoras-only
       ".local",

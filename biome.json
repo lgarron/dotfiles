@@ -7,7 +7,7 @@
       "!.temp",
       "!dotfiles/vscode/**/*",
       "!exported",
-      "!mirrored/vscode-settings-macos"
+      "!mirrored/vscode-settings-macos/files"
     ]
   }
 }

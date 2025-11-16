@@ -1,31 +1,44 @@
 #!/usr/bin/env -S bun run --
 
-import assert from "node:assert";
-import { existsSync } from "node:fs";
-import { basename } from "node:path";
 import { exit } from "node:process";
-import { sleep, spawn } from "bun";
 import {
   binary,
   number as cmdNumber,
-  string as cmdString,
   command,
   oneOf,
   option,
   optional,
   positional,
   run,
+  type Type,
 } from "cmd-ts-too";
 import { ErgonomicDate } from "ergonomic-date";
 import { Path } from "path-class";
 import { PrintableShellCommand } from "printable-shell-command";
 import { Temporal } from "temporal-ponyfill";
 import { monotonicNow } from "../lib/monotonic-now";
+import { sleepDuration } from "../lib/sleep";
 
 const HANDBRAKE_8_BIT_DEPTH_PRESET = "HEVC 8-bit (qv65)";
 const HANDBRAKE_10_BIT_DEPTH_PRESET = "HEVC 10-bit (qv65)";
 
 const HALF_SECOND = Temporal.Duration.from({ milliseconds: 500 });
+
+const ArgPath: Type<string, Path> = {
+  async from(str) {
+    return new Path(str);
+  },
+};
+
+const ExistingDirPath: Type<string, Path> = {
+  async from(str) {
+    const path = new Path(str);
+    if (!(await path.existsAsDir())) {
+      throw new Error(`Path does not exist as a directory: ${path}`);
+    }
+    return path;
+  },
+};
 
 const app = command({
   name: "hevc",
@@ -57,11 +70,11 @@ const app = command({
     }),
     outputDir: option({
       description: "Output dir",
-      type: optional(cmdString),
+      type: optional(ExistingDirPath),
       long: "output-dir",
     }),
     sourceFile: positional({
-      type: cmdString,
+      type: ArgPath,
       displayName: "Source file",
     }),
   },
@@ -124,8 +137,12 @@ const app = command({
 
     const { streams } = await (async () => {
       while (true) {
-        const command = Bun.spawn(ffprobeCommand.forBun());
-        if ((await command.exited) !== 0) {
+        try {
+          const stdout = ffprobeCommand.stdout();
+          return (await stdout.json()) as {
+            streams: FFprobeStream[];
+          };
+        } catch {
           if (poll === "false") {
             console.error(
               "Could not get source info and polling is set to `false`. Exiting.",
@@ -133,7 +150,7 @@ const app = command({
             exit(1);
           }
           if (poll === "auto") {
-            if (!existsSync(sourceFile)) {
+            if (!(await sourceFile.existsAsFile())) {
               console.error(
                 "Source file does not exist and polling is set to `auto`. Exiting.",
               );
@@ -145,12 +162,8 @@ const app = command({
           console.info(
             `Waiting ${seconds} second${seconds === 1 ? "" : "s"} to poll source again…`,
           );
-          await sleep(durationToWait.total({ unit: "milliseconds" }));
-          continue;
+          await sleepDuration(durationToWait);
         }
-        return (await new Response(command.stdout).json()) as {
-          streams: FFprobeStream[];
-        };
       }
     })();
 
@@ -197,7 +210,7 @@ const app = command({
               if (i !== 0) {
                 console.write(".");
               }
-              await sleep(HALF_SECOND.total({ unit: "seconds" }));
+              await sleepDuration(HALF_SECOND);
             }
             return forceBitDepth;
           }
@@ -247,16 +260,9 @@ A forced bit depth of ${forceBitDepth} was specified, and will be used.`);
       }
     })();
 
-    const parentFolder = (() => {
-      if (outputDir) {
-        const outputDirPath = new Path(outputDir);
-        assert(outputDirPath.existsAsDir()); // TODO: allow creating the path?
-        return outputDirPath;
-      }
-      return new Path(sourceFile).parent;
-    })();
-    let destPrefix = parentFolder.join(
-      `${basename(sourceFile)}.hevc${bitDepthFileComponent}`,
+    let destPrefix = outputDir ?? sourceFile.parent;
+    destPrefix = destPrefix.join(
+      `${sourceFile.basename}.hevc${bitDepthFileComponent}`,
     );
     if (height) {
       destPrefix = destPrefix.extendBasename(`.${height}p`);
@@ -291,15 +297,8 @@ A forced bit depth of ${forceBitDepth} was specified, and will be used.`);
     command.print();
     console.log("");
 
-    if (
-      // TODO: transfer HiDPI hint (e.g. for screencaps)
-      (await spawn(command.forBun(), {
-        stdout: "inherit",
-        stderr: "inherit",
-      }).exited) !== 0
-    ) {
-      throw new Error();
-    }
+    // TODO: transfer HiDPI hint (e.g. for screencaps)
+    await command.spawnTransparently().success;
 
     // TODO: catch Ctrl-C and rename to indicate partial transcoding
   },

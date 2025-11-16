@@ -256,7 +256,14 @@
 
     # TODO: make this ab abbrevation instead?
     function repo-HEAD
-        set COMMAND cargo run --manifest-path /Users/lgarron/Code/git/github.com/lgarron/repo/Cargo.toml -- $argv
+        set COMMAND cargo run --manifest-path $HOME/Code/git/github.com/lgarron/repo/Cargo.toml -- $argv
+        string join -- " " (string escape -- $COMMAND)
+        command $COMMAND
+    end
+
+    # TODO: make this ab abbrevation instead?
+    function hevc-HEAD
+        set COMMAND $HOME/Code/git/github.com/lgarron/dotfiles/scripts/video/hevc.ts $argv
         string join -- " " (string escape -- $COMMAND)
         command $COMMAND
     end

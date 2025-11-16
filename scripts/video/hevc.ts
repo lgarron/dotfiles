@@ -138,8 +138,7 @@ const app = command({
     const { streams } = await (async () => {
       while (true) {
         try {
-          const stdout = ffprobeCommand.stdout();
-          return (await stdout.json()) as {
+          return (await ffprobeCommand.json()) as {
             streams: FFprobeStream[];
           };
         } catch {

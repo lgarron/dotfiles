@@ -17,9 +17,7 @@ const bambuVersion = command({
       "-p",
       sourceFile,
       "3D/3dmodel.model",
-    ])
-      .stdout()
-      .text();
+    ]).text();
     let justEnteredApplicationMetadataNode = false;
     const rewriter = new HTMLRewriter().on("metadata", {
       element(elem) {

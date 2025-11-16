@@ -1,9 +1,6 @@
 #!/usr/bin/env bun
 
-import { homedir } from "node:os";
-import { join } from "node:path";
 import { styleText } from "node:util";
-import { file } from "bun";
 import {
   binary,
   string as cmdString,
@@ -11,9 +8,10 @@ import {
   positional,
   run,
 } from "cmd-ts-too";
+import { Path } from "path-class";
 import { type PushoverCrendetials, sendMessage } from "./pushover/sendMessage";
 
-const SECRETS_FILE_PATH = join(homedir(), ".ssh/secrets/pushover.json");
+const SECRETS_FILE_PATH = Path.homedir.join(".ssh/secrets/pushover.json");
 
 const app = command({
   name: "pushover",
@@ -32,8 +30,7 @@ Sends a notification to Pushover, using credentials at: ~/.ssh/secrets/pushover.
     }),
   },
   handler: async ({ prefix, message }) => {
-    const credentials: PushoverCrendetials =
-      await file(SECRETS_FILE_PATH).json();
+    const credentials: PushoverCrendetials = await SECRETS_FILE_PATH.readJSON();
 
     const fullMessage = `[${prefix}] ${message}`;
     console.log(`Sending message:

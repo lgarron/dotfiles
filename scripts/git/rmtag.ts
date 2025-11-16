@@ -2,7 +2,6 @@
 
 import { exit } from "node:process";
 import { styleText } from "node:util";
-import { $ } from "bun";
 import {
   binary,
   string as cmdString,
@@ -21,7 +20,11 @@ const styleTextFormat: Parameters<typeof styleText>[0] = [
 ] as const;
 
 async function doesTagExistLocally(tag: string): Promise<boolean> {
-  return (await $`git tag --list ${tag}`.text()).trim() !== "";
+  return (
+    (
+      await new PrintableShellCommand("git", ["tag", "--list", tag]).text()
+    ).trim() !== ""
+  );
 }
 
 async function doesTagExistOnRemote(
@@ -29,7 +32,13 @@ async function doesTagExistOnRemote(
   remote: string,
 ): Promise<boolean> {
   return (
-    (await $`git ls-remote ${remote} refs/tags/${tag}`.text()).trim() !== ""
+    (
+      await new PrintableShellCommand(`git`, [
+        "ls-remote",
+        remote,
+        `refs/tags/${tag}`,
+      ]).text()
+    ).trim() !== ""
   );
 }
 
@@ -94,7 +103,7 @@ complete -c ${binaryName} -l completions -d 'Print completions for the given she
     // then `git` doesn't fail gracefully. So we fetch all.
     // We also need to need to do this before deleting the local tag, to avoid the fetch restoring it.
     // TODO: handle when there is no remote?
-    await $`git fetch --tags ${remote}`;
+    await new PrintableShellCommand("git", ["fetch", "--tags", remote]);
 
     /**************** Local ****************/
 
@@ -119,7 +128,13 @@ complete -c ${binaryName} -l completions -d 'Print completions for the given she
 
     const remoteURL: string = await (async () => {
       try {
-        return (await $`git remote get-url ${remote}`.text()).trim();
+        return (
+          await new PrintableShellCommand("git", [
+            "remote",
+            "get-url",
+            `${remote}`,
+          ]).text()
+        ).trim();
       } catch {
         console.error(
           `Could not get remote URL. Does this remote exist?
@@ -154,8 +169,10 @@ Name of missing remote: ${styleText("bold", remote)}`,
 
     const remoteReleases = new Set(
       await (async () => {
-        const json: { tagName: string }[] =
-          await $`gh release list --repo ${remoteURL} --json tagName`.json();
+        const json: { tagName: string }[] = await new PrintableShellCommand(
+          "gh",
+          [["release", "list"], "--repo", remoteURL, "--json", "tagName"],
+        ).json();
         return json.map((entry) => entry.tagName);
       })(),
     );

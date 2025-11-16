@@ -1,7 +1,6 @@
 #!/usr/bin/env -S bun run --
 
 import { exit, stdout } from "node:process";
-import { $ } from "bun";
 
 import {
   binary,
@@ -12,6 +11,7 @@ import {
   optional,
   run,
 } from "cmd-ts-too";
+import { PrintableShellCommand } from "printable-shell-command";
 
 const SEPARATOR = "--------";
 
@@ -36,12 +36,17 @@ complete -c tagpush -l completions -d 'Print completions.' -r -f -a "fish"`);
       exit(0);
     }
 
-    const version = await $`version`.text();
+    const version = await new PrintableShellCommand("version").text();
 
     // TODO: does this work properly for merge commits?
     const hasPreviousCommit = await (async () => {
       try {
-        return (await $`git cat-file -t HEAD~`.text()) === "commit";
+        return (
+          (await new PrintableShellCommand("git", [
+            "cat-file",
+            ["-t", "HEAD~"],
+          ]).text()) === "commit"
+        );
         // biome-ignore lint/suspicious/noExplicitAny: TypeScript limitation.
       } catch (e: any) {
         // TODO: there is no porcelain for this command. Can we find something more stable?
@@ -53,7 +58,9 @@ complete -c tagpush -l completions -d 'Print completions.' -r -f -a "fish"`);
     })();
 
     if (hasPreviousCommit) {
-      const previousCommitVersion = await $`version --previous`.text();
+      const previousCommitVersion = await new PrintableShellCommand("version", [
+        "--previous",
+      ]).text();
 
       if (version === previousCommitVersion) {
         console.error(
@@ -68,17 +75,23 @@ complete -c tagpush -l completions -d 'Print completions.' -r -f -a "fish"`);
     if (retag) {
       stdout.write("Tag was previously at at commit: ");
       try {
-        console.log(await $`git rev-parse ${version}`.text());
+        console.log(
+          await new PrintableShellCommand("git", ["rev-parse", version]).text(),
+        );
         console.log(SEPARATOR);
-        await $`rmtag ${version}`;
+        await new PrintableShellCommand("rmtag", [version]).shellOut();
         console.log(SEPARATOR);
       } catch {
         console.log("No old tag.");
       }
     }
 
-    await $`git tag ${version}`;
-    await $`git push origin ${version}`;
+    await new PrintableShellCommand("git", ["tag", version]).shellOut();
+    await new PrintableShellCommand("git", [
+      "push",
+      "origin",
+      version,
+    ]).shellOut();
   },
 });
 

@@ -1,8 +1,10 @@
 #!/usr/bin/env -S bun run --
 
+import assert from "node:assert";
 import { existsSync } from "node:fs";
+import { basename } from "node:path";
 import { exit } from "node:process";
-import { file, sleep, spawn } from "bun";
+import { sleep, spawn } from "bun";
 import {
   binary,
   number as cmdNumber,
@@ -15,6 +17,7 @@ import {
   run,
 } from "cmd-ts-too";
 import { ErgonomicDate } from "ergonomic-date";
+import { Path } from "path-class";
 import { PrintableShellCommand } from "printable-shell-command";
 import { Temporal } from "temporal-ponyfill";
 import { monotonicNow } from "../lib/monotonic-now";
@@ -52,6 +55,11 @@ const app = command({
       type: optional(cmdNumber),
       long: "height",
     }),
+    outputDir: option({
+      description: "Output dir",
+      type: optional(cmdString),
+      long: "output-dir",
+    }),
     sourceFile: positional({
       type: cmdString,
       displayName: "Source file",
@@ -63,6 +71,7 @@ const app = command({
     forceBitDepthString,
     height,
     sourceFile,
+    outputDir,
   }) => {
     const forceBitDepth: 8 | 10 | undefined =
       typeof forceBitDepthString === "undefined"
@@ -238,15 +247,27 @@ A forced bit depth of ${forceBitDepth} was specified, and will be used.`);
       }
     })();
 
-    let destPrefix = `${sourceFile}.hevc${bitDepthFileComponent}`;
+    const parentFolder = (() => {
+      if (outputDir) {
+        const outputDirPath = new Path(outputDir);
+        assert(outputDirPath.existsAsDir()); // TODO: allow creating the path?
+        return outputDirPath;
+      }
+      return new Path(sourceFile).parent;
+    })();
+    let destPrefix = parentFolder.join(
+      `${basename(sourceFile)}.hevc${bitDepthFileComponent}`,
+    );
     if (height) {
-      destPrefix += `.${height}p`;
+      destPrefix = destPrefix.extendBasename(`.${height}p`);
     }
-    destPrefix += `.qv${quality}`;
-    if (await file(`${destPrefix}.mp4`).exists()) {
-      destPrefix = `${destPrefix}.${new ErgonomicDate().multipurposeTimestamp}`;
+    destPrefix = destPrefix.extendBasename(`.qv${quality}`);
+    let dest = destPrefix.extendBasename(".mp4");
+    if (await dest.exists()) {
+      dest = destPrefix.extendBasename(
+        `${destPrefix}.${new ErgonomicDate().multipurposeTimestamp}`,
+      );
     }
-    const dest = `${destPrefix}.mp4`;
 
     const heightParams: [string, string][] = height
       ? [["--height", height.toString()]]

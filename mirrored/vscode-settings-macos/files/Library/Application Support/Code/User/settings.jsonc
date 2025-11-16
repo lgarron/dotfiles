@@ -136,6 +136,8 @@
 		"git-rebase-todo": "default",
 		"*.svg": "default"
 	},
+	"gitlens.plusFeatures.enabled": false,
+	"gitlens.ai.enabled": false,
 	/******** Python ********/
 	"python.analysis.autoImportCompletions": true,
 	"python.analysis.autoImportUserSymbols": true,
@@ -326,8 +328,6 @@
 	"chat.commandCenter.enabled": false,
 	"chat.agent.enabled": false,
 	"chat.disableAIFeatures": true,
-	"gitlens.plusFeatures.enabled": false,
-	"gitlens.ai.enabled": false,
 	"github.copilot.chat.reviewAgent.enabled": false,
 	"github.copilot.chat.summarizeAgentConversationHistory.enabled": false,
 	"githubPullRequests.codingAgent.autoCommitAndPush": false,

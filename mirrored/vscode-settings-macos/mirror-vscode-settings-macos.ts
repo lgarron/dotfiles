@@ -1,10 +1,10 @@
 #!/opt/homebrew/bin/bun run --
 
 import { watchFile } from "node:fs";
-import { type CommentObject,  stringify } from "comment-json";
+import { type CommentObject, parse, stringify } from "comment-json";
 import { Path } from "path-class";
 
-const VSCODE_SETTINGS_PATH =  Path.homedir.join(
+const VSCODE_SETTINGS_PATH = Path.homedir.join(
   "Library/Application Support/Code/User/settings.json",
 );
 
@@ -23,8 +23,11 @@ const EDITOR_FONT_FAMILY_NORMALIZED =
   '"SeriousShanns Nerd Font Mono", Menlo, Monaco, monospace';
 
 async function mirror() {
+  console.log("Copying to mirror…");
   try {
-    const parsed: CommentObject = await VSCODE_SETTINGS_PATH.readJSON();
+    const parsed: CommentObject = parse(
+      await VSCODE_SETTINGS_PATH.readText(),
+    ) as CommentObject;
 
     if (EDITOR_FORMAT_ON_SAVE in parsed) {
       parsed[EDITOR_FORMAT_ON_SAVE] = EDITOR_FORMAT_ON_SAVE_NORMALIZED;
@@ -38,8 +41,10 @@ async function mirror() {
       parsed[EDITOR_FONT_FAMILY] = EDITOR_FONT_FAMILY_NORMALIZED;
     }
 
-    await (DOTFILES_SETTINGS_PATH).write(stringify(parsed, null, "\t"));
-  } catch {
+    await DOTFILES_SETTINGS_PATH.write(stringify(parsed, null, "\t"));
+    console.log("Success!");
+  } catch (e) {
+    console.error(e);
     // TODO: Log error to file?
   }
 }

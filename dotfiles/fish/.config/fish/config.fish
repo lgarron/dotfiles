@@ -20,6 +20,15 @@
       end
     end
 
+# iTerm locale workaround.
+
+    # iTerm says it's setting this var, but it's no longer reaching the shell.
+    # So we set it manually for now
+    if not set -q LANG
+        echo "Explicitly setting "(set_color --bold)"\$LANG"(set_color normal)" as a workaround."
+        set -x LANG en_US.UTF-8
+    end 
+
 # Path
 
     source $HOME/.config/fish/path.fish

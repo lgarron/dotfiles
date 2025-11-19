@@ -33,12 +33,12 @@ const app = command({
     const args: (string | [string, string])[] = qcolor
       ? [["--qcolor", qcolor.toString()]]
       : [];
-    const command = new PrintableShellCommand("avifenc", [
+    const command = new PrintableShellCommand("magick", [
       ...args,
       sourceFile,
+      ["-quality", `${qcolor ?? 60}%`],
       outputFileName,
     ]);
-    command.print();
     await command.shellOut();
   },
 });

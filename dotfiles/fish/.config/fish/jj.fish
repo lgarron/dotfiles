@@ -24,6 +24,8 @@ _fish_abbr_jj_subcommand u undo
 _fish_abbr_jj_subcommand t tug
 _fish_abbr_jj_subcommand re restore
 
+abbr_subcommand_arg jj r --revisions log
+
 _fish_abbr_jj_subcommand n new
 abbr_subcommand_arg jj b --insert-before new
 

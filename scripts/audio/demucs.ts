@@ -44,8 +44,8 @@ dependencies = [
 `);
     }
     await new PrintableShellCommand("uv", ["venv", "--allow-existing"])
-      .print({ argumentLineWrapping: "inline", styleTextFormat: "gray" })
-      .spawnInherit({ cwd }).success;
+      .print({ argumentLineWrapping: "inline" })
+      .spawnTransparently({ cwd }).success;
     await new PrintableShellCommand("uv", [
       ["run", "demucs"],
       sourceFile,
@@ -55,8 +55,8 @@ dependencies = [
           new Path(sourceFile).extendBasename(".stems").toString(),
       ],
     ])
-      .print({ skipLineWrapBeforeFirstArg: true, styleTextFormat: "gray" })
-      .spawnInherit({ cwd }).success;
+      .print({ skipLineWrapBeforeFirstArg: true })
+      .spawnTransparently({ cwd }).success;
   },
 });
 

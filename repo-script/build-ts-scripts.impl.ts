@@ -1,6 +1,5 @@
 import { join } from "node:path";
 import { exit } from "node:process";
-import type { styleText } from "node:util";
 import {
   binary,
   string as cmdString,
@@ -9,11 +8,6 @@ import {
   run,
 } from "cmd-ts-too";
 import { PrintableShellCommand } from "printable-shell-command";
-
-const styleTextFormat: Parameters<typeof styleText>[0] = [
-  "gray",
-  "bold",
-] as const;
 
 class ScriptSource {
   category: string;
@@ -44,8 +38,8 @@ class ScriptSource {
       ["--outfile", this.tempPath],
       this.sourcePath,
     ])
-      .print({ styleTextFormat })
-      .spawnInherit().success;
+      .print()
+      .spawnTransparently().success;
   }
 }
 
@@ -72,8 +66,8 @@ const app = command({
       (scriptID) => new ScriptSource(scriptID),
     );
     await new PrintableShellCommand("bun", ["install", "--frozen-lockfile"])
-      .print({ styleTextFormat })
-      .spawnInherit().success;
+      .print()
+      .spawnTransparently().success;
     await Promise.all(
       scriptSources.map((scriptSource) => scriptSource.build()),
     );

@@ -3,7 +3,7 @@ push-new-bookmarks = true
 
 [revsets]
 # Adapted from: https://willhbr.net/2024/08/18/understanding-revsets-for-a-better-jj-log-output/
-log = "@ | ancestors(visible_heads() | tracked_remote_bookmarks(), 20)"
+log = "@ | ancestors(visible_heads() | tracked_remote_bookmarks() | (tags() & ~..trunk()), 20)"
 
 [revset-aliases]
 'ancestor_bookmarks(to)' = 'heads(::to & bookmarks())'

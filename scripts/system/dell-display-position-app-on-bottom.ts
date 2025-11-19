@@ -1,14 +1,19 @@
 #!/usr/bin/env -S bun run --
 
+import { styleText } from "node:util";
 import { getAllDevices } from "betterdisplaycli";
 import { argv } from "bun";
 import { PrintableShellCommand } from "printable-shell-command";
 
+const DISPLAY_NAME = "DELL P2715Q";
+
 const devices = await getAllDevices();
-if (devices.find((d) => d.info.name === "DELL P2715Q")) {
+const process = argv[2];
+
+if (devices.find((d) => d.info.name === DISPLAY_NAME)) {
   console.log("Moving window.");
   // TODO: Is this quoting sufficiently safe for AppleScript
-  const quotedProcess = argv[2].replace('"', '\\"');
+  const quotedProcess = process.replace('"', '\\"');
   await new PrintableShellCommand("osascript", [
     [
       "-e",
@@ -42,5 +47,7 @@ end if
     ],
   ]).spawn().success;
 } else {
-  console.log("Did not find the expected display. Not moving window.");
+  console.log(
+    `Did not detect the display "${DISPLAY_NAME}". Not moving window for process \`${styleText(["bold"], process)}\`.`,
+  );
 }

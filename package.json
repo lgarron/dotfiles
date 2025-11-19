@@ -9,7 +9,7 @@
   },
   "type": "module",
   "dependencies": {
-    "betterdisplaycli": ">=0.1.4",
+    "betterdisplaycli": ">=0.1.6",
     "cmd-ts-too": "^0.15.3",
     "comment-json": "^4.2.5",
     "ergonomic-date": "^0.1.1",

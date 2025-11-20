@@ -50,7 +50,7 @@ func libHandleArguments() {
 
 /******** End of common lib code ********/
 
-let REMOVE_TAGS: Set<String> = []
+let REMOVE_TAGS: Set<String> = ["3D: Queued"]
 let ADD_TAGS: Set<String> = ["3D: Printing"]
 
 libHandleArguments()

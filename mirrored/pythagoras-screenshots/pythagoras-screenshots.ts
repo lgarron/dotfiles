@@ -1,35 +1,33 @@
 #!/opt/homebrew/bin/bun run --
 
 import assert from "node:assert";
-import {
-  appendFile,
-  cp,
-  exists,
-  type FileChangeInfo,
-  mkdir,
-  watch,
-} from "node:fs/promises";
+import { type FileChangeInfo, watch } from "node:fs/promises";
 import { extname, join } from "node:path";
 import { $ } from "bun";
 import { ErgonomicDate } from "ergonomic-date";
 import { LockfileMutex } from "lockfile-mutex";
+import { Path } from "path-class";
 import { xdgData } from "xdg-basedir";
 
-const LOG_FOLDER = "/Users/lgarron/.data/pythagoras-screenshot/log/";
+const LOG_FOLDER = Path.xdg.data.join("pythagoras-screenshot/log/");
 async function debugLog(s: string, date: ErgonomicDate = new ErgonomicDate()) {
-  await mkdir(join(LOG_FOLDER, date.localYearMonth), { recursive: true });
-  await appendFile(
-    join(LOG_FOLDER, date.localYearMonth, `${date.localYearMonthDay}.log`),
-    `[${process.pid}][${date.multipurposeTimestamp}] ${s}\n`,
-  );
+  await LOG_FOLDER.join(date.localYearMonth).mkdir();
+  await LOG_FOLDER.join(
+    date.localYearMonth,
+    `${date.localYearMonthDay}.log`,
+  ).appendFile(`[${process.pid}][${date.multipurposeTimestamp}] ${s}\n`);
 }
+
+const TARGET_DIR_PREFIX = new Path(
+  "/Volumes/Samos/.CloudStorage/Data/Dropbox/Screenshots/Pythagoras Screenshots/Pythagoras Screenshots" /* year is added here */,
+);
 
 await debugLog("Starting `pythagoras-screenshots` daemon…");
 
 assert(xdgData);
 LockfileMutex.newLocked(join(xdgData, "pythagoras-screenshot", "lockfile"));
 
-const SOURCE_DIR = "/Users/lgarron/Pictures/Pythagoras Screenshots/";
+const SOURCE_DIR = new Path("/Users/lgarron/Pictures/Pythagoras Screenshots/");
 const year = new ErgonomicDate().jsDate.getFullYear();
 
 async function callback(change: FileChangeInfo<string>) {
@@ -37,14 +35,13 @@ async function callback(change: FileChangeInfo<string>) {
   assert(change.filename);
   const ext = extname(change.filename);
   if (change.filename.startsWith("Screenshot") && ext === ".heic") {
-    const TARGET_DIR = `/Volumes/Samos/.CloudStorage/Data/Dropbox/Screenshots/Pythagoras Screenshots/Pythagoras Screenshots ${year}`;
-    console.log(TARGET_DIR);
-    await mkdir(TARGET_DIR, { recursive: true /** ! */ });
+    const TARGET_DIR = TARGET_DIR_PREFIX.extendBasename(` ${year}`);
+    await TARGET_DIR.mkdir();
 
     await debugLog(`Skipping: ${change.filename}`);
     try {
-      const sourcePath = join(SOURCE_DIR, change.filename);
-      if (!(await exists(sourcePath))) {
+      const sourcePath = SOURCE_DIR.join(change.filename);
+      if (!(await sourcePath.exists())) {
         // We don't have another way to distinguish this — all the events are `"rename"`.
         await debugLog(
           `Skipping (expected if it was just moved by us): ${change.filename}`,
@@ -52,7 +49,7 @@ async function callback(change: FileChangeInfo<string>) {
         return;
       }
 
-      await cp(sourcePath, join(TARGET_DIR, change.filename));
+      await sourcePath.cp(TARGET_DIR.join(change.filename));
 
       await $`/usr/bin/trash ${sourcePath}`;
     } catch (e) {
@@ -62,7 +59,7 @@ async function callback(change: FileChangeInfo<string>) {
   await debugLog(`Success: ${change.filename}`);
 }
 
-const watcher = watch(SOURCE_DIR, { recursive: true });
+const watcher = watch(SOURCE_DIR.path, { recursive: true });
 
 for await (const change of watcher) {
   await callback(change);

@@ -3,11 +3,11 @@
 import { openSync } from "node:fs";
 import { join } from "node:path";
 import { argv, exit } from "node:process";
-import { $, sleep } from "bun";
 import { Path } from "path-class";
 import { PrintableShellCommand } from "printable-shell-command";
 import { Temporal } from "temporal-ponyfill";
 import { monotonicNow } from "../lib/monotonic-now";
+import { sleepDuration } from "../lib/sleep";
 
 const gitReposRootPath = Path.homedir.join("Code/git");
 const repoURLString: string | undefined = argv[2];
@@ -40,10 +40,10 @@ const repoPath = repoPathParent.join(repo);
 // Note: `.git` can be a file *or* a folder.
 if (await repoPath.join(".git").exists()) {
   console.log("Repo already checked out!");
-  console.log(repoPath);
+  console.log(repoPath.path);
 } else if (await repoPath.exists()) {
   console.log("Repo folder exists but is not a git repo?");
-  console.log(repoPath);
+  console.log(repoPath.path);
 } else {
   await repoPathParent.mkdir();
   console.log(`Cloning from: ${repoCloneSource}`);
@@ -71,14 +71,11 @@ if (await repoPath.join(".git").exists()) {
       if (await repoPath.exists()) {
         return;
       }
-      await sleep(
-        Temporal.Duration.from({ milliseconds: 100 }).total({
-          unit: "milliseconds",
-        }),
-      );
+      await sleepDuration(Temporal.Duration.from({ milliseconds: 100 }));
     }
     throw new Error("Did not observe `git` creating the repo folder.");
   })();
 }
 
-await Promise.all([await $`open-macos ${repoPath}`, await $`code ${repoPath}`]);
+await new PrintableShellCommand("open-macos", [repoPath]).spawn().success;
+await new PrintableShellCommand("code", [repoPath]).spawn().success;

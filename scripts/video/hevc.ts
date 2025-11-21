@@ -24,12 +24,14 @@ const HANDBRAKE_10_BIT_DEPTH_PRESET = "HEVC 10-bit (qv65)";
 
 const HALF_SECOND = Temporal.Duration.from({ milliseconds: 500 });
 
+// TODO: add to `cmd-ts-too`
 const ArgPath: Type<string, Path> = {
   async from(str) {
     return new Path(str);
   },
 };
 
+// TODO: add to `cmd-ts-too`
 const ExistingDirPath: Type<string, Path> = {
   async from(str) {
     const path = new Path(str);

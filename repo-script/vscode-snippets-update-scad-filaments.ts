@@ -1,7 +1,4 @@
 import assert from "node:assert";
-import { homedir } from "node:os";
-import { join } from "node:path";
-import { file } from "bun";
 import {
   applyEdits,
   findNodeAtLocation,
@@ -9,15 +6,16 @@ import {
   modify,
   parseTree,
 } from "jsonc-parser";
+import { Path } from "path-class";
 
-const source = await file(
-  join(homedir(), "Code/git/github.com/lgarron/scad/filament_color.scad"),
-).text();
+const source = await Path.homedir
+  .join("Code/git/github.com/lgarron/scad/filament_color.scad")
+  .readText();
 
-const jsoncFile = file(
-  join(homedir(), "Library/Application Support/Code/User/snippets/scad.json"),
+const jsoncFile = Path.homedir.join(
+  "Library/Application Support/Code/User/snippets/scad.json",
 );
-let jsonc = await jsoncFile.text();
+let jsonc = await jsoncFile.readText();
 
 const existingDOM = (() => {
   const existingDOM = parseTree(jsonc);

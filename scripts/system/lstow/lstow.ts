@@ -1,23 +1,11 @@
 #!/usr/bin/env -S bun run --
 
 import { default as assert } from "node:assert";
-import { existsSync } from "node:fs";
-import {
-  cp,
-  exists,
-  lstat,
-  mkdir,
-  readdir,
-  realpath,
-  rm,
-  symlink,
-} from "node:fs/promises";
+import { lstat, realpath } from "node:fs/promises";
 import { basename, join } from "node:path";
 import { exit } from "node:process";
-import { file } from "bun";
 import {
   binary,
-  string as cmdString,
   command,
   flag,
   oneOf,
@@ -25,11 +13,31 @@ import {
   optional,
   positional,
   run,
+  type Type,
 } from "cmd-ts-too";
+import { Path } from "path-class";
 
 interface DirConfig {
   fold?: boolean;
 }
+
+// TODO: add to `cmd-ts-too`
+const ArgPath: Type<string, Path> = {
+  async from(str) {
+    return new Path(str);
+  },
+};
+
+// TODO: add to `cmd-ts-too`
+const ExistingDirPath: Type<string, Path> = {
+  async from(str) {
+    const path = new Path(str);
+    if (!(await path.existsAsDir())) {
+      throw new Error(`Path does not exist as a directory: ${path}`);
+    }
+    return path;
+  },
+};
 
 const app = command({
   name: "jstow",
@@ -47,11 +55,11 @@ const app = command({
       defaultValueIsSerializable: true,
     }),
     sourceDir: positional({
-      type: cmdString,
+      type: ExistingDirPath,
       displayName: "Source dir",
     }),
     destinationDir: positional({
-      type: cmdString,
+      type: ArgPath,
       displayName: "Destination dir",
     }),
   },
@@ -61,18 +69,18 @@ const app = command({
     dryRun,
     mkdirDestinationIfMissing,
   }) => {
-    if (!(await exists(sourceDir))) {
+    if (!(await sourceDir.exists())) {
       throw new Error(`Source dir does not exist: ${sourceDir}`);
     }
-    if (!(await lstat(sourceDir)).isDirectory()) {
+    if (!(await sourceDir.lstat()).isDirectory()) {
       throw new Error(`Source path is not a directory: ${sourceDir}`);
     }
-    if (!(await exists(destinationDir))) {
+    if (!(await destinationDir.exists())) {
       if (mkdirDestinationIfMissing === "true") {
         console.error(
           `Destination directory does not exist. Creating it at: ${destinationDir}`,
         );
-        await mkdir(destinationDir, { recursive: true });
+        await destinationDir.mkdir();
       } else {
         console.error(
           "Destination directory does not exist and `--mkdir-destination-root-if-missing` is set to `false`. Exiting without performing any file system changes.",
@@ -80,7 +88,7 @@ const app = command({
         exit(1);
       }
     } else {
-      if (!(await lstat(destinationDir)).isDirectory()) {
+      if (!(await destinationDir.lstat()).isDirectory()) {
         throw new Error(
           `Destination path exists but is not a directory: ${sourceDir}`,
         );
@@ -88,37 +96,37 @@ const app = command({
     }
 
     async function traverse(relativePathPrefix: string) {
-      const dirPath = join(sourceDir, relativePathPrefix);
-      for (const relativePathSuffix of await readdir(dirPath)) {
+      const dirPath = sourceDir.join(relativePathPrefix);
+      for (const relativePathSuffix of await dirPath.readDir()) {
         if ([".DS_Store"].includes(basename(relativePathSuffix))) {
           continue;
         }
 
         const relativePath = join(relativePathPrefix, relativePathSuffix);
 
-        const sourcePath = join(sourceDir, relativePath);
-        const destinationPath = join(destinationDir, relativePath);
-        const sourceIsNotDir = !(await lstat(sourcePath)).isDirectory();
-        const sourceIsSymlink = (await lstat(sourcePath)).isSymbolicLink();
+        const sourcePath = sourceDir.join(relativePath);
+        const destinationPath = destinationDir.join(relativePath);
+        const sourceIsNotDir = !(await sourcePath.lstat()).isDirectory();
+        const sourceIsSymlink = (await sourcePath.lstat()).isSymbolicLink();
 
         const fold = await (async () => {
           if (sourceIsNotDir) {
             return false;
           }
-          const lstowFilePath = join(sourcePath, ".config", "lstow.json");
-          if (!(await exists(lstowFilePath))) {
+          const lstowFilePath = sourcePath.join(".config", "lstow.json");
+          if (!(await lstowFilePath.exists())) {
             return false;
           }
           // TODO: Check that it's a file
-          const dirConfid: DirConfig = await file(lstowFilePath).json();
+          const dirConfid: DirConfig = await lstowFilePath.readJSON();
           return !!dirConfid.fold;
         })();
         const foldingDisplayInfo = fold ? " (fold)" : "";
         const foldingEmoji = fold ? "📄" : "";
 
-        if (await exists(destinationPath)) {
+        if (await destinationPath.exists()) {
           const destinationIsSymlink = (
-            await lstat(destinationPath)
+            await destinationPath.lstat()
           ).isSymbolicLink();
           if (!sourceIsSymlink && destinationIsSymlink) {
             assert(sourceIsNotDir || fold);
@@ -126,12 +134,13 @@ const app = command({
           if (destinationIsSymlink) {
             // Figure out how to do a better comparison (with exactly one level of symlink dereferencing on the destination side).
             assert.equal(
-              await realpath(destinationPath),
-              await realpath(sourcePath),
+              // TODO: add `.realpath()` to `Path`.
+              await realpath(destinationPath.path),
+              await realpath(sourcePath.path),
             );
           }
           const destinationRealpathIsFile = !(
-            await lstat(await realpath(destinationPath))
+            await lstat(await realpath(destinationPath.path))
           ).isDirectory();
           assert.equal(sourceIsNotDir, destinationRealpathIsFile);
           console.log(`🆗${foldingEmoji} ${sourcePath}${foldingDisplayInfo}
@@ -147,19 +156,19 @@ const app = command({
               if (!dryRun) {
                 // TODO: for some reason, `cp(…, {"force": true})` does not work. Why?
                 // For now, we `rm` the destination manually instead.
-                if (existsSync(destinationPath)) {
-                  await rm(destinationPath);
+                if (await destinationPath.exists()) {
+                  await destinationPath.rm();
                 }
-                await cp(sourcePath, destinationPath);
+                await sourcePath.cp(destinationPath);
               }
             } else {
               if (!dryRun) {
-                await symlink(await realpath(sourcePath), destinationPath);
+                await (await sourcePath.realpath()).symlink(destinationPath);
               }
             }
           } else {
             if (!dryRun) {
-              await mkdir(destinationPath, { recursive: true });
+              await destinationPath.mkdir();
             }
             traverse(relativePath);
           }

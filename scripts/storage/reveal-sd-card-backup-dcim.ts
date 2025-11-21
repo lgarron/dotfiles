@@ -5,8 +5,8 @@
 import { stat } from "node:fs/promises";
 import { homedir } from "node:os";
 import { extname, join } from "node:path";
-import { exit } from "node:process";
-import { $, argv } from "bun";
+import { argv, exit } from "node:process";
+import { PrintableShellCommand } from "printable-shell-command";
 
 const filePath = argv[2];
 if (!filePath) {
@@ -64,7 +64,9 @@ if (parts[2] === configBackupDrive) {
 
   const targetPath = targetParts.join("/");
   // console.log(targetPath);
-  await $`/opt/homebrew/bin/reveal-macos ${targetPath}`;
+  await new PrintableShellCommand("/opt/homebrew/bin/reveal-macos", [
+    targetPath,
+  ]).spawn().success;
 
   exit(0);
 }
@@ -167,4 +169,6 @@ const targetParts = [
 
 const targetPath = targetParts.join("/");
 // console.log(targetPath);
-await $`/opt/homebrew/bin/reveal-macos ${targetPath}`;
+await new PrintableShellCommand("/opt/homebrew/bin/reveal-macos", [
+  targetPath,
+]).spawn().success;

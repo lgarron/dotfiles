@@ -1,17 +1,23 @@
 #!/usr/bin/env -S bun run --
 
-import { lstat } from "node:fs/promises";
-import { exit } from "node:process";
-import { $, argv } from "bun";
+import { argv, exit } from "node:process";
+import { Path } from "path-class";
+import { PrintableShellCommand } from "printable-shell-command";
 
-const path = argv[2];
-const isDirectory = (await lstat(path)).isDirectory();
-const workspaceRootDir =
-  await $`repo workspace root --fallback closest-dir --path ${path}`.text();
+const path = new Path(argv[2]);
+const isDirectory = (await path.lstat()).isDirectory();
+const workspaceRootDir = await new PrintableShellCommand("repo", [
+  "workspace",
+  "root",
+  ["--fallback", "closest-dir"],
+  ["--path", path],
+])
+  .stdout()
+  .text();
 
-await $`code ${workspaceRootDir}`;
+await new PrintableShellCommand("code", ["--", workspaceRootDir]).shellOut();
 if (!isDirectory) {
-  await $`code --reuse-window ${path}`;
+  await new PrintableShellCommand("code", ["--reuse-window", path]).shellOut();
 }
 
 // To avoid showing results in Quicksilver (TODO: make this a flag)

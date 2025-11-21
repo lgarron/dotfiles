@@ -2,7 +2,6 @@
 
 import { readdir } from "node:fs/promises";
 import { exit } from "node:process";
-import { $ } from "bun";
 import {
   binary,
   command,
@@ -62,11 +61,15 @@ Skips known volumes from: ${KNOWN_NON_SD_CARD_VOLUMES_PATH_JSON}
       Object.values(knownNonSDCardVolumesConfig.volumes).flat(),
     );
 
-    const ejectionPromises: $.ShellPromise[] = [];
+    const ejectionPromises: Promise<void>[] = [];
     for (const volume of volumes) {
       if (knownSDCardNames.has(volume)) {
         console.log(`⏏ Ejecting: ${volume}`);
-        ejectionPromises.push($`diskutil unmount force ${volume}`);
+        ejectionPromises.push(
+          new PrintableShellCommand("diskutil", ["unmount", "force", volume])
+            .print({ argumentLineWrapping: "inline" })
+            .spawnTransparently().success,
+        );
         continue;
       }
       if (knownNonSDCardVolumes.has(volume)) {

@@ -3,10 +3,10 @@
 import assert from "node:assert";
 import { type FileChangeInfo, watch } from "node:fs/promises";
 import { extname, join } from "node:path";
-import { $ } from "bun";
 import { ErgonomicDate } from "ergonomic-date";
 import { LockfileMutex } from "lockfile-mutex";
 import { Path } from "path-class";
+import trash from "trash";
 import { xdgData } from "xdg-basedir";
 
 const LOG_FOLDER = Path.xdg.data.join("pythagoras-screenshot/log/");
@@ -51,7 +51,7 @@ async function callback(change: FileChangeInfo<string>) {
 
       await sourcePath.cp(TARGET_DIR.join(change.filename));
 
-      await $`/usr/bin/trash ${sourcePath}`;
+      await trash(sourcePath.path);
     } catch (e) {
       await debugLog(`Failed (${change.filename}): ${e}`);
     }

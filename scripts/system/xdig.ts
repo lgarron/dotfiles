@@ -1,31 +1,22 @@
 #!/usr/bin/env -S bun run --
 
-import assert from "node:assert";
-import { join } from "node:path";
 import { argv } from "node:process";
-import { file, spawn } from "bun";
-// Note: this explicitly uses Linux paths for consistent configuration across operating systems.
-import { xdgConfigDirectories } from "xdg-basedir";
+import { Path } from "path-class";
+import { PrintableShellCommand } from "printable-shell-command";
 
-const configDir = xdgConfigDirectories[0];
-const configFilePath = join(configDir, "dig/xdigrc.json");
+const configFilePath = Path.xdg.config.join("dig/xdigrc.json");
 
 interface DigRC {
   defaultPrefixArgs: string[];
 }
 
 const { defaultPrefixArgs } = (await (async () => {
-  if (!(await file(configFilePath).exists())) {
+  if (!(await configFilePath.exists())) {
     return { defaultPrefixArgs: [] };
   }
-  return file(configFilePath).json();
+  return configFilePath.readJSON();
 })()) as DigRC;
 
-assert.equal(
-  await spawn({
-    cmd: ["dig", ...defaultPrefixArgs, ...argv.slice(2)],
-    stdout: "inherit",
-    stderr: "inherit",
-  }).exited,
-  0,
-);
+await new PrintableShellCommand("dig", [...defaultPrefixArgs, ...argv.slice(2)])
+  .print({ argumentLineWrapping: "inline" })
+  .spawnTransparently().success;

@@ -1,103 +1,110 @@
 #!/usr/bin/env -S bun run --
 
-import { mkdir, mkdtemp, writeFile } from "node:fs/promises";
-import { tmpdir } from "node:os";
-import { join } from "node:path";
 import { exit } from "node:process";
-import { $ } from "bun";
 import {
   binary,
-  string as cmdString,
   command,
   option,
   optional,
   positional,
   run,
+  type Type,
 } from "cmd-ts-too";
+import { Path } from "path-class";
 import { PrintableShellCommand } from "printable-shell-command";
 
-const innnerDimension = 824 * 2;
+// TODO: add to `cmd-ts-too`
+const ArgPath: Type<string, Path> = {
+  async from(str) {
+    return new Path(str);
+  },
+};
+
+// TODO: add to `cmd-ts-too`
+const ExistingFilePath: Type<string, Path> = {
+  async from(str) {
+    const path = new Path(str);
+    if (!(await path.existsAsFile())) {
+      throw new Error(`Path does not exist as a file: ${path}`);
+    }
+    return path;
+  },
+};
+
+const INNER_DIMENSION = 824 * 2;
+const ICTOOL_PATH = new Path(
+  "/Applications/Icon Composer.app/Contents/Executables/ictool",
+);
 
 const app = command({
   name: "appiconify",
   args: {
     inputImage: positional({
       description: "Input image",
-      type: cmdString,
+      type: ExistingFilePath,
     }),
     outputImage: option({
       description: "Output image path",
-      type: optional(cmdString),
+      type: optional(ArgPath),
       long: "output",
     }),
     // TODO: options from `ictool`.
     // TODO: option to assign the image.
   },
   handler: async ({ inputImage, outputImage }) => {
-    // `join(…)` performs path canonicalization. This ensures we don't accept paths that are trivially identical by path traversal.
-    if (outputImage && join(inputImage) === join(outputImage)) {
+    // `Path` performs path canonicalization. This ensures we don't accept paths that are trivially identical by path traversal.
+    if (outputImage && inputImage.path === outputImage.path) {
       console.error("Input and output image cannot be the same path.");
       exit(1);
     }
 
-    const ICTOOL_PATH =
-      "/Applications/Icon Composer.app/Contents/Executables/ictool";
+    const tempDir = await Path.makeTempDir("appiconify");
 
-    const tempDir = await mkdtemp(join(tmpdir(), "appiconify"));
+    const iconPackagePath = tempDir.join("inner.icon");
+    const iconPackagePathAssets = iconPackagePath.join("Assets");
+    await iconPackagePathAssets.mkdir();
 
-    const iconPackagePath = join(tempDir, "inner.icon");
-    const iconPackagePathAssets = join(iconPackagePath, "Assets");
-    await mkdir(iconPackagePathAssets, { recursive: true });
-
-    const preSizedPNG = join(iconPackagePathAssets, "presized.png");
+    const preSizedPNG = iconPackagePathAssets.join("presized.png");
     await new PrintableShellCommand("magick", [
       inputImage,
-      ["-scale", innnerDimension.toString()],
+      ["-scale", INNER_DIMENSION.toString()],
       preSizedPNG,
     ]).shellOut();
 
-    await writeFile(
-      join(iconPackagePath, "icon.json"),
-      JSON.stringify(
+    await iconPackagePath.join("icon.json").writeJSON({
+      fill: {
+        "automatic-gradient": "extended-srgb:0.00000,0.53333,1.00000,1.00000",
+      },
+      groups: [
         {
-          fill: {
-            "automatic-gradient":
-              "extended-srgb:0.00000,0.53333,1.00000,1.00000",
-          },
-          groups: [
+          layers: [
             {
-              layers: [
-                {
-                  glass: false,
-                  "image-name": "presized.png",
-                  name: "Presized image",
-                  position: {
-                    scale: 0.6213592233,
-                    "translation-in-points": [0, 0],
-                  },
-                },
-              ],
-              shadow: {
-                kind: "neutral",
-                opacity: 0.5,
-              },
-              translucency: {
-                enabled: true,
-                value: 0.5,
+              glass: false,
+              "image-name": "presized.png",
+              name: "Presized image",
+              position: {
+                scale: 0.6213592233,
+                "translation-in-points": [0, 0],
               },
             },
           ],
-          "supported-platforms": {
-            circles: ["watchOS"],
-            squares: "shared",
+          shadow: {
+            kind: "neutral",
+            opacity: 0.5,
+          },
+          translucency: {
+            enabled: true,
+            value: 0.5,
           },
         },
-        null,
-        "  ",
-      ),
-    );
+      ],
+      "supported-platforms": {
+        circles: ["watchOS"],
+        squares: "shared",
+      },
+    });
 
-    const tempInnerPNG = join(tempDir, "inner.png");
+    const tempInnerPNG = tempDir.join("inner.png");
     await new PrintableShellCommand(ICTOOL_PATH, [
       iconPackagePath,
       "--export-preview",
@@ -109,7 +116,7 @@ const app = command({
       tempInnerPNG,
     ]).shellOut();
 
-    const output = outputImage ?? `${inputImage}.app-icon.png`;
+    const output = outputImage ?? inputImage.extendBasename(".app-icon.png");
     // TODO: launder the icon through a stub app instead.
     await new PrintableShellCommand("magick", [
       tempInnerPNG,
@@ -119,7 +126,7 @@ const app = command({
       output,
     ]).shellOut();
 
-    await $`reveal-macos ${output}`;
+    await new PrintableShellCommand("reveal-macos", [output]).spawn().success;
   },
 });
 

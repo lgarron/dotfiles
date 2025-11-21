@@ -5,11 +5,16 @@
  * calls the implementation.
  */
 
-import { $, argv, fileURLToPath } from "bun";
+import { argv } from "node:process";
+import { Path } from "path-class";
+import { PrintableShellCommand } from "printable-shell-command";
 
-const implEntry = fileURLToPath(
-  import.meta.resolve("./build-ts-scripts.impl.ts"),
-);
+const implEntry = Path.resolve("./build-ts-scripts.impl.ts", import.meta.url);
 
-await $`make setup-npm-packages`;
-await $`bun run -- ${implEntry} ${argv.slice(2)}`;
+await new PrintableShellCommand("make", ["setup-npm-packages"]).shellOut();
+await new PrintableShellCommand("bun", [
+  "run",
+  "--",
+  implEntry.path,
+  argv.slice(2),
+]).shellOut();

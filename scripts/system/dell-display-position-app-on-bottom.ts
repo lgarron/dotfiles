@@ -1,8 +1,8 @@
 #!/usr/bin/env -S bun run --
 
+import { argv } from "node:process";
 import { styleText } from "node:util";
 import { getAllDevices } from "betterdisplaycli";
-import { argv } from "bun";
 import { PrintableShellCommand } from "printable-shell-command";
 
 const DISPLAY_NAME = "DELL P2715Q";

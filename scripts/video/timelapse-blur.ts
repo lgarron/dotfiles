@@ -1,7 +1,5 @@
 #!/usr/bin/env -S bun run --
 
-import { default as assert } from "node:assert";
-import { spawn } from "bun";
 import {
   binary,
   number as cmdNumber,
@@ -50,7 +48,7 @@ const app = command({
       _qv: number, // TODO
     ): Promise<string> {
       const outputFileName = `${sourceFile}.${framesWindow}×-blur.mp4`;
-      const command = new PrintableShellCommand("time", [
+      await new PrintableShellCommand("time", [
         "ffmpeg",
         ["-i", sourceFile],
         [
@@ -70,9 +68,7 @@ const app = command({
         ["-r", `${fps}`],
         ["-q:v", "75"],
         outputFileName,
-      ]);
-      command.print();
-      assert((await spawn(command.forBun()).exited) === 0);
+      ]).shellOut();
       return outputFileName;
     }
 

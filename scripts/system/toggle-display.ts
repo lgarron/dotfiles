@@ -12,6 +12,8 @@ import {
   run,
 } from "cmd-ts-too";
 
+// TODO Migrate into `betterdisplaycli.js`.
+
 const app = command({
   name: "toggle-display",
   args: {

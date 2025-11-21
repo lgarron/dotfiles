@@ -1,4 +1,5 @@
-import { spawn } from "bun";
+import { Readable } from "node:stream";
+import { PrintableShellCommand } from "printable-shell-command";
 
 function parseListenersForPort(s: string): number[] {
   // TODO: is it possible to get more than one in practice?
@@ -13,16 +14,24 @@ function parseListenersForPort(s: string): number[] {
 }
 
 export async function listenersForPort(port: number): Promise<number[]> {
-  const subprocess = spawn({
-    cmd: ["lsof", "-t", "-i", `tcp:${port}`],
-  });
-  // Checking `exited` allow is to distinguish program launch errors (e.g. the
-  // `lsof` binary not being found) from subprocess runtime errors.
-  if ((await subprocess.exited) === 1) {
-    // TODO: can we distinguish this from general errors?
-    return [];
+  const subprocess = new PrintableShellCommand("lsof", [
+    "-t",
+    "-i",
+    `tcp:${port}`,
+  ]).spawn({ stdio: ["ignore", "pipe", "inherit"] });
+
+  const response = new Response(Readable.toWeb(subprocess.stdout));
+  try {
+    await subprocess.success;
+  } catch {
+    // Checking `exited` allows us to distinguish program launch errors (e.g. the
+    // `lsof` binary not being found) from subprocess runtime errors.
+    if (subprocess.exitCode === 1) {
+      // TODO: can we distinguish this from general errors?
+      return [];
+    }
   }
-  return parseListenersForPort(await new Response(subprocess.stdout).text());
+  return parseListenersForPort(await response.text());
 }
 
 export const exportsForTestings = { parseListenersForPort };

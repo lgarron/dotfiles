@@ -56,6 +56,8 @@ if (!(await JJ_REPO.exists())) {
   );
   await JJ_ICLOUD_FOLDER.mkdir();
   await JJ_ICLOUD_FOLDER.join("repo").write(JJ_REPO.join("repo").path);
+  await JJ_ICLOUD_FOLDER.join(".gitignore").write(`/.obsidian/plugins/**/*.wasm
+`);
   // TODO: avoid creating nested alias (i.e. don't link if the destination exists, to avoid `ln`s functionality of placing a link inside a folder if it exists.)
   await $`ln -s "/Users/lgarron/.local/share/obsidian-backup/data/obsidian.jj/working_copy" "/Users/lgarron/Library/Mobile Documents/iCloud~md~obsidian/Documents/.jj/working_copy"`;
   await rmdir(JJ_REPO_TEMP_DIR.path);

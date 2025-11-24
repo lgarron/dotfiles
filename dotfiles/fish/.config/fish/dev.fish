@@ -14,6 +14,9 @@
     abbr -a mp "make publish"
     abbr -a mt "make test"
     abbr -a ml "make lint"
+    abbr -a mch "make check"
+    abbr -a mh "make check"
+    abbr -a mm "make check"
     abbr -a mf "make format"
     abbr -a ms "make setup"
     abbr -a mi "make install"
@@ -28,6 +31,9 @@
     abbr -a kta "mak test-all"
     abbr -a mtf "time make -j 16 test-fast"
     abbr -a ktf "mak test-fast"
+    abbr -a kch "mak check"
+    abbr -a kh "mak check"
+    abbr -a kk "mak check"
     # Targets for other programs
     abbr -a kt "mak test"
 
@@ -39,6 +45,9 @@
         abbr_anyarg $make_command p  publish
         abbr_anyarg $make_command t  test
         abbr_anyarg $make_command l  lint
+        abbr_anyarg $make_command ch check
+        abbr_anyarg $make_command h  check
+        abbr_anyarg $make_command m  check
         abbr_anyarg $make_command f  format
         abbr_anyarg $make_command s  setup
         abbr_anyarg $make_command i  install

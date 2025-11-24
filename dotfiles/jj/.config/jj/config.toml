@@ -111,4 +111,6 @@ email = "code@garron.net"
 --when.repositories = ["~/Code/git/github.com/thewca/"]
 [--scope.user]
 email = "lgarron@worldcubeassociation.org"
-# TODO: figure out why `repo version bump --commit dev` has a tendency to cause this. Maybe a race condition with `gg.app`?
+
+[gg.ui]
+track-recent-workspaces = false

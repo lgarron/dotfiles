@@ -194,6 +194,9 @@ reset: clean
 
 ########
 
+.PHONY: check
+check: lint test
+
 .PHONY: test
 test: test-help test-completions test-bun cargo-test
 

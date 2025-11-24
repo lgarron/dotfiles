@@ -1,10 +1,12 @@
 {
+	// This should be in `jsonc.jsonc` rather than `json.jsonc`, but VS Code is inconsistent about categorizing `package.json` as JSON vs. JSONC. 😕
 	"@cubing/deploy": {
 		"prefix": "@cubing/deploy",
 		"body": [
+			"\"$$schema\": \"./node_modules/@cubing/deploy/config-schema.package.json\",",
 			"\"@cubing/deploy\": {",
 			"  \"${0:https://…}\": {}",
-			"}",
+			"}"
 		],
 		"description": "Add @cubing/deploy settings"
 	}

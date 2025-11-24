@@ -34,8 +34,9 @@
 	conflictstyle = zdiff3
 [rerere]
 	enabled = true
-[blame]
-	ignoreRevsFile = .git-blame-ignore-revs
+# TODO: figure out a way to enable this ergonomically.
+# [blame]
+# 	ignoreRevsFile = .git-blame-ignore-revs
 [branch]
 	sort = -taggerdate
 # Heuristic to detect macOS.

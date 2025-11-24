@@ -45,6 +45,7 @@ abbr_subcommand_arg jj s "# try: `b` (branch) or `--source` explicitly" rebase
 abbr_subcommand_arg jj d --destination rebase
 
 abbr_subcommand_arg jj ii --ignore-immutable edit squash describe rebase abandon
+abbr_subcommand_arg jj i --into squash
 abbr_subcommand_arg jj r --revision bookmark squash
 
 _fish_abbr_jj_subcommand de describe
@@ -146,6 +147,7 @@ abbr -a jdno --set-cursor "jj diff --name-only --to \"fork_point(%)\"" # Special
 abbr -a jgv 'open --url (jj git remote list | grep "^origin" | awk "{print \$2}" | tr -d "\n" | sed "s#\.git\$##"; and echo -n "/commit/"; echo -- (jj here))'
 # "jj GitHub (view) branch"
 abbr -a jgb 'open --url (jj git remote list | grep "^origin" | awk "{print \$2}" | tr -d "\n" | sed "s#\.git\$##"; and echo -n "/commit/"; echo -- (jj guess-branch))'
+abbr -a jgu 'open --url (jj git remote list | grep "^origin" | awk "{print \$2}" | tr -d "\n" | sed "s#\.git\$##")'
 
 # LSP override: This is an "exported" function (meant to be used outside this file).
 # @fish-lsp-disable-next-line 4004

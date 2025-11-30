@@ -1,13 +1,12 @@
 #!/usr/bin/env -S bun run --
 
 import { argv } from "node:process";
-import { styleText } from "node:util";
 import { getAllDevices } from "betterdisplaycli";
 import { PrintableShellCommand } from "printable-shell-command";
 
 const DISPLAY_NAME = "DELL P2715Q";
 
-const devices = await getAllDevices();
+const devices = await getAllDevices({ quiet: true });
 const process = argv[2];
 
 if (devices.find((d) => d.info.name === DISPLAY_NAME)) {
@@ -46,8 +45,4 @@ end if
 `,
     ],
   ]).spawn().success;
-} else {
-  console.log(
-    `Did not detect the display "${DISPLAY_NAME}". Not moving window for process \`${styleText(["bold"], process)}\`.`,
-  );
 }

@@ -1,15 +1,8 @@
 function __fish_jj_num_commits
     # timeout doesn't take `--` (at least on macOS), so we hope `$argv[1]` doesn't allow for an injection. 🤷
-    set DOT_PER_COMMIT (timeout --preserve-status 1s jj log 2>/dev/null \
-        --no-graph \
-        --ignore-working-copy \
-        --color=always \
+    timeout --preserve-status 1s jj log 2>/dev/null \
         --revisions $argv[1] \
-        --template "'.'") || return 1
-
-    printf "%s" $DOT_PER_COMMIT \
-        | wc -c \
-        | tr -d " "
+        --count || return 1
 end
 
 # From https://github.com/fish-shell/fish-shell/issues/11183#issuecomment-2699601115
@@ -52,12 +45,12 @@ function fish_jj_prompt
     )
     set -l prompt_pushable_stack (__fish_jj_num_commits "prompt_pushable_stack" || printf "%s" $TIMED_OUT)
     # TODO: add heuristics for slow repos? (And also optimize queries.)
-    if contains "$_FISH_PROMPT_SKIP_UNPUSHABLE" "true"
+    if contains "$_FISH_PROMPT_SKIP_UNPUSHABLE" true
         set prompt_draft $SKIPPED_DUE_TO_ENV_VAR
     else
         set prompt_draft (__fish_jj_num_commits "prompt_draft" || printf "%s" $TIMED_OUT)
     end
-     if contains "$_FISH_PROMPT_SKIP_BLANK" "true"
+    if contains "$_FISH_PROMPT_SKIP_BLANK" true
         set prompt_blank_fringe $SKIPPED_DUE_TO_ENV_VAR
     else
         set prompt_blank_fringe (__fish_jj_num_commits "prompt_blank_fringe" || printf "%s" $TIMED_OUT)

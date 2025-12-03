@@ -31,13 +31,16 @@ Skips known volumes from: ${KNOWN_NON_SD_CARD_VOLUMES_PATH_JSON}
     printSkippedKnownVolumes: flag({
       long: "print-skipped-known-volumes",
     }),
+    notify: flag({
+      long: "notify",
+    }),
     onUnknownVolume: option({
       type: optional(oneOf(["warning", "error"])),
       description: "Print completions",
       long: "on-unknown-volume",
     }),
   },
-  handler: async ({ printSkippedKnownVolumes, onUnknownVolume }) => {
+  handler: async ({ printSkippedKnownVolumes, onUnknownVolume, notify }) => {
     const sdCardJSONConfig: {
       sd_card_names: string[];
       sd_card_mount_point: string;
@@ -93,7 +96,33 @@ Skips known volumes from: ${KNOWN_NON_SD_CARD_VOLUMES_PATH_JSON}
       }
     }
 
-    await Promise.all(ejectionPromises);
+    async function showNotification(message: string) {
+      if (notify) {
+        try {
+          await new PrintableShellCommand("terminal-notifier", [
+            ["-title", "⏏️ Eject all cards"],
+            ["-message", message],
+          ]).shellOut();
+        } catch (e) {
+          console.error(
+            `Error trying to invoke \`terminal-notifier\`. Ignoring: ${e}`,
+          );
+        }
+      }
+    }
+
+    try {
+      await Promise.all(ejectionPromises);
+      await showNotification(
+        ejectionPromises.length > 0
+          ? `Ejected ${ejectionPromises.length} card${ejectionPromises.length === 1 ? "" : "s"} successfully.`
+          : "No cards to eject.",
+      );
+    } catch (e) {
+      await showNotification(
+        `Failed to eject at least one of ${ejectionPromises.length} cards. Error: ${e}`,
+      );
+    }
   },
 });
 

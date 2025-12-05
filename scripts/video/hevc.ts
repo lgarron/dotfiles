@@ -272,7 +272,7 @@ A forced bit depth of ${forceBitDepth} was specified, and will be used.`);
     let dest = destPrefix.extendBasename(".mp4");
     if (await dest.exists()) {
       dest = destPrefix.extendBasename(
-        `${destPrefix}.${new ErgonomicDate().multipurposeTimestamp}`,
+        `.${new ErgonomicDate().multipurposeTimestamp}`,
       );
     }
 

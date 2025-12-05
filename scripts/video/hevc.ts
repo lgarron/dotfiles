@@ -153,12 +153,16 @@ const app = command({
       return Temporal.Duration.from({ seconds: 60 });
     }
 
-    const { streams } = await (async () => {
+    const streams = await (async () => {
       while (true) {
         try {
-          return (await ffprobeCommand.json()) as {
+          const { streams } = (await ffprobeCommand.json()) as {
             streams: FFprobeStream[];
           };
+          if (!streams) {
+            throw new Error("No video stream data found.");
+          }
+          return streams;
         } catch {
           if (poll === "false") {
             console.error(

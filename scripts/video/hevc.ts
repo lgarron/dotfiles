@@ -22,6 +22,9 @@ import { sleepDuration } from "../lib/sleep";
 const HANDBRAKE_8_BIT_DEPTH_PRESET = "HEVC 8-bit (qv65)";
 const HANDBRAKE_10_BIT_DEPTH_PRESET = "HEVC 10-bit (qv65)";
 
+const DEFAULT_ENCODER = "handbrake";
+const ENCODERS = [DEFAULT_ENCODER, "ffmpeg"];
+
 const HALF_SECOND = Temporal.Duration.from({ milliseconds: 500 });
 
 // TODO: add to `cmd-ts-too`
@@ -65,6 +68,13 @@ const app = command({
       type: optional(oneOf(["8", "10"])),
       long: "force-bit-depth",
     }),
+    encoder: option({
+      description: "Encoder binary to invoke.",
+      type: optional(oneOf(ENCODERS)),
+      long: "encoder",
+      defaultValue: () => DEFAULT_ENCODER,
+      defaultValueIsSerializable: true,
+    }),
     height: option({
       description: "Height",
       type: optional(cmdNumber),
@@ -86,6 +96,7 @@ const app = command({
     forceBitDepthString,
     height,
     sourceFile,
+    encoder,
     outputDir,
   }) => {
     const forceBitDepth: 8 | 10 | undefined =
@@ -262,9 +273,11 @@ A forced bit depth of ${forceBitDepth} was specified, and will be used.`);
     })();
 
     let destPrefix = outputDir ?? sourceFile.parent;
-    destPrefix = destPrefix.join(
-      `${sourceFile.basename}.hevc${bitDepthFileComponent}`,
-    );
+    destPrefix = destPrefix.join(`${sourceFile.basename}`);
+    if (encoder !== DEFAULT_ENCODER) {
+      destPrefix = destPrefix.extendBasename(`.${encoder}`);
+    }
+    destPrefix = destPrefix.extendBasename(`.hevc${bitDepthFileComponent}`);
     if (height) {
       destPrefix = destPrefix.extendBasename(`.${height}p`);
     }
@@ -276,21 +289,44 @@ A forced bit depth of ${forceBitDepth} was specified, and will be used.`);
       );
     }
 
-    const heightParams: [string, string][] = height
-      ? [["--height", height.toString()]]
-      : [];
+    const command = (() => {
+      switch (encoder) {
+        case "handbrake": {
+          const heightParams: [string, string][] = height
+            ? [["--height", height.toString()]]
+            : [];
 
-    const command = new PrintableShellCommand("HandBrakeCLI", [
-      [
-        "--preset-import-file",
-        "/Users/lgarron/Code/git/github.com/lgarron/dotfiles/exported/HandBrake/UserPresets.json", // TODO
-      ],
-      ["--preset", handbrakePreset],
-      ["--quality", quality.toString()],
-      ...heightParams,
-      ["-i", sourceFile],
-      ["-o", dest],
-    ]);
+          return new PrintableShellCommand("HandBrakeCLI", [
+            [
+              "--preset-import-file",
+              "/Users/lgarron/Code/git/github.com/lgarron/dotfiles/exported/HandBrake/UserPresets.json", // TODO
+            ],
+            ["--preset", handbrakePreset],
+            ["--quality", quality.toString()],
+            ...heightParams,
+            ["-i", sourceFile],
+            ["-o", dest],
+          ]);
+        }
+        case "ffmpeg": {
+          const heightParams: [string, string][] = height
+            ? [["-vf", `scale=-1:${height.toString()}`]]
+            : [];
+
+          return new PrintableShellCommand("ffmpeg", [
+            ["-i", sourceFile],
+            ...heightParams,
+            ["-c:v", "hevc_videotoolbox"],
+            ["-q:v", quality.toString()],
+            ["-tag:v", "hvc1"],
+            [dest],
+          ]);
+        }
+        default: {
+          throw new Error("Unexpected encoder.");
+        }
+      }
+    })();
 
     console.log("");
     console.log("Running command:");

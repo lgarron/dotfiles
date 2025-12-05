@@ -334,6 +334,7 @@
 	"githubPullRequests.codingAgent.enabled": false,
 	"github.copilot.chat.newWorkspaceCreation.enabled": false,
 	"javascript.preferGoToSourceDefinition": true,
-	"typescript.preferGoToSourceDefinition": true
+	"typescript.preferGoToSourceDefinition": true,
+	"terminal.integrated.suggest.enabled": false
 	/****************/
 }

@@ -17,7 +17,7 @@ const app = command({
         ["-title", "Connect all displays"],
         [
           "-message",
-          `${numDisplays} display${numDisplays === 1 ? "" : "s"} are now connected.`,
+          `${numDisplays} display${numDisplays === 1 ? " is" : "s are"} now connected.`,
         ],
       ]).shellOut();
     } catch (e) {

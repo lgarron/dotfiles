@@ -5,6 +5,7 @@ import {
   binary,
   number as cmdNumber,
   command,
+  flag,
   oneOf,
   option,
   optional,
@@ -80,6 +81,9 @@ const app = command({
       type: optional(cmdNumber),
       long: "height",
     }),
+    dryRun: flag({
+      long: "dry-run",
+    }),
     outputDir: option({
       description: "Output dir",
       type: optional(ExistingDirPath),
@@ -95,6 +99,7 @@ const app = command({
     quality,
     forceBitDepthString,
     height,
+    dryRun,
     sourceFile,
     encoder,
     outputDir,
@@ -329,13 +334,15 @@ A forced bit depth of ${forceBitDepth} was specified, and will be used.`);
     })();
 
     console.log("");
-    console.log("Running command:");
+    console.log(dryRun ? `Command (dry run): ${dryRun}` : "Running command:");
     console.log("");
     command.print();
     console.log("");
 
-    // TODO: transfer HiDPI hint (e.g. for screencaps)
-    await command.spawnTransparently().success;
+    if (!dryRun) {
+      // TODO: transfer HiDPI hint (e.g. for screencaps)
+      await command.spawnTransparently().success;
+    }
 
     // TODO: catch Ctrl-C and rename to indicate partial transcoding
   },

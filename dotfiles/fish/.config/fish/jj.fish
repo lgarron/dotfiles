@@ -142,6 +142,7 @@ abbr_subcommand_arg jj no --name-only diff
 _fish_abbr_jj_subcommand dt "diff --to"
 abbr_subcommand_arg jj t --to diff
 abbr -a jdno --set-cursor "jj diff --name-only --to \"fork_point(%)\"" # Special shortened abbreviation
+abbr -a jdn --set-cursor "jj diff --name-only --to \"@-\"" # Special shortened abbreviation
 
 # "jj GitHub view"
 abbr -a jgv 'open --url (jj git remote list | grep "^origin" | awk "{print \$2}" | tr -d "\n" | sed "s#\.git\$##"; and echo -n "/commit/"; echo -- (jj here))'

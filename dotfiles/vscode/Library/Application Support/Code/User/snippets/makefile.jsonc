@@ -1,7 +1,12 @@
 {
   ".PHONY": {
     "prefix": ".PHONY",
-    "body": ".PHONY: $1\n$1:\n\t$0\n",
+    "body": [
+      ".PHONY: $1",
+      "$1:",
+      "\t$0",
+      ""
+    ],
     "description": "Add a .PHONY target"
   },
   "deploy": {
@@ -16,23 +21,37 @@
   "setup (using `bun install`)": {
     "prefix": "setup",
     "body": [
-      ".PHONY: setup\nsetup:\n\tbun install --frozen-lockfile"
+      ".PHONY: setup",
+      "setup:",
+      "\tbun install --frozen-lockfile"
     ],
     "description": "Setup using `bun install`"
   },
   "lint (using `biome`)": {
     "prefix": "lint",
     "body": [
-      ".PHONY: lint\nlint:\n\tbun x @biomejs/biome check"
+      ".PHONY: lint",
+      "lint:",
+      "\tbun x @biomejs/biome check"
     ],
     "description": "Lint using `biome`"
   },
   "format (using `biome`)": {
     "prefix": "format",
     "body": [
-      ".PHONY: format\nformat:\n\tbun x @biomejs/biome check --write"
+      ".PHONY: format",
+      "format:",
+      "\tbun x @biomejs/biome check --write"
     ],
     "description": "Format using `biome`"
+  },
+  "check": {
+    "prefix": "check",
+    "body": [
+      ".PHONY: check",
+      "check: lint test build",
+    ],
+    "description": "`make check` using `make lint test build`"
   },
   "clean": {
     "prefix": "clean",

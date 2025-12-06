@@ -12,6 +12,7 @@ import {
   run,
 } from "cmd-ts-too";
 import { Path } from "path-class";
+import { Plural } from "plural-chain";
 import { PrintableShellCommand } from "printable-shell-command";
 
 const SD_CARD_CONFIG_ROOT_DIR = Path.xdg.config.join("sd-card-backup");
@@ -64,14 +65,32 @@ Skips known volumes from: ${KNOWN_NON_SD_CARD_VOLUMES_PATH_JSON}
       Object.values(knownNonSDCardVolumesConfig.volumes).flat(),
     );
 
+    const counts = {
+      success: 0,
+      skip: 0,
+      failed: 0,
+    };
     const ejectionPromises: Promise<void>[] = [];
     for (const volume of volumes) {
       if (knownSDCardNames.has(volume)) {
         console.log(`⏏ Ejecting: ${volume}`);
         ejectionPromises.push(
-          new PrintableShellCommand("diskutil", ["unmount", "force", volume])
-            .print({ argumentLineWrapping: "inline" })
-            .spawnTransparently().success,
+          (async () => {
+            try {
+              await new PrintableShellCommand("diskutil", [
+                "unmount",
+                "force",
+                volume,
+              ])
+                .print({ argumentLineWrapping: "inline" })
+                .spawnTransparently().success;
+
+              counts.success++;
+            } catch (e) {
+              counts.failed++;
+              throw e;
+            }
+          })(),
         );
         continue;
       }
@@ -79,11 +98,13 @@ Skips known volumes from: ${KNOWN_NON_SD_CARD_VOLUMES_PATH_JSON}
         if (printSkippedKnownVolumes) {
           console.info(`⏩ Skipping known volume: ${volume}`);
         }
+        counts.skip++;
         continue;
       }
       switch (onUnknownVolume) {
         case "warning": {
           console.error(`⚠️ Skipping unknown volume: ${volume}`);
+          counts.skip++;
           break;
         }
         // biome-ignore lint/suspicious/noFallthroughSwitchClause: False positive: https://github.com/biomejs/biome/issues/3235
@@ -97,6 +118,7 @@ Skips known volumes from: ${KNOWN_NON_SD_CARD_VOLUMES_PATH_JSON}
     }
 
     async function showNotification(message: string) {
+      console.log(message);
       if (notify) {
         try {
           await new PrintableShellCommand("terminal-notifier", [
@@ -113,14 +135,18 @@ Skips known volumes from: ${KNOWN_NON_SD_CARD_VOLUMES_PATH_JSON}
 
     try {
       await Promise.all(ejectionPromises);
-      await showNotification(
+      const messsageParts = [
         ejectionPromises.length > 0
-          ? `Ejected ${ejectionPromises.length} card${ejectionPromises.length === 1 ? "" : "s"} successfully.`
+          ? `Ejected ${Plural.num.s(ejectionPromises)`card`} successfully.`
           : "No cards to eject.",
-      );
+      ];
+      if (counts.skip > 0) {
+        messsageParts.push(`(Skipped ${Plural.num.s(counts.skip)`cards`}.)`);
+      }
+      await showNotification(messsageParts.join(" "));
     } catch (e) {
       await showNotification(
-        `Failed to eject at least one of ${ejectionPromises.length} cards. Error: ${e}`,
+        `Failed to eject ${Plural.s(counts.failed)`cards`} out of ${Plural.s(ejectionPromises)`cards`}. Error: ${e}`,
       );
     }
   },

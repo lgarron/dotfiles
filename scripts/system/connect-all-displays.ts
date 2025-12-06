@@ -2,6 +2,7 @@
 
 import { connectAllDisplays, getAllDevices } from "betterdisplaycli";
 import { binary, command, run } from "cmd-ts-too";
+import { Plural } from "plural-chain";
 import { PrintableShellCommand } from "printable-shell-command";
 
 const app = command({
@@ -11,14 +12,10 @@ const app = command({
     await connectAllDisplays();
 
     try {
-      const numDisplays = (await getAllDevices({ ignoreDisplayGroups: true }))
-        .length;
+      const displays = await getAllDevices({ ignoreDisplayGroups: true });
       await new PrintableShellCommand("terminal-notifier", [
         ["-title", "Connect all displays"],
-        [
-          "-message",
-          `${numDisplays} display${numDisplays === 1 ? " is" : "s are"} now connected.`,
-        ],
+        ["-message", `${Plural.num.s.is_are({ displays })} now connected.`],
       ]).shellOut();
     } catch (e) {
       console.error(

@@ -12,6 +12,7 @@
         "lockfile-mutex": ">=0.3.5",
         "naughty-list": "^1.0.3",
         "path-class": ">=0.8.3",
+        "plural-chain": "0.2.1",
         "printable-shell-command": "^2.7.2",
         "temporal-ponyfill": "^0.1.0",
         "trash": "^10.0.0",
@@ -234,6 +235,8 @@
     "pinkie": ["pinkie@2.0.4", "", {}, "sha512-MnUuEycAemtSaeFSjXKW/aroV7akBbY+Sv+RkyqFjgAe73F+MR0TBWKBRDkmfWq/HiFmdavfZ1G7h4SPZXaCSg=="],
 
     "pinkie-promise": ["pinkie-promise@2.0.1", "", { "dependencies": { "pinkie": "^2.0.0" } }, "sha512-0Gni6D4UcLTbv9c57DfxDGdr41XfgUjqWZu492f0cIGr16zDU06BWP/RAEvOuo7CQ0CNjHaLlM59YJJFm3NWlw=="],
+
+    "plural-chain": ["plural-chain@0.2.1", "", {}, "sha512-MTAkLYFtZL+yoFjYzUbsl3fiXftB16MS2AS9MLxApJIgv91neiu65LK/Jg3LNpah/38JErt2NrJsmYdpO1hiLQ=="],
 
     "printable-shell-command": ["printable-shell-command@2.7.2", "", { "dependencies": { "path-class": ">=0.6.1", "type-fest": ">=5.1.0" }, "optionalDependencies": { "@types/bun": "^1.2.20", "@types/node": "^24.2.0" } }, "sha512-IlQGySbxNwzev3sgX05giSpwrl4/gtyF62QuXoQr2rkYX42Aox6laKKTB6M1BNy6qELwSt/tvEK00ehq/dzVQQ=="],
 

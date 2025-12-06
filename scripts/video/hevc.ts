@@ -15,6 +15,7 @@ import {
 } from "cmd-ts-too";
 import { ErgonomicDate } from "ergonomic-date";
 import { Path } from "path-class";
+import { Plural } from "plural-chain";
 import { PrintableShellCommand } from "printable-shell-command";
 import { Temporal } from "temporal-ponyfill";
 import { monotonicNow } from "../lib/monotonic-now";
@@ -135,7 +136,7 @@ const app = command({
         monotonicNow().since(pollStartTime).total({ unit: "seconds" }),
       );
       globalThis.process.stdout.write(
-        `Polled for ${secondsSoFar} second${secondsSoFar === 1 ? "" : "s"} so far. `,
+        `Polled for ${secondsSoFar} ${Plural.s(secondsSoFar)`seconds`} so far. `,
       );
       if (secondsSoFar < 10) {
         return Temporal.Duration.from({ seconds: 1 });
@@ -181,7 +182,7 @@ const app = command({
           const durationToWait = numSecondsToWait();
           const seconds = Math.floor(durationToWait.total({ unit: "seconds" }));
           console.info(
-            `Waiting ${seconds} second${seconds === 1 ? "" : "s"} to poll source again…`,
+            `Waiting ${seconds} ${Plural.s({ seconds })} to poll source again…`,
           );
           await sleepDuration(durationToWait);
         }

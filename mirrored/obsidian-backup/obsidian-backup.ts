@@ -13,6 +13,7 @@ import { $ } from "bun";
 import { ErgonomicDate } from "ergonomic-date";
 import { LockfileMutex } from "lockfile-mutex";
 import { Path } from "path-class";
+import { Plural } from "plural-chain";
 import { xdgData } from "xdg-basedir";
 
 const DATA_ROOT_DIR = Path.xdg.data.join("obsidian-backup");
@@ -263,7 +264,7 @@ async function garbageCollect(): Promise<void> {
         console.warn("Misordered commits???");
       }
 
-      const message = `${childCommit.ergonomicDate.multipurposeTimestamp} (${numSquashed} squashed commit${numSquashed === 1 ? "" : "s"})
+      const message = `${childCommit.ergonomicDate.multipurposeTimestamp} (${numSquashed} squashed ${Plural.s(numSquashed)`commits`})
 
 Last squashed at: ${now.multipurposeTimestamp}
 
@@ -280,7 +281,7 @@ Oldest squashed commit: ${oldestSquashedDate.multipurposeTimestamp}`;
   await $`cd ${DIR} && ${JJ} util gc --expire=now`;
   if (numPruned > 0) {
     await debugLog(
-      `Pruned ${numPruned} commit${numPruned === 1 ? "" : "s"} out of ${count} commit${count === 1 ? "" : "s"} (leaving ${count - numPruned} commit${count - numPruned === 1 ? "" : "s"}).`,
+      `Pruned ${Plural.num.s(numPruned)`commits`} out of ${Plural.num.s(count)`commits`} (leaving ${Plural.num.s(count - numPruned)`commits`}).`,
     );
   }
 }

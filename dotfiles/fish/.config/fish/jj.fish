@@ -148,6 +148,7 @@ abbr -a jgv 'open --url (jj git remote list | grep "^origin" | awk "{print \$2}"
 # "jj GitHub (view) branch"
 abbr -a jgb 'open --url (jj git remote list | grep "^origin" | awk "{print \$2}" | tr -d "\n" | sed "s#\.git\$##"; and echo -n "/commit/"; echo -- (jj guess-branch))'
 abbr -a jgu 'open --url (jj git remote list | grep "^origin" | awk "{print \$2}" | tr -d "\n" | sed "s#\.git\$##")'
+abbr -a jga 'open --url (jj git remote list | grep "^origin" | awk "{print \$2}" | tr -d "\n" | sed "s#\.git\$##"; and echo -n "/actions/")'
 
 # LSP override: This is an "exported" function (meant to be used outside this file).
 # @fish-lsp-disable-next-line 4004

@@ -21,6 +21,9 @@ class Tag3dPrints < Formula
 
     system "swiftc", "-o", "./.temp/tag-3d-print-as-successful", "./scripts/tags/tag-3d-print-as-successful.swift"
     bin.install "./.temp/tag-3d-print-as-successful" => "tag-3d-print-as-successful"
+
+    system "swiftc", "-o", "./.temp/tag-3d-print-as-successful-with-caveats", "./scripts/tags/tag-3d-print-as-successful-with-caveats.swift"
+    bin.install "./.temp/tag-3d-print-as-successful-with-caveats" => "tag-3d-print-as-successful-with-caveats"
     
     system "swiftc", "-o", "./.temp/tag-3d-print-as-unsuccessful", "./scripts/tags/tag-3d-print-as-unsuccessful.swift"
     bin.install "./.temp/tag-3d-print-as-unsuccessful" => "tag-3d-print-as-unsuccessful"

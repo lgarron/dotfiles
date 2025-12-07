@@ -284,3 +284,8 @@
         string join -- " " (string escape -- $COMMAND)
         command $COMMAND
     end
+
+    # `printable-shell-command` would be a more conventional function name, but this matches the JS class name.
+    function PrintableShellCommand
+        $HOME/Code/git/github.com/lgarron/printable-shell-command/script/command-to-js-source-code.ts $argv
+    end

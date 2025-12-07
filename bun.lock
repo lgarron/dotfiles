@@ -12,7 +12,7 @@
         "lockfile-mutex": ">=0.3.5",
         "naughty-list": "^1.0.3",
         "path-class": ">=0.10.3",
-        "plural-chain": "0.2.1",
+        "plural-chain": ">=0.2.3",
         "printable-shell-command": "^2.7.2",
         "temporal-ponyfill": "^0.1.0",
         "trash": "^10.0.0",
@@ -232,7 +232,7 @@
 
     "pinkie-promise": ["pinkie-promise@2.0.1", "", { "dependencies": { "pinkie": "^2.0.0" } }, "sha512-0Gni6D4UcLTbv9c57DfxDGdr41XfgUjqWZu492f0cIGr16zDU06BWP/RAEvOuo7CQ0CNjHaLlM59YJJFm3NWlw=="],
 
-    "plural-chain": ["plural-chain@0.2.1", "", {}, "sha512-MTAkLYFtZL+yoFjYzUbsl3fiXftB16MS2AS9MLxApJIgv91neiu65LK/Jg3LNpah/38JErt2NrJsmYdpO1hiLQ=="],
+    "plural-chain": ["plural-chain@0.2.3", "", {}, "sha512-iqzW8/mS8+Yveu1mZtoEtdmg0yglWDM7mL1bKzD4H+BlMaGCl/Ig0oTfSy4oEm6A20sgLS0zWaLbgmRemr1bFg=="],
 
     "printable-shell-command": ["printable-shell-command@2.7.3", "", { "dependencies": { "path-class": ">=0.6.1", "type-fest": ">=5.1.0" }, "optionalDependencies": { "@types/bun": "^1.2.20", "@types/node": "^24.2.0" } }, "sha512-dze0g2XUiBTp6EGd5kPSR2i422sabXWFjnk8qOqxbeUCxcNMNDjA2Z3XYq/8ZL6GmS7nhc/HjtRFXBvRP3c03A=="],
 

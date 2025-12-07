@@ -137,7 +137,7 @@ Skips known volumes from: ${KNOWN_NON_SD_CARD_VOLUMES_PATH_JSON}
       await Promise.all(ejectionPromises);
       const messsageParts = [
         ejectionPromises.length > 0
-          ? `Ejected ${Plural.num.s(ejectionPromises)`card`} successfully.`
+          ? `Ejected ${Plural.num.s(ejectionPromises)`cards`} successfully.`
           : "No cards to eject.",
       ];
       if (counts.skip > 0) {

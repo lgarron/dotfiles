@@ -198,7 +198,15 @@
     abbr_subcommand repo d "setup dependencies"
     abbr_subcommand_arg repo d dependencies setup
 
-    abbr -a pub "tagpush && make publish && repo version bump --commit dev"
+    abbr -a pub "jj new here && \\
+  tagpush && \\
+  make publish && \\
+  repo version bump --commit dev && \\
+  jj bookmark set --revision here main && \\
+    jj git push --bookmark main && \\
+    jj new main && \\
+    git switch main
+"
 
 ## Web
 

@@ -293,14 +293,14 @@
 					<array/>
 					<key>enabled</key>
 					<true/>
+					<key>modificationDate</key>
+					<real>786934092.61285698</real>
 					<key>name</key>
 					<string>homebrew-lgarron</string>
 					<key>settings</key>
 					<dict>
 						<key>folderDepth</key>
 						<integer>1</integer>
-						<key>parser</key>
-						<string>QSDirectoryParser</string>
 						<key>path</key>
 						<string>/opt/homebrew/Library/Taps/lgarron/homebrew-lgarron</string>
 					</dict>
@@ -1287,8 +1287,8 @@
 	</dict>
 	<key>omittedItems</key>
 	<array>
-		<string>/Users/lgarron/Library/Mobile Documents/iCloud~md~obsidian/Documents</string>
 		<string>/Users/lgarron/Applications/CrossOver/Ubisoft</string>
+		<string>/Users/lgarron/Library/Mobile Documents/iCloud~md~obsidian/Documents</string>
 	</array>
 </dict>
 </plist>

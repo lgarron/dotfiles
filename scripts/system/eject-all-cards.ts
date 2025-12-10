@@ -109,7 +109,9 @@ Skips known volumes from: ${KNOWN_NON_SD_CARD_VOLUMES_PATH_JSON}
         }
         // biome-ignore lint/suspicious/noFallthroughSwitchClause: False positive: https://github.com/biomejs/biome/issues/3235
         case "error": {
-          console.error(`⚠️ Unknown volume: ${volume}`);
+          const message = `⚠️ Unknown volume: ${volume}`;
+          console.error(message);
+          await showNotification(message);
           exit(1);
         }
         default:
@@ -133,21 +135,30 @@ Skips known volumes from: ${KNOWN_NON_SD_CARD_VOLUMES_PATH_JSON}
       }
     }
 
+    const messsageParts: string[] = [];
+    function addSkipped() {
+      if (counts.skip > 0) {
+        messsageParts.push(
+          `(Skipped ${Plural.num.s(counts.skip)`known volumes`}.)`,
+        );
+      }
+    }
     try {
       await Promise.all(ejectionPromises);
-      const messsageParts = [
+      messsageParts.push(
         ejectionPromises.length > 0
           ? `Ejected ${Plural.num.s(ejectionPromises)`cards`} successfully.`
           : "No cards to eject.",
-      ];
-      if (counts.skip > 0) {
-        messsageParts.push(`(Skipped ${Plural.num.s(counts.skip)`cards`}.)`);
-      }
+      );
+      addSkipped();
       await showNotification(messsageParts.join(" "));
     } catch (e) {
-      await showNotification(
-        `Failed to eject ${Plural.s(counts.failed)`cards`} out of ${Plural.s(ejectionPromises)`cards`}. Error: ${e}`,
+      messsageParts.push(
+        `Failed to eject ${Plural.s(counts.failed)`cards`} out of ${Plural.s(ejectionPromises)`cards`}.`,
       );
+      addSkipped();
+      messsageParts.push(`Error: ${e}`);
+      await showNotification(messsageParts.join(" "));
     }
   },
 });

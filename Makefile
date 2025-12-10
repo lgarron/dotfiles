@@ -161,7 +161,7 @@ setup: setup-caveat setup-npm-packages
 
 .PHONY: setup-caveat
 setup-caveat:
-	@echo "Note: \`make setup\` sets up the repo for development (installing dependencies), it does not set up dotfiles themselves."
+	@echo "Note: \`make setup\` sets up the repo for development (installing dependencies) — it does not set up dotfiles themselves."
 
 .PHONY: setup-npm-packages
 setup-npm-packages:

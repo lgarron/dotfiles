@@ -27,6 +27,7 @@
       ".docker",
       ".dts",
       ".gk",
+      ".gem", // Ruby Gems
       ".gnupg",
       ".gradle", // Gradle (Java)
       ".hugindata",

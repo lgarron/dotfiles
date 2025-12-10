@@ -39,6 +39,8 @@ Skips known volumes from: ${KNOWN_NON_SD_CARD_VOLUMES_PATH_JSON}
       type: optional(oneOf(["warning", "error"])),
       description: "Print completions",
       long: "on-unknown-volume",
+      defaultValue: () => "warning",
+      defaultValueIsSerializable: true,
     }),
   },
   handler: async ({ printSkippedKnownVolumes, onUnknownVolume, notify }) => {
@@ -64,6 +66,22 @@ Skips known volumes from: ${KNOWN_NON_SD_CARD_VOLUMES_PATH_JSON}
     const knownNonSDCardVolumes = new Set(
       Object.values(knownNonSDCardVolumesConfig.volumes).flat(),
     );
+
+    async function showNotification(message: string) {
+      console.log(message);
+      if (notify) {
+        try {
+          await new PrintableShellCommand("terminal-notifier", [
+            ["-title", "⏏️ Eject all cards"],
+            ["-message", message],
+          ]).shellOut();
+        } catch (e) {
+          console.error(
+            `Error trying to invoke \`terminal-notifier\`. Ignoring: ${e}`,
+          );
+        }
+      }
+    }
 
     const counts = {
       success: 0,
@@ -116,22 +134,6 @@ Skips known volumes from: ${KNOWN_NON_SD_CARD_VOLUMES_PATH_JSON}
         }
         default:
           throw new Error("Unknown parameter value");
-      }
-    }
-
-    async function showNotification(message: string) {
-      console.log(message);
-      if (notify) {
-        try {
-          await new PrintableShellCommand("terminal-notifier", [
-            ["-title", "⏏️ Eject all cards"],
-            ["-message", message],
-          ]).shellOut();
-        } catch (e) {
-          console.error(
-            `Error trying to invoke \`terminal-notifier\`. Ignoring: ${e}`,
-          );
-        }
       }
     }
 

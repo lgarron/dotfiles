@@ -1,11 +1,13 @@
 #!/usr/bin/env bun
 
+import assert from "node:assert";
 import { styleText } from "node:util";
 import {
   binary,
   string as cmdString,
   command,
   positional,
+  restPositionals,
   run,
 } from "cmd-ts-too";
 import { Path } from "path-class";
@@ -24,7 +26,7 @@ Sends a notification to Pushover, using credentials at: ~/.ssh/secrets/pushover.
       type: cmdString,
       displayName: "prefix",
     }),
-    message: positional({
+    message: restPositionals({
       type: cmdString,
       displayName: "message",
     }),
@@ -32,10 +34,13 @@ Sends a notification to Pushover, using credentials at: ~/.ssh/secrets/pushover.
   handler: async ({ prefix, message }) => {
     const credentials: PushoverCrendetials = await SECRETS_FILE_PATH.readJSON();
 
-    const fullMessage = `[${prefix}] ${message}`;
+    assert(message.length >= 1);
+    const messageJoined = message.join("\n");
+
+    const fullMessage = `[${prefix}] ${messageJoined}`;
     console.log(`Sending message:
 
-${styleText("blue", `[${prefix}] ${message}`)}
+${styleText("blue", `[${prefix}] ${messageJoined}`)}
 `);
     await sendMessage(credentials, fullMessage);
   },

@@ -8,7 +8,8 @@ export function byOption(options: { VERSION: string }): RunOptions {
     help: "option",
     completion: {
       mode: "option",
-      name: "plural",
+      // TODO: change this back to "plural" after https://github.com/dahlia/optique/issues/53 is fixed.
+      name: "both",
     },
     version: {
       mode: "option",

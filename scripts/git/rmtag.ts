@@ -3,16 +3,19 @@
 import { exit } from "node:process";
 import { styleText } from "node:util";
 import {
-  binary,
-  string as cmdString,
-  command,
-  oneOf,
+  argument,
+  message,
+  multiple,
+  object,
   option,
-  optional,
-  restPositionals,
-  run,
-} from "cmd-ts-too";
+  type ValueParser,
+  withDefault,
+} from "@optique/core";
+import { run } from "@optique/run";
 import { PrintableShellCommand } from "printable-shell-command";
+import { byOption } from "../lib/runOptions";
+
+const VERSION = "v0.3.0";
 
 async function doesTagExistLocally(tag: string): Promise<boolean> {
   return (
@@ -37,158 +40,187 @@ async function doesTagExistOnRemote(
   );
 }
 
-const binaryName = "rmtag";
+const gitRemotesPromise = (() => {
+  let cachedRemotes: Promise<string[]> | undefined;
+  return () => {
+    // biome-ignore lint/suspicious/noAssignInExpressions: Caching pattern.
+    return (cachedRemotes ??= (async () =>
+      (await new PrintableShellCommand("git", ["remote"]).text())
+        .split("\n")
+        .slice(0, -1))());
+  };
+})();
+// TODO: support doing this lazily: https://github.com/dahlia/optique/issues/52
+const gitRemotes = await gitRemotesPromise();
 
-const app = command({
-  name: binaryName,
-  description:
-    "Remove a tag thoroughly: local tag, remote tag, and GitHub release",
-  args: {
-    // TODO: allow multiple `--remote` args?
-    remote: option({
-      long: "remote",
-      // TODO: allow no remote (either explicitly, or when `origin` does not exist)
-      defaultValue: () => "origin",
-      defaultValueIsSerializable: true,
-    }),
-    tags: restPositionals({
-      type: cmdString,
-      displayName: "One or more tags",
-    }),
-    completions: option({
-      type: optional(oneOf(["fish"])),
-      description: "Print completions instead of running.",
-      long: "completions",
-    }),
-  },
-  handler: async ({ remote, tags, completions }) => {
-    // We can't create exclusive argument groups (like with `clap` in Rust), so we have to handle checks manually.
-    if (completions) {
-      switch (completions) {
-        // biome-ignore lint/suspicious/noFallthroughSwitchClause: False positive (the return type of `exit(…)` is `never`).
-        case "fish": {
-          console.log(`complete -c ${binaryName} -f
-complete -c ${binaryName} -a "(git tag --list)"
-complete -c ${binaryName} -l remote -d 'The remote to use. (Default: origin)' -r
-complete -c ${binaryName} -l completions -d 'Print completions for the given shell (instead of running the command normally). These can be loaded/stored permanently (e.g. when using Homebrew), but they can also be sourced directly, e.g.:' -r -f -a "{fish\t''}"
-`);
-          exit(0);
+function gitRemoteParser(): ValueParser<string> {
+  return {
+    metavar: "REMOTE",
+    parse(input) {
+      return { success: true, value: input };
+    },
+    format(value) {
+      return value;
+    },
+    *suggest(prefix) {
+      for (const option of gitRemotes) {
+        if (option.startsWith(prefix)) {
+          yield { kind: "literal", text: option };
         }
-        default:
-          throw new Error("Invalid shell");
       }
-    }
+    },
+  };
+}
 
-    // We could automatically trigger help by splitting `tags` into a required
-    // position `tag` and optional `additionalTags`, but that would prevent
-    // `--completions` from working. So we handle it here manually.
-    if (tags.length === 0) {
-      // TODO: Is this a stable way to call `.printHelp(…)`?
-      console.log(
-        app.printHelp(
-          { nodes: [], visitedNodes: new Set() }, // minimal blank data
-        ),
-      );
-      exit(1);
-    }
+const gitTagsPromise = (() => {
+  let cachedRemotes: Promise<string[]> | undefined;
+  return () => {
+    // biome-ignore lint/suspicious/noAssignInExpressions: Caching pattern.
+    return (cachedRemotes ??= (async () =>
+      (await new PrintableShellCommand("git", ["tag"]).text())
+        .split("\n")
+        .slice(0, -1))());
+  };
+})();
+// TODO: support doing this lazily: https://github.com/dahlia/optique/issues/52
+const gitTags = await gitTagsPromise();
 
-    /**************** Fetch ****************/
-
-    // We could specify which tags to fetch, but if a subset of tags is missing
-    // then `git` doesn't fail gracefully. So we fetch all.
-    // We also need to need to do this before deleting the local tag, to avoid the fetch restoring it.
-    // TODO: handle when there is no remote?
-    await new PrintableShellCommand("git", ["fetch", "--tags", remote]);
-
-    /**************** Local ****************/
-
-    const tagsToRemoveLocally: string[] = [];
-    for (const tag of tags) {
-      if (await doesTagExistLocally(tag)) {
-        tagsToRemoveLocally.push(tag);
+function gitTagParser(): ValueParser<string> {
+  return {
+    metavar: "TAG",
+    parse(input) {
+      return { success: true, value: input };
+    },
+    format(value) {
+      return value;
+    },
+    *suggest(prefix) {
+      for (const option of gitTags) {
+        if (option.startsWith(prefix)) {
+          yield { kind: "literal", text: option };
+        }
       }
-    }
+    },
+  };
+}
 
-    if (tagsToRemoveLocally.length > 0) {
+const options = run(
+  object({
+    remote: withDefault(
+      option("--remote", gitRemoteParser(), {
+        description: message`\`git\` remote`,
+      }),
+      "origin",
+    ),
+    tags: multiple(
+      argument(gitTagParser(), {
+        description: message`\git\` tag (single or multiple)`,
+      }),
+      { min: 1 },
+    ),
+  }),
+  byOption({ VERSION }),
+);
+
+/**************** Fetch ****************/
+
+// We could specify which tags to fetch, but if a subset of tags is missing
+// then `git` doesn't fail gracefully. So we fetch all.
+// We also need to need to do this before deleting the local tag, to avoid the fetch restoring it.
+// TODO: handle when there is no remote?
+
+const { remote, tags } = options;
+
+await new PrintableShellCommand("git", ["fetch", "--tags", remote]).shellOut();
+
+/**************** Local ****************/
+
+const tagsToRemoveLocally: string[] = [];
+for (const tag of tags) {
+  if (await doesTagExistLocally(tag)) {
+    tagsToRemoveLocally.push(tag);
+  }
+}
+
+if (tagsToRemoveLocally.length > 0) {
+  await new PrintableShellCommand("git", [
+    "tag",
+    "--delete",
+    ...tagsToRemoveLocally,
+  ])
+    .print()
+    .spawnTransparently().success;
+}
+
+/**************** Remote tag ****************/
+
+const remoteURL: string = await (async () => {
+  try {
+    return (
       await new PrintableShellCommand("git", [
-        "tag",
-        "--delete",
-        ...tagsToRemoveLocally,
-      ])
-        .print()
-        .spawnTransparently().success;
-    }
-
-    /**************** Remote tag ****************/
-
-    const remoteURL: string = await (async () => {
-      try {
-        return (
-          await new PrintableShellCommand("git", [
-            "remote",
-            "get-url",
-            `${remote}`,
-          ]).text()
-        ).trim();
-      } catch {
-        console.error(
-          `Could not get remote URL. Does this remote exist?
+        "remote",
+        "get-url",
+        `${remote}`,
+      ]).text()
+    ).trim();
+  } catch {
+    console.error(
+      `Could not get remote URL. Does this remote exist?
 
 Name of missing remote: ${styleText("bold", remote)}`,
-        );
-        exit(2);
-      }
-    })();
-
-    const tagsToRemoveFromRemote: string[] = [];
-    for (const tag of tags) {
-      if (await doesTagExistOnRemote(tag, remote)) {
-        tagsToRemoveFromRemote.push(tag);
-      }
-    }
-
-    if (tagsToRemoveFromRemote.length > 0) {
-      await new PrintableShellCommand("git", [
-        "push",
-        remote,
-        ...tagsToRemoveFromRemote.map((tag) => `:${tag}`),
-      ])
-        .print()
-        .spawnTransparently().success;
-    }
-
-    /**************** Remote releases ****************/
-
-    // TODO: Interleave with remote tag removal using the `--cleanup-tag` arg to
-    // `gh release delete`, to reduce the number of remote calls?
-
-    const remoteReleases = new Set(
-      await (async () => {
-        const json: { tagName: string }[] = await new PrintableShellCommand(
-          "gh",
-          [["release", "list"], "--repo", remoteURL, "--json", "tagName"],
-        ).json();
-        return json.map((entry) => entry.tagName);
-      })(),
     );
-    // We don't have a neat way of doing this in bulk.
-    for (const tag of tags) {
-      if (remoteReleases.has(tag)) {
-        await new PrintableShellCommand("gh", [
-          "release",
-          "delete",
-          tag,
-          "--yes",
-          "--repo",
-          remoteURL,
-        ])
-          .print()
-          .spawnTransparently().success;
-      }
-    }
+    exit(2);
+  }
+})();
 
-    console.log(`Tags are removed: ${tags.join(", ")}`);
-  },
-});
+const tagsToRemoveFromRemote: string[] = [];
+for (const tag of tags) {
+  if (await doesTagExistOnRemote(tag, remote)) {
+    tagsToRemoveFromRemote.push(tag);
+  }
+}
 
-await run(binary(app), process.argv);
+if (tagsToRemoveFromRemote.length > 0) {
+  await new PrintableShellCommand("git", [
+    "push",
+    remote,
+    ...tagsToRemoveFromRemote.map((tag) => `:${tag}`),
+  ])
+    .print()
+    .spawnTransparently().success;
+}
+
+/**************** Remote releases ****************/
+
+// TODO: Interleave with remote tag removal using the `--cleanup-tag` arg to
+// `gh release delete`, to reduce the number of remote calls?
+
+const remoteReleases = new Set(
+  await (async () => {
+    const json: { tagName: string }[] = await new PrintableShellCommand("gh", [
+      ["release", "list"],
+      "--repo",
+      remoteURL,
+      "--json",
+      "tagName",
+    ]).json();
+    return json.map((entry) => entry.tagName);
+  })(),
+);
+// We don't have a neat way of doing this in bulk.
+for (const tag of tags) {
+  if (remoteReleases.has(tag)) {
+    await new PrintableShellCommand("gh", [
+      "release",
+      "delete",
+      tag,
+      "--yes",
+      "--repo",
+      remoteURL,
+    ])
+      .print()
+      .spawnTransparently().success;
+  }
+}
+
+console.log(`Tags are removed: ${tags.join(", ")}`);

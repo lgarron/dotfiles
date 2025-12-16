@@ -5,6 +5,8 @@
     "": {
       "name": "dotfiles",
       "dependencies": {
+        "@optique/core": "^0.8.0",
+        "@optique/run": "^0.8.0",
         "betterdisplaycli": ">=0.1.8",
         "cmd-ts-too": "^0.15.3",
         "comment-json": "^4.4.1",
@@ -105,6 +107,10 @@
     "@nodelib/fs.stat": ["@nodelib/fs.stat@2.0.5", "", {}, "sha512-RkhPPp2zrqDAQA/2jNhnztcPAlv64XdhIp7a7454A5ovI7Bukxgt7MX7udwAu3zg1DcpPU0rz3VV1SeaqvY4+A=="],
 
     "@nodelib/fs.walk": ["@nodelib/fs.walk@1.2.8", "", { "dependencies": { "@nodelib/fs.scandir": "2.1.5", "fastq": "^1.6.0" } }, "sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg=="],
+
+    "@optique/core": ["@optique/core@0.8.0", "", {}, "sha512-LB4DD9ir7yB0EeUmV8TkC7/SkxLzFSBcNaETKr5QPG2xNPQ9FLprO/DNfa2spuHO1bAG2i/5q2o0nk4o3TDVwA=="],
+
+    "@optique/run": ["@optique/run@0.8.0", "", { "dependencies": { "@optique/core": "0.8.0" } }, "sha512-sg5qKamPiSvUR+7Ih1l3zpFchyQZzncIy0G6eJ+iV6j9jYViphMULQfgCpQOHuU6NdYjNSWlagg5UqVa6awfdw=="],
 
     "@sindresorhus/chunkify": ["@sindresorhus/chunkify@2.0.0", "", {}, "sha512-srajPSoMTC98FETCJIeXJhJqB77IRPJSu8g907jLuuioLORHZJ3YAOY2DsP5ebrZrjOrAwjqf+Cgkg/I8TGPpw=="],
 

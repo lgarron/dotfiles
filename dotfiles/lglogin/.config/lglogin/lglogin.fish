@@ -1,6 +1,7 @@
 #!/usr/bin/env -S fish --no-config
 
-    echo "Start: "(date) > ~/.config/lglogin/lastrun.log
+    set START_DATE (date)
+    echo "Start: $START_DATE" > ~/.config/lglogin/lastrun.log
 
 # Caps Lock (0x39) -> Delete Key (0x2A)
 
@@ -39,11 +40,13 @@
 
 # The Naughty List
 
-    /opt/homebrew/bin/naughty-list
+    naughty-list \
+        || terminal-notifier -title "lglogin.fish" -message "\[$START_DATE] Naughty list sweep failed: "(naughty-list 2>&1 1>/dev/null) \
+        || echo welp
 
 # niceplz
 
-    /opt/homebrew/bin/niceplz-sudo
+    niceplz-sudo
 
 # Allows us to check when the script was last run.
 

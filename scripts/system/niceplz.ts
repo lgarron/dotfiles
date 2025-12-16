@@ -1,8 +1,9 @@
 #!/usr/bin/env -S bun run --
 
-import { homedir } from "node:os";
-import { join } from "node:path";
-import { $, type BunFile, file } from "bun";
+import { Path } from "path-class";
+import { PrintableShellCommand } from "printable-shell-command";
+
+const CONFIG_FILE_PATH = Path.xdg.config.join("./niceplz/niceplz.json");
 
 // const PNICE_FISH = new URL("./pnice.fish", import.meta.url).pathname;
 // const PNICE_BIN = (await file(PNICE_FISH).exists()) ? PNICE_FISH : "pnice";
@@ -13,16 +14,15 @@ type NiceplzConfig = {
   processes_by_substring: ProcessPriorityList;
 };
 
-const bunFile: BunFile = file(join(homedir(), ".config/niceplz/niceplz.json"), {
-  type: "application/json",
-});
-
-const config = (await bunFile.json()) as NiceplzConfig;
+const config = (await CONFIG_FILE_PATH.readJSON()) as NiceplzConfig;
 for (const [substring, priority] of Object.entries(
   config.processes_by_substring,
 )) {
   try {
-    await $`${PNICE_BIN} ${substring} ${priority}`;
+    await new PrintableShellCommand(PNICE_BIN, [
+      substring,
+      `${priority}`,
+    ]).shellOut();
   } catch {
     console.error(`Process pattern not found. Skipping: ${substring}`);
   }

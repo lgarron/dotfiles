@@ -2,13 +2,22 @@
 
 // Hardcoded for my own `sd-card-backup` configuration.
 
-import { stat } from "node:fs/promises";
-import { homedir } from "node:os";
-import { extname, join } from "node:path";
 import { argv, exit } from "node:process";
 import { binary, command, positional, run } from "cmd-ts-too";
 import { ExistingPath } from "cmd-ts-too/batteries/fs";
+import { Path } from "path-class";
 import { PrintableShellCommand } from "printable-shell-command";
+
+const CONFIG_FILE_PATH = Path.xdg.config.join("./sd-card-backup/config.json");
+
+// TODO: Generate from source of truth.
+interface Config {
+  destination_root: string;
+  sd_card_mount_point: string;
+  sd_card_names: string[];
+  folder_mapping: { source: string; destination: string }[];
+  command_to_run_before?: string[];
+}
 
 const app = command({
   name: "reveal-sd-card-backup-dcim",
@@ -19,11 +28,10 @@ const app = command({
     }),
   },
   handler: async ({ filePath }) => {
-    const destinationRoot: string = (
-      await Bun.file(
-        join(homedir(), "/.config/sd-card-backup/config.json"),
-      ).json()
-    ).destination_root;
+    const { destination_root: destinationRoot } =
+      (await CONFIG_FILE_PATH.readJSON()) as Config;
+    const file = new Path(filePath);
+
     const destinationRootParts = destinationRoot.split("/");
     const [configBackupDrive] = destinationRootParts.splice(2, 1);
     if (destinationRootParts.join("###") !== "###Volumes###SD Card Backup###") {
@@ -95,7 +103,7 @@ const app = command({
       throw new Error("Invalid path!");
     }
 
-    const statResult = await stat(filePath);
+    const statResult = await file.stat();
     const yearString = statResult.birthtime.getFullYear().toString();
     const monthString = (statResult.birthtime.getMonth() + 1)
       .toString()
@@ -153,7 +161,7 @@ const app = command({
     ]);
 
     let targetClassificationFolder = "Unsorted";
-    const extension = extname(filePath).toLowerCase();
+    const extension = file.extension.toLowerCase();
     if (imageExtensions.has(extension)) {
       targetClassificationFolder = "Images";
     } else if (videoExtensions.has(extension)) {

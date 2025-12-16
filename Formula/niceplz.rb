@@ -14,5 +14,9 @@ class Niceplz < Formula
     bin.install "./.temp/bin/pnicest" => "pnicest"
     bin.install "./.temp/bin/niceplz" => "niceplz"
     bin.install "./.temp/bin/niceplz-sudo" => "niceplz-sudo"
+
+    # These completions aren't helpful, but we emit them for consistency.
+    generate_completions_from_executable(bin/"pnice", "--completions")
+    generate_completions_from_executable(bin/"pnicest", "--completions")
   end
 end

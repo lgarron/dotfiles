@@ -19,7 +19,7 @@
     "naughty-list": "^1.0.3",
     "path-class": ">=0.10.3",
     "plural-chain": ">=0.2.3",
-    "printable-shell-command": "^2.7.2",
+    "printable-shell-command": "^3.0.0",
     "temporal-ponyfill": "^0.1.0",
     "trash": "^10.0.0",
     "xdg-basedir": "^5.1.0"

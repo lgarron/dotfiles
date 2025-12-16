@@ -1,6 +1,5 @@
 #!/usr/bin/env -S bun run --
 
-import { openSync } from "node:fs";
 import { join } from "node:path";
 import { argv, exit } from "node:process";
 import { Path } from "path-class";
@@ -51,16 +50,13 @@ if (await repoPath.join(".git").exists()) {
 
   const DATA_DIR = Path.xdg.data.join("gclone");
   await DATA_DIR.mkdir();
-  const stdout = openSync(DATA_DIR.join("stdout.log").path, "a");
-  const stderr = openSync(DATA_DIR.join("stderr.log").path, "a");
 
+  // TODO: logging?
   new PrintableShellCommand("git", [
     "clone",
     repoCloneSource,
     repoPath,
-  ]).spawnDetached({
-    stdio: ["ignore", stdout, stderr],
-  });
+  ]).spawnDetached({});
 
   // `git` insists on creating instead of inheriting a folder. We could clone
   // the repo in another folder and move the `.git` repo to the correct place,

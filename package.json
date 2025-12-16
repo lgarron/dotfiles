@@ -10,7 +10,7 @@
   "type": "module",
   "dependencies": {
     "@optique/core": ">=0.8.1",
-    "@optique/run": "^0.8.0",
+    "@optique/run": ">=0.8.1",
     "betterdisplaycli": ">=0.1.8",
     "cmd-ts-too": "^0.15.3",
     "comment-json": "^4.4.1",

@@ -6,7 +6,7 @@
       "name": "dotfiles",
       "dependencies": {
         "@optique/core": ">=0.8.1",
-        "@optique/run": "^0.8.0",
+        "@optique/run": ">=0.8.1",
         "betterdisplaycli": ">=0.1.8",
         "cmd-ts-too": "^0.15.3",
         "comment-json": "^4.4.1",
@@ -110,7 +110,7 @@
 
     "@optique/core": ["@optique/core@0.8.1", "", {}, "sha512-0QMSjnAi2KY7iquK68unTiSPQfFTVm9P4p67MRWloJiBCgAVOxveYgn8cGYH49vHSWA7CWv53bP5AJb6qQyf5w=="],
 
-    "@optique/run": ["@optique/run@0.8.0", "", { "dependencies": { "@optique/core": "0.8.0" } }, "sha512-sg5qKamPiSvUR+7Ih1l3zpFchyQZzncIy0G6eJ+iV6j9jYViphMULQfgCpQOHuU6NdYjNSWlagg5UqVa6awfdw=="],
+    "@optique/run": ["@optique/run@0.8.1", "", { "dependencies": { "@optique/core": "0.8.1" } }, "sha512-lgGFktZCoRI0tfmPqrbxwMpt0itSC2lK24ES+axdqS6gckDMjCG8Tti3MHDdvFXfBF2PQXUZcqn4p/wmOqBdTA=="],
 
     "@sindresorhus/chunkify": ["@sindresorhus/chunkify@2.0.0", "", {}, "sha512-srajPSoMTC98FETCJIeXJhJqB77IRPJSu8g907jLuuioLORHZJ3YAOY2DsP5ebrZrjOrAwjqf+Cgkg/I8TGPpw=="],
 
@@ -291,8 +291,6 @@
     "xdg-basedir": ["xdg-basedir@5.1.0", "", {}, "sha512-GCPAHLvrIH13+c0SuacwvRYj2SxJXQ4kaVTT5xgL3kPrz56XxkF21IGhjSE1+W0aw7gpBWRGXLCPnPby6lSpmQ=="],
 
     "xdg-trashdir": ["xdg-trashdir@3.1.0", "", { "dependencies": { "@sindresorhus/df": "^3.1.1", "mount-point": "^3.0.0", "user-home": "^2.0.0", "xdg-basedir": "^4.0.0" } }, "sha512-N1XQngeqMBoj9wM4ZFadVV2MymImeiFfYD+fJrNlcVcOHsJFFQe7n3b+aBoTPwARuq2HQxukfzVpQmAk1gN4sQ=="],
-
-    "@optique/run/@optique/core": ["@optique/core@0.8.0", "", {}, "sha512-LB4DD9ir7yB0EeUmV8TkC7/SkxLzFSBcNaETKr5QPG2xNPQ9FLprO/DNfa2spuHO1bAG2i/5q2o0nk4o3TDVwA=="],
 
     "betterdisplaycli/printable-shell-command": ["printable-shell-command@2.7.3", "", { "dependencies": { "path-class": ">=0.6.1", "type-fest": ">=5.1.0" }, "optionalDependencies": { "@types/bun": "^1.2.20", "@types/node": "^24.2.0" } }, "sha512-dze0g2XUiBTp6EGd5kPSR2i422sabXWFjnk8qOqxbeUCxcNMNDjA2Z3XYq/8ZL6GmS7nhc/HjtRFXBvRP3c03A=="],
 

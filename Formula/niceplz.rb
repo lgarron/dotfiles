@@ -6,16 +6,13 @@ class Niceplz < Formula
   head "https://github.com/lgarron/dotfiles.git", :branch => "main"
 
   depends_on "oven-sh/bun/bun"
-  depends_on "fish"
 
   def install
-    system "bun", "install", "--frozen-lockfile"
+    system "./repo-script/build-ts-scripts.ts", "system/pnice", "system/pnicest", "system/niceplz", "sudo/niceplz-sudo"
 
-    system "bun", "build", "--target", "bun", "--outfile", "./.temp/bin/niceplz", "scripts/system/niceplz.ts"
+    bin.install "./.temp/bin/pnice" => "pnice"
+    bin.install "./.temp/bin/pnicest" => "pnicest"
     bin.install "./.temp/bin/niceplz" => "niceplz"
-
-    bin.install "scripts/system/pnice.fish" => "pnice"
-    bin.install "scripts/system/pnicest.fish" => "pnicest"
-    bin.install "scripts/sudo/niceplz-sudo.fish" => "niceplz-sudo"
+    bin.install "./.temp/bin/niceplz-sudo" => "niceplz-sudo"
   end
 end

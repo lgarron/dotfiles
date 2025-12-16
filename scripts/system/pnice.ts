@@ -1,0 +1,65 @@
+#!/usr/bin/env -S bun run --
+
+import { Readable } from "node:stream";
+import { argument, integer, message, object, string } from "@optique/core";
+import { run } from "@optique/run";
+import { PrintableShellCommand } from "printable-shell-command";
+import { byOption } from "../lib/runOptions";
+
+const VERSION = "v0.2.0";
+
+export async function pnice(processSubString: string, niceness: number) {
+  const subprocess = new PrintableShellCommand("pgrep", [
+    "-i",
+    processSubString,
+  ]).spawn({ stdio: ["ignore", "pipe", "ignore"] });
+
+  const stdout = new Response(Readable.from(subprocess.stdout));
+  try {
+    await subprocess.success;
+  } catch (e) {
+    if (subprocess.exitCode === 1) {
+      // Either there wer no processes, or we can't distinguish from that case.
+      return;
+    }
+    throw e;
+  }
+
+  const pids: number[] = (await stdout.text())
+    .split("\n")
+    .slice(0, -1)
+    .map((s) => parseInt(s, 10));
+
+  for (const pid of pids) {
+    try {
+      await new PrintableShellCommand("renice", [`${niceness}`, `${pid}`])
+        .print({ argumentLineWrapping: "inline" })
+        .spawnTransparently().success;
+    } catch (_) {
+      // TODO: try to detect error from `stderr`. (The return code is 1, which is not very helpful.)
+      await new PrintableShellCommand("sudo", [
+        "renice",
+        `${niceness}`,
+        `${pid}`,
+      ])
+        .print({ argumentLineWrapping: "inline" })
+        .spawnTransparently().success;
+    }
+  }
+}
+
+if (import.meta.main) {
+  const options = run(
+    object({
+      processSubString: argument(string({ metavar: "PROCESS_SUBSTRING" }), {
+        description: message`Process substring`,
+      }),
+      niceness: argument(integer({ metavar: "NICENESS", min: -20, max: 20 }), {
+        description: message`Niceness`,
+      }),
+    }),
+    byOption({ VERSION }),
+  );
+
+  await pnice(options.processSubString, options.niceness);
+}

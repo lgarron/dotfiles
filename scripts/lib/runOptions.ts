@@ -17,7 +17,7 @@ export function byOption(options: { VERSION: string }): RunOptions {
   };
 }
 
-export function bySubcommand(version: string): RunOptions {
+export function bySubcommand(options: { VERSION: string }): RunOptions {
   return {
     programName: new Path(argv[1]).basename.path,
     help: "command",
@@ -27,7 +27,7 @@ export function bySubcommand(version: string): RunOptions {
     },
     version: {
       mode: "command",
-      value: version,
+      value: options.VERSION,
     },
   };
 }

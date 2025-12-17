@@ -1,5 +1,5 @@
 import assert from "node:assert";
-import { argv, env, exit, getuid } from "node:process";
+import { argv, env, exit, getuid, stderr } from "node:process";
 import { Path } from "path-class";
 import { PrintableShellCommand } from "printable-shell-command";
 
@@ -41,24 +41,18 @@ import ${JSON.stringify(entry)};
       (await helperPath.readText()) !== helperCode
     ) {
       await helperPath.write(helperCode);
-      console.info(`Installing \`sudo\` helper at: ${helperPath}`);
+      console.error(`Installing \`sudo\` helper at: ${helperPath}`);
     }
 
-    await new PrintableShellCommand("sudo", [
-      "chown",
-      "root",
-      helperPath,
-    ]).shellOut();
-    await new PrintableShellCommand("sudo", [
-      "chmod",
-      "+x",
-      helperPath,
-    ]).shellOut();
-    await new PrintableShellCommand("sudo", [
-      "chmod",
-      "u+s",
-      helperPath,
-    ]).shellOut();
+    await new PrintableShellCommand("sudo", ["chown", "root", helperPath])
+      .print({ stream: stderr })
+      .spawnTransparently().success;
+    await new PrintableShellCommand("sudo", ["chmod", "+x", helperPath])
+      .print({ stream: stderr })
+      .spawnTransparently().success;
+    await new PrintableShellCommand("sudo", ["chmod", "u+s", helperPath])
+      .print({ stream: stderr })
+      .spawnTransparently().success;
 
     await new PrintableShellCommand("sudo", ["tee", "-a", ETC_SUDOERS])
       .stdin({

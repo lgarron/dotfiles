@@ -16,6 +16,7 @@ export async function persistentSudo(): Promise<void> {
 
   const helperPath = Path.xdg.data.join(
     "persistent-sudo",
+    "helpers",
     Path.resolve(entry, Path.cwd).asRelative(),
     `sudo-helper.ts`,
   );
@@ -31,11 +32,17 @@ export async function persistentSudo(): Promise<void> {
   const registrationLine = `${USER}    ALL= ${registrationLineSuffix}`;
   async function registerSudo() {
     // TODO: hardcode absolute `bun` path? Maybe from the current `bun` path?
-    await helperPath.write(`#!/usr/bin/env -S bun run --
+    const helperCode = `#!/usr/bin/env -S bun run --
 
 import ${JSON.stringify(entry)};
-`);
-    console.info(`Installing \`sudo\` helper at: ${helperPath}`);
+`;
+    if (
+      !(await helperPath.exists()) ||
+      (await helperPath.readText()) !== helperCode
+    ) {
+      await helperPath.write(helperCode);
+      console.info(`Installing \`sudo\` helper at: ${helperPath}`);
+    }
 
     await new PrintableShellCommand("sudo", [
       "chown",
@@ -57,7 +64,7 @@ import ${JSON.stringify(entry)};
       .stdin({
         text: `\n${registrationLine}`,
       })
-      .shellOut();
+      .spawn({ stdio: ["pipe", "ignore", "ignore"] }).success;
   }
 
   const contents = await new PrintableShellCommand("sudo", ["-l"])

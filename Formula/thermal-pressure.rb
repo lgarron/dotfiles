@@ -6,8 +6,11 @@ class ThermalPressure < Formula
   head "https://github.com/lgarron/dotfiles.git", :branch => "main"
 
   depends_on :macos
+  depends_on "oven-sh/bun/bun"
 
   def install
-    bin.install "scripts/sudo/thermal-pressure.fish" => "thermal-pressure"
+    system "./repo-script/build-ts-scripts.ts", "sudo/thermal-pressure"
+
+    bin.install "./.temp/bin/thermal-pressure" => "thermal-pressure"
   end
 end

@@ -1,6 +1,5 @@
 #!/usr/bin/env -S bun run --
 
-import { Readable } from "node:stream";
 import { argument, integer, message, object, string } from "@optique/core";
 import { run } from "@optique/run";
 import { PrintableShellCommand } from "printable-shell-command";
@@ -14,7 +13,7 @@ export async function pnice(processSubString: string, niceness: number) {
     processSubString,
   ]).spawn({ stdio: ["ignore", "pipe", "ignore"] });
 
-  const stdout = new Response(Readable.from(subprocess.stdout));
+  const text = subprocess.stdout.text();
   try {
     await subprocess.success;
   } catch (e) {
@@ -25,7 +24,7 @@ export async function pnice(processSubString: string, niceness: number) {
     throw e;
   }
 
-  const pids: number[] = (await stdout.text())
+  const pids: number[] = (await text)
     .split("\n")
     .slice(0, -1)
     .map((s) => parseInt(s, 10));

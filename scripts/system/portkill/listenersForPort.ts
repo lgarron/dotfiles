@@ -1,4 +1,3 @@
-import { Readable } from "node:stream";
 import { PrintableShellCommand } from "printable-shell-command";
 
 function parseListenersForPort(s: string): number[] {
@@ -20,7 +19,7 @@ export async function listenersForPort(port: number): Promise<number[]> {
     `tcp:${port}`,
   ]).spawn({ stdio: ["ignore", "pipe", "inherit"] });
 
-  const response = new Response(Readable.toWeb(subprocess.stdout));
+  const text = subprocess.stdout.text();
   try {
     await subprocess.success;
   } catch {
@@ -31,7 +30,7 @@ export async function listenersForPort(port: number): Promise<number[]> {
       return [];
     }
   }
-  return parseListenersForPort(await response.text());
+  return parseListenersForPort(await text);
 }
 
 export const exportsForTestings = { parseListenersForPort };

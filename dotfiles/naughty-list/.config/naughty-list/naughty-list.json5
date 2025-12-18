@@ -32,6 +32,7 @@
       ".gradle", // Gradle (Java)
       ".hugindata",
       ".lldb",
+      ".m2", // Maven (Java)
       ".npm",
       ".oracle_jre_usage",
       ".pnpm-state",

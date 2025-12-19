@@ -79,7 +79,9 @@ const gitTagsPromise = (() => {
     return (cachedRemotes ??= (async () =>
       (await new PrintableShellCommand("git", ["tag"]).text())
         .split("\n")
-        .slice(0, -1))());
+        .slice(0, -1)
+        // TODO: `fish` actually sorts these afterwards?
+        .reverse())());
   };
 })();
 // TODO: support doing this lazily: https://github.com/dahlia/optique/issues/52

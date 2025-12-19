@@ -1,4 +1,4 @@
-#!/usr/bin/env -S fish --no-config
+#!/usr/bin/env -S fish --no-config --
 
 # This avoids the need for a Brewfile that needs to be kept in sync.
 

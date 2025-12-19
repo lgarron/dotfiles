@@ -1,4 +1,4 @@
-#!/usr/bin/env -S fish --no-config
+#!/usr/bin/env -S fish --no-config --
 
 set DIR $argv[1]
 echo "Setting screenshot dir to: $DIR"

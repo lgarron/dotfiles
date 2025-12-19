@@ -10,7 +10,7 @@
 	},
 	"`fish` boilerplate": {
 		"body": [
-			"#!/usr/bin/env -S fish --no-config",
+			"#!/usr/bin/env -S fish --no-config --",
 			"",
 			""
 		]

@@ -1,8 +1,8 @@
-#!/usr/bin/env -S fish --no-config
+#!/usr/bin/env -S fish --no-config --
 
 if [ (count $argv) -eq 0 ]
-set BASE_NAME status --current-filename
-echo "Usage: $BASE_NAME [base branch] branch
+    set BASE_NAME status --current-filename
+    echo "Usage: $BASE_NAME [base branch] branch
 
 Example:
 
@@ -12,7 +12,7 @@ Example:
 
 If the base branch is not specified, the current branch is used.
 "
-exit 1
+    exit 1
 end
 
 if [ (count $argv) -lt 2 ]

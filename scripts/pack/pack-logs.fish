@@ -1,4 +1,4 @@
-#!/usr/bin/env -S fish --no-config
+#!/usr/bin/env -S fish --no-config --
 
 set archive_file logs.7z
 set concat_file $archive_file.concat.txt

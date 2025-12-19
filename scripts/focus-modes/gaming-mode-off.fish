@@ -1,4 +1,4 @@
-#!/usr/bin/env -S fish --no-config
+#!/usr/bin/env -S fish --no-config --
 
 /Applications/Arq.app/Contents/Resources/arqc pauseBackups 0 >/dev/null
 

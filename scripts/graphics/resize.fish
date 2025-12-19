@@ -1,4 +1,4 @@
-#!/usr/bin/env -S fish --no-config
+#!/usr/bin/env -S fish --no-config --
 
 if test (count $argv) -lt 3
     echo "Usage: resize 1200 630 in.png [out.png]"

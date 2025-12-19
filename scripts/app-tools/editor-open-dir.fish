@@ -1,4 +1,4 @@
-#!/usr/bin/env -S fish --no-config
+#!/usr/bin/env -S fish --no-config --
 
 set PATH_UTF8 (printf %s $argv[1] | iconv -f "UTF-8" -t "ISO-8859-1")
 

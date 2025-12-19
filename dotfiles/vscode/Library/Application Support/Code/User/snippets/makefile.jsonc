@@ -49,9 +49,18 @@
     "prefix": "check",
     "body": [
       ".PHONY: check",
-      "check: lint test build",
+      "check: lint test build check-package.json",
     ],
-    "description": "`make check` using `make lint test build`"
+    "description": "`make check` using `make lint test build check-package.json`"
+  },
+  "check-package.json": {
+    "prefix": "check-package.json",
+    "body": [
+      ".PHONY: check-package.json",
+      "check-package.json: build",
+      "\tbun x --package @cubing/dev-config package.json check",
+    ],
+    "description": "`bun x --package @cubing/dev-config package.json check`"
   },
   "clean": {
     "prefix": "clean",

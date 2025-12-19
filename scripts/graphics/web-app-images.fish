@@ -1,4 +1,4 @@
-#!/usr/bin/env -S fish --no-config
+#!/usr/bin/env -S fish --no-config --
 
 if test (count $argv) -lt 1
     echo "Usage: web-app-images icon-source.png"

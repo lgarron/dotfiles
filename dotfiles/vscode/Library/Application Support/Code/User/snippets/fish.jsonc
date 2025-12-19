@@ -6,7 +6,7 @@
 	"Fish shell shebang": {
 		"prefix": "#!",
 		"body": [
-			"#!/usr/bin/env -S fish --no-config"
+			"#!/usr/bin/env -S fish --no-config --"
 		],
 		"description": "Fish shell shebang"
 	},

@@ -1,4 +1,4 @@
-#!/usr/bin/env -S fish --no-config
+#!/usr/bin/env -S fish --no-config --
 
 # Set the remote screen sharing resolution for a given computer automatically.
 # Hardcoded to a 5K monitor and the 16-inch MacBook Pro.

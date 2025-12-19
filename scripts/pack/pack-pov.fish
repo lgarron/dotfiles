@@ -1,4 +1,4 @@
-#!/usr/bin/env -S fish --no-config
+#!/usr/bin/env -S fish --no-config --
 
 set target_folder (echo $argv[1] |
   sed -E "s/[0-9]((\.bmp)?\.png)/_\1/g" |
@@ -10,11 +10,11 @@ set target_folder (echo $argv[1] |
 mkdir $target_folder
 mv $argv $target_folder
 ffmpeg \
-  -pattern_type glob \
-  -i "$target_folder/*.png" \
-  -vcodec libx264 \
-  -crf 18 \
-  -pix_fmt yuv420p \
-  $target_folder.zip.mp4
+    -pattern_type glob \
+    -i "$target_folder/*.png" \
+    -vcodec libx264 \
+    -crf 18 \
+    -pix_fmt yuv420p \
+    $target_folder.zip.mp4
 zip -r $target_folder.zip $target_folder
 reveal-macos $target_folder.zip $target_folder

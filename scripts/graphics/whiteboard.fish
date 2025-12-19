@@ -1,4 +1,4 @@
-#!/usr/bin/env -S fish --no-config
+#!/usr/bin/env -S fish --no-config --
 
 # From a script by Leland Batey: https://gist.github.com/lelandbatey/8677901
 magick $argv[1] \

@@ -10,10 +10,7 @@ import {
   restPositionals,
   run,
 } from "cmd-ts-too";
-import { Path } from "path-class";
-import { type PushoverCrendetials, sendMessage } from "./pushover/sendMessage";
-
-const SECRETS_FILE_PATH = Path.homedir.join(".ssh/secrets/pushover.json");
+import { sendMessage } from "./pushover/sendMessage";
 
 const app = command({
   name: "pushover",
@@ -32,8 +29,6 @@ Sends a notification to Pushover, using credentials at: ~/.ssh/secrets/pushover.
     }),
   },
   handler: async ({ prefix, message }) => {
-    const credentials: PushoverCrendetials = await SECRETS_FILE_PATH.readJSON();
-
     assert(message.length >= 1);
     const messageJoined = message.join("\n");
 
@@ -42,7 +37,7 @@ Sends a notification to Pushover, using credentials at: ~/.ssh/secrets/pushover.
 
 ${styleText("blue", `[${prefix}] ${messageJoined}`)}
 `);
-    await sendMessage(credentials, fullMessage);
+    await sendMessage(fullMessage);
   },
 });
 

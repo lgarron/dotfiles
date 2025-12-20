@@ -169,5 +169,15 @@
     "body": [
       "expect(${1}).${2:toBe(true)};",
     ]
+  },
+  "Wrap with function": {
+    "body": [
+      "${1}(${TM_SELECTED_TEXT})",
+    ]
+  },
+  "Wrap awaited": {
+    "body": [
+      "(await ${TM_SELECTED_TEXT}).${1}",
+    ]
   }
 }

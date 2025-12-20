@@ -98,5 +98,11 @@
       "    throw new Error(\"Invalid subcommand.\") as never;",
       "}"
     ]
+  },
+  "Optique description": {
+    "prefix": "Optique description",
+    "body": [
+      "{ description: message`${1}` }"
+    ]
   }
 }

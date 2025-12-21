@@ -118,6 +118,7 @@
     abbr -a bad "# Try: ba d"
     abbr -a bis "# Try: ba"
     abbr -a bid "# Try: ba d"
+    abbr -a "dx" "bun x -- bun-dx --package"
 
     abbr_subcommand bun a add
     abbr_subcommand bun i install

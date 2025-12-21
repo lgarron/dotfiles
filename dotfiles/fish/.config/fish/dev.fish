@@ -104,6 +104,8 @@
         repo dependencies --package-manager npm roll --commit $argv
     end
 
+# `bun`
+
     abbr -a b "bun"
 
     abbr -a bi "bun install;"
@@ -128,6 +130,11 @@
 
     # bun add d⎵ → bun add --development
     abbr_subcommand_arg bun d --development add
+
+    set -l BUN_ROLL "set -g _FISH_JJ_WAS_RUN_DURING_COMMAND true &&
+    repo dependencies --package-manager bun roll --commit"
+    abbr -a bun-roll $BUN_ROLL
+    abbr -a brr $BUN_ROLL
 
 # Cargo
 

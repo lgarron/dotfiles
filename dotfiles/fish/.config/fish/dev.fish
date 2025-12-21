@@ -177,6 +177,7 @@
     abbr_subcommand repo v "version"
     abbr_subcommand_arg repo b bump version
     abbr_subcommand_arg repo g get version
+    abbr_subcommand_arg repo s set version
     abbr -a "pvg" "repo version get"
     # We don't have an abbreviation for `repo version bump major`, because it's
     # relatively rare to use and therefore more of a footgun.
@@ -189,6 +190,7 @@
     abbr -a "pvd" "repo version bump --commit dev"
     abbr_subcommand repo vs "version set"
     abbr -a "pvs" "repo version set"
+    abbr_subcommand repo vs "version bump --commit set"
 
     abbr_subcommand repo p "publish"
 

@@ -175,9 +175,14 @@
       "${1}(${TM_SELECTED_TEXT})",
     ]
   },
-  "Wrap awaited": {
+  "Wrap call (awaited)": {
     "body": [
       "(await ${TM_SELECTED_TEXT}).${1}",
+    ]
+  },
+  "Wrap call": {
+    "body": [
+      "(${TM_SELECTED_TEXT}).${1}",
     ]
   }
 }

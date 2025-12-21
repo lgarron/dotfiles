@@ -186,6 +186,8 @@ function ggn
     open -a gg # Foreground.
 end
 
+abbr -a jgff "$DOTFILES_FOLDER_NO_TRAILING_SLASH/scripts/jj/jgff.ts"
+
 # Note that this implementing this for `j ci` and `j c i` would require
 # rewriting the commandline (to add the `env` invocation at the beginning)
 # rather than a simple expansion. So we just define `jci` for now.

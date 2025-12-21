@@ -14,7 +14,7 @@
     "body": [
       ".PHOHY: deploy",
       "deploy: ${0:build}",
-      "\tbun x @cubing/deploy"
+      "\tbun x -- bun-dx --package @cubing/deploy deploy --"
     ],
     "description": "Deploy using @cubing/deploy"
   },
@@ -32,7 +32,7 @@
     "body": [
       ".PHONY: lint",
       "lint:",
-      "\tbun x @biomejs/biome check"
+      "\tbun x -- bun-dx --package @biomejs/biome biome -- check"
     ],
     "description": "Lint using `biome`"
   },
@@ -41,7 +41,7 @@
     "body": [
       ".PHONY: format",
       "format:",
-      "\tbun x @biomejs/biome check --write"
+      "\tbun x -- bun-dx --package @biomejs/biome biome -- check --write"
     ],
     "description": "Format using `biome`"
   },

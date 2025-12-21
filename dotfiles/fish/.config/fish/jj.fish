@@ -56,6 +56,22 @@ _fish_abbr_jj_subcommand c commit
 abbr -a jc --set-cursor "jj commit --message \"%" # Special shortened abbreviation
 abbr_subcommand_arg jj m --message commit
 
+# There's no semantically safe way to set the cursor, so we use something that's
+# unlikely to occur by accident (unless it comes from this source code 😕).
+set -l UNIQUE_MARKER e7570aee70dde26e0814be06a6c767f9
+
+# jdd⎵ → jj describe --message "`[last command]`"
+function _abbr_jj_describe_last_command_fn
+    echo "jj describe --message \"`"(string replace --all "\"" "\\\"" $history[1])"`e7570aee70dde26e0814be06a6c767f9\""
+end
+abbr -a jdd --position command --function _abbr_jj_describe_last_command_fn --set-cursor=e7570aee70dde26e0814be06a6c767f9
+
+# jcc⎵ → jj commit --message "`[last command]`"
+function _abbr_jj_commit_last_command_fn
+    echo "jj commit --message \"`"(string replace --all "\"" "\\\"" $history[1])"`e7570aee70dde26e0814be06a6c767f9\""
+end
+abbr -a jcc --position command --function _abbr_jj_commit_last_command_fn --set-cursor=e7570aee70dde26e0814be06a6c767f9
+
 # Also see: `gdv` (in `git.fish`)
 function _abbr_jdv
     echo "jj describe --message \""(repo version get)

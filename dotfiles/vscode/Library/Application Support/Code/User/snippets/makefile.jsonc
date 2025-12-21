@@ -45,6 +45,15 @@
     ],
     "description": "Format using `biome`"
   },
+  "lint-typescript (using TypeScript)": {
+    "prefix": "lint-typescript",
+    "body": [
+      ".PHONY: lint-typescript",
+      "lint-typescript:",
+      "\tbun x -- bun-dx --package typescript tsc -- --noEmit --project ./tsconfig.json"
+    ],
+    "description": "Lint using `biome`"
+  },
   "check": {
     "prefix": "check",
     "body": [

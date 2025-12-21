@@ -89,6 +89,7 @@
     "description": "Test if a value is defined."
   },
   "node shebang": {
+    "scope": "javascript,typescript,shell",
     "prefix": "#!",
     "body": [
       "#!/usr/bin/env node --"
@@ -96,6 +97,7 @@
     "description": "node shebang"
   },
   "bun shebang": {
+    "scope": "javascript,typescript,shell",
     "prefix": "#!",
     "body": [
       "#!/usr/bin/env -S bun run --"
@@ -109,11 +111,13 @@
     "description": "Promise type"
   },
   "import.meta.resolve": {
+    "scope": "javascript,typescript",
     "prefix": "imr",
     "body": "import.meta.resolve(${0})",
     "description": "import.meta.resolve"
   },
   "cmd-ts-too example": {
+    "scope": "javascript,typescript",
     "prefix": "cmd-ts-too example",
     "body": [
       "#!/usr/bin/env -S bun run --",
@@ -157,6 +161,7 @@
     ]
   },
   "test (bun)": {
+    "scope": "javascript,typescript",
     "prefix": "test",
     "body": [
       "test(\"${1:…}\", async () => {",
@@ -165,22 +170,26 @@
     ]
   },
   "expect (bun)": {
+    "scope": "javascript,typescript",
     "prefix": "expect",
     "body": [
       "expect(${1}).${2:toBe(true)};",
     ]
   },
   "Wrap with function": {
+    "scope": "javascript,typescript",
     "body": [
       "${1}(${TM_SELECTED_TEXT})",
     ]
   },
   "Wrap call (awaited)": {
+    "scope": "javascript,typescript",
     "body": [
       "(await ${TM_SELECTED_TEXT}).${1}",
     ]
   },
   "Wrap call": {
+    "scope": "javascript,typescript",
     "body": [
       "(${TM_SELECTED_TEXT}).${1}",
     ]

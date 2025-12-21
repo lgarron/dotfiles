@@ -67,9 +67,9 @@
     "body": [
       ".PHONY: check-package.json",
       "check-package.json: build",
-      "\tbun x --package @cubing/dev-config package.json check",
+      "\tbun x -- bun-dx --package @cubing/dev-config package.json -- check",
     ],
-    "description": "`bun x --package @cubing/dev-config package.json check`"
+    "description": "`bun x -- bun-dx --package @cubing/dev-config package.json -- check`"
   },
   "clean": {
     "prefix": "clean",
@@ -95,5 +95,33 @@
       "bun x -- bun-dx --package ${1} ${2} --${3}"
     ],
     "description": "Invoke a dependency using `bun-dx`."
+  },
+  "bun-dx (biome)": {
+    "prefix": "dx biome",
+    "body": [
+      "bun x -- bun-dx --package @biomejs/biome biome --${1}"
+    ],
+    "description": "Invoke Biome using `bun-dx"
+  },
+  "bun-dx (typescript)": {
+    "prefix": "dx typescript",
+    "body": [
+      "bun x -- bun-dx --package typescript tsc --${1}"
+    ],
+    "description": "Invoke `typescript` using `bun-dx"
+  },
+  "bun-dx (@cubing/dev-config package.json)": {
+    "prefix": "dx @cubing/dev-config package.json",
+    "body": [
+      "bun x -- bun-dx --package @cubing/dev-config package.json --${1}"
+    ],
+    "description": "Invoke `@cubing/dev-config`'s `package.json` bin using `bun-dx"
+  },
+  "bun-dx (readme-cli-help)": {
+    "prefix": "dx readme-cli-help",
+    "body": [
+      "bun x -- bun-dx --package readme-cli-help readme-cli-help --${1}"
+    ],
+    "description": "Invoke `readme-cli-help` using `bun-dx"
   }
 }

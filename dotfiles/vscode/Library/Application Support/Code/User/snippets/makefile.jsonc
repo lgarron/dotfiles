@@ -123,5 +123,12 @@
       "bun x -- bun-dx --package readme-cli-help readme-cli-help --${1}"
     ],
     "description": "Invoke `readme-cli-help` using `bun-dx"
+  },
+  "bun-dx (repo)": {
+    "prefix": "dx repo",
+    "body": [
+      "bun x -- bun-dx --package @lgarron-bin/repo repo --${1}"
+    ],
+    "description": "Invoke `repo` using `bun-dx"
   }
 }

@@ -4,21 +4,16 @@
     # other shells is often known as the `rc` file, and `rc` is easy to type.
     abbr -a rc "source $HOME/.config/fish/config.fish"
 
-    set -l _DOTFILES_FOLDER "$HOME/Code/git/github.com/lgarron/dotfiles/"
+    abbr -a rcu "cd $DOTFILES_FOLDER && git pull && make fish && source $HOME/.config/fish/config.fish"
     if [ "$CODESPACES" = "true" ]
-      set _DOTFILES_FOLDER "/workspaces/.codespaces/.persistedshare/dotfiles/"
-    end
-
-    abbr -a rcu "cd $_DOTFILES_FOLDER && git pull && make fish && source $HOME/.config/fish/config.fish"
-    if [ "$CODESPACES" = "true" ]
-      abbr -a rcuf "cd $_DOTFILES_FOLDER && git fetch origin main && git abandon && git reset --hard origin/main && cd - && make fish && source $HOME/.config/fish/config.fish"
+      abbr -a rcuf "cd $DOTFILES_FOLDER && git fetch origin main && git abandon && git reset --hard origin/main && cd - && make fish && source $HOME/.config/fish/config.fish"
     end
     if contains "dreamhost.com" (hostname -d)
-        abbr -a rcu "git -C \"$_DOTFILES_FOLDER\" pull && cd $_DOTFILES_FOLDER && make dreamhost && source $HOME/.config/fish/config.fish"
-      abbr -a rcuf "cd $_DOTFILES_FOLDER && git fetch origin main && git abandon && git reset --hard origin/main && make dreamhost && cd - && source $HOME/.config/fish/config.fish"
+        abbr -a rcu "git -C \"$DOTFILES_FOLDER\" pull && cd $DOTFILES_FOLDER && make dreamhost && source $HOME/.config/fish/config.fish"
+      abbr -a rcuf "cd $DOTFILES_FOLDER && git fetch origin main && git abandon && git reset --hard origin/main && make dreamhost && cd - && source $HOME/.config/fish/config.fish"
     end
 
-    abbr -a dff "cd $_DOTFILES_FOLDER"
+    abbr -a dff "cd $DOTFILES_FOLDER"
 
 ## Paths
 

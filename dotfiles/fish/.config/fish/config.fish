@@ -24,6 +24,16 @@
 
     source $HOME/.config/fish/path.fish
 
+# `$DOTFILES_FOLDER`
+
+    # TODO: check against `realpath` of the current file?
+    set -x DOTFILES_FOLDER_NO_TRAILING_SLASH "$HOME/Code/git/github.com/lgarron/dotfiles"
+    if [ "$CODESPACES" = "true" ]
+      set DOTFILES_FOLDER_NO_TRAILING_SLASH "/workspaces/.codespaces/.persistedshare/dotfiles"
+    end
+    set -x DOTFILES_FOLDER "$DOTFILES_FOLDER_NO_TRAILING_SLASH/"
+
+
 # Loading
 
     if [ "$_FISH_MANUAL_RELOAD" = "true" ]

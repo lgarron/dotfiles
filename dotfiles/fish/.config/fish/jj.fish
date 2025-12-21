@@ -182,7 +182,7 @@ end
 function ggn
     /Applications/gg.app/Contents/MacOS/gg $argv &>/dev/null &
     disown
-    $HOME/Code/git/github.com/lgarron/dotfiles/scripts/system/dell-display-position-app-on-bottom.ts gg
+    $DOTFILES_FOLDER_NO_TRAILING_SLASH/scripts/system/dell-display-position-app-on-bottom.ts gg
     open -a gg # Foreground.
 end
 

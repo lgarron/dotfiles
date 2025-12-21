@@ -88,5 +88,12 @@
       "\t#rm -rf ./node_modules ./target"
     ],
     "description": "reset"
+  },
+  "bun-dx": {
+    "prefix": "dx",
+    "body": [
+      "bun x -- bun-dx --package ${1} ${2} --${3}"
+    ],
+    "description": "Invoke a dependency using `bun-dx`."
   }
 }

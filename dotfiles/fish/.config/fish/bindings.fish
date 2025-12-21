@@ -13,7 +13,8 @@
     bind ctrl-delete kill-token
     bind ctrl-\\ kill-token
 
-    if string match --quiet --entire -- "$TERM_PROGRAM" vscode > /dev/null
+    if string match --quiet --entire -- "$TERM_PROGRAM" vscode > /dev/null \
+      || string match --quiet --entire -- "$TERM_PROGRAM" "iTerm.app" > /dev/null
       # Legacy bindings
       bind alt-b backward-word
       bind alt-f forward-word

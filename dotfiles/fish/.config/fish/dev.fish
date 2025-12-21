@@ -108,6 +108,7 @@
 
     abbr -a bi "bun install;"
     abbr -a ba "bun add"
+    abbr -a bad "bun add --dev"
     abbr -a br "bun run --"
     abbr -a bt "bun test"
     abbr -a bx "bun x"
@@ -115,9 +116,6 @@
     abbr -a bup "bun update"
     abbr -a bw "bun why"
 
-    abbr -a bad "# Try: ba d"
-    abbr -a bis "# Try: ba"
-    abbr -a bid "# Try: ba d"
     abbr -a "dx" "bun x -- bun-dx --package"
 
     abbr_subcommand bun a add

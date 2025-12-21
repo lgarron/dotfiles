@@ -193,5 +193,13 @@
     "body": [
       "(${TM_SELECTED_TEXT}).${1}",
     ]
+  },
+  "new PrintableShellCommand": {
+    "scope": "javascript,typescript",
+    "prefix": "new PrintableShellCommand",
+    "body": [
+      "new PrintableShellCommand(${1:$TM_SELECTED_TEXT}, [${2}])"
+    ],
+    "description": "Construct a new `PrintableShellCommand`"
   }
 }

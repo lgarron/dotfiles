@@ -8,6 +8,7 @@ import {
   run,
 } from "cmd-ts-too";
 import { PrintableShellCommand } from "printable-shell-command";
+import { TIMESTAMP_AND_GIT_HEAD_HASH } from "../scripts/lib/TIMESTAMP_AND_GIT_HEAD_HASH";
 
 class ScriptSource {
   category: string;
@@ -32,9 +33,14 @@ class ScriptSource {
   }
 
   async build() {
+    // We have to shell out because of: https://github.com/oven-sh/bun/issues/12629
     await new PrintableShellCommand("bun", [
       "build",
       ["--target", "bun"],
+      [
+        "--define",
+        `globalThis.TIMESTAMP_AND_GIT_HEAD_HASH=${JSON.stringify(TIMESTAMP_AND_GIT_HEAD_HASH)}`,
+      ],
       ["--outfile", this.tempPath],
       this.sourcePath,
     ])

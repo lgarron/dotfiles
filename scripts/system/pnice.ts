@@ -5,8 +5,6 @@ import { run } from "@optique/run";
 import { PrintableShellCommand } from "printable-shell-command";
 import { byOption } from "../lib/runOptions";
 
-const VERSION = "v0.2.0";
-
 export async function pnice(processSubString: string, niceness: number) {
   const subprocess = new PrintableShellCommand("pgrep", [
     "-i",
@@ -57,7 +55,7 @@ if (import.meta.main) {
         description: message`Niceness`,
       }),
     }),
-    byOption({ VERSION }),
+    byOption(),
   );
 
   await pnice(options.processSubString, options.niceness);

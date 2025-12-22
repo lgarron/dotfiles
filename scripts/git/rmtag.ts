@@ -15,8 +15,6 @@ import { run } from "@optique/run";
 import { PrintableShellCommand } from "printable-shell-command";
 import { byOption } from "../lib/runOptions";
 
-const VERSION = "v0.3.1";
-
 async function doesTagExistLocally(tag: string): Promise<boolean> {
   return (
     (
@@ -121,7 +119,7 @@ const options = run(
       { min: 1 },
     ),
   }),
-  byOption({ VERSION }),
+  byOption(),
 );
 
 /**************** Fetch ****************/

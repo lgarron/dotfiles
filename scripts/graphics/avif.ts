@@ -1,6 +1,5 @@
 #!/usr/bin/env -S bun run --
 
-import { argv } from "node:process";
 import {
   argument,
   integer,
@@ -12,9 +11,8 @@ import {
 } from "@optique/core";
 import { run } from "@optique/run";
 import { path } from "@optique/run/valueparser";
-import { Path } from "path-class";
-
-const VERSION = "v2.0.1";
+import { PrintableShellCommand } from "printable-shell-command";
+import { byOption } from "../lib/runOptions";
 
 const args = run(
   object({
@@ -27,22 +25,8 @@ const args = run(
     sourceFile: argument(path({ metavar: "SOURCE_FILE" })),
     outputFile: optional(argument(path({ metavar: "OUTPUT_FILE" }))),
   }),
-  {
-    programName: new Path(argv[1]).basename.path,
-    description: message`The commandline tool of the future!`,
-    help: "option",
-    completion: {
-      mode: "option",
-      name: "plural",
-    },
-    version: {
-      mode: "option",
-      value: VERSION,
-    },
-  },
+  byOption(),
 );
-
-import { PrintableShellCommand } from "printable-shell-command";
 
 const { qcolor, sourceFile, outputFile } = args;
 

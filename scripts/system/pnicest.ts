@@ -8,15 +8,13 @@ import { run } from "@optique/run";
 import { byOption } from "../lib/runOptions";
 import { pnice } from "./pnice";
 
-const VERSION = "v0.2.0";
-
 const options = run(
   object({
     processSubString: argument(string({ metavar: "PROCESS_SUBSTRING" }), {
       description: message`Process substring`,
     }),
   }),
-  byOption({ VERSION }),
+  byOption(),
 );
 
 await pnice(options.processSubString, 20);

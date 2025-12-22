@@ -242,6 +242,15 @@
     abbr -a po1 "pushover 'Command done' -- (string join -- \"
 \" (history --max 1))"
 
+    abbr -a hl "/opt/homebrew/Library/Taps/lgarron/homebrew-lgarron"
+    abbr -a hlgg "cd /opt/homebrew/Library/Taps/lgarron/homebrew-lgarron && \
+git abandon && \
+git switch main && \
+git fetch --prune && \
+git reset --hard origin/main && \
+cd -
+"
+
     abbr -a ds "diskutil"
     abbr_subcommand diskutil l list
 

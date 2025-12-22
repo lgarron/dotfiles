@@ -251,6 +251,8 @@ git reset --hard origin/main && \
 cd -
 "
 
+    abbr_anyarg avif q --qcolor
+
     abbr -a ds "diskutil"
     abbr_subcommand diskutil l list
 

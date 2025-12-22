@@ -8,19 +8,21 @@ import {
   object,
   option,
   optional,
+  withDefault,
 } from "@optique/core";
 import { run } from "@optique/run";
 import { path } from "@optique/run/valueparser";
 import { Path } from "path-class";
 
-const VERSION = "v2.0.0";
+const VERSION = "v2.0.1";
 
 const args = run(
   object({
-    qcolor: optional(
+    qcolor: withDefault(
       option("--qcolor", integer({ min: 0, max: 100 }), {
         description: message`Quality factor.`,
       }),
+      60,
     ),
     sourceFile: argument(path({ metavar: "SOURCE_FILE" })),
     outputFile: optional(argument(path({ metavar: "OUTPUT_FILE" }))),
@@ -50,6 +52,6 @@ const outputFileName =
 
 await new PrintableShellCommand("magick", [
   sourceFile,
-  ["-quality", `${qcolor ?? 60}%`],
+  ["-quality", `${qcolor}%`],
   outputFileName,
 ]).shellOut();

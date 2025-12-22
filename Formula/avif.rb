@@ -11,5 +11,7 @@ class Avif < Formula
     system "./repo-script/build-ts-scripts.ts", "graphics/avif"
 
     bin.install "./.temp/bin/avif" => "avif"
+
+    generate_completions_from_executable(bin/"avif", "--completions", shells: [:fish])
   end
 end

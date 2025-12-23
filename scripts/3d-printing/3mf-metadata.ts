@@ -1,50 +1,56 @@
 #!/usr/bin/env -S bun run --
 
-import { binary, command, positional, run, subcommands } from "cmd-ts-too";
-import { ExistingPath } from "cmd-ts-too/dist/lib/cmd-ts-too/batteries/fs";
+import { argument, map, message, object } from "@optique/core";
+import { run } from "@optique/run";
+import { path } from "@optique/run/valueparser";
+import { Path } from "path-class";
 import { PrintableShellCommand } from "printable-shell-command";
+import { byOption } from "../lib/runOptions";
 
-const bambuVersion = command({
-  name: "bambu-version",
-  args: {
-    sourceFile: positional({
-      type: ExistingPath,
-      displayName: "Source file",
+export async function getBambuVersion(path: Path | string): Promise<string> {
+  let version: string | undefined;
+  const xml = await new PrintableShellCommand("unzip", [
+    "-p",
+    path,
+    "3D/3dmodel.model",
+  ]).text();
+  let justEnteredApplicationMetadataNode = false;
+  const rewriter = new HTMLRewriter().on("metadata", {
+    element(elem) {
+      if (elem.getAttribute("name") === "Application") {
+        justEnteredApplicationMetadataNode = true;
+      }
+    },
+    text(text) {
+      if (justEnteredApplicationMetadataNode) {
+        version = text.text
+          .replace(/^BambuStudio-/, "")
+          .split(".")
+          .map((v) => parseInt(v, 10))
+          .join(".");
+        justEnteredApplicationMetadataNode = false;
+      }
+    },
+  });
+  rewriter.transform(xml);
+  if (!version) {
+    throw new Error("Version not found!");
+  }
+  return version;
+}
+
+if (import.meta.main) {
+  const args = run(
+    object({
+      sourceFile: map(
+        argument(path({ mustExist: true, type: "file" }), {
+          description: message`File to read.`,
+        }),
+        Path.fromString,
+      ),
     }),
-  },
-  handler: async ({ sourceFile }) => {
-    const xml = await new PrintableShellCommand("unzip", [
-      "-p",
-      sourceFile,
-      "3D/3dmodel.model",
-    ]).text();
-    let justEnteredApplicationMetadataNode = false;
-    const rewriter = new HTMLRewriter().on("metadata", {
-      element(elem) {
-        if (elem.getAttribute("name") === "Application") {
-          justEnteredApplicationMetadataNode = true;
-        }
-      },
-      text(text) {
-        if (justEnteredApplicationMetadataNode) {
-          console.log(
-            text.text
-              .replace(/^BambuStudio-/, "")
-              .split(".")
-              .map((v) => parseInt(v, 10))
-              .join("."),
-          );
-          justEnteredApplicationMetadataNode = false;
-        }
-      },
-    });
-    rewriter.transform(xml);
-  },
-});
+    byOption(),
+  );
 
-const app = subcommands({
-  name: "3mf-metadata",
-  cmds: { bambuVersion },
-});
-
-await run(binary(app), process.argv);
+  console.log(await getBambuVersion(args.sourceFile));
+}

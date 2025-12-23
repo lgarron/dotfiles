@@ -244,6 +244,7 @@
 
     abbr -a hl "/opt/homebrew/Library/Taps/lgarron/homebrew-lgarron"
     abbr -a hlgg "cd /opt/homebrew/Library/Taps/lgarron/homebrew-lgarron && \
+{ git rebase --abort || echo \"No rebase in progress\" } && \
 git abandon && \
 git switch main && \
 git fetch --prune && \

@@ -1,35 +1,66 @@
 #!/usr/bin/env -S bun run --
 
-import { $ } from "bun";
-
 import {
-  binary,
-  string as cmdString,
-  command,
+  argument,
+  object,
   optional,
-  positional,
-  run,
-} from "cmd-ts-too";
+  type ValueParser,
+  type ValueParserResult,
+} from "@optique/core";
+import { run } from "@optique/run";
+import { getAllDevices } from "betterdisplaycli";
+import { PrintableShellCommand } from "printable-shell-command";
+import { byOption } from "../lib/runOptions";
 
-const app = command({
-  name: "toggle-display",
-  args: {
-    displayName: positional({
-      type: optional(cmdString),
-      displayName: "Display name",
-    }),
-  },
-  handler: async ({ displayName }) => {
-    const displayArg = displayName
-      ? `--name=${displayName}`
-      : "--displayWithMainStatus";
-    const hiDPI =
-      (await $`betterdisplaycli get ${displayArg} --hiDPI`.text()).trim() ===
-      "on";
-
-    const newState = hiDPI ? "off" : "on";
-    await $`betterdisplaycli set ${displayArg} --hiDPI=${newState}`;
-  },
+const allDevices = await getAllDevices({
+  ignoreDisplayGroups: true,
+  quiet: true,
 });
 
-await run(binary(app), process.argv);
+const displayNameParser: ValueParser<string> = {
+  metavar: "DISPLAY_NAME",
+  parse: (input: string): ValueParserResult<string> => ({
+    success: true,
+    value: input,
+  }),
+  format: (value: string): string => value,
+  *suggest(prefix: string) {
+    for (const device of allDevices) {
+      const { name } = device.info;
+      if (name.startsWith(prefix)) {
+        yield { kind: "literal", text: name };
+      }
+    }
+  },
+};
+const args = run(
+  object({
+    displayName: optional(argument(displayNameParser)),
+  }),
+  byOption(),
+);
+
+const { displayName } = args;
+
+// TODO: push shell calls into `betterdisplaycli.js`.
+
+const displayArg = displayName
+  ? `--name=${displayName}`
+  : "--displayWithMainStatus";
+const hiDPI =
+  (
+    await new PrintableShellCommand("betterdisplaycli", [
+      "get",
+      displayArg,
+      "--hiDPI",
+    ]).text()
+  ).trim() === "on";
+
+const newState = hiDPI ? "off" : "on";
+await new PrintableShellCommand("betterdisplaycli", [
+  "set",
+  displayArg,
+  `--hiDPI=${newState}`,
+])
+  .print()
+  .text();

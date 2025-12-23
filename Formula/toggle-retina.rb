@@ -9,9 +9,10 @@ class ToggleRetina < Formula
   depends_on "betterdisplaycli"
 
   def install
-    system "bun", "install", "--frozen-lockfile"
+    system "./repo-script/build-ts-scripts.ts", "system/toggle-retina"
 
-    system "bun", "build", "--target", "bun", "--outfile", "./.temp/bin/toggle-retina", "scripts/system/toggle-retina.ts"
     bin.install "./.temp/bin/toggle-retina" => "toggle-retina"
+
+    generate_completions_from_executable(bin/"toggle-retina", "--completions", shells: [:fish])
   end
 end

@@ -18,7 +18,7 @@
     "ergonomic-date": "^0.1.1",
     "lockfile-mutex": ">=0.3.5",
     "naughty-list": "^1.0.3",
-    "path-class": ">=0.10.3",
+    "path-class": ">=0.10.14",
     "plural-chain": ">=0.2.3",
     "printable-shell-command": "^3.0.1",
     "temporal-ponyfill": "^0.1.0",

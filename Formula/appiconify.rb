@@ -6,7 +6,8 @@ class Appiconify < Formula
   head "https://github.com/lgarron/dotfiles.git", :branch => "main"
 
   depends_on "oven-sh/bun/bun"
-  depends_on "icon-composer"
+  # TODO: https://github.com/orgs/Homebrew/discussions/5788
+  # depends_on "icon-composer"
 
   def install
     system "./repo-script/build-ts-scripts.ts", "graphics/appiconify"

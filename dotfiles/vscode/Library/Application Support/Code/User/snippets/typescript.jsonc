@@ -104,5 +104,16 @@
     "body": [
       "{ description: message`${1}` }"
     ]
-  }
+  },
+  "Optique: `Path` arg": {
+    "prefix": "Optique path",
+    "body": [
+      "${1:optional}(map(",
+      "  argument(",
+      "    path({ ${2:mustExist: true, type: \"file\", }metavar: \"${3:PATH}\"}),",
+      "  ),",
+      "  Path.fromString,",
+      "))"
+    ]
+  },
 }

@@ -1,13 +1,8 @@
 import { join } from "node:path";
-import { exit } from "node:process";
-import {
-  binary,
-  string as cmdString,
-  command,
-  restPositionals,
-  run,
-} from "cmd-ts-too";
+import { argument, message, multiple, object, string } from "@optique/core";
+import { run } from "@optique/run";
 import { PrintableShellCommand } from "printable-shell-command";
+import { byOption } from "../scripts/lib/runOptions";
 import { TIMESTAMP_AND_GIT_HEAD_HASH } from "../scripts/lib/TIMESTAMP_AND_GIT_HEAD_HASH";
 
 class ScriptSource {
@@ -49,35 +44,25 @@ class ScriptSource {
   }
 }
 
-const app = command({
-  name: "flacify",
-  args: {
-    scriptIDs: restPositionals({
-      type: cmdString,
-      description: "Example: `video/hevc`",
-    }),
-  },
-  handler: async ({ scriptIDs }) => {
-    if (scriptIDs.length === 0) {
-      // TODO: Is this a stable way to call `.printHelp(…)`?
-      console.log(
-        app.printHelp(
-          { nodes: [], visitedNodes: new Set() }, // minimal blank data
-        ),
-      );
-      exit(1);
-    }
+async function buildScripts(scriptIDs: readonly string[]) {
+  await Promise.all(
+    scriptIDs.map((scriptID) => new ScriptSource(scriptID).build()),
+  );
+}
 
-    const scriptSources = scriptIDs.map(
-      (scriptID) => new ScriptSource(scriptID),
-    );
-    await new PrintableShellCommand("bun", ["install", "--frozen-lockfile"])
-      .print()
-      .spawnTransparently().success;
-    await Promise.all(
-      scriptSources.map((scriptSource) => scriptSource.build()),
-    );
-  },
-});
+const args = run(
+  object({
+    scriptIDs: multiple(
+      argument(
+        string({
+          metavar: "SCRIPT_PATH",
+        }),
+        { description: message`Example: \`video/hevc\`` },
+      ),
+      { min: 1 },
+    ),
+  }),
+  byOption(),
+);
 
-await run(binary(app), process.argv);
+await buildScripts(args.scriptIDs);

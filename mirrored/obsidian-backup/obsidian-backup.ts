@@ -16,7 +16,7 @@ import { Path } from "path-class";
 import { Plural } from "plural-chain";
 import { PrintableShellCommand } from "printable-shell-command";
 import { xdgData } from "xdg-basedir";
-import { sendMessage } from "../../scripts/api/pushover/sendMessage";
+import { sendMessage } from "../../scripts/api/pushover";
 
 try {
   const DATA_ROOT_DIR = Path.xdg.data.join("obsidian-backup");
@@ -352,5 +352,5 @@ Oldest squashed commit: ${oldestSquashedDate.multipurposeTimestamp}`;
   const hostname = (
     await new PrintableShellCommand("hostname", ["-s"]).text()
   ).trim();
-  sendMessage(`[${hostname}] \`obsidian-backup\` failed: ${e}`);
+  sendMessage(`\`obsidian-backup\` failed: ${e}`, { prefix: hostname });
 }

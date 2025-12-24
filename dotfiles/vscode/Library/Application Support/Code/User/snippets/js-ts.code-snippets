@@ -201,5 +201,12 @@
       "new PrintableShellCommand(${1:$TM_SELECTED_TEXT}, [${2}])"
     ],
     "description": "Construct a new `PrintableShellCommand`"
+  },
+  "if (import.meta.main) { /* … */ }": {
+    "scope": "javascript,typescript",
+    "prefix": "if (import.meta.main) {",
+    "body": [
+      "if (import.meta.main) { ${1:$TM_SELECTED_TEXT} }"
+    ],
   }
 }

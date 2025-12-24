@@ -334,4 +334,16 @@
     "key": "ctrl+cmd+0",
     "command": "editor.action.fontZoomReset"
   },
+  {
+    "key": "ctrl+shift+a",
+    "command": "editor.action.sourceAction"
+  },
+  {
+    "key": "shift+cmd+i",
+    "command": "editor.action.sourceAction",
+    "args": {
+        "kind": "source.addMissingImports",
+        "apply": "first"
+    }
+  }
 ]

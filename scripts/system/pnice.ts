@@ -3,7 +3,7 @@
 import { argument, integer, message, object, string } from "@optique/core";
 import { run } from "@optique/run";
 import { PrintableShellCommand } from "printable-shell-command";
-import { byOption } from "../lib/runOptions";
+import { byOption } from "../lib/optique";
 
 export async function pnice(processSubString: string, niceness: number) {
   const subprocess = new PrintableShellCommand("pgrep", [

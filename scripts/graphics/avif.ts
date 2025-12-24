@@ -1,18 +1,9 @@
 #!/usr/bin/env -S bun run --
 
-import {
-  argument,
-  integer,
-  message,
-  object,
-  option,
-  optional,
-  withDefault,
-} from "@optique/core";
+import { integer, message, object, option, withDefault } from "@optique/core";
 import { run } from "@optique/run";
-import { path } from "@optique/run/valueparser";
 import { PrintableShellCommand } from "printable-shell-command";
-import { byOption } from "../lib/runOptions";
+import { byOption, simpleFileInOut } from "../lib/optique";
 
 const args = run(
   object({
@@ -22,8 +13,7 @@ const args = run(
       }),
       60,
     ),
-    sourceFile: argument(path({ metavar: "SOURCE_FILE" })),
-    outputFile: optional(argument(path({ metavar: "OUTPUT_FILE" }))),
+    ...simpleFileInOut(),
   }),
   byOption(),
 );

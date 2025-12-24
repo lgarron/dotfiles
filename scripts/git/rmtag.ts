@@ -13,7 +13,7 @@ import {
 } from "@optique/core";
 import { run } from "@optique/run";
 import { PrintableShellCommand } from "printable-shell-command";
-import { byOption } from "../lib/runOptions";
+import { byOption } from "../lib/optique";
 
 async function doesTagExistLocally(tag: string): Promise<boolean> {
   return (

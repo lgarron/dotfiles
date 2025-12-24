@@ -1,11 +1,10 @@
 #!/usr/bin/env -S bun run --
 
-import { argument, map, message, object } from "@optique/core";
+import { argument, object } from "@optique/core";
 import { run } from "@optique/run";
-import { path } from "@optique/run/valueparser";
-import { Path } from "path-class";
+import type { Path } from "path-class";
 import { PrintableShellCommand } from "printable-shell-command";
-import { byOption } from "../lib/runOptions";
+import { byOption, sourceFile } from "../lib/optique";
 
 export async function getBambuVersion(path: Path | string): Promise<string> {
   let version: string | undefined;
@@ -40,17 +39,7 @@ export async function getBambuVersion(path: Path | string): Promise<string> {
 }
 
 if (import.meta.main) {
-  const args = run(
-    object({
-      sourceFile: map(
-        argument(path({ mustExist: true, type: "file" }), {
-          description: message`File to read.`,
-        }),
-        Path.fromString,
-      ),
-    }),
-    byOption(),
-  );
+  const args = run(object({ sourceFile: argument(sourceFile()) }), byOption());
 
   console.log(await getBambuVersion(args.sourceFile));
 }

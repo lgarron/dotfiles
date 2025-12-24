@@ -10,7 +10,7 @@ import {
 import { run } from "@optique/run";
 import { getAllDevices } from "betterdisplaycli";
 import { PrintableShellCommand } from "printable-shell-command";
-import { byOption } from "../lib/runOptions";
+import { byOption } from "../lib/optique";
 
 const allDevices = await getAllDevices({
   ignoreDisplayGroups: true,

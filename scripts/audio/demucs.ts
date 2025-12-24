@@ -1,11 +1,10 @@
 #!/usr/bin/env -S bun run --
 
-import { argument, map, object, optional } from "@optique/core";
+import { argument, object, optional } from "@optique/core";
 import { run } from "@optique/run";
-import { path } from "@optique/run/valueparser";
 import { Path } from "path-class";
 import { PrintableShellCommand } from "printable-shell-command";
-import { byOption } from "../lib/runOptions";
+import { byOption, outputFolder, sourceFile } from "../lib/optique";
 
 const CACHE_FOLDER = Path.xdg.cache.join("demucs");
 
@@ -45,19 +44,8 @@ dependencies = [
 if (import.meta.main) {
   const args = run(
     object({
-      sourceFile: map(
-        argument(
-          path({
-            mustExist: true,
-            type: "file",
-            metavar: "SOURCE_FILE",
-          }),
-        ),
-        Path.fromString,
-      ),
-      outputFolder: optional(
-        map(argument(path({ metavar: "OUTPUT_FOLDER" })), Path.fromString),
-      ),
+      sourceFile: argument(sourceFile()),
+      outputFolder: optional(argument(outputFolder())),
     }),
     byOption(),
   );

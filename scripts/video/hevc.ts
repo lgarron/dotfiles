@@ -2,355 +2,326 @@
 
 import { exit } from "node:process";
 import {
-  binary,
-  number as cmdNumber,
-  command,
-  flag,
-  oneOf,
+  choice,
+  integer,
+  message,
+  object,
   option,
   optional,
-  positional,
-  run,
-  type Type,
-} from "cmd-ts-too";
+  withDefault,
+} from "@optique/core";
+import { run } from "@optique/run";
 import { ErgonomicDate } from "ergonomic-date";
-import { Path } from "path-class";
 import { Plural } from "plural-chain";
 import { PrintableShellCommand } from "printable-shell-command";
 import { Temporal } from "temporal-ponyfill";
 import { monotonicNow } from "../lib/monotonic-now";
+import { byOption, simpleFileInOut } from "../lib/optique";
 import { sleepDuration } from "../lib/sleep";
 
 const HANDBRAKE_8_BIT_DEPTH_PRESET = "HEVC 8-bit (qv65)";
 const HANDBRAKE_10_BIT_DEPTH_PRESET = "HEVC 10-bit (qv65)";
 
-const DEFAULT_ENCODER = "handbrake";
-const ENCODERS = [DEFAULT_ENCODER, "ffmpeg"];
+const DEFAULT_ENCODER = "handbrake" as const;
+const ENCODERS = [DEFAULT_ENCODER, "ffmpeg"] as const;
 
 const HALF_SECOND = Temporal.Duration.from({ milliseconds: 500 });
 
-// TODO: add to `cmd-ts-too`
-const ArgPath: Type<string, Path> = {
-  async from(str) {
-    return new Path(str);
-  },
-};
+const FORCE_BIT_DEPTH_FLAG = "--force-bit-depth" as const;
 
-// TODO: add to `cmd-ts-too`
-const ExistingDirPath: Type<string, Path> = {
-  async from(str) {
-    const path = new Path(str);
-    if (!(await path.existsAsDir())) {
-      throw new Error(`Path does not exist as a directory: ${path}`);
-    }
-    return path;
-  },
-};
+function parseArgs() {
+  return run(
+    object({
+      poll: withDefault(
+        option(
+          "--poll",
+          choice(["auto", "false", "true"], { metavar: "POLL" }),
+          {
+            description: message`"Poll for the source file to exist with readable streams."`,
+          },
+        ),
+        "auto",
+      ),
+      quality: withDefault(
+        option("--quality", integer({ min: 1, max: 100 }), {
+          description: message`Quality value for the HEVC encoder.`,
+        }),
+        65,
+      ),
+      forceBitDepth: optional(option(FORCE_BIT_DEPTH_FLAG, choice([8, 10]))),
+      encoder: withDefault(
+        option("--encoder", choice(ENCODERS, { metavar: "ENCODER" }), {
+          description: message`Encoder binary to invoke.`,
+        }),
+        DEFAULT_ENCODER,
+      ),
+      height: optional(option("--height", integer({ min: 1 }))),
+      dryRun: optional(option("--dry-run")),
+      ...simpleFileInOut,
+    }),
+    byOption(),
+  );
+}
 
-const app = command({
-  name: "hevc",
-  args: {
-    poll: option({
-      description: "Poll for the source file to exist with readable streams.",
-      type: optional(oneOf(["auto", "false", "true"])),
-      long: "poll",
-      defaultValue: () => "auto",
-      defaultValueIsSerializable: true,
-    }),
-    quality: option({
-      description: "Quality value for the HEVC encoder.",
-      type: cmdNumber,
-      long: "quality",
-      defaultValue: () => 65,
-      defaultValueIsSerializable: true,
-    }),
-    forceBitDepthString: option({
-      description: "Force the output bit depth.",
-      // TODO update `cmd-ts-too` to support number enums.
-      type: optional(oneOf(["8", "10"])),
-      long: "force-bit-depth",
-    }),
-    encoder: option({
-      description: "Encoder binary to invoke.",
-      type: optional(oneOf(ENCODERS)),
-      long: "encoder",
-      defaultValue: () => DEFAULT_ENCODER,
-      defaultValueIsSerializable: true,
-    }),
-    height: option({
-      description: "Height",
-      type: optional(cmdNumber),
-      long: "height",
-    }),
-    dryRun: flag({
-      long: "dry-run",
-    }),
-    outputDir: option({
-      description: "Output dir",
-      type: optional(ExistingDirPath),
-      long: "output-dir",
-    }),
-    sourceFile: positional({
-      type: ArgPath,
-      displayName: "Source file",
-    }),
-  },
-  handler: async ({
-    poll,
-    quality,
-    forceBitDepthString,
-    height,
-    dryRun,
+interface FFprobeStream {
+  codec_type: "video" | "audio" | string;
+  codec_name: string;
+  pix_fmt: string;
+  color_space: string;
+  color_transfer: string;
+  color_primaries: string;
+}
+
+export async function ffprobeFirstVideoStream({
+  sourceFile,
+  poll,
+}: Pick<
+  ReturnType<typeof parseArgs>,
+  "sourceFile" | "poll"
+>): Promise<FFprobeStream> {
+  const ffprobeCommand = new PrintableShellCommand("ffprobe", [
+    ["-v", "quiet"],
+    ["-output_format", "json"],
+    "-show_format",
+    "-show_streams",
     sourceFile,
-    encoder,
-    outputDir,
-  }) => {
-    const forceBitDepth: 8 | 10 | undefined =
-      typeof forceBitDepthString === "undefined"
-        ? undefined
-        : (parseInt(forceBitDepthString, 10) as 8 | 10);
+  ]);
+  console.log("Analyzing input using command:");
+  ffprobeCommand.print();
 
-    interface FFprobeStream {
-      codec_type: "video" | "audio" | string;
-      codec_name: string;
-      pix_fmt: string;
-      color_space: string;
-      color_transfer: string;
-      color_primaries: string;
+  const pollStartTime = monotonicNow();
+  // Custom backoff algorithm.
+  function numSecondsToWait(): Temporal.Duration {
+    const secondsSoFar = Math.floor(
+      monotonicNow().since(pollStartTime).total({ unit: "seconds" }),
+    );
+    globalThis.process.stdout.write(
+      `Polled for ${secondsSoFar} ${Plural.s(secondsSoFar)`seconds`} so far. `,
+    );
+    if (secondsSoFar < 10) {
+      return Temporal.Duration.from({ seconds: 1 });
     }
-
-    const ffprobeCommand = new PrintableShellCommand("ffprobe", [
-      ["-v", "quiet"],
-      ["-output_format", "json"],
-      "-show_format",
-      "-show_streams",
-      sourceFile,
-    ]);
-    console.log("Analyzing input using command:");
-    ffprobeCommand.print();
-
-    const pollStartTime = monotonicNow();
-    // Custom backoff algorithm.
-    function numSecondsToWait(): Temporal.Duration {
-      const secondsSoFar = Math.floor(
-        monotonicNow().since(pollStartTime).total({ unit: "seconds" }),
-      );
-      globalThis.process.stdout.write(
-        `Polled for ${secondsSoFar} ${Plural.s(secondsSoFar)`seconds`} so far. `,
-      );
-      if (secondsSoFar < 10) {
-        return Temporal.Duration.from({ seconds: 1 });
-      }
-      if (secondsSoFar < 60) {
-        return Temporal.Duration.from({ seconds: 5 });
-      }
-      if (secondsSoFar < 60 * 10) {
-        return Temporal.Duration.from({ seconds: 15 });
-      }
-      if (secondsSoFar > 24 * 60 * 60) {
-        console.error("Polling has taken more than 24 hours. Exiting.");
-        exit(2);
-      }
-      return Temporal.Duration.from({ seconds: 60 });
+    if (secondsSoFar < 60) {
+      return Temporal.Duration.from({ seconds: 5 });
     }
+    if (secondsSoFar < 60 * 10) {
+      return Temporal.Duration.from({ seconds: 15 });
+    }
+    if (secondsSoFar > 24 * 60 * 60) {
+      throw new Error("Polling has taken more than 24 hours. Aborting.");
+    }
+    return Temporal.Duration.from({ seconds: 60 });
+  }
 
-    const streams = await (async () => {
-      while (true) {
-        try {
-          const { streams } = (await ffprobeCommand.json()) as {
-            streams: FFprobeStream[];
-          };
-          if (!streams) {
-            throw new Error("No video stream data found.");
-          }
-          return streams;
-        } catch {
-          if (poll === "false") {
-            console.error(
-              "Could not get source info and polling is set to `false`. Exiting.",
-            );
-            exit(1);
-          }
-          if (poll === "auto") {
-            if (!(await sourceFile.existsAsFile())) {
-              console.error(
-                "Source file does not exist and polling is set to `auto`. Exiting.",
-              );
-              exit(1);
-            }
-          }
-          const durationToWait = numSecondsToWait();
-          const seconds = Math.floor(durationToWait.total({ unit: "seconds" }));
-          console.info(
-            `Waiting ${seconds} ${Plural.s({ seconds })} to poll source again…`,
+  const streams = await (async () => {
+    while (true) {
+      try {
+        const { streams } = (await ffprobeCommand.json()) as {
+          streams: FFprobeStream[];
+        };
+        if (!streams) {
+          throw new Error("No video stream data found.");
+        }
+        return streams;
+      } catch {
+        if (poll === "false") {
+          throw new Error(
+            "Could not get source info and polling is set to `false`. Exiting.",
           );
-          await sleepDuration(durationToWait);
         }
-      }
-    })();
-
-    const videoStream: FFprobeStream = (() => {
-      for (const stream of streams) {
-        if (stream.codec_type === "video") {
-          return stream;
-        }
-      }
-      console.error("No video stream found.");
-      exit(3);
-    })();
-
-    // const codec_fingerprint = `${videoStream.codec_name}/${videoStream.pix_fmt}/${videoStream.color_space}/${videoStream.color_primaries}/${videoStream.color_transfer}`;
-    const simplifiedCodecFingerprint = `${videoStream.pix_fmt}/${videoStream.color_transfer}`;
-
-    console.log(`Codev fingerprint: ${simplifiedCodecFingerprint}`);
-
-    let bitDepth: 8 | 10 = await (async () => {
-      switch (simplifiedCodecFingerprint) {
-        case "yuv422p10le/arib-std-b67":
-        case "yuv420p10le/arib-std-b67": {
-          console.log("Detected 10-bit HDR footage.");
-          return 10;
-        }
-        case "yuv420p/smpte170m":
-        case "yuv420p/bt709":
-        case "yuvj420p/bt709":
-        case "yuvj420p/iec61966-2-1": // iOS screen recordings?
-        case "yuv420p/undefined":
-        case "yuv444p/undefined": {
-          console.log("Detected 8-bit SDR (or SDR-mapped) footage.");
-          return 8;
-        }
-        case "yuv422p10le/bt709":
-        case "yuv420p10le/bt709":
-        case "yuv420p10le/undefined": {
-          if (forceBitDepth) {
-            console.log(
-              `Detected an input with 10-bit encoding for BT.709 video data. Using an output bit depth of ${forceBitDepth} from the specified --force-bit-depth option.`,
+        if (poll === "auto") {
+          if (!(await sourceFile.existsAsFile())) {
+            throw new Error(
+              "Source file does not exist and polling is set to `auto`. Exiting.",
             );
-            console.write("Continuing in 2 seconds");
-            for (let i = 0; i < 4; i++) {
-              if (i !== 0) {
-                console.write(".");
-              }
-              await sleepDuration(HALF_SECOND);
-            }
-            return forceBitDepth;
           }
-          console.warn(
-            "Detected an input with 10-bit encoding for BT.709 video data. You must specify the --force-bit-depth option.",
+        }
+        const durationToWait = numSecondsToWait();
+        const seconds = Math.floor(durationToWait.total({ unit: "seconds" }));
+        console.info(
+          `Waiting ${seconds} ${Plural.s({ seconds })} to poll source again…`,
+        );
+        await sleepDuration(durationToWait);
+      }
+    }
+  })();
+
+  const videoStream: FFprobeStream = (() => {
+    for (const stream of streams) {
+      if (stream.codec_type === "video") {
+        return stream;
+      }
+    }
+    throw new Error("No video stream found.");
+  })();
+
+  return videoStream;
+}
+
+export async function hevc(args: ReturnType<typeof parseArgs>): Promise<void> {
+  const { poll, quality, forceBitDepth, height, dryRun, encoder, sourceFile } =
+    args;
+  const videoStream = await ffprobeFirstVideoStream({ sourceFile, poll });
+
+  // const codec_fingerprint = `${videoStream.codec_name}/${videoStream.pix_fmt}/${videoStream.color_space}/${videoStream.color_primaries}/${videoStream.color_transfer}`;
+  const simplifiedCodecFingerprint = `${videoStream.pix_fmt}/${videoStream.color_transfer}`;
+
+  console.log(`Codec fingerprint: ${simplifiedCodecFingerprint}`);
+
+  let bitDepth: 8 | 10 = await (async () => {
+    switch (simplifiedCodecFingerprint) {
+      case "yuv422p10le/arib-std-b67":
+      case "yuv420p10le/arib-std-b67": {
+        console.log("Detected 10-bit HDR footage.");
+        return 10;
+      }
+      case "yuv420p/smpte170m":
+      case "yuv420p/bt709":
+      case "yuvj420p/bt709":
+      case "yuvj420p/iec61966-2-1": // iOS screen recordings?
+      case "yuv420p/undefined":
+      case "yuv444p/undefined": {
+        console.log("Detected 8-bit SDR (or SDR-mapped) footage.");
+        return 8;
+      }
+      case "yuv422p10le/bt709":
+      case "yuv420p10le/bt709":
+      case "yuv420p10le/undefined": {
+        if (forceBitDepth) {
+          console.log(
+            `Detected an input with 10-bit encoding for BT.709 video data. Using an output bit depth of ${forceBitDepth} from the specified ${FORCE_BIT_DEPTH_FLAG} option.`,
           );
-          exit(5);
-          break; // Workaround for: https://github.com/biomejs/biome/issues/3235
+          console.write("Continuing in 2 seconds");
+          for (let i = 0; i < 4; i++) {
+            if (i !== 0) {
+              console.write(".");
+            }
+            await sleepDuration(HALF_SECOND);
+          }
+          return forceBitDepth;
         }
-        case "yuv422p10le/undefined": {
-          console.log("Detected 10-bit SDR (or SDR-mapped) footage.");
-          return 10;
-        }
-        default: {
-          if (forceBitDepth) {
-            console.log(`Unknown simplifiedCodecFingerprint: ${simplifiedCodecFingerprint}
+        console.warn(
+          `Detected an input with 10-bit encoding for BT.709 video data. You must specify the ${FORCE_BIT_DEPTH_FLAG} option.`,
+        );
+        exit(5);
+        break; // Workaround for: https://github.com/biomejs/biome/issues/3235
+      }
+      case "yuv422p10le/undefined": {
+        console.log("Detected 10-bit SDR (or SDR-mapped) footage.");
+        return 10;
+      }
+      default: {
+        if (forceBitDepth) {
+          console.log(`Unknown simplifiedCodecFingerprint: ${simplifiedCodecFingerprint}
 
 A forced bit depth of ${forceBitDepth} was specified, and will be used.`);
-            return forceBitDepth;
-          }
-          throw new Error(
-            `Unknown simplifiedCodecFingerprint: ${simplifiedCodecFingerprint}`,
-          );
+          return forceBitDepth;
         }
+        throw new Error(
+          `Unknown simplifiedCodecFingerprint: ${simplifiedCodecFingerprint}`,
+        );
       }
-    })();
-
-    let bitDepthFileComponent = "";
-    if (forceBitDepth) {
-      console.warn(
-        `Forced bit depth of ${forceBitDepth} was specified. Overriding…`,
-      );
-      bitDepth = forceBitDepth as 8 | 10;
-      bitDepthFileComponent = `.${forceBitDepth}-bit`;
     }
+  })();
 
-    const handbrakePreset = (() => {
-      switch (bitDepth) {
-        case 8:
-          return HANDBRAKE_8_BIT_DEPTH_PRESET;
-        case 10:
-          return HANDBRAKE_10_BIT_DEPTH_PRESET;
-        default:
-          throw new Error(
-            "Bit depth does not correspond to a HandBrake preset.",
-          );
+  let bitDepthFileComponent = "";
+  if (forceBitDepth) {
+    console.warn(
+      `Forced bit depth of ${forceBitDepth} was specified. Overriding…`,
+    );
+    bitDepth = forceBitDepth as 8 | 10;
+    bitDepthFileComponent = `.${forceBitDepth}-bit`;
+  }
+
+  const handbrakePreset = (() => {
+    switch (bitDepth) {
+      case 8:
+        return HANDBRAKE_8_BIT_DEPTH_PRESET;
+      case 10:
+        return HANDBRAKE_10_BIT_DEPTH_PRESET;
+      default:
+        throw new Error("Bit depth does not correspond to a HandBrake preset.");
+    }
+  })();
+
+  const outputFile =
+    args.outputFile ??
+    (await (async () => {
+      let destPrefix = args.sourceFile;
+      if (encoder !== DEFAULT_ENCODER) {
+        destPrefix = destPrefix.extendBasename(`.${encoder}`);
       }
-    })();
-
-    let destPrefix = outputDir ?? sourceFile.parent;
-    destPrefix = destPrefix.join(`${sourceFile.basename}`);
-    if (encoder !== DEFAULT_ENCODER) {
-      destPrefix = destPrefix.extendBasename(`.${encoder}`);
-    }
-    destPrefix = destPrefix.extendBasename(`.hevc${bitDepthFileComponent}`);
-    if (height) {
-      destPrefix = destPrefix.extendBasename(`.${height}p`);
-    }
-    destPrefix = destPrefix.extendBasename(`.qv${quality}`);
-    let dest = destPrefix.extendBasename(".mp4");
-    if (await dest.exists()) {
-      dest = destPrefix.extendBasename(
-        `.${new ErgonomicDate().multipurposeTimestamp}`,
-      );
-    }
-
-    const command = (() => {
-      switch (encoder) {
-        case "handbrake": {
-          const heightParams: [string, string][] = height
-            ? [["--height", height.toString()]]
-            : [];
-
-          return new PrintableShellCommand("HandBrakeCLI", [
-            [
-              "--preset-import-file",
-              "/Users/lgarron/Code/git/github.com/lgarron/dotfiles/exported/HandBrake/UserPresets.json", // TODO
-            ],
-            ["--preset", handbrakePreset],
-            ["--quality", quality.toString()],
-            ...heightParams,
-            ["-i", sourceFile],
-            ["-o", dest],
-          ]);
-        }
-        case "ffmpeg": {
-          const heightParams: [string, string][] = height
-            ? [["-vf", `scale=-1:${height.toString()}`]]
-            : [];
-
-          return new PrintableShellCommand("ffmpeg", [
-            ["-i", sourceFile],
-            ...heightParams,
-            ["-c:v", "hevc_videotoolbox"],
-            ["-q:v", quality.toString()],
-            ["-tag:v", "hvc1"],
-            [dest],
-          ]);
-        }
-        default: {
-          throw new Error("Unexpected encoder.");
-        }
+      destPrefix = destPrefix.extendBasename(`.hevc${bitDepthFileComponent}`);
+      if (height) {
+        destPrefix = destPrefix.extendBasename(`.${height}p`);
       }
-    })();
+      destPrefix = destPrefix.extendBasename(`.qv${quality}`);
+      let dest = destPrefix.extendBasename(".mp4");
+      if (await dest.exists()) {
+        dest = destPrefix.extendBasename(
+          `.${new ErgonomicDate().multipurposeTimestamp}.mp4`,
+        );
+      }
+      return dest;
+    })());
 
-    console.log("");
-    console.log(dryRun ? `Command (dry run): ${dryRun}` : "Running command:");
-    console.log("");
-    command.print();
-    console.log("");
+  const command = (() => {
+    switch (encoder) {
+      case "handbrake": {
+        const heightParams: [string, string][] = height
+          ? [["--height", height.toString()]]
+          : [];
 
-    if (!dryRun) {
-      // TODO: transfer HiDPI hint (e.g. for screencaps)
-      await command.spawnTransparently().success;
+        return new PrintableShellCommand("HandBrakeCLI", [
+          [
+            "--preset-import-file",
+            "/Users/lgarron/Code/git/github.com/lgarron/dotfiles/exported/HandBrake/UserPresets.json", // TODO
+          ],
+          ["--preset", handbrakePreset],
+          ["--quality", quality.toString()],
+          ...heightParams,
+          ["-i", sourceFile],
+          ["-o", outputFile],
+        ]);
+      }
+      case "ffmpeg": {
+        const heightParams: [string, string][] = height
+          ? [["-vf", `scale=-1:${height.toString()}`]]
+          : [];
+
+        return new PrintableShellCommand("ffmpeg", [
+          ["-i", sourceFile],
+          ...heightParams,
+          ["-c:v", "hevc_videotoolbox"],
+          ["-q:v", quality.toString()],
+          ["-tag:v", "hvc1"],
+          [outputFile],
+        ]);
+      }
+      default: {
+        throw new Error("Unexpected encoder.");
+      }
     }
+  })();
 
-    // TODO: catch Ctrl-C and rename to indicate partial transcoding
-  },
-});
+  console.log("");
+  console.log(dryRun ? `Command (dry run): ${dryRun}` : "Running command:");
+  console.log("");
+  command.print();
+  console.log("");
 
-await run(binary(app), process.argv);
+  if (!dryRun) {
+    // TODO: transfer HiDPI hint (e.g. for screencaps)
+    await command.spawnTransparently().success;
+  }
+
+  if (args.reveal) {
+    await new PrintableShellCommand("reveal-macos", [outputFile]).shellOut();
+  }
+
+  // TODO: catch Ctrl-C and rename to indicate partial transcoding
+}
+
+if (import.meta.main) {
+  await hevc(parseArgs());
+}

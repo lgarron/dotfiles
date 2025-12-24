@@ -80,7 +80,9 @@ export function outputFileClass(
   return pathOrSubClass<OutputFile>(OutputFile, pathOptions);
 }
 
-export function sourceFile(options?: PathOptions): ValueParser<Path> {
+export function sourceFile(
+  options?: PathOptions & { mustNotExist: undefined },
+): ValueParser<Path> {
   return pathClass({
     ...options,
     mustExist: true,
@@ -93,7 +95,7 @@ export const revealArg = {
   reveal: option("--reveal"),
 };
 
-class OutputFile extends Path {
+export class OutputFile extends Path {
   override write: Path["write"] = async (
     ...args: Parameters<Path["write"]>
   ): ReturnType<Path["write"]> => {

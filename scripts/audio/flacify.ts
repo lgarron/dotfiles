@@ -20,7 +20,7 @@ async function flacify(args: {
 }
 
 if (import.meta.main) {
-  const args = run(object(simpleFileInOut()), byOption());
+  const args = run(object(simpleFileInOut), byOption());
 
   await flacify(args);
 }

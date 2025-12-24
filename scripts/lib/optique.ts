@@ -1,14 +1,18 @@
+import { styleText } from "node:util";
 import {
   argument,
+  object,
+  option,
   optional,
-  type Parser,
   type ValueParser,
   type ValueParserResult,
 } from "@optique/core";
-import type { PathOptions, RunOptions } from "@optique/run";
+import { type PathOptions, type RunOptions, run } from "@optique/run";
 import { path as optiquePath } from "@optique/run/valueparser";
 import { argv } from "bun";
 import { Path } from "path-class";
+import { PrintableShellCommand } from "printable-shell-command";
+import { askYesNo } from "./askYesNo";
 import { TIMESTAMP_AND_GIT_HEAD_HASH } from "./TIMESTAMP_AND_GIT_HEAD_HASH";
 
 export function byOption(): RunOptions {
@@ -41,24 +45,39 @@ export function bySubcommand(): RunOptions {
   };
 }
 
-export function pathClass(options?: PathOptions): ValueParser<Path> {
-  const o = optiquePath(options);
+function pathOrSubClass<T extends Path>(
+  classConstructor: typeof Path | typeof OutputFile,
+  pathOptions?: PathOptions,
+  // TODO: why does type-checking fail when we merge this with `Options`?
+): ValueParser<T> {
+  const optiquePathParser = optiquePath(pathOptions);
   return {
-    metavar: options?.metavar ?? "PATH",
-    parse: (input: string): ValueParserResult<Path> => {
-      const result = o.parse(input);
+    metavar: pathOptions?.metavar ?? "PATH",
+    parse: (input: string): ValueParserResult<T> => {
+      const result = optiquePathParser.parse(input);
       if (!result.success) {
         return result;
       }
       return {
         success: true,
-        value: Path.fromString(result.value),
+        // TODO: why is the typecast needed here?
+        value: new classConstructor(result.value) as T,
       };
     },
     format: (value: Path): string => value.path,
     // biome-ignore lint/style/noNonNullAssertion: We know that this is defined.
-    suggest: (...args) => o.suggest!(...args),
+    suggest: (...args) => optiquePathParser.suggest!(...args),
   };
+}
+
+export function pathClass(pathOptions?: PathOptions): ValueParser<Path> {
+  return pathOrSubClass(Path, pathOptions);
+}
+
+export function outputFileClass(
+  pathOptions?: PathOptions,
+): ValueParser<OutputFile> {
+  return pathOrSubClass<OutputFile>(OutputFile, pathOptions);
 }
 
 export function sourceFile(options?: PathOptions): ValueParser<Path> {
@@ -70,8 +89,58 @@ export function sourceFile(options?: PathOptions): ValueParser<Path> {
   });
 }
 
-export function outputFile(options?: PathOptions): ValueParser<Path> {
-  return pathClass({
+export const revealArg = {
+  reveal: option("--reveal"),
+};
+
+class OutputFile extends Path {
+  override write: Path["write"] = async (
+    ...args: Parameters<Path["write"]>
+  ): ReturnType<Path["write"]> => {
+    if (!(await this.exists())) {
+      return this.write(...args);
+    }
+    if (await this.existsAsDir()) {
+      throw new Error(`Path exists as folder: ${this.#styledPath}`);
+    }
+    if (
+      await askYesNo(`Overwrite the existing path? ${this.#styledPath}`, {
+        default: "n",
+      })
+    ) {
+      return this.write(...args);
+    }
+    throw new Error(`File exists at path: ${this.#styledPath}`);
+  };
+
+  get #styledPath(): string {
+    return styleText(["blue"], this.path);
+  }
+}
+
+// TODO: make a combined class for the arguments.
+export function forTransformation(
+  args: SimpleFileInOutArgs,
+  extension: string,
+): { outputFile: OutputFile; reveal: () => Promise<void> } {
+  const outputFile =
+    args.outputFile ?? new OutputFile(`${args.sourceFile}${extension}`);
+
+  return {
+    outputFile,
+    // TODO: `await using`?
+    reveal: async () => {
+      if (args.reveal) {
+        await new PrintableShellCommand("reveal-macos", [
+          outputFile,
+        ]).shellOut();
+      }
+    },
+  };
+}
+
+export function outputFile(options?: PathOptions): ValueParser<OutputFile> {
+  return pathOrSubClass(OutputFile, {
     ...options,
     metavar: "OUTPUT_FILE",
   });
@@ -84,15 +153,18 @@ export function outputFolder(options?: PathOptions): ValueParser<Path> {
   });
 }
 
-export function simpleFileInOut(): {
-  readonly sourceFile: Parser<Path, ValueParserResult<Path> | undefined>;
-  readonly outputFile: Parser<
-    Path | undefined,
-    [ValueParserResult<Path> | undefined] | undefined
-  >;
-} {
-  return {
-    sourceFile: argument(sourceFile()),
-    outputFile: optional(argument(outputFile())),
-  } as const;
+// TODO: wrap in `object(…)` and have the callers call `merge(…)` if needed?
+export const simpleFileInOut = {
+  sourceFile: argument(sourceFile()),
+  outputFile: optional(argument(outputFile())),
+  ...revealArg,
+} as const;
+
+// TODO: avoid the need for this helper.
+function simpleFileInOutInferenceHelper() {
+  return run(object(simpleFileInOut));
 }
+
+export type SimpleFileInOutArgs = ReturnType<
+  typeof simpleFileInOutInferenceHelper
+>;

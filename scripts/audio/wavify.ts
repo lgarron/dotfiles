@@ -1,38 +1,26 @@
 #!/usr/bin/env -S bun run --
 
-import {
-  binary,
-  string as cmdString,
-  command,
-  optional,
-  positional,
-  run,
-} from "cmd-ts-too";
-import { File } from "cmd-ts-too/batteries/fs";
+import { object } from "@optique/core";
+import { run } from "@optique/run";
 import { PrintableShellCommand } from "printable-shell-command";
+import {
+  byOption,
+  forTransformation,
+  type SimpleFileInOutArgs,
+  simpleFileInOut,
+} from "../lib/optique";
 
-const app = command({
-  name: "wavify",
-  args: {
-    inputFile: positional({
-      type: File,
-      displayName: "input-file",
-    }),
-    outputFile: positional({
-      type: optional(cmdString),
-      displayName: "output-file",
-    }),
-  },
-  handler: async ({ inputFile, outputFile: outputFileArg }) => {
-    const outputFile = outputFileArg ?? `${inputFile}.wav`;
+async function wavify(args: SimpleFileInOutArgs): Promise<void> {
+  const { outputFile, reveal } = forTransformation(args, ".wav");
+  await new PrintableShellCommand("ffmpeg", [
+    ["-i", args.sourceFile],
+    ["-f", "wav"],
+    ["-qscale:a", "0"],
+    outputFile,
+  ]).shellOut();
+  await reveal();
+}
 
-    await new PrintableShellCommand("ffmpeg", [
-      ["-i", inputFile],
-      ["-f", "wav"],
-      ["-qscale:a", "0"],
-      outputFile,
-    ]).shellOut();
-  },
-});
-
-await run(binary(app), process.argv);
+if (import.meta.main) {
+  await wavify(run(object(simpleFileInOut), byOption()));
+}

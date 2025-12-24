@@ -25,5 +25,5 @@ async function mp3ify(args: {
 }
 
 if (import.meta.main) {
-  await mp3ify(run(object(simpleFileInOut()), byOption()));
+  await mp3ify(run(object(simpleFileInOut), byOption()));
 }

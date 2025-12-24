@@ -13,7 +13,7 @@ const args = run(
       }),
       60,
     ),
-    ...simpleFileInOut(),
+    ...simpleFileInOut,
   }),
   byOption(),
 );

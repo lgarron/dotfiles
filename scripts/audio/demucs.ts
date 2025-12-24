@@ -1,36 +1,22 @@
 #!/usr/bin/env -S bun run --
 
-import {
-  binary,
-  string as cmdString,
-  command,
-  optional,
-  positional,
-  run,
-} from "cmd-ts-too";
-import { ExistingPath } from "cmd-ts-too/batteries/fs";
+import { argument, map, object, optional } from "@optique/core";
+import { run } from "@optique/run";
+import { path } from "@optique/run/valueparser";
 import { Path } from "path-class";
 import { PrintableShellCommand } from "printable-shell-command";
+import { byOption } from "../lib/runOptions";
 
 const CACHE_FOLDER = Path.xdg.cache.join("demucs");
 
-const app = command({
-  name: "hevc",
-  args: {
-    sourceFile: positional({
-      type: ExistingPath,
-      displayName: "Source file",
-    }),
-    outputFolder: positional({
-      type: optional(cmdString),
-      displayName: "Output folder",
-    }),
-  },
-  handler: async ({ sourceFile, outputFolder }) => {
-    const cwd = CACHE_FOLDER.toString();
-    if (!(await CACHE_FOLDER.existsAsDir())) {
-      await CACHE_FOLDER.mkdir({ recursive: true });
-      await CACHE_FOLDER.join("pyproject.toml").write(`[project]
+async function demucs(args: {
+  readonly sourceFile: Path;
+  readonly outputFolder?: Path;
+}) {
+  const cwd = CACHE_FOLDER.toString();
+  if (!(await CACHE_FOLDER.existsAsDir())) {
+    await CACHE_FOLDER.mkdir({ recursive: true });
+    await CACHE_FOLDER.join("pyproject.toml").write(`[project]
 name = "demucs-venv"
 version = "0.1.0"
 description = "Add your description here"
@@ -42,22 +28,39 @@ dependencies = [
   "torchaudio == 2.8.0",
 ]
 `);
-    }
-    await new PrintableShellCommand("uv", ["venv", "--allow-existing"])
-      .print({ argumentLineWrapping: "inline" })
-      .spawnTransparently({ cwd }).success;
-    await new PrintableShellCommand("uv", [
-      ["run", "demucs"],
-      sourceFile,
-      [
-        "-o",
-        outputFolder ??
-          new Path(sourceFile).extendBasename(".stems").toString(),
-      ],
-    ])
-      .print({ skipLineWrapBeforeFirstArg: true })
-      .spawnTransparently({ cwd }).success;
-  },
-});
+  }
+  await new PrintableShellCommand("uv", ["venv", "--allow-existing"])
+    .print({ argumentLineWrapping: "inline" })
+    .spawnTransparently({ cwd }).success;
+  await new PrintableShellCommand("uv", [
+    ["run", "demucs"],
+    args.sourceFile,
+    [
+      "-o",
+      args.outputFolder ?? args.sourceFile.extendBasename(".stems").toString(),
+    ],
+  ]).shellOut({ cwd: CACHE_FOLDER });
+}
 
-await run(binary(app), process.argv);
+if (import.meta.main) {
+  const args = run(
+    object({
+      sourceFile: map(
+        argument(
+          path({
+            mustExist: true,
+            type: "file",
+            metavar: "SOURCE_FILE",
+          }),
+        ),
+        Path.fromString,
+      ),
+      outputFolder: optional(
+        map(argument(path({ metavar: "OUTPUT_FOLDER" })), Path.fromString),
+      ),
+    }),
+    byOption(),
+  );
+
+  await demucs(args);
+}

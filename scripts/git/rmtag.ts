@@ -147,9 +147,7 @@ if (tagsToRemoveLocally.length > 0) {
     "tag",
     "--delete",
     ...tagsToRemoveLocally,
-  ])
-    .print()
-    .spawnTransparently().success;
+  ]).shellOut();
 }
 
 /**************** Remote tag ****************/
@@ -185,9 +183,7 @@ if (tagsToRemoveFromRemote.length > 0) {
     "push",
     remote,
     ...tagsToRemoveFromRemote.map((tag) => `:${tag}`),
-  ])
-    .print()
-    .spawnTransparently().success;
+  ]).shellOut();
 }
 
 /**************** Remote releases ****************/
@@ -217,9 +213,7 @@ for (const tag of tags) {
       "--yes",
       "--repo",
       remoteURL,
-    ])
-      .print()
-      .spawnTransparently().success;
+    ]).shellOut();
   }
 }
 

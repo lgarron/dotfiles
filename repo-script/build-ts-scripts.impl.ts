@@ -38,9 +38,7 @@ class ScriptSource {
       ],
       ["--outfile", this.tempPath],
       this.sourcePath,
-    ])
-      .print()
-      .spawnTransparently().success;
+    ]).shellOut();
   }
 }
 

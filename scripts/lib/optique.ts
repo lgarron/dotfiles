@@ -123,6 +123,10 @@ export function forTransformation(
   args: SimpleFileInOutArgs,
   extension: string,
 ): { outputFile: OutputFile; reveal: () => Promise<void> } {
+  if (args.outputFile?.path === args.sourceFile.path) {
+    throw new Error("Output file cannot be the same path as the source file.");
+  }
+
   const outputFile =
     args.outputFile ?? new OutputFile(`${args.sourceFile}${extension}`);
 

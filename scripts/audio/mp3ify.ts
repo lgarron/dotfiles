@@ -1,45 +1,29 @@
 #!/usr/bin/env -S bun run --
 
-import {
-  binary,
-  string as cmdString,
-  command,
-  optional,
-  positional,
-  run,
-} from "cmd-ts-too";
-import { File } from "cmd-ts-too/batteries/fs";
+import { object } from "@optique/core";
+import { run } from "@optique/run";
+import type { Path } from "path-class";
 import { PrintableShellCommand } from "printable-shell-command";
+import { byOption, simpleFileInOut } from "../lib/optique";
 
-const app = command({
-  name: "mp3ify",
-  args: {
-    inputFile: positional({
-      type: File,
-      displayName: "input-file",
-    }),
-    outputFile: positional({
-      type: optional(cmdString),
-      displayName: "output-file",
-    }),
-  },
-  handler: async ({ inputFile, outputFile: outputFileArg }) => {
-    const outputFile = outputFileArg ?? `${inputFile}.mp3`;
+async function mp3ify(args: {
+  readonly sourceFile: Path;
+  readonly outputFile?: Path;
+}): Promise<void> {
+  await new PrintableShellCommand("ffmpeg", [
+    ["-i", args.sourceFile],
+    ["-f", "mp3"],
+    ["-codec:a", "libmp3lame"],
+    // 170-210 kbps: https://trac.ffmpeg.org/wiki/Encode/MP3#VBREncoding
+    //
+    // This is a bit higher than needed for any real-world playback, but can
+    // help preserve quality if the output file is edited again in the future.
+    ["-q:a", "2"],
     // TODO: overwrite prompt?
-    const ffmpegCommand = new PrintableShellCommand("ffmpeg", [
-      ["-i", inputFile],
-      ["-f", "mp3"],
-      ["-codec:a", "libmp3lame"],
-      // 170-210 kbps: https://trac.ffmpeg.org/wiki/Encode/MP3#VBREncoding
-      //
-      // This is a bit higher than needed for any real-world playback, but can
-      // help preserve quality if the output file is edited again in the future.
-      ["-q:a", "2"],
-      outputFile,
-    ]);
+    args.outputFile ?? `${args.sourceFile}.mp3`,
+  ]).shellOut();
+}
 
-    await ffmpegCommand.shellOut();
-  },
-});
-
-await run(binary(app), process.argv);
+if (import.meta.main) {
+  await mp3ify(run(object(simpleFileInOut()), byOption()));
+}

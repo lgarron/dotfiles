@@ -42,6 +42,14 @@
     }
   },
   {
+    "key": "ctrl+cmd+r",
+    "command": "workbench.action.terminal.sendSequence",
+    "when": "terminalFocus",
+    "args": {
+  	    "text": "[${fileBasenameNoExtension}] "
+    }
+  },
+  {
     "key": "shift+alt+cmd+k",
     "command": "workbench.action.editor.previousChange",
     "when": "editorTextFocus"

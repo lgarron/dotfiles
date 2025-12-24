@@ -2,14 +2,16 @@
 
 import { object } from "@optique/core";
 import { run } from "@optique/run";
-import type { Path } from "path-class";
 import { PrintableShellCommand } from "printable-shell-command";
-import { byOption, simpleFileInOut } from "../lib/optique";
+import {
+  byOption,
+  forTransformation,
+  type SimpleFileInOutArgs,
+  simpleFileInOut,
+} from "../lib/optique";
 
-async function mp3ify(args: {
-  readonly sourceFile: Path;
-  readonly outputFile?: Path;
-}): Promise<void> {
+async function mp3ify(args: SimpleFileInOutArgs): Promise<void> {
+  const { outputFile, reveal } = forTransformation(args, ".mp3");
   await new PrintableShellCommand("ffmpeg", [
     ["-i", args.sourceFile],
     ["-f", "mp3"],
@@ -19,9 +21,9 @@ async function mp3ify(args: {
     // This is a bit higher than needed for any real-world playback, but can
     // help preserve quality if the output file is edited again in the future.
     ["-q:a", "2"],
-    // TODO: overwrite prompt?
-    args.outputFile ?? `${args.sourceFile}.mp3`,
+    outputFile,
   ]).shellOut();
+  await reveal();
 }
 
 if (import.meta.main) {

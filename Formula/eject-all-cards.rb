@@ -9,7 +9,7 @@ class EjectAllCards < Formula
 
   def install
     system "./repo-script/build-ts-scripts.ts", "system/eject-all-cards"
-
     bin.install "./.temp/bin/eject-all-cards" => "eject-all-cards"
+    generate_completions_from_executable(bin/"eject-all-cards", "--completions")
   end
 end

@@ -9,9 +9,8 @@ class NaughtyList < Formula
 
   def install
     # TODO: install properly from `npm` instead?
-  
-    system "./repo-script/build-ts-scripts.ts", "system/naughty-list"
-
-    bin.install "./.temp/bin/naughty-list" => "naughty-list"
+    system "./repo-script/build-ts-scripts.ts", "git/rmtag"
+    bin.install "./.temp/bin/rmtag" => "rmtag"
+    generate_completions_from_executable(bin/"rmtag", "--completions")
   end
 end

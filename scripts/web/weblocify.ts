@@ -1,34 +1,41 @@
 #!/usr/bin/env -S bun run --
 
-import { binary, command, positional, run } from "cmd-ts-too";
-import { HttpUrl } from "cmd-ts-too/batteries/url";
+import { argument, object, url } from "@optique/core";
+import { run } from "@optique/run";
+import type { Path } from "path-class";
+import { byOption, OutputFile, outputFile } from "../lib/optique";
 
-const app = command({
-  name: "weblocify",
-  args: {
-    url: positional({
-      type: HttpUrl,
+function parseArgs() {
+  return run(
+    object({
+      url: argument(url()),
+      outputFile: argument(outputFile()),
     }),
-    outputFilePath: positional({
-      description: "Output `.webloc` file path.",
-      displayName: "outputFilePath",
-    }),
-  },
-  handler: async ({ url: urlArg, outputFilePath: filePath }) => {
-    const url = new URL(urlArg);
+    byOption(),
+  );
+}
 
-    // TODO: semantic?
-    const plistContents = `<?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
-<plist version="1.0">
-<dict>
-  <key>URL</key>
-  <string>${encodeURI(url.toString())}</string>
-</dict>
-</plist>`;
-    console.log(`Writing to: ${filePath}`);
-    await Bun.file(filePath).write(plistContents);
-  },
-});
+export async function weblocify({
+  url,
+  outputFile,
+}: {
+  url: URL | string;
+  outputFile: Path;
+}) {
+  url = new URL(url);
+  // TODO: semantic?
+  const plistContents = `<?xml version="1.0" encoding="UTF-8"?>
+  <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+  <plist version="1.0">
+  <dict>
+    <key>URL</key>
+    <string>${encodeURI(url.toString())}</string>
+  </dict>
+  </plist>`;
+  console.log(`Writing to: ${outputFile}`);
+  await new OutputFile(outputFile).write(plistContents);
+}
 
-await run(binary(app), process.argv);
+if (import.meta.main) {
+  await weblocify(parseArgs());
+}

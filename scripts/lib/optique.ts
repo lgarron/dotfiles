@@ -100,17 +100,18 @@ export class OutputFile extends Path {
     ...args: Parameters<Path["write"]>
   ): ReturnType<Path["write"]> => {
     if (!(await this.exists())) {
-      return this.write(...args);
+      return super.write(...args);
     }
-    if (await this.existsAsDir()) {
-      throw new Error(`Path exists as folder: ${this.#styledPath}`);
-    }
+    // TODO
+    // if (await this.existsAsDir()) {
+    //   throw new Error(`Path exists as folder: ${this.#styledPath}`);
+    // }
     if (
       await askYesNo(`Overwrite the existing path? ${this.#styledPath}`, {
         default: "n",
       })
     ) {
-      return this.write(...args);
+      return super.write(...args);
     }
     throw new Error(`File exists at path: ${this.#styledPath}`);
   };

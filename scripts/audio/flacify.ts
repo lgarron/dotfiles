@@ -1,38 +1,26 @@
 #!/usr/bin/env -S bun run --
 
-import {
-  binary,
-  string as cmdString,
-  command,
-  optional,
-  positional,
-  run,
-} from "cmd-ts-too";
-import { File } from "cmd-ts-too/batteries/fs";
+import { object } from "@optique/core";
+import { run } from "@optique/run";
+import type { Path } from "path-class";
 import { PrintableShellCommand } from "printable-shell-command";
+import { byOption, simpleFileInOut } from "../lib/optique";
 
-const app = command({
-  name: "flacify",
-  args: {
-    inputFile: positional({
-      type: File,
-      displayName: "input-file",
-    }),
-    outputFile: positional({
-      type: optional(cmdString),
-      displayName: "output-file",
-    }),
-  },
-  handler: async ({ inputFile, outputFile: outputFileArg }) => {
-    const outputFile = outputFileArg ?? `${inputFile}.flac`;
+async function flacify(args: {
+  readonly sourceFile: Path;
+  readonly outputFile?: Path;
+}) {
+  const outputFile = args.outputFile ?? args.sourceFile.extendBasename(".flac");
+  await new PrintableShellCommand("ffmpeg", [
+    ["-i", args.sourceFile],
+    ["-f", "flac"],
+    ["-qscale:a", "0"],
+    outputFile,
+  ]).shellOut();
+}
 
-    await new PrintableShellCommand("ffmpeg", [
-      ["-i", inputFile],
-      ["-f", "flac"],
-      ["-qscale:a", "0"],
-      outputFile,
-    ]).shellOut();
-  },
-});
+if (import.meta.main) {
+  const args = run(object(simpleFileInOut()), byOption());
 
-await run(binary(app), process.argv);
+  await flacify(args);
+}

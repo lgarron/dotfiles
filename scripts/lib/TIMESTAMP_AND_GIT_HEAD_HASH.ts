@@ -11,4 +11,4 @@ export async function compute(): Promise<string> {
 // TODO: handle JJ?
 export const TIMESTAMP_AND_GIT_HEAD_HASH: string =
   // @ts-expect-error: This is replaced by `bun build`.
-  (await globalThis.TIMESTAMP_AND_GIT_HEAD_HASH) ?? compute();
+  (await globalThis.TIMESTAMP_AND_GIT_HEAD_HASH) ?? (await compute());

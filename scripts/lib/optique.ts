@@ -56,6 +56,8 @@ export function pathClass(options?: PathOptions): ValueParser<Path> {
       };
     },
     format: (value: Path): string => value.path,
+    // biome-ignore lint/style/noNonNullAssertion: We know that this is defined.
+    suggest: (...args) => o.suggest!(...args),
   };
 }
 

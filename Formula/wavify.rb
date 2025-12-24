@@ -9,9 +9,8 @@ class Wavify < Formula
   depends_on "oven-sh/bun/bun"
 
   def install
-    system "bun", "install", "--frozen-lockfile"
-
     system "bun", "build", "--target", "bun", "--outfile", "./.temp/bin/wavify", "scripts/audio/wavify.ts"
     bin.install "./.temp/bin/wavify" => "wavify"
+    generate_completions_from_executable("bun", "scripts/git/wavify.ts", "--completions")
   end
 end

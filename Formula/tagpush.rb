@@ -10,11 +10,8 @@ class Tagpush < Formula
   depends_on "oven-sh/bun/bun"
 
   def install
-    system "bun", "install", "--frozen-lockfile"
-
     system "bun", "build", "--target", "bun", "--outfile", "./.temp/bin/tagpush", "scripts/git/tagpush.ts"
     bin.install "./.temp/bin/tagpush" => "tagpush"
-
-    generate_completions_from_executable("bun", "scripts/git/tagpush.ts", "--completions", shells: [:fish])
+    generate_completions_from_executable("bun", "scripts/git/tagpush.ts", "--completions")
   end
 end

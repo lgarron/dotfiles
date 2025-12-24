@@ -9,7 +9,6 @@ class GgRefresh < Formula
 
   def install
     system "mkdir", "-p", "./.temp"
-
     system "swiftc", "-o", "./.temp/gg-refresh", "scripts/app-tools/gg-refresh.swift"
     bin.install "./.temp/gg-refresh" => "gg-refresh"
   end

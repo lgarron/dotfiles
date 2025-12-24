@@ -9,7 +9,6 @@ class Jclone < Formula
 
   def install
     system "bun", "install", "--frozen-lockfile"
-
     system "bun", "build", "--target", "bun", "--outfile", "./.temp/bin/jclone", "scripts/git/jclone.ts"
     bin.install "./.temp/bin/jclone" => "jclone"
   end

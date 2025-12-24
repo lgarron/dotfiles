@@ -9,9 +9,7 @@ class Rmtag < Formula
 
   def install
     system "./repo-script/build-ts-scripts.ts", "git/rmtag"
-
     bin.install "./.temp/bin/rmtag" => "rmtag"
-  
-    generate_completions_from_executable(bin/"rmtag", "--completions", shells: [:fish])
+    generate_completions_from_executable(bin/"rmtag", "--completions")
   end
 end

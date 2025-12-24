@@ -9,7 +9,6 @@ class Mak < Formula
 
   def install
     system "cargo", "install", *std_cargo_args()
-
     generate_completions_from_executable(bin/"mak", "--completions")
   end
 end

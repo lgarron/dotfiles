@@ -10,9 +10,7 @@ class ToggleRetina < Formula
 
   def install
     system "./repo-script/build-ts-scripts.ts", "system/toggle-retina"
-
     bin.install "./.temp/bin/toggle-retina" => "toggle-retina"
-
-    generate_completions_from_executable(bin/"toggle-retina", "--completions", shells: [:fish])
+    generate_completions_from_executable(bin/"toggle-retina", "--completions")
   end
 end

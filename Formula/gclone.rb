@@ -10,7 +10,6 @@ class Gclone < Formula
 
   def install
     system "bun", "install", "--frozen-lockfile"
-
     system "bun", "build", "--target", "bun", "--outfile", "./.temp/bin/gclone", "scripts/git/gclone.ts"
     bin.install "./.temp/bin/gclone" => "gclone"
   end

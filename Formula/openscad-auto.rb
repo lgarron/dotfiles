@@ -11,7 +11,6 @@ class OpenscadAuto < Formula
 
   def install
     system "cargo", "install", "--bin", "openscad-auto", *std_cargo_args()
-
     generate_completions_from_executable(bin/"openscad-auto", "--completions")
   end
 end

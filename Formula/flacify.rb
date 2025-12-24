@@ -9,9 +9,8 @@ class Flacify < Formula
   depends_on "oven-sh/bun/bun"
 
   def install
-    system "bun", "install", "--frozen-lockfile"
-
-    system "bun", "build", "--target", "bun", "--outfile", "./.temp/bin/flacify", "scripts/audio/flacify.ts"
+    system "./repo-script/build-ts-scripts.ts", "audio/flacify"
     bin.install "./.temp/bin/flacify" => "flacify"
+    generate_completions_from_executable(bin/"flacify", "--completions")
   end
 end

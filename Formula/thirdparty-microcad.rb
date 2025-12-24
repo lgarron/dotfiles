@@ -15,7 +15,6 @@ class ThirdpartyMicrocad < Formula
   def install
     system "cargo", "install", *std_cargo_args(path: "./tools/cli/")
     system bin/"microcad", "install", "std"
-
     generate_completions_from_executable(bin/"microcad", "completions")
   end
 end

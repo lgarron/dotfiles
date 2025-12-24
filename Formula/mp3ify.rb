@@ -9,9 +9,8 @@ class Mp3ify < Formula
   depends_on "oven-sh/bun/bun"
 
   def install
-    system "bun", "install", "--frozen-lockfile"
-
-    system "bun", "build", "--target", "bun", "--outfile", "./.temp/bin/mp3ify", "scripts/audio/mp3ify.ts"
+    system "./repo-script/build-ts-scripts.ts", "audio/mp3ify"
     bin.install "./.temp/bin/mp3ify" => "mp3ify"
+    generate_completions_from_executable(bin/"mp3ify", "--completions")
   end
 end

@@ -10,7 +10,7 @@ class Appiconify < Formula
 
   def install
     system "./repo-script/build-ts-scripts.ts", "graphics/appiconify"
-
     bin.install "./.temp/bin/appiconify" => "appiconify"
+    generate_completions_from_executable(bin/"appiconify", "--completions")
   end
 end

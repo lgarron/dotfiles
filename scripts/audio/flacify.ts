@@ -11,7 +11,7 @@ import {
 } from "../lib/optique";
 
 async function flacify(args: SimpleFileInOutArgs) {
-  const { outputFile, printOrReveal } = forTransformation(args, ".flag");
+  const { outputFile, printOrReveal } = forTransformation(args, ".flac");
   await new PrintableShellCommand("ffmpeg", [
     ["-i", args.sourceFile],
     ["-f", "flac"],
@@ -22,7 +22,5 @@ async function flacify(args: SimpleFileInOutArgs) {
 }
 
 if (import.meta.main) {
-  const args = run(object(simpleFileInOut), byOption());
-
-  await flacify(args);
+  await flacify(run(object(simpleFileInOut), byOption()));
 }

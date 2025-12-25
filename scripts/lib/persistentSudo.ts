@@ -46,13 +46,13 @@ import ${JSON.stringify(entry)};
 
     await new PrintableShellCommand("sudo", ["chown", "root", helperPath])
       .print({ stream: stderr })
-      .shellOut();
+      .spawnTransparently().success;
     await new PrintableShellCommand("sudo", ["chmod", "+x", helperPath])
       .print({ stream: stderr })
-      .shellOut();
+      .spawnTransparently().success;
     await new PrintableShellCommand("sudo", ["chmod", "u+s", helperPath])
       .print({ stream: stderr })
-      .shellOut();
+      .spawnTransparently().success;
 
     await new PrintableShellCommand("sudo", ["tee", "-a", ETC_SUDOERS])
       .stdin({

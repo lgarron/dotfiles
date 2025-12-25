@@ -1,5 +1,6 @@
 import assert from "node:assert";
 import { constants } from "node:fs/promises";
+import { exit } from "node:process";
 import { Glob } from "bun";
 import { Path } from "path-class";
 import { PrintableShellCommand } from "printable-shell-command";
@@ -10,6 +11,7 @@ async function* mapPath(iter: AsyncIterable<string>): AsyncGenerator<Path> {
   }
 }
 
+const failures: { [path: string]: string } = {};
 for await (const file of mapPath(new Glob("./scripts/*/*.ts").scan())) {
   if (file.path.split("/")[2] === "lib") {
     console.log(`⏩ Skipping (lib): ${file.blue}`);
@@ -38,10 +40,21 @@ for await (const file of mapPath(new Glob("./scripts/*/*.ts").scan())) {
   assert(!!(mode & constants.S_IXGRP));
   assert(!!(mode & constants.S_IXOTH));
 
-  await new PrintableShellCommand(file, ["--help"])
-    .print({ argumentLineWrapping: "inline" })
-    .spawnTransparently().success;
-  await new PrintableShellCommand(file, [["--completions", "fish"]])
-    .print({ argumentLineWrapping: "inline" })
-    .spawnTransparently().success;
+  try {
+    await new PrintableShellCommand(file, ["--help"])
+      .print({ argumentLineWrapping: "inline" })
+      .spawnTransparently().success;
+    await new PrintableShellCommand(file, [["--completions", "fish"]])
+      .print({ argumentLineWrapping: "inline" })
+      .spawnTransparently().success;
+    // biome-ignore lint/suspicious/noExplicitAny: We can't properly type this.
+  } catch (e: any) {
+    console.error(e);
+    failures[file.path] = e.toString();
+  }
+}
+
+if (Object.keys(failures).length > 0) {
+  console.log(JSON.stringify(failures));
+  exit(1);
 }

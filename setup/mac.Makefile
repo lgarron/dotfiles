@@ -242,4 +242,4 @@ watch-for-plist-changes:
 .PHONY:
 mac-setup-builtin-display-auto-brightness: mac-commandline-requiring-xcode
 	@echo "Note: configuring the built-in display auto brightness requires the built-in display to be currently connected."
-	betterdisplaycli set --name="Built-in Display" --autoBrightness=off
+	betterdisplaycli set --name="Built-in Display" --autoBrightness=off || echo "TODO"

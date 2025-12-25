@@ -1,64 +1,109 @@
 #!/usr/bin/env -S bun run --
 
-import { exit } from "node:process";
-import { $ } from "bun";
 import {
-  binary,
-  string as cmdString,
-  command,
-  flag,
-  optional,
-  positional,
-  run,
-} from "cmd-ts-too";
+  argument,
+  constant,
+  object,
+  option,
+  or,
+  type ValueParser,
+  type ValueParserResult,
+} from "@optique/core";
+import { run } from "@optique/run";
+import {
+  type Display,
+  getAllDevices,
+  type VirtualScreen,
+} from "betterdisplaycli";
+import { PrintableShellCommand } from "printable-shell-command";
+import { byOption } from "../lib/optique";
+import { allDevices } from "./toggle-retina";
 
-// TODO Migrate into `betterdisplaycli.js`.
+let allDevicesCachedPromise: Promise<(Display | VirtualScreen)[]> | undefined;
+export async function displayNameParser(): Promise<ValueParser<string>> {
+  // biome-ignore lint/suspicious/noAssignInExpressions: Caching pattern.
+  const allDevices = await (allDevicesCachedPromise ??= getAllDevices({
+    ignoreDisplayGroups: true,
+    quiet: true,
+  }));
 
-const app = command({
-  name: "toggle-display",
-  args: {
-    displayName: positional({
-      // TODO: this is only optional if `--listDisplays` is not specified.
-      type: optional(cmdString),
-      // Note: the fact that the field name and its value are similar is a coincidence. (!)
-      displayName: "Display name",
+  return {
+    metavar: "DISPLAY_NAME",
+    parse: (input: string): ValueParserResult<string> => ({
+      success: true,
+      value: input,
     }),
-    listDisplays: flag({
-      description: "List displays, one per line (instead of toggling any).",
-      long: "list-displays",
-    }),
-  },
-  handler: async ({ displayName, listDisplays }) => {
-    if (listDisplays) {
-      const jsonSequence = await $`betterdisplaycli get -identifiers`.text();
-      const json: {
-        deviceType: "Display" | "VirtualScreen" | "DisplayGroup";
-        name: string;
-      }[] = JSON.parse(`[${jsonSequence}]`);
-      const names = json
-        .filter((data) => data.deviceType !== "DisplayGroup")
-        .map((data) => data.name);
-      console.log(names.join("\n"));
-      return;
+    format: (value: string): string => value,
+    *suggest(prefix: string) {
+      for (const device of allDevices) {
+        const { name } = device.info;
+        if (name.startsWith(prefix)) {
+          yield { kind: "literal", text: name };
+        }
+      }
+    },
+  };
+}
+
+async function parseArgs() {
+  return run(
+    or(
+      object({
+        action: constant("toggle"),
+        displayName: argument(await displayNameParser()),
+      }),
+      object({
+        action: constant("listDisplays"),
+        listDisplays: option("--list-displays"),
+      }),
+    ),
+    byOption(),
+  );
+}
+
+export async function toggleDisplay(displayName: string) {
+  // TODO: push shell calls into `betterdisplaycli.js`.
+
+  const displayArg = displayName
+    ? `--name=${displayName}`
+    : "--displayWithMainStatus";
+  const connected =
+    (
+      await new PrintableShellCommand("betterdisplaycli", [
+        "get",
+        displayArg,
+        "--connected",
+      ]).text()
+    ).trim() === "on";
+
+  const newState = connected ? "off" : "on";
+  await new PrintableShellCommand("betterdisplaycli", [
+    "set",
+    displayArg,
+    `--connected=${newState}`,
+  ])
+    .print()
+    .text();
+}
+
+export async function listDisplays() {
+  console.log(
+    (await allDevices()).map((device) => device.info.name).join("\n"),
+  );
+}
+
+if (import.meta.main) {
+  const args = await parseArgs();
+  switch (args.action) {
+    case "toggle": {
+      await toggleDisplay(args.displayName);
+      break;
     }
-    if (!displayName) {
-      // TODO: Is this a stable way to call `.printHelp(…)`?
-      console.log(
-        app.printHelp(
-          { nodes: [], visitedNodes: new Set() }, // minimal blank data
-        ),
-      );
-      exit(1);
+    case "listDisplays": {
+      await listDisplays();
+      break;
     }
-
-    const on =
-      (
-        await $`betterdisplaycli get --name="${displayName}" --connected`.text()
-      ).trim() === "on";
-
-    const newState = on ? "off" : "on";
-    await $`betterdisplaycli set --name="${displayName}" --connected=${newState}`;
-  },
-});
-
-await run(binary(app), process.argv);
+    default:
+      throw new Error("Invalid action") as never;
+  }
+}

@@ -9,9 +9,8 @@ class ToggleDisplay < Formula
   depends_on "betterdisplaycli"
 
   def install
-    system "bun", "install", "--frozen-lockfile"
-
-    system "bun", "build", "--target", "bun", "--outfile", "./.temp/bin/toggle-display", "scripts/system/toggle-display.ts"
+    system "./repo-script/build-ts-scripts.ts", "system/toggle-display"
     bin.install "./.temp/bin/toggle-display" => "toggle-display"
+    generate_completions_from_executable(bin/"toggle-display", "--completions")
   end
 end

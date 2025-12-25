@@ -17,13 +17,16 @@ import { PrintableShellCommand } from "printable-shell-command";
 import { byOption } from "../lib/optique";
 
 let allDevicesCachedPromise: Promise<(Display | VirtualScreen)[]> | undefined;
-export async function displayNameParser(): Promise<ValueParser<string>> {
+export async function allDevices(): Promise<(Display | VirtualScreen)[]> {
   // biome-ignore lint/suspicious/noAssignInExpressions: Caching pattern.
-  const allDevices = await (allDevicesCachedPromise ??= getAllDevices({
+  return (allDevicesCachedPromise ??= getAllDevices({
     ignoreDisplayGroups: true,
     quiet: true,
   }));
+}
 
+export async function displayNameParser(): Promise<ValueParser<string>> {
+  const allDevicesAwaited = await allDevices();
   return {
     metavar: "DISPLAY_NAME",
     parse: (input: string): ValueParserResult<string> => ({
@@ -32,7 +35,7 @@ export async function displayNameParser(): Promise<ValueParser<string>> {
     }),
     format: (value: string): string => value,
     *suggest(prefix: string) {
-      for (const device of allDevices) {
+      for (const device of allDevicesAwaited) {
         const { name } = device.info;
         if (name.startsWith(prefix)) {
           yield { kind: "literal", text: name };

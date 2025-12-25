@@ -23,8 +23,16 @@ function parseArgs() {
           Boolean,
         ),
       ),
-      sourceDir: argument(pathClass({ mustExist: true, type: "directory" })),
-      destinationDir: argument(pathClass({ type: "directory" })),
+      sourceDir: argument(
+        pathClass({
+          mustExist: true,
+          type: "directory",
+          metavar: "SOURCE_DIR",
+        }),
+      ),
+      destinationDir: argument(
+        pathClass({ type: "directory", metavar: "DESTINATION_DIR" }),
+      ),
     }),
     byOption(),
   );

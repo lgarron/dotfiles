@@ -12,9 +12,9 @@ jobs:
       - uses: oven-sh/setup-bun@v1
       - uses: fish-actions/install-fish@v1
       - run: make setup
-      - run: make test-help
-      - run: make test-completions
       - run: make test-bun
+      - run: make test-scripts
+      - run: make test-scripts-non-ts
       - run: make lint-ts-biome
       - run: make lint-ts-tsc
       - run: make lint-rust

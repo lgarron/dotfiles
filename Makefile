@@ -198,22 +198,18 @@ reset: clean
 check: lint test
 
 .PHONY: test
-test: test-help test-completions test-bun cargo-test
+test: test-bun cargo-test test-scripts test-scripts-non-ts
 
-.PHONY: test-help
-test-help:
+.PHONY: test-scripts
+test-scripts:
+	bun run -- 'script/test-scripts.ts'
+
+.PHONY: test-scripts-non-ts
+test-scripts-non-ts:
 	cargo run --bin openscad-auto -- --help
-	./scripts/git/tagpush.ts --help
-	# ./scripts/git/rmbranch.fish --help # TODO
-	# ./scripts/git/rmtag.fish --help # TODO
-	scripts/git/node_crunchule.fish --help
-
-.PHONY: test-completions
-test-completions:
 	cargo run --bin openscad-auto -- --completions fish
-	./scripts/git/tagpush.ts --completions fish
+	scripts/git/node_crunchule.fish --help
 	./scripts/git/rmbranch.fish --completions fish
-	./scripts/git/rmtag.ts --completions fish
 
 .PHONY: lint
 lint: lint-ts-biome lint-ts-tsc lint-rust

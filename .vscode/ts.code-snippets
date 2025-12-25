@@ -28,7 +28,7 @@
       "if (import.meta.main) {",
       "  await executeScript(parseArgs());",
       "}",
-      "",
-    ],
-  },  
+      ""
+    ]
+  }
 }

@@ -6,7 +6,7 @@ import { run } from "@optique/run";
 import { byOption } from "../lib/optique";
 import { listenersForPort } from "./portkill/listenersForPort";
 
-async function portkill(ports: readonly number[]): Promise<void> {
+export async function portkill(ports: readonly number[]): Promise<void> {
   let numFailures = 0;
   for (const port of ports) {
     console.log(`Killing all processes using port ${port}`);

@@ -11,7 +11,7 @@
         "comment-json": "^4.4.1",
         "ergonomic-date": "^0.1.1",
         "lockfile-mutex": ">=0.3.5",
-        "lstow": "0.5.0",
+        "lstow": "0.5.1",
         "naughty-list": "^1.1.3",
         "path-class": ">=0.11.2",
         "plural-chain": ">=0.2.3",
@@ -185,7 +185,7 @@
 
     "lockfile-mutex": ["lockfile-mutex@0.3.7", "", { "dependencies": { "node-cleanup": "^2.1.2", "path-class": ">=0.6.1" } }, "sha512-b10RnrwiopEINt1KLIM3DRR3iTLeNN+g8p1Rb97qR2INVcVxiJfBjTS5haqWqJhwAUvYgTii//gyHNBqw8IIqA=="],
 
-    "lstow": ["lstow@0.5.0", "", { "dependencies": { "@optique/core": "^0.8.2", "@optique/run": "^0.8.2", "path-class": "^0.11.2" }, "bin": { "lstow": "src/bin/main.ts" } }, "sha512-5iptvvQkCghE4dWTBmd2mX2u+SS9zYiv28XuYv8Nd9akh6JunTQcxXp+CilaeL/E054TVK/OPWEWn8NpoRFjTw=="],
+    "lstow": ["lstow@0.5.1", "", { "dependencies": { "@optique/core": "^0.8.2", "@optique/run": "^0.8.2", "path-class": "^0.11.2" }, "bin": { "lstow": "src/bin/main.ts" } }, "sha512-dTwXlE0IfBMBsIUteMBVPV4TRS2j9+OYma7e4uIWd59UkKSKTGkGvs0SoSiTQVUIJQ8VbDHIcH2QfQvOZbyhqQ=="],
 
     "merge-stream": ["merge-stream@2.0.0", "", {}, "sha512-abv/qOcuPfk3URPfDzmZU1LKmuw8kT+0nIHvKrKgFrwifol/doWcdA4ZqsWQ8ENrFKkd67Mfpo/LovbIUsbt3w=="],
 

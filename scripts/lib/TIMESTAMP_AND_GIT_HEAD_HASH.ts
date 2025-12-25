@@ -1,9 +1,15 @@
 import { ErgonomicDate } from "ergonomic-date";
+import { Path } from "path-class";
 import { PrintableShellCommand } from "printable-shell-command";
 
+// TODO: avoid computing this eagerly, to avoid adding any time to hot paths when scripts call each other?
 export async function compute(): Promise<string> {
   const gitHeadHash = (
-    await new PrintableShellCommand("git", ["rev-parse", "HEAD"]).text()
+    await new PrintableShellCommand("git", [
+      ["-C", Path.resolve("../../", import.meta.url)],
+      "rev-parse",
+      "HEAD",
+    ]).text()
   ).trim();
   return `https://github.com/lgarron/dotfiles/commit/${gitHeadHash} (run or built at ${new ErgonomicDate().multipurposeTimestamp})`;
 }

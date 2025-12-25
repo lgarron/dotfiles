@@ -17,7 +17,7 @@ function parseArgs() {
   return run(
     object({
       exitCode: withDefault(
-        option(integer({ min: 0, max: 255 }), {
+        option("--exit-code", integer({ min: 0, max: 255 }), {
           description: message`Pass 0 avoid showing results in Quicksilver`,
         }),
         0,

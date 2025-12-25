@@ -10,7 +10,7 @@ class ThermalPressure < Formula
 
   def install
     system "./repo-script/build-ts-scripts.ts", "sudo/thermal-pressure"
-
     bin.install "./.temp/bin/thermal-pressure" => "thermal-pressure"
+    generate_completions_from_executable(bin/"thermal-pressure", "--completions")
   end
 end

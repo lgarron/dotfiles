@@ -23,9 +23,9 @@ for await (const file of mapPath(new Glob("./scripts/*/*.ts").scan())) {
       "dell-display-position-app-on-bottom.ts",
       "toggle-retina.ts",
       "toggle-display.ts",
-      // Scripts that pass on their arguments to another command without
-      // processing, and therefore don't support `--help` or `--completions` for
-      // themselves.
+      // These are scripts that pass on their arguments to another command
+      // without processing, and therefore don't support `--help` or
+      // `--completions` for themselves.
       "yeet-env.ts",
       "xdig.ts",
     ].includes(file.basename.path)

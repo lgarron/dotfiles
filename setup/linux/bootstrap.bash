@@ -11,21 +11,5 @@ test -d "${HOME}/.config/binaries" || git clone --depth=1 https://github.com/lga
 chmod +x "${HOME}/.config/binaries/linux-x64/"*
 export PATH="$PATH:${HOME}/.config/binaries/linux-x64"
 
-touch "${HOME}/.bashrc"
-echo "${HOME}/.config/binaries/linux-x64/fish" >> ~/.bashrc
-
-
-make setup
-
-if [ -n "${CODESPACES:-}" ]
-then
-  rm -rf \
-    "${HOME}/.config/fish/config.fish" \
-    "${HOME}/.local/share/fish"
-fi
-make linux
-
-sudo add-shell "${HOME}/.config/binaries/linux-x64/fish"
-sudo chsh "$(id -un)" --shell "${HOME}/.config/binaries/linux-x64/fish"
-
-"${HOME}/.config/binaries/linux-x64/fish" --command 'history append "jj git init --colocate ."'
+# We have enough now to launch into `fish`.
+./setup/linux/bootstrap.fish

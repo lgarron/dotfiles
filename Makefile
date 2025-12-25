@@ -48,6 +48,8 @@ pythagoras: \
 
 .PHONY: linux
 linux: \
+	git \
+	jj \
 	set-dotfiles-repo-email \
 	fish \
 	xdg-basedir-workarounds \

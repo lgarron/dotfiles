@@ -9,7 +9,7 @@ class Pushover < Formula
 
   def install
     system "./repo-script/build-ts-scripts.ts", "api/pushover"
-
     bin.install "./.temp/bin/pushover" => "pushover"
+    generate_completions_from_executable(bin/"pushover", "--completions")
   end
 end

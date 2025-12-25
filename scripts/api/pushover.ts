@@ -6,6 +6,7 @@ import { styleText } from "node:util";
 import { argument, multiple, object, string } from "@optique/core";
 import { run } from "@optique/run";
 import { Path } from "path-class";
+import { byOption } from "../lib/optique";
 
 const SECRETS_FILE_PATH = Path.homedir.join(".ssh/secrets/pushover.json");
 
@@ -59,6 +60,7 @@ if (import.meta.main) {
       prefix: argument(string({ metavar: "PREFIX" })),
       lines: multiple(argument(string({ metavar: "MESSAGE" }))),
     }),
+    byOption(),
   );
 
   await sendMessage(args.lines.join("\n"), { prefix: args.prefix });

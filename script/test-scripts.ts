@@ -22,7 +22,6 @@ for await (const file of mapPath(new Glob("./scripts/*/*.ts").scan())) {
       "yeet-env.ts",
       "jgff.ts",
       "thermal-pressure.ts",
-      "pushover.ts",
       "editor-open-file-in-workspace.ts",
       "niceplz.ts",
       "niceplz-sudo.ts",

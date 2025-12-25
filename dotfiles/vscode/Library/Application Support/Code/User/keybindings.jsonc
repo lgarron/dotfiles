@@ -362,6 +362,16 @@
         "apply": "ifSingle"
     }
   },
+  {
+    "key": "shift+cmd+j",
+    "command": "typescript.removeUnusedImports",
+    "when": "editorLangId == typescript",
+  },
+  {
+    "key": "shift+cmd+j",
+    "command": "javascript.removeUnusedImports",
+    "when": "editorLangId == javascript",
+  },
   // TODO: this doesn't work (missing imports are not added.)
   // Also, this wouldn't be needed so badly if https://github.com/microsoft/vscode/issues/244133 was implemented.
   {

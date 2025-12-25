@@ -1,4 +1,4 @@
-LSTOW = bun run ./scripts/system/lstow/lstow.ts
+LSTOW = bun run -- ./scripts/system/lstow.ts
 
 .PHONY: auto
 auto:

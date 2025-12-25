@@ -11,8 +11,8 @@ test -d "${HOME}/.config/binaries" || git clone --depth=1 https://github.com/lga
 chmod +x "${HOME}/.config/binaries/linux-x64/"*
 export PATH="$PATH:${HOME}/.config/binaries/linux-x64"
 
-touch ~/.bashrc
-echo "~/.config/binaries/linux-x64/fish" >> ~/.bashrc
+touch "${HOME}/.bashrc"
+echo "${HOME}/.config/binaries/linux-x64/fish" >> ~/.bashrc
 
 
 make setup
@@ -20,11 +20,11 @@ make setup
 if [ -n "${CODESPACES:-}" ]
 then
   rm -rf \
-    ~/.config/fish/config.fish \
-    ~/.local/share/fish
+    "${HOME}/.config/fish/config.fish" \
+    "${HOME}/.local/share/fish"
 fi
 make linux
 
+sudo add-shell "${HOME}/.config/binaries/linux-x64/fish"
 sudo chsh "$(id -un)" --shell "${HOME}/.config/binaries/linux-x64/fish"
 
-echo yes | "${HOME}/.config/binaries/linux-x64/fish" --install

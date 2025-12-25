@@ -5,6 +5,7 @@
   },
   "include": [
     "./.config/**/*.ts",
+    "./setup/",
     "./script/",
     "./scripts/",
     "./mirrored/**/*.ts",

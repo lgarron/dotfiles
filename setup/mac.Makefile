@@ -174,7 +174,11 @@ mac-apps-bulk-workarounds:
 
 .PHONY: mac-setup-homebrew-lgarron-lgarron
 mac-setup-homebrew-lgarron-lgarron:
-	./setup/scripts/mac-homebrew-install-all-lgarron-lgarron.fish
+	./setup/scripts/mac-homebrew-install-all-lgarron-lgarron.ts
+
+.PHONY: mac-setup-homebrew-reinstall-lgarron-lgarron
+mac-setup-homebrew-reinstall-lgarron-lgarron:
+	./setup/scripts/mac-homebrew-reinstall-all-lgarron-lgarron.fish
 
 # Dock
 

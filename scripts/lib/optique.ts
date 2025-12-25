@@ -125,7 +125,7 @@ export class OutputFile extends Path {
 export function forTransformation(
   args: SimpleFileInOutArgs,
   extension: string,
-): { outputFile: OutputFile; reveal: () => Promise<void> } {
+): { outputFile: OutputFile; printOrReveal: () => Promise<void> } {
   if (args.outputFile?.path === args.sourceFile.path) {
     throw new Error("Output file cannot be the same path as the source file.");
   }
@@ -136,7 +136,7 @@ export function forTransformation(
   return {
     outputFile,
     // TODO: `await using`?
-    reveal: async () => printOrReveal(outputFile, args),
+    printOrReveal: async () => printOrReveal(outputFile, args),
   };
 }
 

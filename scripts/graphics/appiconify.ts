@@ -17,7 +17,10 @@ const ICTOOL_PATH = new Path(
 );
 
 async function appiconify(args: SimpleFileInOutArgs): Promise<void> {
-  const { outputFile, reveal } = forTransformation(args, ".app-icon.png");
+  const { outputFile, printOrReveal } = forTransformation(
+    args,
+    ".app-icon.png",
+  );
 
   const tempDir = await Path.makeTempDir("appiconify");
 
@@ -86,7 +89,7 @@ async function appiconify(args: SimpleFileInOutArgs): Promise<void> {
     outputFile,
   ]).shellOut();
 
-  await reveal();
+  await printOrReveal();
 }
 
 if (import.meta.main) {

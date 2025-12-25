@@ -11,14 +11,14 @@ import {
 } from "../lib/optique";
 
 async function wavify(args: SimpleFileInOutArgs): Promise<void> {
-  const { outputFile, reveal } = forTransformation(args, ".wav");
+  const { outputFile, printOrReveal } = forTransformation(args, ".wav");
   await new PrintableShellCommand("ffmpeg", [
     ["-i", args.sourceFile],
     ["-f", "wav"],
     ["-qscale:a", "0"],
     outputFile,
   ]).shellOut();
-  await reveal();
+  await printOrReveal();
 }
 
 if (import.meta.main) {

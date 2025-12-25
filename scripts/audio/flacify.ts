@@ -11,14 +11,14 @@ import {
 } from "../lib/optique";
 
 async function flacify(args: SimpleFileInOutArgs) {
-  const { outputFile, reveal } = forTransformation(args, ".flag");
+  const { outputFile, printOrReveal } = forTransformation(args, ".flag");
   await new PrintableShellCommand("ffmpeg", [
     ["-i", args.sourceFile],
     ["-f", "flac"],
     ["-qscale:a", "0"],
     outputFile,
   ]).shellOut();
-  await reveal();
+  await printOrReveal();
 }
 
 if (import.meta.main) {

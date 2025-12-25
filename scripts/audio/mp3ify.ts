@@ -11,7 +11,7 @@ import {
 } from "../lib/optique";
 
 async function mp3ify(args: SimpleFileInOutArgs): Promise<void> {
-  const { outputFile, reveal } = forTransformation(args, ".mp3");
+  const { outputFile, printOrReveal } = forTransformation(args, ".mp3");
   await new PrintableShellCommand("ffmpeg", [
     ["-i", args.sourceFile],
     ["-f", "mp3"],
@@ -23,7 +23,7 @@ async function mp3ify(args: SimpleFileInOutArgs): Promise<void> {
     ["-q:a", "2"],
     outputFile,
   ]).shellOut();
-  await reveal();
+  await printOrReveal();
 }
 
 if (import.meta.main) {

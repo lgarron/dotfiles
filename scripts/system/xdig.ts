@@ -4,7 +4,7 @@ import { argv } from "node:process";
 import { Path } from "path-class";
 import { PrintableShellCommand } from "printable-shell-command";
 
-const configFilePath = Path.xdg.config.join("dig/xdigrc.json");
+const configFilePath = Path.xdg.config.join("./dig/xdigrc.json");
 
 interface DigRC {
   defaultPrefixArgs: string[];

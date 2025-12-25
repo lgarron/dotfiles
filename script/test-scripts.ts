@@ -27,10 +27,11 @@ for await (const file of mapPath(new Glob("./scripts/*/*.ts").scan())) {
       "editor-open-file-in-workspace.ts",
       "niceplz.ts",
       "niceplz-sudo.ts",
-      "xdig.ts",
       "dell-display-position-app-on-bottom.ts",
       "toggle-retina.ts",
       "toggle-display.ts",
+      // Passes args onto `dig` without interception or processing.
+      "xdig.ts",
     ].includes(file.basename.path)
   ) {
     console.log(`⏩ Skipping (denylisted): ${file.blue}`);

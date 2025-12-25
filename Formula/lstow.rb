@@ -8,9 +8,8 @@ class Lstow < Formula
   depends_on "oven-sh/bun/bun"
 
   def install
-    system "bun", "install", "--frozen-lockfile"
-
-    system "bun", "build", "--target", "bun", "--outfile", "./.temp/bin/lstow", "scripts/system/lstow/lstow.ts"
+    system "./repo-script/build-ts-scripts.ts", "system/lstow"
     bin.install "./.temp/bin/lstow" => "lstow"
+    generate_completions_from_executable(bin/"lstow", "--completions")
   end
 end

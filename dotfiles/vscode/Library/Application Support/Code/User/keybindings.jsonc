@@ -18,6 +18,14 @@
     }
   },
   {
+    "key": "shift-4",
+    "command": "editor.action.insertSnippet",
+    "when": "editorHasSelection && editorTextFocus && (editorLangId == javascript || editorLangId == typescript)",
+    "args": {
+  	    "snippet": "\\${${0:${TM_SELECTED_TEXT}}}"
+    }
+  },
+  {
     "key": "shift+cmd+enter",
     "command": "workbench.action.terminal.sendSequence",
     "when": "terminalFocus",

@@ -58,7 +58,7 @@ if (import.meta.main) {
   const args = run(
     object({
       prefix: argument(string({ metavar: "PREFIX" })),
-      lines: multiple(argument(string({ metavar: "MESSAGE" }))),
+      lines: multiple(argument(string({ metavar: "MESSAGE" })), { min: 1 }),
     }),
     byOption(),
   );

@@ -359,6 +359,11 @@
     "command": "editor.action.sourceAction",
     "args": {
         "kind": "source.addMissingImports",
+        // TODO: WHY WHY WHY WHY would this prioritize a deprecated import from
+        // an existing import path when a non-deprecated one is available from
+        // another path? How is this even a "single" option???????? And WHY WHY
+        // WHY WHY WHY WHY WHY WOULD IT IGNORE
+        // `autoImportSpecifierExcludeRegexes`????????
         "apply": "ifSingle"
     }
   },

@@ -21,7 +21,6 @@ for await (const file of mapPath(new Glob("./scripts/*/*.ts").scan())) {
     [
       "yeet-env.ts",
       "jgff.ts",
-      "gclone.ts",
       "thermal-pressure.ts",
       "pushover.ts",
       "editor-open-file-in-workspace.ts",

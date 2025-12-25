@@ -9,8 +9,8 @@ class Gclone < Formula
   depends_on "lgarron/lgarron/open-macos"
 
   def install
-    system "bun", "install", "--frozen-lockfile"
-    system "bun", "build", "--target", "bun", "--outfile", "./.temp/bin/gclone", "scripts/git/gclone.ts"
+    system "./repo-script/build-ts-scripts.ts", "git/gclone"
     bin.install "./.temp/bin/gclone" => "gclone"
+    generate_completions_from_executable(bin/"gclone", "--completions")
   end
 end

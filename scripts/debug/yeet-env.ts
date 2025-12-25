@@ -21,7 +21,7 @@ await new PrintableShellCommand("/opt/homebrew/bin/terminal-notifier", [
 
 await new PrintableShellCommand(
   "/Users/lgarron/Code/git/github.com/lgarron/dotfiles/scripts/app-tools/editor-open-file-in-workspace.ts",
-  [path],
+  ["--", path],
 ).shellOut();
 
 const args = argv.slice(2);

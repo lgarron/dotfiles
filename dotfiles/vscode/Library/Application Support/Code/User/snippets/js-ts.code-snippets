@@ -107,7 +107,7 @@
   "Promise type": {
     "scope": "typescript",
     "prefix": "P",
-    "body": "Promise<${0:void}>",
+    "body": "Promise<${0:${TM_SELECTED_TEXT:void}}>",
     "description": "Promise type"
   },
   "import.meta.resolve": {

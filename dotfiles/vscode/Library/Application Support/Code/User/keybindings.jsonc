@@ -361,5 +361,25 @@
         "kind": "source.addMissingImports",
         "apply": "ifSingle"
     }
+  },
+  // TODO: this doesn't work (missing imports are not added.)
+  // Also, this wouldn't be needed so badly if https://github.com/microsoft/vscode/issues/244133 was implemented.
+  {
+    "key": "ctrl-shift+cmd+i",
+    "command": "runCommands",
+    "args": {
+      "commands": [
+        {
+          "command": "editor.action.sourceAction",
+          "args": {
+            "kind": "source.addMissingImports.ts",
+            "apply": "ifSingle"
+          }
+        }, {
+          "command": "typescript.removeUnusedImports",
+          // "command": "editor.action.organizeImports",
+        }
+      ]
+    }
   }
 ]

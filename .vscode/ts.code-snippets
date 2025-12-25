@@ -29,6 +29,7 @@
       "  await ${1:executeScript}(parseArgs());",
       "}",
       ""
-    ]
+    ],
+    "scope": "typescript",
   }
 }

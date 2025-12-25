@@ -164,5 +164,12 @@
     "body": [
       "if (import.meta.main) { ${1:$TM_SELECTED_TEXT} }"
     ],
+  },
+  "${…}": {
+    "scope": "javascript,typescript",
+    "prefix": "$",
+    "body": [
+      "${${1:$TM_SELECTED_TEXT}}"
+    ],
   }
 }

@@ -28,6 +28,9 @@ for await (const file of mapPath(new Glob("./scripts/*/*.ts").scan())) {
       "niceplz.ts",
       "niceplz-sudo.ts",
       "xdig.ts",
+      "dell-display-position-app-on-bottom.ts",
+      "toggle-retina.ts",
+      "toggle-display.ts",
     ].includes(file.basename.path)
   ) {
     console.log(`⏩ Skipping (denylisted): ${file.blue}`);

@@ -8,9 +8,8 @@ class Portkill < Formula
   depends_on "oven-sh/bun/bun"
 
   def install
-    system "bun", "install", "--frozen-lockfile"
-
-    system "bun", "build", "--target", "bun", "--outfile", "./.temp/bin/portkill", "scripts/system/portkill.ts"
+    system "./repo-script/build-ts-scripts.ts", "system/portkill"
     bin.install "./.temp/bin/portkill" => "portkill"
+    generate_completions_from_executable(bin/"portkill", "--completions")
   end
 end

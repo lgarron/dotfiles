@@ -88,13 +88,13 @@ PACKAGES += xdg-basedir-workarounds
 PACKAGES += zellij
 
 .PHONY: $(PACKAGES)
-$(PACKAGES):
+$(PACKAGES): setup-npm-packages
 	${LSTOW} -- ./dotfiles/$@ ~/
 
 # Daemons
 
 .PHONY: lglogin
-lglogin:
+lglogin: setup-npm-packages
 	${LSTOW} -- ./dotfiles/$@ ~/
 	launchctl print gui/501/net.garron.mac.lglogin > /dev/null 2> /dev/null || \
 		launchctl bootstrap gui/$(shell id -u) /Users/lgarron/Library/LaunchAgents/net.garron.mac.lglogin.plist
@@ -107,7 +107,7 @@ lglogin-uninstall-daemon:
 	rm -f /Users/lgarron/Library/LaunchAgents/net.garron.mac.lglogin.plist
 
 .PHONY: vscode-settings-macos
-vscode-settings-macos:
+vscode-settings-macos: setup-npm-packages
 	${LSTOW} -- ./dotfiles/$@ ~/
 	launchctl print gui/501/net.garron.mac.dotfiles.mirror.vscode-settings-macos > /dev/null 2> /dev/null || \
 		launchctl bootstrap gui/$(shell id -u) /Users/lgarron/Library/LaunchAgents/net.garron.mac.dotfiles.mirror.vscode-settings-macos.plist
@@ -120,7 +120,7 @@ vscode-settings-macos-uninstall-daemon:
 	rm -f /Users/lgarron/Library/LaunchAgents/net.garron.mac.dotfiles.mirror.vscode-settings-macos.plist
 
 .PHONY: obsidian-backup-macos
-obsidian-backup-macos:
+obsidian-backup-macos: setup-npm-packages
 	${LSTOW} -- ./dotfiles/$@ ~/
 	launchctl print gui/501/net.garron.mac.dotfiles.mirror.obsidian-backup-macos > /dev/null 2> /dev/null || \
 		launchctl bootstrap gui/$(shell id -u) /Users/lgarron/Library/LaunchAgents/net.garron.mac.dotfiles.mirror.obsidian-backup-macos.plist
@@ -133,7 +133,7 @@ obsidian-backup-macos-uninstall-daemon:
 	rm -f /Users/lgarron/Library/LaunchAgents/net.garron.mac.dotfiles.mirror.obsidian-backup-macos.plist
 
 .PHONY: pythagoras-screenshots-macos
-pythagoras-screenshots-macos:
+pythagoras-screenshots-macos: setup-npm-packages
 	${LSTOW} -- ./dotfiles/$@ ~/
 	launchctl print gui/501/net.garron.mac.dotfiles.mirror.pythagoras-screenshots-macos > /dev/null 2> /dev/null || \
 		launchctl bootstrap gui/$(shell id -u) /Users/lgarron/Library/LaunchAgents/net.garron.mac.dotfiles.mirror.pythagoras-screenshots-macos.plist
@@ -198,11 +198,11 @@ check: lint test
 test: test-bun cargo-test test-scripts test-scripts-non-ts
 
 .PHONY: test-scripts
-test-scripts:
+test-scripts: setup-npm-packages
 	bun run -- 'script/test-scripts.ts'
 
 .PHONY: test-scripts-non-ts
-test-scripts-non-ts:
+test-scripts-non-ts: setup-npm-packages
 	cargo run --bin openscad-auto -- --help
 	cargo run --bin openscad-auto -- --completions fish
 	scripts/git/node_crunchule.fish --help

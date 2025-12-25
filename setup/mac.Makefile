@@ -173,7 +173,7 @@ mac-apps-bulk-workarounds:
 	tailscale completion fish >> ~/.config/fish/completions/tailscale.fish
 
 .PHONY: mac-setup-homebrew-lgarron-lgarron
-mac-setup-homebrew-lgarron-lgarron:
+mac-setup-homebrew-lgarron-lgarron: setup-npm-packages
 	./setup/scripts/mac-homebrew-install-all-lgarron-lgarron.ts
 
 .PHONY: mac-setup-homebrew-reinstall-lgarron-lgarron

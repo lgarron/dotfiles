@@ -136,14 +136,19 @@ export function forTransformation(
   return {
     outputFile,
     // TODO: `await using`?
-    reveal: async () => {
-      if (args.reveal) {
-        await new PrintableShellCommand("reveal-macos", [
-          outputFile,
-        ]).shellOut();
-      }
-    },
+    reveal: async () => printOrReveal(outputFile, args),
   };
+}
+
+export async function printOrReveal(
+  outputFile: Path,
+  args: { reveal: boolean },
+) {
+  if (args.reveal) {
+    await new PrintableShellCommand("reveal-macos", [outputFile]).shellOut();
+  } else {
+    console.log(`Output file: ${styleText(["blue"], outputFile.path)}`);
+  }
 }
 
 export function outputFile(options?: PathOptions): ValueParser<OutputFile> {

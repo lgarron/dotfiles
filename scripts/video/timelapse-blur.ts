@@ -1,15 +1,10 @@
 #!/usr/bin/env -S bun run --
 
-import {
-  binary,
-  number as cmdNumber,
-  string as cmdString,
-  command,
-  option,
-  positional,
-  run,
-} from "cmd-ts-too";
+import { integer, message, object, option, withDefault } from "@optique/core";
+import { run } from "@optique/run";
+import type { Path } from "path-class";
 import { PrintableShellCommand } from "printable-shell-command";
+import { byOption, printOrReveal, simpleFileInOut } from "../lib/optique";
 
 // Public domain, from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_generators
 function* makeRangeIterator(start: number, end: number, step = 1) {
@@ -21,84 +16,85 @@ function* makeRangeIterator(start: number, end: number, step = 1) {
   return iterationCount;
 }
 
-const app = command({
-  name: "timelapse-blur",
-  args: {
-    framesWindow: option({
-      description: "Number of adjacent frames to blur.",
-      type: cmdNumber,
-      long: "frames-window",
+function parseArgs() {
+  return run(
+    object({
+      framesWindow: option("--frames-window", integer({ min: 1 }), {
+        description: message`Number of adjacent frames to blur.`,
+      }),
+      fps: withDefault(option("--fps", integer({ min: 1 })), 60),
+      ...simpleFileInOut,
     }),
-    fps: option({
-      description: "Frames per second.",
-      type: cmdNumber,
-      long: "fps",
-      defaultValue: () => 60,
-      defaultValueIsSerializable: true,
-    }),
-    sourceFile: positional({
-      type: cmdString,
-      displayName: "Source file",
-    }),
-  },
-  handler: async ({ framesWindow, fps, sourceFile }) => {
-    async function blur(
-      framesWindow: number,
-      sourceFile: string,
-      _qv: number, // TODO
-    ): Promise<string> {
-      const outputFileName = `${sourceFile}.${framesWindow}×-blur.mp4`;
-      await new PrintableShellCommand("time", [
-        "ffmpeg",
-        ["-i", sourceFile],
-        [
-          "-vf",
-          `tmix=frames=${framesWindow}:weights=${new Array(framesWindow)
-            .fill(1)
-            .join(" ")},setpts=${1 / framesWindow}*PTS`,
-        ],
-        // #   -pix_fmt yuv422p \
-        ["-c:v", "hevc_videotoolbox"],
-        ["-profile:v", "main"],
-        ["-tag:v", "hvc1"],
-        ["-movflags", "faststart"],
-        // ["-movflags", "frag_keyframe"], // Allow the file to be readable even if it's not finished being written.
-        ["-f", "mp4"],
-        "-an",
-        ["-r", `${fps}`],
-        ["-q:v", "75"],
-        outputFileName,
-      ]).shellOut();
-      return outputFileName;
-    }
+    byOption(),
+  );
+}
 
-    let remainingFactor = framesWindow;
-    let latestSourceFile = sourceFile;
-    const potentialFactors = [
-      // Prioritize numbers up to 8, with a sweet spot of 6.
-      6,
-      7,
-      5,
-      8,
-      4,
-      3,
-      ...makeRangeIterator(2, Math.floor(Math.sqrt(remainingFactor))),
-    ];
-    for (const factor of potentialFactors) {
-      while (remainingFactor % factor === 0) {
-        if (factor > 8) {
-          console.warn(
-            "WARNING: Using a factor over 8. This is likely to be rather slow.",
-          );
-        }
-        remainingFactor /= factor;
-        const qv = remainingFactor === 1 ? 65 : 75;
-        latestSourceFile = await blur(factor, latestSourceFile, qv);
+async function blur(
+  framesWindow: number,
+  sourceFile: Path,
+  fps: number,
+  qv: number, // TODO
+): Promise<Path> {
+  const outputFileName = sourceFile.extendBasename(
+    `.${framesWindow}×-blur.mp4`,
+  );
+  console.log({ qv });
+  await new PrintableShellCommand("time", [
+    "ffmpeg",
+    ["-i", sourceFile],
+    [
+      "-vf",
+      `tmix=frames=${framesWindow}:weights=${new Array(framesWindow)
+        .fill(1)
+        .join(" ")},setpts=${1 / framesWindow}*PTS`,
+    ],
+    // #   -pix_fmt yuv422p \
+    ["-c:v", "hevc_videotoolbox"],
+    ["-profile:v", "main"],
+    ["-tag:v", "hvc1"],
+    ["-movflags", "faststart"],
+    // ["-movflags", "frag_keyframe"], // Allow the file to be readable even if it's not finished being written.
+    ["-f", "mp4"],
+    "-an",
+    ["-r", `${fps}`],
+    // TODO: Passing `"65"` seems to make the output unplayable in QuickTime(!))
+    ["-q:v", "75"],
+    outputFileName,
+  ]).shellOut();
+  return outputFileName;
+}
+
+async function timelapseBlur(
+  args: ReturnType<typeof parseArgs>,
+): Promise<void> {
+  let remainingFactor = args.framesWindow;
+  let latestSourceFile = args.sourceFile;
+  const potentialFactors = [
+    // Prioritize numbers up to 8, with a sweet spot of 6.
+    6,
+    7,
+    5,
+    8,
+    4,
+    3,
+    ...makeRangeIterator(2, Math.floor(Math.sqrt(remainingFactor))),
+  ];
+  for (const factor of potentialFactors) {
+    while (remainingFactor % factor === 0) {
+      if (factor > 8) {
+        console.warn(
+          "WARNING: Using a factor over 8. This is likely to be rather slow.",
+        );
       }
+      remainingFactor /= factor;
+      const qv = remainingFactor === 1 ? 65 : 75;
+      latestSourceFile = await blur(factor, latestSourceFile, args.fps, qv);
     }
+  }
 
-    console.log(latestSourceFile);
-  },
-});
+  await printOrReveal(latestSourceFile, args);
+}
 
-await run(binary(app), process.argv);
+if (import.meta.main) {
+  await timelapseBlur(parseArgs());
+}

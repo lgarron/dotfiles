@@ -15,8 +15,7 @@ function parseListenersForPort(s: string): number[] {
 export async function listenersForPort(port: number): Promise<number[]> {
   const subprocess = new PrintableShellCommand("lsof", [
     "-t",
-    "-i",
-    `tcp:${port}`,
+    ["-i", `tcp:${port}`],
   ]).spawn({ stdio: ["ignore", "pipe", "inherit"] });
 
   const text = subprocess.stdout.text();

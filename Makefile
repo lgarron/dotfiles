@@ -70,6 +70,7 @@ dreamhost:
 
 PACKAGES  =
 PACKAGES += compressor
+PACKAGES += fish
 PACKAGES += git
 PACKAGES += hushlogin
 PACKAGES += jj
@@ -88,12 +89,6 @@ PACKAGES += zellij
 
 .PHONY: $(PACKAGES)
 $(PACKAGES):
-	${LSTOW} -- ./dotfiles/$@ ~/
-
-########
-
-.PHONY: fish
-fish:
 	${LSTOW} -- ./dotfiles/$@ ~/
 
 # Daemons

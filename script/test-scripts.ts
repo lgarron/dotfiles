@@ -21,8 +21,6 @@ for await (const file of mapPath(new Glob("./scripts/*/*.ts").scan())) {
     [
       "jgff.ts",
       "editor-open-file-in-workspace.ts",
-      "niceplz.ts",
-      "niceplz-sudo.ts",
       // TODO: these perform unconditional non-portable shell calls due to https://github.com/dahlia/optique/issues/52
       "dell-display-position-app-on-bottom.ts",
       "toggle-retina.ts",

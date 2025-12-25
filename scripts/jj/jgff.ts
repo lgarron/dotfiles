@@ -1,36 +1,49 @@
 #!/usr/bin/env -S bun run --
 
-import { exit } from "node:process";
+import { object } from "@optique/core";
+import { run } from "@optique/run";
 import { PrintableShellCommand } from "printable-shell-command";
+import { byOption } from "../lib/optique";
 
-await new PrintableShellCommand("jj", ["git", "fetch"]).shellOut();
+function parseArgs() {
+  return run(object({}), byOption());
+}
 
-const numHEADOnlyCommits = parseInt(
-  await new PrintableShellCommand("jj", [
-    "log",
-    [
-      "--revisions",
-      '~..trunk() & ..@ & ~(empty() & description(exact:"") & ~merges())',
-    ],
-    "--count",
-  ]).text(),
-  10,
-);
+export async function executeScript(
+  _args: ReturnType<typeof parseArgs>,
+): Promise<void> {
+  await new PrintableShellCommand("jj", ["git", "fetch"]).shellOut();
 
-if (numHEADOnlyCommits === 0) {
-  console.log("⏩ Safe to fast-forward. Going ahead…");
-  await new PrintableShellCommand("jj", ["new", "trunk()"]).shellOut();
-} else {
-  console.error(
-    `HEAD (@) has ${numHEADOnlyCommits} non-trivial commits that are not on \`trunk()\`. Not fast-forwarding.`,
+  const numHEADOnlyCommits = parseInt(
+    await new PrintableShellCommand("jj", [
+      "log",
+      [
+        "--revisions",
+        '~..trunk() & ..@ & ~(empty() & description(exact:"") & ~merges())',
+      ],
+      "--count",
+    ]).text(),
+    10,
   );
-  await new PrintableShellCommand("jj", [
-    "log",
-    "--no-graph",
-    [
-      "--revisions",
-      '~..trunk() & ..@ & ~(empty() & description(exact:"") & ~merges())',
-    ],
-  ]).shellOut();
-  exit(1);
+
+  if (numHEADOnlyCommits === 0) {
+    console.log("⏩ Safe to fast-forward. Going ahead…");
+    await new PrintableShellCommand("jj", ["new", "trunk()"]).shellOut();
+  } else {
+    await new PrintableShellCommand("jj", [
+      "log",
+      "--no-graph",
+      [
+        "--revisions",
+        '~..trunk() & ..@ & ~(empty() & description(exact:"") & ~merges())',
+      ],
+    ]).shellOut();
+    throw new Error(
+      `HEAD (@) has ${numHEADOnlyCommits} non-trivial commits that are not on \`trunk()\`. Not fast-forwarding.`,
+    );
+  }
+}
+
+if (import.meta.main) {
+  await executeScript(parseArgs());
 }

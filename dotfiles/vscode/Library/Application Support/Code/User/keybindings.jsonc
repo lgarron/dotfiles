@@ -12,7 +12,7 @@
   {
     "key": "`",
     "command": "editor.action.insertSnippet",
-    "when": "editorHasSelection && editorTextFocus",
+    "when": "editorHasSelection && editorTextFocus && (editorLangId == javascript || editorLangId == typescript)",
     "args": {
   	    "snippet": "`${0:${TM_SELECTED_TEXT}}`"
     }

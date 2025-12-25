@@ -359,7 +359,7 @@
     "command": "editor.action.sourceAction",
     "args": {
         "kind": "source.addMissingImports",
-        "apply": "first"
+        "apply": "ifSingle"
     }
   }
 ]

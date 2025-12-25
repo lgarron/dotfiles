@@ -245,6 +245,10 @@ end
 # LSP override: This is an "exported" function (meant to be used outside this file).
 # @fish-lsp-disable-next-line 4004
 function _fish_postexec_refresh_gg_if_needed
+    # Maybe someday: https://github.com/gulbanana/gg/discussions/70
+    if [ "$CODESPACES" = true ]
+        return
+    end
     if _fish_is_true "$_FISH_JJ_WAS_RUN_DURING_COMMAND"
         if not _fish_is_true "$_FISH_OVERRIDE_DO_NOT_RUN_GG_REFRESH_IN_POSTEXEC"
             if command -qv gg-refresh

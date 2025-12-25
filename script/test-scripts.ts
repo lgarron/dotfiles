@@ -19,7 +19,6 @@ for await (const file of mapPath(new Glob("./scripts/*/*.ts").scan())) {
   }
   if (
     [
-      "yeet-env.ts",
       "jgff.ts",
       "thermal-pressure.ts",
       "editor-open-file-in-workspace.ts",
@@ -28,7 +27,10 @@ for await (const file of mapPath(new Glob("./scripts/*/*.ts").scan())) {
       "dell-display-position-app-on-bottom.ts",
       "toggle-retina.ts",
       "toggle-display.ts",
-      // Passes args onto `dig` without interception or processing.
+      // Scripts that pass on their arguments to another command without
+      // processing, and therefore don't support `--help` or `--completions` for
+      // themselves.
+      "yeet-env.ts",
       "xdig.ts",
     ].includes(file.basename.path)
   ) {

@@ -28,3 +28,4 @@ make linux
 sudo add-shell "${HOME}/.config/binaries/linux-x64/fish"
 sudo chsh "$(id -un)" --shell "${HOME}/.config/binaries/linux-x64/fish"
 
+"${HOME}/.config/binaries/linux-x64/fish" --command 'history append "jj git init --colocate ."'

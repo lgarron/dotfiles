@@ -1,57 +1,94 @@
 #!/usr/bin/env -S bun run --
 
-import { dirname, join } from "node:path";
-import { exit } from "node:process";
+import { join } from "node:path";
 import { styleText } from "node:util";
-import { $, file, Glob } from "bun";
+import { object, option } from "@optique/core";
+import { run } from "@optique/run";
+import { $, Glob } from "bun";
+import { Path, stringifyIfPath } from "path-class";
+import { Plural } from "plural-chain";
+import { byOption } from "../lib/optique";
 
-const VOLUMES_DIR = "/Volumes/";
-const WELL_KNOWN_DISK_METADATA_JSON_PATH = ".well-known/disk-metadata.json";
+const VOLUMES_DIR = new Path("/Volumes/");
+const WELL_KNOWN_DISK_METADATA_JSON_PATH = new Path(
+  ".well-known/disk-metadata.json",
+);
 
-interface DiskMetadata {
-  name: string;
+function parseArgs() {
+  return run(
+    object({
+      dryRun: option("--dry-run"),
+    }),
+    byOption(),
+  );
 }
 
-let exitCode = 0;
-
-function formattedDiskName(
-  s: string,
-  options?: { markAsIncorrect?: boolean },
-): string {
-  return styleText(options?.markAsIncorrect ? "red" : "blue", s);
-}
-
-console.log("Checking disk names…");
-
-// let numVolumesTotal = 0;
-// let numVolumeNamesFixes = 0;
-for await (const path of new Glob(
-  join("*", WELL_KNOWN_DISK_METADATA_JSON_PATH),
-).scan({
-  cwd: VOLUMES_DIR,
-  dot: true,
-})) {
-  // numVolumesTotal++;
-  // TODO: is this safe?
-  const currentVolumeName = dirname(dirname(path));
-
-  const diskMetadata: DiskMetadata = await file(join(VOLUMES_DIR, path)).json();
-  const expectedName = diskMetadata.name;
-  if (!expectedName) {
-    console.error("Missing name at: ", path);
-    exitCode = 1;
+export async function fixDiskNamesMacOS(
+  args: ReturnType<typeof parseArgs>,
+): Promise<void> {
+  interface DiskMetadata {
+    name: string;
   }
 
-  if (currentVolumeName === expectedName) {
-    console.log(`✅ ${formattedDiskName(currentVolumeName)}`);
-  } else {
-    console.log(
-      `➡️ ${formattedDiskName(currentVolumeName, { markAsIncorrect: true })} → ${formattedDiskName(expectedName)}`,
+  let numFailures = 0;
+
+  function formattedDiskName(
+    path: string | Path,
+    options?: { markAsIncorrect?: boolean },
+  ): string {
+    return styleText(
+      options?.markAsIncorrect ? "red" : "blue",
+      stringifyIfPath(path),
     );
-    await $`diskutil rename ${currentVolumeName} ${expectedName}`;
-    console.log("Successfully renamed!");
-    // numVolumeNamesFixes += 1;
+  }
+
+  console.log("Checking disk names…");
+
+  // let numVolumesTotal = 0;
+  // let numVolumeNamesFixes = 0;
+  for await (const pathString of new Glob(
+    join("*", WELL_KNOWN_DISK_METADATA_JSON_PATH.path),
+  ).scan({
+    cwd: VOLUMES_DIR.path,
+    dot: true,
+  })) {
+    const path = new Path(pathString);
+    // numVolumesTotal++;
+    // TODO: is this safe?
+    const currentVolumeName = path.parent.parent;
+
+    const diskMetadata: DiskMetadata = await VOLUMES_DIR.join(path).readJSON();
+    const expectedName = diskMetadata.name;
+    if (!expectedName) {
+      console.error("Missing name at: ", path);
+      numFailures++;
+    }
+
+    if (currentVolumeName.path === expectedName) {
+      console.log(`✅ ${formattedDiskName(currentVolumeName)}`);
+    } else {
+      console.log(
+        `➡️ ${formattedDiskName(currentVolumeName, { markAsIncorrect: true })} → ${formattedDiskName(expectedName)}`,
+      );
+      if (args.dryRun) {
+        console.log("Skipping due to dry run.");
+        try {
+          await $`diskutil rename ${currentVolumeName} ${expectedName}`;
+        } catch (e) {
+          console.error(e);
+          numFailures++;
+        }
+      }
+      console.log("Successfully renamed!");
+      // numVolumeNamesFixes += 1;
+    }
+  }
+
+  if (numFailures > 0) {
+    throw new Error(`Encountered ${Plural.num.s(numFailures)`failures`}.`);
   }
 }
 
-exit(exitCode);
+if (import.meta.main) {
+  await fixDiskNamesMacOS(parseArgs());
+}

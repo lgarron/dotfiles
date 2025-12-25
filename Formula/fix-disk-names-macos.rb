@@ -8,9 +8,8 @@ class FixDiskNamesMacos < Formula
   depends_on "oven-sh/bun/bun"
 
   def install
-    system "bun", "install", "--frozen-lockfile"
-
-    system "bun", "build", "--target", "bun", "--outfile", "./.temp/bin/fix-disk-names-macos", "scripts/system/fix-disk-names-macos.ts"
+    system "./repo-script/build-ts-scripts.ts", "system/fix-disk-names-macos"
     bin.install "./.temp/bin/fix-disk-names-macos" => "fix-disk-names-macos"
+    generate_completions_from_executable(bin/"fix-disk-names-macos", "--completions")
   end
 end

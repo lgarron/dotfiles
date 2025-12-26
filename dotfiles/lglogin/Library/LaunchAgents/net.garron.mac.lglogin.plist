@@ -11,7 +11,7 @@
     </array>
     <key>RunAtLoad</key>
     <true/>
-    <key>StartCalendarInterval</key>
+    <key>StartInterval</key>
     <dict>
         <key>Minute</key>
         <integer>2</integer>

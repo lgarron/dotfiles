@@ -13,4 +13,10 @@ class ThermalPressure < Formula
     bin.install "./.temp/bin/thermal-pressure" => "thermal-pressure"
     generate_completions_from_executable(bin/"thermal-pressure", "--completions")
   end
+
+  def post_install
+    ohai "To install a `sudo` helper, run:
+
+    thermal-pressure
+"
 end

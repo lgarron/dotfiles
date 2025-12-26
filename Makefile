@@ -199,6 +199,7 @@ test: test-bun cargo-test test-scripts test-scripts-non-ts
 
 .PHONY: test-scripts
 test-scripts: setup-npm-packages
+	ls -al ./scripts/debug
 	bun run -- 'script/test-scripts.ts'
 
 .PHONY: test-scripts-non-ts

@@ -180,10 +180,6 @@ mac-setup-homebrew-lgarron-lgarron: setup-npm-packages
 mac-setup-homebrew-reinstall-lgarron-lgarron:
 	./setup/scripts/mac-homebrew-reinstall-all-lgarron-lgarron.fish
 
-.PHONY: mac-setup-homebrew-reinstall-lgarron-lgarron
-mac-setup-homebrew-reinstall-lgarron-lgarron:
-	./setup/scripts/mac-homebrew-reinstall-all-lgarron-lgarron.fish
-
 # Dock
 
 .PHONY: mac-dock-setup

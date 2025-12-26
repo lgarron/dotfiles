@@ -22,6 +22,9 @@ const EDITOR_FONT_FAMILY = "editor.fontFamily";
 const EDITOR_FONT_FAMILY_NORMALIZED =
   '"SeriousShanns Nerd Font Mono", Menlo, Monaco, monospace';
 
+const WINDOW_AUTO_DETECT_COLOR_SCHEME = "window.autoDetectColorScheme";
+const WINDOW_AUTO_DETECT_COLOR_SCHEME_NORMALIZED = false;
+
 async function mirror() {
   console.log("Copying to mirror…");
   try {
@@ -39,6 +42,10 @@ async function mirror() {
 
     if (EDITOR_FONT_FAMILY in parsed) {
       parsed[EDITOR_FONT_FAMILY] = EDITOR_FONT_FAMILY_NORMALIZED;
+    }
+
+    if (WINDOW_AUTO_DETECT_COLOR_SCHEME in parsed) {
+      parsed[EDITOR_FONT_FAMILY] = WINDOW_AUTO_DETECT_COLOR_SCHEME_NORMALIZED;
     }
 
     await DOTFILES_SETTINGS_PATH.write(stringify(parsed, null, "\t"));

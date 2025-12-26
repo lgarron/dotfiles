@@ -29,6 +29,15 @@
 	"workbench.editor.empty.hint": "hidden",
 	"window.newWindowDimensions": "inherit",
 	"window.openFilesInNewWindow": "default",
+	"window.autoDetectColorScheme": true,
+	"workbench.preferredLightColorTheme": "Visual Studio Light",
+	"workbench.preferredDarkColorTheme": "Visual Studio Dark",
+	"workbench.colorCustomizations": {
+		"[Visual Studio Light]": {
+			"editor.background": "#eae8ec",
+			"sideBar.background": "#e2e0e6"
+		}
+	},
 	/******** Formatting ********/
 	// https://marketplace.visualstudio.com/items?itemName=tombonnike.vscode-status-bar-format-toggle
 	"formattingToggle.affects": [

@@ -1,5 +1,6 @@
 import assert from "node:assert";
 import { constants } from "node:fs/promises";
+import { platform } from "node:os";
 import { exit } from "node:process";
 import { Glob } from "bun";
 import { Path } from "path-class";
@@ -30,6 +31,16 @@ for await (const file of mapPath(new Glob("./scripts/*/*.ts").scan())) {
     ].includes(file.basename.path)
   ) {
     console.log(`⏩ Skipping (denylisted): ${file.blue}`);
+    continue;
+  }
+  if (
+    platform() !== "darwin" &&
+    [
+      // Hardcoded shebang using `/opt/homebrew/bin/bun`
+      "yeet-env.ts",
+    ].includes(file.basename.path)
+  ) {
+    console.log(`⏩ Skipping due to macOS-only shebang: ${file.blue}`);
     continue;
   }
   console.log(`🔎 Checking: ${file.blue}`);

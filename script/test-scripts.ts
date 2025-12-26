@@ -13,56 +13,63 @@ async function* mapPath(iter: AsyncIterable<string>): AsyncGenerator<Path> {
 }
 
 const failures: { [path: string]: string } = {};
+const promises = [];
 for await (const file of mapPath(new Glob("./scripts/*/*.ts").scan())) {
-  if (file.path.split("/")[2] === "lib") {
-    console.log(`⏩ Skipping (lib): ${file.blue}`);
-    continue;
-  }
-  if (
-    [
-      // TODO: these perform unconditional non-portable shell calls due to https://github.com/dahlia/optique/issues/52
-      "dell-display-position-app-on-bottom.ts",
-      "toggle-retina.ts",
-      "toggle-display.ts",
-      // These are scripts that pass on their arguments to another command
-      // without processing, and therefore don't support `--help` or
-      // `--completions` for themselves.
-      "xdig.ts",
-    ].includes(file.basename.path)
-  ) {
-    console.log(`⏩ Skipping (denylisted): ${file.blue}`);
-    continue;
-  }
-  if (
-    platform() !== "darwin" &&
-    [
-      // Hardcoded shebang using `/opt/homebrew/bin/bun`
-      "yeet-env.ts",
-    ].includes(file.basename.path)
-  ) {
-    console.log(`⏩ Skipping due to macOS-only shebang: ${file.blue}`);
-    continue;
-  }
-  console.log(`🔎 Checking: ${file.blue}`);
+  promises.push(
+    (async () => {
+      if (file.path.split("/")[2] === "lib") {
+        console.log(`⏩ Skipping (lib): ${file.blue}`);
+        return;
+      }
+      if (
+        [
+          // TODO: these perform unconditional non-portable shell calls due to https://github.com/dahlia/optique/issues/52
+          "dell-display-position-app-on-bottom.ts",
+          "toggle-retina.ts",
+          "toggle-display.ts",
+          // These are scripts that pass on their arguments to another command
+          // without processing, and therefore don't support `--help` or
+          // `--completions` for themselves.
+          "xdig.ts",
+        ].includes(file.basename.path)
+      ) {
+        console.log(`⏩ Skipping (denylisted): ${file.blue}`);
+        return;
+      }
+      if (
+        platform() !== "darwin" &&
+        [
+          // Hardcoded shebang using `/opt/homebrew/bin/bun`
+          "yeet-env.ts",
+        ].includes(file.basename.path)
+      ) {
+        console.log(`⏩ Skipping due to macOS-only shebang: ${file.blue}`);
+        return;
+      }
+      console.log(`🔎 Checking: ${file.blue}`);
 
-  const { mode } = await file.stat();
-  assert(!!(mode & constants.S_IXUSR));
-  assert(!!(mode & constants.S_IXGRP));
-  assert(!!(mode & constants.S_IXOTH));
+      const { mode } = await file.stat();
+      assert(!!(mode & constants.S_IXUSR));
+      assert(!!(mode & constants.S_IXGRP));
+      assert(!!(mode & constants.S_IXOTH));
 
-  try {
-    await new PrintableShellCommand(file, ["--help"])
-      .print({ argumentLineWrapping: "inline" })
-      .spawnTransparently().success;
-    await new PrintableShellCommand(file, [["--completions", "fish"]])
-      .print({ argumentLineWrapping: "inline" })
-      .spawnTransparently().success;
-    // biome-ignore lint/suspicious/noExplicitAny: We can't properly type this.
-  } catch (e: any) {
-    console.error(e);
-    failures[file.path] = e.toString();
-  }
+      try {
+        await new PrintableShellCommand(file, ["--help"])
+          .print({ argumentLineWrapping: "inline" })
+          .spawnTransparently().success;
+        await new PrintableShellCommand(file, [["--completions", "fish"]])
+          .print({ argumentLineWrapping: "inline" })
+          .spawnTransparently().success;
+        // biome-ignore lint/suspicious/noExplicitAny: We can't properly type this.
+      } catch (e: any) {
+        console.error(e);
+        failures[file.path] = e.toString();
+      }
+    })(),
+  );
 }
+
+await Promise.all(promises);
 
 if (Object.keys(failures).length > 0) {
   console.log(JSON.stringify(failures));

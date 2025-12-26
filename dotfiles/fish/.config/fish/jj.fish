@@ -161,12 +161,16 @@ abbr_subcommand_arg jj t --to diff
 abbr -a jdno --set-cursor "jj diff --name-only --to \"fork_point(%)\"" # Special shortened abbreviation
 abbr -a jdn --set-cursor "jj diff --name-only --to \"@-\"" # Special shortened abbreviation
 
-# "jj GitHub view"
-abbr -a jgv 'open --url (jj git remote list | grep "^origin" | awk "{print \$2}" | tr -d "\n" | sed "s#\.git\$##"; and echo -n "/commit/"; echo -- (jj here))'
-# "jj GitHub (view) branch"
+# "jj GitHub *v*iew repo"
+abbr -a jgv 'open --url (jj git remote list | grep "^origin" | awk "{print \$2}" | tr -d "\n" | sed "s#\.git\$##")'
+# "jj GitHub *c*ommit"
+abbr -a jgc 'open --url (jj git remote list | grep "^origin" | awk "{print \$2}" | tr -d "\n" | sed "s#\.git\$##"; and echo -n "/commit/"; echo -- (jj here))'
+# "jj GitHub *b*ranch"
 abbr -a jgb 'open --url (jj git remote list | grep "^origin" | awk "{print \$2}" | tr -d "\n" | sed "s#\.git\$##"; and echo -n "/commit/"; echo -- (jj guess-branch))'
-abbr -a jgu 'open --url (jj git remote list | grep "^origin" | awk "{print \$2}" | tr -d "\n" | sed "s#\.git\$##")'
+# "jj GitHub *A*ctions"
 abbr -a jga 'open --url (jj git remote list | grep "^origin" | awk "{print \$2}" | tr -d "\n" | sed "s#\.git\$##"; and echo -n "/actions/")'
+# "jj GitHub *i*ssues"
+abbr -a jgi 'open --url (jj git remote list | grep "^origin" | awk "{print \$2}" | tr -d "\n" | sed "s#\.git\$##"; and echo -n "/issues/")'
 
 # LSP override: This is an "exported" function (meant to be used outside this file).
 # @fish-lsp-disable-next-line 4004

@@ -171,5 +171,26 @@
     "body": [
       "${${1:$TM_SELECTED_TEXT}}"
     ],
+  },
+  "Object.entries(…)": {
+    "scope": "javascript,typescript",
+    "prefix": "entries",
+    "body": [
+      "Object.entries(${1:$TM_SELECTED_TEXT})"
+    ],
+  },
+  "Object.keys(…)": {
+    "scope": "javascript,typescript",
+    "prefix": "keys",
+    "body": [
+      "Object.keys(${1:$TM_SELECTED_TEXT})"
+    ],
+  },
+  "Object.values(…)": {
+    "scope": "javascript,typescript",
+    "prefix": "values",
+    "body": [
+      "Object.values(${1:$TM_SELECTED_TEXT})"
+    ],
   }
 }

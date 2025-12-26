@@ -408,6 +408,50 @@
 				</dict>
 				<dict>
 					<key>ID</key>
+					<string>079B23AD-EFD2-4FD5-88CF-50C7CBDA4890</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>modificationDate</key>
+					<real>788475689.08171105</real>
+					<key>name</key>
+					<string>.cache</string>
+					<key>settings</key>
+					<dict>
+						<key>folderDepth</key>
+						<integer>1</integer>
+						<key>path</key>
+						<string>~/.cache</string>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
+				<dict>
+					<key>ID</key>
+					<string>3DFBA3CA-BE91-410F-AB2D-C466FBF9B4BE</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>modificationDate</key>
+					<real>788475704.42830896</real>
+					<key>name</key>
+					<string>$XDG_CACHE_HOME → .cache</string>
+					<key>settings</key>
+					<dict>
+						<key>name</key>
+						<string>$XDG_CACHE_HOME</string>
+						<key>target</key>
+						<string>/Users/lgarron/.cache</string>
+						<key>targetType</key>
+						<string>public.data</string>
+					</dict>
+					<key>source</key>
+					<string>QSUserDefinedProxySource</string>
+				</dict>
+				<dict>
+					<key>ID</key>
 					<string>A5F38F81-DF2F-4382-B9CA-A5702F966667</string>
 					<key>children</key>
 					<array/>
@@ -426,6 +470,117 @@
 					</dict>
 					<key>source</key>
 					<string>QSFileSystemObjectSource</string>
+				</dict>
+				<dict>
+					<key>ID</key>
+					<string>0D4145B9-ADB4-4E54-B9DE-E21EAF974AE1</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>modificationDate</key>
+					<real>788475711.92742097</real>
+					<key>name</key>
+					<string>$XDG_CONFIG_HOME → .config</string>
+					<key>settings</key>
+					<dict>
+						<key>name</key>
+						<string>$XDG_CONFIG_HOME</string>
+						<key>target</key>
+						<string>/Users/lgarron/.config</string>
+						<key>targetType</key>
+						<string>public.data</string>
+					</dict>
+					<key>source</key>
+					<string>QSUserDefinedProxySource</string>
+				</dict>
+				<dict>
+					<key>ID</key>
+					<string>B30A6623-2A05-45AB-8894-996A236F832F</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>modificationDate</key>
+					<real>788475598.73148096</real>
+					<key>name</key>
+					<string>share</string>
+					<key>settings</key>
+					<dict>
+						<key>folderDepth</key>
+						<integer>1</integer>
+						<key>path</key>
+						<string>~/.local/share</string>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
+				<dict>
+					<key>ID</key>
+					<string>A659D70C-B471-4913-B132-1CB3D184CD41</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>modificationDate</key>
+					<real>788475716.06310999</real>
+					<key>name</key>
+					<string>$XDG_DATA_HOME → share</string>
+					<key>settings</key>
+					<dict>
+						<key>name</key>
+						<string>$XDG_DATA_HOME</string>
+						<key>target</key>
+						<string>/Users/lgarron/.local/share</string>
+						<key>targetType</key>
+						<string>public.data</string>
+					</dict>
+					<key>source</key>
+					<string>QSUserDefinedProxySource</string>
+				</dict>
+				<dict>
+					<key>ID</key>
+					<string>DCA4EDEB-0D4C-4CF9-8D10-A740AD392B49</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>modificationDate</key>
+					<real>788475600.89674103</real>
+					<key>name</key>
+					<string>state</string>
+					<key>settings</key>
+					<dict>
+						<key>folderDepth</key>
+						<integer>1</integer>
+						<key>path</key>
+						<string>~/.local/state</string>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
+				<dict>
+					<key>ID</key>
+					<string>11D2FD44-7D96-4253-888D-5E4B200C0B9B</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>modificationDate</key>
+					<real>788475640.73019302</real>
+					<key>name</key>
+					<string>$XDG_STATE_HOME → state</string>
+					<key>settings</key>
+					<dict>
+						<key>name</key>
+						<string>$XDG_STATE_HOME</string>
+						<key>target</key>
+						<string>/Users/lgarron/.local/state</string>
+						<key>targetType</key>
+						<string>public.data</string>
+					</dict>
+					<key>source</key>
+					<string>QSUserDefinedProxySource</string>
 				</dict>
 			</array>
 			<key>enabled</key>
@@ -1287,8 +1442,8 @@
 	</dict>
 	<key>omittedItems</key>
 	<array>
-		<string>/Users/lgarron/Applications/CrossOver/Ubisoft</string>
 		<string>/Users/lgarron/Library/Mobile Documents/iCloud~md~obsidian/Documents</string>
+		<string>/Users/lgarron/Applications/CrossOver/Ubisoft</string>
 	</array>
 </dict>
 </plist>

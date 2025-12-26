@@ -20,4 +20,11 @@ class Niceplz < Formula
     generate_completions_from_executable(bin/"niceplz", "--completions")
     generate_completions_from_executable(bin/"niceplz-sudo", "--completions")
   end
+
+  def post_install
+    ohai "To install `sudo` permissions, run:
+
+    niceplz-sudo
+"
+  end
 end

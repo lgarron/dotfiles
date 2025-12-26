@@ -32,6 +32,7 @@ export async function executeScript(
   } else {
     await new PrintableShellCommand("jj", [
       "log",
+      "--no-pager",
       "--no-graph",
       [
         "--revisions",

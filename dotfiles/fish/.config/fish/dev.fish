@@ -252,6 +252,9 @@ git reset --hard origin/main && \
 cd -
 "
 
+    # *n*pm *v*iew
+    abbr -a nv 'open --url https://www.npmjs.com/package/(cat package.json | jq -r \'.name // error("No name")\')'
+
     abbr_anyarg avif q --qcolor
 
     abbr -a ds "diskutil"

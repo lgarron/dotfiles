@@ -12,7 +12,9 @@ function parseArgs() {
 export async function executeScript(
   _args: ReturnType<typeof parseArgs>,
 ): Promise<void> {
-  await new PrintableShellCommand("jj", ["git", "fetch"]).shellOut();
+  await new PrintableShellCommand("jj", ["git", "fetch"]).shellOut({
+    print: "inline",
+  });
 
   const numHEADOnlyCommits = parseInt(
     await new PrintableShellCommand("jj", [
@@ -28,7 +30,9 @@ export async function executeScript(
 
   if (numHEADOnlyCommits === 0) {
     console.log("⏩ Safe to fast-forward. Going ahead…");
-    await new PrintableShellCommand("jj", ["new", "trunk()"]).shellOut();
+    await new PrintableShellCommand("jj", ["new", "trunk()"]).shellOut({
+      print: "inline",
+    });
   } else {
     await new PrintableShellCommand("jj", [
       "log",
@@ -38,7 +42,7 @@ export async function executeScript(
         "--revisions",
         '~..trunk() & ..@ & ~(empty() & description(exact:"") & ~merges())',
       ],
-    ]).shellOut();
+    ]).shellOut({ print: { skipLineWrapBeforeFirstArg: true } });
     throw new Error(
       `HEAD (@) has ${numHEADOnlyCommits} non-trivial commits that are not on \`trunk()\`. Not fast-forwarding.`,
     );

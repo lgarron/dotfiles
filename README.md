@@ -59,7 +59,6 @@ make linux-setup
 
 - `fish`
 - `bun` for TypeScript
-- Rust
 - Homebrew
 
 In addition:

@@ -204,13 +204,11 @@ test-scripts: setup-npm-packages
 
 .PHONY: test-scripts-non-ts
 test-scripts-non-ts: setup-npm-packages
-	cargo run --bin openscad-auto -- --help
-	cargo run --bin openscad-auto -- --completions fish
 	scripts/git/node_crunchule.fish --help
 	./scripts/git/rmbranch.fish --completions fish
 
 .PHONY: lint
-lint: lint-ts-biome lint-ts-tsc lint-rust
+lint: lint-ts-biome lint-ts-tsc
 
 .PHONY: lint-ts-biome
 lint-ts-biome: setup-npm-packages
@@ -220,27 +218,13 @@ lint-ts-biome: setup-npm-packages
 lint-ts-tsc: setup-npm-packages
 	bun x -- bun-dx --package typescript tsc -- --noEmit --project ./tsconfig.json
 
-.PHONY: lint-rust
-lint-rust:
-	cargo clippy -- --deny warnings
-	cargo fmt --check
-
 .PHONY: format
-format: format-ts-biome format-rust
+format: format-ts-biome
 
 .PHONY: format-ts-biome
 format-ts-biome: setup-npm-packages
 	bun x -- bun-dx --package @biomejs/biome biome -- check --write
 
-.PHONY: format-rust
-format-rust:
-	cargo clippy --fix --allow-no-vcs
-	cargo fmt
-
 .PHONY: test-bun
 test-bun:
 	bun test
-
-.PHONY: cargo-test
-cargo-test:
-	cargo test

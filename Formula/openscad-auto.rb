@@ -10,7 +10,8 @@ class OpenscadAuto < Formula
   depends_on "terminal-notifier"
 
   def install
-    system "cargo", "install", "--bin", "openscad-auto", *std_cargo_args()
+    system "./repo-script/build-ts-scripts.ts", "app-tools/openscad-auto"
+    bin.install "./.temp/bin/openscad-auto" => "openscad-auto"
     generate_completions_from_executable(bin/"openscad-auto", "--completions")
   end
 end

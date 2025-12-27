@@ -1,6 +1,7 @@
 {
-  "Optique example (dotfiles)": {
-    "prefix": "Optique example (dotfiles)",
+  "Optique boilerplate (dotfiles)": {
+    "scope": "typescript",
+    "prefix": "Optique boilerplate (dotfiles)",
     "body": [
       "#!/usr/bin/env -S bun run --",
       "",
@@ -29,7 +30,6 @@
       "  await ${1:executeScript}(parseArgs());",
       "}",
       ""
-    ],
-    "scope": "typescript"
+    ]
   }
 }

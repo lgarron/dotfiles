@@ -52,6 +52,58 @@
 			"titleBar.border": "#aaa"
 		}
 	},
+	"editor.tokenColorCustomizations": {
+		"[Default Light Modern]": {
+			"variables": "#5c86ba",
+			"keywords": "#093283",
+			"functions": "#ac7300",
+			"textMateRules": [
+				// Modified from: https://github.com/microsoft/vscode/blob/334fc2cacab296fd70fd2b999204ead4405662ff/extensions/theme-defaults/themes/light_plus.json#L5C54-L18C5
+				{
+					"name": "Function declarations",
+					"scope": [
+						"entity.name.function",
+						"support.function",
+						"support.constant.handlebars",
+						"source.powershell variable.other.member",
+						"entity.name.operator.custom-literal" // See https://en.cppreference.com/w/cpp/language/user_literal
+					],
+					"settings": {
+						"foreground": "#ac7300"
+					}
+				},
+				// Modified from: https://github.com/microsoft/vscode/blob/334fc2cacab296fd70fd2b999204ead4405662ff/extensions/theme-defaults/themes/light_plus.json#L103-L112
+				{
+					"name": "Constants and enums",
+					"scope": [
+						"variable.other.constant",
+						"variable.other.enummember"
+					],
+					"settings": {
+						"foreground": "#0e5b92"
+					}
+				},
+				// Copied from: https://github.com/microsoft/vscode/blob/334fc2cacab296fd70fd2b999204ead4405662ff/extensions/theme-defaults/themes/light_plus.json#L74-L88
+				// Prevents the override from `"keywords"` above.
+				{
+					"name": "Control flow / Special keywords",
+					"scope": [
+						"keyword.control",
+						"source.cpp keyword.operator.new",
+						"source.cpp keyword.operator.delete",
+						"keyword.other.using",
+						"keyword.other.directive.using",
+						"keyword.other.operator",
+						"entity.name.operator"
+					],
+					"settings": {
+						"foreground": "#AF00DB"
+					}
+				}
+			]
+		}
+	},
+	"terminal.integrated.minimumContrastRatio": 2.5,
 	/******** Formatting ********/
 	// https://marketplace.visualstudio.com/items?itemName=tombonnike.vscode-status-bar-format-toggle
 	"formattingToggle.affects": [
@@ -355,5 +407,4 @@
 	// "javascript.preferGoToSourceDefinition": true,
 	// "typescript.preferGoToSourceDefinition": true,
 	"terminal.integrated.suggest.enabled": false
-	/****************/
 }

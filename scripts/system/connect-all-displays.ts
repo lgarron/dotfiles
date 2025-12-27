@@ -14,8 +14,8 @@ const _ = run(object({}), byOption());
 
 await connectAllDisplays();
 
+const displays = await getAllDevices({ ignoreDisplayGroups: true });
 try {
-  const displays = await getAllDevices({ ignoreDisplayGroups: true });
   await new PrintableShellCommand("terminal-notifier", [
     ["-title", "Connect all displays"],
     ["-message", `${Plural.num.s.is_are({ displays })} now connected.`],

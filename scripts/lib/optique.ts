@@ -158,10 +158,10 @@ export function outputFile(options?: PathOptions): ValueParser<OutputFile> {
   });
 }
 
-export function outputFolder(options?: PathOptions): ValueParser<Path> {
+export function outputDir(options?: PathOptions): ValueParser<Path> {
   return pathClass({
     ...options,
-    metavar: "OUTPUT_FOLDER",
+    metavar: "OUTPUT_DIR",
   });
 }
 

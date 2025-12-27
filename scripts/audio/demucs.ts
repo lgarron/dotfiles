@@ -4,13 +4,13 @@ import { argument, object, optional } from "@optique/core";
 import { run } from "@optique/run";
 import { Path } from "path-class";
 import { PrintableShellCommand } from "printable-shell-command";
-import { byOption, outputFolder, sourceFile } from "../lib/optique";
+import { byOption, outputDir, sourceFile } from "../lib/optique";
 
 const CACHE_FOLDER = Path.xdg.cache.join("demucs");
 
 async function demucs(args: {
   readonly sourceFile: Path;
-  readonly outputFolder?: Path;
+  readonly outputDir?: Path;
 }) {
   const cwd = CACHE_FOLDER.toString();
   if (!(await CACHE_FOLDER.existsAsDir())) {
@@ -37,7 +37,7 @@ dependencies = [
     args.sourceFile,
     [
       "-o",
-      args.outputFolder ?? args.sourceFile.extendBasename(".stems").toString(),
+      args.outputDir ?? args.sourceFile.extendBasename(".stems").toString(),
     ],
   ]).shellOut({ cwd: CACHE_FOLDER });
 }
@@ -46,7 +46,7 @@ if (import.meta.main) {
   const args = run(
     object({
       sourceFile: argument(sourceFile()),
-      outputFolder: optional(argument(outputFolder())),
+      outputDir: optional(argument(outputDir())),
     }),
     byOption(),
   );

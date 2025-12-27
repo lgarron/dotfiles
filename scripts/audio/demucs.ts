@@ -28,9 +28,10 @@ dependencies = [
 ]
 `);
   }
-  await new PrintableShellCommand("uv", ["venv", "--allow-existing"])
-    .print({ argumentLineWrapping: "inline" })
-    .spawnTransparently({ cwd }).success;
+  await new PrintableShellCommand("uv", ["venv", "--allow-existing"]).shellOut({
+    cwd,
+    print: "inline",
+  });
   await new PrintableShellCommand("uv", [
     ["run", "demucs"],
     args.sourceFile,

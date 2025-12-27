@@ -29,18 +29,17 @@ export async function pnice(processSubString: string, niceness: number) {
 
   for (const pid of pids) {
     try {
-      await new PrintableShellCommand("renice", [`${niceness}`, `${pid}`])
-        .print({ argumentLineWrapping: "inline" })
-        .spawnTransparently().success;
+      await new PrintableShellCommand("renice", [
+        `${niceness}`,
+        `${pid}`,
+      ]).shellOut({ print: "inline" });
     } catch (_) {
       // TODO: try to detect error from `stderr`. (The return code is 1, which is not very helpful.)
       await new PrintableShellCommand("sudo", [
         "renice",
         `${niceness}`,
         `${pid}`,
-      ])
-        .print({ argumentLineWrapping: "inline" })
-        .spawnTransparently().success;
+      ]).shellOut({ print: "inline" });
     }
   }
 }

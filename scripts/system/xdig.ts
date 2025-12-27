@@ -17,6 +17,7 @@ const { defaultPrefixArgs } = (await (async () => {
   return configFilePath.readJSON();
 })()) as DigRC;
 
-await new PrintableShellCommand("dig", [...defaultPrefixArgs, ...argv.slice(2)])
-  .print({ argumentLineWrapping: "inline" })
-  .spawnTransparently().success;
+await new PrintableShellCommand("dig", [
+  ...defaultPrefixArgs,
+  ...argv.slice(2),
+]).shellOut({ print: "inline" });

@@ -108,9 +108,7 @@ async function ejectAllCards({
               "unmount",
               "force",
               volume,
-            ])
-              .print({ argumentLineWrapping: "inline" })
-              .spawnTransparently().success;
+            ]).shellOut({ print: "inline" });
 
             counts.success++;
           } catch (e) {

@@ -54,12 +54,14 @@ for await (const file of mapPath(new Glob("./scripts/*/*.ts").scan())) {
       assert(!!(mode & constants.S_IXOTH));
 
       try {
-        await new PrintableShellCommand(file, ["--help"])
-          .print({ argumentLineWrapping: "inline" })
-          .spawnTransparently().success;
-        await new PrintableShellCommand(file, [["--completions", "fish"]])
-          .print({ argumentLineWrapping: "inline" })
-          .spawnTransparently().success;
+        await new PrintableShellCommand(file, ["--help"]).shellOut({
+          print: "inline",
+        });
+
+        await new PrintableShellCommand(file, [
+          ["--completions", "fish"],
+        ]).shellOut({ print: "inline" });
+
         // biome-ignore lint/suspicious/noExplicitAny: We can't properly type this.
       } catch (e: any) {
         console.error(e);

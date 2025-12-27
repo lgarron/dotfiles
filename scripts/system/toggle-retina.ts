@@ -17,7 +17,7 @@ import { PrintableShellCommand } from "printable-shell-command";
 import { byOption } from "../lib/optique";
 
 let allDevicesCachedPromise: Promise<(Display | VirtualScreen)[]> | undefined;
-export async function allDevices(): Promise<(Display | VirtualScreen)[]> {
+export function allDevices(): Promise<(Display | VirtualScreen)[]> {
   // biome-ignore lint/suspicious/noAssignInExpressions: Caching pattern.
   return (allDevicesCachedPromise ??= getAllDevices({
     ignoreDisplayGroups: true,

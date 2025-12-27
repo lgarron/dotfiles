@@ -63,7 +63,7 @@ export async function gclone({
     // the repo in another folder and move the `.git` repo to the correct place,
     // but this causes other issues. So we wait for `git` to create the folder.
     const start = monotonicNow();
-    (async () => {
+    await (async () => {
       while (monotonicNow().since(start).total({ unit: "seconds" }) < 5) {
         if (await repoPath.exists()) {
           return;

@@ -9,5 +9,15 @@
       "!exported",
       "!mirrored/vscode-settings-macos/files"
     ]
+  },
+  "linter": {
+    "rules": {
+      "nursery": {
+        "noFloatingPromises": "error"
+      },
+      "suspicious": {
+        "useAwait": "error"
+      }
+    }
   }
 }

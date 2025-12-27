@@ -352,5 +352,5 @@ Oldest squashed commit: ${oldestSquashedDate.multipurposeTimestamp}`;
   const hostname = (
     await new PrintableShellCommand("hostname", ["-s"]).text()
   ).trim();
-  sendMessage(`\`obsidian-backup\` failed: ${e}`, { prefix: hostname });
+  await sendMessage(`\`obsidian-backup\` failed: ${e}`, { prefix: hostname });
 }

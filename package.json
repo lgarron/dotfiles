@@ -1,5 +1,5 @@
 {
-  "name": "dotfiles",
+  "type": "module",
   "devDependencies": {
     "@biomejs/biome": "^2.3.6",
     "@cubing/dev-config": "^0.5.0",
@@ -8,7 +8,6 @@
     "jsonc-parser": "^3.3.1",
     "typescript": "^5.9.3"
   },
-  "type": "module",
   "dependencies": {
     "@optique/core": "v0.9.0-dev.187",
     "@optique/run": "v0.9.0-dev.187",

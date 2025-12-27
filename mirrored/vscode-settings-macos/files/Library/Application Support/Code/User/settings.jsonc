@@ -29,13 +29,27 @@
 	"workbench.editor.empty.hint": "hidden",
 	"window.newWindowDimensions": "inherit",
 	"window.openFilesInNewWindow": "default",
-	"window.autoDetectColorScheme": true,
-	"workbench.preferredLightColorTheme": "Visual Studio Light",
-	"workbench.preferredDarkColorTheme": "Visual Studio Dark",
+	"window.autoDetectColorScheme": false,
+	"workbench.preferredLightColorTheme": "Default Light Modern",
+	"workbench.preferredDarkColorTheme": "Default Dark Modern",
 	"workbench.colorCustomizations": {
-		"[Visual Studio Light]": {
-			"editor.background": "#eae8ec",
-			"sideBar.background": "#e2e0e6"
+		"[Default Light Modern]": {
+			"activityBar.background": "#e2e0e6",
+			"activityBar.border": "#aaa",
+			"editor.background": "#eceaf0",
+			"editorGroup.border": "#aaa",
+			"panel.background": "#e2e0e6",
+			"panel.border": "#aaa",
+			"sideBar.background": "#e2e0e6",
+			"sideBar.border": "#aaa",
+			"sideBarSectionHeader.background": "#f0eaf0",
+			"sideBarTitle.background": "#eae8ec",
+			"statusBar.background": "#eae8ec",
+			"statusBar.border": "#aaa",
+			"tab.activeBackground": "#eceaf0",
+			"tab.activeForeground": "#000",
+			"tab.inactiveBackground": "#e2e0e6",
+			"titleBar.border": "#aaa"
 		}
 	},
 	/******** Formatting ********/

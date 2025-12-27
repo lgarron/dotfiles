@@ -20,6 +20,8 @@ const TOP_LEVEL_NORMALIZED_FIELDS = {
   "window.autoDetectColorScheme": false,
 };
 
+const TOP_LEVEL_FIELDS_TO_DELETE = ["workbench.colorTheme"];
+
 async function mirror() {
   console.log("Copying to mirror…");
   try {
@@ -34,6 +36,11 @@ async function mirror() {
       if (key in parsed) {
         parsed[key] = normalizedValue;
       }
+    }
+
+    for (const key of TOP_LEVEL_FIELDS_TO_DELETE) {
+      console.log(`Deleting key: ${key}`);
+      delete parsed[key];
     }
 
     await DOTFILES_SETTINGS_PATH.write(stringify(parsed, null, "\t"));

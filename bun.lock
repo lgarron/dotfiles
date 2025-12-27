@@ -278,23 +278,15 @@
 
     "xdg-trashdir": ["xdg-trashdir@3.1.0", "", { "dependencies": { "@sindresorhus/df": "^3.1.1", "mount-point": "^3.0.0", "user-home": "^2.0.0", "xdg-basedir": "^4.0.0" } }, "sha512-N1XQngeqMBoj9wM4ZFadVV2MymImeiFfYD+fJrNlcVcOHsJFFQe7n3b+aBoTPwARuq2HQxukfzVpQmAk1gN4sQ=="],
 
-    "lockfile-mutex/path-class": ["path-class@0.12.1", "", { "dependencies": { "@types/node": ">=24.7.1", "xdg-basedir": "^5.1.0" } }, "sha512-Wh2RjKhrlRFn0NAM9C0/pJ4lw0RYFJIyIff1Pph6cmrO+Dhc9jsnLsFU2Nfdby/z2b9RLO54u7Z7Ir2a3/jc4A=="],
-
     "lstow/@optique/core": ["@optique/core@0.8.2", "", {}, "sha512-1HpMeh8RQEYXIfWbcjmGYTbSwLE5qw6VwFWNMhkXQFkIGvWdWv7KNL2CM5dUW3Ku7vU0TCwIgM5GlAD7cmm5fg=="],
 
     "lstow/@optique/run": ["@optique/run@0.8.2", "", { "dependencies": { "@optique/core": "0.8.2" } }, "sha512-f1uamI8f/OUgblA12CQue0Gyhw4QWXh9ZiqRXktycnRD5XRS7yb+YxTPz3vbwQ4JePkmFwt/ZTbYvXNr+PrT+Q=="],
-
-    "lstow/path-class": ["path-class@0.12.1", "", { "dependencies": { "@types/node": ">=24.7.1", "xdg-basedir": "^5.1.0" } }, "sha512-Wh2RjKhrlRFn0NAM9C0/pJ4lw0RYFJIyIff1Pph6cmrO+Dhc9jsnLsFU2Nfdby/z2b9RLO54u7Z7Ir2a3/jc4A=="],
 
     "mount-point/@sindresorhus/df": ["@sindresorhus/df@1.0.1", "", {}, "sha512-1Hyp7NQnD/u4DSxR2DGW78TF9k7R0wZ8ev0BpMAIzA6yTQSHqNb5wTuvtcPYf4FWbVse2rW7RgDsyL8ua2vXHw=="],
 
     "naughty-list/@optique/core": ["@optique/core@0.8.2", "", {}, "sha512-1HpMeh8RQEYXIfWbcjmGYTbSwLE5qw6VwFWNMhkXQFkIGvWdWv7KNL2CM5dUW3Ku7vU0TCwIgM5GlAD7cmm5fg=="],
 
     "naughty-list/@optique/run": ["@optique/run@0.8.2", "", { "dependencies": { "@optique/core": "0.8.2" } }, "sha512-f1uamI8f/OUgblA12CQue0Gyhw4QWXh9ZiqRXktycnRD5XRS7yb+YxTPz3vbwQ4JePkmFwt/ZTbYvXNr+PrT+Q=="],
-
-    "naughty-list/path-class": ["path-class@0.12.1", "", { "dependencies": { "@types/node": ">=24.7.1", "xdg-basedir": "^5.1.0" } }, "sha512-Wh2RjKhrlRFn0NAM9C0/pJ4lw0RYFJIyIff1Pph6cmrO+Dhc9jsnLsFU2Nfdby/z2b9RLO54u7Z7Ir2a3/jc4A=="],
-
-    "printable-shell-command/path-class": ["path-class@0.12.1", "", { "dependencies": { "@types/node": ">=24.7.1", "xdg-basedir": "^5.1.0" } }, "sha512-Wh2RjKhrlRFn0NAM9C0/pJ4lw0RYFJIyIff1Pph6cmrO+Dhc9jsnLsFU2Nfdby/z2b9RLO54u7Z7Ir2a3/jc4A=="],
 
     "xdg-trashdir/xdg-basedir": ["xdg-basedir@4.0.0", "", {}, "sha512-PSNhEJDejZYV7h50BohL09Er9VaIefr2LMAf3OEmpCkjOi34eYyQYAXUTjEQtZJTKcF0E2UKTh+osDLsgNim9Q=="],
   }

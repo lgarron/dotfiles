@@ -5,6 +5,7 @@
 ### Helpers
 
     abbr -a gmessage  "git log -1 --pretty=%B"
+    abbr -a gmt       "git log -1 --pretty=%B | 📋"
     abbr -a gbranch   "git rev-parse --abbrev-ref HEAD"
     abbr -a ghash     "git rev-parse HEAD"
     abbr -a gupstream "git rev-parse --abbrev-ref --symbolic-full-name \"@{upstream}\"" # TODO: remove?

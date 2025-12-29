@@ -29,6 +29,12 @@ function _fish_prompt_echo_padded
     echo -e "\r"
 end
 
+# If we're running via SSH, change the host color.
+set -l color_host $fish_color_host
+if set -q SSH_TTY
+    set -g color_host --bold white
+end
+
 function fish_prompt --description 'Write out the prompt'
     set -l normal (set_color normal)
 
@@ -36,16 +42,6 @@ function fish_prompt --description 'Write out the prompt'
     set -g ___fish_git_prompt_color_branch (set_color --reverse $_FISH_PROMPT_LCARS_HEADER_COLOR)" "
     set -g ___fish_git_prompt_color_branch_done " "(set_color normal; set_color $_FISH_PROMPT_LCARS_HEADER_COLOR)
     set -g ___fish_git_prompt_char_stateseparator " | "
-
-    set -l fish_color_user $_FISH_PROMPT_LCARS_HEADER_COLOR
-    set -l fish_color_host $_FISH_PROMPT_LCARS_HEADER_COLOR
-    set -l fish_color_host_remote --bold white
-
-    # If we're running via SSH, change the host color.
-    set -l color_host $fish_color_host
-    if set -q SSH_TTY
-        set color_host $fish_color_host_remote
-    end
 
     set -l PREFIX_BEFORE_PWD (set_color $_FISH_PROMPT_LCARS_HEADER_COLOR)"╭─── "
     if string match --quiet --entire "$EXPERIMENTAL_FISH_LAUNCHED" true
@@ -88,7 +84,7 @@ function fish_prompt --description 'Write out the prompt'
         set suffix " │" (set_color $_FISH_PROMPT_LCARS_HEADER_COLOR) ""
     end
 
-    echo -n -s (set_color $fish_color_user) "$USER" @ (set_color $color_host) (prompt_hostname) (set_color $_FISH_PROMPT_LCARS_HEADER_COLOR) $suffix " " (set_color normal)
+    echo -n -s (set_color $_FISH_PROMPT_LCARS_HEADER_COLOR) "$USER" @ (set_color $_FISH_PROMPT_LCARS_HEADER_COLOR) (prompt_hostname) (set_color $_FISH_PROMPT_LCARS_HEADER_COLOR) $suffix " " (set_color normal)
 end
 
 # TODO: remove this `@fish-lsp-disable` after false positives are reduced (https://github.com/ndonfris/fish-lsp/issues/80).

@@ -29,12 +29,6 @@ function _fish_prompt_echo_padded
     echo -e "\r"
 end
 
-# If we're running via SSH, change the host color.
-set -l color_host $fish_color_host
-if set -q SSH_TTY
-    set -g color_host --bold white
-end
-
 function fish_prompt --description 'Write out the prompt'
     set -l normal (set_color normal)
 
@@ -84,7 +78,14 @@ function fish_prompt --description 'Write out the prompt'
         set suffix " │" (set_color $_FISH_PROMPT_LCARS_HEADER_COLOR) ""
     end
 
-    echo -n -s (set_color $_FISH_PROMPT_LCARS_HEADER_COLOR) "$USER" @ (set_color $_FISH_PROMPT_LCARS_HEADER_COLOR) (prompt_hostname) (set_color $_FISH_PROMPT_LCARS_HEADER_COLOR) $suffix " " (set_color normal)
+    # If we're running via SSH, change the host color.
+    if set -q SSH_TTY
+        set -g hostname_color --bold white
+    else
+        set -l hostname_color $_FISH_PROMPT_LCARS_HEADER_COLOR
+    end
+
+    echo -n -s (set_color $_FISH_PROMPT_LCARS_HEADER_COLOR) "$USER" @ (set_color $hostname_color) (prompt_hostname) (set_color $_FISH_PROMPT_LCARS_HEADER_COLOR) $suffix " " (set_color normal)
 end
 
 # TODO: remove this `@fish-lsp-disable` after false positives are reduced (https://github.com/ndonfris/fish-lsp/issues/80).

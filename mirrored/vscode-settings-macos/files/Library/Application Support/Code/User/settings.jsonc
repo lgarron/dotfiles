@@ -103,7 +103,8 @@
 			]
 		}
 	},
-	"terminal.integrated.minimumContrastRatio": 2.5,
+	// Maximum that allows the branch color in the `git` prompt to stay white.
+	"terminal.integrated.minimumContrastRatio": 2.14,
 	/******** Formatting ********/
 	// https://marketplace.visualstudio.com/items?itemName=tombonnike.vscode-status-bar-format-toggle
 	"formattingToggle.affects": [

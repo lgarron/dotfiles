@@ -251,6 +251,8 @@ git fetch --prune && \
 git reset --hard origin/main && \
 cd -
 "
+    # https://github.com/yt-dlp/yt-dlp/issues/14923 Avoid AI upscaled resolutions
+    abbr -a "yt-dlp" "yt-dlp -f \"bv*[format_id!*=-sr]+ba/b[format_id!*=-sr]\""
 
     # *n*pm *v*iew
     abbr -a nv 'open --url https://www.npmjs.com/package/(cat package.json | jq -r \'.name // error("No name")\')'

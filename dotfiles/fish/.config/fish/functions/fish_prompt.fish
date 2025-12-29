@@ -1,4 +1,4 @@
-# LCARS (Ster Trek) inspired `fish` prompt.
+# LCARS (Star Trek) inspired `fish` prompt.
 
 set -g __fish_git_prompt_show_informative_status 1
 

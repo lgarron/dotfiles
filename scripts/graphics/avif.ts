@@ -1,6 +1,14 @@
 #!/usr/bin/env -S bun run --
 
-import { integer, message, object, option, withDefault } from "@optique/core";
+import {
+  integer,
+  message,
+  object,
+  option,
+  optional,
+  string,
+  withDefault,
+} from "@optique/core";
 import { run } from "@optique/run";
 import { PrintableShellCommand } from "printable-shell-command";
 import { byOption, simpleFileInOut } from "../lib/optique";
@@ -13,12 +21,31 @@ const args = run(
       }),
       60,
     ),
+    resize: optional(
+      option("--resize", string({ metavar: "IMAGEMAGICK_GEOMETRY" }), {
+        description: message`Resize parameter for ImageMagick: https://imagemagick.org/script/command-line-options.php#resize
+
+Examples:
+
+- \`50%\`
+
+- \`1920\` (target width)
+
+- \`x1080\` (target height)
+
+- \`1920x1080\` (max width & height, aspect ratio preserved)
+
+- \`1920x1080!\` (independently scaled width & height)
+
+See https://imagemagick.org/script/command-line-processing.php#geometry&gsc.tab=0 for more info on geometry`,
+      }),
+    ),
     ...simpleFileInOut,
   }),
   byOption(),
 );
 
-const { qcolor, sourceFile, outputFile } = args;
+const { qcolor, resize, sourceFile, outputFile } = args;
 
 const outputFileName =
   outputFile ??
@@ -27,5 +54,6 @@ const outputFileName =
 await new PrintableShellCommand("magick", [
   sourceFile,
   ["-quality", `${qcolor}%`],
+  ...(resize ? ["-resize", resize] : []),
   outputFileName,
 ]).shellOut();

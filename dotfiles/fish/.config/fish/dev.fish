@@ -258,6 +258,7 @@ cd -
     abbr -a nv 'open --url https://www.npmjs.com/package/(cat package.json | jq -r \'.name // error("No name")\')'
 
     abbr_anyarg avif q --qcolor
+    abbr_anyarg avif r --resize
 
     abbr -a ds "diskutil"
     abbr_subcommand diskutil l list

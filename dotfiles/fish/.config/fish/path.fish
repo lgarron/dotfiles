@@ -2,7 +2,8 @@
 
     function _add_to_path
       set NEW_PATH_COMPONENT $argv[1]
-      fish_add_path --append $NEW_PATH_COMPONENT
+      # We use this instead of `fish_add_path --append` so it works in `trampoline.fish`.
+      set PATH $PATH $NEW_PATH_COMPONENT
     end
 
     # LSP override: This is an intentionally exported variable.

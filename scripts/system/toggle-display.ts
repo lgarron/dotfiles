@@ -1,17 +1,19 @@
 #!/usr/bin/env -S bun run --
 
-import { argument, constant, object, option, or } from "@optique/core";
+import { argument, constant, object, option, or, string } from "@optique/core";
 import { run } from "@optique/run";
 import { PrintableShellCommand } from "printable-shell-command";
-import { byOption } from "../lib/optique";
-import { allDeviceNames, displayNameParser } from "./toggle-retina";
+import { byOption, withSuggestions } from "../lib/optique";
+import { allDeviceNames } from "./toggle-retina";
 
 function parseArgs() {
   return run(
     or(
       object({
         action: constant("toggle"),
-        displayName: argument(displayNameParser()),
+        displayName: argument(
+          withSuggestions(string({ metavar: "DISPLAY_NAME" }), allDeviceNames),
+        ),
       }),
       object({
         action: constant("listDisplays"),

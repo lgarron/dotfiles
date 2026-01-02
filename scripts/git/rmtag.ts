@@ -8,12 +8,13 @@ import {
   multiple,
   object,
   option,
+  string,
   type ValueParser,
   withDefault,
 } from "@optique/core";
 import { runAsync } from "@optique/run";
 import { PrintableShellCommand } from "printable-shell-command";
-import { byOption } from "../lib/optique";
+import { byOption, prefixFilterSuggest, withSuggestions } from "../lib/optique";
 
 async function doesTagExistLocally(tag: string): Promise<boolean> {
   return (
@@ -38,7 +39,7 @@ async function doesTagExistOnRemote(
   );
 }
 
-const gitRemotesPromise = (() => {
+const gitRemotes = (() => {
   let cachedRemotes: Promise<string[]> | undefined;
   return () => {
     // biome-ignore lint/suspicious/noAssignInExpressions: Caching pattern.
@@ -49,27 +50,7 @@ const gitRemotesPromise = (() => {
   };
 })();
 
-function gitRemoteParser(): ValueParser<"async", string> {
-  return {
-    $mode: "async",
-    metavar: "REMOTE",
-    parse(input) {
-      return Promise.resolve({ success: true, value: input });
-    },
-    format(value) {
-      return value;
-    },
-    async *suggest(prefix) {
-      for (const option of await gitRemotesPromise()) {
-        if (option.startsWith(prefix)) {
-          yield { kind: "literal", text: option };
-        }
-      }
-    },
-  };
-}
-
-const gitTagsPromise = (() => {
+const gitTags = (() => {
   let cachedRemotes: Promise<string[]> | undefined;
   return () => {
     // biome-ignore lint/suspicious/noAssignInExpressions: Caching pattern.
@@ -86,28 +67,22 @@ function gitTagParser(): ValueParser<"async", string> {
   return {
     $mode: "async",
     metavar: "TAG",
-    parse(input) {
-      return Promise.resolve({ success: true, value: input });
-    },
-    format(value) {
-      return value;
-    },
-    async *suggest(prefix) {
-      for (const option of await gitTagsPromise()) {
-        if (option.startsWith(prefix)) {
-          yield { kind: "literal", text: option };
-        }
-      }
-    },
+    parse: (input: string) => Promise.resolve({ success: true, value: input }),
+    format: (value: string): string => value,
+    suggest: (prefix: string) => prefixFilterSuggest(prefix, gitTags),
   };
 }
 
 const options = await runAsync(
   object({
     remote: withDefault(
-      option("--remote", gitRemoteParser(), {
-        description: message`\`git\` remote`,
-      }),
+      option(
+        "--remote",
+        withSuggestions(string({ metavar: "REMOTE" }), gitRemotes),
+        {
+          description: message`\`git\` remote`,
+        },
+      ),
       "origin",
     ),
     tags: multiple(

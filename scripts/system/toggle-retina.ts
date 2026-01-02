@@ -1,6 +1,6 @@
 #!/usr/bin/env -S bun run --
 
-import { argument, object, optional, type ValueParser } from "@optique/core";
+import { argument, object, optional, string } from "@optique/core";
 import { runAsync } from "@optique/run";
 import {
   type Display,
@@ -8,7 +8,7 @@ import {
   type VirtualScreen,
 } from "betterdisplaycli";
 import { PrintableShellCommand } from "printable-shell-command";
-import { byOption } from "../lib/optique";
+import { byOption, withSuggestions } from "../lib/optique";
 
 let allDevicesCachedPromise: Promise<(Display | VirtualScreen)[]> | undefined;
 // Note: this implementation assumes that we are in a short-running process. If
@@ -23,28 +23,14 @@ export async function allDeviceNames(): Promise<string[]> {
   return devices.map((device) => device.info.name);
 }
 
-export function displayNameParser(): ValueParser<"async", string> {
-  return {
-    $mode: "async",
-    metavar: "DISPLAY_NAME",
-    parse(input: string) {
-      return Promise.resolve({ success: true, value: input });
-    },
-    format: (value: string): string => value,
-    async *suggest(prefix: string) {
-      for (const name of await allDeviceNames()) {
-        if (name.startsWith(prefix)) {
-          yield { kind: "literal", text: name };
-        }
-      }
-    },
-  };
-}
-
 function parseArgs() {
   return runAsync(
     object({
-      displayName: optional(argument(displayNameParser())),
+      displayName: optional(
+        argument(
+          withSuggestions(string({ metavar: "DISPLAY_NAME" }), allDeviceNames),
+        ),
+      ),
     }),
     byOption(),
   );

@@ -4,6 +4,7 @@ import {
   object,
   option,
   optional,
+  type Suggestion,
   type ValueParser,
   type ValueParserResult,
 } from "@optique/core";
@@ -185,3 +186,34 @@ function simpleFileInOutInferenceHelper() {
 export type SimpleFileInOutArgs = ReturnType<
   typeof simpleFileInOutInferenceHelper
 >;
+
+export async function* prefixFilterSuggest(
+  prefix: string,
+  iterableFn: () =>
+    | AsyncIterable<string>
+    | Promise<AsyncIterable<string>>
+    | Promise<Iterable<string>>,
+): AsyncIterable<Suggestion> {
+  for await (const name of await iterableFn()) {
+    if (name.startsWith(prefix)) {
+      yield { kind: "literal", text: name };
+    }
+  }
+}
+
+// TODO: make this a combinator on `Parser` rather than `ValueParser`?
+export function withSuggestions(
+  parser: ValueParser<"sync" | "async", string>,
+  iterableFn: () =>
+    | AsyncIterable<string>
+    | Promise<AsyncIterable<string>>
+    | Promise<Iterable<string>>,
+): ValueParser<"async", string> {
+  return {
+    $mode: "async",
+    metavar: parser.metavar,
+    parse: (input: string) => Promise.resolve({ success: true, value: input }),
+    format: (value: string): string => value,
+    suggest: (prefix: string) => prefixFilterSuggest(prefix, iterableFn),
+  };
+}

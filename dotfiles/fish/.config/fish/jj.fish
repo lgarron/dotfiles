@@ -185,9 +185,9 @@ function gg
 end
 
 function ggn
-    /Applications/gg.app/Contents/MacOS/gg $argv &>/dev/null &
+    /Applications/gg.app/Contents/MacOS/gg gui -- $argv &>/dev/null &
     disown
-    $DOTFILES_FOLDER_NO_TRAILING_SLASH/scripts/system/dell-display-position-app-on-bottom.ts gg
+    $DOTFILES_FOLDER_NO_TRAILING_SLASH/scripts/system/dell-display-position-app-on-bottom.ts -- gg
     open -a gg # Foreground.
 end
 

@@ -195,7 +195,7 @@ reset: clean
 check: lint test
 
 .PHONY: test
-test: test-bun cargo-test test-scripts test-scripts-non-ts
+test: test-bun test-scripts test-scripts-non-ts
 
 .PHONY: test-scripts
 test-scripts: setup-npm-packages

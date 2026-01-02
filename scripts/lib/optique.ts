@@ -49,9 +49,10 @@ function pathOrSubClass<T extends Path>(
   classConstructor: typeof Path | typeof OutputFile,
   pathOptions?: PathOptions,
   // TODO: why does type-checking fail when we merge this with `Options`?
-): ValueParser<T> {
+): ValueParser<"sync", T> {
   const optiquePathParser = optiquePath(pathOptions);
   return {
+    $mode: "sync",
     metavar: pathOptions?.metavar ?? "PATH",
     parse: (input: string): ValueParserResult<T> => {
       const result = optiquePathParser.parse(input);
@@ -70,19 +71,21 @@ function pathOrSubClass<T extends Path>(
   };
 }
 
-export function pathClass(pathOptions?: PathOptions): ValueParser<Path> {
+export function pathClass(
+  pathOptions?: PathOptions,
+): ValueParser<"sync", Path> {
   return pathOrSubClass(Path, pathOptions);
 }
 
 export function outputFileClass(
   pathOptions?: PathOptions,
-): ValueParser<OutputFile> {
+): ValueParser<"sync", OutputFile> {
   return pathOrSubClass<OutputFile>(OutputFile, pathOptions);
 }
 
 export function sourceFile(
   options?: PathOptions & { mustNotExist: undefined },
-): ValueParser<Path> {
+): ValueParser<"sync", Path> {
   return pathClass({
     ...options,
     mustExist: true,
@@ -151,14 +154,16 @@ export async function printOrReveal(
   }
 }
 
-export function outputFile(options?: PathOptions): ValueParser<OutputFile> {
+export function outputFile(
+  options?: PathOptions,
+): ValueParser<"sync", OutputFile> {
   return pathOrSubClass(OutputFile, {
     ...options,
     metavar: "OUTPUT_FILE",
   });
 }
 
-export function outputDir(options?: PathOptions): ValueParser<Path> {
+export function outputDir(options?: PathOptions): ValueParser<"sync", Path> {
   return pathClass({
     ...options,
     metavar: "OUTPUT_DIR",

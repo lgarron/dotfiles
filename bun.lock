@@ -4,8 +4,8 @@
   "workspaces": {
     "": {
       "dependencies": {
-        "@optique/core": "v0.9.0-dev.187",
-        "@optique/run": "v0.9.0-dev.187",
+        "@optique/core": "0.9.0-dev.212",
+        "@optique/run": "0.9.0-dev.212",
         "betterdisplaycli": ">=0.1.8",
         "comment-json": "^4.4.1",
         "ergonomic-date": "^0.1.1",
@@ -108,9 +108,9 @@
 
     "@nodelib/fs.walk": ["@nodelib/fs.walk@1.2.8", "", { "dependencies": { "@nodelib/fs.scandir": "2.1.5", "fastq": "^1.6.0" } }, "sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg=="],
 
-    "@optique/core": ["@optique/core@0.9.0-dev.187", "", {}, "sha512-wBTFbWaESwRTjF+429xzFueIBcsJ/xaD66pSwhJaIo1f7vljRfXa51R0H+EyY2tkNeFsM68YFcPPXw8TLtRuZw=="],
+    "@optique/core": ["@optique/core@0.9.0-dev.212", "", {}, "sha512-TjjEFViDDBJIumY/8yaQplrq9CIdT8AttloyxZbmN6dJHWDVac+Ary0vMEIevJwJf6xoc/zIKJsRHFAz/GdiPg=="],
 
-    "@optique/run": ["@optique/run@0.9.0-dev.187", "", { "dependencies": { "@optique/core": "0.9.0-dev.187+992128e2" } }, "sha512-JBV2icMvuoc/3W6/LxcGyRv93PCvLW0KsRtKXGz4xcEMgD08hPMuKM+xBQR4+waHUjq9cofyqst854lFx4ud5A=="],
+    "@optique/run": ["@optique/run@0.9.0-dev.212", "", { "dependencies": { "@optique/core": "0.9.0-dev.212+a3f282b6" } }, "sha512-F//UWF3Xqtu6ep3zYqUtZMMAsKWwYYE6EDyNmrYR21uZxMNYhBT1+N08K+HIjbsNN97Kll0fKApaCYCBHN+xbQ=="],
 
     "@sindresorhus/df": ["@sindresorhus/df@3.1.1", "", { "dependencies": { "execa": "^2.0.1" } }, "sha512-SME/vtXaJcnQ/HpeV6P82Egy+jThn11IKfwW8+/XVoRD0rmPHVTeKMtww1oWdVnMykzVPjmrDN9S8NBndPEHCQ=="],
 

@@ -1,13 +1,7 @@
 #!/usr/bin/env -S bun run --
 
-import {
-  argument,
-  object,
-  optional,
-  type ValueParser,
-  type ValueParserResult,
-} from "@optique/core";
-import { run } from "@optique/run";
+import { argument, object, optional, type ValueParser } from "@optique/core";
+import { runAsync } from "@optique/run";
 import {
   type Display,
   getAllDevices,
@@ -17,26 +11,28 @@ import { PrintableShellCommand } from "printable-shell-command";
 import { byOption } from "../lib/optique";
 
 let allDevicesCachedPromise: Promise<(Display | VirtualScreen)[]> | undefined;
-export function allDevices(): Promise<(Display | VirtualScreen)[]> {
-  // biome-ignore lint/suspicious/noAssignInExpressions: Caching pattern.
-  return (allDevicesCachedPromise ??= getAllDevices({
+// Note: this implementation assumes that we are in a short-running process. If
+// we are not, then we should not cache for the whole process lifetime.
+export async function allDeviceNames(): Promise<string[]> {
+  // TODO: this needs a separate variable assignment due to https://github.com/biomejs/biome/issues/2962#issuecomment-3704408970
+  // biome-ignore lint/suspicious/noAssignInExpressions: TODO: https://github.com/biomejs/biome/discussions/7592
+  const devices = await (allDevicesCachedPromise ??= getAllDevices({
     ignoreDisplayGroups: true,
     quiet: true,
   }));
+  return devices.map((device) => device.info.name);
 }
 
-export async function displayNameParser(): Promise<ValueParser<string>> {
-  const allDevicesAwaited = await allDevices();
+export function displayNameParser(): ValueParser<"async", string> {
   return {
+    $mode: "async",
     metavar: "DISPLAY_NAME",
-    parse: (input: string): ValueParserResult<string> => ({
-      success: true,
-      value: input,
-    }),
+    parse(input: string) {
+      return Promise.resolve({ success: true, value: input });
+    },
     format: (value: string): string => value,
-    *suggest(prefix: string) {
-      for (const device of allDevicesAwaited) {
-        const { name } = device.info;
+    async *suggest(prefix: string) {
+      for (const name of await allDeviceNames()) {
         if (name.startsWith(prefix)) {
           yield { kind: "literal", text: name };
         }
@@ -45,10 +41,10 @@ export async function displayNameParser(): Promise<ValueParser<string>> {
   };
 }
 
-async function parseArgs() {
-  return run(
+function parseArgs() {
+  return runAsync(
     object({
-      displayName: optional(argument(await displayNameParser())),
+      displayName: optional(argument(displayNameParser())),
     }),
     byOption(),
   );

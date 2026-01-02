@@ -11,7 +11,7 @@ import {
   type ValueParser,
   withDefault,
 } from "@optique/core";
-import { run } from "@optique/run";
+import { runAsync } from "@optique/run";
 import { PrintableShellCommand } from "printable-shell-command";
 import { byOption } from "../lib/optique";
 
@@ -48,20 +48,19 @@ const gitRemotesPromise = (() => {
         .slice(0, -1))());
   };
 })();
-// TODO: support doing this lazily: https://github.com/dahlia/optique/issues/52
-const gitRemotes = await gitRemotesPromise();
 
-function gitRemoteParser(): ValueParser<string> {
+function gitRemoteParser(): ValueParser<"async", string> {
   return {
+    $mode: "async",
     metavar: "REMOTE",
     parse(input) {
-      return { success: true, value: input };
+      return Promise.resolve({ success: true, value: input });
     },
     format(value) {
       return value;
     },
-    *suggest(prefix) {
-      for (const option of gitRemotes) {
+    async *suggest(prefix) {
+      for (const option of await gitRemotesPromise()) {
         if (option.startsWith(prefix)) {
           yield { kind: "literal", text: option };
         }
@@ -82,20 +81,19 @@ const gitTagsPromise = (() => {
         .reverse())());
   };
 })();
-// TODO: support doing this lazily: https://github.com/dahlia/optique/issues/52
-const gitTags = await gitTagsPromise();
 
-function gitTagParser(): ValueParser<string> {
+function gitTagParser(): ValueParser<"async", string> {
   return {
+    $mode: "async",
     metavar: "TAG",
     parse(input) {
-      return { success: true, value: input };
+      return Promise.resolve({ success: true, value: input });
     },
     format(value) {
       return value;
     },
-    *suggest(prefix) {
-      for (const option of gitTags) {
+    async *suggest(prefix) {
+      for (const option of await gitTagsPromise()) {
         if (option.startsWith(prefix)) {
           yield { kind: "literal", text: option };
         }
@@ -104,7 +102,7 @@ function gitTagParser(): ValueParser<string> {
   };
 }
 
-const options = run(
+const options = await runAsync(
   object({
     remote: withDefault(
       option("--remote", gitRemoteParser(), {

@@ -200,7 +200,7 @@ test: test-bun test-scripts test-scripts-non-ts
 .PHONY: test-scripts
 test-scripts: setup-npm-packages
 	ls -al ./scripts/debug
-	bun run -- 'script/test-scripts.ts'
+	bun run -- './repo-script/test-scripts.ts'
 
 .PHONY: test-scripts-non-ts
 test-scripts-non-ts: setup-npm-packages

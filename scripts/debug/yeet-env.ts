@@ -22,7 +22,6 @@ function printHelp() {
 Usage:
 
 ${escapeArg(command, true, {})}
-${escapeArg(command, true, {})} -- [WRAPPED_COMMAND [ARGS...]]
 ${escapeArg(command, true, {})} --help
 ${escapeArg(command, true, {})} --version
 ${escapeArg(command, true, {})} --completions [ARGS...]
@@ -38,10 +37,7 @@ Performs the following actions:
 
 // TODO: the semantics of this are okay, but it's a custom implementation.
 const [_, command, ...args] = argv;
-if (args[0] === "--") {
-  args.splice(0, 1);
-  // continue below
-} else if (deepEquals(args, ["--help"])) {
+if (deepEquals(args, ["--help"])) {
   printHelp();
   exit(0);
 } else if (deepEquals(args, ["--version"])) {
@@ -49,9 +45,6 @@ if (args[0] === "--") {
   exit(0);
 } else if (args[0] === "--completions") {
   exit(0);
-} else {
-  printHelp();
-  exit(1);
 }
 
 console.error(JSON.stringify(env));

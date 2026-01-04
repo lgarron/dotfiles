@@ -23,8 +23,11 @@
     abbr -a mun "make uninstall"
     abbr -a mr "make reset"
 
+    abbr -a mrs "make reset setup"
+
     # Chords
     abbr -a mcb "make clean build"
+    abbr -a mcb "make reset setup"
 
     # `cubing.js` targets I use often.
     abbr -a mta "make test-all"
@@ -56,6 +59,7 @@
 
         # Chords
         abbr_anyarg $make_command cb "clean build"
+        abbr_anyarg $make_command rs "reset setup"
 
         # `cubing.js` targets I use often.
         abbr_anyarg $make_command ta test-all

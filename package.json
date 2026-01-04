@@ -15,7 +15,7 @@
     "comment-json": "^4.4.1",
     "ergonomic-date": "^0.1.1",
     "lockfile-mutex": ">=0.3.5",
-    "lstow": ">=0.5.3",
+    "lstow": ">=0.5.4",
     "naughty-list": "^1.1.4",
     "path-class": ">=0.12.2",
     "plural-chain": ">=0.2.3",

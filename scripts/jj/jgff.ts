@@ -9,9 +9,7 @@ function parseArgs() {
   return run(object({}), byOption());
 }
 
-export async function executeScript(
-  _args: ReturnType<typeof parseArgs>,
-): Promise<void> {
+export async function jgff(_args: ReturnType<typeof parseArgs>): Promise<void> {
   await new PrintableShellCommand("jj", ["git", "fetch"]).shellOut({
     print: "inline",
   });
@@ -50,5 +48,5 @@ export async function executeScript(
 }
 
 if (import.meta.main) {
-  await executeScript(parseArgs());
+  await jgff(parseArgs());
 }

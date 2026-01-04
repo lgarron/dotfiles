@@ -7,6 +7,7 @@ import { deepEquals } from "bun";
 import { ErgonomicDate } from "ergonomic-date";
 import { Path } from "path-class";
 import { escapeArg, PrintableShellCommand } from "printable-shell-command";
+import { editorOpen } from "../app-tools/editor-open";
 import { TIMESTAMP_AND_GIT_HEAD_HASH } from "../lib/TIMESTAMP_AND_GIT_HEAD_HASH";
 
 const CACHE_DIR = Path.xdg.cache.join("./yeet-env-macOS/");
@@ -59,10 +60,7 @@ const path = CACHE_DIR.join(
 );
 await path.writeJSON(env);
 
-await new PrintableShellCommand(
-  "/Users/lgarron/Code/git/github.com/lgarron/dotfiles/scripts/app-tools/editor-open-file-in-workspace.ts",
-  ["--", path],
-).shellOut();
+await editorOpen({ inWorkspace: true, path });
 
 await new PrintableShellCommand(TERMINAL_NOTIFIER_PATH, [
   ["-title", "yeet-env-macOS"],

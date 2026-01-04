@@ -14,6 +14,32 @@ abbr_exceptsubcommand_arg jj m main
 abbr_exceptsubcommand_arg jj mo main@origin
 abbr_exceptsubcommand_arg jj h here
 
+#   m-⎵ → Push `main` to `main-`
+# m---⎵ → Push `main` to `main---`
+function _abbr_jj_main_rollback_fn
+    set -l ref main
+    if [ "$argv[1]" != m ]
+        set ref $ref(string trim --left --chars=m $argv[1])
+    end
+    echo "jj bookmark set main --revision $ref --allow-backwards && jj git push --bookmark main"
+end
+abbr -a _abbr_jj_main_rollback --regex "m-+" --position command --function _abbr_jj_main_rollback_fn
+
+#   t-⎵ → Push `(current branch)` to `(current branch)-`
+# t---⎵ → Push `(current branch)` to `(current branch)---`
+function _abbr_jj_tag_rollback_fn
+    set -l branch (jj guess-branch)
+    if string match --quiet --entire -- "$branch" ""
+        return 1
+    end
+    set -l ref (jj guess-branch)
+    if [ "$argv[1]" != m ]
+        set ref $ref(string trim --left --chars=t $argv[1])
+    end
+    echo "jj bookmark set $branch --revision $ref --allow-backwards && jj git push --bookmark $branch"
+end
+abbr -a _abbr_jj_tag_rollback --regex "t-+" --position command --function _abbr_jj_tag_rollback_fn
+
 _fish_abbr_jj_subcommand a abandon
 _fish_abbr_jj_subcommand e edit
 _fish_abbr_jj_subcommand l log

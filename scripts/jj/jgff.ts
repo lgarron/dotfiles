@@ -3,6 +3,7 @@
 import { object } from "@optique/core";
 import { run } from "@optique/run";
 import { PrintableShellCommand } from "printable-shell-command";
+import { askYesNo } from "../lib/askYesNo";
 import { byOption } from "../lib/optique";
 
 function parseArgs() {
@@ -44,6 +45,18 @@ export async function jgff(_args: ReturnType<typeof parseArgs>): Promise<void> {
     throw new Error(
       `HEAD (@) has ${numHEADOnlyCommits} non-trivial commits that are not on \`trunk()\`. Not fast-forwarding.`,
     );
+  }
+
+  const makeSetupCommand = new PrintableShellCommand("make", ["setup"]);
+  if (
+    await askYesNo(
+      `\nRun \`${makeSetupCommand.getPrintableCommand({ style: ["gray", "bold"], argumentLineWrapping: "inline" })}\`?`,
+      {
+        default: "y",
+      },
+    )
+  ) {
+    await makeSetupCommand.shellOut();
   }
 }
 

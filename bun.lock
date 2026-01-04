@@ -15,7 +15,7 @@
         "naughty-list": "^1.1.4",
         "path-class": ">=0.13.1",
         "plural-chain": ">=0.2.3",
-        "printable-shell-command": "^5.0.5",
+        "printable-shell-command": "^5.0.6",
         "temporal-ponyfill": "^0.1.0",
         "trash": "^10.0.0",
         "xdg-basedir": "^5.1.0",
@@ -322,7 +322,7 @@
 
     "possible-typed-array-names": ["possible-typed-array-names@1.1.0", "", {}, "sha512-/+5VFTchJDoVj3bhoqi6UeymcD00DAwb1nJwamzPvHEszJ4FpF6SNNbUbOS8yI56qHzdV8eK0qEfOSiodkTdxg=="],
 
-    "printable-shell-command": ["printable-shell-command@5.0.5", "", { "dependencies": { "@types/node": ">=25.0.3", "path-class": ">=0.12.1" } }, "sha512-Cvzc+LmpijTodUVGSfXhgTa3AtwF26hZ4PzsHerEI2pNLeDArAADEezogJk9rTsNum52TyifNXP7sPdZ4BCQ3Q=="],
+    "printable-shell-command": ["printable-shell-command@5.0.6", "", { "dependencies": { "@types/node": ">=25.0.3", "path-class": ">=0.12.1" } }, "sha512-fozgfa/Nir8IrK1M9XOGRMPiQPxfYs1DQ2fTBkPPW0fPpgC9a4xDGeNHWbu/rHwLqyzkL+7Ys29/JA+1ZfKcnA=="],
 
     "process": ["process@0.11.10", "", {}, "sha512-cdGef/drWFoydD1JsMzuFf8100nZl+GT+yacc2bEced5f9Rjk4z+WtFUTBu9PhOi9j/jfmBPu0mMEY4wIdAF8A=="],
 
@@ -390,11 +390,15 @@
 
     "xdg-trashdir": ["xdg-trashdir@3.1.0", "", { "dependencies": { "@sindresorhus/df": "^3.1.1", "mount-point": "^3.0.0", "user-home": "^2.0.0", "xdg-basedir": "^4.0.0" } }, "sha512-N1XQngeqMBoj9wM4ZFadVV2MymImeiFfYD+fJrNlcVcOHsJFFQe7n3b+aBoTPwARuq2HQxukfzVpQmAk1gN4sQ=="],
 
+    "betterdisplaycli/printable-shell-command": ["printable-shell-command@5.0.5", "", { "dependencies": { "@types/node": ">=25.0.3", "path-class": ">=0.12.1" } }, "sha512-Cvzc+LmpijTodUVGSfXhgTa3AtwF26hZ4PzsHerEI2pNLeDArAADEezogJk9rTsNum52TyifNXP7sPdZ4BCQ3Q=="],
+
     "globby/ignore": ["ignore@7.0.5", "", {}, "sha512-Hs59xBNfUIunMFgWAbGX5cq6893IbWg4KnrjbYwX3tx0ztorVgTDA6B2sxf8ejHJ4wz8BqGUMYlnzNBer5NvGg=="],
 
     "mount-point/@sindresorhus/df": ["@sindresorhus/df@1.0.1", "", {}, "sha512-1Hyp7NQnD/u4DSxR2DGW78TF9k7R0wZ8ev0BpMAIzA6yTQSHqNb5wTuvtcPYf4FWbVse2rW7RgDsyL8ua2vXHw=="],
 
     "mount-point/pify": ["pify@2.3.0", "", {}, "sha512-udgsAY+fTnvv7kI7aaxbqwWNb0AHiB0qBO89PZKPkoTmGOgdbrHDKD+0B2X4uTfJ/FT1R09r9gTsjUjNJotuog=="],
+
+    "naughty-list/printable-shell-command": ["printable-shell-command@5.0.5", "", { "dependencies": { "@types/node": ">=25.0.3", "path-class": ">=0.12.1" } }, "sha512-Cvzc+LmpijTodUVGSfXhgTa3AtwF26hZ4PzsHerEI2pNLeDArAADEezogJk9rTsNum52TyifNXP7sPdZ4BCQ3Q=="],
 
     "xdg-trashdir/xdg-basedir": ["xdg-basedir@4.0.0", "", {}, "sha512-PSNhEJDejZYV7h50BohL09Er9VaIefr2LMAf3OEmpCkjOi34eYyQYAXUTjEQtZJTKcF0E2UKTh+osDLsgNim9Q=="],
   }

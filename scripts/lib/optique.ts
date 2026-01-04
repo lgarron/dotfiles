@@ -85,7 +85,7 @@ export function outputFileClass(
 }
 
 export function sourceFile(
-  options?: PathOptions & { mustNotExist: undefined },
+  options?: PathOptions & { mustNotExist?: undefined },
 ): ValueParser<"sync", Path> {
   return pathClass({
     ...options,

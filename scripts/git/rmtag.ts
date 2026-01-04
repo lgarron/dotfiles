@@ -87,7 +87,7 @@ const options = await runAsync(
     ),
     tags: multiple(
       argument(gitTagParser(), {
-        description: message`\git\` tag (single or multiple)`,
+        description: message`\`git\` tag (single or multiple)`,
       }),
       { min: 1 },
     ),

@@ -58,7 +58,7 @@ console.error(JSON.stringify(env));
 const path = CACHE_DIR.join(
   `${new ErgonomicDate().multipurposeTimestamp}.json`,
 );
-await path.writeJSON(env);
+await path.writeJSON({ args, env });
 
 await editorOpen({ inWorkspace: true, path });
 

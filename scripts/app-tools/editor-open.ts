@@ -1,7 +1,6 @@
 #!/usr/bin/env -S bun run --
 
 import { argument, object } from "@optique/core";
-
 import { run } from "@optique/run";
 import { Path } from "path-class";
 import { PrintableShellCommand } from "printable-shell-command";
@@ -23,17 +22,13 @@ function parseArgs() {
 export async function executeScript({
   path,
 }: ReturnType<typeof parseArgs>): Promise<void> {
-  const resolvedPath = Path.resolve(path, Path.cwd);
-  if (resolvedPath.path.startsWith(OBSIDIAN_VAULT_PREFIX.path)) {
-    // TODO: make a function for this in `path-class`
-    // TODO: handle when this is a folder and not a file?
-    const relativeNotePath = resolvedPath.path.slice(
-      OBSIDIAN_VAULT_PREFIX.path.length,
-    );
-    // Obsidian requires URI encoding rather than URL component encoding, so we
-    // can't construct a URL and set `searchParams`. We have to do string
-    // manipulation instead. 😕
-    const url = `obsidian://open?vault=Documents&file=${encodeURI(relativeNotePath)}`;
+  const relativePath = OBSIDIAN_VAULT_PREFIX.descendantRelativePath(
+    Path.cwd.resolve(path),
+  );
+  if (relativePath) {
+    // TODO: why can't we encode this using `.searchParams.set("file", …)`?
+    const url = `obsidian://open?vault=Documents&file=${encodeURIComponent(relativePath.asBare().path)}`;
+    console.log(url);
     await new PrintableShellCommand("open", [
       ["-a", "Obsidian"],
       url.toString(),

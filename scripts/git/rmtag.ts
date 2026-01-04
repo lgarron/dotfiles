@@ -8,13 +8,12 @@ import {
   multiple,
   object,
   option,
-  string,
-  type ValueParser,
   withDefault,
 } from "@optique/core";
+import { gitRemote, gitTag } from "@optique/git";
 import { runAsync } from "@optique/run";
 import { PrintableShellCommand } from "printable-shell-command";
-import { byOption, prefixFilterSuggest, withSuggestions } from "../lib/optique";
+import { byOption } from "../lib/optique";
 
 async function doesTagExistLocally(tag: string): Promise<boolean> {
   return (
@@ -39,54 +38,16 @@ async function doesTagExistOnRemote(
   );
 }
 
-const gitRemotes = (() => {
-  let cachedRemotes: Promise<string[]> | undefined;
-  return () => {
-    // biome-ignore lint/suspicious/noAssignInExpressions: Caching pattern.
-    return (cachedRemotes ??= (async () =>
-      (await new PrintableShellCommand("git", ["remote"]).text())
-        .split("\n")
-        .slice(0, -1))());
-  };
-})();
-
-const gitTags = (() => {
-  let cachedRemotes: Promise<string[]> | undefined;
-  return () => {
-    // biome-ignore lint/suspicious/noAssignInExpressions: Caching pattern.
-    return (cachedRemotes ??= (async () =>
-      (await new PrintableShellCommand("git", ["tag"]).text())
-        .split("\n")
-        .slice(0, -1)
-        // TODO: `fish` actually sorts these afterwards?
-        .reverse())());
-  };
-})();
-
-function gitTagParser(): ValueParser<"async", string> {
-  return {
-    $mode: "async",
-    metavar: "TAG",
-    parse: (input: string) => Promise.resolve({ success: true, value: input }),
-    format: (value: string): string => value,
-    suggest: (prefix: string) => prefixFilterSuggest(prefix, gitTags),
-  };
-}
-
 const options = await runAsync(
   object({
     remote: withDefault(
-      option(
-        "--remote",
-        withSuggestions(string({ metavar: "REMOTE" }), gitRemotes),
-        {
-          description: message`\`git\` remote`,
-        },
-      ),
+      option("--remote", gitRemote(), {
+        description: message`\`git\` remote`,
+      }),
       "origin",
     ),
     tags: multiple(
-      argument(gitTagParser(), {
+      argument(gitTag(), {
         description: message`\`git\` tag (single or multiple)`,
       }),
       { min: 1 },

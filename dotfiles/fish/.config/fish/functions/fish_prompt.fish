@@ -49,6 +49,11 @@ function fish_prompt --description 'Write out the prompt'
         $PREFIX \
         (set_color $_FISH_PROMPT_LCARS_HEADER_COLOR) \
         "─"
+    if set -q _FISH_PROMPT_CONTEXT_MESSAGE
+        echo "│"
+        echo "├─ (context) "(set_color white)$_FISH_PROMPT_CONTEXT_MESSAGE(set_color $_FISH_PROMPT_LCARS_HEADER_COLOR)
+        echo "│"
+    end
 
     set FISH_JJ_PROMPT (fish_jj_prompt "%s")
     if not string match -e "$FISH_JJ_PROMPT" "" >/dev/null

@@ -312,7 +312,7 @@ A forced bit depth of ${forceBitDepth} was specified, and will be used.`);
 
   if (!dryRun) {
     // TODO: transfer HiDPI hint (e.g. for screencaps)
-    await command.spawnTransparently().success;
+    await command.spawn({ stdio: ["ignore", "inherit", "inherit"] }).success;
   }
 
   if (args.reveal) {

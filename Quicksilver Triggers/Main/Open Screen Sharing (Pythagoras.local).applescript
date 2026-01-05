@@ -1,1 +1,1 @@
-do shell script "/opt/homebrew/bin/fish /Users/lgarron/Code/git/github.com/lgarron/dotfiles/scripts/system/set-remote-screen-sharing-resolution.fish Pythagoras.lan &> /dev/null && open \"vnc://Pythagoras.lan\" &"
+do shell script "/Users/lgarron/Code/git/github.com/lgarron/dotfiles/setup/scripts/trampoline.fish /Users/lgarron/Code/git/github.com/lgarron/dotfiles/scripts/system/set-remote-screen-sharing-resolution.fish Pythagoras.lan &> /dev/null && open \"vnc://Pythagoras.lan\" &"

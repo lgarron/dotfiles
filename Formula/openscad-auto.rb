@@ -5,7 +5,6 @@ class OpenscadAuto < Formula
   homepage "https://github.com/lgarron/dotfiles"
   head "https://github.com/lgarron/dotfiles.git", :branch => "main"
 
-  depends_on "rust" => :build
   depends_on "lgarron/lgarron/reveal-macos"
   depends_on "terminal-notifier"
 

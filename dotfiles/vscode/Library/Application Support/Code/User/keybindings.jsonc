@@ -396,5 +396,10 @@
         }
       ]
     }
-  }
+  },
+  {
+    // TODO: make this show a notification (using an extension, probably).
+    "key": "ctrl+shift+cmd+c",
+    "command": "copyFilePath",
+  },
 ]

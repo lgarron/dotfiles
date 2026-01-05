@@ -4,9 +4,9 @@
   "workspaces": {
     "": {
       "dependencies": {
-        "@optique/core": "0.9.0-dev.274",
-        "@optique/git": "0.9.0-dev.274",
-        "@optique/run": "0.9.0-dev.274",
+        "@optique/core": "0.9.0-dev.278",
+        "@optique/git": "0.9.0-dev.278",
+        "@optique/run": "0.9.0-dev.278",
         "betterdisplaycli": ">=0.1.8",
         "comment-json": "^4.4.1",
         "ergonomic-date": "^0.1.1",
@@ -31,9 +31,9 @@
     },
   },
   "overrides": {
-    "@optique/core": "0.9.0-dev.274",
-    "@optique/git": "0.9.0-dev.274",
-    "@optique/run": "0.9.0-dev.274",
+    "@optique/core": "0.9.0-dev.278",
+    "@optique/git": "0.9.0-dev.278",
+    "@optique/run": "0.9.0-dev.278",
   },
   "packages": {
     "@biomejs/biome": ["@biomejs/biome@2.3.9", "", { "optionalDependencies": { "@biomejs/cli-darwin-arm64": "2.3.9", "@biomejs/cli-darwin-x64": "2.3.9", "@biomejs/cli-linux-arm64": "2.3.9", "@biomejs/cli-linux-arm64-musl": "2.3.9", "@biomejs/cli-linux-x64": "2.3.9", "@biomejs/cli-linux-x64-musl": "2.3.9", "@biomejs/cli-win32-arm64": "2.3.9", "@biomejs/cli-win32-x64": "2.3.9" }, "bin": { "biome": "bin/biome" } }, "sha512-js+34KpnY65I00k8P71RH0Uh2rJk4BrpxMGM5m2nBfM9XTlKE5N1URn5ydILPRyXXq4ebhKCjsvR+txS+D4z2A=="],
@@ -116,11 +116,11 @@
 
     "@nodelib/fs.walk": ["@nodelib/fs.walk@1.2.8", "", { "dependencies": { "@nodelib/fs.scandir": "2.1.5", "fastq": "^1.6.0" } }, "sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg=="],
 
-    "@optique/core": ["@optique/core@0.9.0-dev.274", "", {}, "sha512-tAXCnznkUPGyeHWbDsqcOMbRLaF1XnOSuwA/tzPxL/Na5cNlKo21VgTeMoTQe29MXWQFrLI2fQk8ed6XhuV8BQ=="],
+    "@optique/core": ["@optique/core@0.9.0-dev.278", "", {}, "sha512-T5/NIeunUb7CbDVK/lVc8Yu8adeZQiPYYmUyP3ki7MynFoCPu6x2JkP4thTl0Geh7S6Mc6t+uE0YR1ZogR9nMg=="],
 
-    "@optique/git": ["@optique/git@0.9.0-dev.274", "", { "dependencies": { "@logtape/logtape": "^1.2.2", "@optique/core": "", "isomorphic-git": "^1.36.1" } }, "sha512-P8LENjL6hqmcXVnKwPemCrYvFuWH0e089s/whZCIc0RsSehBZ5sbXa4RzQVlbCPDvuCuZeG8+pgA/ZyGZN7UQg=="],
+    "@optique/git": ["@optique/git@0.9.0-dev.278", "", { "dependencies": { "@logtape/logtape": "^1.2.2", "@optique/core": "", "isomorphic-git": "^1.36.1" } }, "sha512-+z3crBsTIZ4COcbmrmEtKoeAgNqpIvkb2Qt6EG3ulo9VSBWfzFAze9KuaOMqkqkCJ+RFK8yqVRKKHLADNE6CGw=="],
 
-    "@optique/run": ["@optique/run@0.9.0-dev.274", "", { "dependencies": { "@optique/core": "0.9.0-dev.274+cbf6ff12" } }, "sha512-yqCd8jwADg5sLy/Kv6ny+98axoq4ycR0TGTYOjPVUbyVH8Fbs2RQ/WAZMQUq3fGTE3QqfGqjYvb7nEyo9J8CaQ=="],
+    "@optique/run": ["@optique/run@0.9.0-dev.278", "", { "dependencies": { "@optique/core": "0.9.0-dev.278+042f5c3b" } }, "sha512-G3d0hcLZL1boKyaRvBjq51YtwtgxFyIX/KAZrHIrKXFHJh/+Xw1exEbf1nWKU5ndJSooUEXY2TQpWVvdcjwE8w=="],
 
     "@sindresorhus/df": ["@sindresorhus/df@3.1.1", "", { "dependencies": { "execa": "^2.0.1" } }, "sha512-SME/vtXaJcnQ/HpeV6P82Egy+jThn11IKfwW8+/XVoRD0rmPHVTeKMtww1oWdVnMykzVPjmrDN9S8NBndPEHCQ=="],
 

@@ -5,10 +5,11 @@ class Rmbranch < Formula
   homepage "https://github.com/lgarron/dotfiles"
   head "https://github.com/lgarron/dotfiles.git", :branch => "main"
 
-  depends_on "fish"
+  depends_on "oven-sh/bun/bun"
 
   def install
-    bin.install "scripts/git/rmbranch.fish" => "rmbranch"
-    generate_completions_from_executable(bin/"rmbranch", "--completions", shells: [:fish])
+    system "./repo-script/build-ts-scripts.ts", "git/rmbranch"
+    bin.install "./.temp/bin/rmbranch" => "rmbranch"
+    generate_completions_from_executable(bin/"rmbranch", "--completions")
   end
 end

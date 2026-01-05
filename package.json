@@ -9,9 +9,9 @@
     "typescript": "^5.9.3"
   },
   "dependencies": {
-    "@optique/core": "0.9.0-dev.274",
-    "@optique/git": "0.9.0-dev.274",
-    "@optique/run": "0.9.0-dev.274",
+    "@optique/core": "0.9.0-dev.278",
+    "@optique/git": "0.9.0-dev.278",
+    "@optique/run": "0.9.0-dev.278",
     "betterdisplaycli": ">=0.1.8",
     "comment-json": "^4.4.1",
     "ergonomic-date": "^0.1.1",
@@ -26,8 +26,8 @@
     "xdg-basedir": "^5.1.0"
   },
   "overrides": {
-    "@optique/core": "0.9.0-dev.274",
-    "@optique/git": "0.9.0-dev.274",
-    "@optique/run": "0.9.0-dev.274"
+    "@optique/core": "0.9.0-dev.278",
+    "@optique/git": "0.9.0-dev.278",
+    "@optique/run": "0.9.0-dev.278"
   }
 }

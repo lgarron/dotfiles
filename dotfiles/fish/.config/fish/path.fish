@@ -27,8 +27,7 @@
       _add_to_path "$GOPATH/bin"
       _add_to_path $HOME/.cache/.bun/bin # For zig (for building Bun) https://bun.sh/docs/project/development
       _add_to_path "/usr/local/bin"
-      _add_to_path "$HOME/.shared-hosting/bin" # for Dreamhost
-      _add_to_path "$HOME/.config/binaries/linux-x64" # for Codespaces
+      _add_to_path "$HOME/.local/share/binaries/linux-x64" # for Dreamhost and Codespaces
 
       if [ "$_FISH_USER_PATHS_QUIET_SETUP" != "true" ]
         set_color --bold

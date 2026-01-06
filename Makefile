@@ -63,7 +63,7 @@ dreamhost:
 	cp -R ./dotfiles/fish/.config/fish/* ~/.config/fish/
 	cp -R ./dotfiles/xdg-basedir-workarounds/.config/fish/* ~/.config/fish/
 
-	echo "${HOME}/.config/binaries/linux-x64/fish" > ~/.bash_profile
+	echo "${HOME}/.local/share/binaries/linux-x64/fish" > ~/.bash_profile
 	echo "exit" >> ~/.bash_profile
 
 ########

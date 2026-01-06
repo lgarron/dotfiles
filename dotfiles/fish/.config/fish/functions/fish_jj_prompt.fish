@@ -22,6 +22,14 @@ function fish_jj_prompt
         return 1
     end
     set -l info op=(timeout --preserve-status 1s jj op log --limit 1 --no-graph --ignore-working-copy --color=always --template 'id.short().substr(0, 4)' 2>/dev/null || printf "%s" $TIMED_OUT)" "(
+        timeout --preserve-status 1s jj log 2>/dev/null --no-graph --ignore-working-copy --color=always --revisions here \
+            --template '
+                    separate(
+                        " ",
+                        "here=" ++ change_id.shortest(),
+                    )
+            ' || printf "%s" $TIMED_OUT
+    )" "(
         timeout --preserve-status 1s jj log 2>/dev/null --no-graph --ignore-working-copy --color=always --revisions @ \
             --template '
                     separate(

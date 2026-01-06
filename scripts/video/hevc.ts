@@ -29,19 +29,17 @@ const HALF_SECOND = Temporal.Duration.from({ milliseconds: 500 });
 
 const FORCE_BIT_DEPTH_FLAG = "--force-bit-depth" as const;
 
+export const pollOption = withDefault(
+  option("--poll", choice(["auto", "false", "true"], { metavar: "POLL" }), {
+    description: message`"Poll for the source file to exist with readable streams."`,
+  }),
+  "auto",
+);
+
 function parseArgs() {
   return run(
     object({
-      poll: withDefault(
-        option(
-          "--poll",
-          choice(["auto", "false", "true"], { metavar: "POLL" }),
-          {
-            description: message`"Poll for the source file to exist with readable streams."`,
-          },
-        ),
-        "auto",
-      ),
+      poll: pollOption,
       quality: withDefault(
         option("--quality", integer({ min: 1, max: 100 }), {
           description: message`Quality value for the HEVC encoder.`,

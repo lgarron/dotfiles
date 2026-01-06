@@ -5,6 +5,7 @@ import { run } from "@optique/run";
 import type { Path } from "path-class";
 import { PrintableShellCommand } from "printable-shell-command";
 import { byOption, printOrReveal, simpleFileInOut } from "../lib/optique";
+import { ffprobeFirstVideoStream, pollOption } from "./hevc";
 
 // Public domain, from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_generators
 function* makeRangeIterator(start: number, end: number, step = 1) {
@@ -22,6 +23,7 @@ function parseArgs() {
       framesWindow: option("--frames-window", integer({ min: 1 }), {
         description: message`Number of adjacent frames to blur.`,
       }),
+      poll: pollOption,
       fps: withDefault(option("--fps", integer({ min: 1 })), 60),
       ...simpleFileInOut,
     }),
@@ -67,6 +69,9 @@ async function blur(
 async function timelapseBlur(
   args: ReturnType<typeof parseArgs>,
 ): Promise<void> {
+  const { sourceFile, poll } = args;
+  await ffprobeFirstVideoStream({ sourceFile, poll });
+
   let remainingFactor = args.framesWindow;
   let latestSourceFile = args.sourceFile;
   const potentialFactors = [

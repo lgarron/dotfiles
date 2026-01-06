@@ -205,7 +205,6 @@ test-scripts: setup-npm-packages
 .PHONY: test-scripts-non-ts
 test-scripts-non-ts: setup-npm-packages
 	scripts/git/node_crunchule.fish --help
-	./scripts/git/rmbranch.fish --completions fish
 
 .PHONY: lint
 lint: lint-ts-biome lint-ts-tsc

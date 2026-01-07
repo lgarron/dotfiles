@@ -271,6 +271,8 @@ cd -
 
     abbr -a serve "open http://localhost:8000; caddy file-server --listen :8000 --browse --root ."
 
+    abbr -a yeet "$HOME/Code/git/github.com/lgarron/dotfiles/scripts/debug/yeet-env.ts"
+
     abbr_subcommand alg p parse
     abbr_subcommand alg i invert
     abbr_anysubcommand_arg alg s --stdin

@@ -437,5 +437,5 @@ git push --force-with-lease"
     # @fish-lsp-disable-next-line 4004
     function gx
         open -a GitX . & ; disown
-        $DOTFILES_FOLDER_NO_TRAILING_SLASH/scripts/system/dell-display-position-app-on-bottom.ts GitX
+        $DOTFILES_FOLDER/scripts/system/dell-display-position-app-on-bottom.ts GitX
     end

@@ -320,7 +320,7 @@ cd -
 
     # TODO: make this an abbrevation instead?
     function hevc-HEAD
-        set COMMAND $DOTFILES_FOLDER_NO_TRAILING_SLASH/scripts/video/hevc.ts $argv
+        set COMMAND $DOTFILES_FOLDER/scripts/video/hevc.ts $argv
         string join -- " " (string escape -- $COMMAND)
         command $COMMAND
     end

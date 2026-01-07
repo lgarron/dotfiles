@@ -56,7 +56,6 @@ const CATEGORIZED_VARS: Record<string, (typeof CATEGORIES)[number]> = {
   RIPGREP_CONFIG_PATH: "xdgWorkarounds",
   // Personal
   DEBUG_PRINT_SHELL_COMMANDS: "personal",
-  DOTFILES_FOLDER_NO_TRAILING_SLASH: "personal",
   DOTFILES_FOLDER: "personal",
   EXPERIMENTAL_CUBING_JS_RELOAD_CHROME_MACOS: "personal",
   EXPERIMENTAL_RELOAD_CHROME_MACOS: "personal",

@@ -213,11 +213,11 @@ end
 function ggn
     /Applications/gg.app/Contents/MacOS/gg gui -- $argv &>/dev/null &
     disown
-    $DOTFILES_FOLDER_NO_TRAILING_SLASH/scripts/system/dell-display-position-app-on-bottom.ts -- gg
+    $DOTFILES_FOLDER/scripts/system/dell-display-position-app-on-bottom.ts -- gg
     open -a gg # Foreground.
 end
 
-abbr -a jgff "$DOTFILES_FOLDER_NO_TRAILING_SLASH/scripts/jj/jgff.ts"
+abbr -a jgff "$DOTFILES_FOLDER/scripts/jj/jgff.ts"
 
 # Note that this implementing this for `j ci` and `j c i` would require
 # rewriting the commandline (to add the `env` invocation at the beginning)

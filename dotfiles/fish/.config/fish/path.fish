@@ -8,6 +8,7 @@
 
     # LSP override: This is an intentionally exported variable.
     # @fish-lsp-disable-next-line 4004
+    # This should theoretically go in `xdg-basedir-workarounds.fish`, but we place it here so we can reference it below.
     set -x "GOPATH" "$HOME/.local/share/gopath"
 
     if [ "$_FISH_MANUAL_RELOAD" = "true" -o "$_FISH_USER_PATHS_HAS_BEEN_SET_UP" != "true" ]

@@ -89,3 +89,7 @@
     # ripgrep (`rg`)
     # (Doesn't have a default path, so it must be set explicitly.)
     set -Ux RIPGREP_CONFIG_PATH $XDG_CONFIG_HOME/ripgrep/ripgrep-config.txt
+
+# Defined in other files
+
+    # $GOPATH

@@ -50,6 +50,8 @@ _fish_abbr_jj_subcommand sq squash
 _fish_abbr_jj_subcommand u undo
 _fish_abbr_jj_subcommand t tug
 _fish_abbr_jj_subcommand re restore
+_fish_abbr_jj_subcommand o op
+_fish_abbr_jj_subcommand ol "op log"
 
 abbr_subcommand_arg jj r --revisions log
 

@@ -159,11 +159,11 @@
 	/******** Remote SSH ********/
 	"remote.SSH.useLocalServer": false,
 	"remote.SSH.remotePlatform": {
-		"Pythagoras.local": "macOS",
+		"Pythagoras.lan": "macOS",
 		"Pythagoras-ts.wyvern-climb.ts.net": "macOS"
 	},
 	"remote.SSH.serverInstallPath": {
-		"Pythagoras.local": "/Users/lgarron/.cache/vscode-server",
+		"Pythagoras.lan": "/Users/lgarron/.cache/vscode-server",
 		"Pythagoras-ts.wyvern-climb.ts.net": "/Users/lgarron/.cache/vscode-server"
 	},
 	/******** Codespaces ********/

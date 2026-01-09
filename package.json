@@ -12,7 +12,7 @@
     "@optique/core": "v0.9.0",
     "@optique/git": "v0.9.0",
     "@optique/run": "v0.9.0",
-    "betterdisplaycli": ">=0.1.8",
+    "betterdisplaycli": ">=0.1.15",
     "comment-json": "^4.4.1",
     "ergonomic-date": "^0.1.1",
     "lockfile-mutex": ">=0.3.5",

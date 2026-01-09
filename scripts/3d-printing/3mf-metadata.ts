@@ -1,6 +1,6 @@
 #!/usr/bin/env -S bun run --
 
-import { argument, object } from "@optique/core";
+import { argument, command, object } from "@optique/core";
 import { run } from "@optique/run";
 import type { Path } from "path-class";
 import { PrintableShellCommand } from "printable-shell-command";
@@ -39,7 +39,10 @@ export async function getBambuVersion(path: Path | string): Promise<string> {
 }
 
 if (import.meta.main) {
-  const args = run(object({ sourceFile: argument(sourceFile()) }), byOption());
+  const args = run(
+    command("bambuVersion", object({ sourceFile: argument(sourceFile()) })),
+    byOption(),
+  );
 
   console.log(await getBambuVersion(args.sourceFile));
 }

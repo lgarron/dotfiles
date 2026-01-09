@@ -5,10 +5,10 @@
     <key>Label</key>
     <string>net.garron.mac.dotfiles.mirror.vscode-settings-macos</string>
     <key>Program</key>
-    <string>/Users/lgarron/Code/git/github.com/lgarron/dotfiles/setup/scripts/trampoline.fish</string>
+    <string>/opt/homebrew/bin/trampoline</string>
     <key>ProgramArguments</key>
     <array>
-        <string>/Users/lgarron/Code/git/github.com/lgarron/dotfiles/setup/scripts/trampoline.fish</string>
+        <string>/opt/homebrew/bin/trampoline</string>
         <string>/Users/lgarron/Code/git/github.com/lgarron/dotfiles/mirrored/vscode-settings-macos/mirror-vscode-settings-macos.ts</string>
     </array>
     <key>RunAtLoad</key>

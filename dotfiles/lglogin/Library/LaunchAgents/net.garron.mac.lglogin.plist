@@ -6,7 +6,7 @@
     <string>net.garron.mac.lglogin</string>
     <key>ProgramArguments</key>
     <array>
-        <string>/Users/lgarron/Code/git/github.com/lgarron/dotfiles/setup/scripts/trampoline.fish</string>
+        <string>/opt/homebrew/bin/trampoline</string>
         <string>/Users/lgarron/.config/lglogin/lglogin.fish</string>
     </array>
     <key>RunAtLoad</key>

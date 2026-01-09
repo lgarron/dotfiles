@@ -46,7 +46,7 @@ naughty-list \
 
 # niceplz
 
-niceplz-sudo
+niceplz --sudo
 
 # Allows us to check when the script was last run.
 

@@ -23,6 +23,14 @@ export async function persistentSudo(): Promise<void> {
 
   const escapedHelperPath = helperPath.path.replaceAll(" ", "\\ ");
 
+  // TODO: hardcode absolute `bun` path? Maybe from the current `bun` path?
+  const helperCode = `#!/usr/bin/env -S bun run --
+
+import { main } from ${JSON.stringify(entry)};
+
+await main();
+`;
+
   // biome-ignore lint/complexity/useLiteralKeys: https://github.com/biomejs/biome/discussions/7404
   const USER = env["USER"];
   assert(USER);
@@ -30,18 +38,28 @@ export async function persistentSudo(): Promise<void> {
   assert(!USER.includes(" "));
   const registrationLineSuffix = `NOPASSWD: ${escapedHelperPath}`;
   const registrationLine = `${USER}    ALL= ${registrationLineSuffix}`;
-  async function registerSudo() {
-    // TODO: hardcode absolute `bun` path? Maybe from the current `bun` path?
-    const helperCode = `#!/usr/bin/env -S bun run --
-
-import ${JSON.stringify(entry)};
-`;
-    if (
-      !(await helperPath.exists()) ||
-      (await helperPath.readText()) !== helperCode
-    ) {
-      await helperPath.write(helperCode);
+  async function registerSudo({
+    needsHelperInitialInstallation,
+    needsHelperUpdate,
+    needsRegistration,
+  }: {
+    needsHelperInitialInstallation: boolean;
+    needsHelperUpdate: boolean;
+    needsRegistration: boolean;
+  }) {
+    if (needsHelperUpdate) {
+      console.error(
+        `Removing existing \`sudo\` helper to update it at: ${helperPath}`,
+      );
+      await new PrintableShellCommand("sudo", [
+        "rm",
+        "-f",
+        helperPath,
+      ]).shellOut();
+    }
+    if (needsHelperInitialInstallation || needsHelperUpdate) {
       console.error(`Installing \`sudo\` helper at: ${helperPath}`);
+      await helperPath.write(helperCode);
     }
 
     await new PrintableShellCommand("sudo", ["chown", "root", helperPath])
@@ -54,24 +72,39 @@ import ${JSON.stringify(entry)};
       .print({ stream: stderr })
       .spawnTransparently().success;
 
-    await new PrintableShellCommand("sudo", ["tee", "-a", ETC_SUDOERS])
-      .stdin({
-        text: `\n${registrationLine}`,
-      })
-      .spawn({ stdio: ["pipe", "ignore", "ignore"] }).success;
+    if (needsRegistration) {
+      await new PrintableShellCommand("sudo", ["tee", "-a", ETC_SUDOERS])
+        .stdin({
+          text: `\n${registrationLine}`,
+        })
+        .spawn({ stdio: ["pipe", "ignore", "ignore"] }).success;
+    }
   }
 
   const contents = await new PrintableShellCommand("sudo", ["-l"])
     .stdout()
     .text();
+  const needsHelperInitialInstallation = !(await helperPath.exists());
+  const needsHelperUpdate =
+    !needsHelperInitialInstallation &&
+    (await helperPath.readText()) !== helperCode;
+  const needsRegistration = !contents.includes(`${escapedHelperPath}\n`);
   // TODO anything more robust?
-  if (!contents.includes(`${escapedHelperPath}\n`)) {
-    await registerSudo();
+  if (
+    needsHelperInitialInstallation ||
+    needsHelperUpdate ||
+    needsRegistration
+  ) {
+    await registerSudo({
+      needsHelperInitialInstallation,
+      needsHelperUpdate,
+      needsRegistration,
+    });
   }
 
   const subprocess = new PrintableShellCommand("sudo", [
     helperPath,
-    argv.slice(2),
+    ...argv.slice(2),
   ]).spawnTransparently();
   subprocess.on("exit", () => {
     exit(subprocess.exitCode);

@@ -17,7 +17,7 @@ class ThermalPressure < Formula
   def post_install
     ohai "To install a `sudo` helper, run:
 
-    thermal-pressure
+    thermal-pressure --setup-sudo-only
 "
   end
 end

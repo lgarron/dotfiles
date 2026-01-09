@@ -19,7 +19,7 @@ const RB_SUFFIX = ".rb";
 
 // TODO: formula comparison.
 const SUDO_SETUP_COMMANDS: { [fullName: string]: PrintableShellCommand } = {
-  "lgarron/lgarron/niceplz": new PrintableShellCommand("niceplz-sudo", [
+  "lgarron/lgarron/niceplz": new PrintableShellCommand("niceplz", [
     "--setup-sudo-only",
   ]),
   "lgarron/lgarron/thermal-pressure": new PrintableShellCommand(

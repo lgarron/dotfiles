@@ -35,6 +35,10 @@ export async function thermalPressure(
   console.log(match[1]);
 }
 
-if (import.meta.main) {
+export async function main() {
   await thermalPressure(parseArgs());
+}
+
+if (import.meta.main) {
+  await main();
 }

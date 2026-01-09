@@ -19,4 +19,5 @@ class ThermalPressure < Formula
 
     thermal-pressure
 "
+  end
 end

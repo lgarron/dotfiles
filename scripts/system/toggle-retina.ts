@@ -11,16 +11,28 @@ import { PrintableShellCommand } from "printable-shell-command";
 import { byOption, withSuggestions } from "../lib/optique";
 
 let allDevicesCachedPromise: Promise<(Display | VirtualScreen)[]> | undefined;
-// Note: this implementation assumes that we are in a short-running process. If
-// we are not, then we should not cache for the whole process lifetime.
-export async function allDeviceNames(): Promise<string[]> {
-  // TODO: this needs a separate variable assignment due to https://github.com/biomejs/biome/issues/2962#issuecomment-3704408970
+function allDevicesListCached() {
   // biome-ignore lint/suspicious/noAssignInExpressions: TODO: https://github.com/biomejs/biome/discussions/7592
-  const devices = await (allDevicesCachedPromise ??= getAllDevices({
+  return (allDevicesCachedPromise ??= getAllDevices({
     ignoreDisplayGroups: true,
     quiet: true,
   }));
-  return devices.map((device) => device.info.name);
+}
+
+// Note: this implementation assumes that we are in a short-running process. If
+// we are not, then we should not cache for the whole process lifetime.
+export async function allDevices(): Promise<{
+  [name: string]: Display | VirtualScreen;
+}> {
+  return Object.fromEntries(
+    (await allDevicesListCached()).map((device) => [device.info.name, device]),
+  );
+}
+
+// Note: this implementation assumes that we are in a short-running process. If
+// we are not, then we should not cache for the whole process lifetime.
+export async function allDeviceNames(): Promise<string[]> {
+  return (await allDevicesListCached()).map((device) => device.info.name);
 }
 
 function parseArgs() {

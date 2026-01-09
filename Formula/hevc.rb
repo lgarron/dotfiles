@@ -6,6 +6,7 @@ class Hevc < Formula
   head "https://github.com/lgarron/dotfiles.git", :branch => "main"
 
   depends_on "oven-sh/bun/bun"
+  depends_on "lgarron/lgarron/reveal-macos"
   # TODO: https://github.com/orgs/Homebrew/discussions/5788
   # depends_on cask: "handbrake"
 

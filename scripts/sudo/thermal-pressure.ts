@@ -4,17 +4,25 @@ import assert from "node:assert";
 import { object } from "@optique/core";
 import { run } from "@optique/run";
 import { PrintableShellCommand } from "printable-shell-command";
-import { byOption } from "../lib/optique";
+import { byOption, setupSudoOnlyArgs } from "../lib/optique";
 import { persistentSudo } from "../lib/persistentSudo";
 
 function parseArgs() {
-  return run(object({}), byOption());
+  return run(
+    object({
+      ...setupSudoOnlyArgs,
+    }),
+    byOption(),
+  );
 }
 
 export async function thermalPressure(
-  _args: ReturnType<typeof parseArgs>,
+  args: ReturnType<typeof parseArgs>,
 ): Promise<void> {
   await persistentSudo();
+  if (args.setupSudoOnly) {
+    return;
+  }
 
   const { stdout } = new PrintableShellCommand("powermetrics", [
     ["-n", "1"],

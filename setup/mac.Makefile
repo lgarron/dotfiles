@@ -176,9 +176,9 @@ mac-apps-bulk-workarounds:
 mac-setup-homebrew-lgarron-lgarron: setup-npm-packages
 	./setup/scripts/mac-homebrew-install-all-lgarron-lgarron.ts
 
-.PHONY: mac-setup-homebrew-reinstall-lgarron-lgarron
-mac-setup-homebrew-reinstall-lgarron-lgarron:
-	./setup/scripts/mac-homebrew-reinstall-all-lgarron-lgarron.fish
+.PHONY: mac-setup-homebrew-lgarron-lgarron-reinstall
+mac-setup-homebrew-lgarron-lgarron-reinstall: setup-npm-packages
+	./setup/scripts/mac-homebrew-install-all-lgarron-lgarron.ts --reinstall
 
 # Dock
 

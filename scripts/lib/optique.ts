@@ -217,3 +217,7 @@ export function withSuggestions(
     suggest: (prefix: string) => prefixFilterSuggest(prefix, iterableFn),
   };
 }
+
+export const setupSudoOnlyArgs = {
+  setupSudoOnly: option("--setup-sudo-only"),
+};

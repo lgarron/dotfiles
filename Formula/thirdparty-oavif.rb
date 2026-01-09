@@ -7,6 +7,10 @@ class ThirdpartyOavif < Formula
   sha256 "a36e3b4000e761bec1301f17391790ba38e6b691dfeaf7d1e2e9c4cab442b9a7"
   head "https://github.com/gianni-rosato/oavif.git", :branch => "main"
 
+  depends_on "webp"
+  depends_on "libavif"
+  depends_on "libjpeg-turbo"
+  depends_on "libspng"
   depends_on "zig" => :build
   # TODO: do we need to declare other deps?
   # https://github.com/gianni-rosato/oavif?tab=readme-ov-file#compilation

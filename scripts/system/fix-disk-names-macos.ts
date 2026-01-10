@@ -4,14 +4,15 @@ import { join } from "node:path";
 import { styleText } from "node:util";
 import { object, option } from "@optique/core";
 import { run } from "@optique/run";
-import { $, Glob } from "bun";
+import { Glob } from "bun";
 import { Path, stringifyIfPath } from "path-class";
 import { Plural } from "plural-chain";
+import { PrintableShellCommand } from "printable-shell-command";
 import { byOption } from "../lib/optique";
 
 const VOLUMES_DIR = new Path("/Volumes/");
 const WELL_KNOWN_DISK_METADATA_JSON_PATH = new Path(
-  ".well-known/disk-metadata.json",
+  "./.well-known/disk-metadata.json",
 );
 
 function parseArgs() {
@@ -73,7 +74,11 @@ export async function fixDiskNamesMacOS(
       if (args.dryRun) {
         console.log("Skipping due to dry run.");
         try {
-          await $`diskutil rename ${currentVolumeName} ${expectedName}`;
+          await new PrintableShellCommand("diskutil", [
+            "rename",
+            currentVolumeName,
+            expectedName,
+          ]).shellOut();
         } catch (e) {
           console.error(e);
           numFailures++;

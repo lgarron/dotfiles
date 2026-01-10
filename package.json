@@ -24,10 +24,5 @@
     "temporal-ponyfill": "^0.1.0",
     "trash": "^10.0.0",
     "xdg-basedir": "^5.1.0"
-  },
-  "overrides": {
-    "@optique/core": "0.9.0-dev.278",
-    "@optique/git": "0.9.0-dev.278",
-    "@optique/run": "0.9.0-dev.278"
   }
 }

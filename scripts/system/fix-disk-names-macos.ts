@@ -9,6 +9,7 @@ import { Path, stringifyIfPath } from "path-class";
 import { Plural } from "plural-chain";
 import { PrintableShellCommand } from "printable-shell-command";
 import { byOption } from "../lib/optique";
+import type { DiskMetadata } from "./fix-disk-names-macos/schema";
 
 const VOLUMES_DIR = new Path("/Volumes/");
 const WELL_KNOWN_DISK_METADATA_JSON_PATH = new Path(
@@ -27,10 +28,6 @@ function parseArgs() {
 export async function fixDiskNamesMacOS(
   args: ReturnType<typeof parseArgs>,
 ): Promise<void> {
-  interface DiskMetadata {
-    name: string;
-  }
-
   let numFailures = 0;
 
   function formattedDiskName(

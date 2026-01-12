@@ -30,13 +30,10 @@
     abbr -a mcb "make reset setup"
 
     # `cubing.js` targets I use often.
-    abbr -a mta "make test-all"
-    abbr -a kta "mak test-all"
-    abbr -a mtf "time make -j 16 test-fast"
-    abbr -a ktf "mak test-fast"
-    abbr -a kch "mak check"
     abbr -a kh "mak check"
-    abbr -a kk "mak check"
+    abbr -a khf "mak check-fast"
+    abbr -a kl "mak lint"
+
     # Targets for other programs
     abbr -a kt "mak test"
 
@@ -62,8 +59,7 @@
         abbr_anyarg $make_command rs "reset setup"
 
         # `cubing.js` targets I use often.
-        abbr_anyarg $make_command ta test-all
-        abbr_anyarg $make_command tf test-fast
+        abbr_anyarg $make_command cf check-fast
     end
 
 ## JavaScript

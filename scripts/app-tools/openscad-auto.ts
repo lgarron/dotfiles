@@ -164,7 +164,7 @@ ${variants.map((v) => `- ${mapImplicitDefault(v, `(${DEFAULT_VARIANT})`)}`)}
       ["-D", `VARIANT = ${JSON.stringify(variant)}`],
       ["-o", outputFile],
       sourceFile,
-    ]).stderr({ env: { FONTCONFIG_PATH } });
+    ]).stderr({ env: { ...env, FONTCONFIG_PATH } });
 
     let totalRenderingTime: string | undefined;
     // TODO line iterator convenience for `stdout`.

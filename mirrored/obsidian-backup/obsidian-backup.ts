@@ -15,8 +15,10 @@ import { LockfileMutex } from "lockfile-mutex";
 import { Path } from "path-class";
 import { Plural } from "plural-chain";
 import { PrintableShellCommand } from "printable-shell-command";
+import { Temporal } from "temporal-ponyfill";
 import { xdgData } from "xdg-basedir";
 import { sendMessage } from "../../scripts/api/pushover";
+import { monotonicNow } from "../../scripts/lib/monotonic-now";
 
 try {
   const DATA_ROOT_DIR = Path.xdg.data.join("obsidian-backup");
@@ -219,7 +221,22 @@ try {
     }
   }
 
+  let lastAttemptedGC: Temporal.Instant | undefined;
+  const GC_INTERVAL = Temporal.Duration.from({ minutes: 5 });
+
   async function garbageCollect(): Promise<void> {
+    const monotonicNowTime = monotonicNow();
+    if (
+      lastAttemptedGC &&
+      // TODO: comparison
+      monotonicNowTime.since(lastAttemptedGC).total("seconds") <
+        GC_INTERVAL.total("seconds")
+    ) {
+      console.log("Skipping garbage collection. (Already done recently.)");
+      return;
+    }
+    lastAttemptedGC = monotonicNowTime;
+
     console.log("🚮🚮🚮🚮🚮🚮🚮🚮");
     console.write("Garbage collecting at operation: ");
     await $`cd ${DIR} && ${JJ} op log --no-graph --limit 1 --template "self.id()"`;
@@ -293,6 +310,7 @@ Oldest squashed commit: ${oldestSquashedDate.multipurposeTimestamp}`;
     }
     await $`cd ${DIR} && ${JJ} op abandon ..@-`; // TODO: does this actually enable garbage collection of objects properly?
     await $`cd ${DIR} && ${JJ} util gc --expire=now`;
+    await $`cd ${DIR} && ${JJ} debug reindex`;
     if (numPruned > 0) {
       await debugLog(
         `Pruned ${Plural.num.s(numPruned)`commits`} out of ${Plural.num.s(count)`commits`} (leaving ${Plural.num.s(count - numPruned)`commits`}).`,
@@ -313,7 +331,6 @@ Oldest squashed commit: ${oldestSquashedDate.multipurposeTimestamp}`;
         const date = new ErgonomicDate();
         await $`cd ${DIR} && ${JJ} commit --message ${date.multipurposeTimestamp}`;
         await debugLog("Added commit.", date);
-        // TODO: run garbage collection on a timer instead.
         await garbageCollect();
       }
     } catch (e) {

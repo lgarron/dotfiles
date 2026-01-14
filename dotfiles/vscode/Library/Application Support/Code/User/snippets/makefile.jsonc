@@ -76,7 +76,7 @@
     "body": [
       ".PHONY: clean",
       "clean:",
-      "\t#rm -rf ./dist"
+      "\t#rm -rf ./dist/"
     ],
     "description": "clean (JS)"
   },
@@ -85,7 +85,7 @@
     "body": [
       ".PHONY: reset",
       "reset: clean",
-      "\t#rm -rf ./node_modules ./target"
+      "\t#rm -rf ./node_modules/ ./target/"
     ],
     "description": "reset"
   },

@@ -798,13 +798,13 @@
 			<key>enabled</key>
 			<true/>
 			<key>modificationDate</key>
-			<real>702250641.61657298</real>
+			<real>790078964.93863595</real>
 			<key>name</key>
 			<string>Obisidan</string>
 			<key>settings</key>
 			<dict>
 				<key>folderDepth</key>
-				<integer>-1</integer>
+				<integer>3</integer>
 				<key>folderTypes</key>
 				<array>
 					<string>public.folder</string>
@@ -813,6 +813,10 @@
 				<string>QSDirectoryParser</string>
 				<key>path</key>
 				<string>~/Library/Mobile Documents/iCloud~md~obsidian/Documents</string>
+				<key>skipItem</key>
+				<false/>
+				<key>watchTarget</key>
+				<true/>
 			</dict>
 			<key>source</key>
 			<string>QSFileSystemObjectSource</string>
@@ -1442,7 +1446,6 @@
 	</dict>
 	<key>omittedItems</key>
 	<array>
-		<string>/Users/lgarron/Library/Mobile Documents/iCloud~md~obsidian/Documents</string>
 		<string>/Users/lgarron/Applications/CrossOver/Ubisoft</string>
 	</array>
 </dict>

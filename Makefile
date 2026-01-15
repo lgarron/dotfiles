@@ -6,6 +6,18 @@ auto:
 
 ########
 
+.PHONY: common
+common: \
+	fish \
+	git \
+	jj \
+	ripgrep \
+	set-dotfiles-repo-email \
+	xdg-basedir-workarounds \
+	yt-dlp \
+	zellij
+
+
 .PHONY: mac-common
 mac-common: \
 	mac-setup-sudo \
@@ -16,12 +28,9 @@ mac-common: \
 
 .PHONY: mac-common-dotfiles
 mac-common-dotfiles: \
+	common \
 	mac-text-encoding \
-	set-dotfiles-repo-email \
 	compressor \
-	fish \
-	git \
-	jj \
 	karabiner \
 	lglogin \
 	minecraft \
@@ -29,15 +38,12 @@ mac-common-dotfiles: \
 	niceplz \
 	quicksilver \
 	sd-card-backup \
-	xdg-basedir-workarounds \
 	vscode \
-	vscode-settings-macos \
-	yt-dlp \
-	zellij \
-	ripgrep
+	vscode-settings-macos
 
 .PHONY: germain
-germain: mac-common
+germain: \
+	mac-common
 
 .PHONY: pythagoras
 pythagoras: \
@@ -49,16 +55,9 @@ pythagoras: \
 
 .PHONY: linux
 linux: \
-	git \
-	jj \
-	set-dotfiles-repo-email \
-	fish \
-	xdg-basedir-workarounds \
-	yt-dlp \
-	zellij \
-	ripgrep
+	common
 
-# Sourcing symlinked `.fish` files doesn't seem to work on Dreamhst, so we have to copy all the files we want `fish` to use. 😕
+# Sourcing symlinked `.fish` files doesn't seem to work on Dreamhost, so we have to copy all the files we want `fish` to use. 😕
 .PHONY: dreamhost
 dreamhost:
 	mkdir -p ~/.config/fish

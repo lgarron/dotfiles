@@ -18,7 +18,7 @@ import { PrintableShellCommand } from "printable-shell-command";
 import { Temporal } from "temporal-ponyfill";
 import { xdgData } from "xdg-basedir";
 import { sendMessage } from "../../scripts/api/pushover";
-import { monotonicNow } from "../../scripts/lib/monotonic-now";
+import { Debouncer } from "../../scripts/lib/temporal/Debouncer";
 
 try {
   const DATA_ROOT_DIR = Path.xdg.data.join("obsidian-backup");
@@ -223,21 +223,13 @@ try {
     }
   }
 
-  let lastAttemptedGC: Temporal.Instant | undefined;
   const GC_INTERVAL = Temporal.Duration.from({ minutes: 5 });
-
+  const gcDebouncer = new Debouncer(GC_INTERVAL);
   async function garbageCollect(): Promise<void> {
-    const monotonicNowTime = monotonicNow();
-    if (
-      lastAttemptedGC &&
-      // TODO: comparison
-      monotonicNowTime.since(lastAttemptedGC).total("seconds") <
-        GC_INTERVAL.total("seconds")
-    ) {
+    if (!gcDebouncer.lease()) {
       await debugLog("Skipping garbage collection. (Already done recently.)");
       return;
     }
-    lastAttemptedGC = monotonicNowTime;
 
     console.log("🚮🚮🚮🚮🚮🚮🚮🚮");
     const currentOp = (

@@ -15,9 +15,9 @@ import { ErgonomicDate } from "ergonomic-date";
 import { Plural } from "plural-chain";
 import { PrintableShellCommand } from "printable-shell-command";
 import { Temporal } from "temporal-ponyfill";
-import { monotonicNow } from "../lib/monotonic-now";
 import { byOption, simpleFileInOut } from "../lib/optique";
-import { sleepDuration } from "../lib/sleep";
+import { monotonicNow } from "../lib/temporal/monotonicNow";
+import { sleepDuration } from "../lib/temporal/sleep";
 
 const HANDBRAKE_8_BIT_DEPTH_PRESET = "HEVC 8-bit (qv65)";
 const HANDBRAKE_10_BIT_DEPTH_PRESET = "HEVC 10-bit (qv65)";

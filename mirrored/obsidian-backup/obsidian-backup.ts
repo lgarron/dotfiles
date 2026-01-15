@@ -29,11 +29,13 @@ try {
     date: ErgonomicDate = new ErgonomicDate(),
   ) {
     await LOG_FOLDER.join(date.localYearMonth).mkdir();
+    const logMessage = `[${process.pid}][${date.multipurposeTimestamp}] ${s}\n`;
     await appendFile(
       LOG_FOLDER.join(date.localYearMonth, `${date.localYearMonthDay}.log`)
         .path,
-      `[${process.pid}][${date.multipurposeTimestamp}] ${s}\n`,
+      logMessage,
     );
+    console.write(logMessage);
   }
 
   await debugLog("Starting daemon…");
@@ -232,15 +234,16 @@ try {
       monotonicNowTime.since(lastAttemptedGC).total("seconds") <
         GC_INTERVAL.total("seconds")
     ) {
-      console.log("Skipping garbage collection. (Already done recently.)");
+      await debugLog("Skipping garbage collection. (Already done recently.)");
       return;
     }
     lastAttemptedGC = monotonicNowTime;
 
     console.log("🚮🚮🚮🚮🚮🚮🚮🚮");
-    console.write("Garbage collecting at operation: ");
-    await $`cd ${DIR} && ${JJ} op log --no-graph --limit 1 --template "self.id()"`;
-    console.log();
+    const currentOp = (
+      await $`cd ${DIR} && ${JJ} op log --no-graph --limit 1 --template "self.id()"`.text()
+    ).trim();
+    await debugLog(`Garbage collecting at operation: ${currentOp}`);
 
     // TODO: this assumes linear history with well-formatted commit messages.
     const commits =

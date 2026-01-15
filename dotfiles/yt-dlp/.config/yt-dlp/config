@@ -1,0 +1,9 @@
+# JS runtime is required for YouTube now
+--no-js-runtimes # disable `deno`
+--js-runtimes bun # SEt to `bun`
+
+# Needed for some vids/sites
+--cookies-from-browser chrome
+
+# https://github.com/yt-dlp/yt-dlp/issues/14923 Avoid AI upscaled resolutions
+--format "bv*[format_id!*=-sr]+ba/b[format_id!*=-sr]"

@@ -32,6 +32,7 @@ mac-common-dotfiles: \
 	xdg-basedir-workarounds \
 	vscode \
 	vscode-settings-macos \
+	yt-dlp \
 	zellij \
 	ripgrep
 
@@ -53,6 +54,7 @@ linux: \
 	set-dotfiles-repo-email \
 	fish \
 	xdg-basedir-workarounds \
+	yt-dlp \
 	zellij \
 	ripgrep
 
@@ -85,6 +87,7 @@ PACKAGES += ripgrep
 PACKAGES += sd-card-backup
 PACKAGES += vscode
 PACKAGES += xdg-basedir-workarounds
+PACKAGES += yt-dlp
 PACKAGES += zellij
 
 .PHONY: $(PACKAGES)

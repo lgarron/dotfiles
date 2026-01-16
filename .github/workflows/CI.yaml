@@ -9,7 +9,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - uses: oven-sh/setup-bun@v1
-      - uses: fish-actions/install-fish@v1
+      - uses: cubing/actions-workflows/actions/install-fish@cae7017d866232927806e0396a64c8ecd414ab4b
       - run: make setup
       - run: make test-bun
       - run: make test-scripts

@@ -148,7 +148,7 @@
 
 ### git checkout
 
-    abbr -a gco "# Try: gw / ge"
+    abbr -a gco "# Try: gw / g-"
     abbr -a gcb "# Try: gw c"
 
 ### git cherry-pick

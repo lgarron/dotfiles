@@ -2093,6 +2093,29 @@
 		</dict>
 		<dict>
 			<key>ID</key>
+			<string>DC97B64E-2C7D-4FDD-861A-B92E0A16C811</string>
+			<key>character</key>
+			<string>'</string>
+			<key>command</key>
+			<dict>
+				<key>actionID</key>
+				<string>[Action]:/Users/lgarron/Library/Application Support/Quicksilver/Actions/Ignore input and create temporary directory.scpt</string>
+				<key>directID</key>
+				<string>/Users/lgarron</string>
+			</dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyCode</key>
+			<integer>39</integer>
+			<key>modifiers</key>
+			<integer>1310985</integer>
+			<key>onPress</key>
+			<true/>
+			<key>type</key>
+			<string>QSHotKeyTrigger</string>
+		</dict>
+		<dict>
+			<key>ID</key>
 			<string>F77FC311-557C-4B1B-B8B3-3DA959E88EB8</string>
 			<key>character</key>
 			<string>U</string>

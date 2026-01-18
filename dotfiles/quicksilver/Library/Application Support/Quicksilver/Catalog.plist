@@ -11,17 +11,42 @@
 			<array>
 				<dict>
 					<key>ID</key>
-					<string>111F357D-22C9-4436-AD7A-4614CEF57751</string>
+					<string>0EE087B9-E28B-4BF1-8061-9B39A2DAAD38</string>
 					<key>children</key>
 					<array/>
 					<key>enabled</key>
 					<true/>
 					<key>name</key>
-					<string>AirDrop.app</string>
+					<string>Applications</string>
 					<key>settings</key>
 					<dict>
+						<key>folderDepth</key>
+						<integer>1</integer>
+						<key>parser</key>
+						<string>QSDirectoryParser</string>
 						<key>path</key>
-						<string>/System/Library/CoreServices/Finder.app/Contents/Applications/AirDrop.app</string>
+						<string>/System/Library/CoreServices/Finder.app/Contents/Applications</string>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
+				<dict>
+					<key>ID</key>
+					<string>1D807D75-8208-4943-A52B-47AE69B60B4F</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>name</key>
+					<string>Applications</string>
+					<key>settings</key>
+					<dict>
+						<key>folderDepth</key>
+						<integer>1</integer>
+						<key>parser</key>
+						<string>QSDirectoryParser</string>
+						<key>path</key>
+						<string>/System/Applications</string>
 					</dict>
 					<key>source</key>
 					<string>QSFileSystemObjectSource</string>
@@ -45,6 +70,44 @@
 						<string>/System/Library/CoreServices/Applications</string>
 						<key>watchTarget</key>
 						<false/>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
+				<dict>
+					<key>ID</key>
+					<string>C85B3FC2-B42A-4068-A395-C0D9DAF1943A</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>name</key>
+					<string>Chrome Apps.localized</string>
+					<key>settings</key>
+					<dict>
+						<key>folderDepth</key>
+						<integer>1</integer>
+						<key>parser</key>
+						<string>QSDirectoryParser</string>
+						<key>path</key>
+						<string>~/Applications/Chrome Apps.localized</string>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
+				<dict>
+					<key>ID</key>
+					<string>1B4847C2-C69B-4C97-A182-382408B3DD35</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>name</key>
+					<string>FileMerge.app</string>
+					<key>settings</key>
+					<dict>
+						<key>path</key>
+						<string>/Applications/Xcode.app/Contents/Applications/FileMerge.app</string>
 					</dict>
 					<key>source</key>
 					<string>QSFileSystemObjectSource</string>
@@ -100,218 +163,11 @@
 					<key>source</key>
 					<string>QSFileSystemObjectSource</string>
 				</dict>
-				<dict>
-					<key>ID</key>
-					<string>6C5947B9-A531-403B-8C3E-C3C295AC0F2E</string>
-					<key>children</key>
-					<array/>
-					<key>enabled</key>
-					<true/>
-					<key>modificationDate</key>
-					<real>560256323.76131797</real>
-					<key>name</key>
-					<string>minecraft</string>
-					<key>settings</key>
-					<dict>
-						<key>folderDepth</key>
-						<integer>1</integer>
-						<key>path</key>
-						<string>~/Library/Application Support/minecraft</string>
-					</dict>
-					<key>source</key>
-					<string>QSFileSystemObjectSource</string>
-				</dict>
 			</array>
 			<key>enabled</key>
 			<true/>
 			<key>name</key>
 			<string>Library</string>
-			<key>source</key>
-			<string>QSGroupObjectSource</string>
-		</dict>
-		<dict>
-			<key>ID</key>
-			<string>0F68F604-1BE8-48EF-97DE-D25C740CABF4</string>
-			<key>children</key>
-			<array>
-				<dict>
-					<key>ID</key>
-					<string>25FB08F1-B5EC-4B34-9320-A84B58998A6F</string>
-					<key>children</key>
-					<array/>
-					<key>enabled</key>
-					<true/>
-					<key>modificationDate</key>
-					<real>635210632.00345004</real>
-					<key>name</key>
-					<string>Code</string>
-					<key>path</key>
-					<array>
-						<string>/Users/lgarron/Code</string>
-					</array>
-					<key>settings</key>
-					<dict>
-						<key>descendIntoBundles</key>
-						<false/>
-						<key>folderDepth</key>
-						<integer>1</integer>
-						<key>folderTypes</key>
-						<array>
-							<string>public.folder</string>
-						</array>
-						<key>parser</key>
-						<string>QSDirectoryParser</string>
-						<key>path</key>
-						<string>/Users/lgarron/Code</string>
-					</dict>
-					<key>source</key>
-					<string>QSFileSystemObjectSource</string>
-				</dict>
-				<dict>
-					<key>ID</key>
-					<string>E16A768D-725E-4BD0-B199-F5086C76E01C</string>
-					<key>children</key>
-					<array/>
-					<key>enabled</key>
-					<true/>
-					<key>modificationDate</key>
-					<real>639107747.18431902</real>
-					<key>name</key>
-					<string>github.com (git)</string>
-					<key>settings</key>
-					<dict>
-						<key>folderDepth</key>
-						<integer>2</integer>
-						<key>parser</key>
-						<string>QSDirectoryParser</string>
-						<key>path</key>
-						<string>~/Code/git/github.com</string>
-					</dict>
-					<key>source</key>
-					<string>QSFileSystemObjectSource</string>
-				</dict>
-				<dict>
-					<key>ID</key>
-					<string>82CB3911-82D8-4F36-912F-59C1C2CF78FA</string>
-					<key>children</key>
-					<array/>
-					<key>enabled</key>
-					<true/>
-					<key>modificationDate</key>
-					<real>741499540.46566403</real>
-					<key>name</key>
-					<string>git</string>
-					<key>settings</key>
-					<dict>
-						<key>folderDepth</key>
-						<integer>2</integer>
-						<key>parser</key>
-						<string>QSDirectoryParser</string>
-						<key>path</key>
-						<string>~/Code/git</string>
-					</dict>
-					<key>source</key>
-					<string>QSFileSystemObjectSource</string>
-				</dict>
-				<dict>
-					<key>ID</key>
-					<string>8AED1BBA-0215-4B05-A1DD-2D129204FB4B</string>
-					<key>children</key>
-					<array/>
-					<key>enabled</key>
-					<true/>
-					<key>modificationDate</key>
-					<real>702954079.55804002</real>
-					<key>name</key>
-					<string>bitbucket.org</string>
-					<key>settings</key>
-					<dict>
-						<key>folderDepth</key>
-						<integer>2</integer>
-						<key>folderTypes</key>
-						<array>
-							<string>public.folder</string>
-						</array>
-						<key>parser</key>
-						<string>QSDirectoryParser</string>
-						<key>path</key>
-						<string>~/Code/git/bitbucket.org</string>
-					</dict>
-					<key>source</key>
-					<string>QSFileSystemObjectSource</string>
-				</dict>
-				<dict>
-					<key>ID</key>
-					<string>BDFAF598-D99F-4100-BFB5-07D44B2EFD2A</string>
-					<key>children</key>
-					<array/>
-					<key>enabled</key>
-					<true/>
-					<key>modificationDate</key>
-					<real>763262314.36240804</real>
-					<key>name</key>
-					<string>jj</string>
-					<key>settings</key>
-					<dict>
-						<key>folderDepth</key>
-						<integer>2</integer>
-						<key>parser</key>
-						<string>QSDirectoryParser</string>
-						<key>path</key>
-						<string>~/Code/jj</string>
-					</dict>
-					<key>source</key>
-					<string>QSFileSystemObjectSource</string>
-				</dict>
-				<dict>
-					<key>ID</key>
-					<string>C4115724-62A5-4977-92D5-698E56865490</string>
-					<key>children</key>
-					<array/>
-					<key>enabled</key>
-					<true/>
-					<key>modificationDate</key>
-					<real>763262320.67815602</real>
-					<key>name</key>
-					<string>github.com (jj)</string>
-					<key>settings</key>
-					<dict>
-						<key>folderDepth</key>
-						<integer>2</integer>
-						<key>parser</key>
-						<string>QSDirectoryParser</string>
-						<key>path</key>
-						<string>~/Code/jj/github.com</string>
-					</dict>
-					<key>source</key>
-					<string>QSFileSystemObjectSource</string>
-				</dict>
-				<dict>
-					<key>ID</key>
-					<string>059D5296-E511-42E7-BEA9-1F69BBEA2AB6</string>
-					<key>children</key>
-					<array/>
-					<key>enabled</key>
-					<true/>
-					<key>modificationDate</key>
-					<real>786934092.61285698</real>
-					<key>name</key>
-					<string>homebrew-lgarron</string>
-					<key>settings</key>
-					<dict>
-						<key>folderDepth</key>
-						<integer>1</integer>
-						<key>path</key>
-						<string>/opt/homebrew/Library/Taps/lgarron/homebrew-lgarron</string>
-					</dict>
-					<key>source</key>
-					<string>QSFileSystemObjectSource</string>
-				</dict>
-			</array>
-			<key>enabled</key>
-			<true/>
-			<key>name</key>
-			<string>Code</string>
 			<key>source</key>
 			<string>QSGroupObjectSource</string>
 		</dict>
@@ -592,6 +448,256 @@
 		</dict>
 		<dict>
 			<key>ID</key>
+			<string>0F68F604-1BE8-48EF-97DE-D25C740CABF4</string>
+			<key>children</key>
+			<array>
+				<dict>
+					<key>ID</key>
+					<string>25FB08F1-B5EC-4B34-9320-A84B58998A6F</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>modificationDate</key>
+					<real>635210632.00345004</real>
+					<key>name</key>
+					<string>Code</string>
+					<key>path</key>
+					<array>
+						<string>/Users/lgarron/Code</string>
+					</array>
+					<key>settings</key>
+					<dict>
+						<key>descendIntoBundles</key>
+						<false/>
+						<key>folderDepth</key>
+						<integer>1</integer>
+						<key>folderTypes</key>
+						<array>
+							<string>public.folder</string>
+						</array>
+						<key>parser</key>
+						<string>QSDirectoryParser</string>
+						<key>path</key>
+						<string>/Users/lgarron/Code</string>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
+				<dict>
+					<key>ID</key>
+					<string>E16A768D-725E-4BD0-B199-F5086C76E01C</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>modificationDate</key>
+					<real>639107747.18431902</real>
+					<key>name</key>
+					<string>github.com (git)</string>
+					<key>settings</key>
+					<dict>
+						<key>folderDepth</key>
+						<integer>2</integer>
+						<key>parser</key>
+						<string>QSDirectoryParser</string>
+						<key>path</key>
+						<string>~/Code/git/github.com</string>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
+				<dict>
+					<key>ID</key>
+					<string>82CB3911-82D8-4F36-912F-59C1C2CF78FA</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>modificationDate</key>
+					<real>741499540.46566403</real>
+					<key>name</key>
+					<string>git</string>
+					<key>settings</key>
+					<dict>
+						<key>folderDepth</key>
+						<integer>2</integer>
+						<key>parser</key>
+						<string>QSDirectoryParser</string>
+						<key>path</key>
+						<string>~/Code/git</string>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
+				<dict>
+					<key>ID</key>
+					<string>C0972AD8-1AFA-4431-A4C3-92AFB47B60A2</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>modificationDate</key>
+					<real>790399602.23646104</real>
+					<key>name</key>
+					<string>codeberg.org</string>
+					<key>settings</key>
+					<dict>
+						<key>folderDepth</key>
+						<integer>2</integer>
+						<key>parser</key>
+						<string>QSDirectoryParser</string>
+						<key>path</key>
+						<string>~/Code/git/codeberg.org</string>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
+				<dict>
+					<key>ID</key>
+					<string>8AED1BBA-0215-4B05-A1DD-2D129204FB4B</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>modificationDate</key>
+					<real>702954079.55804002</real>
+					<key>name</key>
+					<string>bitbucket.org</string>
+					<key>settings</key>
+					<dict>
+						<key>folderDepth</key>
+						<integer>2</integer>
+						<key>folderTypes</key>
+						<array>
+							<string>public.folder</string>
+						</array>
+						<key>parser</key>
+						<string>QSDirectoryParser</string>
+						<key>path</key>
+						<string>~/Code/git/bitbucket.org</string>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
+				<dict>
+					<key>ID</key>
+					<string>059D5296-E511-42E7-BEA9-1F69BBEA2AB6</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>modificationDate</key>
+					<real>786934092.61285698</real>
+					<key>name</key>
+					<string>homebrew-lgarron</string>
+					<key>settings</key>
+					<dict>
+						<key>folderDepth</key>
+						<integer>1</integer>
+						<key>path</key>
+						<string>/opt/homebrew/Library/Taps/lgarron/homebrew-lgarron</string>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
+			</array>
+			<key>enabled</key>
+			<true/>
+			<key>name</key>
+			<string>Code</string>
+			<key>source</key>
+			<string>QSGroupObjectSource</string>
+		</dict>
+		<dict>
+			<key>ID</key>
+			<string>670BB3F9-8A61-4F4D-BF4E-0F9FC9C779D7</string>
+			<key>children</key>
+			<array>
+				<dict>
+					<key>ID</key>
+					<string>6C5947B9-A531-403B-8C3E-C3C295AC0F2E</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>modificationDate</key>
+					<real>560256323.76131797</real>
+					<key>name</key>
+					<string>minecraft</string>
+					<key>settings</key>
+					<dict>
+						<key>folderDepth</key>
+						<integer>1</integer>
+						<key>path</key>
+						<string>~/Library/Application Support/minecraft</string>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
+				<dict>
+					<key>ID</key>
+					<string>E54D3A11-1A25-48CD-AB75-E79B928A4E5D</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>modificationDate</key>
+					<real>790400171.26970804</real>
+					<key>name</key>
+					<string>CrossOver</string>
+					<key>settings</key>
+					<dict>
+						<key>excludeFiletypes</key>
+						<array>
+							<string>com.adobe.pdf</string>
+							<string>public.folder</string>
+						</array>
+						<key>folderDepth</key>
+						<integer>2</integer>
+						<key>folderTypes</key>
+						<array/>
+						<key>parser</key>
+						<string>QSDirectoryParser</string>
+						<key>path</key>
+						<string>~/Applications/CrossOver</string>
+						<key>skipItem</key>
+						<true/>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
+				<dict>
+					<key>ID</key>
+					<string>E694C0C8-6928-4B1E-8C67-10E0E42B1B3F</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>modificationDate</key>
+					<real>790400132.17438805</real>
+					<key>name</key>
+					<string>Replays</string>
+					<key>settings</key>
+					<dict>
+						<key>folderDepth</key>
+						<integer>1</integer>
+						<key>path</key>
+						<string>~/Documents/Trackmania/Replays</string>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
+			</array>
+			<key>enabled</key>
+			<true/>
+			<key>name</key>
+			<string>Games</string>
+			<key>source</key>
+			<string>QSGroupObjectSource</string>
+		</dict>
+		<dict>
+			<key>ID</key>
 			<string>124876DF-4F8A-440D-83B1-D1A496F8CFD5</string>
 			<key>children</key>
 			<array>
@@ -674,6 +780,8 @@
 					<array/>
 					<key>enabled</key>
 					<true/>
+					<key>modificationDate</key>
+					<real>790399347.97598004</real>
 					<key>name</key>
 					<string>Library</string>
 					<key>settings</key>
@@ -684,10 +792,29 @@
 						<integer>1</integer>
 						<key>folderTypes</key>
 						<array/>
-						<key>parser</key>
-						<string>QSDirectoryParser</string>
 						<key>path</key>
 						<string>~/Library</string>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
+				<dict>
+					<key>ID</key>
+					<string>5B68BA76-9754-4CE5-A3FD-DFD7EE6390DD</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>modificationDate</key>
+					<real>790399364.85579598</real>
+					<key>name</key>
+					<string>Application Support</string>
+					<key>settings</key>
+					<dict>
+						<key>folderDepth</key>
+						<integer>1</integer>
+						<key>path</key>
+						<string>~/Library/Application Support</string>
 					</dict>
 					<key>source</key>
 					<string>QSFileSystemObjectSource</string>
@@ -699,41 +826,24 @@
 					<array/>
 					<key>enabled</key>
 					<true/>
+					<key>modificationDate</key>
+					<real>790400038.27783406</real>
 					<key>name</key>
 					<string>XCode Additional Tools</string>
 					<key>settings</key>
 					<dict>
-						<key>folderDepth</key>
-						<integer>3</integer>
-						<key>folderTypes</key>
+						<key>excludeFiletypes</key>
 						<array>
-							<string>com.apple.application-bundle</string>
+							<string>com.adobe.pdf</string>
 						</array>
+						<key>folderDepth</key>
+						<integer>2</integer>
+						<key>folderTypes</key>
+						<array/>
 						<key>parser</key>
 						<string>QSDirectoryParser</string>
 						<key>path</key>
 						<string>/Applications/XCode Additional Tools</string>
-					</dict>
-					<key>source</key>
-					<string>QSFileSystemObjectSource</string>
-				</dict>
-				<dict>
-					<key>ID</key>
-					<string>1D807D75-8208-4943-A52B-47AE69B60B4F</string>
-					<key>children</key>
-					<array/>
-					<key>enabled</key>
-					<true/>
-					<key>name</key>
-					<string>Applications</string>
-					<key>settings</key>
-					<dict>
-						<key>folderDepth</key>
-						<integer>1</integer>
-						<key>parser</key>
-						<string>QSDirectoryParser</string>
-						<key>path</key>
-						<string>/System/Applications</string>
 					</dict>
 					<key>source</key>
 					<string>QSFileSystemObjectSource</string>
@@ -768,100 +878,6 @@
 			<string>System</string>
 			<key>source</key>
 			<string>QSGroupObjectSource</string>
-		</dict>
-		<dict>
-			<key>ID</key>
-			<string>C85B3FC2-B42A-4068-A395-C0D9DAF1943A</string>
-			<key>children</key>
-			<array/>
-			<key>enabled</key>
-			<true/>
-			<key>name</key>
-			<string>Chrome Apps.localized</string>
-			<key>settings</key>
-			<dict>
-				<key>folderDepth</key>
-				<integer>1</integer>
-				<key>parser</key>
-				<string>QSDirectoryParser</string>
-				<key>path</key>
-				<string>~/Applications/Chrome Apps.localized</string>
-			</dict>
-			<key>source</key>
-			<string>QSFileSystemObjectSource</string>
-		</dict>
-		<dict>
-			<key>ID</key>
-			<string>56776AE4-A0D0-46C9-9100-9A71B9648332</string>
-			<key>children</key>
-			<array/>
-			<key>enabled</key>
-			<true/>
-			<key>modificationDate</key>
-			<real>790078964.93863595</real>
-			<key>name</key>
-			<string>Obisidan</string>
-			<key>settings</key>
-			<dict>
-				<key>folderDepth</key>
-				<integer>3</integer>
-				<key>folderTypes</key>
-				<array>
-					<string>public.folder</string>
-				</array>
-				<key>parser</key>
-				<string>QSDirectoryParser</string>
-				<key>path</key>
-				<string>~/Library/Mobile Documents/iCloud~md~obsidian/Documents</string>
-				<key>skipItem</key>
-				<false/>
-				<key>watchTarget</key>
-				<true/>
-			</dict>
-			<key>source</key>
-			<string>QSFileSystemObjectSource</string>
-		</dict>
-		<dict>
-			<key>ID</key>
-			<string>20E5C03E-70A2-416A-BBBD-DCB6BE5E759F</string>
-			<key>children</key>
-			<array/>
-			<key>enabled</key>
-			<true/>
-			<key>name</key>
-			<string>Dropbox</string>
-			<key>settings</key>
-			<dict>
-				<key>folderDepth</key>
-				<integer>1</integer>
-				<key>parser</key>
-				<string>QSDirectoryParser</string>
-				<key>path</key>
-				<string>/Volumes/Samos/Pythagoras/Users/lgarron/Dropbox</string>
-			</dict>
-			<key>source</key>
-			<string>QSFileSystemObjectSource</string>
-		</dict>
-		<dict>
-			<key>ID</key>
-			<string>8D718F9A-459D-425B-B2F7-0811E879171C</string>
-			<key>children</key>
-			<array/>
-			<key>enabled</key>
-			<true/>
-			<key>name</key>
-			<string>Applications</string>
-			<key>settings</key>
-			<dict>
-				<key>folderDepth</key>
-				<integer>1</integer>
-				<key>parser</key>
-				<string>QSDirectoryParser</string>
-				<key>path</key>
-				<string>/Applications</string>
-			</dict>
-			<key>source</key>
-			<string>QSFileSystemObjectSource</string>
 		</dict>
 		<dict>
 			<key>ID</key>
@@ -1122,7 +1138,41 @@
 			<key>enabled</key>
 			<true/>
 			<key>name</key>
-			<string>Dropbox</string>
+			<string>Dropbox (home dir)</string>
+			<key>source</key>
+			<string>QSGroupObjectSource</string>
+		</dict>
+		<dict>
+			<key>ID</key>
+			<string>8B2CA909-FA2E-4963-954D-A556CDF615C2</string>
+			<key>children</key>
+			<array>
+				<dict>
+					<key>ID</key>
+					<string>20E5C03E-70A2-416A-BBBD-DCB6BE5E759F</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>name</key>
+					<string>Dropbox</string>
+					<key>settings</key>
+					<dict>
+						<key>folderDepth</key>
+						<integer>1</integer>
+						<key>parser</key>
+						<string>QSDirectoryParser</string>
+						<key>path</key>
+						<string>/Volumes/Samos/Pythagoras/Users/lgarron/Dropbox</string>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
+			</array>
+			<key>enabled</key>
+			<true/>
+			<key>name</key>
+			<string>Dropbox (Pythagoras)</string>
 			<key>source</key>
 			<string>QSGroupObjectSource</string>
 		</dict>
@@ -1284,89 +1334,66 @@
 		</dict>
 		<dict>
 			<key>ID</key>
-			<string>215123B8-19E7-4CC0-9FA2-3A8768861FFE</string>
+			<string>E1005575-5927-455E-817C-6D2DEE4A9DAB</string>
 			<key>children</key>
-			<array/>
+			<array>
+				<dict>
+					<key>ID</key>
+					<string>56776AE4-A0D0-46C9-9100-9A71B9648332</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>modificationDate</key>
+					<real>790399518.15477502</real>
+					<key>name</key>
+					<string>Obisidan</string>
+					<key>settings</key>
+					<dict>
+						<key>folderDepth</key>
+						<integer>3</integer>
+						<key>folderTypes</key>
+						<array>
+							<string>public.folder</string>
+						</array>
+						<key>path</key>
+						<string>~/Library/Mobile Documents/iCloud~md~obsidian/Documents</string>
+						<key>skipItem</key>
+						<false/>
+						<key>watchTarget</key>
+						<true/>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
+				<dict>
+					<key>ID</key>
+					<string>3FDA76EB-3C8A-40EA-A917-F8000788C8C7</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>modificationDate</key>
+					<real>790399521.23597002</real>
+					<key>name</key>
+					<string>Checklists &amp; Cache</string>
+					<key>settings</key>
+					<dict>
+						<key>folderDepth</key>
+						<integer>1</integer>
+						<key>path</key>
+						<string>~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Notes/Checklists &amp; Cache</string>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
+			</array>
 			<key>enabled</key>
 			<true/>
-			<key>settings</key>
-			<dict>
-				<key>modificationDate</key>
-				<real>706381190.68652105</real>
-				<key>path</key>
-				<string>/Applications</string>
-				<key>query</key>
-				<string>kMDItemContentTypeTree == 'com.apple.application'</string>
-			</dict>
-			<key>source</key>
-			<string>QSSpotlightObjectSource</string>
-		</dict>
-		<dict>
-			<key>ID</key>
-			<string>E54D3A11-1A25-48CD-AB75-E79B928A4E5D</string>
-			<key>children</key>
-			<array/>
-			<key>enabled</key>
-			<true/>
-			<key>modificationDate</key>
-			<real>766747660.64736104</real>
 			<key>name</key>
-			<string>CrossOver</string>
-			<key>settings</key>
-			<dict>
-				<key>folderDepth</key>
-				<integer>1</integer>
-				<key>folderTypes</key>
-				<array/>
-				<key>parser</key>
-				<string>QSDirectoryParser</string>
-				<key>path</key>
-				<string>~/Applications/CrossOver</string>
-				<key>skipItem</key>
-				<true/>
-			</dict>
+			<string>Obsidian</string>
 			<key>source</key>
-			<string>QSFileSystemObjectSource</string>
-		</dict>
-		<dict>
-			<key>ID</key>
-			<string>1B4847C2-C69B-4C97-A182-382408B3DD35</string>
-			<key>children</key>
-			<array/>
-			<key>enabled</key>
-			<true/>
-			<key>name</key>
-			<string>FileMerge.app</string>
-			<key>settings</key>
-			<dict>
-				<key>path</key>
-				<string>/Applications/Xcode.app/Contents/Applications/FileMerge.app</string>
-			</dict>
-			<key>source</key>
-			<string>QSFileSystemObjectSource</string>
-		</dict>
-		<dict>
-			<key>ID</key>
-			<string>E694C0C8-6928-4B1E-8C67-10E0E42B1B3F</string>
-			<key>children</key>
-			<array/>
-			<key>enabled</key>
-			<true/>
-			<key>modificationDate</key>
-			<real>781551349.49542105</real>
-			<key>name</key>
-			<string>Replays</string>
-			<key>settings</key>
-			<dict>
-				<key>folderDepth</key>
-				<integer>1</integer>
-				<key>parser</key>
-				<string>QSDirectoryParser</string>
-				<key>path</key>
-				<string>~/Documents/Trackmania/Replays</string>
-			</dict>
-			<key>source</key>
-			<string>QSFileSystemObjectSource</string>
+			<string>QSGroupObjectSource</string>
 		</dict>
 	</array>
 	<key>enabledPresets</key>
@@ -1447,6 +1474,7 @@
 	<key>omittedItems</key>
 	<array>
 		<string>/Users/lgarron/Applications/CrossOver/Ubisoft</string>
+		<string>/Users/lgarron/Applications/CrossOver/Star Wars™ Episode I - Racer™ [GOG.com]/Uninstall Star Wars™ Episode I - Racer™.app</string>
 	</array>
 </dict>
 </plist>

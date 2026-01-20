@@ -15,7 +15,7 @@ import { ErgonomicDate } from "ergonomic-date";
 import { Plural } from "plural-chain";
 import { PrintableShellCommand } from "printable-shell-command";
 import { Temporal } from "temporal-ponyfill";
-import { byOption, simpleFileInOut } from "../lib/optique";
+import { byOption, fileInOut } from "../lib/optique";
 import { monotonicNow } from "../lib/temporal/monotonicNow";
 import { sleepDuration } from "../lib/temporal/sleep";
 
@@ -55,7 +55,10 @@ function parseArgs() {
       ),
       height: optional(option("--height", integer({ min: 1 }))),
       dryRun: optional(option("--dry-run")),
-      ...simpleFileInOut,
+      // `--poll true` should work with files that are still not created yet
+      // (e.g. pending Final Cut Pro exports that are constituted out of
+      // segments on disk).
+      ...fileInOut({ sourceFile: { mustExist: false } }),
     }),
     byOption(),
   );

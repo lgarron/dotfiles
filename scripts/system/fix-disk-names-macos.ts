@@ -73,6 +73,7 @@ export async function fixDiskNamesMacOS(
       );
       if (args.dryRun) {
         console.log("Skipping due to dry run.");
+      } else {
         try {
           await new PrintableShellCommand("diskutil", [
             "rename",

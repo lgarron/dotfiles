@@ -5,7 +5,7 @@ import { run } from "@optique/run";
 import type { Path } from "path-class";
 import { PrintableShellCommand } from "printable-shell-command";
 import { byOption, printOrReveal, simpleFileInOut } from "../lib/optique";
-import { ffprobeFirstVideoStream, pollOption } from "./hevc";
+import { ffprobeFirstVideoStream, pollOption } from "./ffpoll";
 
 // Public domain, from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_generators
 function* makeRangeIterator(start: number, end: number, step = 1) {
@@ -23,7 +23,7 @@ function parseArgs() {
       framesWindow: option("--frames-window", integer({ min: 1 }), {
         description: message`Number of adjacent frames to blur.`,
       }),
-      poll: pollOption,
+      poll: pollOption({ default: "auto" }),
       fps: withDefault(option("--fps", integer({ min: 1 })), 60),
       ...simpleFileInOut,
     }),

@@ -12,12 +12,11 @@ import {
 } from "@optique/core";
 import { run } from "@optique/run";
 import { ErgonomicDate } from "ergonomic-date";
-import { Plural } from "plural-chain";
 import { PrintableShellCommand } from "printable-shell-command";
 import { Temporal } from "temporal-ponyfill";
 import { byOption, fileInOut } from "../lib/optique";
-import { monotonicNow } from "../lib/temporal/monotonicNow";
 import { sleepDuration } from "../lib/temporal/sleep";
+import { ffprobeFirstVideoStream, pollOption } from "./ffpoll";
 
 const HANDBRAKE_8_BIT_DEPTH_PRESET = "HEVC 8-bit (qv65)";
 const HANDBRAKE_10_BIT_DEPTH_PRESET = "HEVC 10-bit (qv65)";
@@ -29,17 +28,10 @@ const HALF_SECOND = Temporal.Duration.from({ milliseconds: 500 });
 
 const FORCE_BIT_DEPTH_FLAG = "--force-bit-depth" as const;
 
-export const pollOption = withDefault(
-  option("--poll", choice(["auto", "false", "true"], { metavar: "POLL" }), {
-    description: message`"Poll for the source file to exist with readable streams."`,
-  }),
-  "auto",
-);
-
 function parseArgs() {
   return run(
     object({
-      poll: pollOption,
+      poll: pollOption({ default: "auto" }),
       quality: withDefault(
         option("--quality", integer({ min: 1, max: 100 }), {
           description: message`Quality value for the HEVC encoder.`,
@@ -62,101 +54,6 @@ function parseArgs() {
     }),
     byOption(),
   );
-}
-
-interface FFprobeStream {
-  codec_type: "video" | "audio" | string;
-  codec_name: string;
-  pix_fmt: string;
-  color_space: string;
-  color_transfer: string;
-  color_primaries: string;
-}
-
-export async function ffprobeFirstVideoStream({
-  sourceFile,
-  poll,
-}: Pick<
-  ReturnType<typeof parseArgs>,
-  "sourceFile" | "poll"
->): Promise<FFprobeStream> {
-  const ffprobeCommand = new PrintableShellCommand("ffprobe", [
-    ["-v", "quiet"],
-    ["-output_format", "json"],
-    "-show_format",
-    "-show_streams",
-    sourceFile,
-  ]);
-  console.log("Analyzing input using command:");
-  ffprobeCommand.print();
-
-  const pollStartTime = monotonicNow();
-  // Custom backoff algorithm.
-  function numSecondsToWait(): Temporal.Duration {
-    const secondsSoFar = Math.floor(
-      monotonicNow().since(pollStartTime).total({ unit: "seconds" }),
-    );
-    globalThis.process.stdout.write(
-      `Polled for ${secondsSoFar} ${Plural.s(secondsSoFar)`seconds`} so far. `,
-    );
-    if (secondsSoFar < 10) {
-      return Temporal.Duration.from({ seconds: 1 });
-    }
-    if (secondsSoFar < 60) {
-      return Temporal.Duration.from({ seconds: 5 });
-    }
-    if (secondsSoFar < 60 * 10) {
-      return Temporal.Duration.from({ seconds: 15 });
-    }
-    if (secondsSoFar > 24 * 60 * 60) {
-      throw new Error("Polling has taken more than 24 hours. Aborting.");
-    }
-    return Temporal.Duration.from({ seconds: 60 });
-  }
-
-  const streams = await (async () => {
-    while (true) {
-      try {
-        const { streams } = (await ffprobeCommand.json()) as {
-          streams: FFprobeStream[];
-        };
-        if (!streams) {
-          throw new Error("No video stream data found.");
-        }
-        return streams;
-      } catch {
-        if (poll === "false") {
-          throw new Error(
-            "Could not get source info and polling is set to `false`. Exiting.",
-          );
-        }
-        if (poll === "auto") {
-          if (!(await sourceFile.existsAsFile())) {
-            throw new Error(
-              "Source file does not exist and polling is set to `auto`. Exiting.",
-            );
-          }
-        }
-        const durationToWait = numSecondsToWait();
-        const seconds = Math.floor(durationToWait.total({ unit: "seconds" }));
-        console.info(
-          `Waiting ${seconds} ${Plural.s({ seconds })} to poll source again…`,
-        );
-        await sleepDuration(durationToWait);
-      }
-    }
-  })();
-
-  const videoStream: FFprobeStream = (() => {
-    for (const stream of streams) {
-      if (stream.codec_type === "video") {
-        return stream;
-      }
-    }
-    throw new Error("No video stream found.");
-  })();
-
-  return videoStream;
 }
 
 export async function hevc(args: ReturnType<typeof parseArgs>): Promise<void> {

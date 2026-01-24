@@ -75,11 +75,13 @@ function parseArgs() {
         "prep",
         object({
           subcommand: constant("prep"),
-          disconnectDisplay: option(
-            "--disconnect-display",
-            withSuggestions(
-              string({ metavar: "DISPLAY_NAME" }),
-              allDeviceNames,
+          disconnectDisplay: optional(
+            option(
+              "--disconnect-display",
+              withSuggestions(
+                string({ metavar: "DISPLAY_NAME" }),
+                allDeviceNames,
+              ),
             ),
           ),
           display: withDefault(

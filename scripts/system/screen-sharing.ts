@@ -30,8 +30,10 @@ const resolutionParser: ValueParser<"sync", string> = {
   $mode: "sync",
   metavar: "RESOLUTION",
   parse: (input) => {
-    if (input.match(/^([1-9][0-9]*)x([1-9][0-9]*)+$/)) {
-      return { success: true, value: input };
+    const match = input.match(/^([1-9][0-9]*)[x×]([1-9][0-9]*)+$/);
+    if (match) {
+      const value = `${match[1]}x${match[2]}`;
+      return { success: true, value };
     } else {
       return {
         success: false,

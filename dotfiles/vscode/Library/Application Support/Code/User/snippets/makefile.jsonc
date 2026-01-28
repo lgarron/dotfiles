@@ -92,7 +92,7 @@
   "bun-dx": {
     "prefix": "dx",
     "body": [
-      "bun x -- bun-dx --package ${1} ${2} --${3}"
+      "bun x -- bun-dx --package ${1} ${2:${1}} --${3}"
     ],
     "description": "Invoke a dependency using `bun-dx`."
   },

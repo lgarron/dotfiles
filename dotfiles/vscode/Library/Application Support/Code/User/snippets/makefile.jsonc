@@ -71,23 +71,20 @@
     ],
     "description": "`bun x -- bun-dx --package @cubing/dev-config package.json -- check`"
   },
-  "clean": {
-    "prefix": "clean",
+  "clean & reset": {
+    "prefix": "clean & reset",
     "body": [
+      "RM_RF = bun -e 'process.argv.slice(1).map(p => process.getBuiltinModule(\"node:fs\").rmSync(p, {recursive: true, force: true, maxRetries: 5}))' --",
+      "",
       ".PHONY: clean",
       "clean:",
-      "\t#rm -rf ./dist/"
-    ],
-    "description": "clean (JS)"
-  },
-  "reset": {
-    "prefix": "reset",
-    "body": [
+      "\t${1:\\${RM_RF\\} ./dist/}${2}",
+      "",
       ".PHONY: reset",
       "reset: clean",
-      "\t#rm -rf ./node_modules/ ./target/"
+      "\t\\${RM_RF\\} ./node_modules/${3}"
     ],
-    "description": "reset"
+    "description": "clean & reset (JS)"
   },
   "bun-dx": {
     "prefix": "dx",

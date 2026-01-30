@@ -3,9 +3,19 @@ name: CI
 on: [push, pull_request]
 
 jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: oven-sh/setup-bun@v1
+      - uses: cubing/actions-workflows/actions/install-fish@cae7017d866232927806e0396a64c8ecd414ab4b
+      - run: make setup
+      - run: make lint-ts-biome
+      - run: make lint-ts-tsc
+      - run: make check-for-duplicate-dependencies
+
   test:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
       - uses: oven-sh/setup-bun@v1
@@ -14,13 +24,9 @@ jobs:
       - run: make test-bun
       - run: make test-scripts
       - run: make test-scripts-non-ts
-      - run: make lint-ts-biome
-      - run: make lint-ts-tsc
-      - run: make check-for-duplicate-dependencies
 
   bootstrap:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
       - run: env CODESPACES=true ./bootstrap.sh

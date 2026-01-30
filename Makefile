@@ -211,7 +211,7 @@ test-scripts-non-ts: setup-npm-packages
 	scripts/git/node_crunchule.fish --help
 
 .PHONY: lint
-lint: lint-ts-biome lint-ts-tsc
+lint: lint-ts-biome lint-ts-tsc check-for-duplicate-dependencies
 
 .PHONY: lint-ts-biome
 lint-ts-biome: setup-npm-packages
@@ -231,3 +231,17 @@ format-ts-biome: setup-npm-packages
 .PHONY: test-bun
 test-bun:
 	bun test
+
+.PHONY: postinstall
+postinstall: dedupe-dependencies
+
+# This is a (hopefully temporary) workaround for: https://github.com/oven-sh/bun/issues/1343
+.PHONY: dedupe-dependencies
+dedupe-dependencies:
+	# Note that we cannot use `--frozen-lockfile` here.
+	bun install --no-save --ignore-scripts
+	bun x -- bun-dx --package bun-dedupe dedupe --
+
+.PHONY: check-for-duplicate-dependencies
+check-for-duplicate-dependencies: setup
+	bun x -- bun-dx --package bun-dedupe dedupe -- --check

@@ -16,6 +16,7 @@ jobs:
       - run: make test-scripts-non-ts
       - run: make lint-ts-biome
       - run: make lint-ts-tsc
+      - run: make check-for-duplicate-dependencies
 
   bootstrap:
     runs-on: ubuntu-latest

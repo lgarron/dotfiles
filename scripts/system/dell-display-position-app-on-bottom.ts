@@ -1,15 +1,14 @@
 #!/usr/bin/env -S bun run --
 
 import { argv } from "node:process";
-import { getAllDevices } from "betterdisplaycli";
+import { tryGetByName } from "betterdisplaycli";
 import { PrintableShellCommand } from "printable-shell-command";
 
 const DISPLAY_NAME = "DELL P2715Q";
 
-const devices = await getAllDevices({ quiet: true });
-const process = argv[2];
-
-if (devices.find((d) => d.info.name === DISPLAY_NAME)) {
+const display = await tryGetByName(DISPLAY_NAME, { quiet: true });
+if (display) {
+  const process = argv[2];
   console.log("Moving window.");
   // TODO: Is this quoting sufficiently safe for AppleScript
   const quotedProcess = process.replace('"', '\\"');

@@ -2,7 +2,7 @@
 
 import { argument, constant, object, option, or, string } from "@optique/core";
 import { run } from "@optique/run";
-import { PrintableShellCommand } from "printable-shell-command";
+import { getByName } from "betterdisplaycli";
 import { byOption, withSuggestions } from "../lib/optique";
 import { allDeviceNames } from "./toggle-retina";
 
@@ -25,28 +25,8 @@ function parseArgs() {
 }
 
 export async function toggleDisplay(displayName: string) {
-  // TODO: push shell calls into `betterdisplaycli.js`.
-
-  const displayArg = displayName
-    ? `--name=${displayName}`
-    : "--displayWithMainStatus";
-  const connected =
-    (
-      await new PrintableShellCommand("betterdisplaycli", [
-        "get",
-        displayArg,
-        "--connected",
-      ]).text()
-    ).trim() === "on";
-
-  const newState = connected ? "off" : "on";
-  await new PrintableShellCommand("betterdisplaycli", [
-    "set",
-    displayArg,
-    `--connected=${newState}`,
-  ])
-    .print()
-    .text();
+  const display = await getByName(displayName);
+  display.boolean.toggle("connected");
 }
 
 export async function listDisplays() {

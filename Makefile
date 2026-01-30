@@ -232,16 +232,9 @@ format-ts-biome: setup-npm-packages
 test-bun:
 	bun test
 
-.PHONY: postinstall
-postinstall: dedupe-dependencies
-
-# This is a (hopefully temporary) workaround for: https://github.com/oven-sh/bun/issues/1343
-.PHONY: dedupe-dependencies
-dedupe-dependencies:
-	# Note that we cannot use `--frozen-lockfile` here.
-	bun install --no-save --ignore-scripts
-	bun x -- bun-dx --package bun-dedupe dedupe --
-
 .PHONY: check-for-duplicate-dependencies
 check-for-duplicate-dependencies: setup
+	# Note that this is known to produce false negatives (no dedupable version
+	# detected, even when there are two versions of the same package that can be
+	# trivially deduped).
 	bun x -- bun-dx --package bun-dedupe dedupe -- --check

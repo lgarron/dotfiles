@@ -92,7 +92,7 @@
     "scope": "javascript,typescript,shell",
     "prefix": "#!",
     "body": [
-      "#!/usr/bin/env node -S --"
+      "#!/usr/bin/env -S node --"
     ],
     "description": "node shebang"
   },

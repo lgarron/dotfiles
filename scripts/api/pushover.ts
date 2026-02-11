@@ -8,7 +8,9 @@ import { run } from "@optique/run";
 import { Path } from "path-class";
 import { byOption } from "../lib/optique";
 
-const SECRETS_FILE_PATH = Path.homedir.join(".ssh/secrets/pushover.json");
+const SECRETS_FILE_PATH = Path.homedir.join(
+  "./.local/secrets/pushover/pushover.json",
+);
 
 export interface PushoverCrendentials {
   appToken: string;

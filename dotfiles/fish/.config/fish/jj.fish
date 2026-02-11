@@ -190,16 +190,18 @@ abbr_subcommand_arg jj t --to diff
 abbr -a jdno --set-cursor "jj diff --name-only --to \"fork_point(%)\"" # Special shortened abbreviation
 abbr -a jdn --set-cursor "jj diff --name-only --to \"@-\"" # Special shortened abbreviation
 
+set JJ_ORIGIN_REPO_URL_COMMAND 'jj git remote list | grep "^origin" | awk "{print \$2}" | tr -d "\n" | sed "s#\.git\$##" | sed "s#^ssh://git@#https://#"'
+
 # "jj GitHub *v*iew repo"
-abbr -a jgv 'open --url (jj git remote list | grep "^origin" | awk "{print \$2}" | tr -d "\n" | sed "s#\.git\$##")'
+abbr -a jgv 'open --url ('$JJ_ORIGIN_REPO_URL_COMMAND')'
 # "jj GitHub *c*ommit"
-abbr -a jgc 'open --url (jj git remote list | grep "^origin" | awk "{print \$2}" | tr -d "\n" | sed "s#\.git\$##"; and echo -n "/commit/"; echo -- (jj here))'
+abbr -a jgc 'open --url ('$JJ_ORIGIN_REPO_URL_COMMAND'; and echo -n "/commit/"; echo -- (jj here))'
 # "jj GitHub *b*ranch"
-abbr -a jgb 'open --url (jj git remote list | grep "^origin" | awk "{print \$2}" | tr -d "\n" | sed "s#\.git\$##"; and echo -n "/commit/"; echo -- (jj guess-branch))'
+abbr -a jgb 'open --url ('$JJ_ORIGIN_REPO_URL_COMMAND'; and echo -n "/commit/"; echo -- (jj guess-branch))'
 # "jj GitHub *A*ctions"
-abbr -a jga 'open --url (jj git remote list | grep "^origin" | awk "{print \$2}" | tr -d "\n" | sed "s#\.git\$##"; and echo -n "/actions/")'
+abbr -a jga 'open --url ('$JJ_ORIGIN_REPO_URL_COMMAND'; and echo -n "/actions/")'
 # "jj GitHub *i*ssues"
-abbr -a jgi 'open --url (jj git remote list | grep "^origin" | awk "{print \$2}" | tr -d "\n" | sed "s#\.git\$##"; and echo -n "/issues/")'
+abbr -a jgi 'open --url ('$JJ_ORIGIN_REPO_URL_COMMAND'; and echo -n "/issues/")'
 
 # LSP override: This is an "exported" function (meant to be used outside this file).
 # @fish-lsp-disable-next-line 4004

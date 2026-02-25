@@ -29,7 +29,7 @@ else if contains $_CURRENT_HOSTNAME Pythagoras
     sfltool clear com.apple.LSSharedFileList.FavoriteItems
 
     mysides add lgarron (to_file_url "/Users/lgarron/")
-    mysides add Dropbox (to_file_url "/Volumes/Samos/.CloudStorage/Data/Dropbox/")
+    mysides add Dropbox (to_file_url "/Volumes/Samos/Pythagoras/Users/lgarron/Dropbox/")
     mysides add "Google Drive" (to_file_url "/Users/lgarron/Google Drive/")
     mysides add OneDrive-Personal (to_file_url "/Users/lgarron/Library/CloudStorage/OneDrive-Personal/")
     mysides add Downloads (to_file_url "/Users/lgarron/Downloads/")

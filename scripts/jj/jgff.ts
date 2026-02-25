@@ -2,6 +2,7 @@
 
 import { object } from "@optique/core";
 import { run } from "@optique/run";
+import { Plural } from "plural-chain";
 import { PrintableShellCommand } from "printable-shell-command";
 import { askYesNo } from "../lib/askYesNo";
 import { byOption } from "../lib/optique";
@@ -43,7 +44,7 @@ export async function jgff(_args: ReturnType<typeof parseArgs>): Promise<void> {
       ],
     ]).shellOut({ print: { skipLineWrapBeforeFirstArg: true } });
     throw new Error(
-      `HEAD (@) has ${numHEADOnlyCommits} non-trivial commits that are not on \`trunk()\`. Not fast-forwarding.`,
+      `HEAD (@) has ${numHEADOnlyCommits} non-trivial ${Plural.s(numHEADOnlyCommits)`commits`} that ${Plural.is_are(numHEADOnlyCommits)} not on \`trunk()\`. Not fast-forwarding.`,
     );
   }
 

@@ -678,7 +678,7 @@
 				</dict>
 			</dict>
 			<key>enabled</key>
-			<true/>
+			<false/>
 			<key>keyCode</key>
 			<integer>36</integer>
 			<key>modifiers</key>
@@ -2094,6 +2094,12 @@
 		<dict>
 			<key>ID</key>
 			<string>DC97B64E-2C7D-4FDD-861A-B92E0A16C811</string>
+			<key>applicationScope</key>
+			<array>
+				<string>com.apple.ScreenSharing</string>
+			</array>
+			<key>applicationScopeType</key>
+			<integer>-1</integer>
 			<key>character</key>
 			<string>'</string>
 			<key>command</key>

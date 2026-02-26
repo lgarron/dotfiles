@@ -21,7 +21,7 @@ if contains $_CURRENT_HOSTNAME Germain
     mysides add "3D Printing" (to_file_url "$HOME/Dropbox/3D Printing/")
     mysides add Volumes (to_file_url "/Volumes/")
     mysides add "Trenzalore Locations" (to_file_url "/Volumes/Trenzalore/Meta/Trenzalore Locations/")
-    mysides add 2025 (to_file_url "/Volumes/Trenzalore/Video Editing/2025/")
+    mysides add 2026 (to_file_url "/Volumes/Trenzalore/Video Editing/2026/")
 
 else if contains $_CURRENT_HOSTNAME Pythagoras
 
@@ -35,7 +35,7 @@ else if contains $_CURRENT_HOSTNAME Pythagoras
     mysides add Downloads (to_file_url "/Users/lgarron/Downloads/")
     mysides add Desktop (to_file_url "/Users/lgarron/Desktop/")
     mysides add Volumes (to_file_url "/Volumes/")
-    mysides add 2025 (to_file_url "/Volumes/Trenzalore/Video Editing/2025/")
+    mysides add 2026 (to_file_url "/Volumes/Trenzalore/Video Editing/2026/")
     mysides add "Trenzalore Locations" (to_file_url "/Volumes/Trenzalore/Meta/Trenzalore Locations/")
     mysides add "HEVC archived.savedSearch" (to_file_url "/Users/lgarron/Library/Saved Searches/HEVC archived.savedSearch")
     mysides add "HEVC archived (from testing).savedSearch" (to_file_url "/Users/lgarron/Library/Saved Searches/HEVC archived (from testing).savedSearch")

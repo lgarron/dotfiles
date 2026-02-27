@@ -26,7 +26,8 @@ else
     set EXTENSION heic
 end
 
-set TEMP_FILE $PARENT_FOLDER/$DATE_STRING" — temp "(time random 1 10000000000).$EXTENSION
+mkdir -p $PARENT_FOLDER/temp/
+set TEMP_FILE $PARENT_FOLDER/temp/$DATE_STRING" — temp "(time random 1 10000000000).$EXTENSION
 echo "taking!"
 screencapture -l$WINDOW_ID -o -t $EXTENSION $TEMP_FILE
 echo "taken!"

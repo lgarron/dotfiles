@@ -14,8 +14,8 @@
     # interactive shell to use the correct `fish` is to invoke it ourselves
     # here.
     if echo $FISH_VERSION | grep "^3" > /dev/null
-      if test -f $HOME/.config/binaries/linux-x64/fish
-        $HOME/.config/binaries/linux-x64/fish
+      if test -f $HOME/.local/share/binaries/linux-x64/fish
+        $HOME/.local/share/binaries/linux-x64/fish
         exit
       end
     end

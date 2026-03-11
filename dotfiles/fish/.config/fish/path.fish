@@ -2,8 +2,7 @@
 
     function _add_to_path
       set NEW_PATH_COMPONENT $argv[1]
-      # We use this instead of `fish_add_path --append` so it works in `trampoline.fish`.
-      set PATH $PATH $NEW_PATH_COMPONENT
+      fish_add_path --append $NEW_PATH_COMPONENT
     end
 
     # LSP override: This is an intentionally exported variable.
@@ -12,14 +11,13 @@
 
     if [ "$_FISH_MANUAL_RELOAD" = "true" -o "$_FISH_USER_PATHS_HAS_BEEN_SET_UP" != "true" ]
       set -l _FISH_MANUAL_RELOAD_EMOJI ""
-      if [ "$_FISH_USER_PATHS_QUIET_SETUP" != "true" ]
-        if [ "$_FISH_MANUAL_RELOAD" = "true" ]
-          echo ""
-          set _FISH_MANUAL_RELOAD_EMOJI "🔄"
-        end
+      if [ "$_FISH_MANUAL_RELOAD" = "true" ]
+        echo ""
+        set _FISH_MANUAL_RELOAD_EMOJI "🔄"
       end
       set -e fish_user_paths
 
+      # TODO: dedupe with `trampoline.fish`
       _add_to_path "$HOME/.local/share/cargo/bin" # For Rust
       _add_to_path /opt/homebrew/bin # macOS (Apple Silicon)
       _add_to_path /home/linuxbrew/.linuxbrew/bin # for codespaces
@@ -27,24 +25,22 @@
       _add_to_path "$GOPATH/bin"
       _add_to_path $HOME/.cache/.bun/bin # For zig (for building Bun) https://bun.sh/docs/project/development
       _add_to_path "/usr/local/bin"
-      _add_to_path "$HOME/.local/share/binaries/linux-x64" # for Dreamhost and Codespaces
+      _add_to_path "$HOME/.config/binaries/linux-x64" # for Codespaces
 
-      if [ "$_FISH_USER_PATHS_QUIET_SETUP" != "true" ]
-        set_color --bold
-        echo -n "🐟"$_FISH_MANUAL_RELOAD_EMOJI
-        echo -n " \$fish_user_paths"
-        set_color normal
+      set_color --bold
+      echo -n "🐟"$_FISH_MANUAL_RELOAD_EMOJI
+      echo -n " \$fish_user_paths"
+      set_color normal
 
-        if [ (count $fish_user_paths) -gt 0 ]
-          echo " has been set to the following order:"
-          for path in $fish_user_paths
-            echo "↪ 📂$path"
-          end
-        else
-          echo " has been reset, and contains no paths."
+      if [ (count $fish_user_paths) -gt 0 ]
+        echo " has been set to the following order:"
+        for path in $fish_user_paths
+          echo "↪ 📂$path"
         end
-        echo ""
+      else
+        echo " has been reset, and contains no paths."
       end
+      echo ""
 
       # LSP override: This is intentionally setting a universal variable to avoid running more than needed.
       # @fish-lsp-disable-next-line 2003

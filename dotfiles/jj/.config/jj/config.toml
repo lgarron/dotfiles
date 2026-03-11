@@ -107,6 +107,10 @@ diff-editor = ":builtin"
 name = "Lucas Garron"
 email = "code@garron.net"
 
+[git]
+# Avoid some nasty data loss.
+abandon-unreachable-commits = false
+
 [[--scope]]
 --when.repositories = ["~/Code/git/github.com/thewca/"]
 [--scope.user]

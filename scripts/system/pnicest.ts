@@ -1,6 +1,8 @@
 #!/usr/bin/env -S bun run --
+
 // pnice $argv[1] 19
 
+import { exit } from "node:process";
 import { message, string } from "@optique/core";
 import { object } from "@optique/core/constructs";
 import { argument } from "@optique/core/primitives";
@@ -18,3 +20,5 @@ const options = run(
 );
 
 await pnice(options.processSubString, 20);
+// TODO: Is there a `bun` bug that makes this exit with exit code 1 even when reaching here?
+exit(0);

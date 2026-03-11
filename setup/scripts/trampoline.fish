@@ -1,7 +1,13 @@
 #!/opt/homebrew/bin/fish --no-config --
 
-set -x _FISH_USER_PATHS_QUIET_SETUP true
-source /Users/lgarron/Code/git/github.com/lgarron/dotfiles/dotfiles/fish/.config/fish/path.fish
+# TODO: dedupe with `path.fish`
+set PATH \
+    "$HOME/.local/share/cargo/bin" \
+    /opt/homebrew/bin \
+    "$HOME/.local/share/gopath/bin" \
+    $HOME/.cache/.bun/bin \
+    /usr/local/bin \
+    $PATH
 
 source /Users/lgarron/Code/git/github.com/lgarron/dotfiles/dotfiles/xdg-basedir-workarounds/.config/fish/xdg-basedir-workarounds.fish
 

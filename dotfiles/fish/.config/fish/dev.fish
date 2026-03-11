@@ -30,13 +30,10 @@
     abbr -a mcb "make reset setup"
 
     # `cubing.js` targets I use often.
-    abbr -a mta "make test-all"
-    abbr -a kta "mak test-all"
-    abbr -a mtf "time make -j 16 test-fast"
-    abbr -a ktf "mak test-fast"
-    abbr -a kch "mak check"
     abbr -a kh "mak check"
-    abbr -a kk "mak check"
+    abbr -a khf "mak check-fast"
+    abbr -a kl "mak lint"
+
     # Targets for other programs
     abbr -a kt "mak test"
 
@@ -62,8 +59,7 @@
         abbr_anyarg $make_command rs "reset setup"
 
         # `cubing.js` targets I use often.
-        abbr_anyarg $make_command ta test-all
-        abbr_anyarg $make_command tf test-fast
+        abbr_anyarg $make_command cf check-fast
     end
 
 ## JavaScript
@@ -255,8 +251,6 @@ git fetch --prune && \
 git reset --hard origin/main && \
 cd -
 "
-    # https://github.com/yt-dlp/yt-dlp/issues/14923 Avoid AI upscaled resolutions
-    abbr -a "yt-dlp" "yt-dlp -f \"bv*[format_id!*=-sr]+ba/b[format_id!*=-sr]\""
 
     # *n*pm *v*iew
     abbr -a nv 'open --url https://www.npmjs.com/package/(cat package.json | jq -r \'.name // error("No name")\')'
@@ -270,6 +264,8 @@ cd -
     abbr -a lldb "env HOME=/Users/lgarron/.local/share/lldb-workaround/ lldb"
 
     abbr -a serve "open http://localhost:8000; caddy file-server --listen :8000 --browse --root ."
+
+    abbr -a yeet "$HOME/Code/git/github.com/lgarron/dotfiles/scripts/debug/yeet-env.ts"
 
     abbr_subcommand alg p parse
     abbr_subcommand alg i invert
@@ -318,7 +314,7 @@ cd -
 
     # TODO: make this an abbrevation instead?
     function hevc-HEAD
-        set COMMAND $DOTFILES_FOLDER_NO_TRAILING_SLASH/scripts/video/hevc.ts $argv
+        set COMMAND $DOTFILES_FOLDER/scripts/video/hevc.ts $argv
         string join -- " " (string escape -- $COMMAND)
         command $COMMAND
     end

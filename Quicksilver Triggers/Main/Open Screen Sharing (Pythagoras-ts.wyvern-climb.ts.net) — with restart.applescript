@@ -1,1 +1,5 @@
-do shell script "killall \"Screen Sharing\" ; /opt/homebrew/bin/tailscale up && /Users/lgarron/Code/git/github.com/lgarron/dotfiles/setup/scripts/trampoline.fish /Users/lgarron/Code/git/github.com/lgarron/dotfiles/scripts/system/set-remote-screen-sharing-resolution.fish Pythagoras-ts.wyvern-climb.ts.net &> /dev/null && open \"vnc://Pythagoras-ts.wyvern-climb.ts.net\" &"
+on shell(command)
+	do shell script "/opt/homebrew/bin/trampoline " & command
+end shell
+
+shell("/Users/lgarron/Code/git/github.com/lgarron/dotfiles/scripts/system/screen-sharing.ts reconnect --tailscale")

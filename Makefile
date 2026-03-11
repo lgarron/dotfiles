@@ -6,6 +6,18 @@ auto:
 
 ########
 
+.PHONY: common
+common: \
+	fish \
+	git \
+	jj \
+	ripgrep \
+	set-dotfiles-repo-email \
+	xdg-basedir-workarounds \
+	yt-dlp \
+	zellij
+
+
 .PHONY: mac-common
 mac-common: \
 	mac-setup-sudo \
@@ -16,12 +28,9 @@ mac-common: \
 
 .PHONY: mac-common-dotfiles
 mac-common-dotfiles: \
+	common \
 	mac-text-encoding \
-	set-dotfiles-repo-email \
 	compressor \
-	fish \
-	git \
-	jj \
 	karabiner \
 	lglogin \
 	minecraft \
@@ -29,14 +38,12 @@ mac-common-dotfiles: \
 	niceplz \
 	quicksilver \
 	sd-card-backup \
-	xdg-basedir-workarounds \
 	vscode \
-	vscode-settings-macos \
-	zellij \
-	ripgrep
+	vscode-settings-macos
 
 .PHONY: germain
-germain: mac-common
+germain: \
+	mac-common
 
 .PHONY: pythagoras
 pythagoras: \
@@ -48,15 +55,9 @@ pythagoras: \
 
 .PHONY: linux
 linux: \
-	git \
-	jj \
-	set-dotfiles-repo-email \
-	fish \
-	xdg-basedir-workarounds \
-	zellij \
-	ripgrep
+	common
 
-# Sourcing symlinked `.fish` files doesn't seem to work on Dreamhst, so we have to copy all the files we want `fish` to use. 😕
+# Sourcing symlinked `.fish` files doesn't seem to work on Dreamhost, so we have to copy all the files we want `fish` to use. 😕
 .PHONY: dreamhost
 dreamhost:
 	mkdir -p ~/.config/fish
@@ -85,6 +86,7 @@ PACKAGES += ripgrep
 PACKAGES += sd-card-backup
 PACKAGES += vscode
 PACKAGES += xdg-basedir-workarounds
+PACKAGES += yt-dlp
 PACKAGES += zellij
 
 .PHONY: $(PACKAGES)
@@ -177,17 +179,19 @@ set-dotfiles-repo-email:
 	fi
 	# TODO: When do we need to run `jj describe --reset-author --no-edit`?
 
+RM = bun -e 'process.argv.slice(1).map(p => process.getBuiltinModule("node:fs").rmSync(p, {recursive: true, force: true, maxRetries: 5}))' --
+
 # We match the convention from https://github.com/lgarron/Makefile-convention
 .PHONY: clean
 clean:
 	@echo "Note: \`make clean\` cleans up the repo itself, it does not affect configured files."
-	rm -rf ./.temp/
+	${RM} ./.temp/
 
 # We match the convention from https://github.com/lgarron/Makefile-convention
 .PHONY: reset
 reset: clean
 	@echo "Note: \`make reset\` resets the repo itself, it does not affect configured files."
-	rm -rf ./node_modules/ ./target/ ./scripts/swift/.build/
+	${RM} ./node_modules/ ./target/ ./scripts/swift/.build/
 
 ########
 
@@ -207,7 +211,7 @@ test-scripts-non-ts: setup-npm-packages
 	scripts/git/node_crunchule.fish --help
 
 .PHONY: lint
-lint: lint-ts-biome lint-ts-tsc
+lint: lint-ts-biome lint-ts-tsc check-for-duplicate-dependencies
 
 .PHONY: lint-ts-biome
 lint-ts-biome: setup-npm-packages
@@ -227,3 +231,10 @@ format-ts-biome: setup-npm-packages
 .PHONY: test-bun
 test-bun:
 	bun test
+
+.PHONY: check-for-duplicate-dependencies
+check-for-duplicate-dependencies: setup
+	# Note that this is known to produce false negatives (no dedupable version
+	# detected, even when there are two versions of the same package that can be
+	# trivially deduped).
+	bun x -- bun-dx --package bun-dedupe dedupe -- --check

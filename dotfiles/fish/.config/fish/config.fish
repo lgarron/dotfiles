@@ -27,12 +27,10 @@
 # `$DOTFILES_FOLDER`
 
     # TODO: check against `realpath` of the current file?
-    set -x DOTFILES_FOLDER_NO_TRAILING_SLASH "$HOME/Code/git/github.com/lgarron/dotfiles"
-    if [ "$CODESPACES" = "true" ]
-      set DOTFILES_FOLDER_NO_TRAILING_SLASH "/workspaces/.codespaces/.persistedshare/dotfiles"
+    set -x DOTFILES_FOLDER "$HOME/Code/git/github.com/lgarron/dotfiles"
+    if [ "$CODESPACES" = true ]
+        set DOTFILES_FOLDER "/workspaces/.codespaces/.persistedshare/dotfiles"
     end
-    set -x DOTFILES_FOLDER "$DOTFILES_FOLDER_NO_TRAILING_SLASH/"
-
 
 # Loading
 

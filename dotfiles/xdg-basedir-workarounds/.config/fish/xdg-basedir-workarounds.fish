@@ -13,7 +13,7 @@
 
 ## XDG workarounds for specific programs.
 
-    set -Ux LESSHISTFILE $XDG_DATA_HOME/lesshst
+    set -Ux LESSHISTFILE $XDG_DATA_HOME/less/history
 
     # GnuPG
     # See `lglogin.fish` for `launchctl setenv`
@@ -47,7 +47,7 @@
     set -Ux BUNDLE_USER_PLUGIN $XDG_DATA_HOME/bundle
 
     # node
-    set -Ux NODE_REPL_HISTORY $XDG_DATA_HOME/node_repl_history
+    set -Ux NODE_REPL_HISTORY $XDG_DATA_HOME/node/repl_history
 
     # VSCode
     # set -Ux VSCODE_EXTENSIONS $XDG_DATA_HOME/vscode/extensions
@@ -89,3 +89,7 @@
     # ripgrep (`rg`)
     # (Doesn't have a default path, so it must be set explicitly.)
     set -Ux RIPGREP_CONFIG_PATH $XDG_CONFIG_HOME/ripgrep/ripgrep-config.txt
+
+# Defined in other files
+
+    # $GOPATH

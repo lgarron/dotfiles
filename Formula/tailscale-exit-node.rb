@@ -5,9 +5,12 @@ class TailscaleExitNode < Formula
   homepage "https://github.com/lgarron/dotfiles"
   head "https://github.com/lgarron/dotfiles.git", :branch => "main"
 
+  depends_on "oven-sh/bun/bun"
   depends_on :macos
 
   def install
-    bin.install "scripts/system/tailscale-exit-node.fish" => "tailscale-exit-node"
+    system "./repo-script/build-ts-scripts.ts", "system/tailscale-exit-node"
+    bin.install "./.temp/bin/tailscale-exit-node" => "tailscale-exit-node"
+    generate_completions_from_executable(bin/"tailscale-exit-node", "--completions")
   end
 end

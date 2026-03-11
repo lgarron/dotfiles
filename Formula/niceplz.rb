@@ -8,23 +8,21 @@ class Niceplz < Formula
   depends_on "oven-sh/bun/bun"
 
   def install
-    system "./repo-script/build-ts-scripts.ts", "system/pnice", "system/pnicest", "system/niceplz", "sudo/niceplz-sudo"
+    system "./repo-script/build-ts-scripts.ts", "system/pnice", "system/pnicest", "system/niceplz"
 
     bin.install "./.temp/bin/pnice" => "pnice"
     bin.install "./.temp/bin/pnicest" => "pnicest"
     bin.install "./.temp/bin/niceplz" => "niceplz"
-    bin.install "./.temp/bin/niceplz-sudo" => "niceplz-sudo"
 
     generate_completions_from_executable(bin/"pnice", "--completions")
     generate_completions_from_executable(bin/"pnicest", "--completions")
     generate_completions_from_executable(bin/"niceplz", "--completions")
-    generate_completions_from_executable(bin/"niceplz-sudo", "--completions")
   end
 
   def post_install
     ohai "To install `sudo` permissions, run:
 
-    niceplz-sudo
+    niceplz --setup-sudo-only
 "
   end
 end

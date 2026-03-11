@@ -1,7 +1,7 @@
 # Machines
 
     set -l GERMAIN Germain germain Germain.local
-    set -l PYTHAGORAS Pythagoras pythagoras Pythagoras.local
+    set -l PYTHAGORAS Pythagoras pythagoras Pythagoras.local Pythagoras.lan
 
 # MOTD
 

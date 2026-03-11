@@ -466,7 +466,7 @@
                                     }
                                 ],
                                 "from": { "consumer_key_code": "al_calculator" },
-                                "to": [{ "shell_command": "osascript -e beep && /Users/lgarron/Code/git/github.com/lgarron/dotfiles/setup/scripts/trampoline.fish /Users/lgarron/Code/git/github.com/lgarron/dotfiles/scripts/system/connect-all-displays.ts" }],
+                                "to": [{ "shell_command": "osascript -e beep && /opt/homebrew/bin/trampoline /Users/lgarron/Code/git/github.com/lgarron/dotfiles/scripts/system/connect-all-displays.ts" }],
                                 "type": "basic"
                             }
                         ]

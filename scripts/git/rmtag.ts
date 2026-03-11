@@ -77,11 +77,30 @@ for (const tag of tags) {
 }
 
 if (tagsToRemoveLocally.length > 0) {
-  await new PrintableShellCommand("git", [
-    "tag",
-    "--delete",
-    ...tagsToRemoveLocally,
-  ]).shellOut();
+  // This is *critical* to avoid catastrophic (but recoverable) repo mangling: https://github.com/jj-vcs/jj/issues/6325
+  const useJJ = await (async () => {
+    try {
+      await new PrintableShellCommand("jj", ["root"]).shellOut();
+      return true;
+    } catch {
+      return false;
+    }
+  })();
+
+  if (useJJ) {
+    await new PrintableShellCommand("jj", [
+      "tag",
+      "delete",
+      "--",
+      ...tagsToRemoveLocally,
+    ]).shellOut();
+  } else {
+    await new PrintableShellCommand("git", [
+      "tag",
+      "--delete",
+      ...tagsToRemoveLocally,
+    ]).shellOut();
+  }
 }
 
 /**************** Remote tag ****************/

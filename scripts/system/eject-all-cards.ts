@@ -1,4 +1,4 @@
-#!/usr/bin/env bun
+#!/usr/bin/env -S bun run --
 
 import { readdir } from "node:fs/promises";
 import { exit } from "node:process";

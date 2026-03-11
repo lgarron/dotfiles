@@ -50,6 +50,8 @@ _fish_abbr_jj_subcommand sq squash
 _fish_abbr_jj_subcommand u undo
 _fish_abbr_jj_subcommand t tug
 _fish_abbr_jj_subcommand re restore
+_fish_abbr_jj_subcommand o op
+_fish_abbr_jj_subcommand ol "op log"
 
 abbr_subcommand_arg jj r --revisions log
 
@@ -72,6 +74,7 @@ abbr_subcommand_arg jj s "# try: `b` (branch) or `--source` explicitly" rebase
 abbr_subcommand_arg jj d --destination rebase
 
 abbr_subcommand_arg jj ii --ignore-immutable edit squash describe rebase abandon
+abbr_subcommand_arg jj f --from squash restore
 abbr_subcommand_arg jj i --into squash
 abbr_subcommand_arg jj r --revision bookmark squash
 
@@ -187,16 +190,18 @@ abbr_subcommand_arg jj t --to diff
 abbr -a jdno --set-cursor "jj diff --name-only --to \"fork_point(%)\"" # Special shortened abbreviation
 abbr -a jdn --set-cursor "jj diff --name-only --to \"@-\"" # Special shortened abbreviation
 
+set JJ_ORIGIN_REPO_URL_COMMAND 'jj git remote list | grep "^origin" | awk "{print \$2}" | tr -d "\n" | sed "s#\.git\$##" | sed "s#^ssh://git@#https://#"'
+
 # "jj GitHub *v*iew repo"
-abbr -a jgv 'open --url (jj git remote list | grep "^origin" | awk "{print \$2}" | tr -d "\n" | sed "s#\.git\$##")'
+abbr -a jgv 'open --url ('$JJ_ORIGIN_REPO_URL_COMMAND')'
 # "jj GitHub *c*ommit"
-abbr -a jgc 'open --url (jj git remote list | grep "^origin" | awk "{print \$2}" | tr -d "\n" | sed "s#\.git\$##"; and echo -n "/commit/"; echo -- (jj here))'
+abbr -a jgc 'open --url ('$JJ_ORIGIN_REPO_URL_COMMAND'; and echo -n "/commit/"; echo -- (jj here))'
 # "jj GitHub *b*ranch"
-abbr -a jgb 'open --url (jj git remote list | grep "^origin" | awk "{print \$2}" | tr -d "\n" | sed "s#\.git\$##"; and echo -n "/commit/"; echo -- (jj guess-branch))'
+abbr -a jgb 'open --url ('$JJ_ORIGIN_REPO_URL_COMMAND'; and echo -n "/commit/"; echo -- (jj guess-branch))'
 # "jj GitHub *A*ctions"
-abbr -a jga 'open --url (jj git remote list | grep "^origin" | awk "{print \$2}" | tr -d "\n" | sed "s#\.git\$##"; and echo -n "/actions/")'
+abbr -a jga 'open --url ('$JJ_ORIGIN_REPO_URL_COMMAND'; and echo -n "/actions/")'
 # "jj GitHub *i*ssues"
-abbr -a jgi 'open --url (jj git remote list | grep "^origin" | awk "{print \$2}" | tr -d "\n" | sed "s#\.git\$##"; and echo -n "/issues/")'
+abbr -a jgi 'open --url ('$JJ_ORIGIN_REPO_URL_COMMAND'; and echo -n "/issues/")'
 
 # LSP override: This is an "exported" function (meant to be used outside this file).
 # @fish-lsp-disable-next-line 4004
@@ -213,11 +218,11 @@ end
 function ggn
     /Applications/gg.app/Contents/MacOS/gg gui -- $argv &>/dev/null &
     disown
-    $DOTFILES_FOLDER_NO_TRAILING_SLASH/scripts/system/dell-display-position-app-on-bottom.ts -- gg
+    $DOTFILES_FOLDER/scripts/system/dell-display-position-app-on-bottom.ts -- gg
     open -a gg # Foreground.
 end
 
-abbr -a jgff "$DOTFILES_FOLDER_NO_TRAILING_SLASH/scripts/jj/jgff.ts"
+abbr -a jgff "$DOTFILES_FOLDER/scripts/jj/jgff.ts"
 
 # Note that this implementing this for `j ci` and `j c i` would require
 # rewriting the commandline (to add the `env` invocation at the beginning)

@@ -2,4 +2,10 @@
 
 import { persistentSudo } from "./persistentSudo";
 
-await persistentSudo();
+export async function main() {
+  await persistentSudo();
+}
+
+if (import.meta.main) {
+  await main();
+}

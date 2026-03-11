@@ -84,12 +84,14 @@ export function outputFileClass(
   return pathOrSubClass<OutputFile>(OutputFile, pathOptions);
 }
 
+type SourceFileOptions = PathOptions & { mustNotExist?: undefined };
+
 export function sourceFile(
-  options?: PathOptions & { mustNotExist?: undefined },
+  options?: SourceFileOptions,
 ): ValueParser<"sync", Path> {
   return pathClass({
     ...options,
-    mustExist: true,
+    mustExist: options?.mustExist ?? true,
     type: "file",
     metavar: "SOURCE_FILE",
   });
@@ -172,6 +174,20 @@ export function outputDir(options?: PathOptions): ValueParser<"sync", Path> {
 }
 
 // TODO: wrap in `object(…)` and have the callers call `merge(…)` if needed?
+export function fileInOut(
+  options?: PathOptions & {
+    sourceFile?: SourceFileOptions;
+    outputFile?: PathOptions;
+  },
+) {
+  return {
+    sourceFile: argument(sourceFile(options?.sourceFile)),
+    outputFile: optional(argument(outputFile(options?.outputFile))),
+    ...revealArg,
+  } as const;
+}
+
+// TODO: wrap in `object(…)` and have the callers call `merge(…)` if needed?
 export const simpleFileInOut = {
   sourceFile: argument(sourceFile()),
   outputFile: optional(argument(outputFile())),
@@ -217,3 +233,7 @@ export function withSuggestions(
     suggest: (prefix: string) => prefixFilterSuggest(prefix, iterableFn),
   };
 }
+
+export const setupSudoOnlyArgs = {
+  setupSudoOnly: option("--setup-sudo-only"),
+};

@@ -3,17 +3,17 @@
 class ThirdpartyMicrocad < Formula
   desc "🛠️ Modern programming language for CAD"
   homepage "https://microcad.xyz/"
-  version "0.2.14-4+completions"
-  url "https://codeberg.org/lgarron/microcad/archive/0f80eb18dbed60bf734d29618f17d99c7267ee2b.tar.gz"
-  sha256 "a22d435684a87d4f0415a599cf94c87a13092ca4cfef936425f39300d396f69c"
-  head "https://codeberg.org/microcad/microcad.git", :branch => "master"
+  version "0.2.20"
+  url "https://codeberg.org/microcad/microcad/archive/77b73e30a4b9e4094f160d4fda283df2de20beba.tar.gz"
+  sha256 "10f31b19b4e3e4eb4b74c57f5e4d7fe3abdfcb77d4df9469b54ce7f967919886"
+  head "https://codeberg.org/microcad/microcad.git", :branch => "main"
 
   depends_on "cmake" => :build
   depends_on "rust" => :build
   depends_on "ninja" => :build
 
   def install
-    system "cargo", "install", *std_cargo_args(path: "./tools/cli/")
+    system "cargo", "install", *std_cargo_args(path: "./crates/cli/")
     system bin/"microcad", "install", "std"
     generate_completions_from_executable(bin/"microcad", "completions")
   end

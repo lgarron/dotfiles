@@ -15,8 +15,10 @@ import { LockfileMutex } from "lockfile-mutex";
 import { Path } from "path-class";
 import { Plural } from "plural-chain";
 import { PrintableShellCommand } from "printable-shell-command";
+import { Temporal } from "temporal-ponyfill";
 import { xdgData } from "xdg-basedir";
 import { sendMessage } from "../../scripts/api/pushover";
+import { Debouncer } from "../../scripts/lib/temporal/Debouncer";
 
 try {
   const DATA_ROOT_DIR = Path.xdg.data.join("obsidian-backup");
@@ -27,11 +29,13 @@ try {
     date: ErgonomicDate = new ErgonomicDate(),
   ) {
     await LOG_FOLDER.join(date.localYearMonth).mkdir();
+    const logMessage = `[${process.pid}][${date.multipurposeTimestamp}] ${s}\n`;
     await appendFile(
       LOG_FOLDER.join(date.localYearMonth, `${date.localYearMonthDay}.log`)
         .path,
-      `[${process.pid}][${date.multipurposeTimestamp}] ${s}\n`,
+      logMessage,
     );
+    console.write(logMessage);
   }
 
   await debugLog("Starting daemon…");
@@ -219,11 +223,19 @@ try {
     }
   }
 
+  const GC_INTERVAL = Temporal.Duration.from({ minutes: 5 });
+  const gcDebouncer = new Debouncer(GC_INTERVAL);
   async function garbageCollect(): Promise<void> {
+    if (!gcDebouncer.lease()) {
+      await debugLog("Skipping garbage collection. (Already done recently.)");
+      return;
+    }
+
     console.log("🚮🚮🚮🚮🚮🚮🚮🚮");
-    console.write("Garbage collecting at operation: ");
-    await $`cd ${DIR} && ${JJ} op log --no-graph --limit 1 --template "self.id()"`;
-    console.log();
+    const currentOp = (
+      await $`cd ${DIR} && ${JJ} op log --no-graph --limit 1 --template "self.id()"`.text()
+    ).trim();
+    await debugLog(`Garbage collecting at operation: ${currentOp}`);
 
     // TODO: this assumes linear history with well-formatted commit messages.
     const commits =
@@ -293,6 +305,7 @@ Oldest squashed commit: ${oldestSquashedDate.multipurposeTimestamp}`;
     }
     await $`cd ${DIR} && ${JJ} op abandon ..@-`; // TODO: does this actually enable garbage collection of objects properly?
     await $`cd ${DIR} && ${JJ} util gc --expire=now`;
+    await $`cd ${DIR} && ${JJ} debug reindex`;
     if (numPruned > 0) {
       await debugLog(
         `Pruned ${Plural.num.s(numPruned)`commits`} out of ${Plural.num.s(count)`commits`} (leaving ${Plural.num.s(count - numPruned)`commits`}).`,
@@ -313,7 +326,6 @@ Oldest squashed commit: ${oldestSquashedDate.multipurposeTimestamp}`;
         const date = new ErgonomicDate();
         await $`cd ${DIR} && ${JJ} commit --message ${date.multipurposeTimestamp}`;
         await debugLog("Added commit.", date);
-        // TODO: run garbage collection on a timer instead.
         await garbageCollect();
       }
     } catch (e) {

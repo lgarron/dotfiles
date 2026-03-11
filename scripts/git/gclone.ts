@@ -7,9 +7,9 @@ import { run } from "@optique/run";
 import { Path } from "path-class";
 import { PrintableShellCommand } from "printable-shell-command";
 import { Temporal } from "temporal-ponyfill";
-import { monotonicNow } from "../lib/monotonic-now";
 import { byOption } from "../lib/optique";
-import { sleepDuration } from "../lib/sleep";
+import { monotonicNow } from "../lib/temporal/monotonicNow";
+import { sleepDuration } from "../lib/temporal/sleep";
 
 const GIT_REPOS_ROOT_PATH = Path.homedir.join("Code/git");
 

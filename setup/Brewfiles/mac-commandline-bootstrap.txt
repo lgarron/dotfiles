@@ -1,2 +1,3 @@
 brew "fish"
 brew "oven-sh/bun/bun"
+brew "lgarron/lgarron/trampoline", args: ["HEAD"]

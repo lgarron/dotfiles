@@ -49,6 +49,8 @@
     abbr_subcommand_arg zellij c --create attach
     abbr -a za "zellij attach --create"
 
+    abbr -a "lock-screen" "pmset displaysleepnow # lock macOS screen"
+
 ## Arguments
 
     abbr -a _hh_abbr --regex "hh" --position anywhere -- "--help"

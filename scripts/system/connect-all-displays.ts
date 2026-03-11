@@ -21,5 +21,5 @@ try {
     ["-message", `${Plural.num.s.is_are({ displays })} now connected.`],
   ]).shellOut();
 } catch (e) {
-  console.error(`Error trying to invoke \`terminal-notifier\`. Ignoring: ${e}`);
+  console.error(`Error trying to invoke \`terminal-notifier\`. Ignoring:`, e);
 }

@@ -1,4 +1,6 @@
-class ChromiumBisectBuilds < Formula
+# frozen_string_literal: true
+
+class ThirdpartyChromiumBisectBuilds < Formula
   desc ""
   homepage ""
   url "https://chromium.googlesource.com/chromium/src/+/41e9c4d36e8bb573ee22c5647b78cf93e7ed694e/tools/bisect-builds.py?format=TEXT", using: :nounzip

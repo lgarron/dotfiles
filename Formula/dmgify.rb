@@ -5,7 +5,12 @@ class Dmgify < Formula
   homepage "https://github.com/lgarron/dotfiles"
   head "https://github.com/lgarron/dotfiles.git", :branch => "main"
 
+  depends_on :macos
+  depends_on "oven-sh/bun/bun"
+
   def install
-    bin.install "scripts/storage/dmgify.fish" => "dmgify"
+    system "./repo-script/build-ts-scripts.ts", "storage/dmgify"
+    bin.install "./.temp/bin/dmgify" => "dmgify"
+    generate_completions_from_executable(bin/"dmgify", "--completions")
   end
 end

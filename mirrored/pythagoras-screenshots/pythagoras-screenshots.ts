@@ -19,7 +19,7 @@ async function debugLog(s: string, date: ErgonomicDate = new ErgonomicDate()) {
 }
 
 const TARGET_DIR_PREFIX = new Path(
-  "/Volumes/Samos/.CloudStorage/Data/Dropbox/Screenshots/Pythagoras Screenshots/Pythagoras Screenshots" /* year is added here */,
+  "/Volumes/Samos/Pythagoras/Users/lgarron/Dropbox/Screenshots/Pythagoras Screenshots/" /* year-specific subfolders are placed here */,
 );
 
 await debugLog("Starting `pythagoras-screenshots` daemon…");
@@ -35,7 +35,9 @@ async function callback(change: FileChangeInfo<string>) {
   assert(change.filename);
   const ext = extname(change.filename);
   if (change.filename.startsWith("Screenshot") && ext === ".heic") {
-    const TARGET_DIR = TARGET_DIR_PREFIX.extendBasename(` ${year}`);
+    const TARGET_DIR = TARGET_DIR_PREFIX.extendBasename(
+      `Pythagoras Screenshots ${year}`,
+    );
     await TARGET_DIR.mkdir();
 
     await debugLog(`Skipping: ${change.filename}`);

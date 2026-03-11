@@ -678,7 +678,7 @@
 				</dict>
 			</dict>
 			<key>enabled</key>
-			<false/>
+			<true/>
 			<key>keyCode</key>
 			<integer>36</integer>
 			<key>modifiers</key>

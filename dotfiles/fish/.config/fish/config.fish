@@ -8,14 +8,6 @@
       exit 0
     end
 
-# VS Code workaround
-
-    # See https://github.com/microsoft/vscode/issues/295372#issuecomment-4029235100
-    # Hopefully this can be removed in 2026-04.
-    if contains "$TERM_PROGRAM" vscode > /dev/null
-        reset
-    end
-
 # Path
 
     source $HOME/.config/fish/path.fish

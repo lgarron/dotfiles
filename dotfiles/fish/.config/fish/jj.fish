@@ -224,9 +224,6 @@ end
 
 abbr -a jgff "$DOTFILES_FOLDER/scripts/jj/jgff.ts"
 
-# Note that this implementing this for `j ci` and `j c i` would require
-# rewriting the commandline (to add the `env` invocation at the beginning)
-# rather than a simple expansion. So we just define `jci` for now.
 _fish_abbr_jj_subcommand ci 'commit --interactive --config=ui.editor=\'"true"\''
 
 # See: https://github.com/jj-vcs/jj/discussions/6224#discussioncomment-12713147

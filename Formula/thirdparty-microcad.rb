@@ -3,9 +3,9 @@
 class ThirdpartyMicrocad < Formula
   desc "🛠️ Modern programming language for CAD"
   homepage "https://microcad.xyz/"
-  version "0.2.20"
-  url "https://codeberg.org/microcad/microcad/archive/77b73e30a4b9e4094f160d4fda283df2de20beba.tar.gz"
-  sha256 "10f31b19b4e3e4eb4b74c57f5e4d7fe3abdfcb77d4df9469b54ce7f967919886"
+  version "0.3.0"
+  url "https://codeberg.org/microcad/microcad/archive/897e65d24b419fb76eaf0c62e41488993a21fa2c.tar.gz"
+  sha256 "49e16828bbb1e383dc2deb613c83b0092b7208c799a5f76eefe5f99ae6c08f4f"
   head "https://codeberg.org/microcad/microcad.git", :branch => "main"
 
   depends_on "cmake" => :build
@@ -14,7 +14,6 @@ class ThirdpartyMicrocad < Formula
 
   def install
     system "cargo", "install", *std_cargo_args(path: "./crates/cli/")
-    system bin/"microcad", "install", "std"
     generate_completions_from_executable(bin/"microcad", "completions")
   end
 end

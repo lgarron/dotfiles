@@ -151,7 +151,7 @@ export async function connect(args: SubcommandArgs<"connect">): Promise<void> {
 
   const remoteCommand = new PrintableShellCommand(REMOTE_SCRIPT_PATH, [
     "prep",
-    ["--disconnect-display", "LG UltraFine"],
+    ["--disconnect-display", "Studio Display XDR"],
     ["--display", args.display],
     newResolution.logicalResolutionString(),
   ]);

@@ -35,6 +35,7 @@
       ".lldb",
       ".m2", // Maven (Java)
       ".npm",
+      ".obsidian-cli.sock",
       ".oracle_jre_usage",
       ".pnpm-state",
       ".profile", // Created by `rustup`

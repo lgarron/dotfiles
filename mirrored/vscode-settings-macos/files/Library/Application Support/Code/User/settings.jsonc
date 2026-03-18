@@ -302,8 +302,5 @@
 		"https://json.schemastore.org/": true,
 		"https://json-schema.org/": true,
 		"https://biomejs.dev": true
-	},
-	// Workaround for https://github.com/microsoft/vscode/issues/295372
-	// Can hopefully removed in 2026-04.
-	"terminal.integrated.enableKittyKeyboardProtocol": false
+	}
 }

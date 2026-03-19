@@ -13,8 +13,7 @@
     bind ctrl-delete kill-token
     bind ctrl-\\ kill-token
 
-    if string match --quiet --entire -- "$TERM_PROGRAM" vscode > /dev/null \
-      || string match --quiet --entire -- "$TERM_PROGRAM" "iTerm.app" > /dev/null
+    if contains -- "$TERM_PROGRAM" vscode "iTerm.app"
       # Legacy bindings
       bind alt-b backward-word
       bind alt-f forward-word
@@ -30,7 +29,7 @@
     end
 
     # Workaround for https://github.com/zellij-org/zellij/issues/3852
-    if not string match --entire -- "$ZELLIJ_SESSION_NAME" "" > /dev/null
+    if not contains -- "$ZELLIJ_SESSION_NAME" "" > /dev/null
       bind ctrl-h backward-kill-token
     end
 

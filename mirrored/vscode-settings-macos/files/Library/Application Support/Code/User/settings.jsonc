@@ -113,12 +113,6 @@
 	"[json]": {
 		"editor.defaultFormatter": "biomejs.biome"
 	},
-	"[javascript][typescript]": {
-		"editor.defaultFormatter": "biomejs.biome",
-		"editor.codeActionsOnSave": {
-			"source.organizeImports.biome": "explicit"
-		}
-	},
 	"[css]": {
 		"editor.defaultFormatter": "biomejs.biome"
 	},
@@ -139,19 +133,37 @@
 		"editor.defaultFormatter": "charliermarsh.ruff"
 	},
 	"biome.suggestInstallingGlobally": false,
-	/******** JavaScript ********/
-	"javascript.validate.enable": false,
-	"javascript.updateImportsOnFileMove.enabled": "always",
+	/******** JavaScript & TypeScript ********/
+	"js/ts.validate.enabled": true,
+	"js/ts.updateImportsOnFileMove.enabled": "always",
 	"biome.requireConfiguration": true,
-	/******** TypeScript ********/
-	"typescript.updateImportsOnFileMove.enabled": "always",
-	"typescript.inlayHints.enumMemberValues.enabled": true,
-	"typescript.inlayHints.functionLikeReturnTypes.enabled": true,
-	"typescript.inlayHints.propertyDeclarationTypes.enabled": true,
-	"typescript.inlayHints.parameterTypes.enabled": true,
-	"typescript.inlayHints.variableTypes.enabled": true,
+	"js/ts.inlayHints.enumMemberValues.enabled": true,
+	"js/ts.inlayHints.functionLikeReturnTypes.enabled": true,
+	"js/ts.inlayHints.propertyDeclarationTypes.enabled": true,
+	"js/ts.inlayHints.parameterTypes.enabled": true,
+	"js/ts.inlayHints.variableTypes.enabled": true,
 	// Show all problems in the workspace.
-	"typescript.tsserver.experimental.enableProjectDiagnostics": true,
+	"js/ts.tsserver.experimental.enableProjectDiagnostics": true,
+	"js/ts.preferences.autoImportSpecifierExcludeRegexes": [
+		// log
+		"^node:console$",
+		"^console$",
+		"^three/webgpu$",
+		"^three/src/",
+		// `node`
+		"^node$",
+		"^(assert(/strict)?|async_hooks|buffer|child_process|cluster|console|constants|crypto|dgram|diagnostics_channel|dns(/promises)?|domain|events|fs(/promises)?|http|http2|https|inspector(/promises)?|module|net|os|path(/(posix|win32))?|perf_hooks|process|querystring|readline(/promises)?|repl|stream(/(consumers|promises|web))?|string_decoder|timers(/promises)?|tls|trace_events|tty|url|util(/types)?|v8|vm|wasi|worker_threads|zlib)$",
+		"^node:fs$", // Do not complete `node:fs` by default (in favor of `node:fs/promises`).
+		"^node:path/(posix|win32)$" // Do not complete platform-specific path APIs by default.
+	],
+	// Prevent VS Code from creating `~/.npm`. 😡
+	"js/ts.tsserver.automaticTypeAcquisition.enabled": false,
+	"[javascript][typescript]": {
+		"editor.defaultFormatter": "biomejs.biome",
+		"editor.codeActionsOnSave": {
+			"source.organizeImports.biome": "explicit"
+		}
+	},
 	/******** Go ********/
 	"go.useLanguageServer": true,
 	"go.toolsGopath": "/Users/lgarron/Code/gopath",
@@ -253,34 +265,8 @@
 	"terminal.integrated.initialHint": false,
 	/******* Unsorted *********/
 	"explorer.sortOrder": "mixed",
-	"javascript.preferences.autoImportSpecifierExcludeRegexes": [
-		// log
-		"^node:console$",
-		"^console$",
-		"^three/webgpu$",
-		"^three/src/",
-		// `node`
-		"^node$",
-		"^(assert(/strict)?|async_hooks|buffer|child_process|cluster|console|constants|crypto|dgram|diagnostics_channel|dns(/promises)?|domain|events|fs(/promises)?|http|http2|https|inspector(/promises)?|module|net|os|path(/(posix|win32))?|perf_hooks|process|querystring|readline(/promises)?|repl|stream(/(consumers|promises|web))?|string_decoder|timers(/promises)?|tls|trace_events|tty|url|util(/types)?|v8|vm|wasi|worker_threads|zlib)$",
-		"^node:fs$", // Do not complete `node:fs` by default (in favor of `node:fs/promises`).
-		"^node:path/(posix|win32)$" // Do not complete platform-specific path APIs by default.
-	],
-	"typescript.preferences.autoImportSpecifierExcludeRegexes": [
-		// log
-		"^node:console$",
-		"^console$",
-		"^three/webgpu$",
-		"^three/src/",
-		// `node`
-		"^node$",
-		"^(assert(/strict)?|async_hooks|buffer|child_process|cluster|console|constants|crypto|dgram|diagnostics_channel|dns(/promises)?|domain|events|fs(/promises)?|http|http2|https|inspector(/promises)?|module|net|os|path(/(posix|win32))?|perf_hooks|process|querystring|readline(/promises)?|repl|stream(/(consumers|promises|web))?|string_decoder|timers(/promises)?|tls|trace_events|tty|url|util(/types)?|v8|vm|wasi|worker_threads|zlib)$",
-		"^node:fs$", // Do not complete `node:fs` by default (in favor of `node:fs/promises`).
-		"^node:path/(posix|win32)$" // Do not complete platform-specific path APIs by default.
-	],
 	"editor.suggest.showKeywords": false,
 	"editor.suggest.snippetsPreventQuickSuggestions": false,
-	// Prevent VS Code from creating `~/.npm`. 😡
-	"typescript.disableAutomaticTypeAcquisition": true,
 	/******** Disable unsolicited slop ********/
 	"chat.commandCenter.enabled": false,
 	"chat.agent.enabled": false,
@@ -292,8 +278,6 @@
 	"githubPullRequests.codingAgent.autoCommitAndPush": false,
 	"githubPullRequests.codingAgent.enabled": false,
 	"github.copilot.chat.newWorkspaceCreation.enabled": false,
-	// "javascript.preferGoToSourceDefinition": true,
-	// "typescript.preferGoToSourceDefinition": true,
 	"terminal.integrated.suggest.enabled": false,
 	"json.schemaDownload.trustedDomains": {
 		"https://schemastore.azurewebsites.net/": true,

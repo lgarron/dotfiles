@@ -67,6 +67,16 @@
     abbr -a f --set-cursor "find . -iname \"*%*\""
 
     abbr -a rgnh "rg -S --no-heading"
+    set "MY_CODE_FOLDERS" \
+        $HOME/Code/git/github.com/lgarron/ \
+        $HOME/Code/git/github.com/cubing/ \
+        $HOME/Code/git/codeberg.org/lgarron/ \
+        $HOME/Code/git/codeberg.org/cubing/ \
+        $HOME/Code/git/Pythagoras-ts.wyvern-climb.ts.net/
+    function abbr_rgc_fn
+        echo "rg '%' \$MY_CODE_FOLDERS"
+    end;
+    abbr -a rgc --position command --function abbr_rgc_fn --set-cursor
 
 ## SSH
 

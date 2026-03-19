@@ -43,3 +43,5 @@
     bind alt-_ "commandline -i —"
     # Use ⇧⌥' to enter `\"`
     bind alt-\" "commandline -i '\\\"'"
+    # Workaround for VS Code to allow ⌥X to enter `≈` (not needed in `Terminal.app` or iTerm).
+    bind alt-≈ "commandline -i '≈'"

@@ -67,7 +67,7 @@
     abbr -a f --set-cursor "find . -iname \"*%*\""
 
     abbr -a rgnh "rg -S --no-heading"
-    set "MY_CODE_FOLDERS" \
+    set -g "MY_CODE_FOLDERS" \
         $HOME/Code/git/github.com/lgarron/ \
         $HOME/Code/git/github.com/cubing/ \
         $HOME/Code/git/codeberg.org/lgarron/ \

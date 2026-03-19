@@ -192,18 +192,24 @@ abbr -a jdn --set-cursor "jj diff --name-only --to \"@-\"" # Special shortened a
 
 set JJ_ORIGIN_REPO_URL_COMMAND 'jj git remote list | grep "^origin" | awk "{print \$2}" | tr -d "\n" | sed "s#\.git\$##" | sed "s#^ssh://git@#https://#"'
 
-# "jj GitHub *v*iew repo"
-abbr -a jgv 'open --url ('$JJ_ORIGIN_REPO_URL_COMMAND')'
-# "jj GitHub *c*ommit"
-abbr -a jgc 'open --url ('$JJ_ORIGIN_REPO_URL_COMMAND'; and echo -n "/commit/"; echo -- (jj here))'
-# "jj GitHub *b*ranch"
-abbr -a jgb 'open --url ('$JJ_ORIGIN_REPO_URL_COMMAND'; and echo -n "/commit/"; echo -- (jj guess-branch))'
-# "jj GitHub *A*ctions"
-abbr -a jga 'open --url ('$JJ_ORIGIN_REPO_URL_COMMAND'; and echo -n "/actions/")'
-# "jj GitHub *i*ssues"
-abbr -a jgi 'open --url ('$JJ_ORIGIN_REPO_URL_COMMAND'; and echo -n "/issues/")'
+# "jj *f*orge *v*iew repo"
+abbr -a jf 'open --url ('$JJ_ORIGIN_REPO_URL_COMMAND')'
+abbr -a jgv '# try: jf'
+# "jj *f*orge *c*ommit"
+abbr -a jfc 'open --url ('$JJ_ORIGIN_REPO_URL_COMMAND'; and echo -n "/commit/"; echo -- (jj here))'
+abbr -a jgc '# try: jfc'
+# "jj *f*orge *b*ranch"
+abbr -a jfb 'open --url ('$JJ_ORIGIN_REPO_URL_COMMAND'; and echo -n "/commit/"; echo -- (jj guess-branch))'
+abbr -a jgb '# try: jfb'
+# "jj *f*orge *A*ctions"
+abbr -a jfa 'open --url ('$JJ_ORIGIN_REPO_URL_COMMAND'; and echo -n "/actions/")'
+abbr -a jga '# try: jfa'
+# "jj *f*orge *i*ssues"
+abbr -a jfi 'open --url ('$JJ_ORIGIN_REPO_URL_COMMAND'; and echo -n "/issues/")'
+abbr -a jgi '# try: jfi'
 # "jj `npm` (TODO: look for `package.json` workspace roots only)
-abbr -a jgn 'open (printf "https://www.npmjs.com/package/%s" (cat (repo workspace root)/package.json | jq -r ".name"))'
+abbr -a jfn 'open (printf "https://www.npmjs.com/package/%s" (cat (repo workspace root)/package.json | jq -r ".name"))'
+abbr -a jgn '# try: jfn'
 
 # LSP override: This is an "exported" function (meant to be used outside this file).
 # @fish-lsp-disable-next-line 4004

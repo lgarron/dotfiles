@@ -21,6 +21,7 @@
     "delete": [
       ".angular-config.json",
       ".biome",
+      ".bun_repl_history", // bun 😭 https://github.com/oven-sh/bun/issues/28291
       ".bundle", // Ruby Gems
       ".cargo",
       ".cups",

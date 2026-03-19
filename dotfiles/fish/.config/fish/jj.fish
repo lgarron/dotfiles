@@ -202,6 +202,8 @@ abbr -a jgb 'open --url ('$JJ_ORIGIN_REPO_URL_COMMAND'; and echo -n "/commit/"; 
 abbr -a jga 'open --url ('$JJ_ORIGIN_REPO_URL_COMMAND'; and echo -n "/actions/")'
 # "jj GitHub *i*ssues"
 abbr -a jgi 'open --url ('$JJ_ORIGIN_REPO_URL_COMMAND'; and echo -n "/issues/")'
+# "jj `npm` (TODO: look for `package.json` workspace roots only)
+abbr -a jgn 'open (printf "https://www.npmjs.com/package/%s" (cat (repo workspace root)/package.json | jq -r ".name"))'
 
 # LSP override: This is an "exported" function (meant to be used outside this file).
 # @fish-lsp-disable-next-line 4004

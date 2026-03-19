@@ -9,21 +9,25 @@
 	"editor.renderWhitespace": "boundary",
 	"editor.formatOnType": false,
 	"editor.columnSelection": false,
-	"editor.inlineSuggest.enabled": true,
-	"editor.suggest.showStatusBar": true,
-	"editor.suggestSelection": "first",
 	"files.insertFinalNewline": true,
 	"explorer.fileNesting.enabled": true,
 	"explorer.confirmDragAndDrop": false,
 	"editor.guides.bracketPairs": true,
 	"editor.stickyScroll.enabled": true,
-	"editor.acceptSuggestionOnCommitCharacter": false,
 	"diffEditor.hideUnchangedRegions.enabled": true,
 	"editor.accessibilitySupport": "off", // Setting regularly added by VS Code after asking if I'm using a screen reader.
 	"window.title": "${rootName}${separator}${activeEditorShort}${separator}${profileName}",
+	/******** Suggestsions ********/
+	"editor.inlineSuggest.enabled": true,
+	"editor.suggest.showStatusBar": true,
+	"editor.suggestSelection": "first",
+	"editor.suggest.showKeywords": false,
+	"editor.suggest.snippetsPreventQuickSuggestions": false,
+	"editor.acceptSuggestionOnCommitCharacter": false,
 	/******** Window ********/
 	"window.commandCenter": false,
 	"customWindowZoom.zoomLevelChangeValue": 0.25,
+	"explorer.sortOrder": "mixed",
 	"workbench.sideBar.location": "left",
 	"workbench.startupEditor": "newUntitledFile",
 	"workbench.editor.empty.hint": "hidden",
@@ -110,29 +114,12 @@
 	"formattingToggle.affects": [
 		"editor.formatOnSave"
 	],
-	"[json]": {
-		"editor.defaultFormatter": "biomejs.biome"
-	},
-	"[css]": {
-		"editor.defaultFormatter": "biomejs.biome"
-	},
-	"[markdown]": {
-		"editor.formatOnType": false
-	},
-	"[makefile]": {
-		"editor.insertSpaces": false,
-		"editor.detectIndentation": false
-	},
-	"[html]": {
-		"editor.defaultFormatter": "vscode.html-language-features"
-	},
-	"[python]": {
-		"editor.codeActionsOnSave": {
-			"source.organizeImports": "explicit"
-		},
-		"editor.defaultFormatter": "charliermarsh.ruff"
-	},
 	"biome.suggestInstallingGlobally": false,
+	// This works around a bug with the Django template extension where it tries
+	// to take over all HTML files in all repositories.
+	"files.associations": {
+		"*.html": "html"
+	},
 	/******** JavaScript & TypeScript ********/
 	"js/ts.validate.enabled": false,
 	"js/ts.updateImportsOnFileMove.enabled": "always",
@@ -168,16 +155,34 @@
 	"go.useLanguageServer": true,
 	"go.toolsGopath": "/Users/lgarron/Code/gopath",
 	"go.toolsManagement.autoUpdate": true,
-	/******** Remote SSH ********/
-	"remote.SSH.useLocalServer": false,
-	"remote.SSH.remotePlatform": {
-		"Pythagoras.lan": "macOS",
-		"Pythagoras-ts.wyvern-climb.ts.net": "macOS"
+	/******** Python ********/
+	"python.analysis.autoImportCompletions": true,
+	"python.analysis.autoImportUserSymbols": true,
+	"python.analysis.indexing": true,
+	"terminal.integrated.enableMultiLinePasteWarning": "never",
+	"[python]": {
+		"editor.codeActionsOnSave": {
+			"source.organizeImports": "explicit"
+		},
+		"editor.defaultFormatter": "charliermarsh.ruff"
 	},
-	"remote.SSH.serverInstallPath": {
-		"Pythagoras.lan": "/Users/lgarron/.cache/vscode-server",
-		"Pythagoras-ts.wyvern-climb.ts.net": "/Users/lgarron/.cache/vscode-server"
+	/******** JSON ********/
+	"[json]": {
+		"editor.defaultFormatter": "biomejs.biome"
 	},
+	/******** JSONC ********/
+	"[jsonc]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
+	/******** Markdown ********/
+	"markdown.editor.pasteUrlAsFormattedLink.enabled": "smart",
+	/******** Rust ********/
+	"rust-analyzer.check.command": "clippy",
+	"rust-analyzer.showUnlinkedFileNotification": false,
+	/******* SCAD *********/
+	"scad-lsp.fmtExePath": "/opt/homebrew/bin/openscad-lsp-topiary",
+	/******* Zig *********/
+	"zig.zls.enabled": "on",
 	/******** Codespaces ********/
 	"github.codespaces.createCodespaceInNewWindow": true,
 	// The following is not necessarily specific to codespaces, but prevents a
@@ -187,8 +192,6 @@
 	"githubPullRequests.ignoredPullRequestBranches": [
 		"main"
 	],
-	/******** Live Share ********/
-	"liveshare.showInStatusBar": "whileCollaborating",
 	/******** Terminal ********/
 	"terminal.integrated.tabs.enabled": true,
 	"terminal.integrated.tabs.location": "right",
@@ -217,32 +220,6 @@
 			]
 		}
 	},
-	/******** GitLens ********/
-	"gitlens.rebaseEditor.ordering": "asc",
-	"githubPullRequests.pullBranch": "never",
-	"workbench.editorAssociations": {
-		"git-rebase-todo": "default",
-		"*.svg": "default"
-	},
-	/******** Python ********/
-	"python.analysis.autoImportCompletions": true,
-	"python.analysis.autoImportUserSymbols": true,
-	"python.analysis.indexing": true,
-	"terminal.integrated.enableMultiLinePasteWarning": "never",
-	// This works around a bug with the Django template extension where it tries
-	// to take over all HTML files in all repositories.
-	"files.associations": {
-		"*.html": "html"
-	},
-	/******** Rust ********/
-	"rust-analyzer.check.command": "clippy",
-	"rust-analyzer.showUnlinkedFileNotification": false,
-	/******** Markdown ********/
-	"markdown.editor.pasteUrlAsFormattedLink.enabled": "smart",
-	/******** JSONC ********/
-	"[jsonc]": {
-		"editor.defaultFormatter": "biomejs.biome"
-	},
 	/******** Toggle Case ********/
 	"toggleCase.case.capitalCase": false,
 	"toggleCase.case.dotCase": false,
@@ -257,16 +234,27 @@
 	/******* VCS (SCM) *********/
 	"scm.graph.badges": "all",
 	"scm.experimental.showHistoryGraph": true,
-	/******* SCAD *********/
-	"scad-lsp.fmtExePath": "/opt/homebrew/bin/openscad-lsp-topiary",
-	/******* Zig *********/
-	"zig.zls.enabled": "on",
+	/******** GitLens ********/
+	"gitlens.rebaseEditor.ordering": "asc",
+	"githubPullRequests.pullBranch": "never",
+	"workbench.editorAssociations": {
+		"git-rebase-todo": "default",
+		"*.svg": "default"
+	},
+	/******** Remote SSH ********/
+	"remote.SSH.useLocalServer": false,
+	"remote.SSH.remotePlatform": {
+		"Pythagoras.lan": "macOS",
+		"Pythagoras-ts.wyvern-climb.ts.net": "macOS"
+	},
+	"remote.SSH.serverInstallPath": {
+		"Pythagoras.lan": "/Users/lgarron/.cache/vscode-server",
+		"Pythagoras-ts.wyvern-climb.ts.net": "/Users/lgarron/.cache/vscode-server"
+	},
+	/******** Live Share ********/
+	"liveshare.showInStatusBar": "whileCollaborating",
 	/******* Disable AI upsell garbage I didn't ask for *********/
 	"terminal.integrated.initialHint": false,
-	/******* Unsorted *********/
-	"explorer.sortOrder": "mixed",
-	"editor.suggest.showKeywords": false,
-	"editor.suggest.snippetsPreventQuickSuggestions": false,
 	/******** Disable unsolicited slop ********/
 	"chat.commandCenter.enabled": false,
 	"chat.agent.enabled": false,
@@ -279,6 +267,8 @@
 	"githubPullRequests.codingAgent.enabled": false,
 	"github.copilot.chat.newWorkspaceCreation.enabled": false,
 	"terminal.integrated.suggest.enabled": false,
+	/******* JSON schema *********/
+	// TODO: why is this in the serialized preferences instead of the DB?
 	"json.schemaDownload.trustedDomains": {
 		"https://schemastore.azurewebsites.net/": true,
 		"https://raw.githubusercontent.com/": true,
@@ -287,4 +277,5 @@
 		"https://json-schema.org/": true,
 		"https://biomejs.dev": true
 	}
+	/******* Unsorted *********/
 }

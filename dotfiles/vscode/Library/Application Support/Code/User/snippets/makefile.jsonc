@@ -50,7 +50,16 @@
     "body": [
       ".PHONY: lint-typescript",
       "lint-typescript:",
-      "\tbun x -- bun-dx --package typescript tsc -- --noEmit --project ./tsconfig.json"
+      "\tbun x -- bun-dx --package typescript tsc -- --project ./tsconfig.json"
+    ],
+    "description": "Lint using `biome`"
+  },
+  "lint-typescript (using TypeScript 7 preview)": {
+    "prefix": "lint-typescript 7",
+    "body": [
+      ".PHONY: lint-typescript",
+      "lint-typescript:",
+      "\tbun x -- bun-dx --package @typescript/native-preview tsgo -- --project ./tsconfig.json"
     ],
     "description": "Lint using `biome`"
   },
@@ -103,7 +112,14 @@
   "bun-dx (typescript)": {
     "prefix": "dx typescript",
     "body": [
-      "bun x -- bun-dx --package typescript tsc --${1}"
+      "bun x -- bun-dx --package typescript tsc -- ${1}"
+    ],
+    "description": "Invoke `typescript` using `bun-dx"
+  },
+  "bun-dx (TypeScript 7 preview)": {
+    "prefix": "dx typescript 7",
+    "body": [
+      "bun x -- bun-dx --package @typescript/native-preview tsgo -- ${1}"
     ],
     "description": "Invoke `typescript` using `bun-dx"
   },

@@ -1,7 +1,7 @@
 #!/usr/bin/env -S fish --no-config --
 
 set START_DATE (date)
-echo "Start: $START_DATE" >~/.config/lglogin/lastrun.log
+echo "Start: $START_DATE" >$HOME/.local/share/lglogin/lastrun.log
 
 # Caps Lock (0x39) -> Delete Key (0x2A)
 
@@ -51,4 +51,4 @@ niceplz --sudo
 # Allows us to check when the script was last run.
 
 launchctl setenv LAST_LGLOGIN_FISH (date)
-echo "End: "(date) >>~/.config/lglogin/lastrun.log
+echo "End: "(date) >>$HOME/.local/share/lglogin/lastrun.log

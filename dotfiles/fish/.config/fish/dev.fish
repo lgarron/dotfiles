@@ -196,6 +196,7 @@
 
     abbr_subcommand repo b "boilerplate"
     abbr_subcommand repo ci "boilerplate ci"
+    abbr_subcommand repo cic "boilerplate ci --forge codeberg"
     abbr_subcommand repo gr "boilerplate auto-publish-github-release"
     abbr_subcommand_arg repo a add boilerplate
     abbr_subcommand_arg repo e edit boilerplate

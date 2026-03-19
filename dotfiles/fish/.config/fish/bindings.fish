@@ -39,9 +39,11 @@
     end
     bind ctrl-alt-r _add_LATEST_CD_DIR_PATH
 
-    # Restore the functionality of using `⌥⇧-` to enter `—` on macOS.
-    bind alt-_ "commandline -i —"
-    # Use ⇧⌥' to enter `\"`
+    # Use ⇧⌥' (⌥") to enter `\"`
     bind alt-\" "commandline -i '\\\"'"
-    # Workaround for VS Code to allow ⌥X to enter `≈` (not needed in `Terminal.app` or iTerm).
+
+# VS Code shell input workarounds
+
+    bind alt-shift-— "commandline -i —"
+    bind alt-shift-Æ "commandline -i '\\\"'"
     bind alt-≈ "commandline -i '≈'"

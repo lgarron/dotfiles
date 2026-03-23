@@ -823,6 +823,27 @@
 				</dict>
 				<dict>
 					<key>ID</key>
+					<string>8D779EAE-CAF6-4C63-82CD-2DE6D2DA6AB5</string>
+					<key>children</key>
+					<array/>
+					<key>enabled</key>
+					<true/>
+					<key>modificationDate</key>
+					<real>795994127.55459702</real>
+					<key>name</key>
+					<string>LaunchAgents</string>
+					<key>settings</key>
+					<dict>
+						<key>folderDepth</key>
+						<integer>1</integer>
+						<key>path</key>
+						<string>~/Library/LaunchAgents</string>
+					</dict>
+					<key>source</key>
+					<string>QSFileSystemObjectSource</string>
+				</dict>
+				<dict>
+					<key>ID</key>
 					<string>5B68BA76-9754-4CE5-A3FD-DFD7EE6390DD</string>
 					<key>children</key>
 					<array/>

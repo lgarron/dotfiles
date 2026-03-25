@@ -183,8 +183,6 @@
 	/******** Rust ********/
 	"rust-analyzer.check.command": "clippy",
 	"rust-analyzer.showUnlinkedFileNotification": false,
-	/******* SCAD *********/
-	"scad-lsp.fmtExePath": "/opt/homebrew/bin/openscad-lsp-topiary",
 	/******* Zig *********/
 	"zig.zls.enabled": "on",
 	/******** Codespaces ********/

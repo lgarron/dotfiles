@@ -18,9 +18,10 @@ const TOP_LEVEL_NORMALIZED_FIELDS = {
   "editor.fontFamily":
     '"SeriousShanns Nerd Font Mono", Menlo, Monaco, monospace',
   "window.autoDetectColorScheme": false,
+  "workbench.colorTheme": "Dark Modern",
 };
 
-const TOP_LEVEL_FIELDS_TO_DELETE = ["workbench.colorTheme"];
+const TOP_LEVEL_FIELDS_TO_DELETE: string[] = [];
 
 async function mirror() {
   console.log("Copying to mirror…");

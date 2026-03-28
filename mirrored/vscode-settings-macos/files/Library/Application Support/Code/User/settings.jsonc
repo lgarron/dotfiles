@@ -37,6 +37,7 @@
 	"workbench.editor.useModal": "off",
 	"workbench.preferredLightColorTheme": "Light Modern",
 	"workbench.preferredDarkColorTheme": "Dark Modern",
+	"workbench.colorTheme": "Dark Modern",
 	"workbench.colorCustomizations": {
 		"[Default Light Modern]": {
 			"activityBar.background": "#e2e0e6",

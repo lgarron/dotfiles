@@ -21,6 +21,9 @@ const args = run(
       }),
       60,
     ),
+    copyCreationAndModificationDates: option(
+      "--copy-creation-and-modification-dates",
+    ),
     resize: optional(
       option("--resize", string({ metavar: "IMAGEMAGICK_GEOMETRY" }), {
         description: message`Resize parameter for ImageMagick: https://imagemagick.org/script/command-line-options.php#resize
@@ -45,7 +48,13 @@ See https://imagemagick.org/script/command-line-processing.php#geometry&gsc.tab=
   byOption(),
 );
 
-const { qcolor, resize, sourceFile, outputFile } = args;
+const {
+  qcolor,
+  resize,
+  sourceFile,
+  outputFile,
+  copyCreationAndModificationDates,
+} = args;
 
 const outputFileName =
   outputFile ??
@@ -57,3 +66,19 @@ await new PrintableShellCommand("magick", [
   ...(resize ? ["-resize", resize] : []),
   outputFileName,
 ]).shellOut();
+
+async function transferTime(flag: "-d" | "-m"): Promise<void> {
+  const date = await new PrintableShellCommand("GetFileInfo", [
+    flag,
+    sourceFile,
+  ]).text();
+  await new PrintableShellCommand("SetFile", [
+    flag,
+    date,
+    outputFileName,
+  ]).shellOut();
+}
+
+if (copyCreationAndModificationDates) {
+  await Promise.all([transferTime("-d"), transferTime("-m")]);
+}

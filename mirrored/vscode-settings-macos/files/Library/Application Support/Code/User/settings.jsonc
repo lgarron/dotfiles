@@ -35,8 +35,8 @@
 	"window.openFilesInNewWindow": "default",
 	"window.autoDetectColorScheme": false,
 	"workbench.editor.useModal": "off",
-	"workbench.preferredLightColorTheme": "Default Light Modern",
-	"workbench.preferredDarkColorTheme": "Default Dark Modern",
+	"workbench.preferredLightColorTheme": "Light Modern",
+	"workbench.preferredDarkColorTheme": "Dark Modern",
 	"workbench.colorCustomizations": {
 		"[Default Light Modern]": {
 			"activityBar.background": "#e2e0e6",

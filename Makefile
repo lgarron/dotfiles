@@ -93,6 +93,13 @@ PACKAGES += zellij
 $(PACKAGES): setup-npm-packages
 	${LSTOW} -- ./dotfiles/$@ ~/
 
+.PHONY: reveal-path
+reveal-path:
+	/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -f \
+		./scripts/system/reveal-path/reveal-path.app/
+	echo "Testing revealable path printing:"
+	bun run -- 'scripts/system/reveal-path/printRevealablePath.ts' -- '/Users/lgarron/Code/git/github.com/lgarron/dotfiles'
+
 # Daemons
 
 .PHONY: lglogin

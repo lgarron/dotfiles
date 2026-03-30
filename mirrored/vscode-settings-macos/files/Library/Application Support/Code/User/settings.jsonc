@@ -280,6 +280,15 @@
 		"https://json.schemastore.org/": true,
 		"https://json-schema.org/": true,
 		"https://biomejs.dev": true
-	}
+	},
+	"terminal.integrated.allowedLinkSchemes": [
+		"file",
+		"http",
+		"https",
+		"mailto",
+		"vscode",
+		"vscode-insiders",
+		"reveal-path"
+	]
 	/******* Unsorted *********/
 }

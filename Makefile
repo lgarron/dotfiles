@@ -128,6 +128,12 @@ vscode-settings-macos-uninstall-daemon:
 		|| echo "Already uninstalled"
 	rm -f /Users/lgarron/Library/LaunchAgents/net.garron.mac.dotfiles.mirror.vscode-settings-macos.plist
 
+.PHONY: vscode-settings-copy-back
+vscode-settings-copy-back:
+	cp \
+		"./mirrored/vscode-settings-macos/files/Library/Application Support/Code/User/settings.jsonc" \
+		"/Users/lgarron/Library/Application Support/Code/User/settings.json"
+
 .PHONY: obsidian-backup-macos
 obsidian-backup-macos: setup-npm-packages
 	${LSTOW} -- ./dotfiles/$@ ~/

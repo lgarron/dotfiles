@@ -1,6 +1,7 @@
 #!/usr/bin/env -S fish --no-config --
 
 set START_DATE (date)
+mkdir -p "$HOME/.local/share/lglogin/"
 echo "Start: $START_DATE" >$HOME/.local/share/lglogin/lastrun.log
 
 # Caps Lock (0x39) -> Delete Key (0x2A)

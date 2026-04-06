@@ -11,7 +11,7 @@
         "comment-json": "^4.4.1",
         "ergonomic-date": "^0.1.1",
         "jsonc-parser": "^3.3.1",
-        "lockfile-mutex": ">=0.3.5",
+        "lockfile-mutex": ">=0.3.12",
         "lstow": ">=0.5.4",
         "naughty-list": "^1.1.4",
         "path-class": ">=0.13.1",
@@ -264,7 +264,7 @@
 
     "jsonschema": ["jsonschema@1.5.0", "", {}, "sha512-K+A9hhqbn0f3pJX17Q/7H6yQfD/5OXgdrR5UE12gMXCiN9D5Xq2o5mddV2QEcX/bjla99ASsAAQUyMCCRWAEhw=="],
 
-    "lockfile-mutex": ["lockfile-mutex@0.3.7", "", { "dependencies": { "node-cleanup": "^2.1.2", "path-class": ">=0.6.1" } }, "sha512-b10RnrwiopEINt1KLIM3DRR3iTLeNN+g8p1Rb97qR2INVcVxiJfBjTS5haqWqJhwAUvYgTii//gyHNBqw8IIqA=="],
+    "lockfile-mutex": ["lockfile-mutex@0.3.12", "", { "dependencies": { "node-cleanup": "^2.1.2", "path-class": ">=0.10.3" } }, "sha512-ONwAorUgqqBUDRW4afoxbhWKq5mCwYzgsVhvdB3P7sD9/lMpmo31Lkup9EjYjZ9gdUaI+GXzbwsIMiYCFxqKXw=="],
 
     "lstow": ["lstow@0.5.4", "", { "dependencies": { "@optique/core": ">=0.8.2", "@optique/run": ">=0.8.2", "path-class": ">=0.11.2" }, "bin": { "lstow": "src/bin/main.ts" } }, "sha512-dwSHTffs3I4h79v9F1pwdwnAFiuTEgKNlpi75fLEFGWOJmL8VYoUQU15Q26L0FnfOzPN7TUxwT+JeSUyATy5cQ=="],
 

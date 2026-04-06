@@ -49,6 +49,10 @@ naughty-list \
 
 niceplz --sudo
 
+# pcaffeinate
+
+$HOME/Code/git/github.com/lgarron/dotfiles/scripts/system/pcaffeinate.ts --disown -- "Trackmania"
+
 # Allows us to check when the script was last run.
 
 launchctl setenv LAST_LGLOGIN_FISH (date)

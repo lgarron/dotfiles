@@ -10,7 +10,7 @@
     "jsonc-parser": "^3.3.1",
     "lockfile-mutex": ">=0.3.12",
     "lstow": ">=0.5.4",
-    "naughty-list": "^1.1.4",
+    "naughty-list": "^2.0.0",
     "path-class": ">=0.13.1",
     "plural-chain": ">=0.2.3",
     "printable-shell-command": "^5.0.8",

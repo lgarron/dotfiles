@@ -1,8 +1,8 @@
 #!/usr/bin/env -S fish --no-config --
 
 set START_DATE (date)
-mkdir -p "$HOME/.local/share/lglogin/"
-echo "Start: $START_DATE" >$HOME/.local/share/lglogin/lastrun.log
+mkdir -p "$HOME/.local/state/lglogin/"
+echo "Start: $START_DATE" >$HOME/.local/state/lglogin/lastrun.log
 
 # Caps Lock (0x39) -> Delete Key (0x2A)
 
@@ -51,9 +51,9 @@ niceplz --sudo
 
 # pcaffeinate
 
-$HOME/Code/git/github.com/lgarron/dotfiles/scripts/system/pcaffeinate.ts --disown -- "Trackmania"
+$HOME/Code/git/github.com/lgarron/dotfiles/scripts/system/pcaffeinate.ts --disown -- Trackmania
 
 # Allows us to check when the script was last run.
 
 launchctl setenv LAST_LGLOGIN_FISH (date)
-echo "End: "(date) >>$HOME/.local/share/lglogin/lastrun.log
+echo "End: "(date) >>$HOME/.local/state/lglogin/lastrun.log

@@ -9,7 +9,7 @@ import { Path } from "path-class";
 import trash from "trash";
 import { xdgData } from "xdg-basedir";
 
-const LOG_FOLDER = Path.xdg.data.join("pythagoras-screenshot/log/");
+const LOG_FOLDER = Path.xdg.state.join("pythagoras-screenshot/log/");
 async function debugLog(s: string, date: ErgonomicDate = new ErgonomicDate()) {
   await LOG_FOLDER.join(date.localYearMonth).mkdir();
   await LOG_FOLDER.join(

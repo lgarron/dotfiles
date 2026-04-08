@@ -118,6 +118,7 @@ lglogin-uninstall-daemon:
 .PHONY: vscode-settings-macos
 vscode-settings-macos: setup-npm-packages
 	${LSTOW} -- ./dotfiles/$@ ~/
+	mkdir -p "/Users/lgarron/.local/state/mirror-vscode-settings-macos/"
 	launchctl print gui/501/net.garron.mac.dotfiles.mirror.vscode-settings-macos > /dev/null 2> /dev/null || \
 		launchctl bootstrap gui/$(shell id -u) /Users/lgarron/Library/LaunchAgents/net.garron.mac.dotfiles.mirror.vscode-settings-macos.plist
 

@@ -11,6 +11,20 @@ function parseArgs() {
   return run(object({}), byOption());
 }
 
+async function hasMakeSetupTarget(): Promise<boolean> {
+  // macOS is stuck with an old version of `make` that does not support `--print-targets`.
+  // The expected exit code is `1`.
+  const targetInfo = await new PrintableShellCommand("make", ["-pRrq"]).text({
+    allowFailure: true,
+  });
+  for (const line of targetInfo.split("\n")) {
+    if (line.startsWith("setup:")) {
+      return true;
+    }
+  }
+  return false;
+}
+
 export async function jgff(_args: ReturnType<typeof parseArgs>): Promise<void> {
   await new PrintableShellCommand("jj", ["git", "fetch"]).shellOut({
     print: "inline",
@@ -63,16 +77,22 @@ export async function jgff(_args: ReturnType<typeof parseArgs>): Promise<void> {
     }
   }
 
-  const makeSetupCommand = new PrintableShellCommand("make", ["setup"]);
-  if (
-    await askYesNo(
-      `\nRun \`${makeSetupCommand.getPrintableCommand({ style: ["gray", "bold"], argumentLineWrapping: "inline" })}\`?`,
-      {
-        default: "y",
-      },
-    )
-  ) {
-    await makeSetupCommand.shellOut();
+  if (await hasMakeSetupTarget()) {
+    const makeSetupCommand = new PrintableShellCommand("make", ["setup"]);
+    if (
+      await askYesNo(
+        `\nRun \`${makeSetupCommand.getPrintableCommand({ style: ["gray", "bold"], argumentLineWrapping: "inline" })}\`?`,
+        {
+          default: "y",
+        },
+      )
+    ) {
+      await makeSetupCommand.shellOut({ print: "inline" });
+    }
+  } else {
+    console.info(
+      "✖️ Repo does not have a `make setup` target. Leaving the checkout as-is.",
+    );
   }
 }
 

@@ -34,18 +34,33 @@ export async function jgff(_args: ReturnType<typeof parseArgs>): Promise<void> {
       print: "inline",
     });
   } else {
-    await new PrintableShellCommand("jj", [
-      "log",
-      "--no-pager",
-      "--no-graph",
-      [
-        "--revisions",
-        '~..trunk() & ..@ & ~(empty() & description(exact:"") & ~merges())',
-      ],
-    ]).shellOut({ print: { skipLineWrapBeforeFirstArg: true } });
-    throw new Error(
-      `HEAD (@) has ${numHEADOnlyCommits} non-trivial ${Plural.s(numHEADOnlyCommits)`commits`} that ${Plural.is_are({ numHEADOnlyCommits })} not on \`trunk()\`. Not fast-forwarding.`,
+    const numTrunkOnlyCommits = parseInt(
+      await new PrintableShellCommand("jj", [
+        "log",
+        ["--revisions", "..trunk() & ~..@"],
+        "--count",
+      ]).text(),
+      10,
     );
+
+    if (numTrunkOnlyCommits === 0) {
+      console.info(
+        "🆗 Trunk can fast-forward to `@`. Leaving the checkout as-is.",
+      );
+    } else {
+      await new PrintableShellCommand("jj", [
+        "log",
+        "--no-pager",
+        "--no-graph",
+        [
+          "--revisions",
+          '~..trunk() & ..@ & ~(empty() & description(exact:"") & ~merges())',
+        ],
+      ]).shellOut({ print: { skipLineWrapBeforeFirstArg: true } });
+      throw new Error(
+        `\`@\` has ${numHEADOnlyCommits} non-trivial ${Plural.s(numHEADOnlyCommits)`commits`} that ${Plural.is_are({ numHEADOnlyCommits })} not on \`trunk()\`. Not fast-forwarding.`,
+      );
+    }
   }
 
   const makeSetupCommand = new PrintableShellCommand("make", ["setup"]);

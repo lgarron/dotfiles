@@ -112,3 +112,6 @@ email = "lgarron@worldcubeassociation.org"
 
 [gg.ui]
 track-recent-workspaces = false
+
+[visualjj]
+auto-init = false

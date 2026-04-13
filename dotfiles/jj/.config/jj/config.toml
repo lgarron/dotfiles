@@ -4,6 +4,8 @@ auto-track-bookmarks = "glob:*"
 [revsets]
 # Adapted from: https://willhbr.net/2024/08/18/understanding-revsets-for-a-better-jj-log-output/
 log = "@ | ancestors(visible_heads() | tracked_remote_bookmarks() | (tags() & ~..trunk()), 20)"
+bookmark-advance-from = "single_latest_ancestor_bookmark(@)"
+bookmark-advance-to = "here"
 
 [revset-aliases]
 'ancestor_bookmarks(to)' = 'heads(::to & bookmarks())'
@@ -30,14 +32,6 @@ log = "@ | ancestors(visible_heads() | tracked_remote_bookmarks() | (tags() & ~.
 'here' = 'latest(heads(promptanchor | prompt_pushable_stack))'
 
 [aliases]
-tug = [
-  "bookmark",
-  "move",
-  "--from",
-  "single_latest_ancestor_bookmark(@)",
-  "--to",
-  "here",
-]
 here = [
   "log",
   "--no-graph",

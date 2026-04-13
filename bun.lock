@@ -16,7 +16,7 @@
         "naughty-list": "^2.0.0",
         "path-class": ">=0.13.1",
         "plural-chain": ">=0.2.3",
-        "printable-shell-command": "^5.0.8",
+        "printable-shell-command": "^5.3.0",
         "temporal-ponyfill": "^0.1.0",
         "trash": "^10.0.0",
         "xdg-basedir": "^5.1.0",
@@ -326,7 +326,7 @@
 
     "powershell-utils": ["powershell-utils@0.2.0", "", {}, "sha512-ZlsFlG7MtSFCoc5xreOvBAozCJ6Pf06opgJjh9ONEv418xpZSAzNjstD36C6+JwOnfSqOW/9uDkqKjezTdxZhw=="],
 
-    "printable-shell-command": ["printable-shell-command@5.0.8", "", { "dependencies": { "@types/node": ">=25.0.3", "path-class": ">=0.12.1" } }, "sha512-E0EDYu5f42mV7rhc03JyFiTIngbEOCwTkjyvoU0aZxDUfN218q12T62nzNFKcsPWjt6r64LrriymgNVkRFLc/g=="],
+    "printable-shell-command": ["printable-shell-command@5.3.0", "", { "dependencies": { "path-class": ">=0.12.1" } }, "sha512-oLEv8/WzisCTQwsmnAE+uiEzmAQnk0Rjk2GCB2HsTqIFIRslVopB8bqLPZBkylPsdaj+ygefpexJ11xOAks2kA=="],
 
     "process": ["process@0.11.10", "", {}, "sha512-cdGef/drWFoydD1JsMzuFf8100nZl+GT+yacc2bEced5f9Rjk4z+WtFUTBu9PhOi9j/jfmBPu0mMEY4wIdAF8A=="],
 

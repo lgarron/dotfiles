@@ -127,11 +127,7 @@ export async function gclone({
   url,
   dryRun,
 }: ReturnType<typeof parseArgs>): Promise<void> {
-  const {
-    repoCloneSource: repoCloneSource,
-    user,
-    repo,
-  } = calculateRepoCloneSource(url, {
+  const { repoCloneSource, user, repo } = calculateRepoCloneSource(url, {
     rewriteURL,
   });
   const repoPathParent = GIT_REPOS_ROOT_PATH.join(url.hostname, user);

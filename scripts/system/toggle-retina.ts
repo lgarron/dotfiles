@@ -5,9 +5,10 @@ import { runAsync } from "@optique/run";
 import {
   type Display,
   getAllDevices,
+  getByName,
+  getMain,
   type VirtualScreen,
 } from "betterdisplaycli";
-import { PrintableShellCommand } from "printable-shell-command";
 import { byOption, withSuggestions } from "../lib/optique";
 
 let allDevicesCachedPromise: Promise<(Display | VirtualScreen)[]> | undefined;
@@ -51,28 +52,8 @@ function parseArgs() {
 export async function toggleRetina({
   displayName,
 }: Awaited<ReturnType<typeof parseArgs>>) {
-  // TODO: push shell calls into `betterdisplaycli.js`.
-
-  const displayArg = displayName
-    ? `--name=${displayName}`
-    : "--displayWithMainStatus";
-  const hiDPI =
-    (
-      await new PrintableShellCommand("betterdisplaycli", [
-        "get",
-        displayArg,
-        "--hiDPI",
-      ]).text()
-    ).trim() === "on";
-
-  const newState = hiDPI ? "off" : "on";
-  await new PrintableShellCommand("betterdisplaycli", [
-    "set",
-    displayArg,
-    `--hiDPI=${newState}`,
-  ])
-    .print()
-    .text();
+  const display = displayName ? await getByName(displayName) : await getMain();
+  await display.boolean.toggle("hiDPI");
 }
 
 if (import.meta.main) {

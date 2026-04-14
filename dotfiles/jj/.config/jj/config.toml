@@ -115,3 +115,4 @@ track-recent-workspaces = false
 
 [visualjj]
 auto-init = false
+snapshot-enabled = false

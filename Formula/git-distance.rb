@@ -5,7 +5,12 @@ class GitDistance < Formula
   homepage "https://github.com/lgarron/dotfiles"
   head "https://github.com/lgarron/dotfiles.git", :branch => "main"
 
+  depends_on "oven-sh/bun/bun"
+  depends_on "lgarron/lgarron/open-macos"
+
   def install
-    bin.install "scripts/git/git-distance.fish" => "git-distance"
+    system "./repo-script/build-ts-scripts.ts", "git/git-distance"
+    bin.install "./.temp/bin/git-distance" => "git-distance"
+    generate_completions_from_executable(bin/"git-distance", "--completions")
   end
 end

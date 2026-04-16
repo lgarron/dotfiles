@@ -1418,6 +1418,29 @@
 			<key>source</key>
 			<string>QSGroupObjectSource</string>
 		</dict>
+		<dict>
+			<key>ID</key>
+			<string>23325675-09AA-446F-9D61-4B50B19AEB9D</string>
+			<key>children</key>
+			<array/>
+			<key>enabled</key>
+			<true/>
+			<key>modificationDate</key>
+			<real>797920999.97162902</real>
+			<key>name</key>
+			<string>Modrinth (Minecraft launcher) → Modrinth App</string>
+			<key>settings</key>
+			<dict>
+				<key>name</key>
+				<string>Modrinth (Minecraft launcher)</string>
+				<key>target</key>
+				<string>/Applications/Modrinth App.app</string>
+				<key>targetType</key>
+				<string>public.data</string>
+			</dict>
+			<key>source</key>
+			<string>QSUserDefinedProxySource</string>
+		</dict>
 	</array>
 	<key>enabledPresets</key>
 	<dict>

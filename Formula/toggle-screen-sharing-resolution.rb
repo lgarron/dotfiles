@@ -5,9 +5,12 @@ class ToggleScreenSharingResolution < Formula
   homepage "https://github.com/lgarron/dotfiles"
   head "https://github.com/lgarron/dotfiles.git", :branch => "main"
 
-  depends_on "fish"
+  depends_on "oven-sh/bun/bun"
+  depends_on "betterdisplaycli"
 
   def install
-    bin.install "scripts/system/toggle-screen-sharing-resolution.fish" => "toggle-screen-sharing-resolution"
+    system "./repo-script/build-ts-scripts.ts", "system/toggle-screen-sharing-resolution"
+    bin.install "./.temp/bin/toggle-screen-sharing-resolution" => "toggle-screen-sharing-resolution"
+    generate_completions_from_executable(bin/"toggle-screen-sharing-resolution", "--completions")
   end
 end

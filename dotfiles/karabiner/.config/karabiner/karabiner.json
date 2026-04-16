@@ -708,6 +708,15 @@
                         "vendor_id": 14145
                     },
                     "ignore": false
+                },
+                {
+                    "identifiers": {
+                        "is_keyboard": true,
+                        "is_pointing_device": true,
+                        "product_id": 4097,
+                        "vendor_id": 10730
+                    },
+                    "ignore": false
                 }
             ],
             "fn_function_keys": [

@@ -40,7 +40,7 @@ const PYTHAGORAS_LAN_HOSTNAME = "Pythagoras.lan";
 const PYTHAGORAS_TAILSCALE_HOSTNAME = "Pythagoras-ts.wyvern-climb.ts.net";
 
 const resolutionParser: ValueParser<"sync", ResolutionInfo> = {
-  $mode: "sync",
+  mode: "sync",
   metavar: "RESOLUTION",
   parse: (input) => {
     try {
@@ -55,6 +55,7 @@ const resolutionParser: ValueParser<"sync", ResolutionInfo> = {
     }
   },
   format: (value) => value.logicalResolutionString(),
+  placeholder: new ResolutionInfo({ width: 2560, height: 1440 }),
 };
 
 const reconnectArgs = {

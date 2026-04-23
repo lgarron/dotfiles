@@ -21,11 +21,15 @@ export function byOption(): RunOptions {
     programName: new Path(argv[1]).basename.path,
     help: "option",
     completion: {
-      mode: "option",
-      name: "plural",
+      option: {
+        names: ["--completions"],
+        hidden: false,
+      },
     },
     version: {
-      mode: "option",
+      option: {
+        hidden: false,
+      },
       value: TIMESTAMP_AND_GIT_HEAD_HASH,
     },
   };
@@ -35,12 +39,9 @@ export function bySubcommand(): RunOptions {
   return {
     programName: new Path(argv[1]).basename.path,
     help: "command",
-    completion: {
-      mode: "command",
-      name: "plural",
-    },
+    completion: { command: { names: ["completions"], hidden: false } },
     version: {
-      mode: "command",
+      command: { hidden: false },
       value: TIMESTAMP_AND_GIT_HEAD_HASH,
     },
   };
@@ -53,7 +54,8 @@ function pathOrSubClass<T extends Path>(
 ): ValueParser<"sync", T> {
   const optiquePathParser = optiquePath(pathOptions);
   return {
-    $mode: "sync",
+    placeholder: new classConstructor("/") as T,
+    mode: "sync",
     metavar: pathOptions?.metavar ?? "PATH",
     parse: (input: string): ValueParserResult<T> => {
       const result = optiquePathParser.parse(input);
@@ -226,11 +228,12 @@ export function withSuggestions(
     | Promise<Iterable<string>>,
 ): ValueParser<"async", string> {
   return {
-    $mode: "async",
+    mode: "async",
     metavar: parser.metavar,
     parse: (input: string) => Promise.resolve({ success: true, value: input }),
     format: (value: string): string => value,
     suggest: (prefix: string) => prefixFilterSuggest(prefix, iterableFn),
+    placeholder: "",
   };
 }
 

@@ -19,7 +19,7 @@ function parseArgs() {
   return run(
     object({
       branches: multiple(argument(gitBranch()), { min: 1 }),
-      remote: withDefault(option(gitRemote()), "origin"),
+      remote: withDefault(option("--remote", gitRemote()), "origin"),
     }),
     {
       description: message`Remove \`git\` branches locally and remotely.`,

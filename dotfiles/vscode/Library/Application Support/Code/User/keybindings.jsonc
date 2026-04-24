@@ -299,13 +299,17 @@
     "when": "terminalFocus && terminalHasBeenCreated || terminalFocus && terminalProcessSupported"
   },
   {
-    "key": "ctrl+shift+cmd+r",
-    "command": "workbench.action.reloadWindow",
-  },
-  {
     "key": "cmd+r",
     "command": "-workbench.action.reloadWindow",
     "when": "isDevelopment"
+  },
+  {
+    "key": "ctrl+shift+cmd+e",
+    "command": "workbench.action.reloadWindow",
+  },
+  {
+    "key": "ctrl+shift+cmd+r",
+    "command": "typescript.restartTsServer"
   },
   {
     "key": "ctrl+cmd+i",

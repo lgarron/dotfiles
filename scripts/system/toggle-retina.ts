@@ -1,6 +1,13 @@
 #!/usr/bin/env -S bun run --
 
-import { argument, object, optional, string } from "@optique/core";
+import {
+  argument,
+  message,
+  object,
+  option,
+  optional,
+  string,
+} from "@optique/core";
 import { runAsync } from "@optique/run";
 import {
   type Display,
@@ -39,6 +46,9 @@ export async function allDeviceNames(): Promise<string[]> {
 function parseArgs() {
   return runAsync(
     object({
+      detach: option("--detach", {
+        description: message`Detach the process used to toggle HiDPI instead of waiting..`,
+      }),
       displayName: optional(
         argument(
           withSuggestions(string({ metavar: "DISPLAY_NAME" }), allDeviceNames),
@@ -51,9 +61,11 @@ function parseArgs() {
 
 export async function toggleRetina({
   displayName,
+  detach,
 }: Awaited<ReturnType<typeof parseArgs>>) {
   const display = displayName ? await getByName(displayName) : await getMain();
-  await display.boolean.toggle("hiDPI");
+  // TODO: notify on failure when detached?
+  await display.boolean.toggle("hiDPI", { detach });
 }
 
 if (import.meta.main) {

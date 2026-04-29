@@ -4,7 +4,7 @@
     "@optique/core": "^1.0.1",
     "@optique/git": "^1.0.1",
     "@optique/run": "^1.0.1",
-    "betterdisplaycli": ">=0.2.3",
+    "betterdisplaycli": ">=0.2.4",
     "comment-json": "^4.4.1",
     "ergonomic-date": "^0.1.1",
     "jsonc-parser": "^3.3.1",

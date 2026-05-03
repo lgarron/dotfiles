@@ -271,6 +271,7 @@
 	"githubPullRequests.codingAgent.enabled": false,
 	"github.copilot.chat.newWorkspaceCreation.enabled": false,
 	"terminal.integrated.suggest.enabled": false,
+	"update.mode": "none",
 	/******* JSON schema *********/
 	// TODO: why is this in the serialized preferences instead of the DB?
 	"json.schemaDownload.trustedDomains": {

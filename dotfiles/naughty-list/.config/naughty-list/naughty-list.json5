@@ -50,6 +50,7 @@
       ".yarn",
       ".yarnrc",
       ".vscode-cli",
+      ".vscode-shared",
       ".vscode-server",
       ".vscode-remote-containers",
       ".wasmer",

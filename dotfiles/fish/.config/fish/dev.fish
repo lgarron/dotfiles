@@ -24,6 +24,7 @@
     abbr -a mr "make reset"
 
     abbr -a mrs "make reset setup"
+    abbr -a tms "trash ./node_modules/ && make setup"
 
     # Chords
     abbr -a mcb "make clean build"

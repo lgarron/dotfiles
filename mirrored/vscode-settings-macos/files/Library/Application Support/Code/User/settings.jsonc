@@ -155,7 +155,9 @@
 	},
 	/******** Go ********/
 	"go.useLanguageServer": true,
-	"go.toolsGopath": "/Users/lgarron/.local/share/vscode-tools-gopath",
+	"go.gopath": "/Users/lgarron/.local/share/gopath",
+	// Use a separate path for this to avoid global pollution of the `$GOPATH/bin`.
+	"go.toolsGopath": "/Users/lgarron/.local/share/gopath-for-vscode-tools",
 	"go.toolsManagement.autoUpdate": true,
 	/******** Python ********/
 	"python.analysis.autoImportCompletions": true,

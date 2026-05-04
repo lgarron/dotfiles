@@ -9,7 +9,7 @@
         "@optique/run": "^1.0.1",
         "betterdisplaycli": ">=0.2.4",
         "comment-json": "^4.4.1",
-        "ergonomic-date": "^0.1.1",
+        "ergonomic-date": ">=0.1.6",
         "jsonc-parser": "^3.3.1",
         "lockfile-mutex": ">=0.3.12",
         "lstow": ">=0.6.0",
@@ -197,7 +197,7 @@
 
     "end-of-stream": ["end-of-stream@1.4.5", "", { "dependencies": { "once": "^1.4.0" } }, "sha512-ooEGc6HP26xXq/N+GCGOT0JKCLDGrq2bQUZrQ7gyrJiZANJ/8YDTxTpQBXGMn+WbIQXNVpyWymm7KYVICQnyOg=="],
 
-    "ergonomic-date": ["ergonomic-date@0.1.4", "", {}, "sha512-LIr3UmOvve2PrjWIpCEiVCDXiKd0zwmElBsYMRnrJpZexA52zOl5k2EXB7o9Lz0fB3KP+doVnX+4IOKCE8XxoQ=="],
+    "ergonomic-date": ["ergonomic-date@0.1.6", "", {}, "sha512-tBET6XW8ocPA3IkC+3CU6bODZwsuYeS97UI999b+o7FYujq7uBVgweCzsNdmj0P/UeZ5rh79Gel/cLyQO7h6dg=="],
 
     "es-define-property": ["es-define-property@1.0.1", "", {}, "sha512-e3nRfgfUZ4rNGL232gUgX06QNyyez04KdjFrF+LTRoOXmrOgFKDg4BCdsjW8EnT69eqdYGmRpJwiPVYNrCaW3g=="],
 

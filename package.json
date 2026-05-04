@@ -6,7 +6,7 @@
     "@optique/run": "^1.0.1",
     "betterdisplaycli": ">=0.2.4",
     "comment-json": "^4.4.1",
-    "ergonomic-date": "^0.1.1",
+    "ergonomic-date": ">=0.1.6",
     "jsonc-parser": "^3.3.1",
     "lockfile-mutex": ">=0.3.12",
     "lstow": ">=0.6.0",

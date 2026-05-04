@@ -53,6 +53,19 @@ niceplz --sudo
 
 $HOME/Code/git/github.com/lgarron/dotfiles/scripts/system/pcaffeinate.ts --disown -- Trackmania
 
+# Delete Bambu Studio logs
+
+# The logs can
+#
+# - take up gigabytes and gigabytes, and
+# - are encrypted to prevent us from looking at them,
+#
+# which is a level of combined neglect and hostility I do not accept.
+#
+# Maybe some day we can avoid the need for such a harsh workaround: https://github.com/bambulab/BambuStudio/issues/9845
+# But for now deletion seems to be the only option.
+rm -rf "/Users/lgarron/Library/Application Support/BambuStudio/log/"
+
 # Allows us to check when the script was last run.
 
 launchctl setenv LAST_LGLOGIN_FISH (date)

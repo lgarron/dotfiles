@@ -182,6 +182,10 @@
 	"[html]": {
 		"editor.defaultFormatter": "vscode.html-language-features"
 	},
+	/******** CSS ********/
+	"[css]": {
+		"editor.defaultFormatter": "biomejs.biome"
+	},
 	/******** Markdown ********/
 	"markdown.editor.pasteUrlAsFormattedLink.enabled": "smart",
 	/******** Rust ********/

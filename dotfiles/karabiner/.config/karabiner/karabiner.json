@@ -24,7 +24,7 @@
                                     "key_code": "s",
                                     "modifiers": { "mandatory": ["left_command", "left_control", "left_option"] }
                                 },
-                                "to": [{ "shell_command": "osascript -e \"tell application \\\"System Events\\\" to keystroke \\\"$(date $@ '+%Y-%m-%d')\\\"\"" }],
+                                "to": [{ "shell_command": "osascript \"/Users/lgarron/Code/git/github.com/lgarron/dotfiles/Quicksilver Triggers/Main/Type ISO 8601 date.applescript\"" }],
                                 "type": "basic"
                             }
                         ]

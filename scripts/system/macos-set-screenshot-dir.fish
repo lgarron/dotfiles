@@ -2,6 +2,7 @@
 
 set DIR $argv[1]
 echo "Setting screenshot dir to: $DIR"
+mkdir -p $DIR
 defaults write com.apple.screencapture location $DIR
 
 echo "Restarting "(set_color --bold)"SystemUIServer"

@@ -64,7 +64,7 @@ $HOME/Code/git/github.com/lgarron/dotfiles/scripts/system/pcaffeinate.ts --disow
 #
 # Maybe some day we can avoid the need for such a harsh workaround: https://github.com/bambulab/BambuStudio/issues/9845
 # But for now deletion seems to be the only option.
-rm -rf "/Users/lgarron/Library/Application Support/BambuStudio/log/"
+pgrep BambuStudio || rm -rf "/Users/lgarron/Library/Application Support/BambuStudio/log/"
 
 # Allows us to check when the script was last run.
 

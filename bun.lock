@@ -14,7 +14,7 @@
         "lockfile-mutex": ">=0.3.12",
         "lstow": ">=0.6.0",
         "naughty-list": "^3.0.1",
-        "path-class": ">=0.13.1",
+        "path-class": ">=0.14.0",
         "plural-chain": ">=0.2.3",
         "printable-shell-command": "^5.3.0",
         "temporal-ponyfill": "^0.1.0",
@@ -325,7 +325,7 @@
 
     "pako": ["pako@1.0.11", "", {}, "sha512-4hLB8Py4zZce5s4yd9XzopqwVv/yGNhV1Bl8NTmCq1763HeK2+EwVTv+leGeL13Dnh2wfbqowVPXCIO0z4taYw=="],
 
-    "path-class": ["path-class@0.13.1", "", { "dependencies": { "@types/node": ">=24.7.1", "xdg-basedir": "^5.1.0" } }, "sha512-K+IB9UYIBM8f8I9ZSO7TnGZepFO+Moz3A7bLGtPDYOJtTNSZHQEijQWepvpMaY/aclzUK/8qSIo5g9h0xMQOuQ=="],
+    "path-class": ["path-class@0.14.0", "", { "dependencies": { "@types/node": ">=24.7.1", "xdg-basedir": "^5.1.0" } }, "sha512-yjEmKsLJqZQ/EP7rsU1+2YBZYG/YcBqoIp0Eh/TRFUoW/F4/fSCaa+WwW9LlCfRoZGs4aJ4MotHZpXeqsdwFwQ=="],
 
     "path-key": ["path-key@3.1.1", "", {}, "sha512-ojmeN0qd+y0jszEtoY48r0Peq5dwMEkIlCOu6Q5f41lfkswXuKtYrhgoTpLnyIcHm24Uhqx+5Tqm2InSwLhE6Q=="],
 

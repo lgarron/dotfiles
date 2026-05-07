@@ -243,7 +243,7 @@ format-ts-biome: setup-npm-packages
 	bun x -- bun-dx --package @biomejs/biome biome -- check --write
 
 .PHONY: test-bun
-test-bun:
+test-bun: setup
 	bun test
 
 .PHONY: check-for-duplicate-dependencies

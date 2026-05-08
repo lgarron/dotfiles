@@ -21,6 +21,16 @@ function fish_jj_prompt
     if not command jj root &>/dev/null
         return 1
     end
+
+    set ORIGIN_URL = (git remote get-url origin)
+    if string match --regex "^https://github.com/" $ORIGIN_URL >/dev/null
+        echo -n ' '
+    else if string match --regex "^ssh://git@codeberg.org/" $ORIGIN_URL >/dev/null
+        echo -n '⛰  ' # Extra space for alignment in my terminals.
+    else if string match --regex "^https://codeberg.org/" $ORIGIN_URL >/dev/null
+        echo -n '(⛰  — unpushable HTTPS URL!) ' # Extra space for alignment in my terminals.
+    end
+
     set -l info op=(timeout --preserve-status 1s jj op log --limit 1 --no-graph --ignore-working-copy --color=always --template 'id.short().substr(0, 4)' 2>/dev/null || printf "%s" $TIMED_OUT)" "(
         timeout --preserve-status 1s jj log 2>/dev/null --no-graph --ignore-working-copy --color=always --revisions here \
             --template '

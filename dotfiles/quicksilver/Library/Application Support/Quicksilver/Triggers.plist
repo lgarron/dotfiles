@@ -856,6 +856,29 @@
 		</dict>
 		<dict>
 			<key>ID</key>
+			<string>7EE0EDA1-3744-45B8-9C96-4C3CE5FF3037</string>
+			<key>character</key>
+			<string></string>
+			<key>command</key>
+			<dict>
+				<key>actionID</key>
+				<string>AppleScriptRunAction</string>
+				<key>directID</key>
+				<string>/Users/lgarron/Code/git/github.com/lgarron/dotfiles/Quicksilver Triggers/Audio/Skip Ahead 20 seconds.applescript</string>
+			</dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyCode</key>
+			<integer>80</integer>
+			<key>modifiers</key>
+			<integer>8388864</integer>
+			<key>onPress</key>
+			<true/>
+			<key>type</key>
+			<string>QSHotKeyTrigger</string>
+		</dict>
+		<dict>
+			<key>ID</key>
 			<string>A47C44BC-A5E4-45E1-9E98-9DA510F28EFF</string>
 			<key>applicationScope</key>
 			<array>
@@ -1926,6 +1949,29 @@
 			<integer>18</integer>
 			<key>modifiers</key>
 			<integer>655650</integer>
+			<key>onPress</key>
+			<true/>
+			<key>type</key>
+			<string>QSHotKeyTrigger</string>
+		</dict>
+		<dict>
+			<key>ID</key>
+			<string>19489765-17BA-429F-9BB5-DE89608E880E</string>
+			<key>character</key>
+			<string></string>
+			<key>command</key>
+			<dict>
+				<key>actionID</key>
+				<string>AppleScriptRunAction</string>
+				<key>directID</key>
+				<string>/Users/lgarron/Code/git/github.com/lgarron/dotfiles/Quicksilver Triggers/Audio/Rewind 20 seconds.applescript</string>
+			</dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyCode</key>
+			<integer>79</integer>
+			<key>modifiers</key>
+			<integer>8388864</integer>
 			<key>onPress</key>
 			<true/>
 			<key>type</key>

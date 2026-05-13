@@ -1441,6 +1441,23 @@
 			<key>source</key>
 			<string>QSUserDefinedProxySource</string>
 		</dict>
+		<dict>
+			<key>ID</key>
+			<string>D7290241-DD4F-4D20-B6FC-A13CBDD5ECCE</string>
+			<key>children</key>
+			<array/>
+			<key>enabled</key>
+			<true/>
+			<key>name</key>
+			<string>social-dance-tempos-v1.3.2.png</string>
+			<key>settings</key>
+			<dict>
+				<key>path</key>
+				<string>~/Dropbox/Graphics/Social Dance Tempos (Chart)/social-dance-tempos-v1.3.2.png</string>
+			</dict>
+			<key>source</key>
+			<string>QSFileSystemObjectSource</string>
+		</dict>
 	</array>
 	<key>enabledPresets</key>
 	<dict>

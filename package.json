@@ -11,7 +11,7 @@
     "lockfile-mutex": ">=0.3.12",
     "lstow": ">=0.6.0",
     "naughty-list": "^3.0.1",
-    "path-class": ">=0.14.0",
+    "path-class": ">=0.15.0",
     "plural-chain": ">=0.2.3",
     "printable-shell-command": "^5.3.0",
     "temporal-ponyfill": "^0.1.0",

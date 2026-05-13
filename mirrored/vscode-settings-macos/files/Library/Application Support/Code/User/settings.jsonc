@@ -215,7 +215,8 @@
 	"terminal.integrated.profiles.osx": {
 		"apple_fish": {
 			"path": "/opt/homebrew/bin/fish",
-			"icon": "heart-filled",
+			// Emoji (e.g. 🐟) are not supported here. 😭
+			"icon": "terminal",
 			"overrideName": true,
 			"args": [
 				"-l"
@@ -223,7 +224,7 @@
 		},
 		"apple_fish_no_history": {
 			"path": "/opt/homebrew/bin/fish",
-			"icon": "heart",
+			"icon": "circle-slash",
 			"overrideName": true,
 			"args": [
 				"-l",

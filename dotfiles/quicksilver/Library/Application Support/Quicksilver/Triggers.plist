@@ -886,6 +886,8 @@
 			</array>
 			<key>applicationScopeType</key>
 			<integer>-1</integer>
+			<key>character</key>
+			<string></string>
 			<key>command</key>
 			<dict>
 				<key>actionID</key>
@@ -896,9 +898,9 @@
 			<key>enabled</key>
 			<true/>
 			<key>keyCode</key>
-			<integer>101</integer>
+			<integer>64</integer>
 			<key>modifiers</key>
-			<integer>8519938</integer>
+			<integer>8388864</integer>
 			<key>onPress</key>
 			<true/>
 			<key>showWindow</key>
@@ -1602,6 +1604,36 @@
 		</dict>
 		<dict>
 			<key>ID</key>
+			<string>DD2B14D1-2560-475B-81FE-858CC32DDCFF</string>
+			<key>applicationScope</key>
+			<array>
+				<string>com.blacktree.Quicksilver</string>
+				<string>com.apple.ScreenSharing</string>
+			</array>
+			<key>applicationScopeType</key>
+			<integer>-1</integer>
+			<key>character</key>
+			<string>.</string>
+			<key>command</key>
+			<dict>
+				<key>actionID</key>
+				<string>FileOpenWithAction</string>
+				<key>directID</key>
+				<string>QSGlobalSelectionProxy</string>
+			</dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyCode</key>
+			<integer>47</integer>
+			<key>modifiers</key>
+			<integer>1310985</integer>
+			<key>onPress</key>
+			<true/>
+			<key>type</key>
+			<string>QSHotKeyTrigger</string>
+		</dict>
+		<dict>
+			<key>ID</key>
 			<string>A4A72D6C-7762-4103-AD95-DC003D10116F</string>
 			<key>applicationScope</key>
 			<array>
@@ -2162,9 +2194,38 @@
 		</dict>
 		<dict>
 			<key>ID</key>
+			<string>D6D5E8AF-EE15-47D0-8F8D-DA94F44CB10E</string>
+			<key>applicationScope</key>
+			<array>
+				<string>com.blacktree.Quicksilver</string>
+			</array>
+			<key>applicationScopeType</key>
+			<integer>1</integer>
+			<key>character</key>
+			<string>.</string>
+			<key>command</key>
+			<dict>
+				<key>actionID</key>
+				<string>FileOpenWithAction</string>
+				<key>directID</key>
+				<string>com.blacktree.Quicksilver</string>
+			</dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyCode</key>
+			<integer>47</integer>
+			<key>modifiers</key>
+			<integer>1310985</integer>
+			<key>onPress</key>
+			<true/>
+			<key>type</key>
+			<string>QSHotKeyTrigger</string>
+		</dict>
+		<dict>
+			<key>ID</key>
 			<string>43D80D06-46CB-420A-98EA-DBB2BC610BE6</string>
 			<key>character</key>
-			<string></string>
+			<string></string>
 			<key>command</key>
 			<dict>
 				<key>actionID</key>
@@ -2175,9 +2236,9 @@
 			<key>enabled</key>
 			<true/>
 			<key>keyCode</key>
-			<integer>98</integer>
+			<integer>106</integer>
 			<key>modifiers</key>
-			<integer>8519938</integer>
+			<integer>8388864</integer>
 			<key>onPress</key>
 			<true/>
 			<key>showWindow</key>

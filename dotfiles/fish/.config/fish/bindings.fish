@@ -49,3 +49,7 @@
     bind alt-shift-— "commandline -i —"
     bind alt-shift-Æ "commandline -i '\\\"'"
     bind alt-≈ "commandline -i '≈'"
+
+# iTerm shell input workarounds
+
+    bind Æ "commandline -i '\\\"'"

@@ -406,4 +406,22 @@
     "key": "ctrl+shift+cmd+c",
     "command": "copyFilePath",
   },
+  {
+    "key": "ctrl+shift+cmd+,",
+    "command": "editor.action.insertSnippet",
+    // TODO: this should begin with `editorHasSelection && ` but for some reason that causes the snippet not to work.
+    "when": "editorTextFocus && (editorLangId == html)",
+    "args": {
+  	    "snippet": "<${1:div}$3>${2:$TM_SELECTED_TEXT}</$1>"
+    }
+  },
+  {
+    "key": "ctrl+shift+,",
+    "command": "editor.action.insertSnippet",
+    // TODO: this should begin with `editorHasSelection && ` but for some reason that causes the snippet not to work.
+    "when": "editorTextFocus && (editorLangId == html)",
+    "args": {
+  	    "snippet": "<${1:div}$3>${2:$TM_SELECTED_TEXT}</$1>"
+    }
+  },
 ]

@@ -57,6 +57,7 @@ abbr_subcommand_arg jj r --revisions log
 
 _fish_abbr_jj_subcommand n new
 abbr_subcommand_arg jj b --insert-before new
+abbr_subcommand_arg jj bb "--insert-before @" new
 
 _fish_abbr_jj_subcommand b bookmark
 _fish_abbr_jj_subcommand bs "bookmark set --revision here"

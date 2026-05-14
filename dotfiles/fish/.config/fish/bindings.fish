@@ -42,7 +42,7 @@
     bind ctrl-alt-r _add_LATEST_CD_DIR_PATH
 
     # Use ⇧⌥' (⌥") to enter `\"`
-    bind alt-\" "commandline -i '\\\"'"
+    bind 'alt-"' "commandline -i '\\\"'"
 
 # VS Code shell input workarounds
 

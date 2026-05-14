@@ -4,38 +4,6 @@
             "complex_modifications": {
                 "rules": [
                     {
-                        "description": "Change shift-insert to delete_forward on mWave",
-                        "manipulators": [
-                            {
-                                "conditions": [
-                                    {
-                                        "identifiers": [
-                                            {
-                                                "product_id": 4097,
-                                                "vendor_id": 10730
-                                            }
-                                        ],
-                                        "type": "device_if"
-                                    }
-                                ],
-                                "from": {
-                                    "key_code": "insert",
-                                    "modifiers": {
-                                        "mandatory": ["shift"],
-                                        "optional": ["any"]
-                                    }
-                                },
-                                "to": [
-                                    {
-                                        "key_code": "delete_forward",
-                                        "modifiers": ["shift"]
-                                    }
-                                ],
-                                "type": "basic"
-                            }
-                        ]
-                    },
-                    {
                         "description": "Type long date using ⌃⌥⌘A",
                         "manipulators": [
                             {

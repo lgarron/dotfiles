@@ -13,6 +13,9 @@
     bind ctrl-delete kill-token
     bind ctrl-\\ kill-token
 
+    # More ergonomic
+    bind shift-backspace history-delete or backward-delete-char
+
     if contains -- "$TERM_PROGRAM" vscode "iTerm.app"
       # Legacy bindings
       bind alt-b backward-word

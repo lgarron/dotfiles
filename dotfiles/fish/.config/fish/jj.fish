@@ -71,12 +71,12 @@ _fish_abbr_jj_subcommand r rebase
 _fish_abbr_jj_subcommand rd "rebase --destination"
 abbr_subcommand_arg jj b --branch rebase
 abbr_subcommand_arg jj s "# try: `b` (branch) or `--source` explicitly" rebase
-abbr_subcommand_arg jj d --destination rebase
+abbr_subcommand_arg jj d --destination rebase revert
 
 abbr_subcommand_arg jj ii --ignore-immutable edit squash describe rebase abandon
 abbr_subcommand_arg jj f --from squash restore
 abbr_subcommand_arg jj i --into squash
-abbr_subcommand_arg jj r --revision bookmark squash
+abbr_subcommand_arg jj r --revision bookmark squash revert
 
 _fish_abbr_jj_subcommand de describe
 abbr -a jd --set-cursor "jj describe --message \"%" # Special shortened abbreviation

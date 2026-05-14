@@ -71,7 +71,8 @@ _fish_abbr_jj_subcommand r rebase
 _fish_abbr_jj_subcommand rd "rebase --destination"
 abbr_subcommand_arg jj b --branch rebase
 abbr_subcommand_arg jj s "# try: `b` (branch) or `--source` explicitly" rebase
-abbr_subcommand_arg jj d --destination rebase revert
+abbr_subcommand_arg jj d "# try: `o` (for `--onto`)" rebase revert
+abbr_subcommand_arg jj o --onto rebase revert
 
 abbr_subcommand_arg jj ii --ignore-immutable edit squash describe rebase abandon
 abbr_subcommand_arg jj f --from squash restore

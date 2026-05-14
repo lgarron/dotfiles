@@ -132,8 +132,10 @@
     # bun add d⎵ → bun add --development
     abbr_subcommand_arg bun d --development add
 
-    set -l BUN_ROLL "set -g _FISH_JJ_WAS_RUN_DURING_COMMAND true &&
-    repo dependencies --package-manager bun roll --commit"
+    set -l BUN_ROLL "jj-was-run && repo dependencies --package-manager bun roll --commit"
+    function jj-was-run
+        set -g _FISH_JJ_WAS_RUN_DURING_COMMAND true
+    end
     abbr -a bun-roll $BUN_ROLL
     abbr -a brr $BUN_ROLL
 

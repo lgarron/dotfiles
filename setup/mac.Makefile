@@ -122,6 +122,8 @@ mac-file-defaults:
 	duti -s com.microsoft.vscode public.source-code
 	duti -s com.microsoft.vscode public.com.netscape.javascript-source
 	duti -s com.microsoft.vscode public.yaml
+	duti -s com.microsoft.vscode org.rust-lang.rust
+	duti -s com.microsoft.vscode org.rust-lang.source
 
 	duti -s com.apple.quicktimeplayerx com.microsoft.waveform-audio all # wav
 	duti -s com.apple.quicktimeplayerx com.apple.m4v-video all

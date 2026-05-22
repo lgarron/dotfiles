@@ -163,7 +163,7 @@ async function ejectAllCards({
     await showNotification(messsageParts.join(" "));
   } catch (e) {
     messsageParts.push(
-      `Failed to eject ${Plural.s(counts.failed)`cards`} out of ${Plural.s(ejectionPromises)`cards`}.`,
+      `Failed to eject ${Plural.num.s(counts.failed)`cards`} out of ${Plural.num.s(ejectionPromises)`cards`}.`,
     );
     addSkipped();
     messsageParts.push(`Error: ${e}`);

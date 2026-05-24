@@ -224,7 +224,7 @@
 		},
 		"apple_fish_no_history": {
 			"path": "/opt/homebrew/bin/fish",
-			"icon": "circle-slash",
+			"icon": "terminal-secure",
 			"overrideName": true,
 			"args": [
 				"-l",

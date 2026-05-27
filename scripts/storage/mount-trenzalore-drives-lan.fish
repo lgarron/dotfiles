@@ -7,6 +7,6 @@ tell application "Finder"
 end tell'
 
 terminal-notifier \
-    -title "Mount Trenzalore drives (local)" \
+    -title "Mount Trenzalore drives (LAN)" \
     -message "Mounted successfully" \
     -execute "/opt/homebrew/bin/reveal-macos "(string escape /Volumes/Trenzalore/)

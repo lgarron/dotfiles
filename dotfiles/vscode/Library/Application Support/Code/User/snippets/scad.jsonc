@@ -249,4 +249,28 @@
 			"FILAMENT_COLOR__ELEGOO__PLA_PLUS__GALAXY_BLACK"
 		]
 	},
+	"Changelog": {
+		"prefix": "changelog",
+		"body": [
+			"",
+			"/*",
+			"",
+			"# Changelog",
+			"",
+			"## ${1}",
+			"",
+			"- ${2}",
+			"",
+			"*/"
+		]
+	},
+	"Hidden vars": {
+		"prefix": "hidden",
+		"body": [
+			"",
+			"// This prevents any following `CONSTANT_CASE` variables from being settable in the customizer.",
+			"// This prevents pathological interactions with persisted customizer values that are meant to be controlled exclusively by `VARIANT`.",
+			"/* [Hidden] */"
+		]
+	},
 }

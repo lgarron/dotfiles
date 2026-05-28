@@ -55,5 +55,8 @@
     { "source": "ipcam", "destination": "ipcam" },
     { "source": "timelapse", "destination": "timelapse" }
   ],
-  "command_to_run_before": ["fix-disk-names-macos"]
+  "command_to_run_before": ["fix-disk-names-macos"],
+  "commandline_options": {
+    "reveal_path_urls": true
+  }
 }

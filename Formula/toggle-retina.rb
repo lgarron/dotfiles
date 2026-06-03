@@ -6,7 +6,7 @@ class ToggleRetina < Formula
   head "https://github.com/lgarron/dotfiles.git", :branch => "main"
 
   depends_on "oven-sh/bun/bun"
-  depends_on "betterdisplaycli"
+  # depends_on cask: "betterdisplay" # TODO
 
   def install
     system "./repo-script/build-ts-scripts.ts", "system/toggle-retina"

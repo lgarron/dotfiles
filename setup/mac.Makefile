@@ -61,7 +61,7 @@ mac-app-defaults:
 
 .PHONY: mac-set-finder-sidebar
 mac-set-finder-sidebar:
-	./setup/scripts/mac-set-finder-sidebar.fish
+	./setup/scripts/mac-set-finder-sidebar.ts
 
 .PHONY: mac-keyboard-shortcuts
 mac-keyboard-shortcuts:

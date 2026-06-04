@@ -6,7 +6,7 @@ class Repo < Formula
   head "https://github.com/lgarron/repo.git", :branch => "main"
 
   depends_on "rust" => :build
-  depends_on "rust"
+  # depends_on "rust" # TODO: `cargo` is needed at runtime, but it doesn't have to be Homebrew's `cargo`.
   depends_on "node"
   depends_on "oven-sh/bun/bun"
   depends_on "toml2json"

@@ -1,4 +1,3 @@
-brew "jj"
 brew "ffmpeg"
 brew "fpp"
 brew "go"
@@ -18,3 +17,6 @@ brew "node"
 brew "caddy"
 brew "shellcheck"
 brew "hyperfine"
+brew "cubing/cubing/twips", args: ["HEAD"]
+brew "zellij"
+brew "teamookla/speedtest/speedtest"

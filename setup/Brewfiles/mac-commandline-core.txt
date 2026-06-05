@@ -1,4 +1,7 @@
 brew "ripgrep"
 brew "git"
 brew "gh"
+# Would otherwise not be core, but used `fish` prompt.
+brew "jj"
+brew "lgarron/lgarron/repo", args: ["HEAD"]
 brew "coreutils" # for `timeout`

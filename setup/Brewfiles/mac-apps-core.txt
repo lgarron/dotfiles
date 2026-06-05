@@ -1,4 +1,5 @@
 cask "quicksilver"
+cask "karabiner-elements"
 cask "google-chrome"
 cask "rectangle-pro"
 cask "iterm2"

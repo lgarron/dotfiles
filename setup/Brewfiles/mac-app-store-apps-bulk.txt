@@ -3,9 +3,9 @@ brew "mas"
 # Occasional
 mas "Screenium 3", id: 921553264
 mas "Brother iPrint&Scan", id: 1193539993
-mas "Pages", id: 409201541
-mas "Numbers", id: 409203825
-mas "Keynote", id: 409183694
+# mas "Pages", id: 409201541
+# mas "Numbers", id: 409203825
+# mas "Keynote", id: 409183694
 # mas "BlueSee", id: 1336679524 # TODO
 
 # Apple (large)

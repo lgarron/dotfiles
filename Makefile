@@ -17,7 +17,6 @@ common: \
 	yt-dlp \
 	zellij
 
-
 .PHONY: mac-common
 mac-common: \
 	mac-setup-sudo \
@@ -25,6 +24,10 @@ mac-common: \
 	mac-setup \
 	mac-setup-bulk \
 	setup
+
+.PHONY: mac-laptop
+mac-laptop: \
+	mac-setup-maestral
 
 .PHONY: mac-common-dotfiles
 mac-common-dotfiles: \
@@ -43,7 +46,8 @@ mac-common-dotfiles: \
 
 .PHONY: germain
 germain: \
-	mac-common
+	mac-common \
+	mac-laptop
 
 .PHONY: pythagoras
 pythagoras: \

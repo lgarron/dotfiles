@@ -19,6 +19,10 @@ launchctl setenv XDG_CONFIG_HOME "$HOME/.config"
 launchctl setenv XDG_DATA_HOME "$HOME/.local/share"
 launchctl setenv XDG_STATE_HOME "$HOME/.local/state"
 
+# https://developer.apple.com/library/archive/technotes/tn2228/_index.html#//apple_ref/doc/uid/DTS40007991-CH1-SUBSECTION15
+# This may already be set, but we do it just in case.
+launchctl setenv __CF_USER_TEXT_ENCODING 0x0:0:0
+
 # `GPG Keychain.app` requires this.
 launchctl setenv GNUPGHOME $XDG_CONFIG_HOME/gnupg
 

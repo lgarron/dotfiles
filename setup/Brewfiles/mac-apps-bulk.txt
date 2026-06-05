@@ -25,6 +25,14 @@ cask "handbrake-app"
 cask "betterdisplay"
 cask "gg"
 cask "tailscale-app"
+cask "jurplel/tap/instant-space-switcher"
+cask "modrinth"
+cask "slack"
+cask "transmit"
+cask "signal"
+cask "linear"
+cask "inkscape"
+
 # Browsers
 
 cask "firefox"
@@ -39,9 +47,11 @@ cask "safari-technology-preview"
 # microsoft-edge
 
 # QuickLook
+
 cask "betterzip"
 cask "qlmarkdown"
 cask "qlstephen"
 cask "suspicious-package"
-cask "quicklook-json"
+cask "thumbhost3mf"
+# cask "quicklook-json" # TODO: discontinued
 # cask "glance" # TODO: discontinued

@@ -15,8 +15,9 @@ mac-setup: \
 	mac-keyboard-shortcuts \
 	mac-file-defaults \
 	mac-commandline-core \
+	mac-setup-touch-id-sudo-config \
 	mac-apps-core \
-	mac-app-store-apps-core 
+	mac-app-store-apps-core
 
 # Frontload `sudo` operations to avoid 
 .PHONY: mac-setup-sudo
@@ -38,6 +39,10 @@ mac-setup-bulk: \
 	mac-dock-setup \
 	mac-commandline-requiring-xcode \
 	mac-setup-builtin-display-auto-brightness
+
+.PHONY: mac-setup-maestral
+mac-setup-maestral:
+	brew install --cask maestral
 
 # TODO: Use installation path instead of .PHONY?
 .PHONY: mac-homebrew
@@ -102,13 +107,14 @@ mac-file-defaults:
 	which duti || brew install duti
 
 	# File formats
+	# Note: this now shows a lot of prompts.
 
 	duti -s com.google.Chrome public.url all
 	duti -s com.google.Chrome public.svg-image all
-	duti -s com.google.Chrome http all
-	duti -s com.google.Chrome https all
+	# duti -s com.google.Chrome http all # TODO
+	# duti -s com.google.Chrome https all # TODO
 
-	duti -s com.microsoft.vscode public.data all
+	# duti -s com.microsoft.vscode public.data all # TODO
 	duti -s com.microsoft.vscode public.plain-text all
 	-duti -s com.microsoft.vscode net.daringfireball.markdown all \
 		|| echo -e "\n\nCannot set HTML handler at install time. Run later or right-click an HTML file in Finder to set as default.\n\n"
@@ -172,8 +178,9 @@ mac-apps-bulk-workarounds:
 	mkdir -p ~/.config/fish/completions/
 	echo "# Workaround for: https://github.com/Homebrew/homebrew-cask/pull/223049" > ~/.config/fish/completions/tailscale.fish
 	echo "" >> ~/.config/fish/completions/tailscale.fish
-	tailscale completion fish >> ~/.config/fish/completions/tailscale.fish
+	tailscale completion fish >> ~/.config/fish/completions/tailscale.fish # TODO: hangs if the Tailscale system extension hasn't been installed (!)
 
+.PHONY: mac-setup-homebrew-lgarron-lgarron
 .PHONY: mac-setup-homebrew-lgarron-lgarron
 mac-setup-homebrew-lgarron-lgarron: setup-npm-packages
 	./setup/scripts/mac-homebrew-install-all-lgarron-lgarron.ts
@@ -181,6 +188,16 @@ mac-setup-homebrew-lgarron-lgarron: setup-npm-packages
 .PHONY: mac-setup-homebrew-lgarron-lgarron-reinstall
 mac-setup-homebrew-lgarron-lgarron-reinstall: setup-npm-packages
 	./setup/scripts/mac-homebrew-install-all-lgarron-lgarron.ts --reinstall
+
+.PHONY: mac-setup-homebrew-trust
+mac-setup-homebrew-trust:
+	brew trust --formula oven-sh/bun/bun
+	brew trust --formula jurplel/tap/instant-space-switcher
+
+.PHONY: mac-setup-touch-id-sudo-config
+mac-setup-touch-id-sudo-config:
+	brew install --HEAD lgarron/lgarron/touch-id-sudo-config
+	touch-id-sudo-config enable
 
 # Dock
 
@@ -234,7 +251,9 @@ prefer-wired-over-wireless-for-SMB:
 # TODO: may require a reboot?
 .PHONY: mac-disable-emoji-suggestions
 mac-disable-emoji-suggestions:
-	sudo defaults write /Library/Preferences/FeatureFlags/Domain/UIKit.plist emoji_enhancements -dict-add Enabled -bool NO
+	# The first command exits successfully if the value is already set correctly. This prevents the `sudo` prompt unless needed.
+	defaults write /Library/Preferences/FeatureFlags/Domain/UIKit.plist emoji_enhancements -dict-add Enabled -bool NO || \
+		sudo defaults write /Library/Preferences/FeatureFlags/Domain/UIKit.plist emoji_enhancements -dict-add Enabled -bool NO
 
 .PHONY: watch-for-plist-changes
 watch-for-plist-changes:

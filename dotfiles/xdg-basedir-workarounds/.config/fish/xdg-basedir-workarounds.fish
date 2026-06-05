@@ -11,6 +11,12 @@
     set -Ux XDG_DATA_HOME $HOME/.local/share
     set -Ux XDG_STATE_HOME $HOME/.local/state
 
+## Apple stuff
+
+    # https://developer.apple.com/library/archive/technotes/tn2228/_index.html#//apple_ref/doc/uid/DTS40007991-CH1-SUBSECTION15
+    # This may already be set, but we do it just in case.
+    set -Ux __CF_USER_TEXT_ENCODING 0x0:0:0
+
 ## XDG workarounds for specific programs.
 
     set -Ux LESSHISTFILE $XDG_DATA_HOME/less/history

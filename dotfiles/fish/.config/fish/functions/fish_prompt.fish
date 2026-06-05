@@ -73,6 +73,10 @@ function fish_prompt --description 'Write out the prompt'
         end
     end
 
+    if [ "$fish_private_mode" = 1 ]
+        _fish_prompt_echo_padded "├──"(set_color --background $_FISH_PROMPT_LCARS_HEADER_COLOR)(set_color black)" HISTORY: OFF "(set_color normal)(set_color $_FISH_PROMPT_LCARS_HEADER_COLOR)"" (set_color $_FISH_PROMPT_LCARS_HEADER_COLOR) "—"
+    end
+
     set_color $_FISH_PROMPT_LCARS_HEADER_COLOR
     if [ (tput lines) -gt $_FISH_PROMPT_COMPACT_MODE_MAX_ROWS ]
         echo -n "├─ "

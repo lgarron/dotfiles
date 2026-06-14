@@ -242,8 +242,8 @@
     abbr -a "sm" "script/manage"
     abbr -a "disk-speed-test" '"/Applications/Blackmagic Disk Speed Test.app/Contents/MacOS/DiskSpeedTest" --cmd --dir'
     abbr -a "unixtime" 'date "+%s"'
-    abbr -a po "pushover 'Command done' -- (status current-commandline)"
-    abbr -a po1 "pushover 'Command done' -- (string join -- \"
+    abbr -a po "pushover -- 'Command done' (status current-commandline)"
+    abbr -a po1 "pushover -- 'Command done' (string join -- \"
 \" (history --max 1))"
 
     abbr -a hl "/opt/homebrew/Library/Taps/lgarron/homebrew-lgarron"

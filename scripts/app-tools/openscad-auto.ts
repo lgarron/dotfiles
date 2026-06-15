@@ -54,6 +54,7 @@ function parseArgs() {
         map(option("--parallelize", choice(["true", "false"])), JSON.parse),
         true,
       ),
+      printCommands: option("--print-commands"),
       sourceFile: argument(sourceFile()),
       outputDir: optional(argument(outputDir())),
     }),
@@ -127,6 +128,7 @@ async function openscadAuto({
   parallelize,
   sourceFile,
   outputDir,
+  printCommands,
 }: ReturnType<typeof parseArgs>): Promise<void> {
   // We parse this unconditionally, so that passing `--variants` doesn't mask a syntax error in the `.scad` source.
   const parsedVariantsFromFile =
@@ -158,17 +160,21 @@ ${variants.map((v) => `- ${mapImplicitDefault(v, `(${DEFAULT_VARIANT})`)}`)}
     console.info(`✍️ Writing new file to: ${outputFile}`);
 
     // TODO include `env` in the printed command of `PrintableShellCommand`.
-    const stdout = new PrintableShellCommand(OPENSCAD_PATH, [
+    const command = new PrintableShellCommand(OPENSCAD_PATH, [
       ["--enable", "lazy-union"],
       ["--backend", "Manifold"],
       ["-D", `VARIANT = ${JSON.stringify(variant)}`],
       ["-o", outputFile],
       sourceFile,
-    ]).stderr({ env: { ...env, FONTCONFIG_PATH } });
+    ]);
+    if (printCommands) {
+      command.print();
+    }
+    const stderr = command.stdout({ env: { ...env, FONTCONFIG_PATH } });
 
     let totalRenderingTime: string | undefined;
     // TODO line iterator convenience for `stdout`.
-    for (const line of (await stdout.text()).split("\n")) {
+    for (const line of (await stderr.text()).split("\n")) {
       console.log(line);
       if (line.startsWith("Total rendering time: ")) {
         totalRenderingTime = line.split(": ", 2)[1];
@@ -192,7 +198,7 @@ ${variants.map((v) => `- ${mapImplicitDefault(v, `(${DEFAULT_VARIANT})`)}`)}
           "-execute",
           `reveal-macos ${escapeArg(outputFile.path, false, { quoting: "extra-safe" })}`,
         ],
-      ]).shellOut();
+      ]).shellOut({ print: printCommands });
     }
 
     filesToReveal.push(outputFile);

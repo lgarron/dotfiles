@@ -55,8 +55,8 @@ function parseArgs() {
         true,
       ),
       printCommands: option("--print-commands"),
+      outputDir: optional(option("--output-dir", outputDir())),
       sourceFile: argument(sourceFile()),
-      outputDir: optional(argument(outputDir())),
     }),
     {
       ...byOption(),
@@ -154,7 +154,7 @@ ${variants.map((v) => `- ${mapImplicitDefault(v, `(${DEFAULT_VARIANT})`)}`)}
     const extension = fileExtension(format);
     let outputFile = sourceFile.extendBasename(variantSuffix + extension);
     if (outputDir) {
-      outputFile = outputDir.join(sourceFile.basename);
+      outputFile = outputDir.join(outputFile.basename);
     }
     await backupExistingFile(outputFile, extension);
     console.info(`✍️ Writing new file to: ${outputFile}`);

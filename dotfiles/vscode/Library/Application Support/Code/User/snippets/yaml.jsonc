@@ -1,0 +1,47 @@
+{
+	"actions/checkout": {
+		"prefix": "checkout@…",
+		"body": "actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2",
+		"description": "actions/checkout (latest common pin)"
+	},
+	"oven-sh/setup-bun": {
+		"prefix": "bun@…",
+		"body": "oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0",
+		"description": "oven-sh/setup-bun (latest common pin)"
+	},
+	"actions/setup-node": {
+		"prefix": "node@…",
+		"body": "actions/setup-node@48b55a011bda9f5d6aeb4c2d9c7362e8dae4041e # v6.4.0",
+		"description": "actions/setup-node (latest common pin)"
+	},
+	"Swatinem/rust-cache": {
+		"prefix": "rust-cache@…",
+		"body": "Swatinem/rust-cache@c19371144df3bb44fab255c43d04cbc2ab54d1c4 # v2.9.1",
+		"description": "Swatinem/rust-cache (latest common pin)"
+	},
+	"actions/upload-artifact": {
+		"prefix": "upload-artifact@…",
+		"body": "actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1",
+		"description": "actions/upload-artifact (latest common pin)"
+	},
+	"actions/upload-pages-artifact": {
+		"prefix": "upload-pages-artifact@…",
+		"body": "actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0",
+		"description": "actions/upload-pages-artifact (latest common pin)"
+	},
+	"softprops/action-gh-release@b4309332981a82ec1c5618f44dd2e27cc8bfbfda #v3.0.0": {
+		"prefix": "action-gh-release@…",
+		"body": "softprops/action-gh-release@b4309332981a82ec1c5618f44dd2e27cc8bfbfda #v3.0.0",
+		"description": "softprops/action-gh-release (latest common pin)"
+	},
+	"publish-github-release": {
+		"prefix": "publish-github-release@…",
+		"body": "cubing/actions-workflows/.github/workflows/publish-github-release.yaml@f68a4d12801e7e50851a1c2fa61cc92671199130 # v0.2.0",
+		"description": "publish-github-release (latest common pin)"
+	},
+	"install-fish": {
+		"prefix": "install-fish@…",
+		"body": "cubing/actions-workflows/actions/install-fish@f68a4d12801e7e50851a1c2fa61cc92671199130 # v0.2.0",
+		"description": "install-fish (latest common pin)"
+	}
+}

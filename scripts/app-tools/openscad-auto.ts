@@ -142,6 +142,13 @@ Rendering variants:
 ${variants.map((v) => `- ${mapImplicitDefault(v, `(${DEFAULT_VARIANT})`)}`).join("\n")}
 `);
 
+  if (outputDir && !(await outputDir.exists())) {
+    console.log(
+      `Output dir does not exist, so it will be created: ${outputDir.blue}`,
+    );
+    await outputDir.mkdir();
+  }
+
   const filesToReveal: Path[] = [];
   async function process(
     variantOrImplicitDefault: string | typeof IMPLICIT_DEFAULT,

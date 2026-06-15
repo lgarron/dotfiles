@@ -17,8 +17,8 @@ import { ffprobeFirstVideoStream, pollOption } from "./ffpoll";
 
 const HANDBRAKE_PRESET = "HEVC (qv65)";
 
-const DEFAULT_ENCODER = "handbrake" as const;
-const ENCODERS = [DEFAULT_ENCODER, "ffmpeg"] as const;
+const DEFAULT_ENCODER = "ffmpeg" as const;
+const ENCODERS = [DEFAULT_ENCODER, "handbrake"] as const;
 
 function parseArgs() {
   return run(

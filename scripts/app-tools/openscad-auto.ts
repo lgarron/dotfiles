@@ -170,7 +170,7 @@ ${variants.map((v) => `- ${mapImplicitDefault(v, `(${DEFAULT_VARIANT})`)}`)}
     if (printCommands) {
       command.print();
     }
-    const stderr = command.stdout({ env: { ...env, FONTCONFIG_PATH } });
+    const stderr = command.stderr({ env: { ...env, FONTCONFIG_PATH } });
 
     let totalRenderingTime: string | undefined;
     // TODO line iterator convenience for `stdout`.
@@ -181,7 +181,7 @@ ${variants.map((v) => `- ${mapImplicitDefault(v, `(${DEFAULT_VARIANT})`)}`)}
       }
     }
     if (!totalRenderingTime) {
-      throw new Error("Did not observe the expected stdout from OpenSCAD");
+      throw new Error("Did not observe the expected stderr from OpenSCAD");
     }
 
     // TODO: notify differently when running multiple instances in parallel.

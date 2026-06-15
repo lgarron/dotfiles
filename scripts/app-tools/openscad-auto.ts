@@ -139,7 +139,7 @@ async function openscadAuto({
   console.log(`
 Rendering variants:
 
-${variants.map((v) => `- ${mapImplicitDefault(v, `(${DEFAULT_VARIANT})`)}`)}
+${variants.map((v) => `- ${mapImplicitDefault(v, `(${DEFAULT_VARIANT})`)}`).join("\n")}
 `);
 
   const filesToReveal: Path[] = [];

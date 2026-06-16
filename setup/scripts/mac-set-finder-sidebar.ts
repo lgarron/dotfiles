@@ -1,6 +1,7 @@
 #!/usr/bin/env -S bun run --
 
 import { default as assert } from "node:assert";
+import { exit } from "node:process";
 import { Path } from "path-class";
 import { PrintableShellCommand } from "printable-shell-command";
 
@@ -147,6 +148,10 @@ switch (currentHostname) {
     ];
     await updateSidebar(targetEntries);
     break;
+  }
+  // biome-ignore lint/suspicious/noFallthroughSwitchClause: https://github.com/biomejs/biome/issues/3235
+  case "Hippasus": {
+    exit(0);
   }
   default: {
     throw new Error("Unrecognized machine.");

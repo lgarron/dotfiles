@@ -2,6 +2,7 @@
 
     set -l GERMAIN Germain germain Germain.local
     set -l PYTHAGORAS Pythagoras pythagoras Pythagoras.local Pythagoras.lan
+    set -l HIPPASUS Hippasus hippasus Hippasus.local Hippasus.lan
 
 # MOTD
 
@@ -60,6 +61,22 @@
           "│  │ ╭──╯╰─╮ ╭─╯  │ │  │ ╭╮ ││ ╭╮ ││ ╰╯ ││ ╰╯ ││ \ \╯│ ╭╮ │├──  │  │" \
           "│  ╰─╯     ╰─╯    ╰─╯  ╰─╯╰─╯╰─╯╰─╯╰────╯╰────╯╰─╯╰─╯╰─╯╰─╯╰────╯  │" \
           "╰──                                                              ──╯"
+      end
+    else if contains $_CURRENT_HOSTNAME $HIPPASUS
+      set -g _FISH_PROMPT_LCARS_HEADER_COLOR FFAAFF
+      set -g _FISH_PROMPT_LCARS_TRAILER_COLOR FF8888
+      # LSP override: This is an "exported" function (meant to be used outside this file). In particular, it is invoked by `fish` itself.
+      # @fish-lsp-disable-next-line 4004
+      function fish_greeting
+        set_color FF8888
+        echo -n -e "\r" # Clear any pending typed text (it will still be passed to the next prompt).
+        fish_greeting_echo \
+          "╭──                                                ──╮" \
+          "│  ╭─╮╭─╮╭───╮╭────╮╭────╮╭────╮╭────╮╭─╮ ╭─╮╭────╮  │" \
+          "│  │ ╰╯ │╰╮ ╭╯│ ⊂⊃ ││ ⊂⊃ ││ ⊂⊃ ││  ──┤│ │ │ ││  ──┤  │" \
+          "│  │ ╭╮ │╭╯ ╰╮│ ╭──╯│ ╭──╯│ ╭╮ │├──  ││ ╰─╯ │├──  │  │" \
+          "│  ╰─╯╰─╯╰───╯╰─╯   ╰─╯   ╰─╯╰─╯╰────╯╰─────╯╰────╯  │" \
+          "╰──                                                ──╯"
       end
     else if contains "dreamhost.com" (hostname -d)
       set -g _FISH_PROMPT_LCARS_HEADER_COLOR FFDD88

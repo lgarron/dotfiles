@@ -14,4 +14,6 @@ echo "Installing Homebrew…"
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 
 /opt/homebrew/bin/brew tap lgarron/lgarron
+/opt/homebrew/bin/brew trust lgarron/lgarron
 /opt/homebrew/bin/brew tap oven-sh/bun
+/opt/homebrew/bin/brew trust --formula oven-sh/bun/bun

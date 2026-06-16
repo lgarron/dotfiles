@@ -1,6 +1,7 @@
 #!/usr/bin/env -S bun run --
 
 import {
+  choice,
   integer,
   map,
   merge,
@@ -68,6 +69,36 @@ function parseArgs() {
   return run(
     merge(
       object("Quality", {
+        crf: optional(option("--crf", integer({ min: 0, max: 51 }))),
+        preset: optional(
+          option(
+            "--preset",
+            choice([
+              "ultrafast",
+              "superfast",
+              "veryfast",
+              "faster",
+              "fast",
+              "medium",
+              "slow",
+              "slower",
+              "veryslow",
+            ]),
+          ),
+        ),
+        tune: optional(
+          option(
+            "--tune",
+            choice([
+              "film",
+              "animation",
+              "grain",
+              "stillimage",
+              "fastdecode",
+              "zerolatency",
+            ]),
+          ),
+        ),
         vbvMaxRateArg: optional(
           map(
             option("--vbv-maxrate", string(), {
@@ -101,8 +132,17 @@ function parseArgs() {
 }
 
 export async function hevc(args: ReturnType<typeof parseArgs>): Promise<void> {
-  const { poll, height, dryRun, sourceFile, vbvMaxRateArg, cacheInSourceDir } =
-    args;
+  const {
+    poll,
+    height,
+    dryRun,
+    sourceFile,
+    vbvMaxRateArg,
+    crf,
+    preset,
+    tune,
+    cacheInSourceDir,
+  } = args;
 
   // We `await` unconditionally regardless of whether we read any video stream
   // info, since we also use this to make sure the source is ready.
@@ -111,17 +151,33 @@ export async function hevc(args: ReturnType<typeof parseArgs>): Promise<void> {
     vbvMaxRateArg ??
     new BitRateInfo(Number.parseInt(videoStream.bit_rate, 10), "b");
 
+  const additionalParams: (string | string[])[] = [];
+  let appendedbasenameParts = ".hevcx";
+  if (typeof height !== "undefined") {
+    additionalParams.push(["-vf", `scale=-1:${height.toString()}`]);
+    appendedbasenameParts = `${appendedbasenameParts}.${height}p`;
+  }
+  if (typeof preset !== "undefined") {
+    additionalParams.push(["-preset", preset]);
+    appendedbasenameParts = `${appendedbasenameParts}.${preset}`;
+  }
+  if (typeof tune !== "undefined") {
+    additionalParams.push(["-tune", tune]);
+    appendedbasenameParts = `${appendedbasenameParts}.${tune}`;
+  }
+  if (typeof crf !== "undefined") {
+    additionalParams.push(["-crf", `${crf}`]);
+    appendedbasenameParts = `${appendedbasenameParts}crf.${crf}`;
+  }
+  if (vbvMaxRateArg) {
+    appendedbasenameParts = `${appendedbasenameParts}.vbvmax=${vbvMaxRate}`;
+  }
+
   const outputFile =
     args.outputFile ??
     (await (async () => {
       let destPrefix = args.sourceFile;
-      destPrefix = destPrefix.extendBasename(`.hevcx`);
-      if (height) {
-        destPrefix = destPrefix.extendBasename(`.${height}p`);
-      }
-      if (vbvMaxRate) {
-        destPrefix = destPrefix.extendBasename(`.vbvmax=${vbvMaxRate}`);
-      }
+      destPrefix = destPrefix.extendBasename(appendedbasenameParts);
       let dest = destPrefix.extendBasename(".mp4");
       if (await dest.exists()) {
         dest = destPrefix.extendBasename(
@@ -130,10 +186,6 @@ export async function hevc(args: ReturnType<typeof parseArgs>): Promise<void> {
       }
       return dest;
     })());
-
-  const heightParams: [string, string][] = height
-    ? [["-vf", `scale=-1:${height.toString()}`]]
-    : [];
 
   const cacheDirOrSymlink = outputFile.extendBasename(".cache");
   const cacheDir = cacheInSourceDir
@@ -161,10 +213,10 @@ export async function hevc(args: ReturnType<typeof parseArgs>): Promise<void> {
     }
     return new PrintableShellCommand("ffmpeg", [
       ["-i", Path.cwd.resolve(sourceFile)],
-      ...heightParams,
       ["-c:v", "libx265"],
       ["-x265-params", x265Params.join(":")],
       ["-c:a", "copy"],
+      ...additionalParams,
       ["-tag:v", "hvc1"],
       // TODO: transfer HiDPI hint (e.g. for screencaps):
       //

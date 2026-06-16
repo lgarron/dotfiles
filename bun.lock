@@ -13,7 +13,7 @@
         "jsonc-parser": "^3.3.1",
         "lockfile-mutex": ">=0.3.12",
         "lstow": ">=0.6.0",
-        "naughty-list": "^3.0.1",
+        "naughty-list": "^3.0.2",
         "path-class": ">=0.16.0",
         "plural-chain": ">=0.2.3",
         "printable-shell-command": "^5.3.0",
@@ -116,7 +116,7 @@
 
     "@optique/git": ["@optique/git@1.0.2", "", { "dependencies": { "@logtape/logtape": "^2.0.4", "@optique/core": "1.0.2", "isomorphic-git": "^1.36.1" } }, "sha512-8DS8W188YzgvJUcEqkpmCJ42rZh8UClqN/u9iluFAedKKK1vMUppAVK4DxShZGDWEPQ0QH2nWFYX7Na8ZcGmDg=="],
 
-    "@optique/run": ["@optique/run@1.0.2", "", { "dependencies": { "@optique/core": "1.0.2" } }, "sha512-0Wc+zC8SLGV8zXQX+pk+o0c6wE/ddx/36CHZ0toTh5lApsjruUuGhqbxvljerAAG5un1xQbOLxzksBVC6UPgSg=="],
+    "@optique/run": ["@optique/run@1.1.0", "", { "dependencies": { "@optique/core": "1.1.0" } }, "sha512-dcuqqqU1Cpm9CLGEkCkpT/cpJ6H6a+hs0rP+iD8Tgwb+CPPZtX/hCfdIrqYyZ2RtYLxgc3S6KqC81AZAwEUPew=="],
 
     "@sindresorhus/df": ["@sindresorhus/df@3.1.1", "", { "dependencies": { "execa": "^2.0.1" } }, "sha512-SME/vtXaJcnQ/HpeV6P82Egy+jThn11IKfwW8+/XVoRD0rmPHVTeKMtww1oWdVnMykzVPjmrDN9S8NBndPEHCQ=="],
 
@@ -302,7 +302,7 @@
 
     "move-file": ["move-file@4.1.0", "", {}, "sha512-YE06K9XLIvMlqSfoZTl32qvbZLPgL70Za41wS8pEhsSOhy71xz2fn8J07nuz/LEEtPSuUzLUFGAJSx499eKDSw=="],
 
-    "naughty-list": ["naughty-list@3.0.1", "", { "dependencies": { "@optique/core": "^1.0.2", "@optique/run": "^1.0.2", "ergonomic-date": ">=0.1.4", "esbuild": ">=0.25.12", "json5": "^2.2.3", "jsonschema": ">=1.5.0", "lockfile-mutex": ">=0.3.7", "path-class": ">=0.11.2", "printable-shell-command": ">=4.0.4", "trash": ">=10.0.0" }, "bin": { "naughty-list": "dist/naughty-list/bin/main.js" } }, "sha512-GvS8Uxx/Mngtz1SxwB/6A54YK3Syb6+NPXeekd2LHW8x8mKn0+kWxX0UnafmVSiD5ETplhf/bfsbs3J3sUB54w=="],
+    "naughty-list": ["naughty-list@3.0.2", "", { "dependencies": { "@optique/core": "^1.1.0", "@optique/run": "^1.1.0", "ergonomic-date": ">=0.1.6", "json5": "^2.2.3", "jsonschema": ">=1.5.0", "lockfile-mutex": ">=0.3.12", "path-class": ">=0.16.0", "printable-shell-command": ">=5.3.1", "trash": ">=10.1.1" }, "bin": { "naughty-list": "dist/naughty-list/bin/main.js" } }, "sha512-+zDU0yp0OKvSfLdVUoaz1cWlW/YrcyLdwM0WPXYJeGem4FZdblZ/OD42lylPRGNI8HbcozNcNQfEjvvP1ZwADw=="],
 
     "node-cleanup": ["node-cleanup@2.1.2", "", {}, "sha512-qN8v/s2PAJwGUtr1/hYTpNKlD6Y9rc4p8KSmJXyGdYGZsDGKXrGThikLFP9OCHFeLeEpQzPwiAtdIvBLqm//Hw=="],
 
@@ -413,6 +413,8 @@
     "mount-point/@sindresorhus/df": ["@sindresorhus/df@1.0.1", "", {}, "sha512-1Hyp7NQnD/u4DSxR2DGW78TF9k7R0wZ8ev0BpMAIzA6yTQSHqNb5wTuvtcPYf4FWbVse2rW7RgDsyL8ua2vXHw=="],
 
     "mount-point/pify": ["pify@2.3.0", "", {}, "sha512-udgsAY+fTnvv7kI7aaxbqwWNb0AHiB0qBO89PZKPkoTmGOgdbrHDKD+0B2X4uTfJ/FT1R09r9gTsjUjNJotuog=="],
+
+    "naughty-list/@optique/core": ["@optique/core@1.1.0", "", {}, "sha512-eBqai76tHiFDoShlTNXN9AAPs9XznCJRrk4qmGhjZUSMmePCF9o1XU3okUHxHdDXXCHj4auKoIvCN79KNKErxA=="],
 
     "wsl-utils/powershell-utils": ["powershell-utils@0.1.0", "", {}, "sha512-dM0jVuXJPsDN6DvRpea484tCUaMiXWjuCn++HGTqUWzGDjv5tZkEZldAJ/UMlqRYGFrD/etByo4/xOuC/snX2A=="],
 

@@ -20,7 +20,7 @@ import { sleepDuration } from "../lib/temporal/sleep";
 export function pollOption(options: { default: "auto" | "false" | "true" }) {
   return withDefault(
     option("--poll", choice(["auto", "false", "true"], { metavar: "POLL" }), {
-      description: message`"Poll for the source file to exist with readable streams."`,
+      description: message`Poll until the source file exists with a readable video stream.`,
     }),
     options.default,
   );
@@ -43,6 +43,7 @@ export interface FFprobeStream {
   color_space: string;
   color_transfer: string;
   color_primaries: string;
+  bit_rate: string;
 }
 
 export async function ffprobeFirstVideoStream({

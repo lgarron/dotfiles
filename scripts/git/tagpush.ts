@@ -78,13 +78,18 @@ async function tagpush(args: { retag?: boolean }) {
   if (version === currentTag) {
     console.info("Current tag already matches. Skipping for idempotence…");
   } else {
-    await new PrintableShellCommand("git", ["tag", version]).shellOut(INLINE);
+    await new PrintableShellCommand("git", ["tag", "--", version]).shellOut(
+      INLINE,
+    );
   }
   // Push tag if needed. This is also idempotent, and a separate check doesn't
   // give us extra benefits in this case.
-  await new PrintableShellCommand("git", ["push", "origin", version]).shellOut(
-    INLINE,
-  );
+  await new PrintableShellCommand("git", [
+    "push",
+    "origin",
+    "--",
+    version,
+  ]).shellOut(INLINE);
 }
 
 if (import.meta.main) {

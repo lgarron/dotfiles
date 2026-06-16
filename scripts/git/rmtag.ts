@@ -15,6 +15,8 @@ import { runAsync } from "@optique/run";
 import { PrintableShellCommand } from "printable-shell-command";
 import { byOption } from "../lib/optique";
 
+const INLINE = { print: "inline" } as const;
+
 async function doesTagExistLocally(tag: string): Promise<boolean> {
   return (
     (
@@ -65,7 +67,9 @@ const options = await runAsync(
 
 const { remote, tags } = options;
 
-await new PrintableShellCommand("git", ["fetch", "--tags", remote]).shellOut();
+await new PrintableShellCommand("git", ["fetch", "--tags", remote]).shellOut(
+  INLINE,
+);
 
 /**************** Local ****************/
 
@@ -80,7 +84,7 @@ if (tagsToRemoveLocally.length > 0) {
   // This is *critical* to avoid catastrophic (but recoverable) repo mangling: https://github.com/jj-vcs/jj/issues/6325
   const useJJ = await (async () => {
     try {
-      await new PrintableShellCommand("jj", ["root"]).shellOut();
+      await new PrintableShellCommand("jj", ["root"]).shellOut(INLINE);
       return true;
     } catch {
       return false;
@@ -93,13 +97,13 @@ if (tagsToRemoveLocally.length > 0) {
       "delete",
       "--",
       ...tagsToRemoveLocally,
-    ]).shellOut();
+    ]).shellOut(INLINE);
   } else {
     await new PrintableShellCommand("git", [
       "tag",
       "--delete",
       ...tagsToRemoveLocally,
-    ]).shellOut();
+    ]).shellOut(INLINE);
   }
 }
 
@@ -136,7 +140,7 @@ if (tagsToRemoveFromRemote.length > 0) {
     "push",
     remote,
     ...tagsToRemoveFromRemote.map((tag) => `:${tag}`),
-  ]).shellOut();
+  ]).shellOut(INLINE);
 }
 
 /**************** Remote releases ****************/
@@ -166,7 +170,7 @@ for (const tag of tags) {
       "--yes",
       "--repo",
       remoteURL,
-    ]).shellOut();
+    ]).shellOut(INLINE);
   }
 }
 

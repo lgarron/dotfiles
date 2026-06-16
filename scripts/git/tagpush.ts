@@ -53,7 +53,9 @@ async function tagpush(args: { retag?: boolean }) {
         await new PrintableShellCommand("git", ["rev-parse", version]).text(),
       );
       console.log(SEPARATOR);
-      await new PrintableShellCommand("rmtag", [version]).shellOut(INLINE);
+      await new PrintableShellCommand("rmtag", ["--", version]).shellOut(
+        INLINE,
+      );
       console.log(SEPARATOR);
     } catch {
       console.log("No old tag.");

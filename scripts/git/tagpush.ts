@@ -7,6 +7,7 @@ import { PrintableShellCommand } from "printable-shell-command";
 import { byOption } from "../lib/optique";
 
 const SEPARATOR = "--------";
+const INLINE = { print: "inline" } as const;
 
 async function tagpush(args: { retag?: boolean }) {
   const version = await new PrintableShellCommand("version").text();
@@ -52,7 +53,7 @@ async function tagpush(args: { retag?: boolean }) {
         await new PrintableShellCommand("git", ["rev-parse", version]).text(),
       );
       console.log(SEPARATOR);
-      await new PrintableShellCommand("rmtag", [version]).shellOut();
+      await new PrintableShellCommand("rmtag", [version]).shellOut(INLINE);
       console.log(SEPARATOR);
     } catch {
       console.log("No old tag.");
@@ -75,15 +76,13 @@ async function tagpush(args: { retag?: boolean }) {
   if (version === currentTag) {
     console.info("Current tag already matches. Skipping for idempotence…");
   } else {
-    await new PrintableShellCommand("git", ["tag", version]).shellOut();
+    await new PrintableShellCommand("git", ["tag", version]).shellOut(INLINE);
   }
   // Push tag if needed. This is also idempotent, and a separate check doesn't
   // give us extra benefits in this case.
-  await new PrintableShellCommand("git", [
-    "push",
-    "origin",
-    version,
-  ]).shellOut();
+  await new PrintableShellCommand("git", ["push", "origin", version]).shellOut(
+    INLINE,
+  );
 }
 
 if (import.meta.main) {

@@ -67,9 +67,12 @@ const options = await runAsync(
 
 const { remote, tags } = options;
 
-await new PrintableShellCommand("git", ["fetch", "--tags", remote]).shellOut(
-  INLINE,
-);
+await new PrintableShellCommand("git", [
+  "fetch",
+  "--tags",
+  "--",
+  remote,
+]).shellOut(INLINE);
 
 /**************** Local ****************/
 
@@ -115,6 +118,7 @@ const remoteURL: string = await (async () => {
       await new PrintableShellCommand("git", [
         "remote",
         "get-url",
+        "--",
         `${remote}`,
       ]).text()
     ).trim();
@@ -138,6 +142,7 @@ for (const tag of tags) {
 if (tagsToRemoveFromRemote.length > 0) {
   await new PrintableShellCommand("git", [
     "push",
+    "--",
     remote,
     ...tagsToRemoveFromRemote.map((tag) => `:${tag}`),
   ]).shellOut(INLINE);
@@ -169,10 +174,11 @@ if (remoteIsGitHub(remoteURL)) {
       await new PrintableShellCommand("gh", [
         "release",
         "delete",
-        tag,
         "--yes",
         "--repo",
         remoteURL,
+        "--",
+        tag,
       ]).shellOut(INLINE);
     }
   }

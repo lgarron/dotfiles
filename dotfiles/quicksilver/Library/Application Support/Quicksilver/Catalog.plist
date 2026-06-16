@@ -1410,6 +1410,87 @@
 					<key>source</key>
 					<string>QSFileSystemObjectSource</string>
 				</dict>
+				<dict>
+					<key>ID</key>
+					<string>0F076B7F-18C5-4408-AB2E-81A1CD4BC857</string>
+					<key>children</key>
+					<array>
+						<dict>
+							<key>ID</key>
+							<string>59E03282-0C3B-4DA4-BAB4-986DEBDA333D</string>
+							<key>children</key>
+							<array/>
+							<key>enabled</key>
+							<true/>
+							<key>name</key>
+							<string>Filament inventory &amp; ordering.md</string>
+							<key>settings</key>
+							<dict>
+								<key>path</key>
+								<string>~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Notes/Reference/3D printing/Filament inventory &amp; ordering.md</string>
+							</dict>
+							<key>source</key>
+							<string>QSFileSystemObjectSource</string>
+						</dict>
+						<dict>
+							<key>ID</key>
+							<string>AA15FC7A-96D0-4D57-A818-68970F923A38</string>
+							<key>children</key>
+							<array/>
+							<key>enabled</key>
+							<true/>
+							<key>name</key>
+							<string>2025-06-25 — Mini Dudeney slicing debugging experimentation.md</string>
+							<key>settings</key>
+							<dict>
+								<key>path</key>
+								<string>~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Notes/Journal/3D printing/2025-06-25 — Mini Dudeney slicing debugging experimentation.md</string>
+							</dict>
+							<key>source</key>
+							<string>QSFileSystemObjectSource</string>
+						</dict>
+						<dict>
+							<key>ID</key>
+							<string>2F77523D-BD23-4908-9416-D321D4911F20</string>
+							<key>children</key>
+							<array/>
+							<key>enabled</key>
+							<true/>
+							<key>name</key>
+							<string>2025-12-20 — Repo modernization checklist.md</string>
+							<key>settings</key>
+							<dict>
+								<key>path</key>
+								<string>~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Notes/Reference/Code/2025-12-20 — Repo modernization checklist.md</string>
+							</dict>
+							<key>source</key>
+							<string>QSFileSystemObjectSource</string>
+						</dict>
+						<dict>
+							<key>ID</key>
+							<string>2FCE54C3-8D24-49A7-8A9A-C0490BFA7523</string>
+							<key>children</key>
+							<array/>
+							<key>enabled</key>
+							<true/>
+							<key>name</key>
+							<string>3D printing caveat log.md</string>
+							<key>settings</key>
+							<dict>
+								<key>path</key>
+								<string>~/Library/Mobile Documents/iCloud~md~obsidian/Documents/Notes/Journal/3D printing/3D printing caveat log.md</string>
+							</dict>
+							<key>source</key>
+							<string>QSFileSystemObjectSource</string>
+						</dict>
+					</array>
+					<key>enabled</key>
+					<true/>
+					<key>name</key>
+					<string>Bookmarked</string>
+					<key>source</key>
+					<string>QSGroupObjectSource</string>
+				</dict>
 			</array>
 			<key>enabled</key>
 			<true/>

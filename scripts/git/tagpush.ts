@@ -86,6 +86,7 @@ async function tagpush(args: { retag?: boolean }) {
   // give us extra benefits in this case.
   await new PrintableShellCommand("git", [
     "push",
+    // TODO: add a `--remote` option (which we will also need to pass on to `rmtag`).
     "origin",
     "--",
     version,

@@ -7,6 +7,7 @@ class Hevc < Formula
 
   depends_on "oven-sh/bun/bun"
   depends_on "lgarron/lgarron/reveal-macos"
+  depends_on "ffmpeg"
   # TODO: https://github.com/orgs/Homebrew/discussions/5788
   # depends_on cask: "handbrake"
 

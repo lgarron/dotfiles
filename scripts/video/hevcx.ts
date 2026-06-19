@@ -186,6 +186,7 @@ export async function hevc(args: ReturnType<typeof parseArgs>): Promise<void> {
       }
       return dest;
     })());
+  await outputFile.parent.mkdir();
 
   const cacheDirOrSymlink = outputFile.extendBasename(".cache");
   const cacheDir = cacheInSourceDir

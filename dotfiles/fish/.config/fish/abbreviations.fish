@@ -89,6 +89,7 @@
       abbr_anyarg $dns_connecting_command pl Pythagoras.lan
       abbr_anyarg $dns_connecting_command hl Hippasus.lan
       abbr_anyarg $dns_connecting_command pw Pythagoras-ts.wyvern-climb.ts.net
+      abbr_anyarg $dns_connecting_command hw Hippasus-ts.wyvern-climb.ts.net
       abbr_anyarg $dns_connecting_command g garron.net
     end
 

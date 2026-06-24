@@ -33,6 +33,8 @@ cask "signal"
 cask "linear"
 cask "inkscape"
 cask "steam
+cask "gpg-suite"
+brew "pinentry-mac" # For `gpg-suite`
 
 # Browsers
 

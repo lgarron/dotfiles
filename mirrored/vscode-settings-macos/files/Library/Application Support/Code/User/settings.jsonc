@@ -280,6 +280,17 @@
 	"github.copilot.chat.newWorkspaceCreation.enabled": false,
 	"terminal.integrated.suggest.enabled": false,
 	"update.mode": "none",
+	/******* URLs *********/
+	"terminal.integrated.allowedLinkSchemes": [
+		"file",
+		"http",
+		"https",
+		"mailto",
+		"vscode",
+		"vscode-insiders",
+		"reveal-path"
+	],
+	"workbench.browser.openLocalhostLinks": false,
 	/******* JSON schema *********/
 	// TODO: why is this in the serialized preferences instead of the DB?
 	"json.schemaDownload.trustedDomains": {
@@ -289,15 +300,6 @@
 		"https://json.schemastore.org/": true,
 		"https://json-schema.org/": true,
 		"https://biomejs.dev": true
-	},
-	"terminal.integrated.allowedLinkSchemes": [
-		"file",
-		"http",
-		"https",
-		"mailto",
-		"vscode",
-		"vscode-insiders",
-		"reveal-path"
-	]
+	}
 	/******* Unsorted *********/
 }

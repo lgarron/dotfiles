@@ -93,6 +93,12 @@
       abbr_anyarg $dns_connecting_command g garron.net
     end
 
+    for ip_connecting_command in ping
+      # TODO: share abbreviation functions between these?
+      abbr_anyarg $dns_connecting_command 1 1.1.1.1
+      abbr_anyarg $dns_connecting_command 8 8.8.8.8
+    end
+
 ## Homebrew
 
     abbr -a w "brew"

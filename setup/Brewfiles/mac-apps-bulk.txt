@@ -35,6 +35,7 @@ cask "inkscape"
 cask "steam
 cask "gpg-suite"
 brew "pinentry-mac" # For `gpg-suite`
+cask "blender"
 
 # Browsers
 

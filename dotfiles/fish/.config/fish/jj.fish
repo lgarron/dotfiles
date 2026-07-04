@@ -272,6 +272,9 @@ function jj
     command jj $argv
     set -g _FISH_JJ_WAS_RUN_DURING_COMMAND true
 end
+function jk
+    command jj $argv
+end
 
 # LSP override: This is an "exported" function (meant to be used outside this file).
 # @fish-lsp-disable-next-line 4004

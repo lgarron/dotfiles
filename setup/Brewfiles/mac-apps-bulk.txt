@@ -36,6 +36,7 @@ cask "steam
 cask "gpg-suite"
 brew "pinentry-mac" # For `gpg-suite`
 cask "blender"
+cask "little-snitch"
 
 # Browsers
 

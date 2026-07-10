@@ -52,6 +52,7 @@
     { "source": "STEREO", "destination": "STEREO" },
     { "source": "CONTENTS", "destination": "CONTENTS" },
     { "source": "CRM", "destination": "CRM" },
+    { "source": "XFVC", "destination": "XFVC" },
     { "source": "ipcam", "destination": "ipcam" },
     { "source": "timelapse", "destination": "timelapse" }
   ],

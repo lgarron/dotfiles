@@ -17,6 +17,7 @@
       ".state",
       ".Trash",
       ".vscode", // grrrrrr: https://github.com/microsoft/vscode/issues/3884
+      ".vscode-shared", // 😡
     ],
     "delete": [
       ".angular-config.json",
@@ -50,7 +51,6 @@
       ".vscode-cli",
       ".vscode-remote-containers",
       ".vscode-server",
-      ".vscode-shared",
       ".wasmer",
       ".yarn",
       ".yarnrc",

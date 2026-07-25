@@ -41,7 +41,8 @@
     "DOROTHY",
     "TIN MAN",
     "SCARECROW",
-    "SARAH JANE"
+    "SARAH JANE",
+    "JO MARCH"
   ],
   "folder_mapping": [
     { "source": "DCIM", "destination": "DCIM" },

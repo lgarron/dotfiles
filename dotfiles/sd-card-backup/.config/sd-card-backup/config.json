@@ -1,5 +1,5 @@
 {
-  "destination_root": "/Volumes/Trenzalore/SD Card Backup/",
+  "destination_root": "/Volumes/TARDIS Romeo/SD Card Backup/",
   "sd_card_mount_point": "/Volumes",
   "sd_card_names": [
     "FORRESTGUMP",
@@ -41,7 +41,8 @@
     "DOROTHY",
     "TIN MAN",
     "SCARECROW",
-    "SARAH JANE"
+    "SARAH JANE",
+    "JO MARCH"
   ],
   "folder_mapping": [
     { "source": "DCIM", "destination": "DCIM" },

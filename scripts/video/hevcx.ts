@@ -167,7 +167,7 @@ export async function hevc(args: ReturnType<typeof parseArgs>): Promise<void> {
   }
   if (typeof crf !== "undefined") {
     additionalParams.push(["-crf", `${crf}`]);
-    appendedbasenameParts = `${appendedbasenameParts}crf.${crf}`;
+    appendedbasenameParts = `${appendedbasenameParts}.crf${crf}`;
   }
   if (vbvMaxRateArg) {
     appendedbasenameParts = `${appendedbasenameParts}.vbvmax=${vbvMaxRate}`;

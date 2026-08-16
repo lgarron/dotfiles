@@ -237,7 +237,7 @@ lint-ts-biome: setup-npm-packages
 
 .PHONY: lint-ts-tsc
 lint-ts-tsc: setup-npm-packages
-	bun x -- bun-dx --package @typescript/native-preview tsgo -- --project ./tsconfig.json
+	bun x -- bun-dx --package typescript tsc -- --project ./tsconfig.json
 
 .PHONY: format
 format: format-ts-biome

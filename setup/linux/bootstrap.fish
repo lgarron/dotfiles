@@ -1,6 +1,7 @@
 #!/usr/bin/env -S fish --no-config --
 
-# TODO: make idempotent?
+# TODO: make the entire script idempotent?
+
 echo "$HOME/.local/share/binaries/linux-x64/fish" >~/.bashrc
 
 make setup

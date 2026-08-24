@@ -25,5 +25,8 @@
     "bun-dedupe": ">=0.0.4",
     "bun-dx": ">=0.1.3",
     "typescript": "^7.0.2"
+  },
+  "patchedDependencies": {
+    "bun-types@1.3.14": "patches/bun-types@1.3.14.patch"
   }
 }

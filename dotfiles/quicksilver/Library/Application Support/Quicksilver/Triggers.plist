@@ -879,6 +879,44 @@
 		</dict>
 		<dict>
 			<key>ID</key>
+			<string>47883D84-D04B-4B41-BEDE-38900AD1D2F5</string>
+			<key>character</key>
+			<string>V</string>
+			<key>command</key>
+			<dict>
+				<key>actionID</key>
+				<string>QSTextTypeAction</string>
+				<key>directArchive</key>
+				<dict>
+					<key>class</key>
+					<string>QSObject</string>
+					<key>data</key>
+					<dict>
+						<key>public.utf8-plain-text</key>
+						<string>❌</string>
+					</dict>
+					<key>properties</key>
+					<dict>
+						<key>QSObjectName</key>
+						<string>❌</string>
+						<key>QSObjectType</key>
+						<string>public.utf8-plain-text</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyCode</key>
+			<integer>9</integer>
+			<key>modifiers</key>
+			<integer>655650</integer>
+			<key>onPress</key>
+			<true/>
+			<key>type</key>
+			<string>QSHotKeyTrigger</string>
+		</dict>
+		<dict>
+			<key>ID</key>
 			<string>A47C44BC-A5E4-45E1-9E98-9DA510F28EFF</string>
 			<key>applicationScope</key>
 			<array>
@@ -2128,6 +2166,44 @@
 			<true/>
 			<key>keyCode</key>
 			<integer>39</integer>
+			<key>modifiers</key>
+			<integer>524576</integer>
+			<key>onPress</key>
+			<true/>
+			<key>type</key>
+			<string>QSHotKeyTrigger</string>
+		</dict>
+		<dict>
+			<key>ID</key>
+			<string>8C695DEE-4E40-41DB-8810-ED3E5F4F8340</string>
+			<key>character</key>
+			<string>v</string>
+			<key>command</key>
+			<dict>
+				<key>actionID</key>
+				<string>QSTextTypeAction</string>
+				<key>directArchive</key>
+				<dict>
+					<key>class</key>
+					<string>QSObject</string>
+					<key>data</key>
+					<dict>
+						<key>public.utf8-plain-text</key>
+						<string>✅</string>
+					</dict>
+					<key>properties</key>
+					<dict>
+						<key>QSObjectName</key>
+						<string>✅</string>
+						<key>QSObjectType</key>
+						<string>public.utf8-plain-text</string>
+					</dict>
+				</dict>
+			</dict>
+			<key>enabled</key>
+			<true/>
+			<key>keyCode</key>
+			<integer>9</integer>
 			<key>modifiers</key>
 			<integer>524576</integer>
 			<key>onPress</key>

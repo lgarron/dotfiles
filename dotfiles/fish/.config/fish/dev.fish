@@ -139,6 +139,8 @@
     abbr -a bun-roll $BUN_ROLL
     abbr -a brr $BUN_ROLL
 
+    set -xg BUN_INSTALL_GLOBAL_STORE 1
+
 # Cargo
 
     abbr -a co "cargo"

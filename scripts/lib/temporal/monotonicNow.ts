@@ -1,5 +1,3 @@
-import { Temporal } from "temporal-ponyfill";
-
 /** Millisecond precision. Equivalent to:
  *
  *     Temporal.Instant.fromEpochMilliseconds(Math.floor(performance.now()))

@@ -12,7 +12,6 @@ import { run } from "@optique/run";
 import type { Path } from "path-class";
 import { Plural } from "plural-chain";
 import { PrintableShellCommand } from "printable-shell-command";
-import { Temporal } from "temporal-ponyfill";
 import { byOption, sourceFile } from "../lib/optique";
 import { monotonicNow } from "../lib/temporal/monotonicNow";
 import { sleepDuration } from "../lib/temporal/sleep";

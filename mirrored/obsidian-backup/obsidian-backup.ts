@@ -15,7 +15,6 @@ import { LockfileMutex } from "lockfile-mutex";
 import { Path } from "path-class";
 import { Plural } from "plural-chain";
 import { PrintableShellCommand } from "printable-shell-command";
-import { Temporal } from "temporal-ponyfill";
 import { xdgData } from "xdg-basedir";
 import { sendMessage } from "../../scripts/api/pushover";
 import { Debouncer } from "../../scripts/lib/temporal/Debouncer";

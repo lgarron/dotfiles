@@ -1,6 +1,7 @@
 {
   "extends": "./node_modules/@cubing/dev-config/ts/es2022-types/no-dom/tsconfig.json",
   "compilerOptions": {
+    "lib": ["es2022", "esnext.temporal"],
     "noEmit": true
   },
   "include": [

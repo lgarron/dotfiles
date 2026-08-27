@@ -1,4 +1,3 @@
-import { Temporal } from "temporal-ponyfill";
 import { monotonicNow } from "./monotonicNow";
 
 const BEFORE = -1;

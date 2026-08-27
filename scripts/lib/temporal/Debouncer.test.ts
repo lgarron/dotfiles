@@ -1,5 +1,4 @@
 import { expect, spyOn, test } from "bun:test";
-import { Temporal } from "temporal-ponyfill";
 import { Debouncer, debounce } from "./Debouncer";
 
 const DEBOUNCE_DURATION = Temporal.Duration.from({ milliseconds: 5 });

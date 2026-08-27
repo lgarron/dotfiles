@@ -8,7 +8,7 @@ jobs:
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
       - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
-      - uses: cubing/actions-workflows/actions/install-fish@f68a4d12801e7e50851a1c2fa61cc92671199130 # v0.2.0
+      - uses: cubing/actions-workflows/actions/install-fish@a46fb8aa9cdf39a9559a8803df933472aedad23f # v0.2.1-dev (test)
       - run: make setup
       - run: make lint-ts-biome
       - run: make lint-ts-tsc
@@ -19,7 +19,7 @@ jobs:
     steps:
       - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
       - uses: oven-sh/setup-bun@0c5077e51419868618aeaa5fe8019c62421857d6 # v2.2.0
-      - uses: cubing/actions-workflows/actions/install-fish@f68a4d12801e7e50851a1c2fa61cc92671199130 # v0.2.0
+      - uses: cubing/actions-workflows/actions/install-fish@a46fb8aa9cdf39a9559a8803df933472aedad23f # v0.2.1-dev (test)
       - run: make setup
       - run: make test-bun
       - run: make test-scripts

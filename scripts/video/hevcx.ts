@@ -107,6 +107,11 @@ function parseArgs() {
             BitRateInfo.parse,
           ),
         ),
+        tuneSSIM: optional(
+          option("--tune-ssim", {
+            description: message`Try using SSIM tuning (test).`,
+          }),
+        ),
       }),
       object("Transformation", {
         height: optional(option("--height", integer({ min: 1 }))),
@@ -142,6 +147,7 @@ export async function hevc(args: ReturnType<typeof parseArgs>): Promise<void> {
     preset,
     tune,
     cacheInSourceDir,
+    tuneSSIM,
   } = args;
 
   // We `await` unconditionally regardless of whether we read any video stream
@@ -211,6 +217,10 @@ export async function hevc(args: ReturnType<typeof parseArgs>): Promise<void> {
     if (vbvMaxRate) {
       x265Params.push(`vbv-maxrate=${vbvMaxRate.asBits()}`);
       x265Params.push(`vbv-bufsize=${vbvMaxRate.asBits() * VBV_BUFFER_FACTOR}`);
+    }
+    if (tuneSSIM) {
+      appendedbasenameParts = `${appendedbasenameParts}.tune-ssim`;
+      x265Params.push(`tune=ssim`);
     }
     return new PrintableShellCommand("ffmpeg", [
       ["-i", Path.cwd.resolve(sourceFile)],

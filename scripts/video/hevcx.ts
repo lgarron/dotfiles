@@ -215,6 +215,7 @@ export async function hevc(args: ReturnType<typeof parseArgs>): Promise<void> {
     return new PrintableShellCommand("ffmpeg", [
       ["-i", Path.cwd.resolve(sourceFile)],
       ["-c:v", "libx265"],
+      // TODO: pass `-an` in first pass. https://trac.ffmpeg.org/wiki/Encode/H.265#Two-PassExample
       ["-x265-params", x265Params.join(":")],
       ["-c:a", "copy"],
       ...additionalParams,

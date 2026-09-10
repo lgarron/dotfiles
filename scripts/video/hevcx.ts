@@ -107,6 +107,11 @@ function parseArgs() {
             BitRateInfo.parse,
           ),
         ),
+        rd6SSIM: optional(
+          option("--rd6-ssim", {
+            description: message`Try using SSIM (test).`,
+          }),
+        ),
       }),
       object("Transformation", {
         height: optional(option("--height", integer({ min: 1 }))),
@@ -142,6 +147,7 @@ export async function hevc(args: ReturnType<typeof parseArgs>): Promise<void> {
     preset,
     tune,
     cacheInSourceDir,
+    rd6SSIM,
   } = args;
 
   // We `await` unconditionally regardless of whether we read any video stream
@@ -171,6 +177,9 @@ export async function hevc(args: ReturnType<typeof parseArgs>): Promise<void> {
   }
   if (vbvMaxRateArg) {
     appendedbasenameParts = `${appendedbasenameParts}.vbvmax=${vbvMaxRate}`;
+  }
+  if (rd6SSIM) {
+    appendedbasenameParts = `${appendedbasenameParts}.rd6-ssim`;
   }
 
   const outputFile =
@@ -211,6 +220,10 @@ export async function hevc(args: ReturnType<typeof parseArgs>): Promise<void> {
     if (vbvMaxRate) {
       x265Params.push(`vbv-maxrate=${vbvMaxRate.asBits()}`);
       x265Params.push(`vbv-bufsize=${vbvMaxRate.asBits() * VBV_BUFFER_FACTOR}`);
+    }
+    if (rd6SSIM) {
+      x265Params.push(`rd=6`);
+      x265Params.push(`ssim-rd=1`);
     }
     return new PrintableShellCommand("ffmpeg", [
       ["-i", Path.cwd.resolve(sourceFile)],

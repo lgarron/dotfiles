@@ -1,6 +1,6 @@
 # JS runtime is required for YouTube now
 --no-js-runtimes # disable `deno`
---js-runtimes bun # SEt to `bun`
+--js-runtimes bun # Set to `bun`
 
 # Needed for some vids/sites
 --cookies-from-browser chrome

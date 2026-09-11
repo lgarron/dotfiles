@@ -1,0 +1,8 @@
+# This file should really live at `~/.config/bun/config.toml` or
+# `~/.config/bun/bunfig.toml`, but the `bun` project has an exceptionally poor
+# track record of following XDG conventions. 🤷
+
+[install]
+auto = "disable"
+linker = "isolated"
+globalStore = true

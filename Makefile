@@ -15,7 +15,8 @@ common: \
 	set-dotfiles-repo-email \
 	xdg-basedir-workarounds \
 	yt-dlp \
-	zellij
+	zellij \
+	bun
 
 .PHONY: mac-common
 mac-common: \
@@ -74,6 +75,7 @@ dreamhost:
 ########
 
 PACKAGES  =
+PACKAGES += bun
 PACKAGES += compressor
 PACKAGES += fish
 PACKAGES += git

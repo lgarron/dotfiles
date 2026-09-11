@@ -11,9 +11,6 @@
   },
   "linter": {
     "rules": {
-      "nursery": {
-        "noFloatingPromises": "error"
-      },
       "suspicious": {
         "useAwait": "error"
       }

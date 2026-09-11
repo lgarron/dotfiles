@@ -1,3 +1,9 @@
 [install]
 auto = "disable"
 linker = "isolated"
+# Opt out of the global store for this repo in particular.
+#
+# This repo contains special scripts and bootstrapping mechanisms that must not
+# be broken by `bun pm cache rm`. We can handle the overhead for this one repo
+# while keeping the benefits of the global store for other repos by default.
+globalStore = false

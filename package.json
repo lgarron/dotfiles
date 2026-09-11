@@ -9,7 +9,7 @@
     "ergonomic-date": ">=0.1.6",
     "jsonc-parser": "^3.3.1",
     "lockfile-mutex": ">=0.3.12",
-    "lstow": ">=0.6.0",
+    "lstow": ">=0.6.3",
     "naughty-list": "^3.0.2",
     "path-class": ">=0.16.0",
     "plural-chain": ">=0.2.3",

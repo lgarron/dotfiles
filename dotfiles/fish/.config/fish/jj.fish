@@ -77,7 +77,7 @@ abbr_subcommand_arg jj s "# try: `b` (branch) or `--source` explicitly" rebase
 abbr_subcommand_arg jj d "# try: `o` (for `--onto`)" rebase revert
 abbr_subcommand_arg jj o --onto rebase revert
 
-abbr_subcommand_arg jj ii --ignore-immutable edit squash describe rebase abandon
+abbr_subcommand_arg jj ii --ignore-immutable edit squash describe rebase abandon new
 abbr_subcommand_arg jj f --from squash restore
 abbr_subcommand_arg jj i --into squash
 abbr_subcommand_arg jj r --revision bookmark squash revert

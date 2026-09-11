@@ -4,7 +4,6 @@
   "files": {
     "includes": [
       "**",
-      "!.temp",
       "!dotfiles/vscode/**/*",
       "!exported",
       "!mirrored/vscode-settings-macos/files"

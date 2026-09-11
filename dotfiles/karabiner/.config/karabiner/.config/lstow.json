@@ -1,4 +1,4 @@
 {
-  "$schema": "/Users/lgarron/Code/git/github.com/lgarron/dotfiles/scripts/system/lstow/lstow.schema.json",
+  "$schema": "/Users/lgarron/Code/git/github.com/lgarron/dotfiles/node_modules/lstow/lstow.schema.json",
   "fold": true
 }

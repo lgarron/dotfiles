@@ -470,6 +470,38 @@
                                 "type": "basic"
                             }
                         ]
+                    },
+                    {
+                        "description": "Fix ⌥⇧F12 for mWave volume up customization.",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "identifiers": [
+                                            {
+                                                "product_id": 4097,
+                                                "vendor_id": 10730
+                                            }
+                                        ],
+                                        "type": "device_if"
+                                    }
+                                ],
+                                "from": {
+                                    "consumer_key_code": "volume_increment",
+                                    "modifiers": {
+                                        "mandatory": ["shift", "option"],
+                                        "optional": ["any"]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "f12",
+                                        "modifiers": ["shift", "option"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
                     }
                 ]
             },

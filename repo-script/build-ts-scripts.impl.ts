@@ -32,6 +32,7 @@ class ScriptSource {
     await new PrintableShellCommand("bun", [
       "build",
       ["--target", "bun"],
+      ["--sourcemap=inline"],
       [
         "--define",
         `globalThis.TIMESTAMP_AND_GIT_HEAD_HASH=${JSON.stringify(TIMESTAMP_AND_GIT_HEAD_HASH)}`,

@@ -174,6 +174,8 @@ export async function connect(args: SubcommandArgs<"connect">): Promise<void> {
       await new PrintableShellCommand("killall", ["Screen Sharing"]).spawn({
         stdio: "ignore",
       }).success;
+      // Wait for a second.
+      await new Promise((resolve) => setTimeout(resolve, 1000));
     } catch {
       // Probably no matching processes.
     }

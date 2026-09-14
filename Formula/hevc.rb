@@ -12,11 +12,11 @@ class Hevc < Formula
   # depends_on cask: "handbrake"
 
   def install
-    system "./repo-script/build-ts-scripts.ts", "video/hevc"
+    system "./repo-script/build-ts-scripts.ts", "video/hevc", "video/hevcx"
+
     bin.install "./.temp/bin/hevc" => "hevc"
     generate_completions_from_executable(bin/"hevc", "--completions")
 
-    system "./repo-script/build-ts-scripts.ts", "video/hevcx"
     bin.install "./.temp/bin/hevcx" => "hevcx"
     generate_completions_from_executable(bin/"hevcx", "--completions")
   end

@@ -324,6 +324,13 @@ cd -
     end
 
     # TODO: make this an abbrevation instead?
+    function hevcx-HEAD
+        set COMMAND $DOTFILES_FOLDER/scripts/video/hevcx.ts $argv
+        string join -- " " (string escape -- $COMMAND)
+        command $COMMAND
+    end
+
+    # TODO: make this an abbrevation instead?
     function mak-HEAD
         set COMMAND cargo run --manifest-path $HOME/Code/git/github.com/lgarron/mak/Cargo.toml -- $argv
         string join -- " " (string escape -- $COMMAND)

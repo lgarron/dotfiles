@@ -92,10 +92,10 @@ export function sourceFile(
   options?: SourceFileOptions,
 ): ValueParser<"sync", Path> {
   return pathClass({
+    metavar: "SOURCE_FILE",
     ...options,
     mustExist: options?.mustExist ?? true,
     type: "file",
-    metavar: "SOURCE_FILE",
   });
 }
 

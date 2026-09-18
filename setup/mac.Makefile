@@ -85,10 +85,11 @@ mac-keyboard-shortcuts:
 	${MAC_ADD_SHORTCUT} "com.adobe.mas.lightroomCC" "Edit in Photoshop…"       "⇧⌘P"
 	${MAC_ADD_SHORTCUT} "com.apple.FinalCut"        "'HEVC 8-bit Rec. 709 (auto bit rate)…'" "⇧⌘E"
 	# Consistency with other programs
-	# ${MAC_ADD_SHORTCUT} "com.apple.AddressBook"   "Edit Card"                "⌘E"
-	${MAC_ADD_SHORTCUT} "com.apple.Safari"          "Reload Page From Origin"  "⇧⌘R"
-	${MAC_ADD_SHORTCUT} "org.audacityteam.audacity" "Save Project As…"         "⇧⌘S"
-	${MAC_ADD_SHORTCUT} "org.audacityteam.audacity" "Change Tempo…"            "⇧⌘T"
+	# ${MAC_ADD_SHORTCUT} "com.apple.AddressBook"    "Edit Card"                "⌘E"
+	${MAC_ADD_SHORTCUT} "com.apple.Safari"           "Reload Page From Origin"  "⇧⌘R"
+	${MAC_ADD_SHORTCUT} "org.audacityteam.audacity"  "Save Project As…"         "⇧⌘S"
+	${MAC_ADD_SHORTCUT} "org.audacityteam.audacity"  "Change Tempo…"            "⇧⌘T"
+	${MAC_ADD_SHORTCUT} "org.audacityteam.audacity4" "Save as…"                 "⇧⌘S"
 	# Final Cut Project
 	${MAC_ADD_SHORTCUT} "com.apple.FinalCut"        "Organize — big video"        "^⇧⌘1"
 	${MAC_ADD_SHORTCUT} "com.apple.FinalCut"        "Color & Effects — big video" "^⇧⌘2"

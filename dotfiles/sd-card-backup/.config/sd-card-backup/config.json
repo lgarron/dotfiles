@@ -43,7 +43,8 @@
     "SCARECROW",
     "SARAH JANE",
     "JO MARCH",
-    "MEG MARCH"
+    "MEG MARCH",
+    "BETH MARCH"
   ],
   "folder_mapping": [
     { "source": "DCIM", "destination": "DCIM" },

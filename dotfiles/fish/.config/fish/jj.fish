@@ -90,10 +90,6 @@ _fish_abbr_jj_subcommand c commit
 abbr -a jc --set-cursor "jj commit --message \"%" # Special shortened abbreviation
 abbr_subcommand_arg jj m --message commit
 
-# There's no semantically safe way to set the cursor, so we use something that's
-# unlikely to occur by accident (unless it comes from this source code 😕).
-set -l UNIQUE_MARKER e7570aee70dde26e0814be06a6c767f9
-
 # jdd⎵ → jj describe --message "`[last command]`"
 function _abbr_jj_describe_last_command_fn
     echo "jj describe --message \"`"(string replace --all "\"" "\\\"" $history[1])"`e7570aee70dde26e0814be06a6c767f9\""
@@ -216,20 +212,22 @@ abbr -a jfn 'open (printf "https://www.npmjs.com/package/%s" (cat (repo workspac
 abbr -a jgn '# try: jfn'
 
 if [ "$CODESPACES" = true ]
+    # Needs to be defined here to pre-empt the binary.
+    # @fish-lsp-disable-next-line 4006
     function gg
         if ! test -f $HOME/.local/state/gg/deps-installed
             echo "Installing libraries for `gg`…"
             sudo apt update
             sudo apt install -y libgtk-3-dev libwebkit2gtk-4.1-dev
             mkdir -p $HOME/.local/state/gg
-            date > $HOME/.local/state/gg/deps-installed
+            date >$HOME/.local/state/gg/deps-installed
         end
         # TODO: https://github.com/fish-shell/fish-shell/issues/12998
-       command gg web
+        command gg web
     end
 else
-    # LSP override: This is an "exported" function (meant to be used outside this file).
-    # @fish-lsp-disable-next-line 4004
+    # Needs to be defined here to pre-empt the binary.
+    # @fish-lsp-disable-next-line 4006
     function gg
         if string match --quiet --entire -- (repo vcs kind) git
             echo "This repo uses `git` but not `jj`. Opening GitX instead."
@@ -287,9 +285,6 @@ set -g _FISH_OVERRIDE_DO_NOT_RUN_GG_REFRESH_IN_POSTEXEC false
 function jj
     command jj $argv
     set -g _FISH_JJ_WAS_RUN_DURING_COMMAND true
-end
-function jk
-    command jj $argv
 end
 
 # LSP override: This is an "exported" function (meant to be used outside this file).

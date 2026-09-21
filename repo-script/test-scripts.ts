@@ -27,6 +27,8 @@ for await (const file of mapPath(new Glob("./scripts/*/*.ts").scan())) {
           "dell-display-position-app-on-bottom.ts",
           "toggle-retina.ts",
           "toggle-display.ts",
+          // TODO: this needs to handle arguments unconditionally to work around an `optique` bug?
+          "PrintableShellCommand.ts",
           // These are scripts that pass on their arguments to another command
           // without processing, and therefore don't support `--help` or
           // `--completions` for themselves.

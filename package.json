@@ -5,6 +5,7 @@
     "@optique/git": "^1.0.1",
     "@optique/run": "^1.0.1",
     "betterdisplaycli": ">=0.2.4",
+    "clipboardy": "^5.3.2",
     "comment-json": "^4.4.1",
     "ergonomic-date": ">=0.1.6",
     "jsonc-parser": "^3.3.1",

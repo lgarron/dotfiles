@@ -182,6 +182,8 @@ function _fish_prompt_postexec_lcars --on-event fish_postexec
     # For some reason, this does not work.
     # See: https://github.com/fish-shell/fish-shell/issues/11634
     if functions -q __vsc_esc
+        # We just checked that this is defined above.
+        # @fish-lsp-disable-next-line 7001
         __vsc_esc D $saved_status
     end
     functions -e __vsc_cmd_finished

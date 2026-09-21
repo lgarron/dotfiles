@@ -130,7 +130,7 @@
       set -l arg_expansion $argv[3]
       set -l sub_commands $argv[4..-1]
 
-      if string match --quiet -e -- "$cmd[1]" "$main_command"
+      if string match --quiet --entire -- "$cmd[1]" "$main_command"
         if contains -- "$cmd[2]" $sub_commands
           echo $arg_expansion
           return 0

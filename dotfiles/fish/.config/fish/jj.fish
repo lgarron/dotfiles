@@ -215,23 +215,37 @@ abbr -a jgi '# try: jfi'
 abbr -a jfn 'open (printf "https://www.npmjs.com/package/%s" (cat (repo workspace root)/package.json | jq -r ".name"))'
 abbr -a jgn '# try: jfn'
 
-# LSP override: This is an "exported" function (meant to be used outside this file).
-# @fish-lsp-disable-next-line 4004
-function gg
-    if string match --quiet --entire -- (repo vcs kind) git
-        echo "This repo uses `git` but not `jj`. Opening GitX instead."
-        gx
-        return
+if [ "$CODESPACES" = true ]
+    function gg
+        if ! test -f $HOME/.local/state/gg/deps-installed
+            echo "Installing libraries for `gg`…"
+            sudo apt update
+            sudo apt install -y libgtk-3-dev libwebkit2gtk-4.1-dev
+            mkdir -p $HOME/.local/state/gg
+            date > $HOME/.local/state/gg/deps-installed
+        end
+        # TODO: https://github.com/fish-shell/fish-shell/issues/12998
+       command gg web
     end
-    killall gg
-    ggn
-end
+else
+    # LSP override: This is an "exported" function (meant to be used outside this file).
+    # @fish-lsp-disable-next-line 4004
+    function gg
+        if string match --quiet --entire -- (repo vcs kind) git
+            echo "This repo uses `git` but not `jj`. Opening GitX instead."
+            gx
+            return
+        end
+        killall gg
+        ggn
+    end
 
-function ggn
-    /Applications/gg.app/Contents/MacOS/gg gui -- $argv &>/dev/null &
-    disown
-    $DOTFILES_FOLDER/scripts/system/dell-display-position-app-on-bottom.ts -- gg
-    open -a gg # Foreground.
+    function ggn
+        /Applications/gg.app/Contents/MacOS/gg gui -- $argv &>/dev/null &
+        disown
+        $DOTFILES_FOLDER/scripts/system/dell-display-position-app-on-bottom.ts -- gg
+        open -a gg # Foreground.
+    end
 end
 
 abbr -a jgff "$DOTFILES_FOLDER/scripts/jj/jgff.ts"

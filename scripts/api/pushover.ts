@@ -16,6 +16,7 @@ import {
 } from "@optique/core";
 import { run } from "@optique/run";
 import { Path } from "path-class";
+import { PrintableShellCommand } from "printable-shell-command";
 import {
   record,
   url,
@@ -66,9 +67,12 @@ export async function sendMessage(
   message: string,
   options?: { prefix?: string; app?: string },
 ) {
+  const hostName = await new PrintableShellCommand("hostname", ["-s"]).text({
+    trimTrailingNewlines: "single-required",
+  });
   const fullMessage = options?.prefix
-    ? `[${options.prefix}] ${message}`
-    : message;
+    ? `[${hostName}][${options.prefix}] ${message}`
+    : `[${hostName}] ${message}`;
   console.log(`Sending message:
 
 ${styleText("blue", `${fullMessage}`)}

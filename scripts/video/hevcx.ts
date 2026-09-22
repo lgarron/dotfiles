@@ -148,6 +148,7 @@ export async function hevc(args: ReturnType<typeof parseArgs>): Promise<void> {
     tune,
     cacheInSourceDir,
     rd6SSIM,
+    reveal,
   } = args;
 
   // We `await` unconditionally regardless of whether we read any video stream
@@ -158,35 +159,35 @@ export async function hevc(args: ReturnType<typeof parseArgs>): Promise<void> {
     new BitRateInfo(Number.parseInt(videoStream.bit_rate, 10), "b");
 
   const additionalParams: (string | string[])[] = [];
-  let appendedbasenameParts = ".hevcx";
+  let appendedBasenameParts = ".hevcx";
   if (typeof height !== "undefined") {
     additionalParams.push(["-vf", `scale=-1:${height.toString()}`]);
-    appendedbasenameParts = `${appendedbasenameParts}.${height}p`;
+    appendedBasenameParts = `${appendedBasenameParts}.${height}p`;
   }
   if (typeof preset !== "undefined") {
     additionalParams.push(["-preset", preset]);
-    appendedbasenameParts = `${appendedbasenameParts}.${preset}`;
+    appendedBasenameParts = `${appendedBasenameParts}.${preset}`;
   }
   if (typeof tune !== "undefined") {
     additionalParams.push(["-tune", tune]);
-    appendedbasenameParts = `${appendedbasenameParts}.${tune}`;
+    appendedBasenameParts = `${appendedBasenameParts}.${tune}`;
   }
   if (typeof crf !== "undefined") {
     additionalParams.push(["-crf", `${crf}`]);
-    appendedbasenameParts = `${appendedbasenameParts}.crf${crf}`;
+    appendedBasenameParts = `${appendedBasenameParts}.crf${crf}`;
   }
   if (vbvMaxRateArg) {
-    appendedbasenameParts = `${appendedbasenameParts}.vbvmax=${vbvMaxRate}`;
+    appendedBasenameParts = `${appendedBasenameParts}.vbvmax=${vbvMaxRate}`;
   }
   if (rd6SSIM) {
-    appendedbasenameParts = `${appendedbasenameParts}.rd6-ssim`;
+    appendedBasenameParts = `${appendedBasenameParts}.rd6-ssim`;
   }
 
   const outputFile =
     args.outputFile ??
     (await (async () => {
       let destPrefix = args.sourceFile;
-      destPrefix = destPrefix.extendBasename(appendedbasenameParts);
+      destPrefix = destPrefix.extendBasename(appendedBasenameParts);
       let dest = destPrefix.extendBasename(".mp4");
       if (await dest.exists()) {
         dest = destPrefix.extendBasename(
@@ -260,8 +261,8 @@ export async function hevc(args: ReturnType<typeof parseArgs>): Promise<void> {
     /**
      * "ignore" for `stdin` avoids `ffmpeg` capturing keystrokes. This:
      *
-     * - Prevents cats from breaking messing with `ffmpeg` during encoding.
-     * - Allows queueing up a command (because keystrokes will be sent to the shell) — particularly useful for `po1`.
+     * - Prevents cats from messing with `ffmpeg` during encoding.
+     * - Allows queueing up a command (because keystrokes will be sent to the shell) — particularly useful for `pt1`.
      * */
     await pass1Command.print().spawn({
       stdio: ["ignore", "inherit", "inherit"],
@@ -273,7 +274,7 @@ export async function hevc(args: ReturnType<typeof parseArgs>): Promise<void> {
     }).success;
   }
 
-  if (args.reveal) {
+  if (reveal) {
     await new PrintableShellCommand("reveal-macos", [outputFile]).shellOut();
   }
 

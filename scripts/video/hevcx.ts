@@ -208,11 +208,13 @@ export async function hevc(args: ReturnType<typeof parseArgs>): Promise<void> {
         )
         .toggleTrailingSlash(true);
   console.log(`Using cache dir: ${cacheDir.blue}`);
-  await cacheDir.mkdir();
-  if (!cacheInSourceDir) {
-    const symlinkPath = outputFile.extendBasename(".cache");
-    await symlinkPath.rm({ force: true });
-    await cacheDir.symlink(symlinkPath);
+  if (!dryRun) {
+    await cacheDir.mkdir();
+    if (!cacheInSourceDir) {
+      const symlinkPath = outputFile.extendBasename(".cache");
+      await symlinkPath.rm({ force: true });
+      await cacheDir.symlink(symlinkPath);
+    }
   }
 
   function command(options: { pass: 1 | 2 }) {

@@ -34,7 +34,9 @@ async function findPrefixFile(file: Path): Promise<Path> {
   throw new Error("Could not find prefix file.");
 }
 
-export async function vmaf(args: ReturnType<typeof parseArgs>): Promise<void> {
+export async function ffvmaf(
+  args: ReturnType<typeof parseArgs>,
+): Promise<void> {
   const { distortedFile, originalFile } = args;
   await new PrintableShellCommand("ffmpeg", [
     ["-i", distortedFile],
@@ -46,5 +48,5 @@ export async function vmaf(args: ReturnType<typeof parseArgs>): Promise<void> {
 }
 
 if (import.meta.main) {
-  await vmaf(parseArgs());
+  await ffvmaf(parseArgs());
 }

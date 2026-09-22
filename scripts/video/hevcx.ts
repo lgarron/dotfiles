@@ -17,6 +17,7 @@ import { Path } from "path-class";
 import { PrintableShellCommand } from "printable-shell-command";
 import { byOption, fileInOut } from "../lib/optique";
 import { ffprobeFirstVideoStream, pollOption } from "./ffpoll";
+import { ffvmaf } from "./ffvmaf";
 
 const VBV_BUFFER_FACTOR = 2;
 
@@ -124,6 +125,13 @@ function parseArgs() {
           }),
         ),
       }),
+      object("Post-transcoding", {
+        vmaf: optional(
+          option("--vmaf", {
+            description: message`Analyze VMAF of the output.`,
+          }),
+        ),
+      }),
       object("File handling", {
         poll: pollOption({ default: "auto" }),
         // `--poll true` should work with files that are still not created yet
@@ -148,6 +156,7 @@ export async function hevc(args: ReturnType<typeof parseArgs>): Promise<void> {
     tune,
     cacheInSourceDir,
     rd6SSIM,
+    vmaf,
     reveal,
   } = args;
 
@@ -272,6 +281,13 @@ export async function hevc(args: ReturnType<typeof parseArgs>): Promise<void> {
       stdio: ["ignore", "inherit", "inherit"],
       cwd: cacheDir,
     }).success;
+  }
+
+  if (vmaf) {
+    await ffvmaf({
+      originalFile: sourceFile,
+      distortedFile: outputFile,
+    });
   }
 
   if (reveal) {

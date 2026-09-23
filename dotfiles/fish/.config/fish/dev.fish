@@ -242,8 +242,8 @@ abbr -a po "pushover -- 'Command done' (status current-commandline)"
 abbr -a po1 "pushover -- 'Command done' (string join -- \"
 \" (history --max 1))"
 
-abbr -a pt "pushover --app Transcoding -- 'Command done' (status current-commandline)"
-abbr -a pt1 "pushover --app Transcoding -- 'Command done' (string join -- \"
+abbr -a pot "pushover --app Transcoding -- 'Command done' (status current-commandline)"
+abbr -a pot1 "pushover --app Transcoding -- 'Command done' (string join -- \"
 \" (history --max 1))"
 
 abbr -a hl /opt/homebrew/Library/Taps/lgarron/homebrew-lgarron

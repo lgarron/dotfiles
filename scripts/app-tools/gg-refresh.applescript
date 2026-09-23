@@ -3,3 +3,6 @@
 tell application "System Events" to tell process "gg"
 	click menu item "Reopen" of menu "Repository" of menu bar 1
 end tell
+
+# Avoid output in the success case.
+return

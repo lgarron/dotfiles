@@ -313,7 +313,8 @@ function _fish_postexec_refresh_gg_if_needed
                     # Overflowing is unlikely and not the end of the world, so allow it in order to get unbuffered `gg-refresh` output.
                     echo -n "├─ "
                 end
-                pgrep "^gg\$" && gg-refresh
+                pgrep "^gg\$" &>/dev/null && /Users/lgarron/Code/git/github.com/lgarron/dotfiles/scripts/app-tools/gg-refresh.applescript
+                echo "🔄 Refreshed `gg`."
             else
                 echo "⚠️ Could not refresh `gg`."
             end

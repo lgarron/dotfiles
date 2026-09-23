@@ -313,7 +313,7 @@ function _fish_postexec_refresh_gg_if_needed
                     # Overflowing is unlikely and not the end of the world, so allow it in order to get unbuffered `gg-refresh` output.
                     echo -n "├─ "
                 end
-                gg-refresh
+                pgrep "^gg\$" && gg-refresh
             else
                 echo "⚠️ Could not refresh `gg`."
             end

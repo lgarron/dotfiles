@@ -5,11 +5,10 @@ class GgRefresh < Formula
   homepage "https://github.com/lgarron/dotfiles"
   head "https://github.com/lgarron/dotfiles.git", :branch => "main"
 
-  depends_on :xcode
+  # depends_on cask: "gg"
+  depends_on "fish"
 
   def install
-    system "mkdir", "-p", "./.temp"
-    system "swiftc", "-o", "./.temp/gg-refresh", "scripts/app-tools/gg-refresh.swift"
-    bin.install "./.temp/gg-refresh" => "gg-refresh"
+    bin.install "./scripts/app-tools/gg-refresh.applescript" => "gg-refresh"
   end
 end

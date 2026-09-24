@@ -196,22 +196,16 @@ set JJ_ORIGIN_REPO_URL_COMMAND 'jj git remote list | grep "^origin" | awk "{prin
 
 # "jj *f*orge *v*iew repo"
 abbr -a jf 'open --url ('$JJ_ORIGIN_REPO_URL_COMMAND')'
-abbr -a jgv '# try: jf'
 # "jj *f*orge *c*ommit"
 abbr -a jfc 'open --url ('$JJ_ORIGIN_REPO_URL_COMMAND'; and echo -n "/commit/"; echo -- (jj here))'
-abbr -a jgc '# try: jfc'
 # "jj *f*orge *b*ranch"
 abbr -a jfb 'open --url ('$JJ_ORIGIN_REPO_URL_COMMAND'; and echo -n "/commit/"; echo -- (jj guess-branch))'
-abbr -a jgb '# try: jfb'
 # "jj *f*orge *A*ctions"
 abbr -a jfa 'open --url ('$JJ_ORIGIN_REPO_URL_COMMAND'; and echo -n "/actions/")'
-abbr -a jga '# try: jfa'
 # "jj *f*orge *i*ssues"
 abbr -a jfi 'open --url ('$JJ_ORIGIN_REPO_URL_COMMAND'; and echo -n "/issues/")'
-abbr -a jgi '# try: jfi'
 # "jj `npm` (TODO: look for `package.json` workspace roots only)
 abbr -a jfn 'open (printf "https://www.npmjs.com/package/%s" (cat (repo workspace root)/package.json | jq -r ".name"))'
-abbr -a jgn '# try: jfn'
 
 if [ "$CODESPACES" = true ]
     # Needs to be defined here to pre-empt the binary.

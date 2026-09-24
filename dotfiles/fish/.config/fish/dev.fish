@@ -275,6 +275,9 @@ abbr_subcommand alg p parse
 abbr_subcommand alg i invert
 abbr_anysubcommand_arg alg s --stdin
 
+# jq r⎵  ".name" → jq --raw-output ".name"
+abbr_anyarg jq r --raw-output
+
 # Help me catch issues with https://github.com/lgarron/repo
 # @fish-lsp-disable-next-line 2003
 set -Ux DEBUG_PRINT_SHELL_COMMANDS dim

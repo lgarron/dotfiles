@@ -64,11 +64,7 @@ linux: \
 
 # Sourcing symlinked `.fish` files doesn't seem to work on Dreamhost, so we have to copy all the files we want `fish` to use. 😕
 .PHONY: dreamhost
-dreamhost:
-	mkdir -p ~/.config/fish
-	cp -R ./dotfiles/fish/.config/fish/* ~/.config/fish/
-	cp -R ./dotfiles/xdg-basedir-workarounds/.config/fish/* ~/.config/fish/
-
+dreamhost: common
 	echo "${HOME}/.local/share/binaries/linux-x64/fish" > ~/.bash_profile
 	echo "exit" >> ~/.bash_profile
 

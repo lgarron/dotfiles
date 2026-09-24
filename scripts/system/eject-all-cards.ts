@@ -1,8 +1,15 @@
 #!/usr/bin/env -S bun run --
 
 import { readdir } from "node:fs/promises";
-import { exit } from "node:process";
-import { choice, message, object, option, withDefault } from "@optique/core";
+import { exit, stdout } from "node:process";
+import {
+  choice,
+  message,
+  object,
+  option,
+  optional,
+  withDefault,
+} from "@optique/core";
 import { run } from "@optique/run";
 import { Path } from "path-class";
 import { Plural } from "plural-chain";
@@ -35,6 +42,7 @@ function parseArgs() {
         ),
         ON_UNKNOWN_VOLUME_BEHAVIOUR_DEFAULT,
       ),
+      dryRun: optional(option("--dry-run")),
     }),
     {
       ...byOption(),
@@ -52,6 +60,7 @@ async function ejectAllCards({
   printSkippedKnownVolumes,
   onUnknownVolume,
   notify,
+  dryRun,
 }: ReturnType<typeof parseArgs>) {
   const sdCardJSONConfig: {
     sd_card_names: string[];
@@ -101,22 +110,29 @@ async function ejectAllCards({
   for (const volume of volumes) {
     if (knownSDCardNames.has(volume)) {
       console.log(`⏏ Ejecting: ${volume}`);
-      ejectionPromises.push(
-        (async () => {
-          try {
-            await new PrintableShellCommand("diskutil", [
-              "unmount",
-              "force",
-              volume,
-            ]).shellOut({ print: "inline" });
-
-            counts.success++;
-          } catch (e) {
-            counts.failed++;
-            throw e;
-          }
-        })(),
-      );
+      const command = new PrintableShellCommand("diskutil", [
+        "unmount",
+        "force",
+        volume,
+      ]);
+      if (dryRun) {
+        stdout.write("[Skipping execution due to dry run] ");
+        command.print({ argumentLineWrapping: "inline" });
+        ejectionPromises.push(Promise.resolve());
+        counts.success++;
+      } else {
+        ejectionPromises.push(
+          (async () => {
+            try {
+              await command.shellOut({ print: "inline" });
+              counts.success++;
+            } catch (e) {
+              counts.failed++;
+              throw e;
+            }
+          })(),
+        );
+      }
       continue;
     }
     if (knownNonSDCardVolumes.has(volume)) {
@@ -154,11 +170,19 @@ async function ejectAllCards({
   }
   try {
     await Promise.all(ejectionPromises);
-    messsageParts.push(
-      ejectionPromises.length > 0
-        ? `Ejected ${Plural.num.s(ejectionPromises)`cards`} successfully.`
-        : "No cards to eject.",
-    );
+    if (dryRun) {
+      messsageParts.push(
+        ejectionPromises.length > 0
+          ? `Would have tried ejecting ${Plural.num.s(ejectionPromises)`cards`}.`
+          : "No cards to eject.",
+      );
+    } else {
+      messsageParts.push(
+        ejectionPromises.length > 0
+          ? `Ejected ${Plural.num.s(ejectionPromises)`cards`} successfully.`
+          : "No cards to eject.",
+      );
+    }
     addSkipped();
     await showNotification(messsageParts.join(" "));
   } catch (e) {

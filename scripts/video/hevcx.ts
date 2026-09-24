@@ -16,6 +16,7 @@ import { ErgonomicDate } from "ergonomic-date";
 import { Path } from "path-class";
 import { PrintableShellCommand } from "printable-shell-command";
 import { byOption, fileInOut } from "../lib/optique";
+import { TIMESTAMP_AND_GIT_HEAD_HASH } from "../lib/TIMESTAMP_AND_GIT_HEAD_HASH";
 import { ffprobeFirstVideoStream, pollOption } from "./ffpoll";
 import { ffvmaf } from "./ffvmaf";
 
@@ -237,6 +238,8 @@ export async function hevc(args: ReturnType<typeof parseArgs>): Promise<void> {
       x265Params.push(`rd=6`);
       x265Params.push(`ssim-rd=1`);
     }
+    const { sourceFile: _, ...serializedArgs } = args;
+
     return new PrintableShellCommand("ffmpeg", [
       ["-i", Path.cwd.resolve(sourceFile)],
       ["-c:v", "libx265"],
@@ -250,6 +253,16 @@ export async function hevc(args: ReturnType<typeof parseArgs>): Promise<void> {
       // - https://video.stackexchange.com/a/32860
       // - https://trac.ffmpeg.org/ticket/7045
       ["-movflags", "+faststart"],
+      [
+        "-movflags",
+        "use_metadata_tags",
+        "-map_metadata",
+        "0",
+        "-metadata",
+        `hevcx-version=${TIMESTAMP_AND_GIT_HEAD_HASH}`,
+        "-metadata",
+        `hevcx-args=${JSON.stringify(serializedArgs)}`,
+      ],
       ...(options.pass === 1
         ? [["-an", "-f", "null", "/dev/null"]]
         : [Path.cwd.resolve(outputFile)]),

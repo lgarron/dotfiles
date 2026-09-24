@@ -90,6 +90,8 @@ _fish_abbr_jj_subcommand c commit
 abbr -a jc --set-cursor "jj commit --message \"%" # Special shortened abbreviation
 abbr_subcommand_arg jj m --message commit
 
+_fish_abbr_jj_subcommand gi "git init --colocate ."
+
 # jdd⎵ → jj describe --message "`[last command]`"
 function _abbr_jj_describe_last_command_fn
     echo "jj describe --message \"`"(string replace --all "\"" "\\\"" $history[1])"`e7570aee70dde26e0814be06a6c767f9\""

@@ -225,7 +225,7 @@ else
     # Needs to be defined here to pre-empt the binary.
     # @fish-lsp-disable-next-line 4006
     function gg
-        if string match --quiet --entire -- (repo vcs kind) git
+        if string match --quiet --entire -- (env DEBUG_PRINT_SHELL_COMMANDS=false repo vcs kind) git
             echo "This repo uses `git` but not `jj`. Opening GitX instead."
             gx
             return

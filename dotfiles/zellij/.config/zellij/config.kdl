@@ -174,7 +174,8 @@ keybinds {
     }
     shared_except "locked" {
         bind "Ctrl g" { SwitchToMode "Locked"; }
-        bind "Ctrl q" { Quit; }
+        // https://github.com/zellij-org/zellij/issues/467
+        unbind "Ctrl q" { Quit; }
         bind "Alt f" { ToggleFloatingPanes; }
         bind "Alt n" { NewPane; }
         bind "Alt i" { MoveTab "Left"; }

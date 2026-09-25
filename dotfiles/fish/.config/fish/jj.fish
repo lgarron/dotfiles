@@ -246,81 +246,10 @@ abbr -a jgff "$DOTFILES_FOLDER/scripts/jj/jgff.ts"
 
 _fish_abbr_jj_subcommand ci 'commit --interactive --config=ui.editor=\'"true"\''
 
-# See: https://github.com/jj-vcs/jj/discussions/6224#discussioncomment-12713147
-# NOTE: This has severe limitations.
-# LSP override: This is an "exported" function (meant to be used outside this file).
-# @fish-lsp-disable-next-line 4004
-function jj_soft_reset_accidentally_modified_change
-    set TARGET_PARENT_REVISION $argv[1]
-    if [ (count $argv) -gt 1 ]
-        set CHANGESET_TO_SOFT_RESET $argv[2]
-    else
-        set CHANGESET_TO_SOFT_RESET "@"
-    end
-    echo "CHANGESET_TO_SOFT_RESET: $CHANGESET_TO_SOFT_RESET"
-    # TODO: is there a way to do this without checking out the changeset? (`jj duplicate` doesn't seem to have a way to specify the revision/changeset?)
-    jj edit --ignore-immutable $CHANGESET_TO_SOFT_RESET
-    set JJ_DUPLICATE_OUTPUT (jj duplicate 2>&1)
-    echo $JJ_DUPLICATE_OUTPUT
-
-    set FROM_COMMIT_ID (echo $JJ_DUPLICATE_OUTPUT | grep -o "^Duplicated [0-9a-f]\+ as [k-z]\+ " | awk "{print \$2}")
-    echo "FROM_COMMIT_ID: $FROM_COMMIT_ID"
-    set DUPLICATED_CHANGESET_ID (echo $JJ_DUPLICATE_OUTPUT | grep -o "^Duplicated [0-9a-f]\+ as [k-z]\+ " | awk "{print \$4}")
-    echo "DUPLICATED_CHANGESET_ID: $DUPLICATED_CHANGESET_ID"
-
-    jj edit $DUPLICATED_CHANGESET_ID
-    jj describe --message "(Changes from a soft reset.)"
-    # TODO: this doesn't work for revs that are more than 1 ancestor ago. Do the semantics `jj restore` work for this?
-    jj rebase --destination $TARGET_PARENT_REVISION
-    jj abandon $FROM_COMMIT_ID
-end
-
 # Interacts with the `fish` prompt `postexec`.
 set -g _FISH_JJ_WAS_RUN_DURING_COMMAND false
 set -g _FISH_OVERRIDE_DO_NOT_RUN_GG_REFRESH_IN_POSTEXEC false
 function jj
-    command jj $argv
+    command command -- jj $argv
     set -g _FISH_JJ_WAS_RUN_DURING_COMMAND true
-end
-
-# LSP override: This is an "exported" function (meant to be used outside this file).
-# @fish-lsp-disable-next-line 4004
-function _fish_postexec_refresh_gg_calculate_if_needed
-    if _fish_is_true "$_FISH_JJ_WAS_RUN_DURING_COMMAND"
-        if not _fish_is_true "$_FISH_OVERRIDE_DO_NOT_RUN_GG_REFRESH_IN_POSTEXEC"
-            echo -n true
-            return
-        end
-    end
-    echo -n false
-end
-
-# LSP override: This is an "exported" function (meant to be used outside this file).
-# @fish-lsp-disable-next-line 4004
-function _fish_postexec_refresh_gg_if_needed
-    # Maybe someday: https://github.com/gulbanana/gg/discussions/70
-    if [ "$CODESPACES" = true ]
-        return
-    end
-    if _fish_is_true "$_FISH_JJ_WAS_RUN_DURING_COMMAND"
-        if not _fish_is_true "$_FISH_OVERRIDE_DO_NOT_RUN_GG_REFRESH_IN_POSTEXEC"
-            if command -qv gg-refresh
-                if _fish_strings_are_identical $argv[1] --fancy
-                    # Overflowing is unlikely and not the end of the world, so allow it in order to get unbuffered `gg-refresh` output.
-                    echo -n "├─ "
-                end
-                pgrep "^gg\$" &>/dev/null && /Users/lgarron/Code/git/github.com/lgarron/dotfiles/scripts/app-tools/gg-refresh.applescript
-                echo "🔄 Refreshed `gg`."
-            else
-                echo "⚠️ Could not refresh `gg`."
-            end
-        end
-    end
-end
-
-# LSP override: This is an "exported" function (meant to be used outside this file).
-# @fish-lsp-disable-next-line 4004
-function _fish_postexec_refresh_gg_reset
-    set -g _FISH_JJ_WAS_RUN_DURING_COMMAND false
-    set -g _FISH_OVERRIDE_DO_NOT_RUN_GG_REFRESH_IN_POSTEXEC false
 end

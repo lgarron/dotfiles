@@ -50,22 +50,6 @@ _load_or_fail_dotfile_import jj
 _load_or_fail_dotfile_import dev
 _load_or_fail_dotfile_import commandline
 
-# Shortcuts
-
-## Shell
-
-function mkcd
-    mkdir -p $argv[1] && cd $argv[1]
-end
-
-function _fish_strings_are_identical
-    string match --quiet --entire -- $argv[1] $argv[2]
-end
-
-function _fish_is_true
-    _fish_strings_are_identical $argv[1] true
-end
-
 ### Abbrevation definition helpers
 
 ### Editors

@@ -248,7 +248,6 @@ _fish_abbr_jj_subcommand ci 'commit --interactive --config=ui.editor=\'"true"\''
 
 # Interacts with the `fish` prompt `postexec`.
 set -g _FISH_JJ_WAS_RUN_DURING_COMMAND false
-set -g _FISH_OVERRIDE_DO_NOT_RUN_GG_REFRESH_IN_POSTEXEC false
 function jj
     command command -- jj $argv
     set -g _FISH_JJ_WAS_RUN_DURING_COMMAND true

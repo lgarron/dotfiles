@@ -1,6 +1,7 @@
 #!/usr/bin/env -S bun run --
 
 import { argv } from "node:process";
+import { styleText } from "node:util";
 import { tryGetByName } from "betterdisplaycli";
 import { PrintableShellCommand } from "printable-shell-command";
 
@@ -9,13 +10,13 @@ const DISPLAY_NAME = "DELL P2715Q";
 const display = await tryGetByName(DISPLAY_NAME, { quiet: true });
 if (display) {
   const process = argv[2];
-  console.log("Moving window.");
   // TODO: Is this quoting sufficiently safe for AppleScript
   const quotedProcess = process.replace('"', '\\"');
-  await new PrintableShellCommand("osascript", [
-    [
-      "-e",
-      `
+  try {
+    await new PrintableShellCommand("osascript", [
+      [
+        "-e",
+        `
 tell application "Image Events"
     launch
         set numDisplays to count displays
@@ -42,6 +43,13 @@ if numDisplays is greater than 1
     end tell
 end if
 `,
-    ],
-  ]).spawn().success;
+      ],
+    ]).spawn().success;
+    console.info(`Moved ${styleText("blue", quotedProcess)} window.`);
+  } catch (e) {
+    console.error(
+      `Failed to move ${styleText("blue", quotedProcess)} window`,
+      e,
+    );
+  }
 }

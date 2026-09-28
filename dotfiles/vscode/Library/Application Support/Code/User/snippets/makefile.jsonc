@@ -78,11 +78,11 @@
       "",
       ".PHONY: clean",
       "clean:",
-      "\t${1:\\${RM_RF\\} ./dist/}${2}",
+      "\t${1:\\${RM_RF\\} -- ./dist/}${2}",
       "",
       ".PHONY: reset",
       "reset: clean",
-      "\t\\${RM_RF\\} ./node_modules/${3}"
+      "\t\\${RM_RF\\} -- ./node_modules/${3}"
     ],
     "description": "clean & reset (JS)"
   },

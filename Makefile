@@ -195,19 +195,19 @@ set-dotfiles-repo-email:
 	fi
 	# TODO: When do we need to run `jj describe --reset-author --no-edit`?
 
-RM = bun -e 'process.argv.slice(1).map(p => process.getBuiltinModule("node:fs").rmSync(p, {recursive: true, force: true, maxRetries: 5}))' --
+RM_RF = bun -e 'process.argv.slice(1).map(p => process.getBuiltinModule("node:fs").rmSync(p, {recursive: true, force: true, maxRetries: 5}))' --
 
 # We match the convention from https://github.com/lgarron/Makefile-convention
 .PHONY: clean
 clean:
 	@echo "Note: \`make clean\` cleans up the repo itself, it does not affect configured files."
-	${RM} ./.temp/
+	${RM_RF} -- ./.temp/
 
 # We match the convention from https://github.com/lgarron/Makefile-convention
 .PHONY: reset
 reset: clean
 	@echo "Note: \`make reset\` resets the repo itself, it does not affect configured files."
-	${RM} ./node_modules/ ./target/ ./scripts/swift/.build/
+	${RM_RF} -- ./node_modules/ ./target/ ./scripts/swift/.build/
 
 ########
 

@@ -36,6 +36,7 @@
 	"window.openFilesInNewWindow": "default",
 	"window.autoDetectColorScheme": false,
 	"workbench.editor.useModal": "off",
+	"editor.wordWrapIndicator": true,
 	"workbench.preferredLightColorTheme": "Light Modern",
 	"workbench.preferredDarkColorTheme": "Dark Modern",
 	"workbench.colorTheme": "Dark Modern",

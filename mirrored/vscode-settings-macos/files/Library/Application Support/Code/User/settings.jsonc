@@ -280,7 +280,6 @@
 	"githubPullRequests.codingAgent.enabled": false,
 	"github.copilot.chat.newWorkspaceCreation.enabled": false,
 	"terminal.integrated.suggest.enabled": false,
-	"update.mode": "none",
 	/******* URLs *********/
 	"terminal.integrated.allowedLinkSchemes": [
 		"file",

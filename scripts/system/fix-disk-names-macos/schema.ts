@@ -1,30 +1,18 @@
 import { Path } from "path-class";
-import { PrintableShellCommand } from "printable-shell-command";
+import { object, string, toJSONSchema, type infer as zodInfer } from "zod/mini";
 
-export interface DiskMetadata {
-  name: string;
-}
+export const SCHEMA_PATH = Path.resolve(
+  "./disk-metadata.schema.json",
+  import.meta.url,
+);
+
+export const DiskMetadataSchema = object({
+  $schema: string(),
+  name: string(),
+});
+
+export type DiskMetadata = zodInfer<typeof DiskMetadataSchema>;
 
 if (import.meta.main) {
-  console.log(
-    await new PrintableShellCommand("bun", [
-      [
-        "x",
-        "--",
-        "bun-dx",
-        "--package",
-        "typescript-json-schema",
-        "typescript-json-schema",
-        "--",
-      ],
-      "--skipLibCheck",
-      "--strictNullChecks",
-      "--required",
-      new Path(import.meta.url),
-      "DiskMetadata",
-    ])
-      .print({ skipLineWrapBeforeFirstArg: true })
-      .stdout()
-      .json(),
-  );
+  await SCHEMA_PATH.writeJSON(toJSONSchema(DiskMetadataSchema));
 }

@@ -9,7 +9,10 @@ import { Path, stringifyIfPath } from "path-class";
 import { Plural } from "plural-chain";
 import { PrintableShellCommand } from "printable-shell-command";
 import { byOption } from "../lib/optique";
-import type { DiskMetadata } from "./fix-disk-names-macos/schema";
+import {
+  type DiskMetadata,
+  DiskMetadataSchema,
+} from "./fix-disk-names-macos/schema";
 
 const VOLUMES_DIR = new Path("/Volumes/");
 const WELL_KNOWN_DISK_METADATA_JSON_PATH = new Path(
@@ -55,7 +58,9 @@ export async function fixDiskNamesMacOS(
     // TODO: is this safe?
     const currentVolumeName = path.parent.parent;
 
-    const diskMetadata: DiskMetadata = await VOLUMES_DIR.join(path).readJSON();
+    const diskMetadata: DiskMetadata = DiskMetadataSchema.parse(
+      await VOLUMES_DIR.join(path).readJSON(),
+    );
     const expectedName = diskMetadata.name;
     if (!expectedName) {
       console.error("Missing name at: ", path);

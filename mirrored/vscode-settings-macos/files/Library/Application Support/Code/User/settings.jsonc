@@ -234,6 +234,8 @@
 			]
 		}
 	},
+	"terminal.integrated.enableImages": true,
+	"terminal.integrated.gpuAcceleration": "on",
 	/******** Toggle Case ********/
 	"toggleCase.case.capitalCase": false,
 	"toggleCase.case.dotCase": false,
@@ -270,17 +272,17 @@
 	/******* Disable AI upsell garbage I didn't ask for *********/
 	"terminal.integrated.initialHint": false,
 	/******** Disable unsolicited slop ********/
-	"chat.commandCenter.enabled": false,
 	"chat.agent.enabled": false,
 	"chat.disableAIFeatures": true,
 	"gitlens.plusFeatures.enabled": false,
 	"gitlens.ai.enabled": false,
+	"terminal.integrated.suggest.enabled": false,
+	"chat.commandCenter.enabled": false,
 	"github.copilot.chat.reviewAgent.enabled": false,
 	"github.copilot.chat.summarizeAgentConversationHistory.enabled": false,
 	"githubPullRequests.codingAgent.autoCommitAndPush": false,
 	"githubPullRequests.codingAgent.enabled": false,
 	"github.copilot.chat.newWorkspaceCreation.enabled": false,
-	"terminal.integrated.suggest.enabled": false,
 	/******* URLs *********/
 	"terminal.integrated.allowedLinkSchemes": [
 		"file",
@@ -301,8 +303,6 @@
 		"https://json.schemastore.org/": true,
 		"https://json-schema.org/": true,
 		"https://biomejs.dev": true
-	},
-	"terminal.integrated.enableImages": true,
-	"terminal.integrated.gpuAcceleration": "on"
+	}
 	/******* Unsorted *********/
 }

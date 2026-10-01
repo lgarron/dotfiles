@@ -1,27 +1,27 @@
 #!/usr/bin/env -S bun run --
 
-import { readdir } from "node:fs/promises";
 import { exit, stdout } from "node:process";
 import {
   choice,
   message,
-  object,
   option,
-  optional,
+  object as optiqueObject,
+  optional as optiqueOptional,
   withDefault,
 } from "@optique/core";
 import { run } from "@optique/run";
 import { Path } from "path-class";
 import { Plural } from "plural-chain";
 import { PrintableShellCommand } from "printable-shell-command";
-import {
-  array,
-  record,
-  type infer as zodInfer,
-  object as zodObject,
-  string as zodString,
-} from "zod/mini";
 import { byOption } from "../lib/optique";
+import {
+  type KnownNonSDCardVolumesConfig,
+  KnownNonSDCardVolumesConfigSchema,
+} from "./eject-known-cards/schemas/known-non-sd-card-volumes";
+import {
+  type SDCardBackupConfig,
+  SDCardBackupConfigSchema,
+} from "./eject-known-cards/schemas/sd-card-backup-config-schema";
 
 const SD_CARD_CONFIG_ROOT_DIR = Path.xdg.config.join("sd-card-backup");
 const CONFIG_JSON_PATH = SD_CARD_CONFIG_ROOT_DIR.join("config.json");
@@ -35,17 +35,9 @@ type ON_UNKNOWN_VOLUME_BEHAVIOUR =
 const ON_UNKNOWN_VOLUME_BEHAVIOUR_DEFAULT: ON_UNKNOWN_VOLUME_BEHAVIOUR =
   "warning";
 
-const KnownNonSDCardVolumesConfigSchema = zodObject({
-  volumes: record(zodString(), zodString()),
-  commandToRunBefore: array(zodString()),
-});
-type KnownNonSDCardVolumesConfig = zodInfer<
-  typeof KnownNonSDCardVolumesConfigSchema
->;
-
 function parseArgs() {
   return run(
-    object({
+    optiqueObject({
       printSkippedKnownVolumes: option("--print-skipped-known-volumes"),
       notify: option("--notify"),
       onUnknownVolume: withDefault(
@@ -57,7 +49,7 @@ function parseArgs() {
         ),
         ON_UNKNOWN_VOLUME_BEHAVIOUR_DEFAULT,
       ),
-      dryRun: optional(option("--dry-run")),
+      dryRun: optiqueOptional(option("--dry-run")),
     }),
     {
       ...byOption(),
@@ -77,10 +69,9 @@ async function ejectAllCards({
   notify,
   dryRun,
 }: ReturnType<typeof parseArgs>) {
-  const sdCardJSONConfig: {
-    sd_card_names: string[];
-    sd_card_mount_point: string;
-  } = await CONFIG_JSON_PATH.readJSON();
+  const sdCardJSONConfig: SDCardBackupConfig = SDCardBackupConfigSchema.parse(
+    await CONFIG_JSON_PATH.readJSON(),
+  );
 
   const knownNonSDCardVolumesConfig: KnownNonSDCardVolumesConfig =
     KnownNonSDCardVolumesConfigSchema.parse(
@@ -94,7 +85,7 @@ async function ejectAllCards({
 
   const knownSDCardNames = new Set(sdCardJSONConfig.sd_card_names);
 
-  const volumes = await readdir(sdCardJSONConfig.sd_card_mount_point);
+  const volumes = await sdCardJSONConfig.sd_card_mount_point.readDir();
 
   const knownNonSDCardVolumes = new Set(
     Object.values(knownNonSDCardVolumesConfig.volumes).flat(),

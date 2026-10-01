@@ -132,9 +132,10 @@ mac-file-defaults:
 	duti -s com.microsoft.vscode org.rust-lang.rust
 	duti -s com.microsoft.vscode org.rust-lang.source
 
-	duti -s com.apple.quicktimeplayerx com.microsoft.waveform-audio all # wav
+	duti -s com.apple.quicktimeplayerx com.microsoft.waveform-audio all # `.wav`
 	duti -s com.apple.quicktimeplayerx com.apple.m4v-video all
 	duti -s com.apple.quicktimeplayerx com.apple.m4a-audio all
+	duti -s com.apple.quicktimeplayerx public.mpeg-4 all # `.mp4`
 	duti -s com.apple.quicktimeplayerx org.xiph.flac all
 	duti -s com.apple.quicktimeplayerx public.mp3 all
 

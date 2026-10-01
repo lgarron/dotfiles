@@ -4,6 +4,9 @@
 set PARENT_FOLDER "$HOME/Dropbox/Screenshots/Germain Screenshots/Germain App Screenshots/"
 if not test -d $PARENT_FOLDER
     set PARENT_FOLDER "/Volumes/Samos/Pythagoras/Users/lgarron/Dropbox/Screenshots/Pythagoras Screenshots/Pythagoras App Screenshots/"
+    if not test -d $PARENT_FOLDER
+        set PARENT_FOLDER "$HOME/Desktop/Screenshots"
+    end
 end
 
 # We use an absolute path because we're invoked by `Karabiner-Elements` without the normal Homebrew path.

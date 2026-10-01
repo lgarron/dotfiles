@@ -3,3 +3,7 @@ function repo-HEAD
     string join -- " " (string escape -- $COMMAND)
     command $COMMAND
 end
+
+# False positive
+# @fish-lsp-disable-next-line 1004
+repo-HEAD completions fish --bin-name repo-HEAD | source >/dev/null

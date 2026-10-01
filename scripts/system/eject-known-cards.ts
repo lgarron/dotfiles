@@ -14,6 +14,13 @@ import { run } from "@optique/run";
 import { Path } from "path-class";
 import { Plural } from "plural-chain";
 import { PrintableShellCommand } from "printable-shell-command";
+import {
+  array,
+  record,
+  type infer as zodInfer,
+  object as zodObject,
+  string as zodString,
+} from "zod/mini";
 import { byOption } from "../lib/optique";
 
 const SD_CARD_CONFIG_ROOT_DIR = Path.xdg.config.join("sd-card-backup");
@@ -27,6 +34,14 @@ type ON_UNKNOWN_VOLUME_BEHAVIOUR =
   (typeof ON_UNKNOWN_VOLUME_BEHAVIOURS)[number];
 const ON_UNKNOWN_VOLUME_BEHAVIOUR_DEFAULT: ON_UNKNOWN_VOLUME_BEHAVIOUR =
   "warning";
+
+const KnownNonSDCardVolumesConfigSchema = zodObject({
+  volumes: record(zodString(), zodString()),
+  commandToRunBefore: array(zodString()),
+});
+type KnownNonSDCardVolumesConfig = zodInfer<
+  typeof KnownNonSDCardVolumesConfigSchema
+>;
 
 function parseArgs() {
   return run(
@@ -67,10 +82,10 @@ async function ejectAllCards({
     sd_card_mount_point: string;
   } = await CONFIG_JSON_PATH.readJSON();
 
-  const knownNonSDCardVolumesConfig: {
-    volumes: Record<string, string[]>;
-    commandToRunBefore: string[];
-  } = await KNOWN_NON_SD_CARD_VOLUMES_PATH_JSON.readJSON();
+  const knownNonSDCardVolumesConfig: KnownNonSDCardVolumesConfig =
+    KnownNonSDCardVolumesConfigSchema.parse(
+      await KNOWN_NON_SD_CARD_VOLUMES_PATH_JSON.readJSON(),
+    );
 
   {
     const [command, ...args] = knownNonSDCardVolumesConfig.commandToRunBefore;

@@ -245,6 +245,10 @@ export async function hevc(args: ReturnType<typeof parseArgs>): Promise<void> {
       x265Params.push(`rd=6`);
       x265Params.push(`ssim-rd=1`);
     }
+    if (threads) {
+      x265Params.push(`pools=1`); // TODO: does this have any undesirable side effects?
+      x265Params.push(`frame-threads=${threads}`);
+    }
     const { sourceFile: _, ...serializedArgs } = args;
 
     return new PrintableShellCommand("ffmpeg", [

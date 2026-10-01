@@ -171,13 +171,15 @@ export async function hevc(args: ReturnType<typeof parseArgs>): Promise<void> {
     new BitRateInfo(Number.parseInt(videoStream.bit_rate, 10), "b");
 
   const additionalParams: (string | string[])[] = [];
+  // We need to pass `-threads …` multiple times (for both input and output), so we track it separately.
+  const threadsParams: (string | string[])[] = [];
   let appendedBasenameParts = ".hevcx";
   if (typeof height !== "undefined") {
     additionalParams.push(["-vf", `scale=-1:${height.toString()}`]);
     appendedBasenameParts = `${appendedBasenameParts}.${height}p`;
   }
   if (typeof threads !== "undefined") {
-    additionalParams.push(["-threads", `${threads}`]);
+    threadsParams.push(["-threads", `${threads}`]);
   }
   if (typeof preset !== "undefined") {
     additionalParams.push(["-preset", preset]);
@@ -246,6 +248,7 @@ export async function hevc(args: ReturnType<typeof parseArgs>): Promise<void> {
     const { sourceFile: _, ...serializedArgs } = args;
 
     return new PrintableShellCommand("ffmpeg", [
+      ...threadsParams,
       ["-i", Path.cwd.resolve(sourceFile)],
       ["-c:v", "libx265"],
       // TODO: pass `-an` in first pass. https://trac.ffmpeg.org/wiki/Encode/H.265#Two-PassExample
@@ -268,6 +271,7 @@ export async function hevc(args: ReturnType<typeof parseArgs>): Promise<void> {
         "-metadata",
         `hevcx-args=${JSON.stringify(serializedArgs)}`,
       ],
+      ...threadsParams,
       ...(options.pass === 1
         ? [["-an", "-f", "null", "/dev/null"]]
         : [Path.cwd.resolve(outputFile)]),

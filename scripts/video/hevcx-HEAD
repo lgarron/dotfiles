@@ -1,0 +1,5 @@
+#!/usr/bin/env -S bun run --
+
+import { hevcx, parseArgs } from "./hevcx";
+
+await hevcx(parseArgs());

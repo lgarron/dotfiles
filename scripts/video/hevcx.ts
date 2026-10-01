@@ -67,7 +67,7 @@ class BitRateInfo {
   }
 }
 
-function parseArgs() {
+export function parseArgs() {
   return run(
     merge(
       object("Quality", {
@@ -146,7 +146,7 @@ function parseArgs() {
   );
 }
 
-export async function hevc(args: ReturnType<typeof parseArgs>): Promise<void> {
+export async function hevcx(args: ReturnType<typeof parseArgs>): Promise<void> {
   const {
     poll,
     height,
@@ -324,5 +324,5 @@ export async function hevc(args: ReturnType<typeof parseArgs>): Promise<void> {
 }
 
 if (import.meta.main) {
-  await hevc(parseArgs());
+  await hevcx(parseArgs());
 }

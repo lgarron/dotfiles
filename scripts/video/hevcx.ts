@@ -119,6 +119,7 @@ function parseArgs() {
         height: optional(option("--height", integer({ min: 1 }))),
       }),
       object("Operation", {
+        threads: optional(option("--threads", integer({ min: 1 }))),
         dryRun: optional(option("--dry-run")),
         cacheInSourceDir: optional(
           option("--cache-in-source-dir", {
@@ -149,6 +150,7 @@ export async function hevc(args: ReturnType<typeof parseArgs>): Promise<void> {
   const {
     poll,
     height,
+    threads,
     dryRun,
     sourceFile,
     vbvMaxRateArg,
@@ -173,6 +175,9 @@ export async function hevc(args: ReturnType<typeof parseArgs>): Promise<void> {
   if (typeof height !== "undefined") {
     additionalParams.push(["-vf", `scale=-1:${height.toString()}`]);
     appendedBasenameParts = `${appendedBasenameParts}.${height}p`;
+  }
+  if (typeof threads !== "undefined") {
+    additionalParams.push(["-threads", `${threads}`]);
   }
   if (typeof preset !== "undefined") {
     additionalParams.push(["-preset", preset]);

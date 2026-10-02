@@ -106,7 +106,7 @@ switch (currentHostname) {
         Path.homedir.join("./Library/Mobile Documents/com~apple~CloudDocs/"),
       ],
       ["Dropbox", Path.homedir.join("./Dropbox/")],
-      ["🏡 Germain Locations", Path.homedir.join("./🏡 Germain Locations/")],
+      ["Germain Locations", Path.homedir.join("./Germain Locations/")],
       ["3D Printing", Path.homedir.join("./Dropbox/3D Printing/")],
       ["Volumes", new Path("/Volumes/")],
       [
@@ -166,7 +166,7 @@ switch (currentHostname) {
 // Uploads -> file:///Users/lgarron/Uploads/
 // iCloud Drive -> file:///Users/lgarron/Library/Mobile%20Documents/com~apple~CloudDocs/
 // Dropbox -> file:///Users/lgarron/Dropbox/
-// 🏡 Germain Locations -> file:///Users/lgarron/%F0%9F%8F%A1%20Germain%20Locations/
+// Germain Locations -> file:///Users/lgarron/%F0%9F%8F%A1%20Germain%20Locations/
 // 3D Printing -> file:///Users/lgarron/Dropbox/3D%20Printing/
 // Volumes -> file:///Volumes/
 // Trenzalore Locations -> file:///Volumes/Trenzalore/Meta/Trenzalore%20Locations/
@@ -180,7 +180,7 @@ switch (currentHostname) {
 //         mysides add Uploads (to_file_url "$HOME/Uploads/")
 //         mysides add "iCloud Drive" (to_file_url "$HOME/Library/Mobile Documents/com~apple~CloudDocs")
 //         mysides add Dropbox (to_file_url "$HOME/Dropbox/")
-//         mysides add "🏡 Germain Locations" (to_file_url "$HOME/🏡 Germain Locations/")
+//         mysides add "Germain Locations" (to_file_url "$HOME/Germain Locations/")
 //         mysides add "3D Printing" (to_file_url "$HOME/Dropbox/3D Printing/")
 //         mysides add Volumes (to_file_url "/Volumes/")
 //         mysides add "Trenzalore Locations" (to_file_url "/Volumes/Trenzalore/Meta/Trenzalore Locations/")

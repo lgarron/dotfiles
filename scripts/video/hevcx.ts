@@ -2,6 +2,8 @@
 
 import {
   choice,
+  constant,
+  group,
   integer,
   map,
   merge,
@@ -9,6 +11,7 @@ import {
   object,
   option,
   optional,
+  or,
   string,
 } from "@optique/core";
 import { run } from "@optique/run";
@@ -29,6 +32,12 @@ const BIT_RATE_SUFFIX_FACTORS = {
   b: 1,
 } as const;
 type BitRateSuffixFactor = keyof typeof BIT_RATE_SUFFIX_FACTORS;
+
+enum CacheIn {
+  CacheDir = "cacheDir",
+  SourceDir = "sourceDir",
+  TempDir = "tempDir",
+}
 
 // TODO: implement `ValueParser`.
 class BitRateInfo {
@@ -118,15 +127,40 @@ export function parseArgs() {
       object("Transformation", {
         height: optional(option("--height", integer({ min: 1 }))),
       }),
-      object("Operation", {
-        threads: optional(option("--threads", integer({ min: 1 }))),
-        dryRun: optional(option("--dry-run")),
-        cacheInSourceDir: optional(
-          option("--cache-in-source-dir", {
-            description: message`Useful if the cache is too large to fit in the default cache dir.`,
+      group(
+        "Operation",
+        merge(
+          object({
+            threads: optional(option("--threads", integer({ min: 1 }))),
+            dryRun: optional(option("--dry-run")),
           }),
+          or(
+            object({
+              cacheIn: optional(
+                map(
+                  option("--cache-in-source-dir", {
+                    description: message`Useful if the cache is too large to fit in the default cache dir.`,
+                  }),
+                  () => CacheIn.SourceDir,
+                ),
+              ),
+            }),
+            object({
+              cacheIn: optional(
+                map(
+                  option("--cache-in-temp-dir", {
+                    description: message`Useful to let the cache be deleted automatically by the OS.`,
+                  }),
+                  () => CacheIn.TempDir,
+                ),
+              ),
+            }),
+            object({
+              cacheIn: constant(CacheIn.CacheDir),
+            }),
+          ),
         ),
-      }),
+      ),
       object("Post-transcoding", {
         vmaf: optional(
           option("--vmaf", {
@@ -157,7 +191,7 @@ export async function hevcx(args: ReturnType<typeof parseArgs>): Promise<void> {
     crf,
     preset,
     tune,
-    cacheInSourceDir,
+    cacheIn,
     rd6SSIM,
     vmaf,
     reveal,
@@ -216,19 +250,34 @@ export async function hevcx(args: ReturnType<typeof parseArgs>): Promise<void> {
   await outputFile.parent.mkdir();
 
   const cacheDirOrSymlink = outputFile.extendBasename(".cache");
-  const cacheDir = cacheInSourceDir
-    ? cacheDirOrSymlink
-    : Path.xdg.cache
-        .join(
-          "hevcx",
-          `${Path.cwd.resolve(sourceFile).asRelative()}`,
-          new ErgonomicDate().multipurposeTimestamp,
-        )
-        .toggleTrailingSlash(true);
+  const cacheDir = await (async () => {
+    switch (cacheIn) {
+      case "sourceDir": {
+        return cacheDirOrSymlink;
+      }
+      case "tempDir": {
+        return (await Path.makeTempDir("hevcx-"))
+          .join(
+            `${Path.cwd.resolve(sourceFile).asRelative()}`,
+            new ErgonomicDate().multipurposeTimestamp,
+          )
+          .toggleTrailingSlash(true);
+      }
+      default: {
+        return Path.xdg.cache
+          .join(
+            "hevcx",
+            `${Path.cwd.resolve(sourceFile).asRelative()}`,
+            new ErgonomicDate().multipurposeTimestamp,
+          )
+          .toggleTrailingSlash(true);
+      }
+    }
+  })();
   console.log(`Using cache dir: ${cacheDir.blue}`);
   if (!dryRun) {
     await cacheDir.mkdir();
-    if (!cacheInSourceDir) {
+    if (cacheIn !== CacheIn.SourceDir) {
       const symlinkPath = outputFile.extendBasename(".cache");
       await symlinkPath.rm({ force: true });
       await cacheDir.symlink(symlinkPath);

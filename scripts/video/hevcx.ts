@@ -18,6 +18,7 @@ import { run } from "@optique/run";
 import { ErgonomicDate } from "ergonomic-date";
 import { Path } from "path-class";
 import { PrintableShellCommand } from "printable-shell-command";
+import { utimes } from "utimes";
 import { byOption, fileInOut } from "../lib/optique";
 import { TIMESTAMP_AND_GIT_HEAD_HASH } from "../lib/TIMESTAMP_AND_GIT_HEAD_HASH";
 import { ffprobeFirstVideoStream, pollOption } from "./ffpoll";
@@ -170,6 +171,9 @@ export function parseArgs() {
       }),
       object("File handling", {
         poll: pollOption({ default: "auto" }),
+        transferTimestamps: option("--transfer-timestamps", {
+          description: message`Transfer created (birth) and modified timestamps to the transcoded file.`,
+        }),
         // `--poll true` should work with files that are still not created yet
         // (e.g. pending Final Cut Pro exports that are constituted out of
         // segments on disk).
@@ -194,6 +198,7 @@ export async function hevcx(args: ReturnType<typeof parseArgs>): Promise<void> {
     cacheIn,
     noRD6SSIM,
     vmaf,
+    transferTimestamps,
     reveal,
   } = args;
 
@@ -363,6 +368,12 @@ export async function hevcx(args: ReturnType<typeof parseArgs>): Promise<void> {
       originalFile: sourceFile,
       distortedFile: outputFile,
     });
+  }
+
+  if (transferTimestamps) {
+    const sourceFileStat = await sourceFile.stat();
+    const { birthtime: btime, mtime } = sourceFileStat;
+    await utimes(outputFile.path, { btime, mtime });
   }
 
   if (reveal) {

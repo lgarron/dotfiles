@@ -118,9 +118,9 @@ export function parseArgs() {
             BitRateInfo.parse,
           ),
         ),
-        rd6SSIM: optional(
-          option("--rd6-ssim", {
-            description: message`Try using SSIM (test).`,
+        noRD6SSIM: optional(
+          option("--no-rd6-ssim", {
+            description: message`Do not use \`rd=6\ and \`ssim-rd=1\` flags for \`libx265\`.`,
           }),
         ),
       }),
@@ -192,7 +192,7 @@ export async function hevcx(args: ReturnType<typeof parseArgs>): Promise<void> {
     preset,
     tune,
     cacheIn,
-    rd6SSIM,
+    noRD6SSIM,
     vmaf,
     reveal,
   } = args;
@@ -230,7 +230,7 @@ export async function hevcx(args: ReturnType<typeof parseArgs>): Promise<void> {
   if (vbvMaxRateArg) {
     appendedBasenameParts = `${appendedBasenameParts}.vbvmax=${vbvMaxRate}`;
   }
-  if (rd6SSIM) {
+  if (!noRD6SSIM) {
     appendedBasenameParts = `${appendedBasenameParts}.rd6-ssim`;
   }
 
@@ -290,7 +290,7 @@ export async function hevcx(args: ReturnType<typeof parseArgs>): Promise<void> {
       x265Params.push(`vbv-maxrate=${vbvMaxRate.asBits()}`);
       x265Params.push(`vbv-bufsize=${vbvMaxRate.asBits() * VBV_BUFFER_FACTOR}`);
     }
-    if (rd6SSIM) {
+    if (!noRD6SSIM) {
       x265Params.push(`rd=6`);
       x265Params.push(`ssim-rd=1`);
     }

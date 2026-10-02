@@ -56,8 +56,9 @@ abbr -a lock-screen "pmset displaysleepnow # lock macOS screen"
 abbr -a _hh_abbr --regex hh --position anywhere -- --help
 abbr -a _vv_abbr --regex vv --position anywhere -- --version
 
-abbr_anyarg hevc q --quality
-abbr_anyarg hevc f --force-bit-depth
+abbr -a hx hevcx
+abbr -a hxh hevcx-HEAD
+abbr_anyarg hevcx t --cache-in-temp-dir
 
 abbr_anyarg fish p --private
 

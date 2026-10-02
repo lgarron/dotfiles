@@ -1,5 +1,5 @@
 function repo-HEAD
-    set COMMAND cargo run --manifest-path $HOME/Code/git/github.com/lgarron/repo/Cargo.toml -- $argv
+    set COMMAND cargo run --manifest-path $HOME/Code/git/github.com/lgarron/repo/Cargo.toml --release -- $argv
     string join -- " " (string escape -- $COMMAND)
     command $COMMAND
 end

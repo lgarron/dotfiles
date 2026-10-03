@@ -16,7 +16,6 @@
     "plural-chain": ">=0.2.3",
     "printable-shell-command": "^5.3.0",
     "trash": "^10.0.0",
-    "utimes": "^5.2.1",
     "xdg-basedir": "^5.1.0",
     "zod": "^4.6.5"
   },

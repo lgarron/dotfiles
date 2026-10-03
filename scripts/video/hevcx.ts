@@ -18,7 +18,6 @@ import { run } from "@optique/run";
 import { ErgonomicDate } from "ergonomic-date";
 import { Path } from "path-class";
 import { PrintableShellCommand } from "printable-shell-command";
-import { utimes } from "utimes";
 import { byOption, fileInOut } from "../lib/optique";
 import { TIMESTAMP_AND_GIT_HEAD_HASH } from "../lib/TIMESTAMP_AND_GIT_HEAD_HASH";
 import { ffprobeFirstVideoStream, pollOption } from "./ffpoll";

@@ -371,9 +371,32 @@ export async function hevcx(args: ReturnType<typeof parseArgs>): Promise<void> {
   }
 
   if (transferTimestamps) {
-    const sourceFileStat = await sourceFile.stat();
-    const { birthtime: btime, mtime } = sourceFileStat;
-    await utimes(outputFile.path, { btime, mtime });
+    // macOS workaround
+    {
+      const creationTime = await new PrintableShellCommand("GetFileInfo", [
+        "-d",
+        sourceFile,
+      ]).text({ trimTrailingNewlines: "single-required" });
+      await new PrintableShellCommand("SetFile", [
+        "-d",
+        creationTime,
+        outputFile,
+      ]).shellOut();
+    }
+    {
+      const modificationTime = await new PrintableShellCommand("GetFileInfo", [
+        "-m",
+        sourceFile,
+      ]).text({ trimTrailingNewlines: "single-required" });
+      await new PrintableShellCommand("SetFile", [
+        "-m",
+        modificationTime,
+        outputFile,
+      ]).shellOut();
+    }
+    // const sourceFileStat = await sourceFile.stat();
+    // const { birthtime: btime, mtime } = sourceFileStat;
+    // await utimes(outputFile.path, { btime, mtime });
   }
 
   if (reveal) {

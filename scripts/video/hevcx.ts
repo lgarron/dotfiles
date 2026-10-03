@@ -33,7 +33,7 @@ const BIT_RATE_SUFFIX_FACTORS = {
 } as const;
 type BitRateSuffixFactor = keyof typeof BIT_RATE_SUFFIX_FACTORS;
 
-enum CacheIn {
+enum CacheLocation {
   CacheDir = "cacheDir",
   SourceDir = "sourceDir",
   TempDir = "tempDir",
@@ -136,12 +136,12 @@ export function parseArgs() {
           }),
           or(
             object({
-              cacheIn: optional(
+              cacheLocation: optional(
                 map(
                   option("--cache-in-source-dir", {
                     description: message`Useful if the cache is too large to fit in the default cache dir.`,
                   }),
-                  () => CacheIn.SourceDir,
+                  () => CacheLocation.SourceDir,
                 ),
               ),
             }),
@@ -151,12 +151,12 @@ export function parseArgs() {
                   option("--cache-in-temp-dir", {
                     description: message`Useful to let the cache be deleted automatically by the OS.`,
                   }),
-                  () => CacheIn.TempDir,
+                  () => CacheLocation.TempDir,
                 ),
               ),
             }),
             object({
-              cacheIn: constant(CacheIn.CacheDir),
+              cacheIn: constant(CacheLocation.CacheDir),
             }),
           ),
         ),
@@ -194,7 +194,7 @@ export async function hevcx(args: ReturnType<typeof parseArgs>): Promise<void> {
     crf,
     preset,
     tune,
-    cacheIn,
+    cacheLocation: cacheIn,
     noRD6SSIM,
     vmaf,
     transferTimestamps,
@@ -281,7 +281,7 @@ export async function hevcx(args: ReturnType<typeof parseArgs>): Promise<void> {
   console.log(`Using cache dir: ${cacheDir.blue}`);
   if (!dryRun) {
     await cacheDir.mkdir();
-    if (cacheIn !== CacheIn.SourceDir) {
+    if (cacheIn !== CacheLocation.SourceDir) {
       const symlinkPath = outputFile.extendBasename(".cache");
       await symlinkPath.rm({ force: true });
       await cacheDir.symlink(symlinkPath);

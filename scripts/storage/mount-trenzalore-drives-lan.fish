@@ -1,12 +1,18 @@
 #!/usr/bin/env -S fish --no-config --
 
-osascript -e '
+{
+    osascript -e '
 tell application "Finder"
 	mount volume "smb://Pythagoras.lan/Trenzalore"
 	mount volume "smb://Pythagoras.lan/Trenzalore CRM Videos"
-end tell'
-
-terminal-notifier \
-    -title "Mount Trenzalore drives (LAN)" \
-    -message "Mounted successfully" \
-    -execute "/opt/homebrew/bin/reveal-macos "(string escape /Volumes/Trenzalore/)
+end tell' && terminal-notifier \
+        -title "Mount Trenzalore drives (LAN)" \
+        -message "Mounted successfully" \
+        -execute "/opt/homebrew/bin/reveal-macos "(string escape /Volumes/Trenzalore/)
+} ||
+    {
+        terminal-notifier \
+            -title "Mount Trenzalore drives (LAN)" \
+            -message "❌ Failed" \
+            -execute "/opt/homebrew/bin/reveal-macos "(string escape /Volumes/Trenzalore/)
+    }

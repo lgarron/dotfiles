@@ -110,6 +110,9 @@ export function parseArgs() {
             ]),
           ),
         ),
+        maxConsecutiveBFrames: optional(
+          option("--max-consecutive-b-frames", integer({ min: 0, max: 16 })),
+        ),
         vbvMaxRateArg: optional(
           map(
             option("--vbv-maxrate", string(), {
@@ -194,6 +197,7 @@ export async function hevcx(args: ReturnType<typeof parseArgs>): Promise<void> {
     crf,
     preset,
     tune,
+    maxConsecutiveBFrames,
     cacheLocation,
     noRD6SSIM,
     vmaf,
@@ -226,6 +230,9 @@ export async function hevcx(args: ReturnType<typeof parseArgs>): Promise<void> {
   if (typeof tune !== "undefined") {
     additionalParams.push(["-tune", tune]);
     appendedBasenameParts = `${appendedBasenameParts}.${tune}`;
+  }
+  if (typeof maxConsecutiveBFrames !== "undefined") {
+    appendedBasenameParts = `${appendedBasenameParts}.bframes=${maxConsecutiveBFrames}`;
   }
   if (typeof crf !== "undefined") {
     additionalParams.push(["-crf", `${crf}`]);
@@ -293,6 +300,9 @@ export async function hevcx(args: ReturnType<typeof parseArgs>): Promise<void> {
     if (vbvMaxRate) {
       x265Params.push(`vbv-maxrate=${vbvMaxRate.asBits()}`);
       x265Params.push(`vbv-bufsize=${vbvMaxRate.asBits() * VBV_BUFFER_FACTOR}`);
+    }
+    if (typeof maxConsecutiveBFrames !== "undefined") {
+      x265Params.push(`bframes=${maxConsecutiveBFrames}`);
     }
     if (!noRD6SSIM) {
       x265Params.push(`rd=6`);

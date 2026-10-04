@@ -11,6 +11,8 @@ import { byOption, sourceFile } from "../lib/optique";
 
 const CONFIG_FILE_PATH = Path.xdg.config.join("./sd-card-backup/config.json");
 
+const KNOWN_TOP_LEVEL_FOLDERS = new Set(["DCIM", "CRM", "XFVC"]);
+
 // TODO: Generate from source of truth.
 interface Config {
   destination_root: string;
@@ -52,7 +54,7 @@ export async function revealSDCardBackupDCIM(args: {
       _year,
       _date,
       cardName,
-      DCIM_OR_CRM,
+      TOP_LEVEL_FOLDER,
       parentFolderName,
       fileName,
     ] = parts;
@@ -61,7 +63,7 @@ export async function revealSDCardBackupDCIM(args: {
       Volumes !== "Volumes" ||
       backupDrive !== configBackupDrive ||
       SDCardBackup !== "SD Card Backup" ||
-      !["DCIM", "CRM"].includes(DCIM_OR_CRM)
+      !KNOWN_TOP_LEVEL_FOLDERS.has(TOP_LEVEL_FOLDER)
     ) {
       throw new Error("Invalid path!");
     }
@@ -69,7 +71,7 @@ export async function revealSDCardBackupDCIM(args: {
       "",
       "Volumes",
       cardName,
-      DCIM_OR_CRM,
+      TOP_LEVEL_FOLDER,
       parentFolderName,
       fileName,
     ];
@@ -86,13 +88,19 @@ export async function revealSDCardBackupDCIM(args: {
   if (parts.length !== 6) {
     throw new Error("Invalid path.");
   }
-  const [root, Volumes, cardName, DCIM_OR_CRM, parentFolderName, fileName] =
-    parts;
+  const [
+    root,
+    Volumes,
+    cardName,
+    TOP_LEVEL_FOLDER,
+    parentFolderName,
+    fileName,
+  ] = parts;
 
   if (
     root !== "" ||
     Volumes !== "Volumes" ||
-    !["DCIM", "CRM"].includes(DCIM_OR_CRM)
+    !KNOWN_TOP_LEVEL_FOLDERS.has(TOP_LEVEL_FOLDER)
   ) {
     throw new Error("Invalid path!");
   }
@@ -156,7 +164,7 @@ export async function revealSDCardBackupDCIM(args: {
   if (imageExtensions.has(extension)) {
     targetClassificationFolder = "Images";
   } else if (videoExtensions.has(extension)) {
-    if (DCIM_OR_CRM === "CRM") {
+    if (TOP_LEVEL_FOLDER === "CRM") {
       targetClassificationFolder = "RAW Video";
     } else {
       targetClassificationFolder = "Videos";
@@ -174,7 +182,7 @@ export async function revealSDCardBackupDCIM(args: {
     yearString,
     dateString,
     cardName,
-    DCIM_OR_CRM,
+    TOP_LEVEL_FOLDER,
     parentFolderName,
     fileName,
   ];

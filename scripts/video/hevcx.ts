@@ -215,11 +215,11 @@ export async function hevcx(args: ReturnType<typeof parseArgs>): Promise<void> {
   const additionalParams: (string | string[])[] = [];
   // We need to pass `-threads …` multiple times (for both input and output), so we track it separately.
   const threadsParams: (string | string[])[] = [];
-  let appendedBasenameParts = ".hevcx";
+  const appendedBasenameParts: string[] = ["hevcx"];
   const x265Params: string[] = [];
   if (typeof height !== "undefined") {
     additionalParams.push(["-vf", `scale=-1:${height.toString()}`]);
-    appendedBasenameParts = `${appendedBasenameParts}.${height}p`;
+    appendedBasenameParts.push(`${height}p`);
   }
   if (typeof threads !== "undefined") {
     threadsParams.push(["-threads", `${threads}`]);
@@ -228,27 +228,27 @@ export async function hevcx(args: ReturnType<typeof parseArgs>): Promise<void> {
   }
   if (typeof preset !== "undefined") {
     additionalParams.push(["-preset", preset]);
-    appendedBasenameParts = `${appendedBasenameParts}.${preset}`;
+    appendedBasenameParts.push(`${preset}`);
   }
   if (typeof tune !== "undefined") {
     additionalParams.push(["-tune", tune]);
-    appendedBasenameParts = `${appendedBasenameParts}.${tune}`;
+    appendedBasenameParts.push(`${tune}`);
   }
   if (typeof maxConsecutiveBFrames !== "undefined") {
-    appendedBasenameParts = `${appendedBasenameParts}.bframes=${maxConsecutiveBFrames}`;
+    appendedBasenameParts.push(`bframes=${maxConsecutiveBFrames}`);
     x265Params.push(`bframes=${maxConsecutiveBFrames}`);
   }
   if (typeof crf !== "undefined") {
     additionalParams.push(["-crf", `${crf}`]);
-    appendedBasenameParts = `${appendedBasenameParts}.crf${crf}`;
+    appendedBasenameParts.push(`crf${crf}`);
   }
   if (vbvMaxRateArg) {
-    appendedBasenameParts = `${appendedBasenameParts}.vbvmax=${vbvMaxRate}`;
+    appendedBasenameParts.push(`vbvmax=${vbvMaxRate}`);
     x265Params.push(`vbv-maxrate=${vbvMaxRate.asBits()}`);
     x265Params.push(`vbv-bufsize=${vbvMaxRate.asBits() * VBV_BUFFER_FACTOR}`);
   }
   if (!noRD6SSIM) {
-    appendedBasenameParts = `${appendedBasenameParts}.rd6-ssim`;
+    appendedBasenameParts.push(`rd6-ssim`);
     x265Params.push(`rd=6`);
     x265Params.push(`ssim-rd=1`);
   }
@@ -257,7 +257,9 @@ export async function hevcx(args: ReturnType<typeof parseArgs>): Promise<void> {
     args.outputFile ??
     (await (async () => {
       let destPrefix = args.sourceFile;
-      destPrefix = destPrefix.extendBasename(appendedBasenameParts);
+      destPrefix = destPrefix.extendBasename(
+        `.${appendedBasenameParts.join(".")}`,
+      );
       let dest = destPrefix.extendBasename(".mp4");
       if (await dest.exists()) {
         dest = destPrefix.extendBasename(

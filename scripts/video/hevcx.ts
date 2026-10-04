@@ -216,12 +216,15 @@ export async function hevcx(args: ReturnType<typeof parseArgs>): Promise<void> {
   // We need to pass `-threads …` multiple times (for both input and output), so we track it separately.
   const threadsParams: (string | string[])[] = [];
   let appendedBasenameParts = ".hevcx";
+  const x265Params: string[] = [];
   if (typeof height !== "undefined") {
     additionalParams.push(["-vf", `scale=-1:${height.toString()}`]);
     appendedBasenameParts = `${appendedBasenameParts}.${height}p`;
   }
   if (typeof threads !== "undefined") {
     threadsParams.push(["-threads", `${threads}`]);
+    x265Params.push(`pools=1`); // TODO: does this have any undesirable side effects?
+    x265Params.push(`frame-threads=${threads}`);
   }
   if (typeof preset !== "undefined") {
     additionalParams.push(["-preset", preset]);
@@ -233,6 +236,7 @@ export async function hevcx(args: ReturnType<typeof parseArgs>): Promise<void> {
   }
   if (typeof maxConsecutiveBFrames !== "undefined") {
     appendedBasenameParts = `${appendedBasenameParts}.bframes=${maxConsecutiveBFrames}`;
+    x265Params.push(`bframes=${maxConsecutiveBFrames}`);
   }
   if (typeof crf !== "undefined") {
     additionalParams.push(["-crf", `${crf}`]);
@@ -240,9 +244,13 @@ export async function hevcx(args: ReturnType<typeof parseArgs>): Promise<void> {
   }
   if (vbvMaxRateArg) {
     appendedBasenameParts = `${appendedBasenameParts}.vbvmax=${vbvMaxRate}`;
+    x265Params.push(`vbv-maxrate=${vbvMaxRate.asBits()}`);
+    x265Params.push(`vbv-bufsize=${vbvMaxRate.asBits() * VBV_BUFFER_FACTOR}`);
   }
   if (!noRD6SSIM) {
     appendedBasenameParts = `${appendedBasenameParts}.rd6-ssim`;
+    x265Params.push(`rd=6`);
+    x265Params.push(`ssim-rd=1`);
   }
 
   const outputFile =
@@ -296,22 +304,7 @@ export async function hevcx(args: ReturnType<typeof parseArgs>): Promise<void> {
   }
 
   function command(options: { pass: 1 | 2 }) {
-    const x265Params = [`pass=${options.pass}`];
-    if (vbvMaxRate) {
-      x265Params.push(`vbv-maxrate=${vbvMaxRate.asBits()}`);
-      x265Params.push(`vbv-bufsize=${vbvMaxRate.asBits() * VBV_BUFFER_FACTOR}`);
-    }
-    if (typeof maxConsecutiveBFrames !== "undefined") {
-      x265Params.push(`bframes=${maxConsecutiveBFrames}`);
-    }
-    if (!noRD6SSIM) {
-      x265Params.push(`rd=6`);
-      x265Params.push(`ssim-rd=1`);
-    }
-    if (threads) {
-      x265Params.push(`pools=1`); // TODO: does this have any undesirable side effects?
-      x265Params.push(`frame-threads=${threads}`);
-    }
+    x265Params.unshift(`pass=${options.pass}`);
     const { sourceFile: _, ...serializedArgs } = args;
 
     return new PrintableShellCommand("ffmpeg", [

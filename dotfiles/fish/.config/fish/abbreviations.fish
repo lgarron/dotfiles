@@ -97,6 +97,11 @@ for dns_connecting_command in ssh mosh sshping ping host iperf3
     abbr_anyarg $dns_connecting_command g garron.net
 end
 
+abbr -a spl "ssh Pythagoras.lan"
+abbr -a spw "Pythagoras-ts.wyvern-climb.ts.net"
+abbr -a shl "ssh Hippasus.lan"
+abbr -a shw "Hippasus-ts.wyvern-climb.ts.net"
+
 for ip_connecting_command in ping
     # TODO: share abbreviation functions between these?
     abbr_anyarg $ip_connecting_command 1 1.1.1.1

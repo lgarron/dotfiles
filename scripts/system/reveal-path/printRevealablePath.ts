@@ -1,5 +1,5 @@
 import assert from "node:assert";
-import { argv } from "bun";
+import { argv } from "node:process";
 import { Path } from "path-class";
 
 export function revealablePath(path: Path | string) {

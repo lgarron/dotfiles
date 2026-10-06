@@ -1,3 +1,4 @@
+import { argv } from "node:process";
 import { styleText } from "node:util";
 import {
   argument,
@@ -10,7 +11,6 @@ import {
 } from "@optique/core";
 import { type PathOptions, type RunOptions, run } from "@optique/run";
 import { path as optiquePath } from "@optique/run/valueparser";
-import { argv } from "bun";
 import { Path } from "path-class";
 import { PrintableShellCommand } from "printable-shell-command";
 import { askYesNo } from "./askYesNo";

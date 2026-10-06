@@ -235,10 +235,11 @@ else
     end
 
     function ggn
-        /Applications/gg.app/Contents/MacOS/gg gui -- $argv &>/dev/null &
+        nohup /Applications/gg.app/Contents/MacOS/gg gui -- $argv &>/dev/null &
         disown
         $DOTFILES_FOLDER/scripts/system/dell-display-position-app-on-bottom.ts -- gg
-        open -a gg # Foreground.
+        nohup open -a gg &>/dev/null & # Foreground.
+        disown
     end
 end
 

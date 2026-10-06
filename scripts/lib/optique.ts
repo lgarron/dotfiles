@@ -13,8 +13,8 @@ import { type PathOptions, type RunOptions, run } from "@optique/run";
 import { path as optiquePath } from "@optique/run/valueparser";
 import { Path } from "path-class";
 import { PrintableShellCommand } from "printable-shell-command";
-import { askYesNo } from "./askYesNo";
-import { TIMESTAMP_AND_GIT_HEAD_HASH } from "./TIMESTAMP_AND_GIT_HEAD_HASH";
+import { askYesNo } from "./askYesNo.ts";
+import { TIMESTAMP_AND_GIT_HEAD_HASH } from "./TIMESTAMP_AND_GIT_HEAD_HASH.ts";
 
 export function byOption(): RunOptions {
   return {

@@ -215,7 +215,7 @@ reset: clean
 check: lint test
 
 .PHONY: test
-test: test-bun test-scripts test-scripts-non-ts
+test: test-bun test-scripts test-scripts-non-ts test-scripts-node
 
 .PHONY: test-scripts
 test-scripts: setup-npm-packages
@@ -225,6 +225,10 @@ test-scripts: setup-npm-packages
 .PHONY: test-scripts-non-ts
 test-scripts-non-ts: setup-npm-packages
 	scripts/git/node_crunchule.fish --help
+
+.PHONY: test-scripts-node
+test-scripts-node:
+	time node -- './scripts/video/hevcx.ts' --help
 
 .PHONY: lint
 lint: lint-ts-biome lint-ts-tsc check-for-duplicate-dependencies

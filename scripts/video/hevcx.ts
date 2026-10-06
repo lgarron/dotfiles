@@ -18,10 +18,10 @@ import { run } from "@optique/run";
 import { ErgonomicDate } from "ergonomic-date";
 import { Path } from "path-class";
 import { PrintableShellCommand } from "printable-shell-command";
-import { byOption, fileInOut } from "../lib/optique";
-import { TIMESTAMP_AND_GIT_HEAD_HASH } from "../lib/TIMESTAMP_AND_GIT_HEAD_HASH";
-import { ffprobeFirstVideoStream, pollOption } from "./ffpoll";
-import { ffvmaf } from "./ffvmaf";
+import { byOption, fileInOut } from "../lib/optique.ts";
+import { TIMESTAMP_AND_GIT_HEAD_HASH } from "../lib/TIMESTAMP_AND_GIT_HEAD_HASH.ts";
+import { ffprobeFirstVideoStream, pollOption } from "./ffpoll.ts";
+import { ffvmaf } from "./ffvmaf.ts";
 
 const VBV_BUFFER_FACTOR = 2;
 
@@ -33,24 +33,26 @@ const BIT_RATE_SUFFIX_FACTORS = {
 } as const;
 type BitRateSuffixFactor = keyof typeof BIT_RATE_SUFFIX_FACTORS;
 
-enum CacheLocation {
-  XDGCacheDir = "xdgCacheDir",
-  SourceDir = "sourceDir",
-  TempDir = "tempDir",
-}
+const CacheLocation = {
+  XDGCacheDir: "xdgCacheDir",
+  SourceDir: "sourceDir",
+  TempDir: "tempDir",
+};
+// type CacheLocation = (typeof CacheLocation)[keyof typeof CacheLocation];
 
 // TODO: implement `ValueParser`.
 class BitRateInfo {
-  constructor(
-    public significand: number,
-    public suffix: BitRateSuffixFactor,
-  ) {
+  public significand: number;
+  public suffix: BitRateSuffixFactor;
+  constructor(significand: number, suffix: BitRateSuffixFactor) {
     if (!(typeof significand === "number") && significand >= 0) {
       throw new Error("Invalid value");
     }
     if (!(suffix in BIT_RATE_SUFFIX_FACTORS)) {
       throw new Error("Invalid suffix");
     }
+    this.significand = significand;
+    this.suffix = suffix;
   }
 
   static parse(s: string): BitRateInfo {

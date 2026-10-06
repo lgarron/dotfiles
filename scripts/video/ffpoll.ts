@@ -12,9 +12,9 @@ import { run } from "@optique/run";
 import type { Path } from "path-class";
 import { Plural } from "plural-chain";
 import { PrintableShellCommand } from "printable-shell-command";
-import { byOption, sourceFile } from "../lib/optique";
-import { monotonicNow } from "../lib/temporal/monotonicNow";
-import { sleepDuration } from "../lib/temporal/sleep";
+import { byOption, sourceFile } from "../lib/optique.ts";
+import { monotonicNow } from "../lib/temporal/monotonicNow.ts";
+import { sleepDuration } from "../lib/temporal/sleep.ts";
 
 export function pollOption(options: { default: "auto" | "false" | "true" }) {
   return withDefault(

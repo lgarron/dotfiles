@@ -14,7 +14,7 @@
     "naughty-list": "^3.0.2",
     "path-class": ">=0.17.2",
     "plural-chain": ">=0.2.3",
-    "printable-shell-command": "^5.3.0",
+    "printable-shell-command": "^5.3.2",
     "trash": "^10.0.0",
     "xdg-basedir": "^5.1.0",
     "zod": "^4.6.5"

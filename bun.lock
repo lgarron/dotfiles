@@ -17,7 +17,7 @@
         "naughty-list": "^3.0.2",
         "path-class": ">=0.17.2",
         "plural-chain": ">=0.2.3",
-        "printable-shell-command": "^5.3.0",
+        "printable-shell-command": "^5.3.2",
         "trash": "^10.0.0",
         "xdg-basedir": "^5.1.0",
         "zod": "^4.6.5",
@@ -396,7 +396,7 @@
 
     "pretty-ms": ["pretty-ms@9.3.1", "", { "dependencies": { "parse-ms": "^4.0.0" } }, "sha512-HzMy3Geq23nVALD/M2LliU+F+M+gVNsvkQWWqeBZ8HDiCgzo6YPJ/Omrmtq24EFrIsk0a3EkQGEd7bDOo+IhGA=="],
 
-    "printable-shell-command": ["printable-shell-command@5.3.1", "", { "dependencies": { "path-class": ">=0.15.1" } }, "sha512-IuF44RMWRWoI75MqgRQA5zgIXAVd0/a1o6N15KNylUQ4+Hhqln+AiCGr9YXNOG3shonpzI4vR0Yi7Psw3U5+Hg=="],
+    "printable-shell-command": ["printable-shell-command@5.3.2", "", { "dependencies": { "path-class": ">=0.15.1" } }, "sha512-gtIdKXTpCCq6B642I5ILcXBuUwRnEcQIniO5EzLZP/XVb9OkE3MajVuD5em1Y8QmW7enZzo3mD386MKEfZSJWg=="],
 
     "process": ["process@0.11.10", "", {}, "sha512-cdGef/drWFoydD1JsMzuFf8100nZl+GT+yacc2bEced5f9Rjk4z+WtFUTBu9PhOi9j/jfmBPu0mMEY4wIdAF8A=="],
 

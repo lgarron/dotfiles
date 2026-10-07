@@ -4,7 +4,7 @@ import { object, option } from "@optique/core";
 import { run } from "@optique/run";
 import { Path } from "path-class";
 import { PrintableShellCommand } from "printable-shell-command";
-import { byOption } from "../../scripts/lib/optique";
+import { byOption } from "../../scripts/lib/optique.ts";
 
 // TODO: I think there's a bug in Homebrew where reinstallation removes
 // dependencies for reinstallation without reinstalling them before dependents.

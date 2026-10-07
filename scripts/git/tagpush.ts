@@ -4,7 +4,7 @@ import { exit, stdout } from "node:process";
 import { object, option } from "@optique/core";
 import { run } from "@optique/run";
 import { PrintableShellCommand } from "printable-shell-command";
-import { byOption } from "../lib/optique";
+import { byOption } from "../lib/optique.ts";
 
 const SEPARATOR = "--------";
 const INLINE = { print: "inline" } as const;

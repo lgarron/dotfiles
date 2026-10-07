@@ -4,8 +4,8 @@ import { object } from "@optique/core";
 import { run } from "@optique/run";
 import { Plural } from "plural-chain";
 import { PrintableShellCommand } from "printable-shell-command";
-import { askYesNo } from "../lib/askYesNo";
-import { byOption } from "../lib/optique";
+import { askYesNo } from "../lib/askYesNo.ts";
+import { byOption } from "../lib/optique.ts";
 
 function parseArgs() {
   return run(object({}), byOption());

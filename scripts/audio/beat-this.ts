@@ -10,7 +10,7 @@ import {
   forTransformation,
   type SimpleFileInOutArgs,
   simpleFileInOut,
-} from "../lib/optique";
+} from "../lib/optique.ts";
 
 const CACHE_FOLDER = Path.xdg.cache.join("beat-this");
 const SUFFIX = ".beat-this.json";

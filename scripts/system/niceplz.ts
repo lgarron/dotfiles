@@ -4,9 +4,9 @@ import { exit } from "node:process";
 import { merge, message, object, option, optional, or } from "@optique/core";
 import { run } from "@optique/run";
 import { Path } from "path-class";
-import { byOption, setupSudoOnlyArgs } from "../lib/optique";
-import { persistentSudo } from "../lib/persistentSudo";
-import { pnice } from "./pnice";
+import { byOption, setupSudoOnlyArgs } from "../lib/optique.ts";
+import { persistentSudo } from "../lib/persistentSudo.ts";
+import { pnice } from "./pnice.ts";
 
 const CONFIG_FILE_PATH = Path.xdg.config.join("./niceplz/niceplz.json");
 

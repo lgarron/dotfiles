@@ -7,8 +7,8 @@ import { message, string } from "@optique/core";
 import { object } from "@optique/core/constructs";
 import { argument } from "@optique/core/primitives";
 import { run } from "@optique/run";
-import { byOption } from "../lib/optique";
-import { pnice } from "./pnice";
+import { byOption } from "../lib/optique.ts";
+import { pnice } from "./pnice.ts";
 
 const options = run(
   object({

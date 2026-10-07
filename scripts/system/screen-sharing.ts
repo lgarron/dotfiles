@@ -22,8 +22,8 @@ import {
 } from "betterdisplaycli";
 import { Path } from "path-class";
 import { PrintableShellCommand } from "printable-shell-command";
-import { byOption, withSuggestions } from "../lib/optique";
-import { allDeviceNames } from "./toggle-retina";
+import { byOption, withSuggestions } from "../lib/optique.ts";
+import { allDeviceNames } from "./toggle-retina.ts";
 
 const REMOTE_SCRIPT_PATH = new Path(import.meta.url);
 

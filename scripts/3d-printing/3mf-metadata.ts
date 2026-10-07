@@ -4,7 +4,7 @@ import { argument, command, object } from "@optique/core";
 import { run } from "@optique/run";
 import type { Path } from "path-class";
 import { PrintableShellCommand } from "printable-shell-command";
-import { byOption, sourceFile } from "../lib/optique";
+import { byOption, sourceFile } from "../lib/optique.ts";
 
 export async function getBambuVersion(path: Path | string): Promise<string> {
   let version: string | undefined;

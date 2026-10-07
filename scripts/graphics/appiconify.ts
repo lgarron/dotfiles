@@ -9,7 +9,7 @@ import {
   forTransformation,
   type SimpleFileInOutArgs,
   simpleFileInOut,
-} from "../lib/optique";
+} from "../lib/optique.ts";
 
 const INNER_DIMENSION = 824 * 2;
 const ICTOOL_PATH = new Path(

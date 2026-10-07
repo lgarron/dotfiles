@@ -2,8 +2,8 @@ import { join } from "node:path";
 import { argument, message, multiple, object, string } from "@optique/core";
 import { run } from "@optique/run";
 import { PrintableShellCommand } from "printable-shell-command";
-import { byOption } from "../scripts/lib/optique";
-import { TIMESTAMP_AND_GIT_HEAD_HASH } from "../scripts/lib/TIMESTAMP_AND_GIT_HEAD_HASH";
+import { byOption } from "../scripts/lib/optique.ts";
+import { TIMESTAMP_AND_GIT_HEAD_HASH } from "../scripts/lib/TIMESTAMP_AND_GIT_HEAD_HASH.ts";
 
 class ScriptSource {
   category: string;

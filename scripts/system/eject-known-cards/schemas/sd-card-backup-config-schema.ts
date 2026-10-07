@@ -6,7 +6,7 @@ import {
   optional as zodOptional,
   string as zodString,
 } from "zod/mini";
-import { zodPath } from "../../../lib/zod/zodPath";
+import { zodPath } from "../../../lib/zod/zodPath.ts";
 
 export const SDCardBackupConfigSchema = zodObject({
   destination_root: zodPath,

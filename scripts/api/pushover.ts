@@ -24,7 +24,7 @@ import {
   object as zodObject,
   string as zodString,
 } from "zod/mini";
-import { byOption } from "../lib/optique";
+import { byOption } from "../lib/optique.ts";
 
 const SECRETS_FILE_PATH = Path.homedir.join(
   "./.local/secrets/pushover/pushover.json",

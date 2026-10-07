@@ -5,7 +5,7 @@ import { exit } from "node:process";
 import { object } from "@optique/core";
 import { run } from "@optique/run";
 import { PrintableShellCommand } from "printable-shell-command";
-import { byOption } from "../lib/optique";
+import { byOption } from "../lib/optique.ts";
 
 function parseArgs() {
   return run(object({}), byOption());

@@ -6,7 +6,7 @@ import { run } from "@optique/run";
 import { LockfileMutex } from "lockfile-mutex";
 import { Path } from "path-class";
 import { PrintableShellCommand } from "printable-shell-command";
-import { byOption } from "../lib/optique";
+import { byOption } from "../lib/optique.ts";
 
 function parseArgs() {
   return run(

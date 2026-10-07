@@ -16,8 +16,8 @@ import { Path } from "path-class";
 import { Plural } from "plural-chain";
 import { PrintableShellCommand } from "printable-shell-command";
 import { xdgData } from "xdg-basedir";
-import { sendMessage } from "../../scripts/api/pushover";
-import { Debouncer } from "../../scripts/lib/temporal/Debouncer";
+import { sendMessage } from "../../scripts/api/pushover.ts";
+import { Debouncer } from "../../scripts/lib/temporal/Debouncer.ts";
 
 try {
   const DATA_ROOT_DIR = Path.xdg.data.join("obsidian-backup");

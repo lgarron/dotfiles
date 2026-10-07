@@ -8,7 +8,7 @@ import {
   forTransformation,
   type SimpleFileInOutArgs,
   simpleFileInOut,
-} from "../lib/optique";
+} from "../lib/optique.ts";
 
 async function flacify(args: SimpleFileInOutArgs) {
   const { outputFile, printOrReveal } = forTransformation(args, ".flac");

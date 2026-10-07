@@ -7,8 +7,8 @@ import { deepEquals } from "bun";
 import { ErgonomicDate } from "ergonomic-date";
 import { Path } from "path-class";
 import { escapeArg, PrintableShellCommand } from "printable-shell-command";
-import { editorOpen } from "../app-tools/editor-open";
-import { TIMESTAMP_AND_GIT_HEAD_HASH } from "../lib/TIMESTAMP_AND_GIT_HEAD_HASH";
+import { editorOpen } from "../app-tools/editor-open.ts";
+import { TIMESTAMP_AND_GIT_HEAD_HASH } from "../lib/TIMESTAMP_AND_GIT_HEAD_HASH.ts";
 
 const OTHER = "other";
 const CATEGORIES = [

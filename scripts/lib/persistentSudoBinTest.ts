@@ -1,6 +1,6 @@
 #!/usr/bin/env -S bun run --
 
-import { persistentSudoBin } from "./persistentSudoBin";
+import { persistentSudoBin } from "./persistentSudoBin.ts";
 
 export async function main() {
   const command = await persistentSudoBin(`#!/bin/bash

@@ -8,7 +8,7 @@ import {
   forTransformation,
   type SimpleFileInOutArgs,
   simpleFileInOut,
-} from "../lib/optique";
+} from "../lib/optique.ts";
 
 async function wavify(args: SimpleFileInOutArgs): Promise<void> {
   const { outputFile, printOrReveal } = forTransformation(args, ".wav");

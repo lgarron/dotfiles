@@ -5,7 +5,7 @@ import { argument, message, multiple, object, option } from "@optique/core";
 import { run } from "@optique/run";
 import { Path } from "path-class";
 import { escapeArg, PrintableShellCommand } from "printable-shell-command";
-import { byOption, sourceFile } from "../lib/optique";
+import { byOption, sourceFile } from "../lib/optique.ts";
 
 function parseArgs() {
   return run(

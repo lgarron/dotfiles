@@ -4,8 +4,8 @@ import { integer, message, object, option, withDefault } from "@optique/core";
 import { run } from "@optique/run";
 import type { Path } from "path-class";
 import { PrintableShellCommand } from "printable-shell-command";
-import { byOption, printOrReveal, simpleFileInOut } from "../lib/optique";
-import { ffprobeFirstVideoStream, pollOption } from "./ffpoll";
+import { byOption, printOrReveal, simpleFileInOut } from "../lib/optique.ts";
+import { ffprobeFirstVideoStream, pollOption } from "./ffpoll.ts";
 
 // Public domain, from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_generators
 function* makeRangeIterator(start: number, end: number, step = 1) {

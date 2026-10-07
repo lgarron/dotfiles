@@ -3,8 +3,8 @@
 import { argument, object, string, withDefault } from "@optique/core";
 import { run } from "@optique/run";
 import { getByName, ResolutionInfo } from "betterdisplaycli";
-import { byOption, withSuggestions } from "../lib/optique";
-import { allDeviceNames } from "./toggle-retina";
+import { byOption, withSuggestions } from "../lib/optique.ts";
+import { allDeviceNames } from "./toggle-retina.ts";
 
 function parseArgs() {
   return run(

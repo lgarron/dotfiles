@@ -4,7 +4,7 @@ import { argument, object, optional } from "@optique/core";
 import { run } from "@optique/run";
 import { Path } from "path-class";
 import { PrintableShellCommand } from "printable-shell-command";
-import { byOption, outputDir, sourceFile } from "../lib/optique";
+import { byOption, outputDir, sourceFile } from "../lib/optique.ts";
 
 const CACHE_FOLDER = Path.xdg.cache.join("demucs");
 

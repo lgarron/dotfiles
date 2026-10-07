@@ -6,7 +6,7 @@ import { gitBranch } from "@optique/git";
 import { run } from "@optique/run";
 import { Plural } from "plural-chain";
 import { PrintableShellCommand } from "printable-shell-command";
-import { byOption } from "../lib/optique";
+import { byOption } from "../lib/optique.ts";
 
 function parseArgs() {
   return run(

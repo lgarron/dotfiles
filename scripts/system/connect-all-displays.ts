@@ -5,7 +5,7 @@ import { run } from "@optique/run";
 import { connectAllDisplays, getAllDevices } from "betterdisplaycli";
 import { Plural } from "plural-chain";
 import { PrintableShellCommand } from "printable-shell-command";
-import { byOption } from "../lib/optique";
+import { byOption } from "../lib/optique.ts";
 
 /** @ts-expect-error: Unused. */
 const _ = run(object({}), byOption());

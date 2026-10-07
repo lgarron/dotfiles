@@ -15,9 +15,9 @@ import {
 import { run } from "@optique/run";
 import { Path } from "path-class";
 import { PrintableShellCommand } from "printable-shell-command";
-import { byOption } from "../lib/optique";
-import { monotonicNow } from "../lib/temporal/monotonicNow";
-import { sleepDuration } from "../lib/temporal/sleep";
+import { byOption } from "../lib/optique.ts";
+import { monotonicNow } from "../lib/temporal/monotonicNow.ts";
+import { sleepDuration } from "../lib/temporal/sleep.ts";
 
 const DOT_GIT = ".git";
 

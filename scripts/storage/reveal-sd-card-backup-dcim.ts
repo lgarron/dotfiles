@@ -7,7 +7,7 @@ import { argument, object } from "@optique/core";
 import { run } from "@optique/run";
 import { Path } from "path-class";
 import { PrintableShellCommand } from "printable-shell-command";
-import { byOption, sourceFile } from "../lib/optique";
+import { byOption, sourceFile } from "../lib/optique.ts";
 
 const CONFIG_FILE_PATH = Path.xdg.config.join("./sd-card-backup/config.json");
 

@@ -8,11 +8,11 @@ import { Glob } from "bun";
 import { Path, stringifyIfPath } from "path-class";
 import { Plural } from "plural-chain";
 import { PrintableShellCommand } from "printable-shell-command";
-import { byOption } from "../lib/optique";
+import { byOption } from "../lib/optique.ts";
 import {
   type DiskMetadata,
   DiskMetadataSchema,
-} from "./fix-disk-names-macos/schema";
+} from "./fix-disk-names-macos/schema.ts";
 
 const VOLUMES_DIR = new Path("/Volumes/");
 const WELL_KNOWN_DISK_METADATA_JSON_PATH = new Path(

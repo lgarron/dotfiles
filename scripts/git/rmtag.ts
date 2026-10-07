@@ -13,7 +13,7 @@ import {
 import { gitRemote, gitTag } from "@optique/git";
 import { runAsync } from "@optique/run";
 import { PrintableShellCommand } from "printable-shell-command";
-import { byOption } from "../lib/optique";
+import { byOption } from "../lib/optique.ts";
 
 const INLINE = { print: "inline" } as const;
 

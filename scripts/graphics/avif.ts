@@ -11,7 +11,7 @@ import {
 } from "@optique/core";
 import { run } from "@optique/run";
 import { PrintableShellCommand } from "printable-shell-command";
-import { byOption, simpleFileInOut } from "../lib/optique";
+import { byOption, simpleFileInOut } from "../lib/optique.ts";
 
 const args = run(
   object({

@@ -4,7 +4,7 @@ import { argument, object, option } from "@optique/core";
 import { run } from "@optique/run";
 import { Path } from "path-class";
 import { PrintableShellCommand } from "printable-shell-command";
-import { byOption, pathClass } from "../lib/optique";
+import { byOption, pathClass } from "../lib/optique.ts";
 
 const OBSIDIAN_VAULT_PREFIX = Path.homedir.join(
   "./Library/Mobile Documents/iCloud~md~obsidian/Documents/",

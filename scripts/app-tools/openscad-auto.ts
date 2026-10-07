@@ -16,7 +16,7 @@ import { run } from "@optique/run";
 import { ErgonomicDate } from "ergonomic-date";
 import { Path } from "path-class";
 import { escapeArg, PrintableShellCommand } from "printable-shell-command";
-import { byOption, outputDir, sourceFile } from "../lib/optique";
+import { byOption, outputDir, sourceFile } from "../lib/optique.ts";
 
 const OPENSCAD_PATH = new Path(
   // biome-ignore lint/complexity/useLiteralKeys: https://github.com/biomejs/biome/discussions/7404

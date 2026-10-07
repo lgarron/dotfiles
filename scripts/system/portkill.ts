@@ -3,8 +3,8 @@
 import { kill } from "node:process";
 import { argument, integer, multiple, object } from "@optique/core";
 import { run } from "@optique/run";
-import { byOption } from "../lib/optique";
-import { listenersForPort } from "./portkill/listenersForPort";
+import { byOption } from "../lib/optique.ts";
+import { listenersForPort } from "./portkill/listenersForPort.ts";
 
 export async function portkill(ports: readonly number[]): Promise<void> {
   let numFailures = 0;

@@ -3,7 +3,7 @@
 import { argument, object, url } from "@optique/core";
 import { run } from "@optique/run";
 import type { Path } from "path-class";
-import { byOption, OutputFile, outputFile } from "../lib/optique";
+import { byOption, OutputFile, outputFile } from "../lib/optique.ts";
 
 function parseArgs() {
   return run(

@@ -4,7 +4,7 @@ import { exit } from "node:process";
 import { argument, integer, message, object, string } from "@optique/core";
 import { run } from "@optique/run";
 import { PrintableShellCommand } from "printable-shell-command";
-import { byOption } from "../lib/optique";
+import { byOption } from "../lib/optique.ts";
 
 export async function pnice(
   processSubString: string,

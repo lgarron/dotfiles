@@ -1,4 +1,4 @@
-import { monotonicNow } from "./monotonicNow";
+import { monotonicNow } from "./monotonicNow.ts";
 
 const BEFORE = -1;
 

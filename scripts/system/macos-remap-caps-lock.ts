@@ -3,7 +3,7 @@
 import { command, constant, message, object, or } from "@optique/core";
 import { run } from "@optique/run";
 import { PrintableShellCommand } from "printable-shell-command";
-import { byOption } from "../lib/optique";
+import { byOption } from "../lib/optique.ts";
 
 const args = run(
   or(

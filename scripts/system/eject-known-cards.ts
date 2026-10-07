@@ -13,15 +13,15 @@ import { run } from "@optique/run";
 import { Path } from "path-class";
 import { Plural } from "plural-chain";
 import { PrintableShellCommand } from "printable-shell-command";
-import { byOption } from "../lib/optique";
+import { byOption } from "../lib/optique.ts";
 import {
   type KnownNonSDCardVolumesConfig,
   KnownNonSDCardVolumesConfigSchema,
-} from "./eject-known-cards/schemas/known-non-sd-card-volumes";
+} from "./eject-known-cards/schemas/known-non-sd-card-volumes.ts";
 import {
   type SDCardBackupConfig,
   SDCardBackupConfigSchema,
-} from "./eject-known-cards/schemas/sd-card-backup-config-schema";
+} from "./eject-known-cards/schemas/sd-card-backup-config-schema.ts";
 
 const SD_CARD_CONFIG_ROOT_DIR = Path.xdg.config.join("sd-card-backup");
 const CONFIG_JSON_PATH = SD_CARD_CONFIG_ROOT_DIR.join("config.json");

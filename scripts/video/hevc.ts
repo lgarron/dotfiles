@@ -12,8 +12,8 @@ import {
 import { run } from "@optique/run";
 import { ErgonomicDate } from "ergonomic-date";
 import { PrintableShellCommand } from "printable-shell-command";
-import { byOption, fileInOut } from "../lib/optique";
-import { ffprobeFirstVideoStream, pollOption } from "./ffpoll";
+import { byOption, fileInOut } from "../lib/optique.ts";
+import { ffprobeFirstVideoStream, pollOption } from "./ffpoll.ts";
 
 const HANDBRAKE_PRESET = "HEVC (qv65)";
 

@@ -3,8 +3,8 @@
 import assert from "node:assert";
 import { object } from "@optique/core";
 import { run } from "@optique/run";
-import { byOption, setupSudoOnlyArgs } from "../lib/optique";
-import { persistentSudoBin } from "../lib/persistentSudoBin";
+import { byOption, setupSudoOnlyArgs } from "../lib/optique.ts";
+import { persistentSudoBin } from "../lib/persistentSudoBin.ts";
 
 const bin = `#!/bin/bash
 

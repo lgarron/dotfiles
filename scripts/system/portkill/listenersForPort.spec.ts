@@ -1,7 +1,7 @@
 #!/usr/bin/env -S bun run --
 
 import { expect, test } from "bun:test";
-import { exportsForTestings } from "./listenersForPort";
+import { exportsForTestings } from "./listenersForPort.ts";
 
 const { parseListenersForPort } = exportsForTestings;
 

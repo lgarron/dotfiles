@@ -5,9 +5,10 @@ class Hevc < Formula
   homepage "https://github.com/lgarron/dotfiles"
   head "https://github.com/lgarron/dotfiles.git", :branch => "main"
 
-  depends_on "oven-sh/bun/bun"
+  depends_on "node"
   depends_on "lgarron/lgarron/reveal-macos"
   depends_on "ffmpeg"
+  depends_on "oven-sh/bun/bun" => [:build]
   # TODO: https://github.com/orgs/Homebrew/discussions/5788
   # depends_on cask: "handbrake"
 

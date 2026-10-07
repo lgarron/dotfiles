@@ -1,4 +1,4 @@
-#!/usr/bin/env -S bun run --
+#!/usr/bin/env -S node --
 
 import { env } from "node:process";
 import { object } from "@optique/core";

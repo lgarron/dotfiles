@@ -1,4 +1,4 @@
-#!/usr/bin/env -S bun run --
+#!/usr/bin/env -S node --
 
 import { argument, object, optional } from "@optique/core";
 import { run } from "@optique/run";

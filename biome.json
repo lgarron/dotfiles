@@ -13,6 +13,11 @@
     "rules": {
       "suspicious": {
         "useAwait": "error"
+      },
+      "correctness": {
+        "useImportExtensions": {
+          "level": "error"
+        }
       }
     }
   }

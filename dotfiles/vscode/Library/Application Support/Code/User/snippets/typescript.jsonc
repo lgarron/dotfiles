@@ -145,5 +145,9 @@
   "Optique `object({…})`": {
     "prefix": "Optique object",
     "body": "object({ \n  \"${1}\": ${2:option(\"--${4:${1}}\")}\n})"
+  },
+  "Enum type alias": {
+    "prefix": "type",
+    "body": "type ${1:$TM_SELECTED_TEXT} = (typeof ${1:$TM_SELECTED_TEXT})[keyof typeof ${1:$TM_SELECTED_TEXT}];"
   }
 }

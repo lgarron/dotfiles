@@ -1,13 +1,26 @@
 #!/usr/bin/env -S bun run --
 
-import { argv } from "node:process";
+import { argv, exit } from "node:process";
 import { styleText } from "node:util";
 import { tryGetByName } from "betterdisplaycli";
 import { PrintableShellCommand } from "printable-shell-command";
 
 const DISPLAY_NAME = "DELL P2715Q";
 
-const display = await tryGetByName(DISPLAY_NAME, { quiet: true });
+const displayPromise = tryGetByName(DISPLAY_NAME, { quiet: true });
+// We probe for the `BetterDisplay` process after we've initiated gettin the
+// monitor name. This lets us effectively race the `Promise`s, saving us a bit
+// of time. This isn't really important for this particular script, but it
+// serves as an example pattern in case we need to copy this in the future.
+try {
+  await new PrintableShellCommand("pgrep", ["BetterDisplay"]).text();
+} catch {
+  console.error("Error: BetterDisplay process does not appear to be running.");
+  exit(2);
+}
+
+const display = await displayPromise;
+
 if (display) {
   const process = argv[2];
   // TODO: Is this quoting sufficiently safe for AppleScript

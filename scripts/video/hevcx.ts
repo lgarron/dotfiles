@@ -20,6 +20,7 @@ import { Path } from "path-class";
 import { PrintableShellCommand } from "printable-shell-command";
 import { byOption, fileInOut } from "../lib/optique.ts";
 import { TIMESTAMP_AND_GIT_HEAD_HASH } from "../lib/TIMESTAMP_AND_GIT_HEAD_HASH.ts";
+import { transferFileDates } from "../lib/transferFileDates.ts";
 import { ffprobeFirstVideoStream, pollOption } from "./ffpoll.ts";
 import { ffvmaf } from "./ffvmaf.ts";
 
@@ -378,6 +379,7 @@ export async function hevcx(args: ReturnType<typeof parseArgs>): Promise<void> {
 
   if (transferTimestamps) {
     // macOS workaround
+    await transferFileDates(sourceFile, outputFile);
     {
       const creationTime = await new PrintableShellCommand("GetFileInfo", [
         "-d",

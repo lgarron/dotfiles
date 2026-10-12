@@ -12,6 +12,7 @@ import {
 import { run } from "@optique/run";
 import { PrintableShellCommand } from "printable-shell-command";
 import { byOption, simpleFileInOut } from "../lib/optique.ts";
+import { transferFileDates } from "../lib/transferFileDates.ts";
 
 const args = run(
   object({
@@ -58,7 +59,9 @@ const {
 
 const outputFileName =
   outputFile ??
-  (qcolor ? `${sourceFile}.q${qcolor}.avif` : `${sourceFile}.avif`);
+  (qcolor
+    ? sourceFile.extendBasename(`.q${qcolor}.avif`)
+    : sourceFile.extendBasename(".avif"));
 
 await new PrintableShellCommand("magick", [
   sourceFile,
@@ -67,18 +70,6 @@ await new PrintableShellCommand("magick", [
   outputFileName,
 ]).shellOut();
 
-async function transferTime(flag: "-d" | "-m"): Promise<void> {
-  const date = await new PrintableShellCommand("GetFileInfo", [
-    flag,
-    sourceFile,
-  ]).text();
-  await new PrintableShellCommand("SetFile", [
-    flag,
-    date,
-    outputFileName,
-  ]).shellOut();
-}
-
 if (copyCreationAndModificationDates) {
-  await Promise.all([transferTime("-d"), transferTime("-m")]);
+  await transferFileDates(sourceFile, outputFileName);
 }

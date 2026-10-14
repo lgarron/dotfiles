@@ -3,19 +3,20 @@
 import { argv } from "node:process";
 import { Path } from "path-class";
 import { PrintableShellCommand } from "printable-shell-command";
+import { array, object, string } from "zod/mini";
 
 const configFilePath = Path.xdg.config.join("./dig/xdigrc.json");
 
-interface DigRC {
-  defaultPrefixArgs: string[];
-}
+const digRCSchema = object({
+  defaultPrefixArgs: array(string()),
+});
 
-const { defaultPrefixArgs } = (await (async () => {
+const { defaultPrefixArgs } = await (async () => {
   if (!(await configFilePath.exists())) {
     return { defaultPrefixArgs: [] };
   }
-  return configFilePath.readJSON();
-})()) as DigRC;
+  return configFilePath.readJSON({ schema: digRCSchema });
+})();
 
 await new PrintableShellCommand("dig", [
   ...defaultPrefixArgs,

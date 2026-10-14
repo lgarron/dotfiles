@@ -1,32 +1,46 @@
 #!/usr/bin/env -S bun run --
 
 import { exit } from "node:process";
-import { merge, message, object, option, optional, or } from "@optique/core";
+import {
+  merge,
+  message,
+  option,
+  optional,
+  object as optiqueObject,
+  or,
+} from "@optique/core";
 import { run } from "@optique/run";
 import { Path } from "path-class";
+import {
+  number,
+  record,
+  type infer as zodInfer,
+  object as zodObject,
+  string as zodString,
+} from "zod/mini";
 import { byOption, setupSudoOnlyArgs } from "../lib/optique.ts";
 import { persistentSudo } from "../lib/persistentSudo.ts";
 import { pnice } from "./pnice.ts";
 
 const CONFIG_FILE_PATH = Path.xdg.config.join("./niceplz/niceplz.json");
 
-export type ProcessPriorityList = { [processPattern: string]: number };
-export type NiceplzConfig = {
-  processes_by_substring: ProcessPriorityList;
-};
+const niceplzConfigSchema = zodObject({
+  processes_by_substring: record(zodString(), number()),
+});
+export type NiceplzConfig = zodInfer<typeof niceplzConfigSchema>;
 
 function parseArgs() {
   return run(
     merge(
-      object({
+      optiqueObject({
         ...setupSudoOnlyArgs,
       }),
       optional(
         or(
-          object({
+          optiqueObject({
             persistentSudo: option("--persistent-sudo"),
           }),
-          object({
+          optiqueObject({
             persistentSudo: option("--sudo", {
               description: message`Alias for \`--persistent-sudo\``,
             }),
@@ -48,7 +62,9 @@ export async function niceplz(
     return;
   }
 
-  const config = (await CONFIG_FILE_PATH.readJSON()) as NiceplzConfig;
+  const config = await CONFIG_FILE_PATH.readJSON({
+    schema: niceplzConfigSchema,
+  });
   for (const [substring, priority] of Object.entries(
     config.processes_by_substring,
   )) {

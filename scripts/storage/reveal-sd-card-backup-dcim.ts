@@ -8,29 +8,22 @@ import { run } from "@optique/run";
 import { Path } from "path-class";
 import { PrintableShellCommand } from "printable-shell-command";
 import { byOption, sourceFile } from "../lib/optique.ts";
+import { SDCardBackupConfigSchema } from "../system/eject-known-cards/schemas/sd-card-backup-config-schema.ts";
 
 const CONFIG_FILE_PATH = Path.xdg.config.join("./sd-card-backup/config.json");
 
 const KNOWN_TOP_LEVEL_FOLDERS = new Set(["DCIM", "CRM", "XFVC"]);
-
-// TODO: Generate from source of truth.
-interface Config {
-  destination_root: string;
-  sd_card_mount_point: string;
-  sd_card_names: string[];
-  folder_mapping: { source: string; destination: string }[];
-  command_to_run_before?: string[];
-}
 
 export async function revealSDCardBackupDCIM(args: {
   sourceFile: Path;
 }): Promise<void> {
   const file = Path.resolve(args.sourceFile, import.meta.url);
 
-  const { destination_root: destinationRoot } =
-    (await CONFIG_FILE_PATH.readJSON()) as Config;
+  const { destination_root: destinationRoot } = await CONFIG_FILE_PATH.readJSON(
+    { schema: SDCardBackupConfigSchema },
+  );
 
-  const destinationRootParts = destinationRoot.split("/");
+  const destinationRootParts = destinationRoot.path.split("/"); // TODO: add `.components()` to `Path`?
   const [configBackupDrive] = destinationRootParts.splice(2, 1);
   if (destinationRootParts.join("###") !== "###Volumes###SD Card Backup###") {
     console.error(`Destination root is not supported yet: ${destinationRoot}`);

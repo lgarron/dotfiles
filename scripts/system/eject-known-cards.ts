@@ -69,14 +69,14 @@ async function ejectAllCards({
   notify,
   dryRun,
 }: ReturnType<typeof parseArgs>) {
-  const sdCardJSONConfig: SDCardBackupConfig = SDCardBackupConfigSchema.parse(
-    await CONFIG_JSON_PATH.readJSON(),
-  );
+  const sdCardJSONConfig: SDCardBackupConfig = await CONFIG_JSON_PATH.readJSON({
+    schema: SDCardBackupConfigSchema,
+  });
 
   const knownNonSDCardVolumesConfig: KnownNonSDCardVolumesConfig =
-    KnownNonSDCardVolumesConfigSchema.parse(
-      await KNOWN_NON_SD_CARD_VOLUMES_PATH_JSON.readJSON(),
-    );
+    await KNOWN_NON_SD_CARD_VOLUMES_PATH_JSON.readJSON({
+      schema: KnownNonSDCardVolumesConfigSchema,
+    });
 
   {
     const [command, ...args] = knownNonSDCardVolumesConfig.commandToRunBefore;

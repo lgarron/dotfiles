@@ -58,9 +58,9 @@ export async function fixDiskNamesMacOS(
     // TODO: is this safe?
     const currentVolumeName = path.parent.parent;
 
-    const diskMetadata: DiskMetadata = DiskMetadataSchema.parse(
-      await VOLUMES_DIR.join(path).readJSON(),
-    );
+    const diskMetadata: DiskMetadata = await VOLUMES_DIR.join(path).readJSON({
+      schema: DiskMetadataSchema,
+    });
     const expectedName = diskMetadata.name;
     if (!expectedName) {
       console.error("Missing name at: ", path);

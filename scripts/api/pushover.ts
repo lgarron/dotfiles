@@ -43,11 +43,9 @@ const configSchema = zodObject({
 type Config = zodInfer<typeof configSchema>;
 
 var configCache: Promise<Config> | undefined;
-async function loadCachedConfig(): Promise<Config> {
+function loadCachedConfig(): Promise<Config> {
   // biome-ignore lint/suspicious/noAssignInExpressions: https://github.com/biomejs/biome/discussions/7592
-  return (configCache ??= configSchema.parseAsync(
-    await SECRETS_FILE_PATH.readJSON(),
-  ));
+  return (configCache ??= SECRETS_FILE_PATH.readJSON({ schema: configSchema }));
 }
 
 async function credentialsForApp(

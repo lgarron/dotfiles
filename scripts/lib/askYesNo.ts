@@ -1,3 +1,5 @@
+import { stderr, stdin } from "node:process";
+
 // From: https://github.com/cubing/deploy/blob/abac4a42bee9c49d40770789ab2f7699a841652f/src/lib/deploy.ts#L142-L168
 export async function askYesNo(
   question: string,
@@ -8,8 +10,8 @@ export async function askYesNo(
   }
   while (true) {
     const readline = (await import("node:readline")).createInterface({
-      input: process.stdin,
-      output: process.stderr,
+      input: stdin,
+      output: stderr,
     });
     const q = (await import("node:util"))
       .promisify(readline.question)

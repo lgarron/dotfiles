@@ -238,7 +238,7 @@ else
         nohup /Applications/gg.app/Contents/MacOS/gg gui -- $argv &>/dev/null &
         disown
         $DOTFILES_FOLDER/scripts/system/dell-display-position-app-on-bottom.ts -- gg
-        gg-refresh # TODO: is there any time his makes a difference?
+        gg-refresh # TODO: is there any time this makes a difference?
     end
 end
 

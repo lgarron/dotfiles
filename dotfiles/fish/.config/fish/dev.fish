@@ -170,6 +170,7 @@ abbr_subcommand_arg cargo h --help run
 ## `repo`
 
 abbr -a p repo
+abbr -a ph repo-HEAD
 
 abbr -a pv "repo version"
 abbr_subcommand repo v version

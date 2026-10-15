@@ -249,6 +249,7 @@ _fish_abbr_jj_subcommand ci 'commit --interactive --config=ui.editor=\'"true"\''
 # Interacts with the `fish` prompt `postexec`.
 set -g _FISH_JJ_WAS_RUN_DURING_COMMAND false
 function jj
-    command command -- jj $argv
+    # TODO: https://github.com/fish-shell/fish-shell/issues/12998
+    command jj $argv
     set -g _FISH_JJ_WAS_RUN_DURING_COMMAND true
 end

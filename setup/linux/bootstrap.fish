@@ -9,6 +9,7 @@ make setup
 if set -q CODESPACES
     rm -rf \
         "$HOME/.config/fish/config.fish" \
+        "$HOME/.config/fish/functions" \
         "$HOME/.local/share/fish"
 end
 

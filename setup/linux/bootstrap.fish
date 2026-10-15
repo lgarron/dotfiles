@@ -7,7 +7,6 @@ echo "$HOME/.local/share/binaries/linux-x64/fish" >~/.bashrc
 make setup
 
 if set -q CODESPACES
-
     rm -rf \
         "$HOME/.config/fish/config.fish" \
         "$HOME/.local/share/fish"

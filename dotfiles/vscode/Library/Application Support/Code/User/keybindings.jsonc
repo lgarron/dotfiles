@@ -175,11 +175,6 @@
     "command": "editor.action.duplicateSelection"
   },
   {
-    "key": "ctrl+cmd+m",
-    "command": "extension.toggleCase",
-    "when": "editorHasSelection"
-  },
-  {
     "key": "cmd+m",
     "command": "-extension.toggleCase",
     "when": "editorHasSelection"
@@ -423,5 +418,13 @@
     "args": {
   	    "snippet": "<${1:div}$3>${2:$TM_SELECTED_TEXT}</$1>"
     }
+  },
+  {
+    "key": "ctrl+cmd+c",
+    "command": "change-case.changeCase"
+  },
+  {
+    "key": "ctrl+cmd+c",
+    "command": "-change-case.changeCase"
   },
 ]

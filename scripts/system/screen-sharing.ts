@@ -20,9 +20,10 @@ import {
   ResolutionInfo,
   tryGetByName,
 } from "betterdisplaycli";
+import { withSuggestions } from "optique-helpers";
 import { Path } from "path-class";
 import { PrintableShellCommand } from "printable-shell-command";
-import { bySubcommand, withSuggestions } from "../lib/optique.ts";
+import { bySubcommand } from "../lib/optique.ts";
 import { allDeviceNames } from "./toggle-retina.ts";
 
 const REMOTE_SCRIPT_PATH = new Path(import.meta.url);

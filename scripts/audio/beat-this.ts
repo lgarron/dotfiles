@@ -3,20 +3,20 @@
 import { env } from "node:process";
 import { object } from "@optique/core";
 import { run } from "@optique/run";
-import { Path } from "path-class";
-import { PrintableShellCommand } from "printable-shell-command";
 import {
-  byOption,
-  forTransformation,
+  fileTransformation,
   type SimpleFileInOutArgs,
   simpleFileInOut,
-} from "../lib/optique.ts";
+} from "optique-helpers";
+import { Path } from "path-class";
+import { PrintableShellCommand } from "printable-shell-command";
+import { byOption } from "../lib/optique.ts";
 
 const CACHE_FOLDER = Path.xdg.cache.join("beat-this");
 const SUFFIX = ".beat-this.json";
 
 async function beatThis(args: SimpleFileInOutArgs) {
-  const { outputFile, printOrReveal } = forTransformation(args, SUFFIX);
+  const { outputFile, printAndMaybeReveal } = fileTransformation(args, SUFFIX);
 
   const cwd = CACHE_FOLDER.toString();
   if (!(await CACHE_FOLDER.existsAsDir())) {
@@ -61,7 +61,7 @@ dependencies = [
     });
 
   await outputFile.writeJSON(json);
-  await printOrReveal();
+  await printAndMaybeReveal();
 }
 
 if (import.meta.main) {

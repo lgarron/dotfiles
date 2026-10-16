@@ -10,8 +10,9 @@ import {
   withDefault,
 } from "@optique/core";
 import { run } from "@optique/run";
+import { simpleFileInOut } from "optique-helpers";
 import { PrintableShellCommand } from "printable-shell-command";
-import { byOption, simpleFileInOut } from "../lib/optique.ts";
+import { byOption } from "../lib/optique.ts";
 import { transferFileDates } from "../lib/transferFileDates.ts";
 
 const args = run(

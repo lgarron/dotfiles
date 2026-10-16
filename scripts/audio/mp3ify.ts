@@ -2,16 +2,16 @@
 
 import { object } from "@optique/core";
 import { run } from "@optique/run";
-import { PrintableShellCommand } from "printable-shell-command";
 import {
-  byOption,
-  forTransformation,
+  fileTransformation,
   type SimpleFileInOutArgs,
   simpleFileInOut,
-} from "../lib/optique.ts";
+} from "optique-helpers";
+import { PrintableShellCommand } from "printable-shell-command";
+import { byOption } from "../lib/optique.ts";
 
 async function mp3ify(args: SimpleFileInOutArgs): Promise<void> {
-  const { outputFile, printOrReveal } = forTransformation(args, ".mp3");
+  const { outputFile, printAndMaybeReveal } = fileTransformation(args, ".mp3");
   await new PrintableShellCommand("ffmpeg", [
     ["-i", args.sourceFile],
     ["-f", "mp3"],
@@ -23,7 +23,7 @@ async function mp3ify(args: SimpleFileInOutArgs): Promise<void> {
     ["-q:a", "2"],
     outputFile,
   ]).shellOut();
-  await printOrReveal();
+  await printAndMaybeReveal();
 }
 
 if (import.meta.main) {

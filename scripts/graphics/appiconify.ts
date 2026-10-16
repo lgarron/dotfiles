@@ -2,14 +2,14 @@
 
 import { object } from "@optique/core";
 import { run } from "@optique/run";
-import { Path } from "path-class";
-import { PrintableShellCommand } from "printable-shell-command";
 import {
-  byOption,
-  forTransformation,
+  fileTransformation,
   type SimpleFileInOutArgs,
   simpleFileInOut,
-} from "../lib/optique.ts";
+} from "optique-helpers";
+import { Path } from "path-class";
+import { PrintableShellCommand } from "printable-shell-command";
+import { byOption } from "../lib/optique.ts";
 
 const INNER_DIMENSION = 824 * 2;
 const ICTOOL_PATH = new Path(
@@ -17,7 +17,7 @@ const ICTOOL_PATH = new Path(
 );
 
 async function appiconify(args: SimpleFileInOutArgs): Promise<void> {
-  const { outputFile, printOrReveal } = forTransformation(
+  const { outputFile, printAndMaybeReveal } = fileTransformation(
     args,
     ".app-icon.png",
   );
@@ -89,7 +89,7 @@ async function appiconify(args: SimpleFileInOutArgs): Promise<void> {
     outputFile,
   ]).shellOut();
 
-  await printOrReveal();
+  await printAndMaybeReveal();
 }
 
 if (import.meta.main) {

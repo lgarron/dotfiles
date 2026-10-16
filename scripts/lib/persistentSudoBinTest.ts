@@ -6,7 +6,7 @@ export async function main() {
   const command = await persistentSudoBin(`#!/bin/bash
 
 echo hi`);
-  command.shellOut();
+  await command.shellOut();
 }
 
 if (import.meta.main) {

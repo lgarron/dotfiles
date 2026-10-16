@@ -2,23 +2,23 @@
 
 import { object } from "@optique/core";
 import { run } from "@optique/run";
-import { PrintableShellCommand } from "printable-shell-command";
 import {
-  byOption,
-  forTransformation,
+  fileTransformation,
   type SimpleFileInOutArgs,
   simpleFileInOut,
-} from "../lib/optique.ts";
+} from "optique-helpers";
+import { PrintableShellCommand } from "printable-shell-command";
+import { byOption } from "../lib/optique.ts";
 
 async function wavify(args: SimpleFileInOutArgs): Promise<void> {
-  const { outputFile, printOrReveal } = forTransformation(args, ".wav");
+  const { outputFile, printAndMaybeReveal } = fileTransformation(args, ".wav");
   await new PrintableShellCommand("ffmpeg", [
     ["-i", args.sourceFile],
     ["-f", "wav"],
     ["-qscale:a", "0"],
     outputFile,
   ]).shellOut();
-  await printOrReveal();
+  await printAndMaybeReveal();
 }
 
 if (import.meta.main) {

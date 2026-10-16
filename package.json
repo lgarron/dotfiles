@@ -1,9 +1,9 @@
 {
   "type": "module",
   "dependencies": {
-    "@optique/core": "^1.0.1",
+    "@optique/core": "^1.3.6",
     "@optique/git": "^1.0.1",
-    "@optique/run": "^1.0.1",
+    "@optique/run": "^1.3.6",
     "betterdisplaycli": ">=0.2.4",
     "clipboardy": "^5.3.2",
     "comment-json": "^4.4.1",
@@ -12,6 +12,7 @@
     "lockfile-mutex": ">=0.3.12",
     "lstow": ">=0.6.3",
     "naughty-list": "^3.0.2",
+    "optique-helpers": ">=0.1.7",
     "path-class": ">=0.17.4",
     "plural-chain": ">=0.2.3",
     "printable-shell-command": "^5.3.2",

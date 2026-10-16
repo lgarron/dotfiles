@@ -2,9 +2,10 @@
 
 import { integer, message, object, option, withDefault } from "@optique/core";
 import { run } from "@optique/run";
+import { printAndMaybeReveal, simpleFileInOut } from "optique-helpers";
 import type { Path } from "path-class";
 import { PrintableShellCommand } from "printable-shell-command";
-import { byOption, printOrReveal, simpleFileInOut } from "../lib/optique.ts";
+import { byOption } from "../lib/optique.ts";
 import { ffprobeFirstVideoStream, pollOption } from "./ffpoll.ts";
 
 // Public domain, from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Iterators_and_generators
@@ -97,7 +98,7 @@ async function timelapseBlur(
     }
   }
 
-  await printOrReveal(latestSourceFile, args);
+  await printAndMaybeReveal(latestSourceFile, args);
 }
 
 if (import.meta.main) {

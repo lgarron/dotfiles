@@ -1,9 +1,10 @@
 import { join } from "node:path";
 import { argument, message, multiple, object, string } from "@optique/core";
 import { run } from "@optique/run";
+import { versionConstantDefinition } from "optique-helpers";
+import { Path } from "path-class";
 import { PrintableShellCommand } from "printable-shell-command";
 import { byOption } from "../scripts/lib/optique.ts";
-import { TIMESTAMP_AND_GIT_HEAD_HASH } from "../scripts/lib/TIMESTAMP_AND_GIT_HEAD_HASH.ts";
 
 class ScriptSource {
   category: string;
@@ -28,6 +29,13 @@ class ScriptSource {
   }
 
   async build() {
+    const define = await versionConstantDefinition(
+      Path.resolve("../", import.meta.url),
+      {
+        allowMissingVersion: true,
+      },
+    );
+
     // We have to shell out because of: https://github.com/oven-sh/bun/issues/12629
     await new PrintableShellCommand("bun", [
       "build",
@@ -35,7 +43,7 @@ class ScriptSource {
       ["--sourcemap=inline"],
       [
         "--define",
-        `globalThis.TIMESTAMP_AND_GIT_HEAD_HASH=${JSON.stringify(TIMESTAMP_AND_GIT_HEAD_HASH)}`,
+        `globalThis.DEV_CONFIG_EMBEDDED_VERSION_INFO=${define["globalThis.DEV_CONFIG_EMBEDDED_VERSION_INFO"]}`,
       ],
       ["--outfile", this.tempPath],
       this.sourcePath,

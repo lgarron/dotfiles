@@ -16,7 +16,8 @@ import {
   getMain,
   type VirtualScreen,
 } from "betterdisplaycli";
-import { byOption, withSuggestions } from "../lib/optique.ts";
+import { withSuggestions } from "optique-helpers";
+import { byOption } from "../lib/optique.ts";
 
 let allDevicesCachedPromise: Promise<(Display | VirtualScreen)[]> | undefined;
 function allDevicesListCached() {

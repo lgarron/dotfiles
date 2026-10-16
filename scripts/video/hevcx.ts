@@ -16,9 +16,10 @@ import {
 } from "@optique/core";
 import { run } from "@optique/run";
 import { ErgonomicDate } from "ergonomic-date";
+import { fileInOut } from "optique-helpers";
 import { Path } from "path-class";
 import { PrintableShellCommand } from "printable-shell-command";
-import { byOption, fileInOut } from "../lib/optique.ts";
+import { byOption } from "../lib/optique.ts";
 import { TIMESTAMP_AND_GIT_HEAD_HASH } from "../lib/TIMESTAMP_AND_GIT_HEAD_HASH.ts";
 import { transferFileDates } from "../lib/transferFileDates.ts";
 import { ffprobeFirstVideoStream, pollOption } from "./ffpoll.ts";

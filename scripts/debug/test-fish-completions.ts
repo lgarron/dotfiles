@@ -3,9 +3,10 @@
 import { env } from "node:process";
 import { argument, message, multiple, object, option } from "@optique/core";
 import { run } from "@optique/run";
+import { sourceFile } from "optique-helpers";
 import { Path } from "path-class";
 import { escapeArg, PrintableShellCommand } from "printable-shell-command";
-import { byOption, sourceFile } from "../lib/optique.ts";
+import { byOption } from "../lib/optique.ts";
 
 function parseArgs() {
   return run(

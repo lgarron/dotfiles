@@ -4,7 +4,6 @@ import { exit, stdout } from "node:process";
 import { message, object, option, optional, withDefault } from "@optique/core";
 import { gitRemote } from "@optique/git";
 import { runAsync } from "@optique/run";
-import { Path } from "path-class";
 import { PrintableShellCommand } from "printable-shell-command";
 import { byOption } from "../lib/optique.ts";
 import { removeTag } from "./rmtag.ts";
@@ -34,19 +33,18 @@ async function tagpush(args: {
   localOnly?: boolean;
 }) {
   const version = await new PrintableShellCommand("version").text();
-  console.log({ version });
-  console.log("cwd", Path.cwd.path);
 
   // TODO: does this work properly for merge commits?
   const hasPreviousCommit = await (async () => {
     try {
-      const output = await new PrintableShellCommand(
-  "jj",
-  ["log","--count",["--revisions","@- & root()"]]
-).text({trimTrailingNewlines: "single-required"});
-if (parseInt(output, 10) === 1) {
-  return false;
-}
+      const output = await new PrintableShellCommand("jj", [
+        "log",
+        "--count",
+        ["--revisions", "@- & root()"],
+      ]).text({ trimTrailingNewlines: "single-required" });
+      if (parseInt(output, 10) === 1) {
+        return false;
+      }
     } catch {}
 
     const output = await new PrintableShellCommand("git", [
@@ -59,11 +57,8 @@ if (parseInt(output, 10) === 1) {
         // TODO: Running this on the commandline definitely prints a trailing
         // newline. Does `git` behave differently in interactive sessions???
       });
-    console.log(output, output.length);
     return parseInt(output, 10) > 1;
   })();
-
-  console.log({ hasPreviousCommit });
 
   if (hasPreviousCommit) {
     const previousCommitVersion = await new PrintableShellCommand("version", [

@@ -113,7 +113,6 @@ async function tagpush(args: {
   if (version === currentTag) {
     console.info("Current tag already matches. Skipping for idempotence…");
   } else {
-    console.log({ version });
     await new PrintableShellCommand("git", ["tag", "--", version]).shellOut(
       INLINE,
     );

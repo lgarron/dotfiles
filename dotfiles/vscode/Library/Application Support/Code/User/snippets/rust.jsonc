@@ -27,5 +27,11 @@
 			"}"
 		],
 		"description": "struct"
+	},
+	"pub(crate)": {
+		"prefix": "pc",
+		"body": [
+			"pub(crate) ${1}"
+		]
 	}
 }

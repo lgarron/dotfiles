@@ -22,7 +22,7 @@ import {
 } from "betterdisplaycli";
 import { Path } from "path-class";
 import { PrintableShellCommand } from "printable-shell-command";
-import { byOption, withSuggestions } from "../lib/optique.ts";
+import { bySubcommand, withSuggestions } from "../lib/optique.ts";
 import { allDeviceNames } from "./toggle-retina.ts";
 
 const REMOTE_SCRIPT_PATH = new Path(import.meta.url);
@@ -118,7 +118,7 @@ function parseArgs() {
       description: message`Set the remote screen sharing resolution for a given computer automatically.
 
 Hardcoded to a 5K monitor and the 16-inch MacBook Pro.`,
-      ...byOption(),
+      ...bySubcommand(),
     },
   );
 }

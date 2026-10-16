@@ -55,13 +55,19 @@ for await (const file of mapPath(new Glob("./scripts/*/*.ts").scan())) {
       assert(!!(mode & constants.S_IXGRP));
       assert(!!(mode & constants.S_IXOTH));
 
+      const subcommandBased = ["screen-sharing.ts"].includes(
+        file.basename.path,
+      );
+
       try {
-        await new PrintableShellCommand(file, ["--help"]).shellOut({
+        await new PrintableShellCommand(file, [
+          subcommandBased ? "help" : "--help",
+        ]).shellOut({
           print: "inline",
         });
 
         await new PrintableShellCommand(file, [
-          ["--completions", "fish"],
+          [subcommandBased ? "completions" : "--completions", "fish"],
         ]).shellOut({ print: "inline" });
 
         // biome-ignore lint/suspicious/noExplicitAny: We can't properly type this.

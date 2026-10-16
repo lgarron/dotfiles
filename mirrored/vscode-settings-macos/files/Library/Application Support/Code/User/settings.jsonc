@@ -125,6 +125,9 @@
 		"*.html": "html"
 	},
 	/******** JavaScript & TypeScript ********/
+	// Try to get include suggestions/completions for all packages.
+	// This… does not work. But maybe it helps sometimes.
+	"js/ts.preferences.includePackageJsonAutoImports": "on",
 	"js/ts.validate.enabled": true,
 	"js/ts.updateImportsOnFileMove.enabled": "always",
 	"biome.requireConfiguration": true,

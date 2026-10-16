@@ -8,6 +8,7 @@ import {
   multiple,
   object,
   option,
+  optional,
   withDefault,
 } from "@optique/core";
 import { gitBranch, gitRemote } from "@optique/git";
@@ -20,7 +21,7 @@ function parseArgs() {
     object({
       remote: withDefault(option("--remote", gitRemote()), "origin"),
       // TODO: exclusive with `--remote`?
-      localOnly: option("--local-only"),
+      localOnly: optional(option("--local-only")),
       branches: multiple(argument(gitBranch()), { min: 1 }),
     }),
     {

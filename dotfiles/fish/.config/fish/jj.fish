@@ -253,3 +253,18 @@ function jj
     command jj $argv
     set -g _FISH_JJ_WAS_RUN_DURING_COMMAND true
 end
+function rmtag
+    # TODO: https://github.com/fish-shell/fish-shell/issues/12998
+    command rmtag $argv
+    set -g _FISH_JJ_WAS_RUN_DURING_COMMAND true
+end
+function rmbranch
+    # TODO: https://github.com/fish-shell/fish-shell/issues/12998
+    command rmbranch $argv
+    set -g _FISH_JJ_WAS_RUN_DURING_COMMAND true
+end
+function tagpush
+    # TODO: https://github.com/fish-shell/fish-shell/issues/12998
+    command tagpush $argv
+    set -g _FISH_JJ_WAS_RUN_DURING_COMMAND true
+end

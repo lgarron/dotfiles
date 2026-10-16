@@ -1,35 +1,69 @@
 #!/usr/bin/env -S bun run --
 
 import { exit, stdout } from "node:process";
-import { object, option } from "@optique/core";
-import { run } from "@optique/run";
+import { message, object, option, optional, withDefault } from "@optique/core";
+import { gitRemote } from "@optique/git";
+import { runAsync } from "@optique/run";
+import { Path } from "path-class";
 import { PrintableShellCommand } from "printable-shell-command";
 import { byOption } from "../lib/optique.ts";
+import { removeTag } from "./rmtag.ts";
 
 const SEPARATOR = "--------";
 const INLINE = { print: "inline" } as const;
 
-async function tagpush(args: { retag?: boolean; localOnly?: boolean }) {
+function parseArgs() {
+  return runAsync(
+    object({
+      remote: withDefault(
+        option("--remote", gitRemote(), {
+          description: message`\`git\` remote`,
+        }),
+        "origin",
+      ),
+      retag: option("--retag"),
+      localOnly: optional(option("--local-only")),
+    }),
+    byOption(),
+  );
+}
+
+async function tagpush(args: {
+  remote?: string;
+  retag?: boolean;
+  localOnly?: boolean;
+}) {
   const version = await new PrintableShellCommand("version").text();
+  console.log({ version });
+  console.log("cwd", Path.cwd.path);
 
   // TODO: does this work properly for merge commits?
   const hasPreviousCommit = await (async () => {
     try {
-      return (
-        (await new PrintableShellCommand("git", [
-          "cat-file",
-          ["-t", "HEAD~"],
-        ]).text()) === "commit"
-      );
-      // biome-ignore lint/suspicious/noExplicitAny: TypeScript limitation.
-    } catch (e: any) {
-      // TODO: there is no porcelain for this command. Can we find something more stable?
-      if (e.stderr.includes("fatal: Not a valid object name HEAD~")) {
-        return false;
-      }
-      throw e;
-    }
+      const output = await new PrintableShellCommand(
+  "jj",
+  ["log","--count",["--revisions","@- & root()"]]
+).text({trimTrailingNewlines: "single-required"});
+if (parseInt(output, 10) === 1) {
+  return false;
+}
+    } catch {}
+
+    const output = await new PrintableShellCommand("git", [
+      "rev-list",
+      "--count",
+      "HEAD",
+    ])
+      .print()
+      .text({
+        // TODO: Running this on the commandline definitely prints a trailing
+        // newline. Does `git` behave differently in interactive sessions???
+      });
+    console.log(output, output.length);
+    return parseInt(output, 10) > 1;
   })();
+
+  console.log({ hasPreviousCommit });
 
   if (hasPreviousCommit) {
     const previousCommitVersion = await new PrintableShellCommand("version", [
@@ -50,14 +84,18 @@ async function tagpush(args: { retag?: boolean; localOnly?: boolean }) {
     stdout.write("Tag was previously at at commit: ");
     try {
       console.log(
-        await new PrintableShellCommand("git", ["rev-parse", version]).text(),
+        await new PrintableShellCommand("git", [
+          "rev-parse",
+          "--",
+          version,
+        ]).text(),
       );
       console.log(SEPARATOR);
-      await new PrintableShellCommand("rmtag", [
-        ...(args.localOnly ? ["--local-only"] : []),
-        "--",
-        version,
-      ]).shellOut(INLINE);
+      await removeTag({
+        tags: [version],
+        localOnly: args.localOnly,
+        remote: args.remote,
+      });
       console.log(SEPARATOR);
     } catch {
       console.log("No old tag.");
@@ -80,6 +118,7 @@ async function tagpush(args: { retag?: boolean; localOnly?: boolean }) {
   if (version === currentTag) {
     console.info("Current tag already matches. Skipping for idempotence…");
   } else {
+    console.log({ version });
     await new PrintableShellCommand("git", ["tag", "--", version]).shellOut(
       INLINE,
     );
@@ -99,12 +138,5 @@ async function tagpush(args: { retag?: boolean; localOnly?: boolean }) {
 }
 
 if (import.meta.main) {
-  const args = run(
-    object({
-      retag: option("--retag"),
-      localOnly: option("--local-only"),
-    }),
-    byOption(),
-  );
-  await tagpush(args);
+  await tagpush(await parseArgs());
 }

@@ -9,7 +9,7 @@ import { byOption } from "../lib/optique.ts";
 const SEPARATOR = "--------";
 const INLINE = { print: "inline" } as const;
 
-async function tagpush(args: { retag?: boolean }) {
+async function tagpush(args: { retag?: boolean; localOnly?: boolean }) {
   const version = await new PrintableShellCommand("version").text();
 
   // TODO: does this work properly for merge commits?
@@ -53,9 +53,11 @@ async function tagpush(args: { retag?: boolean }) {
         await new PrintableShellCommand("git", ["rev-parse", version]).text(),
       );
       console.log(SEPARATOR);
-      await new PrintableShellCommand("rmtag", ["--", version]).shellOut(
-        INLINE,
-      );
+      await new PrintableShellCommand("rmtag", [
+        ...(args.localOnly ? ["--local-only"] : []),
+        "--",
+        version,
+      ]).shellOut(INLINE);
       console.log(SEPARATOR);
     } catch {
       console.log("No old tag.");
@@ -82,21 +84,25 @@ async function tagpush(args: { retag?: boolean }) {
       INLINE,
     );
   }
-  // Push tag if needed. This is also idempotent, and a separate check doesn't
-  // give us extra benefits in this case.
-  await new PrintableShellCommand("git", [
-    "push",
-    // TODO: add a `--remote` option (which we will also need to pass on to `rmtag`).
-    "origin",
-    "--",
-    version,
-  ]).shellOut(INLINE);
+
+  if (!args.localOnly) {
+    // Push tag if needed. This is also idempotent, and a separate check doesn't
+    // give us extra benefits in this case.
+    await new PrintableShellCommand("git", [
+      "push",
+      // TODO: add a `--remote` option (which we will also need to pass on to `rmtag`).
+      "origin",
+      "--",
+      version,
+    ]).shellOut(INLINE);
+  }
 }
 
 if (import.meta.main) {
   const args = run(
     object({
       retag: option("--retag"),
+      localOnly: option("--local-only"),
     }),
     byOption(),
   );

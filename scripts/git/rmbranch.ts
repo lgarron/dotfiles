@@ -18,8 +18,10 @@ import { byOption } from "../lib/optique.ts";
 function parseArgs() {
   return run(
     object({
-      branches: multiple(argument(gitBranch()), { min: 1 }),
       remote: withDefault(option("--remote", gitRemote()), "origin"),
+      // TODO: exclusive with `--remote`?
+      localOnly: option("--local-only"),
+      branches: multiple(argument(gitBranch()), { min: 1 }),
     }),
     {
       description: message`Remove \`git\` branches locally and remotely.`,
@@ -51,13 +53,15 @@ export async function removeBranch(
   args: Awaited<ReturnType<typeof parseArgs>>,
 ): Promise<void> {
   // Queries the remote for up-to-date info
-  const remoteHeads = await collectBranchInfo(
-    new PrintableShellCommand(
-      "git",
-      // TODO: is there porcelain for this?
-      ["ls-remote", "--heads", args.remote],
-    ),
-  );
+  const remoteHeads = args.localOnly
+    ? {}
+    : await collectBranchInfo(
+        new PrintableShellCommand(
+          "git",
+          // TODO: is there porcelain for this?
+          ["ls-remote", "--heads", args.remote],
+        ),
+      );
   const localHeads = await collectBranchInfo(
     new PrintableShellCommand("git", ["show-ref", "--heads"]),
   );
@@ -89,7 +93,7 @@ export async function removeBranch(
       ...localBranchesToRemove,
     ]).shellOut({ print: { skipLineWrapBeforeFirstArg: true } });
   }
-  if (remoteBranchesToRemove.length > 0) {
+  if (args.localOnly && remoteBranchesToRemove.length > 0) {
     await new PrintableShellCommand("git", [
       "push",
       args.remote,

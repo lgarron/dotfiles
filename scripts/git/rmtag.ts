@@ -54,6 +54,8 @@ const options = await runAsync(
       }),
       { min: 1 },
     ),
+    // TODO: exclusive with `--remote`?
+    localOnly: option("--local-only"),
   }),
   byOption(),
 );
@@ -65,14 +67,16 @@ const options = await runAsync(
 // We also need to need to do this before deleting the local tag, to avoid the fetch restoring it.
 // TODO: handle when there is no remote?
 
-const { remote, tags } = options;
+const { remote, tags, localOnly } = options;
 
-await new PrintableShellCommand("git", [
-  "fetch",
-  "--tags",
-  "--",
-  remote,
-]).shellOut(INLINE);
+if (!localOnly) {
+  await new PrintableShellCommand("git", [
+    "fetch",
+    "--tags",
+    "--",
+    remote,
+  ]).shellOut(INLINE);
+}
 
 /**************** Local ****************/
 
@@ -112,78 +116,80 @@ if (tagsToRemoveLocally.length > 0) {
 
 /**************** Remote tag ****************/
 
-const remoteURL: string = await (async () => {
-  try {
-    return (
-      await new PrintableShellCommand("git", [
-        "remote",
-        "get-url",
-        "--",
-        `${remote}`,
-      ]).text()
-    ).trim();
-  } catch {
-    console.error(
-      `Could not get remote URL. Does this remote exist?
+if (!localOnly) {
+  const remoteURL: string = await (async () => {
+    try {
+      return (
+        await new PrintableShellCommand("git", [
+          "remote",
+          "get-url",
+          "--",
+          `${remote}`,
+        ]).text()
+      ).trim();
+    } catch {
+      console.error(
+        `Could not get remote URL. Does this remote exist?
 
 Name of missing remote: ${styleText("bold", remote)}`,
-    );
-    exit(2);
-  }
-})();
+      );
+      exit(2);
+    }
+  })();
 
-const tagsToRemoveFromRemote: string[] = [];
-for (const tag of tags) {
-  if (await doesTagExistOnRemote(tag, remote)) {
-    tagsToRemoveFromRemote.push(tag);
-  }
-}
-
-if (tagsToRemoveFromRemote.length > 0) {
-  await new PrintableShellCommand("git", [
-    "push",
-    "--",
-    remote,
-    ...tagsToRemoveFromRemote.map((tag) => `:${tag}`),
-  ]).shellOut(INLINE);
-}
-
-/**************** Remote releases ****************/
-
-// TODO: Interleave with remote tag removal using the `--cleanup-tag` arg to
-// `gh release delete`, to reduce the number of remote calls?
-
-function remoteIsGitHub(url: string | URL): boolean {
-  return new URL(url).hostname === "github.com";
-}
-
-if (remoteIsGitHub(remoteURL)) {
-  const remoteReleases = new Set(
-    await (async () => {
-      const json: { tagName: string }[] = await new PrintableShellCommand(
-        "gh",
-        [["release", "list"], "--repo", remoteURL, "--json", "tagName"],
-      ).json();
-      return json.map((entry) => entry.tagName);
-    })(),
-  );
-
-  // We don't have a neat way of doing this in bulk.
+  const tagsToRemoveFromRemote: string[] = [];
   for (const tag of tags) {
-    if (remoteReleases.has(tag)) {
-      await new PrintableShellCommand("gh", [
-        "release",
-        "delete",
-        "--yes",
-        "--repo",
-        remoteURL,
-        "--",
-        tag,
-      ]).shellOut(INLINE);
+    if (await doesTagExistOnRemote(tag, remote)) {
+      tagsToRemoveFromRemote.push(tag);
     }
   }
 
-  console.log(`Tags are removed: ${tags.join(", ")}`);
-} else {
-  console.info("Remote is not GitHub. Skipping release deletion.");
+  if (tagsToRemoveFromRemote.length > 0) {
+    await new PrintableShellCommand("git", [
+      "push",
+      "--",
+      remote,
+      ...tagsToRemoveFromRemote.map((tag) => `:${tag}`),
+    ]).shellOut(INLINE);
+  }
+
+  /**************** Remote releases ****************/
+
+  // TODO: Interleave with remote tag removal using the `--cleanup-tag` arg to
+  // `gh release delete`, to reduce the number of remote calls?
+
+  function remoteIsGitHub(url: string | URL): boolean {
+    return new URL(url).hostname === "github.com";
+  }
+
+  if (remoteIsGitHub(remoteURL)) {
+    const remoteReleases = new Set(
+      await (async () => {
+        const json: { tagName: string }[] = await new PrintableShellCommand(
+          "gh",
+          [["release", "list"], "--repo", remoteURL, "--json", "tagName"],
+        ).json();
+        return json.map((entry) => entry.tagName);
+      })(),
+    );
+
+    // We don't have a neat way of doing this in bulk.
+    for (const tag of tags) {
+      if (remoteReleases.has(tag)) {
+        await new PrintableShellCommand("gh", [
+          "release",
+          "delete",
+          "--yes",
+          "--repo",
+          remoteURL,
+          "--",
+          tag,
+        ]).shellOut(INLINE);
+      }
+    }
+
+    console.log(`Tags are removed: ${tags.join(", ")}`);
+  } else {
+    console.info("Remote is not GitHub. Skipping release deletion.");
+  }
 }

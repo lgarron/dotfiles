@@ -433,6 +433,10 @@ abbr_anyarg tagpush r --retag
 abbr -a rmb rmbranch
 abbr -a rmt rmtag
 
+abbr_anyarg tagpush l --local-only
+abbr_anyarg rmbranch l --local-only
+abbr_anyarg rmtag l --local-only
+
 ## Functions
 
 ### dist

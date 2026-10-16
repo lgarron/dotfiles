@@ -102,13 +102,6 @@
     "when": "inSearchEditor"
   },
   {
-    "key": "cmd+ctrl+space",
-    "command": "workbench.action.terminal.sendSequence",
-    "args": {
-  	    "text": "\u000B\u0015qs '${file}'\u000D"
-    }
-  },
-  {
     "key": "cmd+=",
     "command": "extension.customWindowZoomIn"
   },
@@ -427,4 +420,8 @@
     "key": "ctrl+cmd+c",
     "command": "-change-case.changeCase"
   },
+  {
+    "key": "ctrl+cmd+space",
+    "command": "vscode-workarounds.sendToQuicksilver"
+  }
 ]

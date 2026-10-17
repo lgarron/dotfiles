@@ -42,8 +42,8 @@ mac-common-dotfiles: \
 	niceplz \
 	quicksilver \
 	sd-card-backup \
-	vscode \
 	vscode-settings-macos
+	#vscode \
 
 .PHONY: germain
 germain: \

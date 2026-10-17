@@ -32,7 +32,7 @@ cask "transmit"
 cask "signal"
 cask "linear"
 cask "inkscape"
-cask "steam
+cask "steam"
 cask "gpg-suite"
 brew "pinentry-mac" # For `gpg-suite`
 cask "blender"
@@ -57,6 +57,6 @@ cask "betterzip"
 cask "qlmarkdown"
 cask "qlstephen"
 cask "suspicious-package"
-cask "thumbhost3mf"
+# cask "thumbhost3mf"
 # cask "quicklook-json" # TODO: discontinued
 # cask "glance" # TODO: discontinued

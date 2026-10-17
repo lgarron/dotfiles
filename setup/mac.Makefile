@@ -12,12 +12,12 @@ mac-setup: \
 	mac-homebrew \
 	mac-setup-sudo \
 	mac-system-defaults \
-	mac-keyboard-shortcuts \
 	mac-file-defaults \
 	mac-commandline-core \
 	mac-setup-touch-id-sudo-config \
-	mac-apps-core \
-	mac-app-store-apps-core
+	mac-apps-core 
+	# mac-keyboard-shortcuts \
+	# mac-app-store-apps-core
 
 # Frontload `sudo` operations to avoid 
 .PHONY: mac-setup-sudo
@@ -27,8 +27,8 @@ mac-setup-sudo: \
 	mac-fish-default-shell \
 	prefer-wired-over-wireless-for-SMB \
 	mac-disable-emoji-suggestions \
-	mac-set-finder-sidebar \
 	mac-dock-setup
+	# mac-set-finder-sidebar \
 
 .PHONY: mac-setup-bulk
 mac-setup-bulk: \
@@ -180,7 +180,7 @@ mac-apps-bulk-workarounds:
 	mkdir -p ~/.config/fish/completions/
 	echo "# Workaround for: https://github.com/Homebrew/homebrew-cask/pull/223049" > ~/.config/fish/completions/tailscale.fish
 	echo "" >> ~/.config/fish/completions/tailscale.fish
-	tailscale completion fish >> ~/.config/fish/completions/tailscale.fish # TODO: hangs if the Tailscale system extension hasn't been installed (!)
+	#tailscale completion fish >> ~/.config/fish/completions/tailscale.fish # TODO: hangs if the Tailscale system extension hasn't been installed (!)
 
 .PHONY: mac-setup-homebrew-lgarron-lgarron
 .PHONY: mac-setup-homebrew-lgarron-lgarron

@@ -32,7 +32,11 @@ const TAP = new Path("lgarron/lgarron");
 
 // Third-party are not HEAD by default.
 const THIRDPARTY_PREFIX = TAP.join("thirdparty-").toString();
-const THIRDPARTY_HEAD = new Set([TAP.join("thirdparty-demucs").toString()]);
+const THIRDPARTY_HEAD = new Set(
+  ["thirdparty-demucs", "thirdparty-beat-this", "thirdparty-ffvmaf"].map((s) =>
+    TAP.join(s).toString(),
+  ),
+);
 
 function parseArgs() {
   return run(

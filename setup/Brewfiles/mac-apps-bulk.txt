@@ -32,7 +32,7 @@ cask "transmit"
 cask "signal"
 cask "linear"
 cask "inkscape"
-cask "steam
+cask "steam"
 cask "gpg-suite"
 brew "pinentry-mac" # For `gpg-suite`
 cask "blender"

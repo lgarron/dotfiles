@@ -21,6 +21,7 @@
     ],
     "delete": [
       ".android", // Contains `analytics.settings`?
+      ".aspnet",
       ".angular-config.json",
       ".biome",
       ".bun_repl_history", // bun 😭 https://github.com/oven-sh/bun/issues/28291

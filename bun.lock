@@ -16,7 +16,7 @@
         "lstow": ">=0.6.3",
         "naughty-list": "^3.0.2",
         "optique-helpers": ">=0.1.7",
-        "path-class": ">=0.17.4",
+        "path-class": ">=0.17.5",
         "plural-chain": ">=0.2.3",
         "printable-shell-command": "^5.3.2",
         "trash": "^10.0.0",
@@ -374,7 +374,7 @@
 
     "parse-ms": ["parse-ms@4.0.0", "", {}, "sha512-TXfryirbmq34y8QBwgqCVLi+8oA3oWx2eAnSn62ITyEhEYaWRlVZ2DvMM9eZbMs/RfxPu/PK/aBLyGj4IrqMHw=="],
 
-    "path-class": ["path-class@0.17.4", "", { "dependencies": { "@types/node": ">=26.6.3" } }, "sha512-QUdnF+19H87//UTuWC0YIgDlreW++GOMLNxZ7Hp/4eRymUV0nVKiM6Ro7o8JFy4m50cpXFamzcN546iJ0X5Clw=="],
+    "path-class": ["path-class@0.17.5", "", { "dependencies": { "@types/node": ">=26.6.3" } }, "sha512-zTw4YXne3/N878b+i2Jh44GGf0C/FxkqK/s0EpedFHcV0qxOvNni6t8MzkjKZMQSzihCaSwixUaNDer+NQblFQ=="],
 
     "path-key": ["path-key@3.1.1", "", {}, "sha512-ojmeN0qd+y0jszEtoY48r0Peq5dwMEkIlCOu6Q5f41lfkswXuKtYrhgoTpLnyIcHm24Uhqx+5Tqm2InSwLhE6Q=="],
 

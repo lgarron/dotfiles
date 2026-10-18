@@ -13,7 +13,7 @@
     "lstow": ">=0.6.3",
     "naughty-list": "^3.0.2",
     "optique-helpers": ">=0.1.7",
-    "path-class": ">=0.17.4",
+    "path-class": ">=0.17.5",
     "plural-chain": ">=0.2.3",
     "printable-shell-command": "^5.3.2",
     "trash": "^10.0.0",

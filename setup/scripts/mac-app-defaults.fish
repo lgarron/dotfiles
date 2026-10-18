@@ -8,6 +8,9 @@ end
 
 # Finder
 defaults write "com.apple.finder" "NSToolbar Configuration Browser" '{"TB Default Item Identifiers"=("com.apple.finder.BACK","com.apple.finder.SWCH",NSToolbarSpaceItem,"com.apple.finder.ARNG",NSToolbarSpaceItem,"com.apple.finder.SHAR","com.apple.finder.LABL","com.apple.finder.ACTN",NSToolbarSpaceItem,"com.apple.finder.SRCH",);"TB Display Mode"=2;"TB Icon Size Mode"=1;"TB Is Shown"=1;"TB Item Identifiers"=("com.apple.finder.BACK",NSToolbarSpaceItem,"com.apple.finder.SHAR","com.apple.finder.SRCH",);"TB Size Mode"=1;}'
+defaults write "com.apple.finder" "FXPreferredViewStyle" 'Nlsv'
+plutil -replace "StandardViewSettings.ListViewSettings.calculateAllSizes" -bool YES $HOME/Library/Preferences/com.apple.finder.plist
+plutil -replace "StandardViewSettings.ExtendedListViewSettingsV2.calculateAllSizes" -bool YES $HOME/Library/Preferences/com.apple.finder.plist
 #Terminal
 /usr/libexec/PlistBuddy -c "Set :'Default Window Settings' 'Clear Dark'" $HOME/Library/Preferences/com.apple.Terminal.plist
 /usr/libexec/PlistBuddy -c "Set :'Window Settings':'Clear Dark':CommandString 'login -pfq lgarron /opt/homebrew/bin/fish'" $HOME/Library/Preferences/com.apple.Terminal.plist
@@ -47,6 +50,9 @@ defaults write "com.apple.FinalCut" FFDefaultColorCorrectionID '"FxPlug:52A68C6D
 # Calendar
 # Start on Monday
 defaults write "com.apple.iCal" "first day of week" -int 2
+# Disk Utility
+defaults write "com.apple.DiskUtility" "WorkspaceShowAPFSSnapshots" -bool true
+defaults write "com.apple.DiskUtility" "SidebarShowAllDevices" -bool true
 
 # iTerm
 defaults write "com.googlecode.iterm2" "AllowClipboardAccess" -bool true

@@ -5,4 +5,5 @@ cask "rectangle-pro"
 cask "iterm2"
 cask "visual-studio-code"
 cask "1password"
-cask "mysides" # Needed to set up the Finder sidebar
+# cask "mysides" # Needed to set up the Finder sidebar
+brew "jeremy4971/mysides-swift/mysides-swift"

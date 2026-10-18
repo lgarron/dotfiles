@@ -54,7 +54,7 @@ cask "safari-technology-preview"
 # QuickLook
 
 cask "betterzip"
-cask "qlmarkdown"
+# cask "qlmarkdown" # Now using Obsidian for this (as of 2026-10-17)
 cask "qlstephen"
 cask "suspicious-package"
 cask "thumbhost3mf"

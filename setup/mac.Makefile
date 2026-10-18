@@ -101,7 +101,10 @@ mac-keyboard-shortcuts:
 	# The settings UI supports this, but passing the same string here doesn't work (even with extra quoting).
 	# ${MAC_ADD_SHORTCUT} "com.wolfram.Mathematica"   "Evaluation->Quit Kernel->Local"                    "^D"
 	${MAC_ADD_SHORTCUT} "com.wolfram.Mathematica"   "Evaluate Initialization Cells"                    "^⌘I"
-	
+
+	# TODO defaults write "com.apple.universalaccess" "com.apple.custommenu.apps" '("com.wolfram.Mathematica","org.openscad.OpenSCAD","com.adobe.mas.lightroomCC","com.bambulab.bambu-studio","com.google.Chrome.canary",NSGlobalDomain,"com.google.Chrome","org.audacityteam.audacity4","com.apple.Safari","com.tinyspeck.slackmacgap","com.apple.Music",)'
+	# defaults write "com.adobe.mas.lightroomCC" "NSUserKeyEquivalents" '{"Export\U2026"="@$e";}'
+
 
 .PHONY: mac-file-defaults
 mac-file-defaults:

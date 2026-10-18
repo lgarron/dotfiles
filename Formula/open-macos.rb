@@ -11,10 +11,10 @@ class OpenMacos < Formula
   def install
     # TODO: look up conventions for building Swift using Homebrew.
 
-    system "swift", "build", "--disable-sandbox", "--configuration", "release", "--package-path", "./scripts/swift/", "--product", "open-macos"
-    bin.install "./scripts/swift/.build/arm64-apple-macosx/release/open-macos" => "open-macos"
+    system "swift", "build", "--build-path", "./.temp/swift/", "--disable-sandbox", "--configuration", "release", "--package-path", "./scripts/swift/", "--product", "open-macos"
+    bin.install "./.temp/swift/release/open-macos" => "open-macos"
 
-    system "swift", "build", "--disable-sandbox", "--configuration", "release", "--package-path", "./scripts/swift/", "--product", "open-macos-stdin"
-    bin.install "./scripts/swift/.build/arm64-apple-macosx/release/open-macos-stdin" => "open-macos-stdin"
+    system "swift", "build", "--build-path", "./.temp/swift/", "--disable-sandbox", "--configuration", "release", "--package-path", "./scripts/swift/", "--product", "open-macos-stdin"
+    bin.install "./.temp/swift/release/open-macos-stdin" => "open-macos-stdin"
   end
 end

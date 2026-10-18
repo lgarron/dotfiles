@@ -91,6 +91,8 @@ defaults write "com.apple.AppleIntelligenceReport" reportDuration -float 0
 ## Keyboard
 defaults write NSGlobalDomain InitialKeyRepeat -float 15.0
 defaults write NSGlobalDomain KeyRepeat -float 5
+### Keyboard → Keyboard Shortcuts → Function Keys → Use F1, F2, etc. keys as standard function keys
+defaults write "Apple Global Domain" "com.apple.keyboard.fnState" -bool true
 ### Text Input → Input Sources
 #### Edit…
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -boolean false
@@ -136,6 +138,7 @@ defaults write com.apple.dock showhidden -boolean true
 # Screen capture
 defaults write com.apple.screencapture type heic
 defaults write "com.apple.screencapture" show-thumbnail -boolean false
+plutil -replace "captureHDR" -bool YES $HOME/Library/Preferences/com.apple.screencapture.plist
 
 # Modals and palettes
 # Expand save panel by default

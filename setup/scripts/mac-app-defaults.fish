@@ -6,6 +6,31 @@ function defaults
     command defaults $argv
 end
 
+# Finder
+defaults write "com.apple.finder" "NSToolbar Configuration Browser" '{"TB Default Item Identifiers"=("com.apple.finder.BACK","com.apple.finder.SWCH",NSToolbarSpaceItem,"com.apple.finder.ARNG",NSToolbarSpaceItem,"com.apple.finder.SHAR","com.apple.finder.LABL","com.apple.finder.ACTN",NSToolbarSpaceItem,"com.apple.finder.SRCH",);"TB Display Mode"=2;"TB Icon Size Mode"=1;"TB Is Shown"=1;"TB Item Identifiers"=("com.apple.finder.BACK",NSToolbarSpaceItem,"com.apple.finder.SHAR","com.apple.finder.SRCH",);"TB Size Mode"=1;}'
+#Terminal
+/usr/libexec/PlistBuddy -c "Set :'Default Window Settings' 'Clear Dark'" $HOME/Library/Preferences/com.apple.Terminal.plist
+/usr/libexec/PlistBuddy -c "Set :'Window Settings':'Clear Dark':CommandString 'login -pfq lgarron /opt/homebrew/bin/fish'" $HOME/Library/Preferences/com.apple.Terminal.plist
+plutil -replace "Window Settings.Clear Dark.RunCommandAsShell" 'true' -o - $HOME/Library/Preferences/com.apple.Terminal.plist
+## View using: 
+##
+##    plutil -extract "Window Settings.Clear Dark.noWarnProcesses" json -o - $HOME/Library/Preferences/com.apple.Terminal.plist
+##
+plutil -replace "Window Settings.Clear Dark.noWarnProcesses" -json '[
+    {"ProcessName":"screen"},
+    {"ProcessName":"tmux"},
+    {"ProcessName":"less"},
+    {"ProcessName":"more"},
+    {"ProcessName":"view"},
+    {"ProcessName":"mandoc"},
+    {"ProcessName":"tail"},
+    {"ProcessName":"log"},
+    {"ProcessName":"top"},
+    {"ProcessName":"htop"},
+    {"ProcessName":"login"},
+    {"ProcessName":"-fish"},
+    {"ProcessName":"gg"}
+]' $HOME/Library/Preferences/com.apple.Terminal.plist
 # Safari
 defaults write com.apple.Safari IncludeDevelopMenu -bool true
 defaults write "com.apple.Safari" IncludeDevelopMenu -bool true
@@ -23,6 +48,9 @@ defaults write "com.apple.FinalCut" FFDefaultColorCorrectionID '"FxPlug:52A68C6D
 # Start on Monday
 defaults write "com.apple.iCal" "first day of week" -int 2
 
+# iTerm
+defaults write "com.googlecode.iterm2" "AllowClipboardAccess" -bool true
+defaults write "com.googlecode.iterm2" "WrapDroppedFilenamesInQuotesWhenPasting" -bool true
 # Pixelmator Pro settings
 ## Editing
 # Open Images in → Original Format

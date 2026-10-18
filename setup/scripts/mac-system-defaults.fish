@@ -139,6 +139,7 @@ defaults write com.apple.dock showhidden -boolean true
 defaults write com.apple.screencapture type heic
 defaults write "com.apple.screencapture" show-thumbnail -boolean false
 plutil -replace "captureHDR" -bool YES $HOME/Library/Preferences/com.apple.screencapture.plist
+$HOME/Code/git/github.com/lgarron/dotfiles/scripts/screencapture-path.ts set-os-default
 
 # Modals and palettes
 # Expand save panel by default

@@ -113,7 +113,7 @@ mac-file-defaults:
 	# File formats
 	# Note: this now shows a lot of prompts.
 
-	duti -s com.google.Chrome public.url all
+	duti -s com.sindresorhus.Velja public.url all
 	duti -s com.google.Chrome public.svg-image all
 	# duti -s com.google.Chrome http all # TODO
 	# duti -s com.google.Chrome https all # TODO

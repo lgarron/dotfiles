@@ -24,6 +24,7 @@ mac-common: \
 	mac-common-dotfiles \
 	mac-setup \
 	mac-setup-bulk \
+	final-cut-pro \
 	setup
 
 .PHONY: mac-laptop
@@ -73,6 +74,7 @@ dreamhost: common
 PACKAGES  =
 PACKAGES += bun
 PACKAGES += compressor
+PACKAGES += final-cut-pro
 PACKAGES += fish
 PACKAGES += git
 PACKAGES += hushlogin

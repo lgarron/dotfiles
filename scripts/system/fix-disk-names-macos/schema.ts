@@ -6,13 +6,13 @@ export const SCHEMA_PATH = Path.resolve(
   import.meta.url,
 );
 
-export const DiskMetadataSchema = object({
+export const diskMetadataSchema = object({
   $schema: string(),
   name: string(),
 });
 
-export type DiskMetadata = zodInfer<typeof DiskMetadataSchema>;
+export type DiskMetadata = zodInfer<typeof diskMetadataSchema>;
 
 if (import.meta.main) {
-  await SCHEMA_PATH.writeJSON(toJSONSchema(DiskMetadataSchema));
+  await SCHEMA_PATH.writeJSON(toJSONSchema(diskMetadataSchema));
 }

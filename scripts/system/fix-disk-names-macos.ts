@@ -2,16 +2,17 @@
 
 import { join } from "node:path";
 import { styleText } from "node:util";
-import { object, option } from "@optique/core";
+import { object, option, optional } from "@optique/core";
 import { run } from "@optique/run";
 import { Glob } from "bun";
+import { pathClass } from "optique-helpers";
 import { Path, stringifyIfPath } from "path-class";
 import { Plural } from "plural-chain";
 import { PrintableShellCommand } from "printable-shell-command";
 import { byOption } from "../lib/optique.ts";
 import {
   type DiskMetadata,
-  DiskMetadataSchema,
+  diskMetadataSchema,
 } from "./fix-disk-names-macos/schema.ts";
 
 const VOLUMES_DIR = new Path("/Volumes/");
@@ -23,6 +24,9 @@ function parseArgs() {
   return run(
     object({
       dryRun: option("--dry-run"),
+      writeMetadataToDisk: optional(
+        option("--write-metadata-to-disk", pathClass({ mustExist: true })),
+      ),
     }),
     byOption(),
   );
@@ -31,6 +35,21 @@ function parseArgs() {
 export async function fixDiskNamesMacOS(
   args: ReturnType<typeof parseArgs>,
 ): Promise<void> {
+  if (args.writeMetadataToDisk) {
+    const name = args.writeMetadataToDisk.basename.toString();
+    await args.writeMetadataToDisk
+      .join(WELL_KNOWN_DISK_METADATA_JSON_PATH)
+      .writeJSON(
+        {
+          $schema:
+            "https://raw.githubusercontent.com/lgarron/dotfiles/bcc733989bbfe8e9376c2a6e56811125286baebb/scripts/system/fix-disk-names-macos/disk-metadata.schema.json",
+          name,
+        },
+        { schema: diskMetadataSchema },
+      );
+    return;
+  }
+
   let numFailures = 0;
 
   function formattedDiskName(
@@ -59,7 +78,7 @@ export async function fixDiskNamesMacOS(
     const currentVolumeName = path.parent.parent;
 
     const diskMetadata: DiskMetadata = await VOLUMES_DIR.join(path).readJSON({
-      schema: DiskMetadataSchema,
+      schema: diskMetadataSchema,
     });
     const expectedName = diskMetadata.name;
     if (!expectedName) {

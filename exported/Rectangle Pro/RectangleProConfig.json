@@ -203,7 +203,7 @@
       "string" : "{\"b\":3,\"t\":2,\"id\":0,\"l\":21,\"bl\":13,\"r\":24,\"tl\":15,\"br\":14,\"tr\":16}"
     },
     "manualSpecs" : {
-      "string" : "[{\"displayFrame\":[[-1080,-480],[1080,1920]],\"otherAppOperation\":1,\"title\":\"7u0eybW3n6Kw8QJpjmnoWCHF+UmWrrZIh4bFA3F\\\/Xe6s83CECYwdKhxItFDtxsoA7g==\",\"shortcut\":{\"modifierFlags\":655360,\"keyCode\":40},\"id\":37,\"h\":\"1601\",\"x\":\"-1080\",\"y\":\"-192\",\"display\":-3,\"loc\":9,\"w\":\"1080\",\"name\":\"SCAD\"}]"
+      "string" : "[{\"displayFrame\":[[2560,-480],[1080,1920]],\"otherAppOperation\":1,\"title\":\"7u0eybW3n6Kw8QJpjmnoWCHF+UmWrrZIh4bFA3F\\\/Xe6s83CECYwdKhxItFDtxsoA7g==\",\"shortcut\":{\"modifierFlags\":655360,\"keyCode\":40},\"id\":37,\"h\":\"1601\",\"x\":\"2560\",\"y\":\"-192\",\"display\":-3,\"loc\":9,\"w\":\"1080\",\"name\":\"SCAD\"}]"
     },
     "maximizeAcrossDisplays" : {
       "int" : 0

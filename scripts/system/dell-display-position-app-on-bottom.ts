@@ -50,7 +50,7 @@ if numDisplays is greater than 1
 
             tell window 1
                 set size to {1080, 947}
-                set position to {-1080, 973}
+                set position to {2560, 973}
             end tell
         end tell
     end tell

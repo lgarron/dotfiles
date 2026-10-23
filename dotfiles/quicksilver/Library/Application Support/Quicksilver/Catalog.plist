@@ -1638,9 +1638,16 @@
 	</dict>
 	<key>omittedItems</key>
 	<array>
-		<string>/Users/lgarron/Applications/CrossOver/Star Wars™ Episode I - Racer™ [GOG.com]/Uninstall Star Wars™ Episode I - Racer™.app</string>
-		<string>/Users/lgarron/Code/git/github.com/lgarron/dotfiles/dotfiles/quicksilver/Library/Application Support/Quicksilver/PlugIns/com.blacktree.Quicksilver.QSExtraScriptsPlugIn.9F.qsplugin/Contents/Resources/ExtraScripts/System/Restart.scpt</string>
 		<string>/Users/lgarron/Applications/CrossOver/Ubisoft</string>
+		<string>/Users/lgarron/Code/git/github.com/lgarron/dotfiles/dotfiles/quicksilver/Library/Application Support/Quicksilver/PlugIns/com.blacktree.Quicksilver.QSExtraScriptsPlugIn.9F.qsplugin/Contents/Resources/ExtraScripts/System/Restart.scpt</string>
+		<string>/Applications/Finder sidebar custom icons/FinderSidebar3DPrinting.app</string>
+		<string>/Applications/Finder sidebar custom icons/FinderSidebarDropbox.app</string>
+		<string>/Applications/Finder sidebar custom icons/FinderSidebarGermainLocations.app</string>
+		<string>/Applications/Finder sidebar custom icons/FinderSidebariCloudDrive.app</string>
+		<string>/Applications/Finder sidebar custom icons/FinderSidebarTrenzaloreLocations.app</string>
+		<string>/Applications/Finder sidebar custom icons/FinderSidebarUploads.app</string>
+		<string>/Applications/Finder sidebar custom icons/FinderSidebarVideoEditing2026.app</string>
+		<string>/Applications/Finder sidebar custom icons/FinderSidebarVolumes.app</string>
 	</array>
 </dict>
 </plist>

@@ -41,7 +41,7 @@
 	},
 	"install-fish": {
 		"prefix": "install-fish@…",
-		"body": "cubing/actions-workflows/actions/install-fish@d69727ff189c0b7ef19fda60cc36a53a4f9275fc # v0.2.1",
+		"body": "cubing/actions-workflows/actions/install-fish@8aa74b8e29f8c3b320410bcf8eb61eb41193ab76 # v0.2.2-dev",
 		"description": "install-fish (latest common pin)"
 	}
 }

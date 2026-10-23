@@ -109,12 +109,10 @@ abbr -a ba "bun add"
 abbr -a bad "bun add --dev"
 abbr -a br "bun run --"
 abbr -a bt "bun test"
-abbr -a bx "bun x --"
+abbr -a bx "bun x --no-install --"
 abbr -a bl "bun link"
 abbr -a bup "bun update"
 abbr -a bw "bun why"
-
-abbr -a dx "bun x -- bun-dx --package"
 
 abbr_subcommand bun a add
 abbr_subcommand bun i install

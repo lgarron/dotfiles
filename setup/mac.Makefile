@@ -100,7 +100,7 @@ mac-keyboard-shortcuts:
 	${MAC_ADD_SHORTCUT} "org.openscad.OpenSCAD"     "Reset View"               "⇧⌘R"
 	# TODO: we need to specify a longer menu path, as there are multiple menu item (leaves) named `Local`.
 	# The settings UI supports this, but passing the same string here doesn't work (even with extra quoting).
-	# ${MAC_ADD_SHORTCUT} "com.wolfram.Mathematica"   "Evaluation->Quit Kernel->Local"                    "^D"
+	${MAC_ADD_SHORTCUT} "com.wolfram.Mathematica"   "\\033Evaluation\\033Quit Kernel\\033Local" "^D"
 	${MAC_ADD_SHORTCUT} "com.wolfram.Mathematica"   "Evaluate Initialization Cells"                    "^⌘I"
 
 	# TODO defaults write "com.apple.universalaccess" "com.apple.custommenu.apps" '("com.wolfram.Mathematica","org.openscad.OpenSCAD","com.adobe.mas.lightroomCC","com.bambulab.bambu-studio","com.google.Chrome.canary",NSGlobalDomain,"com.google.Chrome","org.audacityteam.audacity4","com.apple.Safari","com.tinyspeck.slackmacgap","com.apple.Music",)'

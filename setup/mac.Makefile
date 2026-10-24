@@ -94,18 +94,12 @@ mac-keyboard-shortcuts:
 	${MAC_ADD_SHORTCUT} "com.apple.FinalCut"        "Organize — big video"        "^⇧⌘1"
 	${MAC_ADD_SHORTCUT} "com.apple.FinalCut"        "Color & Effects — big video" "^⇧⌘2"
 	# Misc
-	${MAC_ADD_SHORTCUT} "com.apple.finder"          "\\033View\\033Sort By\\033Name" "⇧⌘2"
-	${MAC_ADD_SHORTCUT} "com.apple.Music"           "as Songs"                 "⌘2"
-	${MAC_ADD_SHORTCUT} "com.bambulab.bambu-studio" "Redo"                     "⇧⌘Z"
-	${MAC_ADD_SHORTCUT} "org.openscad.OpenSCAD"     "Reset View"               "⇧⌘R"
-	# TODO: we need to specify a longer menu path, as there are multiple menu item (leaves) named `Local`.
-	# The settings UI supports this, but passing the same string here doesn't work (even with extra quoting).
+	${MAC_ADD_SHORTCUT} "com.apple.finder"          "\\033View\\033Sort By\\033Name"            "⇧⌘2"
+	${MAC_ADD_SHORTCUT} "com.apple.Music"           "as Songs"                                  "⌘2"
+	${MAC_ADD_SHORTCUT} "com.bambulab.bambu-studio" "Redo"                                      "⇧⌘Z"
+	${MAC_ADD_SHORTCUT} "org.openscad.OpenSCAD"     "Reset View"                                "⇧⌘R"
 	${MAC_ADD_SHORTCUT} "com.wolfram.Mathematica"   "\\033Evaluation\\033Quit Kernel\\033Local" "^D"
-	${MAC_ADD_SHORTCUT} "com.wolfram.Mathematica"   "Evaluate Initialization Cells"                    "^⌘I"
-
-	# TODO defaults write "com.apple.universalaccess" "com.apple.custommenu.apps" '("com.wolfram.Mathematica","org.openscad.OpenSCAD","com.adobe.mas.lightroomCC","com.bambulab.bambu-studio","com.google.Chrome.canary",NSGlobalDomain,"com.google.Chrome","org.audacityteam.audacity4","com.apple.Safari","com.tinyspeck.slackmacgap","com.apple.Music",)'
-	# defaults write "com.adobe.mas.lightroomCC" "NSUserKeyEquivalents" '{"Export\U2026"="@$e";}'
-
+	${MAC_ADD_SHORTCUT} "com.wolfram.Mathematica"   "Evaluate Initialization Cells"             "^⌘I"
 
 .PHONY: mac-file-defaults
 mac-file-defaults:

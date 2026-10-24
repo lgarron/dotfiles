@@ -1,11 +1,15 @@
 #!/usr/bin/env -S bun run --
 
+import { env } from "node:process";
 import { argument, object, option } from "@optique/core";
 import { run } from "@optique/run";
 import { pathClass } from "optique-helpers";
-import { Path } from "path-class";
+import { Path, stringifyIfPath } from "path-class";
 import { PrintableShellCommand } from "printable-shell-command";
 import { byOption } from "../lib/optique.ts";
+
+// biome-ignore lint/complexity/useLiteralKeys: https://github.com/biomejs/biome/discussions/7404
+const DEBUG = env["DEBUG"] === "true";
 
 const OBSIDIAN_VAULT_PREFIX = Path.homedir.join(
   "./Library/Mobile Documents/iCloud~md~obsidian/Documents/",
@@ -19,6 +23,32 @@ function parseArgs() {
     }),
     byOption(),
   );
+}
+
+async function vscodeOpen(
+  path: Path | string,
+  options?: { forceNewWindow: boolean },
+): Promise<void> {
+  const uri = new URL(`vscode://file${encodeURI(stringifyIfPath(path))}`);
+  if (options?.forceNewWindow) {
+    uri.searchParams.set("windowId", "_blank");
+  }
+
+  const command = new PrintableShellCommand("/usr/bin/open", [
+    "--",
+    uri.toString(),
+  ]);
+
+  if (DEBUG) {
+    await new PrintableShellCommand("terminal-notifier", [
+      ["-title", "editor-open"],
+      [
+        "-message",
+        `Command: ${command.getPrintableCommand({ argumentLineWrapping: "inline" })}`,
+      ],
+    ]).shellOut();
+  }
+  await command.shellOut();
 }
 
 export async function editorOpen({
@@ -37,29 +67,27 @@ export async function editorOpen({
       url.toString(),
     ]).shellOut({ print: false });
   } else {
+    const isDirectory = (await path.lstat()).isDirectory();
     if (inWorkspace) {
-      const isDirectory = (await path.lstat()).isDirectory();
-      const workspaceRootDir = await new PrintableShellCommand("repo", [
-        "workspace",
-        "root",
-        ["--fallback", "closest-dir"],
-        ["--path", path],
-      ])
-        .stdout()
-        .text();
-
-      await new PrintableShellCommand("code", [
-        "--",
-        workspaceRootDir,
-      ]).shellOut();
-      if (!isDirectory) {
-        await new PrintableShellCommand("code", [
-          "--reuse-window",
-          path,
-        ]).shellOut();
+      const workspaceRootDir = Path.fromString(
+        await new PrintableShellCommand("repo", [
+          "workspace",
+          "root",
+          ["--fallback", "closest-dir"],
+          ["--path", path],
+        ])
+          .stdout()
+          .text(),
+      );
+      await vscodeOpen(workspaceRootDir, { forceNewWindow: true });
+      if (
+        workspaceRootDir.toggleTrailingSlash(true).path !==
+        path.toggleTrailingSlash(true).path
+      ) {
+        await vscodeOpen(path);
       }
     } else {
-      await new PrintableShellCommand("code", ["--", path]).shellOut();
+      await vscodeOpen(path, { forceNewWindow: isDirectory });
     }
   }
 }

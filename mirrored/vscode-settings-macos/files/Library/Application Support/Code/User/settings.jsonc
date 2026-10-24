@@ -300,6 +300,7 @@
 		"reveal-path"
 	],
 	"workbench.browser.openLocalhostLinks": false,
+	"security.promptForLocalFileProtocolHandling": false,
 	/******* JSON schema *********/
 	// TODO: why is this in the serialized preferences instead of the DB?
 	"json.schemaDownload.trustedDomains": {

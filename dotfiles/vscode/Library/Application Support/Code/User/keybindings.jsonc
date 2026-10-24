@@ -423,5 +423,9 @@
   {
     "key": "ctrl+cmd+space",
     "command": "vscode-workarounds.sendToQuicksilver"
+  },
+  {
+    "key": "ctrl+cmd+m",
+    "command": "extension.toggleCase"
   }
 ]

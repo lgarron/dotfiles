@@ -22,10 +22,10 @@ import { PrintableShellCommand } from "printable-shell-command";
 import { byOption } from "../lib/optique.ts";
 import { TIMESTAMP_AND_GIT_HEAD_HASH } from "../lib/TIMESTAMP_AND_GIT_HEAD_HASH.ts";
 import { transferFileDates } from "../lib/transferFileDates.ts";
-import { ffprobeFirstVideoStream, pollOption } from "./ffpoll.ts";
+import { pollOption } from "./ffpoll.ts";
 import { ffvmaf } from "./ffvmaf.ts";
 
-const VBV_BUFFER_FACTOR = 2;
+// const VBV_BUFFER_FACTOR = 2;
 
 const BIT_RATE_SUFFIX_FACTORS = {
   G: 1_000_000_000,
@@ -192,12 +192,12 @@ export function parseArgs() {
 
 export async function hevcx(args: ReturnType<typeof parseArgs>): Promise<void> {
   const {
-    poll,
+    // poll,
     height,
     threads,
     dryRun,
     sourceFile,
-    vbvMaxRateArg,
+    // vbvMaxRateArg,
     crf,
     preset,
     tune,
@@ -211,10 +211,10 @@ export async function hevcx(args: ReturnType<typeof parseArgs>): Promise<void> {
 
   // We `await` unconditionally regardless of whether we read any video stream
   // info, since we also use this to make sure the source is ready.
-  const videoStream = await ffprobeFirstVideoStream({ sourceFile, poll });
-  const vbvMaxRate =
-    vbvMaxRateArg ??
-    new BitRateInfo(Number.parseInt(videoStream.bit_rate, 10), "b");
+  // const videoStream = await ffprobeFirstVideoStream({ sourceFile, poll });
+  // const vbvMaxRate =
+  //   vbvMaxRateArg ??
+  //   new BitRateInfo(Number.parseInt(videoStream.bit_rate, 10), "b");
 
   const additionalParams: (string | string[])[] = [];
   // We need to pass `-threads …` multiple times (for both input and output), so we track it separately.
@@ -246,11 +246,11 @@ export async function hevcx(args: ReturnType<typeof parseArgs>): Promise<void> {
     additionalParams.push(["-crf", `${crf}`]);
     appendedBasenameParts.push(`crf${crf}`);
   }
-  if (vbvMaxRateArg) {
-    appendedBasenameParts.push(`vbvmax=${vbvMaxRate}`);
-    x265Params.push(`vbv-maxrate=${vbvMaxRate.asBits()}`);
-    x265Params.push(`vbv-bufsize=${vbvMaxRate.asBits() * VBV_BUFFER_FACTOR}`);
-  }
+  // if (vbvMaxRateArg) {
+  //   appendedBasenameParts.push(`vbvmax=${vbvMaxRate}`);
+  //   x265Params.push(`vbv-maxrate=${vbvMaxRate.asBits()}`);
+  //   x265Params.push(`vbv-bufsize=${vbvMaxRate.asBits() * VBV_BUFFER_FACTOR}`);
+  // }
   if (!noRD6SSIM) {
     appendedBasenameParts.push(`rd6-ssim`);
     x265Params.push(`rd=6`);

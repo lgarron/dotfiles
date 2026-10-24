@@ -94,6 +94,7 @@ mac-keyboard-shortcuts:
 	${MAC_ADD_SHORTCUT} "com.apple.FinalCut"        "Organize — big video"        "^⇧⌘1"
 	${MAC_ADD_SHORTCUT} "com.apple.FinalCut"        "Color & Effects — big video" "^⇧⌘2"
 	# Misc
+	${MAC_ADD_SHORTCUT} "com.apple.finder"          "\\033View\\033Sort By\\033Name" "⇧⌘2"
 	${MAC_ADD_SHORTCUT} "com.apple.Music"           "as Songs"                 "⌘2"
 	${MAC_ADD_SHORTCUT} "com.bambulab.bambu-studio" "Redo"                     "⇧⌘Z"
 	${MAC_ADD_SHORTCUT} "org.openscad.OpenSCAD"     "Reset View"               "⇧⌘R"

@@ -260,6 +260,9 @@
 		"git-rebase-todo": "default",
 		"*.svg": "default"
 	},
+	"gitlens.hovers.currentLine.over": "line",
+	"gitlens.codeLens.recentChange.enabled": false,
+	"gitlens.codeLens.authors.enabled": false,
 	/******** Remote SSH ********/
 	"remote.SSH.useLocalServer": false,
 	"remote.SSH.remotePlatform": {

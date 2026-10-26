@@ -20,3 +20,4 @@ brew "hyperfine"
 brew "cubing/cubing/twips", args: ["HEAD"]
 brew "zellij"
 brew "teamookla/speedtest/speedtest"
+brew "mosh"

@@ -7,7 +7,8 @@
       "!dotfiles/vscode/**/*",
       "!exported",
       "!mirrored/vscode-settings-macos/files",
-      "!dotfiles/karabiner/.config/karabiner/karabiner.json"
+      "!dotfiles/karabiner/.config/karabiner/karabiner.json",
+      "!**/*.md"
     ]
   },
   "linter": {

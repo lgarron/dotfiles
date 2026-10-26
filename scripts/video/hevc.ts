@@ -14,7 +14,7 @@ import { ErgonomicDate } from "ergonomic-date";
 import { fileInOut } from "optique-helpers";
 import { PrintableShellCommand } from "printable-shell-command";
 import { byOption } from "../lib/optique.ts";
-import { ffprobeFirstVideoStream, pollOption } from "./ffpoll.ts";
+import { pollOption } from "./ffpoll.ts";
 
 const HANDBRAKE_PRESET = "HEVC (qv65)";
 
@@ -49,14 +49,7 @@ function parseArgs() {
 }
 
 export async function hevc(args: ReturnType<typeof parseArgs>): Promise<void> {
-  const { poll, quality, height, dryRun, encoder, sourceFile } = args;
-  const videoStream = await ffprobeFirstVideoStream({ sourceFile, poll });
-
-  // const codec_fingerprint = `${videoStream.codec_name}/${videoStream.pix_fmt}/${videoStream.color_space}/${videoStream.color_primaries}/${videoStream.color_transfer}`;
-  const simplifiedCodecFingerprint = `${videoStream.pix_fmt}/${videoStream.color_transfer}`;
-
-  console.log(`Codec fingerprint: ${simplifiedCodecFingerprint}`);
-
+  const { quality, height, dryRun, encoder, sourceFile } = args;
   const outputFile =
     args.outputFile ??
     (await (async () => {

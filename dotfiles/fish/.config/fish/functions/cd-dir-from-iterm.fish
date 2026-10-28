@@ -6,7 +6,7 @@ function cd-dir-from-iterm
     echo ""
     echo (set_color --bold)"$argv[1]"(set_color B594E2)
     echo ""
-    if string match --quiet --entire -- "$TERM_PROGRAM" "iTerm.app" >/dev/null
+    if _fish_strings_are_identical "$TERM_PROGRAM" "iTerm.app" >/dev/null
         set SHORTCUT "⇧⌘↩"
     else
         set SHORTCUT "^⌥R"

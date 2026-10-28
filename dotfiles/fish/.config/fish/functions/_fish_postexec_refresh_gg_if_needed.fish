@@ -5,7 +5,7 @@ function _fish_postexec_refresh_gg_if_needed
     end
     if _fish_is_true "$_FISH_JJ_WAS_RUN_DURING_COMMAND"
         if command -qv gg-refresh
-            if _fish_strings_are_identical $argv[1] --fancy
+            if _fish_strings_are_identical "$argv[1]" --fancy
                 # Overflowing is unlikely and not the end of the world, so allow it in order to get unbuffered `gg-refresh` output.
                 echo -n "├─ "
             end

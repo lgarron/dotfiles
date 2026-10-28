@@ -38,7 +38,7 @@ function fish_prompt --description 'Write out the prompt'
     set -g ___fish_git_prompt_char_stateseparator " | "
 
     set -l PREFIX_BEFORE_PWD (set_color $_FISH_PROMPT_LCARS_HEADER_COLOR)"╭─── "
-    if string match --quiet --entire "$EXPERIMENTAL_FISH_LAUNCHED" true
+    if _fish_is_true "$EXPERIMENTAL_FISH_LAUNCHED"
         set -l PREFIX_BEFORE_PWD "🐠🧪 "
     end
     set -l PREFIX "$PREFIX_BEFORE_PWD"(pwd)" "
@@ -120,7 +120,7 @@ function _fish_prompt_postexec_lcars --on-event fish_postexec
     echo -n "⏎"(string repeat -n (math $COLUMNS-1) " ")
     echo -ne "\r"
 
-    if string match --quiet --entire -- "$_FISH_PROMPT_FIRST_COMMAND_HAS_RUN" true
+    if _fish_is_true "$_FISH_PROMPT_FIRST_COMMAND_HAS_RUN"
         set_color $_FISH_PROMPT_LCARS_TRAILER_COLOR
         if [ (tput lines) -gt $_FISH_PROMPT_COMPACT_MODE_MAX_ROWS ]
             echo "┬"
@@ -131,11 +131,11 @@ function _fish_prompt_postexec_lcars --on-event fish_postexec
         set -l final_trailer_is_time true
 
         set -l prompt_status (__fish_print_pipestatus "[" "] " " | " (set_color $_FISH_PROMPT_LCARS_TRAILER_COLOR) (set_color --bold red) $saved_pipestatus)
-        if not string match --quiet --entire -- "$prompt_status" " "
+        if not _fish_strings_are_identical "$prompt_status" ""
             set final_trailer_is_time false
         end
 
-        # Interacts with the `jj` wrapper functionn.
+        # Interacts with the `jj` wrapper function.
         if _fish_is_true $final_trailer_is_time && functions -qv _fish_postexec_refresh_gg_calculate_if_needed
             if _fish_is_true (_fish_postexec_refresh_gg_calculate_if_needed)
                 set final_trailer_is_time false
@@ -153,7 +153,7 @@ function _fish_prompt_postexec_lcars --on-event fish_postexec
             echo "├─ $PREVIOUS_COMMAND_TIME "
         end
 
-        if not string match --quiet --entire -- "$prompt_status" " "
+        if not _fish_strings_are_identical "$prompt_status" ""
             echo "├─ ❌ $prompt_status"(set_color $_FISH_PROMPT_LCARS_TRAILER_COLOR)"command status"
         end
 

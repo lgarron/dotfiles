@@ -58,7 +58,7 @@ set APP_NAME (osascript -e 'tell application "System Events"
 	end if
 	appName
 end tell')
-if string match --quiet --entire $APP_NAME java
+if _fish_strings_are_identical "$APP_NAME" java
     set APP_NAME Minecraft
 end
 echo $APP_NAME

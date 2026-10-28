@@ -29,7 +29,7 @@ abbr -a _abbr_jj_main_rollback --regex "m-+" --position command --function _abbr
 # t---⎵ → Push `(current branch)` to `(current branch)---`
 function _abbr_jj_tag_rollback_fn
     set -l branch (jj guess-branch)
-    if string match --quiet --entire -- "$branch" ""
+    if _fish_strings_are_identical "$branch" ""
         return 1
     end
     set -l ref (jj guess-branch)
@@ -225,7 +225,7 @@ else
     # Needs to be defined here to pre-empt the binary.
     # @fish-lsp-disable-next-line 4006
     function gg
-        if string match --quiet --entire -- (env DEBUG_PRINT_SHELL_COMMANDS=false repo vcs kind) git
+        if _fish_strings_are_identical (env DEBUG_PRINT_SHELL_COMMANDS=false repo vcs kind) git
             echo "This repo uses `git` but not `jj`. Opening GitX instead."
             gx
             return

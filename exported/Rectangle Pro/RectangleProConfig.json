@@ -8,7 +8,7 @@
       "int" : 0
     },
     "adjacentResizing" : {
-      "int" : 0
+      "int" : 2
     },
     "allowAnyShortcut" : {
       "bool" : true
@@ -44,13 +44,13 @@
 
     },
     "applyGapToEdges" : {
-      "int" : 0
+      "int" : 1
     },
     "attemptMatchOnNextPrevDisplay" : {
       "int" : 0
     },
     "autoRestartOnWake" : {
-      "int" : 0
+      "int" : 2
     },
     "cascadeHeight" : {
       "int" : 0
@@ -95,7 +95,10 @@
       "int" : 0
     },
     "cycleSizesIsChanged" : {
-      "bool" : false
+      "bool" : true
+    },
+    "defaultLayoutExclusion" : {
+      "int" : 98318
     },
     "disabledApps" : {
       "string" : "[\"com.apple.ScreenSharing\"]"
@@ -129,6 +132,9 @@
     },
     "fillLeftRightVersion" : {
       "int" : 2
+    },
+    "focusRefreshBehavior" : {
+      "int" : 0
     },
     "footprintAlpha" : {
       "float" : 0.3
@@ -175,6 +181,9 @@
     "ignoreBehavior" : {
       "int" : 0
     },
+    "ignoreDock" : {
+      "int" : 0
+    },
     "ignoredSnapAreas" : {
       "int" : 0
     },
@@ -203,15 +212,12 @@
       "string" : "{\"b\":3,\"t\":2,\"id\":0,\"l\":21,\"bl\":13,\"r\":24,\"tl\":15,\"br\":14,\"tr\":16}"
     },
     "manualSpecs" : {
-      "string" : "[{\"displayFrame\":[[2560,-480],[1080,1920]],\"otherAppOperation\":1,\"title\":\"7u0eybW3n6Kw8QJpjmnoWCHF+UmWrrZIh4bFA3F\\\/Xe6s83CECYwdKhxItFDtxsoA7g==\",\"shortcut\":{\"modifierFlags\":655360,\"keyCode\":40},\"id\":37,\"h\":\"1601\",\"x\":\"2560\",\"y\":\"-192\",\"display\":-3,\"loc\":9,\"w\":\"1080\",\"name\":\"SCAD\"}]"
+      "string" : "[{\"displayFrame\":[[2560,-480],[1080,1920]],\"otherAppOperation\":1,\"name\":\"SCAD\",\"shortcut\":{\"keyCode\":40,\"modifierFlags\":655360},\"h\":\"1601\",\"display\":-3,\"loc\":9,\"y\":\"-192\",\"x\":\"2560\",\"w\":\"1080\",\"title\":\"1P0ASzuSJSY4mnNG9GncPwYr8MNllEKhft3Ts5w+eDqKytQY5nAkhk70i152WxzXuA==\",\"id\":37}]"
     },
     "maximizeAcrossDisplays" : {
       "int" : 0
     },
     "menuActionVisibility" : {
-
-    },
-    "menuAppSpecVisibility" : {
 
     },
     "menuCategoryVisibility" : {
@@ -220,11 +226,14 @@
     "menuCustomSpecVisibility" : {
 
     },
+    "menuLayoutVisibility" : {
+
+    },
     "minimumWindowHeight" : {
-      "float" : 0.25
+      "double" : 0.25
     },
     "minimumWindowWidth" : {
-      "float" : 0.25
+      "double" : 0.25
     },
     "missionControlDragging" : {
       "int" : 0
@@ -235,7 +244,16 @@
     "missionControlDraggingDisallowedDuration" : {
       "int" : 250
     },
+    "mouseThrowSyntheticDrag" : {
+      "int" : 0
+    },
     "moveCursorAcrossDisplays" : {
+      "int" : 2
+    },
+    "moveFixedSizeToEdge" : {
+      "int" : 1
+    },
+    "moveResizeEventThrottling" : {
       "int" : 0
     },
     "moveSpecsWhenDisplayMoves" : {
@@ -261,6 +279,9 @@
     },
     "obtainWindowOnClick" : {
       "int" : 0
+    },
+    "openWindowLayoutExclusion" : {
+      "int" : 128
     },
     "performRepeatOnThrow" : {
       "int" : 0
@@ -292,6 +313,9 @@
     "repeatedMaximizeRestores" : {
       "int" : 0
     },
+    "resizeFromNearestCorner" : {
+      "int" : 0
+    },
     "resizeOnDirectionalMove" : {
       "bool" : false
     },
@@ -305,7 +329,7 @@
       "int" : 2
     },
     "reticleColor" : {
-      "string" : "{\"blue\":0.2,\"alpha\":0.5,\"green\":0.3,\"red\":0.8}"
+      "string" : "{\"blue\":0.2,\"green\":0.3,\"alpha\":0.5,\"red\":0.8}"
     },
     "reticleDisplayMinDist" : {
       "float" : 0
@@ -326,25 +350,25 @@
       "string" : "null"
     },
     "screenEdgeGapBottom" : {
-      "float" : 0
+      "double" : 0
     },
     "screenEdgeGapLeft" : {
-      "float" : 0
+      "double" : 0
     },
     "screenEdgeGapRight" : {
-      "float" : 0
+      "double" : 0
     },
     "screenEdgeGapTop" : {
-      "float" : 0
+      "double" : 0
     },
     "screenEdgeGapTopNotch" : {
-      "float" : 0
+      "double" : 0
     },
     "screenEdgeGapsOnMainScreenOnly" : {
       "bool" : false
     },
     "screensOrderedByX" : {
-      "int" : 0
+      "int" : 3
     },
     "scrollEdgePauseDistance" : {
       "float" : 60
@@ -356,7 +380,7 @@
       "float" : 0.1
     },
     "selectedCycleSizes" : {
-      "int" : 0
+      "int" : 7
     },
     "shortEdgeSnapAreaSize" : {
       "float" : 145
@@ -372,6 +396,9 @@
     },
     "smallerLargerOffsetV2" : {
       "float" : 20
+    },
+    "smallerShrinksMaximizedHeight" : {
+      "bool" : false
     },
     "snapEdgeMarginBottom" : {
       "float" : 5
@@ -398,7 +425,7 @@
       "float" : 1680
     },
     "stageSize" : {
-      "float" : 190
+      "double" : 190
     },
     "stashAnimation" : {
       "int" : 0
@@ -475,11 +502,17 @@
     "todoMode" : {
       "bool" : false
     },
+    "todoScreenFallback" : {
+      "int" : 0
+    },
     "todoSide" : {
       "int" : 1
     },
     "todoSidebarWidth" : {
       "double" : 400
+    },
+    "todoSidebarWidthUnit" : {
+      "int" : 1
     },
     "togggleTodoShortcut" : {
 
@@ -494,6 +527,9 @@
       "int" : 0
     },
     "unhideStashedWhenFrontmost" : {
+      "int" : 0
+    },
+    "unifiedDisplaySpacesBehavior" : {
       "int" : 0
     },
     "unsnapRestore" : {
@@ -540,6 +576,18 @@
       "keyCode" : 47,
       "modifierFlags" : 524288
     },
+    "centerThird" : {
+      "keyCode" : 3,
+      "modifierFlags" : 786432
+    },
+    "centerTwoThirds" : {
+      "keyCode" : 15,
+      "modifierFlags" : 786432
+    },
+    "firstThird" : {
+      "keyCode" : 2,
+      "modifierFlags" : 786432
+    },
     "firstTwoThirds" : {
       "keyCode" : 33,
       "modifierFlags" : 524288
@@ -547,6 +595,10 @@
     "lastThird" : {
       "keyCode" : 30,
       "modifierFlags" : 524288
+    },
+    "lastTwoThirds" : {
+      "keyCode" : 17,
+      "modifierFlags" : 786432
     },
     "leftHalf" : {
       "keyCode" : 4,
@@ -581,6 +633,6 @@
       "modifierFlags" : 524288
     }
   },
-  "timestamp" : 786743760.38741,
-  "version" : "203"
+  "timestamp" : 814860244.146527,
+  "version" : "239"
 }

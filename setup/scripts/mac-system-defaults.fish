@@ -153,6 +153,9 @@ defaults write NSGlobalDomain NSAutomaticWindowAnimationsEnabled -boolean false
 # Formerly at: Keyboard → Shortcuts → Full Keyboard Access → All controls
 defaults write NSGlobalDomain AppleKeyboardUIMode -int 3
 
+# Keychain Access
+defaults write "com.apple.keychainaccess" "User Has Acknowledged Passwords App Dialog" -boolean true
+
 # Force settings to take effect
 killall SystemUIServer
 killall Dock

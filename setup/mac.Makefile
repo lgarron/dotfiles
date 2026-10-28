@@ -70,36 +70,9 @@ mac-set-finder-sidebar: setup
 
 .PHONY: mac-keyboard-shortcuts
 mac-keyboard-shortcuts:
-	# Chrome
-	${MAC_ADD_SHORTCUT} "com.google.Chrome"         "Extensions"               "⇧⌘E"
-	${MAC_ADD_SHORTCUT} "com.google.Chrome.canary"  "Extensions"               "⇧⌘E"
-	${MAC_ADD_SHORTCUT} "org.chromium.Chromium"     "Extensions"               "⇧⌘E"
-	# Paste and Match Style
-	${MAC_ADD_SHORTCUT} "com.tinyspeck.slackmacgap" "Paste and Match Style"    "⇧⌘V"
-	${MAC_ADD_SHORTCUT} "com.apple.iWork.Pages"     "Paste and Match Style"    "⇧⌘V"
-	# Export
-	${MAC_ADD_SHORTCUT} "com.apple.iMovieApp"       "File…"                    "⇧⌘E"
-	${MAC_ADD_SHORTCUT} "com.apple.iWork.Pages"     "PDF…"                     "⇧⌘E"
-	${MAC_ADD_SHORTCUT} "com.apple.garageband10"    "Export Song to Disk…"     "⇧⌘E"
-	${MAC_ADD_SHORTCUT} "com.adobe.mas.lightroomCC" "Export…"                  "⇧⌘E"
-	${MAC_ADD_SHORTCUT} "com.adobe.mas.lightroomCC" "Edit in Photoshop…"       "⇧⌘P"
-	${MAC_ADD_SHORTCUT} "com.apple.FinalCut"        "'HEVC 8-bit Rec. 709 (auto bit rate)…'" "⇧⌘E"
-	# Consistency with other programs
-	# ${MAC_ADD_SHORTCUT} "com.apple.AddressBook"    "Edit Card"                "⌘E"
-	${MAC_ADD_SHORTCUT} "com.apple.Safari"           "Reload Page From Origin"  "⇧⌘R"
-	${MAC_ADD_SHORTCUT} "org.audacityteam.audacity"  "Save Project As…"         "⇧⌘S"
-	${MAC_ADD_SHORTCUT} "org.audacityteam.audacity"  "Change Tempo…"            "⇧⌘T"
-	${MAC_ADD_SHORTCUT} "org.audacityteam.audacity4" "Save as…"                 "⇧⌘S"
-	# Final Cut Project
-	${MAC_ADD_SHORTCUT} "com.apple.FinalCut"        "Organize — big video"        "^⇧⌘1"
-	${MAC_ADD_SHORTCUT} "com.apple.FinalCut"        "Color & Effects — big video" "^⇧⌘2"
-	# Misc
-	${MAC_ADD_SHORTCUT} "com.apple.finder"          "\\033View\\033Sort By\\033Name"            "⇧⌘2"
-	${MAC_ADD_SHORTCUT} "com.apple.Music"           "as Songs"                                  "⌘2"
-	${MAC_ADD_SHORTCUT} "com.bambulab.bambu-studio" "Redo"                                      "⇧⌘Z"
-	${MAC_ADD_SHORTCUT} "org.openscad.OpenSCAD"     "Reset View"                                "⇧⌘R"
-	${MAC_ADD_SHORTCUT} "com.wolfram.Mathematica"   "\\033Evaluation\\033Quit Kernel\\033Local" "^D"
-	${MAC_ADD_SHORTCUT} "com.wolfram.Mathematica"   "Evaluate Initialization Cells"             "^⌘I"
+	bun run -- \
+		'./setup/mac-app-shortcuts/main.ts' \
+		'setup/mac-app-shortcuts/mac-app-shortcuts.json'
 
 .PHONY: mac-file-defaults
 mac-file-defaults:
@@ -110,8 +83,8 @@ mac-file-defaults:
 
 	duti -s com.sindresorhus.Velja public.url all
 	duti -s com.google.Chrome public.svg-image all
-	# duti -s com.google.Chrome http all # TODO
-	# duti -s com.google.Chrome https all # TODO
+	duti -s com.sindresorhus.Velja http all # TODO
+	duti -s com.sindresorhus.Velja https all # TODO
 
 	# duti -s com.microsoft.vscode public.data all # TODO
 	duti -s com.microsoft.vscode public.plain-text all

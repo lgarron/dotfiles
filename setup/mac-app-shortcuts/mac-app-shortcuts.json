@@ -1,0 +1,27 @@
+{
+  "shortcuts": [
+    { "app": "com.google.Chrome", "item": "Extensions", "shortcut": "⇧⌘E" },
+    { "app": "com.google.Chrome.canary", "item": "Extensions", "shortcut": "⇧⌘E" },
+    { "app": "org.chromium.Chromium", "item": "Extensions", "shortcut": "⇧⌘E" },
+    { "app": "com.tinyspeck.slackmacgap", "item": "Paste and Match Style", "shortcut": "⇧⌘V" },
+    { "app": "com.apple.iWork.Pages", "item": "Paste and Match Style", "shortcut": "⇧⌘V" },
+    { "app": "com.apple.iMovieApp", "item": "File…", "shortcut": "⇧⌘E" },
+    { "app": "com.apple.iWork.Pages", "item": "PDF…", "shortcut": "⇧⌘E" },
+    { "app": "com.apple.garageband10", "item": "Export Song to Disk…", "shortcut": "⇧⌘E" },
+    { "app": "com.adobe.mas.lightroomCC", "item": "Export…", "shortcut": "⇧⌘E" },
+    { "app": "com.adobe.mas.lightroomCC", "item": "Edit in Photoshop…", "shortcut": "⇧⌘P" },
+    { "app": "com.apple.FinalCut", "item": "'HEVC 8-bit Rec. 709 (auto bit rate)…'", "shortcut": "⇧⌘E" },
+    { "app": "com.apple.Safari", "item": "Reload Page From Origin", "shortcut": "⇧⌘R" },
+    { "app": "org.audacityteam.audacity", "item": "Save Project As…", "shortcut": "⇧⌘S" },
+    { "app": "org.audacityteam.audacity", "item": "Change Tempo…", "shortcut": "⇧⌘T" },
+    { "app": "org.audacityteam.audacity4", "item": "Save as…", "shortcut": "⇧⌘S" },
+    { "app": "com.apple.FinalCut", "item": "Organize — big video", "shortcut": "^⇧⌘1" },
+    { "app": "com.apple.FinalCut", "item": "Color & Effects — big video", "shortcut": "^⇧⌘2" },
+    { "app": "com.apple.finder", "item": ["View", "Sort By", "Name"], "shortcut": "⇧⌘2" },
+    { "app": "com.apple.Music", "item": "as Songs", "shortcut": "⌘2" },
+    { "app": "com.bambulab.bambu-studio", "item": "Redo", "shortcut": "⇧⌘Z" },
+    { "app": "org.openscad.OpenSCAD", "item": "Reset View", "shortcut": "⇧⌘R" },
+    { "app": "com.wolfram.Mathematica", "item": ["Evaluation", "Quit Kernel", "Local"], "shortcut": "^D" },
+    { "app": "com.wolfram.Mathematica", "item": "Evaluate Initialization Cells", "shortcut": "^⌘I" }
+  ]
+}

@@ -881,7 +881,7 @@
 			<key>ID</key>
 			<string>47883D84-D04B-4B41-BEDE-38900AD1D2F5</string>
 			<key>character</key>
-			<string>V</string>
+			<string>F</string>
 			<key>command</key>
 			<dict>
 				<key>actionID</key>
@@ -907,7 +907,7 @@
 			<key>enabled</key>
 			<true/>
 			<key>keyCode</key>
-			<integer>9</integer>
+			<integer>3</integer>
 			<key>modifiers</key>
 			<integer>655650</integer>
 			<key>onPress</key>
@@ -2102,7 +2102,7 @@
 			<key>applicationScopeType</key>
 			<integer>-1</integer>
 			<key>character</key>
-			<string>'</string>
+			<string>V</string>
 			<key>command</key>
 			<dict>
 				<key>actionID</key>
@@ -2128,9 +2128,9 @@
 			<key>enabled</key>
 			<true/>
 			<key>keyCode</key>
-			<integer>39</integer>
+			<integer>9</integer>
 			<key>modifiers</key>
-			<integer>524576</integer>
+			<integer>917795</integer>
 			<key>onPress</key>
 			<true/>
 			<key>type</key>
@@ -2140,7 +2140,7 @@
 			<key>ID</key>
 			<string>8C695DEE-4E40-41DB-8810-ED3E5F4F8340</string>
 			<key>character</key>
-			<string>v</string>
+			<string>V</string>
 			<key>command</key>
 			<dict>
 				<key>actionID</key>
@@ -2168,7 +2168,7 @@
 			<key>keyCode</key>
 			<integer>9</integer>
 			<key>modifiers</key>
-			<integer>524576</integer>
+			<integer>655650</integer>
 			<key>onPress</key>
 			<true/>
 			<key>type</key>

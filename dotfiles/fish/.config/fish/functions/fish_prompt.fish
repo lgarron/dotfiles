@@ -30,8 +30,6 @@ function _fish_prompt_echo_padded
 end
 
 function fish_prompt --description 'Write out the prompt'
-    set -l normal (set_color normal)
-
     # TODO: can we avoid overwring globals here while still taking updated colors into account?
     set -g ___fish_git_prompt_color_branch (set_color --reverse $_FISH_PROMPT_LCARS_HEADER_COLOR)" "
     set -g ___fish_git_prompt_color_branch_done " "(set_color normal; set_color $_FISH_PROMPT_LCARS_HEADER_COLOR)
@@ -39,7 +37,7 @@ function fish_prompt --description 'Write out the prompt'
 
     set -l PREFIX_BEFORE_PWD (set_color $_FISH_PROMPT_LCARS_HEADER_COLOR)"╭─── "
     if _fish_is_true "$EXPERIMENTAL_FISH_LAUNCHED"
-        set -l PREFIX_BEFORE_PWD "🐠🧪 "
+        set PREFIX_BEFORE_PWD "🐠🧪 "
     end
     set -l PREFIX "$PREFIX_BEFORE_PWD"(pwd)" "
     if test (string length --visible $PREFIX) -gt $COLUMNS
@@ -91,7 +89,7 @@ function fish_prompt --description 'Write out the prompt'
     if set -q SSH_TTY
         set -g hostname_color --bold white
     else
-        set -l hostname_color $_FISH_PROMPT_LCARS_HEADER_COLOR
+        set -g hostname_color $_FISH_PROMPT_LCARS_HEADER_COLOR
     end
 
     echo -n -s (set_color $_FISH_PROMPT_LCARS_HEADER_COLOR) "$USER" @ (set_color $hostname_color) (prompt_hostname) (set_color $_FISH_PROMPT_LCARS_HEADER_COLOR) $suffix " " (set_color normal)

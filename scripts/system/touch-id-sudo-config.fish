@@ -9,7 +9,7 @@ function show_matches
     cat $PAM_SUDO_FILE | grep "pam_tid\.so"; or echo "(no lines)"
 end
 
-set SCRIPT_NAME (basename (status -f))
+set SCRIPT_NAME (basename (status current-filename))
 function show_help
     echo "Usage: $SCRIPT_NAME [enable/disable/status/help]"
     echo ""

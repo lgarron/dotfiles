@@ -57,7 +57,7 @@ tell application "System Events"
 				delay 0.1
 			end repeat
 			set size to {1932, 1088}
-			set position to {-1310, 882}
+			set position to {2330, 882}
 		end tell
 		set frontmost to true
 	end tell

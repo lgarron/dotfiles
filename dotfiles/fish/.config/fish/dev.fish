@@ -287,7 +287,7 @@ function codespaces-install-common-extensions
         GitHub.vscode-pull-request-github \
         craigb85.custom-window-zoom \
         eamodio.gitlens \
-        stkb.rewrap \
+        dnut.rewrap-revived \
         pranshuagrawal.toggle-case \
         bierner.markdown-preview-github-styles
     for extension_id in $_CODESPACES_COMMON_EXTENSIONS

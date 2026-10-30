@@ -51,12 +51,10 @@ async function tagpush(args: {
       "rev-list",
       "--count",
       "HEAD",
-    ])
-      .print()
-      .text({
-        // TODO: Running this on the commandline definitely prints a trailing
-        // newline. Does `git` behave differently in interactive sessions???
-      });
+    ]).text({
+      // TODO: Running this on the commandline definitely prints a trailing
+      // newline. Does `git` behave differently in interactive sessions???
+    });
     return parseInt(output, 10) > 1;
   })();
 

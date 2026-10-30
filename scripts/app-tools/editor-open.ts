@@ -1,5 +1,6 @@
 #!/usr/bin/env -S bun run --
 
+import { resolve } from "node:path";
 import { env } from "node:process";
 import { argument, object, option } from "@optique/core";
 import { run } from "@optique/run";
@@ -29,7 +30,11 @@ async function vscodeOpen(
   path: Path | string,
   options?: { forceNewWindow: boolean },
 ): Promise<void> {
-  const uri = new URL(`vscode://file${encodeURI(stringifyIfPath(path))}`);
+  const uri = new URL(
+    `vscode://file${encodeURI(resolve(Path.cwd.path, stringifyIfPath(path)))
+      .replaceAll("?", "%3F")
+      .replaceAll("#", "%23")}`,
+  );
   if (options?.forceNewWindow) {
     uri.searchParams.set("windowId", "_blank");
   }

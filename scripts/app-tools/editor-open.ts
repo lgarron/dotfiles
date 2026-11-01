@@ -66,7 +66,6 @@ export async function editorOpen({
   if (relativePath) {
     // TODO: why can't we encode this using `.searchParams.set("file", …)`?
     const url = `obsidian://open?vault=Documents&file=${encodeURIComponent(relativePath.asBare().path)}`;
-    console.log(url);
     await new PrintableShellCommand("open", [
       ["-a", "Obsidian"],
       url.toString(),

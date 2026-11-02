@@ -9,7 +9,7 @@ class ToggleDisplay < Formula
   # depends_on cask: "betterdisplay" # TODO
 
   def install
-    system "./repo-script/build-ts-scripts.ts", "system/toggle-display"
+    system "./repo-script/build-ts-scripts.ts", "display/toggle-display"
     bin.install "./.temp/bin/toggle-display" => "toggle-display"
     generate_completions_from_executable(bin/"toggle-display", "--completions")
   end

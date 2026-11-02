@@ -9,7 +9,7 @@ class ToggleScreenSharingResolution < Formula
   # depends_on cask: "betterdisplay" # TODO
 
   def install
-    system "./repo-script/build-ts-scripts.ts", "system/toggle-screen-sharing-resolution"
+    system "./repo-script/build-ts-scripts.ts", "display/toggle-screen-sharing-resolution"
     bin.install "./.temp/bin/toggle-screen-sharing-resolution" => "toggle-screen-sharing-resolution"
     generate_completions_from_executable(bin/"toggle-screen-sharing-resolution", "--completions")
   end

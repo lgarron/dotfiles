@@ -289,6 +289,8 @@
 	"githubPullRequests.codingAgent.autoCommitAndPush": false,
 	"githubPullRequests.codingAgent.enabled": false,
 	"github.copilot.chat.newWorkspaceCreation.enabled": false,
+	/******** Disable other unsolicited functionality ********/
+	"githubPullRequests.openPullLinks": false,
 	/******* URLs *********/
 	"terminal.integrated.allowedLinkSchemes": [
 		"file",

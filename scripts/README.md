@@ -164,7 +164,7 @@ Get thermal pressure on macOS without `sudo`ing every time.
 
 ## `system`
 
-### `app-screenshot`
+### `macos-app-screenshot`
 
 Take a macOS screenshot and save it with with a folder and file name based on the current foreground app. (Currently hardcoded to my own Dropbox path.)
 

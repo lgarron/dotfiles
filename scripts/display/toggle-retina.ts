@@ -1,5 +1,6 @@
 #!/usr/bin/env -S bun run --
 
+import { styleText } from "node:util";
 import {
   argument,
   message,
@@ -17,7 +18,10 @@ import {
   type VirtualScreen,
 } from "betterdisplaycli";
 import { withSuggestions } from "optique-helpers";
+import { PrintableShellCommand } from "printable-shell-command";
 import { byOption } from "../lib/optique.ts";
+
+const STUDIO_DISPLAY_XDR = "Studio Display XDR";
 
 let allDevicesCachedPromise: Promise<(Display | VirtualScreen)[]> | undefined;
 function allDevicesListCached() {
@@ -60,11 +64,44 @@ function parseArgs() {
   );
 }
 
+async function toggleStudioDisplayXDR(display: Display | VirtualScreen) {
+  console.log(
+    "Invoking hardcoded logic for " +
+      styleText("blue", STUDIO_DISPLAY_XDR) +
+      ". Only 2560x1440 will be used for the resolution.",
+  );
+  const currentHiDPI = await display.boolean.get("hiDPI");
+  if (currentHiDPI) {
+    await new PrintableShellCommand("betterdisplaycli", [
+      "set",
+      "--name=Studio Display XDR",
+      "--resolution=2560x1440",
+      "--hiDPI=off",
+      // Adaptive refresh rate may(?) lead to kernel panics under some
+      // circumstances. Pegging to 120Hz is safer.
+      "--refreshRate=120",
+    ]).shellOut();
+  } else {
+    await new PrintableShellCommand("betterdisplaycli", [
+      "set",
+      "--name=Studio Display XDR",
+      "--resolution=2560x1440",
+      "--hiDPI=on",
+      "--refreshRate=60",
+    ]).shellOut();
+  }
+}
+
 export async function toggleRetina({
   displayName,
   detach,
 }: Awaited<ReturnType<typeof parseArgs>>) {
   const display = displayName ? await getByName(displayName) : await getMain();
+  if (display.info.name === STUDIO_DISPLAY_XDR) {
+    await toggleStudioDisplayXDR(display);
+    return;
+  }
+
   // TODO: notify on failure when detached?
   await display.boolean.toggle("hiDPI", { detach });
 }

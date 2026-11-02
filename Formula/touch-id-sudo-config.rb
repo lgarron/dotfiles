@@ -8,6 +8,6 @@ class TouchIdSudoConfig < Formula
   depends_on "fish"
 
   def install
-    bin.install "scripts/system/touch-id-sudo-config.fish" => "touch-id-sudo-config"
+    bin.install "scripts/sudo/touch-id-sudo-config.fish" => "touch-id-sudo-config"
   end
 end

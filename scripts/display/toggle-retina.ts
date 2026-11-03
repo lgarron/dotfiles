@@ -72,6 +72,16 @@ async function toggleStudioDisplayXDR(display: Display | VirtualScreen) {
   );
   const currentHiDPI = await display.boolean.get("hiDPI");
   if (currentHiDPI) {
+    // First change resolution, to avoid a "Failed. The requested refresh rate
+    // is unavailable. Use get -refreshRateList for available options." error.
+    //
+    // See: https://github.com/waydabber/BetterDisplay/discussions/4920#discussioncomment-19383080
+    await new PrintableShellCommand("betterdisplaycli", [
+      "set",
+      "--name=Studio Display XDR",
+      "--resolution=2560x1440",
+      "--hiDPI=off",
+    ]).shellOut({ print: "inline" });
     await new PrintableShellCommand("betterdisplaycli", [
       "set",
       "--name=Studio Display XDR",
@@ -82,6 +92,16 @@ async function toggleStudioDisplayXDR(display: Display | VirtualScreen) {
       "--refreshRate=120",
     ]).shellOut({ print: "inline" });
   } else {
+    // First change to a resolution with a lower refresh rate, to avoid a silent failure.
+    //
+    // See: https://github.com/waydabber/BetterDisplay/discussions/4920#discussioncomment-19383080
+    await new PrintableShellCommand("betterdisplaycli", [
+      "set",
+      "--name=Studio Display XDR",
+      "--resolution=2560x1440",
+      "--hiDPI=off",
+      "--refreshRate=60",
+    ]).shellOut({ print: "inline" });
     await new PrintableShellCommand("betterdisplaycli", [
       "set",
       "--name=Studio Display XDR",

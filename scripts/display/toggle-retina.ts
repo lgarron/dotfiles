@@ -80,7 +80,7 @@ async function toggleStudioDisplayXDR(display: Display | VirtualScreen) {
       // Adaptive refresh rate may(?) lead to kernel panics under some
       // circumstances. Pegging to 120Hz is safer.
       "--refreshRate=120",
-    ]).shellOut();
+    ]).shellOut({ print: "inline" });
   } else {
     await new PrintableShellCommand("betterdisplaycli", [
       "set",
@@ -88,7 +88,7 @@ async function toggleStudioDisplayXDR(display: Display | VirtualScreen) {
       "--resolution=2560x1440",
       "--hiDPI=on",
       "--refreshRate=60",
-    ]).shellOut();
+    ]).shellOut({ print: "inline" });
   }
 }
 

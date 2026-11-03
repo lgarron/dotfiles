@@ -53,6 +53,7 @@ _fish_abbr_jj_subcommand re restore
 _fish_abbr_jj_subcommand o op
 _fish_abbr_jj_subcommand ol "op log"
 
+abbr_subcommand_arg jj r --revision rebase
 abbr_subcommand_arg jj r --revisions log
 
 _fish_abbr_jj_subcommand n new

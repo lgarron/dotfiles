@@ -28,7 +28,6 @@
         "@cubing/dev-config": ">=0.10.1",
         "@types/bun": "^1.4.3",
         "bun-dedupe": ">=0.0.4",
-        "bun-dx": ">=0.1.3",
         "typescript": "^7.0.2",
       },
     },
@@ -193,8 +192,6 @@
     "buffer": ["buffer@6.0.3", "", { "dependencies": { "base64-js": "^1.3.1", "ieee754": "^1.2.1" } }, "sha512-FTiCpNxtwiZZHEZbcbTIcZjERVICn9yq/pDFkTl95/AxzD1naBctN7YO68riM/gLSDY7sdrMby8hofADYuuqOA=="],
 
     "bun-dedupe": ["bun-dedupe@0.0.6", "", { "bin": { "dedupe": "index.ts" } }, "sha512-CJ8eEAO8my/jFC73fcBASxtkWHy2og7DbW/4agtJYVZXsxSyoZRdxFPOf4RuUx4FrD6Lyd/FYfoB5hj++6XG6w=="],
-
-    "bun-dx": ["bun-dx@0.1.4", "", { "bin": { "bun-dx": "bin/bun-dx.ts" } }, "sha512-5lspzF0DyijdzDqxNGy53igALGxjBZRWkS255SOS48PlMLLSY2X1jrtUIQRI0OBOF7Wo5BDIuNLdjoQvZAxPhA=="],
 
     "bun-types": ["bun-types@1.4.3", "", { "dependencies": { "@types/node": "*", "undici-types": "*" } }, "sha512-tinRJNGOmUN+tEAsn2y2e942n9JHRHR42iUYzDH75NmhJqVBokGSQkkfSFdNWwsANIdrK6ACH9t01M452YyTwg=="],
 

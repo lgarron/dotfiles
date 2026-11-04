@@ -237,18 +237,18 @@ lint: lint-ts-biome lint-ts-tsc check-for-duplicate-dependencies
 
 .PHONY: lint-ts-biome
 lint-ts-biome: setup-npm-packages
-	bun x -- bun-dx --package @biomejs/biome biome -- check
+	bun x --no-install -- biome check
 
 .PHONY: lint-ts-tsc
 lint-ts-tsc: setup-npm-packages
-	bun x -- bun-dx --package typescript tsc -- --project ./tsconfig.json
+	bun x --no-install -- tsc --project ./tsconfig.json
 
 .PHONY: format
 format: format-ts-biome
 
 .PHONY: format-ts-biome
 format-ts-biome: setup-npm-packages
-	bun x -- bun-dx --package @biomejs/biome biome -- check --write
+	bun x --no-install -- biome check --write
 
 .PHONY: test-bun
 test-bun: setup
@@ -259,4 +259,4 @@ check-for-duplicate-dependencies: setup
 	# Note that this is known to produce false negatives (no dedupable version
 	# detected, even when there are two versions of the same package that can be
 	# trivially deduped).
-	bun x -- bun-dx --package bun-dedupe dedupe -- --check
+	bun x --no-install -- dedupe --check

@@ -20,8 +20,15 @@ import {
 import { withSuggestions } from "optique-helpers";
 import { PrintableShellCommand } from "printable-shell-command";
 import { byOption } from "../lib/optique.ts";
+import { STUDIO_DISPLAY_XDR } from "./common/index.ts";
 
-const STUDIO_DISPLAY_XDR = "Studio Display XDR";
+// BetterDisplay can't directly perform some changes, so we hardcode indices
+// from BetterDisplay:
+// https://github.com/waydabber/BetterDisplay/discussions/4920
+const StudioDisplayXDRModeIndex = {
+  LoDPI_2560x1440_120Hz: 83,
+  HiDPI_2560x1440_60Hz: 84,
+};
 
 let allDevicesCachedPromise: Promise<(Display | VirtualScreen)[]> | undefined;
 function allDevicesListCached() {
@@ -72,43 +79,17 @@ async function toggleStudioDisplayXDR(display: Display | VirtualScreen) {
   );
   const currentHiDPI = await display.boolean.get("hiDPI");
   if (currentHiDPI) {
-    // First change resolution, to avoid a "Failed. The requested refresh rate
-    // is unavailable. Use get -refreshRateList for available options." error.
-    //
-    // See: https://github.com/waydabber/BetterDisplay/discussions/4920#discussioncomment-19383080
     await new PrintableShellCommand("betterdisplaycli", [
       "set",
-      "--name=Studio Display XDR",
-      "--resolution=2560x1440",
-      "--hiDPI=off",
-    ]).shellOut({ print: "inline" });
-    await new PrintableShellCommand("betterdisplaycli", [
-      "set",
-      "--name=Studio Display XDR",
-      "--resolution=2560x1440",
-      "--hiDPI=off",
-      // Adaptive refresh rate may(?) lead to kernel panics under some
-      // circumstances. Pegging to 120Hz is safer.
-      "--refreshRate=120",
-    ]).shellOut({ print: "inline" });
+      `--name=${STUDIO_DISPLAY_XDR}`,
+      `--displayModeNumber=${StudioDisplayXDRModeIndex.LoDPI_2560x1440_120Hz}`,
+    ]).shellOut();
   } else {
-    // First change to a resolution with a lower refresh rate, to avoid a silent failure.
-    //
-    // See: https://github.com/waydabber/BetterDisplay/discussions/4920#discussioncomment-19383080
     await new PrintableShellCommand("betterdisplaycli", [
       "set",
-      "--name=Studio Display XDR",
-      "--resolution=2560x1440",
-      "--hiDPI=off",
-      "--refreshRate=60",
-    ]).shellOut({ print: "inline" });
-    await new PrintableShellCommand("betterdisplaycli", [
-      "set",
-      "--name=Studio Display XDR",
-      "--resolution=2560x1440",
-      "--hiDPI=on",
-      "--refreshRate=60",
-    ]).shellOut({ print: "inline" });
+      `--name=${STUDIO_DISPLAY_XDR}`,
+      `--displayModeNumber=${StudioDisplayXDRModeIndex.HiDPI_2560x1440_60Hz}`,
+    ]).shellOut();
   }
 }
 

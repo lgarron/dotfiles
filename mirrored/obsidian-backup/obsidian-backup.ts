@@ -18,6 +18,7 @@ import { PrintableShellCommand } from "printable-shell-command";
 import { xdgData } from "xdg-basedir";
 import { sendMessage } from "../../scripts/api/pushover.ts";
 import { Debouncer } from "../../scripts/lib/temporal/Debouncer.ts";
+import { cleanWorkspaceJSON } from "./cleanWorkspaceJSON.ts";
 
 try {
   const DATA_ROOT_DIR = Path.xdg.data.join("obsidian-backup");
@@ -49,6 +50,11 @@ try {
   const REPO_PARENT_DIR = DATA_ROOT_DIR.join("data");
   const GIT_REPO = REPO_PARENT_DIR.join("obsidian.git");
   const JJ_REPO = REPO_PARENT_DIR.join("obsidian.jj");
+
+  const OBSIDIAN_WORKSPACE_JSON = new Path(".obsidian/workspace.json");
+  const OBSIDIAN_WORKSPACE_CLEAN_JSON = new Path(
+    ".obsidian/workspace.clean.json",
+  );
 
   await REPO_PARENT_DIR.mkdir();
 
@@ -100,6 +106,8 @@ try {
     await JJ_ICLOUD_FOLDER.join(
       ".gitignore",
     ).write(`/.obsidian/plugins/**/*.wasm
+${new Path("/").join(OBSIDIAN_WORKSPACE_JSON)}
+/*/.obsidian/workspace-mobile.json
 `);
     // TODO: avoid creating nested alias (i.e. don't link if the destination exists, to avoid `ln`s functionality of placing a link inside a folder if it exists.)
     await new Path(
@@ -401,6 +409,16 @@ Oldest squashed commit: ${oldestSquashedDate.multipurposeTimestamp}`;
       return;
     }
     if (fileBasename === ".DS_Store") {
+      return;
+    }
+    if (change.filename === OBSIDIAN_WORKSPACE_CLEAN_JSON.asBare().path) {
+      return;
+    }
+    if (change.filename === OBSIDIAN_WORKSPACE_JSON.asBare().path) {
+      // This should be handled by a `clean` filter, but who knows when `jj` will get that: https://github.com/jj-vcs/jj/issues/80
+      await DIR.join(OBSIDIAN_WORKSPACE_CLEAN_JSON).writeJSON(
+        cleanWorkspaceJSON(await DIR.join(OBSIDIAN_WORKSPACE_JSON).readJSON()),
+      );
       return;
     }
     if (

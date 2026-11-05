@@ -275,9 +275,7 @@ try {
       ["op", "log", "--no-graph"],
       ["--limit", "1"],
       ["--template", "self.id()"],
-    )
-      .print()
-      .text();
+    ).text({ trimTrailingNewlines: "single-if-present" });
     await debugLog(`Garbage collecting at operation: ${currentOp}`);
 
     // TODO: this assumes linear history with well-formatted commit messages.
@@ -374,20 +372,15 @@ Oldest squashed commit: ${oldestSquashedDate.multipurposeTimestamp}`;
   async function maybeCommit(): Promise<void> {
     try {
       stdout.write("…");
-      const changed = await (async () => {
-        const text = await jj(
-          "log",
-          "--no-graph",
-          ["--revisions", "@ & empty()"],
-          ["--template", "'.'"],
-        ).text();
-        assert(
-          text.trim() === text,
-          "Unexpected extra whitespace (trailing newline?) in `jj log` output`.",
-        );
-        return text === "";
-      })();
-      if (changed) {
+      // TODO: why does this capture empty output when run in `node`?
+      const changedString = await jj("log", "--count", [
+        "--revisions",
+        "@ & ~empty()",
+      ]).text({ trimTrailingNewlines: "single-if-present" });
+      const changed = parseInt(changedString, 10);
+      assert(!Number.isNaN(changed));
+
+      if (changed !== 0) {
         console.log("----------------");
         // console.log(changed);
         const date = new ErgonomicDate();
@@ -429,7 +422,7 @@ Oldest squashed commit: ${oldestSquashedDate.multipurposeTimestamp}`;
   }
 } catch (e) {
   const hostname = await new PrintableShellCommand("hostname", ["-s"]).text({
-    trimTrailingNewlines: "single-required",
+    trimTrailingNewlines: "single-if-present",
   });
   await sendMessage(`\`obsidian-backup\` failed: ${e}`, { prefix: hostname });
 }

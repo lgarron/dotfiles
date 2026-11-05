@@ -7,6 +7,12 @@
 		<dict>
 			<key>ID</key>
 			<string>52603CDE-2E89-49EA-8B20-6F7546191AA9</string>
+			<key>applicationScope</key>
+			<array>
+				<string>com.apple.ScreenSharing</string>
+			</array>
+			<key>applicationScopeType</key>
+			<integer>-1</integer>
 			<key>command</key>
 			<dict>
 				<key>actionID</key>

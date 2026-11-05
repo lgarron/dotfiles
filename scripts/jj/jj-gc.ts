@@ -18,7 +18,9 @@ export async function garbageCollect(
   args: ReturnType<typeof parseArgs>,
 ): Promise<void> {
   async function printCost() {
-    await new PrintableShellCommand("dumac", [".jj"]).shellOut();
+    await new PrintableShellCommand("dumac", [".jj"]).shellOut({
+      print: "inline",
+    });
     console.log(
       `${(await new PrintableShellCommand("find", [".jj"]).stdout().text({ trimTrailingNewlines: "single-required" })).split("\n").length} files`,
     );
@@ -31,16 +33,22 @@ export async function garbageCollect(
       "expire",
       "--expire=now",
       "--all",
-    ]).shellOut();
-    await new PrintableShellCommand("git", ["gc", "--prune=now"]).shellOut();
+    ]).shellOut({ print: "inline" });
+    await new PrintableShellCommand("git", ["gc", "--prune=now"]).shellOut({
+      print: "inline",
+    });
   }
-  await new PrintableShellCommand("jj", ["op", "abandon", "..@-"]).shellOut();
+  await new PrintableShellCommand("jj", ["op", "abandon", "..@-"]).shellOut({
+    print: "inline",
+  });
   await new PrintableShellCommand("jj", [
     "util",
     "gc",
     "--expire=now",
-  ]).shellOut();
-  await new PrintableShellCommand("jj", ["debug", "reindex"]).shellOut();
+  ]).shellOut({ print: "inline" });
+  await new PrintableShellCommand("jj", ["debug", "reindex"]).shellOut({
+    print: "inline",
+  });
   await printCost();
 }
 

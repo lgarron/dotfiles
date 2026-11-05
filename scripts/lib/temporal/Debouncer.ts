@@ -26,7 +26,11 @@ export function debounce(
 
 export class Debouncer {
   private lastRun: Temporal.Instant | undefined;
-  constructor(private duration: Temporal.Duration) {}
+  private duration: Temporal.Duration; // Moved automatically for erasable syntax.
+
+  constructor(duration: Temporal.Duration) {
+    this.duration = duration;
+  }
 
   /**
    * Usage example:

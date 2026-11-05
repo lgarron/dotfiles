@@ -9,7 +9,7 @@ import {
   watch,
 } from "node:fs/promises";
 import { basename } from "node:path";
-import { $ } from "bun";
+import { stdout } from "node:process";
 import { ErgonomicDate } from "ergonomic-date";
 import { LockfileMutex } from "lockfile-mutex";
 import { Path } from "path-class";
@@ -34,7 +34,7 @@ try {
         .path,
       logMessage,
     );
-    console.write(logMessage);
+    stdout.write(logMessage);
   }
 
   await debugLog("Starting daemon…");
@@ -53,13 +53,43 @@ try {
   await REPO_PARENT_DIR.mkdir();
 
   if (!(await GIT_REPO.exists())) {
-    await $`git --git-dir ${GIT_REPO} status || git init --bare ${GIT_REPO}`;
+    if (
+      (await new PrintableShellCommand("git", [
+        ["--git-dir", GIT_REPO],
+        "status",
+      ]).spawn().exitCodePromise) !== 0
+    ) {
+      await new PrintableShellCommand("git", [
+        ["init", "--bare"],
+        GIT_REPO,
+      ]).shellOut();
+    }
   }
   if (!(await JJ_REPO.exists())) {
     const JJ_REPO_TEMP_DIR = REPO_PARENT_DIR.join("jj-temp");
 
-    await $`jj git init --git-repo ${GIT_REPO} ${JJ_REPO_TEMP_DIR}`;
-    await $`cd ${JJ_REPO_TEMP_DIR} && jj config set --repo snapshot.max-new-file-size 10000000 && jj config set --user user.name "Lucas Garron" && jj config set --user user.email code@garron.net && jj config set --repo revsets.log "::"`;
+    await new PrintableShellCommand(JJ, [
+      ["git", "init"],
+      ["--git-repo", GIT_REPO],
+      JJ_REPO_TEMP_DIR,
+    ]).shellOut();
+    await new PrintableShellCommand(JJ, [
+      ["--repository", JJ_REPO_TEMP_DIR],
+      ["config", "set", "--repo"],
+      ["snapshot.max-new-file-size", "10000000"],
+    ]).shellOut();
+    await new PrintableShellCommand(JJ, [
+      ["config", "set", "--repo"],
+      ["user.name", "Lucas Garron"],
+    ]).shellOut();
+    await new PrintableShellCommand(JJ, [
+      ["config", "set", "--repo"],
+      ["user.email", "code@garron.net"],
+    ]).shellOut();
+    await new PrintableShellCommand(JJ, [
+      ["config", "set", "--repo"],
+      ["revsets.log", "::"],
+    ]).shellOut();
     await JJ_REPO_TEMP_DIR.join(".jj").rename(JJ_REPO);
 
     const JJ_ICLOUD_FOLDER = new Path(
@@ -72,7 +102,11 @@ try {
     ).write(`/.obsidian/plugins/**/*.wasm
 `);
     // TODO: avoid creating nested alias (i.e. don't link if the destination exists, to avoid `ln`s functionality of placing a link inside a folder if it exists.)
-    await $`ln -s "/Users/lgarron/.local/share/obsidian-backup/data/obsidian.jj/working_copy" "/Users/lgarron/Library/Mobile Documents/iCloud~md~obsidian/Documents/.jj/working_copy"`;
+    await new Path(
+      "/Users/lgarron/.local/share/obsidian-backup/data/obsidian.jj/working_copy",
+    ).symlink(
+      "/Users/lgarron/Library/Mobile Documents/iCloud~md~obsidian/Documents/.jj/working_copy",
+    );
     await rmdir(JJ_REPO_TEMP_DIR.path);
   }
 
@@ -81,16 +115,21 @@ try {
   const DIR = new Path(
     "/Users/lgarron/Library/Mobile Documents/iCloud~md~obsidian/Documents",
   );
+  function jj(
+    ...args: (string | Path | (string | Path)[])[]
+  ): PrintableShellCommand {
+    return new PrintableShellCommand(JJ, [["--repository", DIR], ...args]);
+  }
 
   interface CommitInfo {
     change_id: string;
     message: string;
   }
 
-  async function* removeFinal<T>(iterable: AsyncIterable<T>): AsyncIterable<T> {
+  function* removeFinal<T>(iterable: Iterable<T>): Iterable<T> {
     // Note that `undefined` may be a valid value for `T`, so we need to store this in a way that allows us to support that case cleanly.
     let last: { t: T } | undefined;
-    for await (const t of iterable) {
+    for (const t of iterable) {
       if (last) {
         yield last.t;
       }
@@ -113,10 +152,8 @@ try {
   // }
 
   // Skips empty lines (such as taht after a trailing newline).
-  async function* parse(
-    iterable: AsyncIterable<string>,
-  ): AsyncIterable<Commit> {
-    for await (const t of iterable) {
+  function* parse(iterable: Iterable<string>): Iterable<Commit> {
+    for (const t of iterable) {
       if (t === "") {
         continue;
       }
@@ -193,7 +230,10 @@ try {
   }
 
   class Commit {
-    constructor(public info: CommitInfo) {}
+    public info: CommitInfo;
+    constructor(info: CommitInfo) {
+      this.info = info;
+    }
 
     get ergonomicDate(): ErgonomicDate {
       // TODO: technically if this is a long string we are creating an unnecessary
@@ -231,14 +271,28 @@ try {
     }
 
     console.log("🚮🚮🚮🚮🚮🚮🚮🚮");
-    const currentOp = (
-      await $`cd ${DIR} && ${JJ} op log --no-graph --limit 1 --template "self.id()"`.text()
-    ).trim();
+    const currentOp = await jj(
+      ["op", "log", "--no-graph"],
+      ["--limit", "1"],
+      ["--template", "self.id()"],
+    )
+      .print()
+      .text();
     await debugLog(`Garbage collecting at operation: ${currentOp}`);
 
     // TODO: this assumes linear history with well-formatted commit messages.
-    const commits =
-      $`cd ${DIR} && ${JJ} log --color=never --no-graph --revisions "..@ & ~empty()" --template '"{ \"change_id\": " ++ json(self.change_id()) ++ ", \"message\": " ++ json(self.description()) ++ " }\n"'`.lines();
+    const commits = (
+      await jj(
+        "log",
+        "--color=never",
+        "--no-graph",
+        ["--revisions", "..@ & ~empty()"],
+        [
+          "--template",
+          '"{ \\"change_id\\": " ++ json(self.change_id()) ++ ", \\"message\\": " ++ json(self.description()) ++ " }\\n"',
+        ],
+      ).text({ trimTrailingNewlines: "single-if-present" })
+    ).split("\n");
 
     const now = new ErgonomicDate();
 
@@ -258,7 +312,7 @@ try {
     let childCommit: Commit | undefined;
     let numPruned = 0;
     let count = 1; // Count the final commit (which is removed from the iterator.)
-    for await (const commit of removeFinal(parse(commits))) {
+    for (const commit of removeFinal(parse(commits))) {
       count++;
       // console.log("---");
       // console.log(info.change_id);
@@ -294,7 +348,12 @@ try {
 Last squashed at: ${now.multipurposeTimestamp}
 
 Oldest squashed commit: ${oldestSquashedDate.multipurposeTimestamp}`;
-        await $`cd ${DIR} && ${JJ} squash --from ${childCommit.info.change_id} --into ${commit.info.change_id} --message ${message}`;
+        await jj(
+          "squash",
+          ["--from", childCommit.info.change_id],
+          ["--into", commit.info.change_id],
+          ["--message", message],
+        ).shellOut();
         numPruned++;
       } else {
         console.log(`✅ Keeping: ${commit.info.change_id}`);
@@ -302,9 +361,9 @@ Oldest squashed commit: ${oldestSquashedDate.multipurposeTimestamp}`;
 
       childCommit = commit;
     }
-    await $`cd ${DIR} && ${JJ} op abandon ..@-`; // TODO: does this actually enable garbage collection of objects properly?
-    await $`cd ${DIR} && ${JJ} util gc --expire=now`;
-    await $`cd ${DIR} && ${JJ} debug reindex`;
+    await jj("op", "abandon", "..@-").shellOut(); // TODO: does this actually enable garbage collection of objects properly?
+    await jj("util", "gc", "--expire=now").shellOut();
+    await jj("debug", "reindex").shellOut();
     if (numPruned > 0) {
       await debugLog(
         `Pruned ${Plural.num.s(numPruned)`commits`} out of ${Plural.num.s(count)`commits`} (leaving ${Plural.num.s(count - numPruned)`commits`}).`,
@@ -314,16 +373,25 @@ Oldest squashed commit: ${oldestSquashedDate.multipurposeTimestamp}`;
 
   async function maybeCommit(): Promise<void> {
     try {
-      console.write("…");
-      const changed =
-        (
-          await $`cd ${DIR} && ${JJ} log --no-graph --revisions "@ & empty()" --template "'.'"`.text()
-        ).trim() === "";
+      stdout.write("…");
+      const changed = await (async () => {
+        const text = await jj(
+          "log",
+          "--no-graph",
+          ["--revisions", "@ & empty()"],
+          ["--template", "'.'"],
+        ).text();
+        assert(
+          text.trim() === text,
+          "Unexpected extra whitespace (trailing newline?) in `jj log` output`.",
+        );
+        return text === "";
+      })();
       if (changed) {
         console.log("----------------");
         // console.log(changed);
         const date = new ErgonomicDate();
-        await $`cd ${DIR} && ${JJ} commit --message ${date.multipurposeTimestamp}`;
+        await jj("commit", "--message", date.multipurposeTimestamp).shellOut();
         await debugLog("Added commit.", date);
         await garbageCollect();
       }
@@ -360,8 +428,8 @@ Oldest squashed commit: ${oldestSquashedDate.multipurposeTimestamp}`;
     await callback(change);
   }
 } catch (e) {
-  const hostname = (
-    await new PrintableShellCommand("hostname", ["-s"]).text()
-  ).trim();
+  const hostname = await new PrintableShellCommand("hostname", ["-s"]).text({
+    trimTrailingNewlines: "single-required",
+  });
   await sendMessage(`\`obsidian-backup\` failed: ${e}`, { prefix: hostname });
 }

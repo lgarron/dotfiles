@@ -55,6 +55,7 @@ export async function ffprobeFirstVideoStream({
 }): Promise<FFprobeStream> {
   const ffprobeCommand = new PrintableShellCommand("ffprobe", [
     ["-v", "quiet"],
+    ["-select_streams", "v:0"],
     ["-output_format", "json"],
     "-show_format",
     "-show_streams",

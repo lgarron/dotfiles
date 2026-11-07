@@ -4,26 +4,38 @@ import assert from "node:assert";
 import { styleText } from "node:util";
 import {
   argument,
+  merge,
   message,
   multiple,
   object,
   option,
   optional,
+  or,
   withDefault,
 } from "@optique/core";
-import { gitBranch, gitRemote } from "@optique/git";
+import { gitBranch, gitRemote, gitRemoteBranch } from "@optique/git";
 import { run } from "@optique/run";
 import { PrintableShellCommand } from "printable-shell-command";
 import { byOption } from "../lib/optique.ts";
 
 function parseArgs() {
   return run(
-    object({
-      remote: withDefault(option("--remote", gitRemote()), "origin"),
-      // TODO: exclusive with `--remote`?
-      localOnly: optional(option("--local-only")),
-      branches: multiple(argument(gitBranch()), { min: 1 }),
-    }),
+    merge(
+      object({
+        remote: withDefault(option("--remote", gitRemote()), "origin"),
+        // TODO: exclusive with `--remote`?
+        localOnly: optional(option("--local-only")),
+      }),
+      // TODO: handle interleaved local and remote branches.
+      or(
+        object({
+          branches: multiple(argument(gitRemoteBranch("origin")), { min: 1 }),
+        }),
+        object({
+          branches: multiple(argument(gitBranch()), { min: 1 }),
+        }),
+      ),
+    ),
     {
       description: message`Remove \`git\` branches locally and remotely.`,
       ...byOption(),
@@ -94,7 +106,7 @@ export async function removeBranch(
       ...localBranchesToRemove,
     ]).shellOut({ print: { skipLineWrapBeforeFirstArg: true } });
   }
-  if (args.localOnly && remoteBranchesToRemove.length > 0) {
+  if (!args.localOnly && remoteBranchesToRemove.length > 0) {
     await new PrintableShellCommand("git", [
       "push",
       args.remote,

@@ -427,5 +427,32 @@
   {
     "key": "ctrl+cmd+m",
     "command": "extension.toggleCase"
-  }
+  },
+  {
+    "key": "ctrl+9",
+    "command": "editor.action.insertSnippet",
+    "when": "editorHasSelection && editorTextFocus && (editorLangId == javascript || editorLangId == typescript)",
+    "args": {
+        "snippet": "${1}(${2:${TM_SELECTED_TEXT}})"
+    }
+  },
+  {
+    "key": "ctrl+0",
+    "command": "editor.action.insertSnippet",
+    "when": "editorHasSelection && editorTextFocus && (editorLangId == javascript || editorLangId == typescript)",
+    "args": {
+        "snippet": "(${3:${TM_SELECTED_TEXT}}).${1}(${2})"
+    }
+  },
+  {
+    // control "aw8" 😛
+    "key": "ctrl+8",
+    "command": "editor.action.insertSnippet",
+    "when": "editorHasSelection && editorTextFocus && (editorLangId == javascript || editorLangId == typescript)",
+    "args": {
+        // Biome remotes extra parentheses while formatting, so we add
+        // parentheses by default and let Biome handle it if they're redundant.
+        "snippet": "${1:(await ${TM_SELECTED_TEXT})}${2}"
+    }
+  },
 ]

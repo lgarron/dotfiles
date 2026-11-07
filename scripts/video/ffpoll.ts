@@ -16,6 +16,7 @@ import { PrintableShellCommand } from "printable-shell-command";
 import { byOption } from "../lib/optique.ts";
 import { monotonicNow } from "../lib/temporal/monotonicNow.ts";
 import { sleepDuration } from "../lib/temporal/sleep.ts";
+import { getBackoffDelay } from "./ffpoll/backoff.ts";
 
 export function pollOption(options: { default: "auto" | "false" | "true" }) {
   return withDefault(
@@ -65,28 +66,6 @@ export async function ffprobeFirstVideoStream({
   ffprobeCommand.print();
 
   const pollStartTime = monotonicNow();
-  // Custom backoff algorithm.
-  function numSecondsToWait(): Temporal.Duration {
-    const secondsSoFar = Math.floor(
-      monotonicNow().since(pollStartTime).total({ unit: "seconds" }),
-    );
-    globalThis.process.stdout.write(
-      `Polled for ${secondsSoFar} ${Plural.s(secondsSoFar)`seconds`} so far. `,
-    );
-    if (secondsSoFar < 10) {
-      return Temporal.Duration.from({ seconds: 1 });
-    }
-    if (secondsSoFar < 60) {
-      return Temporal.Duration.from({ seconds: 5 });
-    }
-    if (secondsSoFar < 60 * 10) {
-      return Temporal.Duration.from({ seconds: 15 });
-    }
-    if (secondsSoFar > 24 * 60 * 60) {
-      throw new Error("Polling has taken more than 24 hours. Aborting.");
-    }
-    return Temporal.Duration.from({ seconds: 60 });
-  }
 
   const streams = await (async () => {
     while (true) {
@@ -111,7 +90,7 @@ export async function ffprobeFirstVideoStream({
             );
           }
         }
-        const durationToWait = numSecondsToWait();
+        const durationToWait = getBackoffDelay(pollStartTime);
         const seconds = Math.floor(durationToWait.total({ unit: "seconds" }));
         console.info(
           `Waiting ${seconds} ${Plural.s({ seconds })} to poll source again…`,

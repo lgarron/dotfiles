@@ -50,6 +50,7 @@ const GIT_REPOS_ROOT_PATH = Path.homedir.join("Code/git");
 function parseArgs() {
   return run(
     object({
+      wait: optional(option("--wait")),
       refTable: optional(option("--reftable")),
       rewriteURL: withDefault(
         map(
@@ -128,6 +129,7 @@ export async function gclone({
   url,
   dryRun,
   refTable,
+  wait,
 }: ReturnType<typeof parseArgs>): Promise<void> {
   const { repoCloneSource, user, repo } = calculateRepoCloneSource(url, {
     rewriteURL,
@@ -163,6 +165,8 @@ export async function gclone({
     if (dryRun) {
       console.log("Skipping the following `git` command due to dry run:");
       gitCommand.print();
+    } else if (wait) {
+      await gitCommand.shellOut();
     } else {
       gitCommand.print().spawnDetached({});
 

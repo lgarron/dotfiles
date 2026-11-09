@@ -9,6 +9,7 @@ import {
   message,
   object,
   option,
+  optional,
   url,
   withDefault,
 } from "@optique/core";
@@ -49,6 +50,7 @@ const GIT_REPOS_ROOT_PATH = Path.homedir.join("Code/git");
 function parseArgs() {
   return run(
     object({
+      refTable: optional(option("--reftable")),
       rewriteURL: withDefault(
         map(
           option(
@@ -125,6 +127,7 @@ export async function gclone({
   rewriteURL,
   url,
   dryRun,
+  refTable,
 }: ReturnType<typeof parseArgs>): Promise<void> {
   const { repoCloneSource, user, repo } = calculateRepoCloneSource(url, {
     rewriteURL,
@@ -147,9 +150,13 @@ export async function gclone({
     const DATA_DIR = Path.xdg.data.join("gclone");
     await DATA_DIR.mkdir();
 
+    const refTableArgs = refTable ? [["--ref-format", "reftable"]] : [];
+
     // TODO: logging?
     const gitCommand = new PrintableShellCommand("git", [
       "clone",
+      ...refTableArgs,
+      "--",
       repoCloneSource,
       repoPath,
     ]);

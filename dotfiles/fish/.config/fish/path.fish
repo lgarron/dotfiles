@@ -2,12 +2,12 @@
 
 function _add_to_path
     set NEW_PATH_COMPONENT $argv[1]
-    fish_add_path --append $NEW_PATH_COMPONENT
+    fish_add_path --path --append $NEW_PATH_COMPONENT
 end
 
 set -x GOPATH "$HOME/.local/share/gopath"
 
-if [ "$_FISH_MANUAL_RELOAD" = true -o "$_FISH_USER_PATHS_HAS_BEEN_SET_UP" != true ]
+if [ "$_FISH_MANUAL_RELOAD" = true -o "$_FISH_USER_PATHS_HAS_BEEN_SET_UP" != true -o "$_FISH_TRAMPOLINE" = true ]
     set -l _FISH_MANUAL_RELOAD_EMOJI ""
     if [ "$_FISH_MANUAL_RELOAD" = true ]
         echo ""

@@ -21,8 +21,8 @@ if [ "$_FISH_MANUAL_RELOAD" = true -o "$_FISH_USER_PATHS_HAS_BEEN_SET_UP" != tru
     _add_to_path /home/linuxbrew/.linuxbrew/bin # for codespaces
     _add_to_path /home/linuxbrew/.linuxbrew/sbin # for codespaces
     _add_to_path "$GOPATH/bin"
-    _add_to_path $HOME/.cache/.bun/bin # For zig (for building Bun) https://bun.sh/docs/project/development
-    _add_to_path /usr/local/bin
+    _add_to_path $HOME/.cache/.bun/bin # For global package binary installations via `bun`
+    _add_to_path /usr/local/bin # Mainly for `qs`.
     _add_to_path "$HOME/.local/share/binaries/linux-x64" # for Codespaces
 
     set_color --bold

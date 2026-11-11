@@ -66,6 +66,4 @@ if (copyCreationAndModificationDates) {
   await transferFileDates(sourceFile, outputFile);
 }
 
-console.log(outputFile.path);
-
-printAndMaybeReveal();
+await printAndMaybeReveal();

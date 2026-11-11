@@ -74,3 +74,5 @@ await new PrintableShellCommand("magick", [
 if (copyCreationAndModificationDates) {
   await transferFileDates(sourceFile, outputFileName);
 }
+
+console.log(outputFileName.path);

@@ -2,6 +2,9 @@
 
 import { styleText } from "node:util";
 import {
+  message,
+  option,
+  optional,
   object as optiqueObject,
   option as optiqueOption,
   optional as optiqueOptional,
@@ -11,20 +14,30 @@ import { semver } from "bun";
 import { inputDir } from "optique-helpers";
 import { Path } from "path-class";
 import { PrintableShellCommand } from "printable-shell-command";
-import { object as zodObject, string as zodString } from "zod/mini";
+import {
+  object as zodObject,
+  optional as zodOptional,
+  string as zodString,
+} from "zod/mini";
 import { byOption } from "../lib/optique.ts";
 import { sleepDuration } from "../lib/temporal/sleep.ts";
 
 const MAX_NUM_TRIES = 10;
+const SKIP_IF_NOT_PACKAGE = "--skip-if-not-package" as const;
 
 const packageJSONSchema = zodObject({
-  name: zodString(),
-  version: zodString(),
+  name: zodOptional(zodString()),
+  version: zodOptional(zodString()),
 });
 
 function parseArgs() {
   return run(
     optiqueObject({
+      skipIfNotPackage: optional(
+        option(SKIP_IF_NOT_PACKAGE, {
+          description: message`Run as normal if \`package.json\` is present with \`name\` and \`version\` fields, else return with exit code 0.`,
+        }),
+      ),
       packagePath: optiqueOptional(optiqueOption("--package-path", inputDir())),
     }),
     byOption(),
@@ -37,9 +50,29 @@ export async function executeScript(
   // For now we assume we're in the root dir.
   const packageJSONPath =
     args.packagePath?.join("./package.json") ?? new Path("./package.json");
+
+  if (!packageJSONPath.exists()) {
+    console.error(
+      `Skipping wait for validation because \`package.json\` is not present and \`${SKIP_IF_NOT_PACKAGE}\` was passed.`,
+    );
+    return;
+  }
+
   const { name, version } = await packageJSONPath.readJSON({
     schema: packageJSONSchema,
   });
+  if (!name) {
+    console.error(
+      `Skipping wait for validation because \`name\` field is not present in \`package.json\` and \`${SKIP_IF_NOT_PACKAGE}\` was passed.`,
+    );
+    return;
+  }
+  if (!version) {
+    console.error(
+      `Skipping wait for validation because \`version\` field is not present in \`package.json\` and \`${SKIP_IF_NOT_PACKAGE}\` was passed.`,
+    );
+    return;
+  }
   console.error(`Waiting for version: ${styleText("bold", version)}`);
 
   for (let i = 0; i < MAX_NUM_TRIES; i++) {

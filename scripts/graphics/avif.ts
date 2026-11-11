@@ -10,7 +10,7 @@ import {
   withDefault,
 } from "@optique/core";
 import { run } from "@optique/run";
-import { simpleFileInOut } from "optique-helpers";
+import { fileTransformation, simpleFileInOut } from "optique-helpers";
 import { PrintableShellCommand } from "printable-shell-command";
 import { byOption } from "../lib/optique.ts";
 import { transferFileDates } from "../lib/transferFileDates.ts";
@@ -50,29 +50,22 @@ See https://imagemagick.org/script/command-line-processing.php#geometry&gsc.tab=
   byOption(),
 );
 
-const {
-  qcolor,
-  resize,
-  sourceFile,
-  outputFile,
-  copyCreationAndModificationDates,
-} = args;
+const { qcolor, resize, sourceFile, copyCreationAndModificationDates } = args;
 
-const outputFileName =
-  outputFile ??
-  (qcolor
-    ? sourceFile.extendBasename(`.q${qcolor}.avif`)
-    : sourceFile.extendBasename(".avif"));
+const suffix = qcolor ? `.q${qcolor}.avif` : ".avif";
+const { outputFile, printAndMaybeReveal } = fileTransformation(args, suffix);
 
 await new PrintableShellCommand("magick", [
   sourceFile,
   ["-quality", `${qcolor}%`],
   ...(resize ? ["-resize", resize] : []),
-  outputFileName,
+  outputFile,
 ]).shellOut();
 
 if (copyCreationAndModificationDates) {
-  await transferFileDates(sourceFile, outputFileName);
+  await transferFileDates(sourceFile, outputFile);
 }
 
-console.log(outputFileName.path);
+console.log(outputFile.path);
+
+printAndMaybeReveal();

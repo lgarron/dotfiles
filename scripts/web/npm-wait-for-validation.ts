@@ -62,8 +62,9 @@ export async function executeScript(
       console.error(`npm has version: ${styleText("green", npmVersion)}`);
       return;
     }
-    console.error(`npm still has version: ${styleText("red", npmVersion)}
-Waiting…`);
+    console.error(`npm still has version: ${styleText("red", npmVersion)}`);
+    // Move this to a separate line so that `stderr` coloring captures it.
+    console.error("Waiting…");
     if (i < MAX_NUM_TRIES - 1) {
       await sleepDuration(Temporal.Duration.from({ seconds: 10 }));
     }

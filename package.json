@@ -12,7 +12,7 @@
     "lockfile-mutex": ">=0.3.12",
     "lstow": ">=0.6.3",
     "naughty-list": "^3.0.2",
-    "optique-helpers": ">=0.1.8",
+    "optique-helpers": ">=0.1.9",
     "path-class": ">=0.17.5",
     "plural-chain": ">=0.2.3",
     "printable-shell-command": "^5.3.2",

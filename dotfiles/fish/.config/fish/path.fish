@@ -1,8 +1,12 @@
 # Path
 
 function _add_to_path
-    set NEW_PATH_COMPONENT $argv[1]
-    fish_add_path --path --append $NEW_PATH_COMPONENT
+    set -l NEW_PATH_COMPONENT $argv[1]
+    set -l PATH_ARG
+    if [ "$_FISH_TRAMPOLINE" = true ]
+        set PATH_ARG --path
+    end
+    fish_add_path $PATH_ARG --append $NEW_PATH_COMPONENT
 end
 
 set -x GOPATH "$HOME/.local/share/gopath"

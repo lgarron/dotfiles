@@ -127,7 +127,7 @@ end
 
 function _abbr_jpt_for_bookmark
     set FIRST_BOOKMARK $argv[1]
-    echo "jj bookmark set --revision here $FIRST_BOOKMARK &&"
+    echo "jj bookmark advance $FIRST_BOOKMARK &&"
     echo "jj git push --bookmark $FIRST_BOOKMARK &&"
     if _in_git_repo
         echo "jj new $FIRST_BOOKMARK &&"

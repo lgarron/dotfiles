@@ -204,15 +204,11 @@ abbr_subcommand repo s setup
 abbr_subcommand repo d "setup dependencies"
 abbr_subcommand_arg repo d dependencies setup
 
-abbr -a pub "jj new here && \\
-  tagpush && \\
-  make publish && \\
-  npm-wait-for-validation --skip-if-not-package &&
-  repo version bump --commit dev && \\
-  jj bookmark set --revision here main && \\
-    jj git push --bookmark main && \\
-    jj new main && \\
-    git switch main
+abbr -a pub "jj adpush && jj empty-change && \\
+    make publish && \\
+    tagpush && \\
+    npm-wait-for-validation --skip-if-not-package && \\
+    repo version bump --commit dev
 "
 
 ## Web

@@ -33,6 +33,28 @@ bookmark-advance-to = "here"
 
 [aliases]
 desc.enabled = false
+adpush = ["util", "exec", "--", "fish", "--no-config", "-c", """
+if [ (count $argv) -gt 0 ]
+  set BRANCH $argv[1]
+else
+  set BRANCH (jj guess-branch)
+end
+echo "Advancing & pushing: "(set_color purple)"$BRANCH"(set_color normal)
+jj bookmark advance $BRANCH
+jj git push --bookmark $BRANCH
+"""]
+empty-change = ["util", "exec", "--", "fish", "--no-config", "-c", """
+if [ (count $argv) -gt 0 ]
+  set BRANCH $argv[1]
+else
+  set BRANCH (jj guess-branch)
+end
+echo "Creating an empty change as a child of: "(set_color purple)"$BRANCH"(set_color normal)
+jj new $BRANCH
+if git rev-parse --show-toplevel &>/dev/null
+  git switch $BRANCH
+end
+"""]
 here = [
   "log",
   "--no-graph",

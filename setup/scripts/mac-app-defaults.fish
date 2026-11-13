@@ -53,6 +53,9 @@ defaults write "com.apple.iCal" "first day of week" -int 2
 # Disk Utility
 defaults write "com.apple.DiskUtility" "WorkspaceShowAPFSSnapshots" -bool true
 defaults write "com.apple.DiskUtility" "SidebarShowAllDevices" -bool true
+# Digital Color Meter
+defaults -currentHost write com.apple.DigitalColorMeter2 colorSpace 0 # Native values
+defaults -currentHost write com.apple.DigitalColorMeter2 displayMode 1 # Hexadecimal
 
 # iTerm
 defaults write "com.googlecode.iterm2" "AllowClipboardAccess" -bool true

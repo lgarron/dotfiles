@@ -204,7 +204,7 @@ abbr_subcommand repo s setup
 abbr_subcommand repo d "setup dependencies"
 abbr_subcommand_arg repo d dependencies setup
 
-abbr -a pub "jj adpush && jj empty-change && \\
+abbr -a pub "jj adpush main && jj empty-change main && \\
     make publish && \\
     tagpush && \\
     npm-wait-for-validation --skip-if-not-package && \\

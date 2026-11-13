@@ -24,7 +24,7 @@ import { withSuggestions } from "optique-helpers";
 import { Path } from "path-class";
 import { PrintableShellCommand } from "printable-shell-command";
 import { bySubcommand } from "../lib/optique.ts";
-import { PRIMARY_DISPLAY } from "./common/index.ts";
+import { PRIMARY_EXTERNAL_DISPLAY } from "./common/index.ts";
 import { allDeviceNames } from "./toggle-retina.ts";
 
 const REMOTE_SCRIPT_PATH = new Path(import.meta.url);
@@ -154,7 +154,7 @@ export async function connect(args: SubcommandArgs<"connect">): Promise<void> {
 
   const remoteCommand = new PrintableShellCommand(REMOTE_SCRIPT_PATH, [
     "prep",
-    ["--disconnect-display", PRIMARY_DISPLAY],
+    ["--disconnect-display", PRIMARY_EXTERNAL_DISPLAY],
     ["--display", args.display],
     newResolution.logicalResolutionString(),
   ]);

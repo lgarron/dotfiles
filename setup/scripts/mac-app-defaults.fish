@@ -11,7 +11,7 @@ defaults write "com.apple.finder" "NSToolbar Configuration Browser" '{"TB Defaul
 defaults write "com.apple.finder" "FXPreferredViewStyle" 'Nlsv'
 plutil -replace "StandardViewSettings.ListViewSettings.calculateAllSizes" -bool YES $HOME/Library/Preferences/com.apple.finder.plist
 plutil -replace "StandardViewSettings.ExtendedListViewSettingsV2.calculateAllSizes" -bool YES $HOME/Library/Preferences/com.apple.finder.plist
-#Terminal
+# Terminal
 /usr/libexec/PlistBuddy -c "Set :'Default Window Settings' 'Clear Dark'" $HOME/Library/Preferences/com.apple.Terminal.plist
 /usr/libexec/PlistBuddy -c "Set :'Window Settings':'Clear Dark':CommandString 'login -pfq lgarron /opt/homebrew/bin/fish'" $HOME/Library/Preferences/com.apple.Terminal.plist
 plutil -replace "Window Settings.Clear Dark.RunCommandAsShell" 'true' -o - $HOME/Library/Preferences/com.apple.Terminal.plist

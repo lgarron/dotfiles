@@ -121,47 +121,12 @@ _fish_abbr_jj_subcommand p "git push"
 _fish_abbr_jj_subcommand gp "git push"
 abbr_subcommand_arg jj r --remote git # TODO: can we scope this to `jj git push`?
 
-function _in_git_repo
-    git rev-parse --show-toplevel &>/dev/null
-end
+# TODO: change abbreviations?
+abbr -a jpt "jj adpush && jj empty-change"
+abbr -a jptt "jj adpush"
 
-function _abbr_jpt_for_bookmark
-    set FIRST_BOOKMARK $argv[1]
-    echo "jj bookmark advance $FIRST_BOOKMARK &&"
-    echo "jj git push --bookmark $FIRST_BOOKMARK &&"
-    if _in_git_repo
-        echo "jj new $FIRST_BOOKMARK &&"
-        echo "git switch $FIRST_BOOKMARK"
-    else
-        echo "jj new $FIRST_BOOKMARK"
-    end
-end
-
-function _abbr_jptt_for_bookmark
-    set FIRST_BOOKMARK $argv[1]
-    echo "jj bookmark set --revision here $FIRST_BOOKMARK &&"
-    echo "jj git push --bookmark $FIRST_BOOKMARK"
-end
-
-function _abbr_jpt
-    _abbr_jpt_for_bookmark (jj guess-branch)
-end
-abbr -a jpt --function _abbr_jpt
-
-function _abbr_jptt
-    _abbr_jptt_for_bookmark (jj guess-branch)
-end
-abbr -a jptt --function _abbr_jptt
-
-function _abbr_jpm
-    _abbr_jpt_for_bookmark main
-end
-abbr -a jpm --function _abbr_jpm
-
-function _abbr_jpmm
-    _abbr_jptt_for_bookmark main
-end
-abbr -a jpmm --function _abbr_jpmm
+abbr -a jpm "jj adpush main && jj empty-change main"
+abbr -a jpmm "jj adpush main"
 
 function _abbr_jbt_for_bookmark
     set FIRST_BOOKMARK $argv[1]

@@ -110,6 +110,12 @@
     "body": "Promise<${0:${TM_SELECTED_TEXT:void}}>",
     "description": "Promise type"
   },
+  "await": {
+    "scope": "jacscript,typescript",
+    "prefix": "w",
+    "body": "await",
+    "description": "await keyword"
+  },
   "import.meta.resolve": {
     "scope": "javascript,typescript",
     "prefix": "imr",

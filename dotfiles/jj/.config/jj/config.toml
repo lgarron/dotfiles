@@ -32,6 +32,7 @@ bookmark-advance-to = "here"
 'here' = 'latest(heads(promptanchor | prompt_pushable_stack))'
 
 [aliases]
+desc.enabled = false
 here = [
   "log",
   "--no-graph",
